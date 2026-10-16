@@ -1,0 +1,99 @@
+{
+  "schema": "stage1-run.v1",
+  "method": "QAOA p=3 (Qiskit Aer statevector simulator)",
+  "instance": "instance_2x2",
+  "timestamp": "2026-10-16T17:18:48.395346+00:00",
+  "instance_sha256": "ae9a61293664f0492f3f71a43cf329c05ebe5d6407585dadf78cffc6a08e0a87",
+  "model_sha256": "c1c897b6cabc7fade12266fd60942c542b0e2ff5fd5bd60a3144850903d16cbe",
+  "encoding": "domain-wall",
+  "variables": 4,
+  "horizon": 4,
+  "total_samples": 4096,
+  "feasible_samples": 3636,
+  "feasible_rate": 0.8876953125,
+  "accepted": true,
+  "metadata": {
+    "algorithm": "QAOA with transverse-X mixer",
+    "simulator": "Qiskit Aer statevector + measured shots",
+    "layers": 3,
+    "shots": 4096,
+    "seed": 2026,
+    "restarts": 6,
+    "maxiter": 250,
+    "cost_scale": 1.0,
+    "optimized_parameters": [
+      0.7376880620356151,
+      1.6092775839858382,
+      -1.1869821915667702,
+      2.3885170609561586,
+      0.6932695120441695,
+      -1.110391036122128
+    ],
+    "parameter_order": "all gamma, then all beta",
+    "optimizer": "COBYLA, mean QUBO energy",
+    "expected_energy": 0.19792141661858637,
+    "ideal_feasible_probability": 0.8883984819996169,
+    "elapsed_wall_seconds": 1.047264208085835,
+    "attempts": [
+      {
+        "restart": 0,
+        "expected_energy": 0.671250223187684,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      },
+      {
+        "restart": 1,
+        "expected_energy": 0.4453739900832313,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      },
+      {
+        "restart": 2,
+        "expected_energy": 0.19792141661858637,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      },
+      {
+        "restart": 3,
+        "expected_energy": 1.5944979457984982,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      },
+      {
+        "restart": 4,
+        "expected_energy": 0.4322124118101546,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      },
+      {
+        "restart": 5,
+        "expected_energy": 0.9328161962324781,
+        "evaluations": 250,
+        "converged": false,
+        "message": "Return from COBYLA because the objective function has been evaluated MAXFUN times."
+      }
+    ],
+    "circuit_depth": 14,
+    "circuit_operations": {
+      "rzz": 12,
+      "rx": 12,
+      "rz": 6,
+      "h": 4
+    },
+    "bit_order": "sample[i] is qubit i; raw Qiskit strings reversed on decoding"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "dimod": "0.12.22",
+    "dwave-samplers": "1.8.0",
+    "veloxq-sdk": "1.0.0"
+  }
+}

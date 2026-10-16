@@ -3,7 +3,7 @@ import json
 import random
 import unittest
 
-from solver.stage1 import ROOT, build_qubo, decode, energy, exact_reference, validate
+from solver.stage1 import ROOT, build_qubo, decode, energy, encode_schedule, exact_reference, validate
 
 
 def load(size):
@@ -11,6 +11,41 @@ def load(size):
 
 
 class FormulationTests(unittest.TestCase):
+    def test_domain_wall_exact_2x2_and_3x3_penalty_bound(self):
+        for size, horizon, count in (("2x2", 4, 4), ("3x3", 8, 30)):
+            instance = load(size)
+            model = build_qubo(instance, horizon, "domain-wall")
+            self.assertEqual(len(model["variables"]), count)
+            reference = exact_reference(instance)
+            self.assertEqual(energy(model, encode_schedule(model, reference["schedule"])), 0)
+            rng = random.Random(2026)
+            samples = (itertools.product((0, 1), repeat=count) if count <= 4 else
+                       ([rng.randrange(2) for _ in range(count)] for _ in range(2000)))
+            for sample in samples:
+                sample = list(sample)
+                violations = sum((1 - sample[i]) * sample[j] for i, j in model["monotone_pairs"])
+                self.assertGreaterEqual(energy(model, sample), violations)
+                try:
+                    schedule = decode(model, sample)
+                except ValueError:
+                    self.assertGreater(energy(model, sample), 0)
+                    continue
+                makespan = max((s["end"] for s in schedule), default=0)
+                self.assertEqual(energy(model, sample) == 0, not validate(instance, schedule, makespan))
+
+    def test_domain_wall_matches_onehot_on_valid_domains(self):
+        instance = load("3x3")
+        onehot, compact = [build_qubo(instance, 8, encoding) for encoding in ("onehot", "domain-wall")]
+        groups = {}
+        for v in onehot["variables"]:
+            groups.setdefault((v["job"], v["machine"]), []).append(v)
+        rng = random.Random(17)
+        for _ in range(1000):
+            choices = [rng.choice(group) for group in groups.values()]
+            schedule = [dict(job=v["job"], machine=v["machine"], start=v["start"], end=v["start"] + v["duration"]) for v in choices]
+            self.assertEqual(energy(onehot, encode_schedule(onehot, schedule)), energy(compact, encode_schedule(compact, schedule)))
+            self.assertEqual(decode(compact, encode_schedule(compact, schedule)), schedule)
+
     def test_3x3_conflict_penalties_match_direct_interval_checker(self):
         instance = load("3x3")
         model = build_qubo(instance, 8)

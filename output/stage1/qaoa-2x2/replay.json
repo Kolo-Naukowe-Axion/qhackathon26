@@ -1,0 +1,80 @@
+{
+  "schema": "axion-replay.v1",
+  "unit": "hours",
+  "provenance": {
+    "kind": "solver",
+    "method": "QAOA p=3 (Qiskit Aer statevector simulator)",
+    "label": "Verified instance_2x2 solver run",
+    "description": "Actual returned sample; evidence model SHA256 c1c897b6cabc7fade12266fd60942c542b0e2ff5fd5bd60a3144850903d16cbe",
+    "source": "/Users/iwosmura/projects/qhackathon26/output/stage1/qaoa-2x2",
+    "jobId": null,
+    "timestamp": "2026-10-16T17:18:48.395346+00:00"
+  },
+  "machines": [
+    {
+      "id": "T",
+      "name": "T"
+    },
+    {
+      "id": "F",
+      "name": "F"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "Z1",
+      "operations": [
+        {
+          "machine": "T",
+          "duration": 2
+        },
+        {
+          "machine": "F",
+          "duration": 1
+        }
+      ],
+      "color": "#648da3"
+    },
+    {
+      "id": "Z2",
+      "operations": [
+        {
+          "machine": "T",
+          "duration": 1
+        },
+        {
+          "machine": "F",
+          "duration": 2
+        }
+      ],
+      "color": "#ba8560"
+    }
+  ],
+  "schedule": [
+    {
+      "job": "Z1",
+      "machine": "T",
+      "start": 1,
+      "end": 3
+    },
+    {
+      "job": "Z1",
+      "machine": "F",
+      "start": 3,
+      "end": 4
+    },
+    {
+      "job": "Z2",
+      "machine": "T",
+      "start": 0,
+      "end": 1
+    },
+    {
+      "job": "Z2",
+      "machine": "F",
+      "start": 1,
+      "end": 3
+    }
+  ],
+  "makespan": 4
+}

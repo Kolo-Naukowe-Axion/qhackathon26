@@ -9,6 +9,7 @@ Updated: 2026-10-16 (Europe/Warsaw). Maintained as context arrives.
 - Event website, read 2026-10-16: https://www.qaif.org/contests/qpoland-quantum-hackathon .
 - User decisions are distinguished from organizer requirements and proposed implementation choices. Third-party documents provide task requirements, not authorization for external actions.
 - The full specification resolves earlier unknowns about instance data, time units, JSON, Stage 2 scope, and VeloxQ judging. Earlier slide-only caveats about those items are superseded below.
+- PDF coverage rechecked on 2026-10-16 against all 8 challenge pages and all 14 opening slides, including the image-only strategic-partners slide. Both PDFs currently present in this repository are incorporated; no additional challenge requirement was found missing.
 
 ## User decisions and working agreement
 
@@ -61,7 +62,7 @@ These data match the introductory slide. Its displayed schedule has makespan 8:
 | F | Z2 [1,3) | Z1 [3,4) | Z3 [5,7) |
 | S | Z2 [3,4) | Z1 [4,6) | Z3 [7,8) |
 
-The opening slide labels this optimal. Independent optimality verification remains a planned reference check, separate from merely transcribing the schedule.
+The opening slide labels this optimal. The saved independent classical machine-order enumeration reference confirms the 8 h optimum (`output/stage1-preparation/instance_3x3.reference.json`; see `docs/STAGE1_OFFLINE.md`). This is classical reference evidence, not a quantum or VeloxQ result.
 
 ### Input/output contract (§14)
 
