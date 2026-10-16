@@ -30,14 +30,23 @@ Open [the local factory replay](http://127.0.0.1:4173). The server listens only 
 
 - **Factory:** original pixel-art shop floor with moving parts, processing animations, replay/pause, time scrubbing, speed controls, and part selection.
 - **Timeline:** a synchronized Gantt chart; click an operation to jump to it.
-- **Evidence:** independent checks for coverage, duration, capacity, and precedence, with explicit result provenance.
+- **Validation:** independent checks for coverage, duration, capacity, and precedence, with source/method metadata.
 - **Present:** a compact presentation layout, with fullscreen where the browser permits it. Space plays/pauses when the page background has focus.
-- **Load schedule JSON:** import either the official baseline output format or an `axion-replay.v1` file. Imported metadata is self-reported. Data is processed locally in the browser.
+- **Import JSON:** load either the official baseline output format or an `axion-replay.v1` file. Imported metadata is self-reported. Data is processed locally in the browser.
 - **Export replay:** download the display wrapper with its source labels; this is separate from the required solver-generated baseline schedule files.
 
 The initial 2×2 and 3×3 schedules are **illustrations copied from the organizer documents**. The 9-hour comparison is a hand-authored illustration. None is evidence of this project's QAOA or VeloxQ execution. Stage 1 remains incomplete until both required methods have actually run and their output schedules pass validation.
 
 ## Checks
+
+Stage 1 formulation preparation now runs offline with Python 3, without an API token or additional packages:
+
+```sh
+python3 -m solver.stage1
+python3 -m unittest discover -s tests -p 'test_stage1.py' -v
+```
+
+This exports QUBOs and exact classical references under `output/stage1-preparation/`. It does not run QAOA or VeloxQ. See [offline preparation and remaining handoff](docs/STAGE1_OFFLINE.md).
 
 ```sh
 npm run check
@@ -67,3 +76,5 @@ dependencies are required.
 OpenAI Codex assisted with extracting and checking organizer requirements, planning, implementation of the presentation environment, original SVG illustration, validation tests, and documentation. The team supplied the objectives, visual references, corrections, and direction. Solver execution and results must be documented separately when they happen. Team members must review the code, understand the formulation and validation, and be able to explain it during the live defense.
 
 Project source is MIT-licensed. The supplied organizer PDFs are reference material from the organizers and are not relicensed by this project.
+
+Axion's actual logo and brand typefaces are bundled in `presentation/assets/branding/`; font licenses and source attribution are included there.

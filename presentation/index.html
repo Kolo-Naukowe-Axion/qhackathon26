@@ -3,67 +3,63 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <meta name="theme-color" content="#f5f2e9" />
-  <meta name="description" content="An interactive factory replay for the Axion quantum scheduling project. Illustrated schedules are clearly distinguished from solver results." />
+  <meta name="theme-color" content="#f5f5f1" />
+  <meta name="description" content="Replay Axion production schedules and inspect feasibility checks." />
   <title>Axion · Factory replay</title>
-  <link rel="icon" type="image/svg+xml" href="./favicon.svg" />
+  <link rel="icon" type="image/png" href="./assets/branding/axion-logo.png" />
   <link rel="stylesheet" href="./style.css" />
 </head>
 <body>
   <header class="topbar">
-    <a class="brand" href="./" aria-label="Axion scheduling lab home"><span class="brand-icon" aria-hidden="true">✳</span> AXION <span class="brand-divider"></span><span class="brand-sub">Scheduling lab</span></a>
-    <div class="top-actions"><span class="event-label">QPOLAND 2026</span><button id="present" class="quiet-button">Present <span aria-hidden="true">↗</span></button></div>
+    <a class="brand" href="./" aria-label="Axion scheduling home"><img src="./assets/branding/axion-logo.png" alt="" width="44" height="44" /><span class="brand-name">AXION</span><span class="brand-sub">Scheduling</span></a>
+    <div class="top-actions"><span class="event-label">QPoland 2026</span><button id="present" class="quiet-button">Present</button></div>
   </header>
 
   <main>
-    <section class="heading-row">
-      <div><div class="eyebrow"><span class="tiny-square"></span> STAGE 01 / PRODUCTION SCHEDULING</div><h1>A little factory.<br><em>A scheduling problem.</em></h1></div>
-      <div class="heading-context"><p><span id="problem-description">Three parts. Three machines.</span><br>One question: when does the last part finish?</p><div class="source-badge"><span></span><strong id="source-label">Organizer slide · illustrative replay</strong></div></div>
-    </section>
+    <h1 class="sr-only">Production scheduling</h1>
 
     <section class="workspace" aria-label="Interactive scheduling workspace">
       <div class="workspace-toolbar">
         <div class="tabs" role="tablist" aria-label="Result views">
-          <button id="tab-factory" class="tab active" role="tab" aria-selected="true" aria-controls="panel-factory" data-tab="factory"><span aria-hidden="true">▦</span> Factory</button>
-          <button id="tab-timeline" class="tab" role="tab" aria-selected="false" aria-controls="panel-timeline" tabindex="-1" data-tab="timeline"><span aria-hidden="true">☷</span> Timeline</button>
-          <button id="tab-evidence" class="tab" role="tab" aria-selected="false" aria-controls="panel-evidence" tabindex="-1" data-tab="evidence"><span aria-hidden="true">◇</span> Evidence</button>
+          <button id="tab-factory" class="tab active" role="tab" aria-selected="true" aria-controls="panel-factory" data-tab="factory">Factory</button>
+          <button id="tab-timeline" class="tab" role="tab" aria-selected="false" aria-controls="panel-timeline" tabindex="-1" data-tab="timeline">Timeline</button>
+          <button id="tab-evidence" class="tab" role="tab" aria-selected="false" aria-controls="panel-evidence" tabindex="-1" data-tab="evidence">Validation</button>
         </div>
-        <label class="schedule-picker"><span>Schedule</span><select id="schedule-select"><option value="slide">3×3 · slide example · 8 h</option><option value="alternative">3×3 · illustrative alternative · 9 h</option><option value="small">2×2 · document example · 4 h</option></select></label>
+        <label class="schedule-picker"><span class="sr-only">Schedule</span><select id="schedule-select"><option value="slide">3×3 · Example</option><option value="alternative">3×3 · Alternative</option><option value="small">2×2 · Example</option></select></label>
       </div>
 
       <div id="panel-factory" class="view-panel" role="tabpanel" aria-labelledby="tab-factory">
-        <div class="scene-topline"><div><span class="live-dot"></span><span id="scene-status">READY TO REPLAY</span></div><span id="factory-route">TURNING <b>→</b> MILLING <b>→</b> WELDING</span><span class="scene-scale">TOP-DOWN SHOP FLOOR</span></div>
+        <div class="scene-topline"><span id="source-label">Example · Organizer slide</span><span id="scene-status">Ready</span></div>
         <div id="factory-scene" class="factory-scene" aria-label="Pixel art factory with three processing stations"></div>
-        <div class="scene-bottomline"><span>Click a part to follow its journey</span><span>Positions explain operation state; travel is illustrative.</span></div>
       </div>
 
       <div id="panel-timeline" class="view-panel" role="tabpanel" aria-labelledby="tab-timeline" hidden>
-        <div class="panel-heading"><div><div class="eyebrow">THE SAME FACTORY, THROUGH TIME</div><h2>Every operation has its place.</h2></div><p>Click an operation to inspect it.<br>Shaded gaps are machine idle time.</p></div>
+        <div class="panel-heading"><h2>Timeline</h2><span class="unit-label">Hours</span></div>
         <div id="full-timeline"></div>
       </div>
 
       <div id="panel-evidence" class="view-panel" role="tabpanel" aria-labelledby="tab-evidence" hidden>
-        <div class="panel-heading"><div><div class="eyebrow">WHAT CAN WE ACTUALLY CLAIM?</div><h2>A schedule you can check.</h2></div><span id="feasibility-badge" class="check-badge"></span></div>
-        <div class="evidence-layout"><div id="constraint-list"></div><div class="provenance"><div class="eyebrow">RESULT ORIGIN</div><h3 id="evidence-origin"></h3><p id="evidence-description"></p><dl id="evidence-metadata"></dl><div class="awaiting-note" id="run-note"></div></div></div>
+        <div class="panel-heading"><h2>Validation</h2><span id="feasibility-badge" class="check-badge"></span></div>
+        <div class="evidence-layout"><div id="constraint-list"></div><div class="provenance"><h3 id="evidence-origin"></h3><p id="evidence-description"></p><dl id="evidence-metadata"></dl><div class="awaiting-note" id="run-note"></div></div></div>
       </div>
 
       <div class="transport">
         <button id="restart" class="icon-button" title="Restart replay" aria-label="Restart replay">↤</button>
         <button id="play" class="play-button" aria-label="Play replay"><span id="play-icon" aria-hidden="true">▶</span><span id="play-label">Play</span></button>
-        <div class="time-display"><span id="time-current">0.0</span><span class="time-total"> / <span id="time-total">8</span> <small>hours</small></span></div>
-        <label class="scrubber"><span class="sr-only">Replay time</span><input id="scrubber" type="range" min="0" max="8" step="0.01" value="0" /><span class="scrubber-marks"><span>START</span><span>LAST PART FINISHED</span></span></label>
+        <div class="time-display"><span id="time-current">0.0</span><span class="time-total"> / <span id="time-total">8</span> <small>h</small></span></div>
+        <label class="scrubber"><span class="sr-only">Replay time</span><input id="scrubber" type="range" min="0" max="8" step="0.01" value="0" /></label>
         <label class="speed-control"><span class="sr-only">Playback speed</span><select id="speed"><option value="0.5">0.5×</option><option value="1" selected>1×</option><option value="2">2×</option></select></label>
       </div>
     </section>
 
     <section class="below-workspace">
-      <div class="part-section"><div class="section-label">FOLLOW A PART <button id="clear-selection" hidden>Clear selection ×</button></div><div id="part-list" class="part-list"></div><div id="part-detail" class="part-detail"></div></div>
-      <div class="result-summary"><div><div class="section-label">MAKESPAN</div><div class="big-number"><span id="makespan">8</span><small>hours</small></div></div><div><div class="section-label">FINISHED PARTS</div><div class="big-number"><span id="completed-count">0</span><small>/ <span id="job-count">3</span></small></div></div><div class="summary-note"><span id="mini-validation"></span><p id="summary-provenance">An organizer example,<br>not a VeloxQ result.</p></div></div>
+      <div class="part-section"><div class="section-label">Parts <button id="clear-selection" hidden>Clear ×</button></div><div id="part-list" class="part-list"></div><div id="part-detail" class="part-detail" hidden></div></div>
+      <div class="result-summary"><div><div class="section-label">Makespan</div><div class="big-number"><span id="makespan">8</span><small>h</small></div></div><div><div class="section-label">Completed</div><div class="big-number"><span id="completed-count">0</span><small>/ <span id="job-count">3</span></small></div></div><span id="mini-validation" class="summary-validation"></span></div>
     </section>
 
-    <section class="mini-timeline-section"><div class="section-label">SCHEDULE AT A GLANCE <span>SCRUB ABOVE TO EXPLORE</span></div><div id="mini-timeline"></div></section>
+    <section class="mini-timeline-section"><div class="section-label">Schedule <span class="unit-label">Hours</span></div><div id="mini-timeline"></div></section>
 
-    <footer><div><span class="footer-mark">✳</span> Built to explain the schedule, not just its score.</div><div><button id="import-button" class="text-button">Load schedule JSON</button><button id="export-button" class="text-button">Export replay ↓</button><input id="import-file" type="file" accept=".json,application/json" hidden /></div></footer>
+    <footer><button id="import-button" class="text-button" title="Load an official schedule or replay file">Import JSON</button><button id="export-button" class="text-button" title="Export axion-replay.v1 display data">Export replay</button><input id="import-file" type="file" accept=".json,application/json" hidden /></footer>
     <p id="file-message" class="file-message" role="status"></p>
   </main>
   <script type="module" src="./app.js"></script>

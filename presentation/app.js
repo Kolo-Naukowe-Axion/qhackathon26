@@ -6,7 +6,6 @@ const $ = id => document.getElementById(id);
 const datasets = new Map([['slide', slideReplay], ['alternative', alternativeReplay], ['small', smallReplay]]);
 let replay, scene, validation;
 let time = 0, selected = null, playing = false, lastFrame = null;
-let lastAnnouncedTime = -1;
 const f = x => Number.isInteger(x) ? String(x) : x.toFixed(1);
 
 function selectPart(job) {
@@ -33,31 +32,30 @@ function renderTimeline(target, full = false) {
 
 function renderEvidence() {
   const p = replay.provenance;
-  $('constraint-list').innerHTML = validation.checks.map(c => `<div class="constraint ${c.issues.length ? 'failed' : ''}"><span class="constraint-mark" aria-hidden="true">${c.issues.length ? '×' : '✓'}</span><div><h3>${esc(c.label)}</h3><p>${esc(c.issues.length ? c.issues.join(' ') : c.detail)}</p></div></div>`).join('');
+  $('constraint-list').innerHTML = validation.checks.map(c => `<div class="constraint ${c.issues.length ? 'failed' : ''}"><span class="constraint-mark" aria-hidden="true">${c.issues.length ? '×' : '✓'}</span><div><h3>${esc(c.label)}</h3>${c.issues.length ? `<p>${esc(c.issues.join(' '))}</p>` : ''}</div></div>`).join('');
   $('feasibility-badge').textContent = validation.feasible ? '✓ Feasible schedule' : '× Constraint violations';
   $('feasibility-badge').classList.toggle('invalid', !validation.feasible);
-  $('evidence-origin').textContent = p.kind === 'illustration' ? 'Illustration, openly labeled.' : 'Imported schedule record.';
-  $('evidence-description').textContent = p.description || 'Schedule supplied in the imported replay file.';
-  const fields = [['Method', p.method], ['Source', p.source || 'User supplied'], ['Backend', p.backend || 'Not applicable / not supplied'], ['Job ID', p.jobId || 'No remote run recorded']];
+  $('evidence-origin').textContent = p.kind === 'illustration' ? 'Example source' : 'Result source';
+  $('evidence-description').textContent = p.description || '';
+  const fields = [['Method', p.method], ['Source', p.source || 'Imported file']];
+  if (p.backend) fields.push(['Backend', p.backend]);
+  if (p.jobId) fields.push(['Job ID', p.jobId]);
   $('evidence-metadata').innerHTML = fields.map(([key, value]) => `<dt>${esc(key)}</dt><dd>${esc(value)}</dd>`).join('');
-  $('run-note').textContent = p.kind === 'illustration' ? 'Baseline completion is pending. This replay is not evidence of a QAOA or VeloxQ run.' : 'Feasibility is checked locally. Imported method and job metadata are self-reported; this viewer does not authenticate remote execution or prove optimality.';
+  $('run-note').textContent = p.kind === 'illustration' ? 'Example only; no solver run. Travel is illustrative.' : 'Feasibility checked locally. Method and run metadata are supplied by the file.';
 }
 
 function loadReplay(value) {
   replay = parseReplay(value);
   validation = validateSchedule(replay);
-  time = 0; selected = null; playing = false; lastFrame = null; lastAnnouncedTime = -1;
+  time = 0; selected = null; playing = false; lastFrame = null;
   scene = createScene($('factory-scene'), replay, selectPart);
   $('time-total').textContent = f(makespan(replay));
   $('scrubber').max = makespan(replay);
   $('makespan').textContent = f(makespan(replay));
   $('job-count').textContent = replay.jobs.length;
-  $('source-label').textContent = `${replay.provenance.label} · ${replay.provenance.kind === 'illustration' ? 'illustrative replay' : 'imported record'}`;
+  $('source-label').textContent = `${replay.provenance.kind === 'illustration' ? 'Example' : 'Imported'} · ${replay.provenance.label}`;
   $('factory-scene').setAttribute('aria-label', `Pixel art factory with ${replay.machines.length} processing stations`);
-  $('factory-route').innerHTML = replay.machines.map(m => esc(m.name.toUpperCase())).join(' <b>→</b> ');
-  $('problem-description').textContent = `${replay.jobs.length === 2 ? 'Two' : replay.jobs.length === 3 ? 'Three' : replay.jobs.length} parts. ${replay.machines.length === 2 ? 'Two' : 'Three'} machines.`;
-  $('summary-provenance').textContent = replay.provenance.kind === 'illustration' ? 'Illustration only. No solver run.' : `${replay.provenance.method} · imported metadata`;
-  $('mini-validation').textContent = validation.feasible ? '✓ Feasibility checked' : '× Schedule has conflicts';
+  $('mini-validation').textContent = validation.feasible ? '✓ Feasible' : '× Conflicts';
   $('mini-validation').classList.toggle('invalid', !validation.feasible);
   $('part-list').innerHTML = replay.jobs.map(j => `<button class="part-button" data-part="${esc(j.id)}" style="--job-color:${j.color}" aria-pressed="false"><span class="part-dot" aria-hidden="true"></span><strong>${esc(j.id)}</strong><span class="part-state"></span></button>`).join('');
   $('part-list').querySelectorAll('button').forEach(button => button.addEventListener('click', () => selectPart(button.dataset.part)));
@@ -75,7 +73,7 @@ function update() {
   $('play-icon').textContent = playing ? 'Ⅱ' : '▶';
   $('play-label').textContent = playing ? 'Pause' : time >= end ? 'Replay' : 'Play';
   $('play').setAttribute('aria-label', playing ? 'Pause replay' : time >= end ? 'Replay from start' : 'Play replay');
-  $('scene-status').textContent = time >= end ? 'BATCH FINISHED' : playing ? 'FACTORY RUNNING' : time > 0 ? 'REPLAY PAUSED' : 'READY TO REPLAY';
+  $('scene-status').textContent = time >= end ? 'Finished' : playing ? 'Running' : time > 0 ? 'Paused' : 'Ready';
   $('clear-selection').hidden = !selected;
   scene.update(time, selected, playing);
   let completed = 0;
@@ -89,16 +87,13 @@ function update() {
   });
   $('completed-count').textContent = completed;
   const job = replay.jobs.find(j => j.id === selected);
+  $('part-detail').hidden = !job;
   if (job) {
     $('part-detail').innerHTML = `<span class="route">${job.operations.map(o => {
       const op = replay.schedule.find(x => x.job === job.id && x.machine === o.machine);
       return `<span><strong>${esc(o.machine)}</strong> ${op ? `${f(op.start)}–${f(op.end)} h` : 'unscheduled'}</span>`;
     }).join('<span aria-hidden="true">→</span>')}</span>`;
-  } else if ($('part-detail').dataset.empty !== 'true' || lastAnnouncedTime !== Math.floor(time)) {
-    $('part-detail').textContent = 'Select a part to inspect its route and processing times.';
-  }
-  $('part-detail').dataset.empty = job ? 'false' : 'true';
-  lastAnnouncedTime = Math.floor(time);
+  } else $('part-detail').textContent = '';
   document.querySelectorAll('.operation').forEach(b => {
     b.classList.toggle('selected', b.dataset.job === selected);
     b.classList.toggle('dimmed', !!selected && b.dataset.job !== selected);
@@ -154,17 +149,18 @@ $('present').addEventListener('click', async () => {
     document.body.classList.add('presenting');
     try { await document.documentElement.requestFullscreen(); } catch { /* Embedded browsers still get the compact presentation layout. */ }
   }
-  $('present').textContent = document.body.classList.contains('presenting') ? 'Exit presentation ↙' : 'Present ↗';
+  $('present').textContent = document.body.classList.contains('presenting') ? 'Exit presentation' : 'Present';
   update();
 });
 document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) { document.body.classList.remove('presenting'); $('present').textContent = 'Present ↗'; update(); }
+  if (!document.fullscreenElement) { document.body.classList.remove('presenting'); $('present').textContent = 'Present'; update(); }
 });
 $('export-button').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(replay, null, 2) + '\n'], { type: 'application/json' }));
   const a = document.createElement('a'); a.href = url; a.download = `axion-${replay.provenance.kind}-replay.json`; a.click();
   setTimeout(() => URL.revokeObjectURL(url), 1000);
-  $('file-message').textContent = 'Exported the viewer replay format. Official baseline schedule exports will be produced by the solver pipeline.';
+  $('file-message').classList.remove('error');
+  $('file-message').textContent = 'Replay exported.';
 });
 $('import-button').addEventListener('click', () => $('import-file').click());
 $('import-file').addEventListener('change', async e => {
@@ -180,9 +176,10 @@ $('import-file').addEventListener('change', async e => {
     option.textContent = `Imported · ${value.provenance.label}`;
     $('schedule-select').value = 'imported';
     loadReplay(value);
-    $('file-message').textContent = validation.feasible ? 'Replay loaded. Schedule feasibility checked; solver provenance is supplied by the file.' : 'Replay loaded with constraint violations. Open Evidence to inspect them.';
+    $('file-message').classList.toggle('error', !validation.feasible);
+    $('file-message').textContent = validation.feasible ? 'Schedule loaded.' : 'Schedule has conflicts. See Validation.';
     if (!validation.feasible) setTab('evidence');
-  } catch (error) { $('file-message').textContent = `Could not load replay: ${error.message}`; }
+  } catch (error) { $('file-message').classList.add('error'); $('file-message').textContent = `Could not load: ${error.message}`; }
   e.target.value = '';
 });
 
