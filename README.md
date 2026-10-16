@@ -2,25 +2,6 @@
 
 Team workspace for the QPoland Quantum Hackathon 2026.
 
-## Factory replay
-
-Requires Node.js 20 or newer. The viewer has no third-party runtime dependencies.
-
-```sh
-npm run dev
-```
-
-Open http://127.0.0.1:4173. Use the schedule picker, replay controls, Timeline,
-and Evidence views to inspect the illustrative schedules. JSON imports stay in
-the browser. Illustrations are labeled and do not represent remote solver runs.
-
-```sh
-npm run build
-```
-
-The build runs all model tests and syntax checks, then copies only `presentation/`
-to `dist/`. No environment variables, backend, or database are required.
-
 ## Production deployment
 
 Vercel project: `qfactoria`, personal scope `iwos`. Custom domain: `qfactoria.com`.
@@ -28,6 +9,10 @@ The GitHub repository is `Kolo-Naukowe-Axion/qhackathon26`; production follows
 `main`. Vercel reads the build settings from `vercel.json`. Keep the project root
 at the repository root. Each new push to `main` builds and deploys automatically;
 failed tests stop the deployment. Other branches get preview deployments.
+
+Site: https://qfactoria.com (also available at https://qfactoria.vercel.app).
+Dashboard: https://vercel.com/iwos/qfactoria.
+The Vercel GitHub app has access to this repository only within the Axion organization.
 
 Only the built viewer is public. Repository documents and organizer PDFs are not
 included in `dist/`. To roll back, promote a previous ready deployment from the
@@ -57,9 +42,14 @@ The initial 2×2 and 3×3 schedules are **illustrations copied from the organize
 ```sh
 npm run check
 npm test
+npm run build
 ```
 
 Tests cover schedule feasibility, boundary-time replay state, invalid data, the official JSON adapter, and agreement between the viewer's processing durations and the transcribed official inputs.
+
+The build runs all model tests and syntax checks, then copies only `presentation/`
+to `dist/`. No environment variables, backend, database, or third-party runtime
+dependencies are required.
 
 ## Project material
 
