@@ -1,0 +1,13 @@
+{
+  "name": "axion-scheduling-lab",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/serve.mjs",
+    "build": "npm test && npm run check && node scripts/build.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "check": "node --check presentation/app.js && node --check presentation/scene.js && node --check presentation/model.js && node --check scripts/serve.mjs"
+  },
+  "engines": { "node": ">=20" }
+}
