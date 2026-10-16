@@ -43,3 +43,41 @@ export function conflicts(schedule) {
   return { capacity, precedence, energy: capacity.length + precedence.length };
 }
 export function compactEnergy([a, b, c, d]) { return 2 - b + c - a * b + a * c + b * d - c * d; }
+
+// Rebuild A's actual one-hot coefficients from durations and interval conflicts.
+// stage 1 = exactly once, 2 = add capacity, 3 = add precedence.
+export function teachingMatrix(stage = 3, symmetric = false) {
+  const starts = jobs.slice(0, 2).flatMap(job => job.durations.slice(0, 2).flatMap((duration, order) => {
+    const earliest = order ? job.durations[0] : 0;
+    const latest = 4 - job.durations.slice(order, 2).reduce((a, b) => a + b, 0);
+    return Array.from({ length: latest - earliest + 1 }, (_, t) => ({ job: job.id, machine: machines[order], order, start: earliest + t, duration }));
+  }));
+  const matrix = starts.map(() => starts.map(() => 0));
+  const reasons = starts.map(() => starts.map(() => []));
+  function add(i, j, value, kind, text) {
+    matrix[i][j] += value;
+    reasons[i][j].push({ value, kind, text });
+  }
+  if (stage >= 1) starts.forEach((a, i) => {
+    add(i, i, -1, 'once', `The exactly-one square for ${a.job}/${a.machine} contributes −x${i}. Since x${i}² = x${i}, its linear coefficient goes on the diagonal.`);
+    starts.slice(i + 1).forEach((b, relative) => {
+      const j = i + relative + 1;
+      if (a.job === b.job && a.machine === b.machine) add(i, j, 2, 'once', `x${i} and x${j} are two starts of ${a.job}/${a.machine}. Expanding (x${i} + x${j} − 1)² contributes +2x${i}x${j}.`);
+      else {
+        if (stage >= 2 && a.machine === b.machine && a.start < b.start + b.duration && b.start < a.start + a.duration) add(i, j, 1, 'machine', `${a.job}/${a.machine} [${a.start}, ${a.start + a.duration}) overlaps ${b.job}/${b.machine} [${b.start}, ${b.start + b.duration}). Selecting both contributes +x${i}x${j}.`);
+        if (stage >= 3 && a.job === b.job && a.order + 1 === b.order && a.start + a.duration > b.start) add(i, j, 1, 'precedence', `${a.job}'s turning ends at ${a.start + a.duration}, after its milling would start at ${b.start}. Selecting both contributes +x${i}x${j}.`);
+      }
+    });
+  });
+  if (symmetric) {
+    for (let i = 0; i < starts.length; i++) for (let j = i + 1; j < starts.length; j++) {
+      matrix[i][j] /= 2; matrix[j][i] = matrix[i][j];
+      reasons[j][i] = reasons[i][j];
+    }
+  }
+  return { starts, matrix, reasons, offset: stage >= 1 ? 4 : 0 };
+}
+
+export function matrixEnergy(matrix, bits, offset = 0) {
+  return offset + matrix.reduce((total, row, i) => total + row.reduce((sum, q, j) => sum + q * bits[i] * bits[j], 0), 0);
+}

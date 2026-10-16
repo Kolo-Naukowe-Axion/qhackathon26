@@ -18,10 +18,11 @@
   "test_only_request": {
     "gpu_count": 1,
     "cpu_count": 8,
-    "memory_gb": 64,
-    "duration_minutes": 10,
-    "status": "not completed: SSH connection timed out before command execution",
+    "memory_gb": 32,
+    "duration_minutes": 5,
+    "status": "accepted by Slurm test-only admission check; predicted start was reported",
     "scheduled_job": false
   },
-  "conclusion": "Axion account/QOS has explicit GPU allowance and a visible eligible Hopper partition. Actual job admission, remaining quota, queue delay and runtime CUDA access are not yet verified."
+  "conclusion": "Axion account/QOS GPU allowance, Hopper partition visibility and one-GPU Slurm test-only admission are verified. No job was submitted or GPU allocated. Remaining quota, actual queue delay and runtime CUDA access remain unverified.",
+  "runtime_cuda_access_verified": false
 }

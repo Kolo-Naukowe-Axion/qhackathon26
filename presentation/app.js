@@ -1,6 +1,9 @@
+import { initializeLunar } from './lunar.js';
 import { slideReplay, alternativeReplay, smallReplay } from './data.js';
 import { parseReplay, makespan, jobState, validateSchedule, officialScheduleToReplay } from './model.js';
 import { createScene, escapeHtml as esc } from './scene.js';
+
+initializeLunar();
 
 const $ = id => document.getElementById(id);
 const datasets = new Map([['slide', slideReplay], ['alternative', alternativeReplay], ['small', smallReplay]]);

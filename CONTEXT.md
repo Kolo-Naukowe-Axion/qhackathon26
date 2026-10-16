@@ -167,5 +167,20 @@ VeloxQ judging (§11): backend integration elegance/correctness, solution qualit
 
 - User directs that documentation be updated to match the implementation and evidence before every commit and push.
 - Current browser interface is the full factory world with a control-desk menu and `/problem-explanation` Stage 1 manual. The manual is linked from top navigation and footer, and its current solver evidence is checked against `output/stage1-selected.json`.
-- Current verification: 16 Node viewer/manual tests and static build; 19 Python core tests in the solver environment and 2 optional compilation tests in the separate IQM environment.
+- Current verification: 18 Node viewer/manual tests and static build; 19 Python core tests in the solver environment and 2 optional compilation tests in the separate IQM environment.
 - User explicitly authorizes committing/pushing all current new work to `main` and deploying the personal `iwos/qfactoria` project. This authorization does not change either external-solver hold.
+
+- Stage 1 guide chapter 03 includes the actual matrix derivation, inspectable 8×8 coefficient ledger, triangular/symmetric conventions, offset and compact 4×4 example. The matrix is computed from the official durations and tested against the Python-generated model.
+
+## Lunar appearance selection and release scope — 2026-10-16
+
+- User chose 1 / Lunar Assembly as the fixed site appearance; update factory,
+  control desk, Stage 1 guide and error page consistently. No live style picker.
+- Preserve 2 / Frostline Works and 3 / Blueprint Bureau in the refined design
+  archive, along with their preview images; retain the earlier seven separately.
+- User explicitly requests updating docs, committing and pushing the completed
+  current work. Clarification: **push completed Lunar + guide now; keep new Stage 2
+  work local**. Use an isolated release checkout to preserve concurrent Stage 2 edits.
+- Include the current QUBO matrix/dimensions guide improvements and hardware-access
+  evidence note already present when this release began. Preserve newer remote
+  methods-tutorial commits. Neither external solver hold is lifted.

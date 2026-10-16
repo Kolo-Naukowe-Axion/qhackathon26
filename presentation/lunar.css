@@ -1,0 +1,133 @@
+:root {
+  --v-ink: #243b4e;
+  --v-muted: #536b7b;
+  --v-edge: #8196a3;
+  --v-shade: #bac9d0;
+  --v-surface: #e2eaed;
+  --v-light: #f1f5f4;
+  --v-shine: #ffffff;
+  --v-ground: #637284;
+  --v-grass: #637284;
+  --v-grass-dark: #586779;
+  --v-grass-light: #728193;
+  --v-world-ink: #d0dfe7;
+  --v-accent: #355e7c;
+  --v-signal: #548f9b;
+  --v-floor: #d5dfe3;
+  --v-grid: #c4d0d6;
+  --v-floor-shine: #e8edef;
+  --v-floor-edge: #869ba8;
+  --v-floor-shadow: #536778;
+  --v-divider: #869ba8;
+  --v-road: #7f8e9b;
+  --v-road-edge: #536778;
+  --v-belt: #42596a;
+  --v-belt-edge: #2c4253;
+  --v-belt-shadow: #869ba8;
+  --v-belt-mark: #8da7b3;
+  --v-badge: #355e7c;
+  --v-badge-ink: #f1f5f4;
+  --v-highlight: #e8edef;
+  --v-track: #c4d0d6;
+  --v-tone-0: #243b4e;
+  --v-tone-1: #536b7b;
+  --v-tone-2: #8196a3;
+  --v-tone-3: #bac9d0;
+  --v-tone-4: #e2eaed;
+  --v-tone-5: #f1f5f4;
+  --v-tone-6: #ffffff;
+  --v-metal-0: #2c465b;
+  --v-metal-1: #628198;
+  --v-metal-2: #a6bdca;
+  --v-metal-3: #e5eeed;
+}
+:root {--ink:#243b4e;--muted:#536b7b;--wood-dark:#8196a3;--wood:#bac9d0;--wood-light:#e2eaed;--paper:#f1f5f4;--green:#355e7c;}
+/* Shared materials: the scene carries the atmosphere; controls carry the information. */
+body[data-theme=lunar] {background:var(--v-ground);}
+body[data-theme=lunar] .original-scenery {display:none;}
+body[data-theme=lunar] .wood-panel {border:2px solid var(--v-edge);background:var(--v-surface);box-shadow:inset 0 2px var(--v-shine),inset 0 -3px var(--v-shade),3px 4px #182d3e25;}
+body[data-theme=lunar] .wood-panel:before,body[data-theme=lunar] .wood-panel:after {width:3px;height:3px;background:var(--v-edge);box-shadow:none;}
+body[data-theme=lunar] .brand-name {letter-spacing:5px;color:var(--v-ink);text-shadow:none;}
+body[data-theme=lunar] .brand-sub {color:var(--v-muted);letter-spacing:1px;}
+body[data-theme=lunar] .brand-emblem {background:var(--v-accent);color:var(--v-surface);border:1px solid var(--v-edge);box-shadow:inset 2px 2px #ffffff25,2px 2px #1c35451c;}
+body[data-theme=lunar] .brand-emblem>span {color:var(--v-signal);text-shadow:1px 1px var(--v-surface);}
+body[data-theme=lunar] :where(.mode-button,.quiet-button,.schedule-picker select,.section-label,.world-sign small,.time-total,.big-number small,.part-state,.part-detail,.text-button,.event-sub,.scenario-label,#source-label) {color:var(--v-muted);}
+body[data-theme=lunar] :is(.mode-button.active,.play-button,.part-button.selected,.operation.selected) {background:var(--v-accent);color:var(--v-light);border-color:var(--v-accent);box-shadow:inset 0 2px #ffffff25,inset 0 -2px #00000020;}
+body[data-theme=lunar] .mode-button:not(.active):hover {background:var(--v-light);color:var(--v-ink);}
+body[data-theme=lunar] :is(.quiet-button,.icon-button,.speed-control select,.part-button) {background:var(--v-light);border:1px solid var(--v-edge);box-shadow:inset 0 -2px var(--v-shade);color:var(--v-ink);}
+body[data-theme=lunar] :is(.part-button:hover,.quiet-button:hover,.icon-button:hover) {background:var(--v-shine);}
+body[data-theme=lunar] .part-button.selected .part-state {color:inherit;}
+body[data-theme=lunar] :is(.big-number,.time-display,.schedule-picker select,.desk-title) {color:var(--v-ink);}
+body[data-theme=lunar] .world-caption {color:var(--v-muted);letter-spacing:3px;font-size:8px;}
+body[data-theme=lunar] .caption-rule {background:var(--v-edge);opacity:.5;}
+body[data-theme=lunar][data-view] :is(.world-hint,footer) {color:var(--v-muted);}
+body[data-theme=lunar] .world-sign {border:2px solid var(--v-edge);background:var(--v-surface);color:var(--v-ink);box-shadow:inset 0 2px var(--v-shine),2px 3px #1d354523;transform:none;padding:9px 15px;}
+body[data-theme=lunar] .world-sign:before,body[data-theme=lunar] .world-sign:after {background:var(--v-edge);border:0;width:4px;height:10px;}
+body[data-theme=lunar] .world-sign:hover {background:var(--v-light);transform:translateY(-3px);}
+body[data-theme=lunar] .sign-icon {color:var(--v-accent);font-size:20px;}
+body[data-theme=lunar] kbd {color:var(--v-ink);background:var(--v-surface);border-color:var(--v-edge);}
+body[data-theme=lunar] :where(#scene-status,.check-badge) {color:var(--v-ink);background:var(--v-light);border:1px solid var(--v-edge);}
+body[data-theme=lunar] #scene-status:before {background:var(--v-signal);}
+body[data-theme=lunar] .summary-validation {color:var(--v-accent);border-color:var(--v-shade);}
+body[data-theme=lunar] .scene-label {fill:var(--v-muted);font-size:8px;letter-spacing:2px;}
+body[data-theme=lunar] .machine-name {fill:var(--v-ink);font-size:8px;letter-spacing:1.8px;}
+body[data-theme=lunar] .machine-code {fill:var(--v-badge-ink);font-size:13px;}
+body[data-theme=lunar] .machine-status {fill:var(--v-muted);font-size:8px;}
+body[data-theme=lunar] .machine.active .machine-status {fill:var(--v-accent);font-weight:600;}
+body[data-theme=lunar] .machine.active .station-highlight {opacity:.32;}
+body[data-theme=lunar] .station-highlight {rx:0;}
+body[data-theme=lunar] .machine-progress {fill:var(--v-signal);}
+body[data-theme=lunar] .token-text {fill:#fffdf0;paint-order:stroke;stroke:#172c3a80;stroke-width:.5px;}
+body[data-theme=lunar] .belt-motion {opacity:.5;}
+body[data-theme=lunar] .workspace-toolbar {background:var(--v-shade);border-bottom:1px solid var(--v-edge);box-shadow:inset 0 2px var(--v-light);}
+body[data-theme=lunar] .desk-navigation {background:var(--v-surface);}
+body[data-theme=lunar] .desk-pages {background:var(--v-light);box-shadow:none;border:1px solid var(--v-shade);}
+body[data-theme=lunar] .tab {background:var(--v-surface);border-color:var(--v-edge);color:var(--v-muted);}
+body[data-theme=lunar] .tab.active {background:var(--v-light);color:var(--v-ink);}
+body[data-theme=lunar] .tab span {color:inherit;}
+body[data-theme=lunar] .desk-window :is(.panel-heading p,.provenance>p,.provenance dt,.awaiting-note,.constraint p,.ledger-note,.unit-label,.eyebrow,.ledger-stamp) {color:var(--v-muted);}
+body[data-theme=lunar] .operation {background:var(--v-surface);color:var(--v-ink);border-color:var(--v-edge);border-left-color:var(--job-color);box-shadow:inset 0 2px var(--v-shine),inset 0 -2px var(--v-shade);}
+body[data-theme=lunar] :is(.provenance dl,.constraint-mark,.timeline-machine,.panel-heading h2,.constraint h3) {color:var(--v-ink);}
+body[data-theme=lunar] .awaiting-note {background:var(--v-surface);border-color:var(--v-edge);}
+body[data-theme=lunar] .scrubber input::-webkit-slider-runnable-track {border:1px solid var(--v-edge);background:linear-gradient(to right,var(--v-accent) var(--progress,0%),var(--v-shade) var(--progress,0%));box-shadow:none;}
+body[data-theme=lunar] .scrubber input::-webkit-slider-thumb {background:var(--v-light);border:2px solid var(--v-accent);box-shadow:inset 2px 2px var(--v-shine);margin-top:-7px;}
+body[data-theme=lunar] .scrubber input::-moz-range-track {border:1px solid var(--v-edge);background:var(--v-shade);}
+body[data-theme=lunar] .scrubber input::-moz-range-progress {background:var(--v-accent);}
+body[data-theme=lunar] .scrubber input::-moz-range-thumb {background:var(--v-light);border-color:var(--v-accent);}
+body[data-theme=lunar] :is(.constraint,.ledger-note,.provenance) {border-color:var(--v-shade);}
+body[data-theme=lunar] :is(button,a,select,input,[role=button]):focus-visible {outline:2px solid var(--v-accent);outline-offset:3px;box-shadow:0 0 0 5px var(--v-light);}
+body[data-theme=lunar] :is(.invalid,.constraint.failed p,.constraint.failed .constraint-mark,.file-message.error) {color:#ae4535;}
+body[data-theme=lunar] .close-button {background:var(--v-shade);color:var(--v-ink);border:1px solid var(--v-edge);box-shadow:none;}
+
+/* Lunar: ceramic instrument cases and clean steel deck plates. */
+body[data-theme=lunar] .wood-panel {border-color:#7e96a6;}
+body[data-theme=lunar] .brand-emblem {background:#365b76;}
+body[data-theme=lunar] .brand {border-left:5px solid #496b82;}
+body[data-theme=lunar] .scenario-bar {border-left:4px solid #527e96;}
+body[data-theme=lunar] .sun {color:#5f7e92;}
+body[data-theme=lunar] .world-sign small {letter-spacing:1.3px;}
+body[data-theme=lunar] .part-dot {height:12px;}
+
+@media(min-width:1100px) {
+  body[data-theme=lunar] .topbar {padding:22px 26px 0;gap:20px;align-items:center;}
+  body[data-theme=lunar] .brand {padding:12px 22px 14px 16px;}
+  body[data-theme=lunar] .brand-name {font-size:30px;}
+  body[data-theme=lunar] .brand-sub {font-size:7px;}
+  body[data-theme=lunar] .mode-switch {align-self:center;}
+  body[data-theme=lunar] .bottom-dock {left:6%;right:6%;gap:12px;grid-template-columns:1fr 1.5fr .75fr;}
+  body[data-theme=lunar] .result-summary {column-gap:12px;}
+}
+
+body[data-theme=lunar][data-view] :is(.world-hint,footer,.footer-label,footer .text-button) {color:var(--v-world-ink);}
+body[data-theme=lunar] .scene-label {fill:var(--v-world-ink);}
+body[data-theme=lunar] .world-caption {display:none;}
+body[data-theme=lunar] #floor>path:last-child {opacity:.38;}
+body[data-theme=lunar] .machine-indicator {fill:var(--v-floor-edge);}
+body[data-theme=lunar] .machine.active .machine-indicator {fill:var(--v-signal);}
+body[data-theme=lunar] .check-badge.invalid {color:#ae4535;border-color:#b27867;}
+body[data-theme=lunar] .operation.selected {border-left-color:var(--job-color);}
+.not-found {display:grid;place-items:center;min-height:100svh;height:auto;padding:24px;overflow:auto;}
+.not-found-panel {width:min(600px,100%);padding:40px;}
+.not-found h1 {font:700 clamp(26px,5vw,44px)/1.2 var(--mono);letter-spacing:-1.6px;margin:20px 0;}
+.not-found p {color:var(--v-muted);}
+.not-found .return-link {display:inline-block;margin-top:14px;color:var(--v-accent);font:12px var(--mono);}

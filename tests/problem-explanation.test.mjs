@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { jobs, scheduleForOrder, permutations, decodeBits, compactEnergy } from '../presentation/problem-explanation/model.js';
+import { jobs, scheduleForOrder, permutations, decodeBits, compactEnergy, teachingMatrix, matrixEnergy } from '../presentation/problem-explanation/model.js';
 import { validateSchedule } from '../presentation/model.js';
 import { smallReplay, slideReplay } from '../presentation/data.js';
 import { selectedEvidence } from '../presentation/problem-explanation/evidence.js';
@@ -44,4 +44,31 @@ test('interactive four-bit energy has zero energy exactly for independently vali
     if (feasible) feasibleCount++;
   }
   assert.equal(feasibleCount, 1);
+});
+
+test('the displayed matrix is derived from the same starts and coefficients as the actual Python QUBO', async () => {
+  const actual = JSON.parse(await readFile(new URL('../output/stage1-preparation/instance_2x2.qubo.json', import.meta.url)));
+  const { starts, matrix, offset } = teachingMatrix();
+  assert.deepEqual(starts, actual.variables);
+  assert.equal(offset, actual.offset);
+  const expected = actual.linear.map((q, i) => actual.linear.map((_, j) => i === j ? q : 0));
+  for (const [i, j, q] of actual.quadratic) expected[i][j] = q;
+  assert.deepEqual(matrix, expected);
+  assert.equal(teachingMatrix(1).matrix[0][4], 0);
+  assert.equal(teachingMatrix(2).matrix[0][4], 1);
+  assert.equal(teachingMatrix(2).matrix[1][2], 0);
+  assert.equal(teachingMatrix(3).matrix[1][2], 1);
+});
+
+test('both matrix conventions match all 256 actual QUBO energies without doubling pairs', async () => {
+  const actual = JSON.parse(await readFile(new URL('../output/stage1-preparation/instance_2x2.qubo.json', import.meta.url)));
+  const upper = teachingMatrix(), symmetric = teachingMatrix(3, true);
+  assert.equal(symmetric.matrix[0][4], 0.5);
+  assert.equal(symmetric.matrix[4][0], 0.5);
+  for (let value = 0; value < 256; value++) {
+    const bits = Array.from({ length: 8 }, (_, i) => (value >> i) & 1);
+    const expected = actual.offset + actual.linear.reduce((s, q, i) => s + q * bits[i], 0) + actual.quadratic.reduce((s, [i, j, q]) => s + q * bits[i] * bits[j], 0);
+    assert.equal(matrixEnergy(upper.matrix, bits, upper.offset), expected);
+    assert.equal(matrixEnergy(symmetric.matrix, bits, symmetric.offset), expected);
+  }
 });

@@ -32,6 +32,22 @@ Exactly-one expansion gives offset 1 per operation, linear coefficient -1 per st
 
 Makespan optimization is an outer horizon search. For these tiny baselines we independently certify the optimum, then solve the QUBO at that horizon. A heuristic failure does not prove infeasibility. The reference enumerates independent orders on every machine (4 combinations for A, 216 for B), rejects cycles, and computes earliest starts. Every feasible schedule induces these orders, so this covers non-permutation schedules too. It is factorial and intentionally limited to tiny problems.
 
+## From scheduling rules to the QUBO matrix
+
+The processing-duration table is the input, not the QUBO matrix. `build_qubo()` enumerates allowed operation starts, assigns a fixed variable index to each, and adds penalty coefficients. Expanding `(x0 + x1 - 1)^2` gives `1 - x0 - x1 + 2*x0*x1`: add -1 to the two diagonal entries, +2 to their pair coefficient, and +1 to the separate offset. Each forbidden machine/precedence pair contributes +1 to that pair. Contributions accumulate.
+
+For `E(x) = offset + x^T Q x`, our upper-triangular display stores the full pair coefficient once; the lower triangle is zero. A symmetric matrix splits each pair coefficient equally between the two mirrored cells, because matrix multiplication includes both. Diagonal entries use `x_i^2 = x_i`. The offset is separate; omitting it preserves the minimizing assignment but changes the reported energy.
+
+The guide at `/problem-explanation#qubo` reconstructs A's 8-by-8 one-hot matrix from the actual processing data, lets users add the three penalty groups in stages, inspect every entry, switch conventions and verify the known feasible sample's `4 - 4 + 0 = 0` energy. Tests compare all coefficients and all 256 bitstring energies with the Python-generated model.
+
+For compact A in variable order `[a,b,c,d]`, the upper-triangular matrix is `[[0,-1,1,0],[0,-1,0,1],[0,0,1,-1],[0,0,0,0]]` with offset 2. Its polynomial is `2 - b + c - ab + ac + bd - cd`. The tutorial shows the indicator substitutions and original conflict terms that yield it. A four-variable QUBO matrix is 4-by-4; the associated quantum cost operator acts on a 16-dimensional state space. `model.json` stores the same coefficients sparsely as `linear`, `quadratic` triples and `offset`, alongside the variable map.
+
+### Dimensions: coefficients versus quantum state space
+
+For B binary variables, x is B-by-1 and Q is B-by-B. Mapping to B logical qubits gives a mathematical cost operator and whole-register unitary of size 2^B-by-2^B, while the statevector has 2^B complex entries. The cost operator is diagonal, with E(x) for each basis assignment. In the selected QAOA implementation, `costs` stores just these 2^B real energies; Qiskit evolves a statevector with local RZ/RX (2-by-2) and RZZ (4-by-4) gates. The code never explicitly constructs the dense whole-register cost/operator matrix. It computes expectations as `probabilities @ costs`. The current local runner caps B at 12.
+
+Selected A: Q is 4-by-4; its quantum operators are mathematically 16-by-16; stored states/costs have 16 entries. One-hot A's Q is 8-by-8, with a hypothetical 256-by-256 quantum operator. Selected B: Q is 39-by-39 and the classical sampler uses sparse coefficients, with no quantum register or 2^39 statevector. The alternative B Q is 30-by-30; it is not simulated by the QAOA runner. Dense quantum-operator storage would be O(4^B), versus O(2^B) for statevector simulation. This distinction is now explicit in the guide's dimension tables.
+
 ## Compact encoding and correctness
 
 One-hot models have 8 variables for A at H=4 and 39 for B at H=8. Domain-wall encoding uses d-1 bits for d starts: `x_0=1-y_0`, `x_t=y_(t-1)-y_t`, `x_last=y_last`. Monotone y selects exactly one start. Counts become 4 and 30, preserving every allowed operation-start assignment.

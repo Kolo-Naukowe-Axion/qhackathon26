@@ -20,7 +20,7 @@ Eighteen settings were screened on three seeds each. On ten new seeds, QAOA gave
 - Per run: QUBO coefficients, variable mapping, instance/model/source hashes, versions, sample counts/energies/violations, official schedule and replay.
 - QAOA: circuit QASM, optimizer settings/statuses/history, final angles and actual Aer measurement counts. The verifier reconstructs expected energy/probability and reconciles raw shot counts. This is a quantum algorithm on a simulator, as allowed for A.
 - Encoding audit: all 512,000 operation-start assignments at H=8 agree with independent constraints in both encodings; 13 are feasible. Invalid domain-wall states are addressed by a penalty proof and separate exhaustive small-instance tests.
-- Nineteen core Python tests pass in the solver environment; the two optional IQM compilation tests also pass in the separate IQM environment. Sixteen viewer/manual tests and the static build pass. Coverage includes the circuit, decoder, SDK boundaries without service calls, and default preparation's exclusion of remote adapters.
+- Nineteen core Python tests pass in the solver environment; the two optional IQM compilation tests also pass in the separate IQM environment. Eighteen viewer/manual tests and the static build pass, including exact matrix coefficients and all 256 one-hot energies. Coverage includes the circuit, decoder, SDK boundaries without service calls, and default preparation's exclusion of remote adapters.
 
 ## Initial VeloxQ choice
 

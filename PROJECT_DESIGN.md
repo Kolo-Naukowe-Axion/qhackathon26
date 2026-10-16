@@ -49,13 +49,13 @@ This establishes schedule feasibility under the baseline model. It does not prov
 
 ## Factory interface and Stage 1 manual
 
-The factory world fills the viewport. Wooden navigation switches between the live world and the control desk, whose Timeline and Validation menus preserve replay time and part selection. Playback, part inventory and completion metrics live in the bottom HUD. Keyboard controls, native fullscreen with fallback, reduced motion and responsive layouts are supported.
+The factory world fills the viewport. Lunar Assembly is the fixed appearance, with cool deck plates, blue steel and ceramic controls shared by the manual and error page. Alternatives are archived outside the shipped viewer; there is no runtime style selector. Lunar instrument-panel navigation switches between the live world and the control desk, whose Timeline and Validation menus preserve replay time and part selection. Playback, part inventory and completion metrics live in the bottom HUD. Keyboard controls, native fullscreen with fallback, reduced motion and responsive layouts are supported.
 
 `/problem-explanation` is an independent six-chapter manual in the same visual system, reachable from the top navigation and footer. It covers official inputs/rules, schedule calculation and optimality, fixed-horizon QUBO penalties, one-hot/domain-wall encodings, current selected local solver results, and complexity. Job-order, one-hot, compact-bit and scaling controls use deterministic teaching models. Their diagrams are labeled as illustrations rather than new solver runs. `evidence.js` summarizes the selected actual runs and is tested against the selection manifest. Directory routes are served by `scripts/serve.mjs`; the static build copies the manual into `dist/problem-explanation/`.
 
 ## Architecture and planned integration
 
-`presentation/model.js` is a DOM-free parser/checker. `data.js` contains explicitly illustrative records. `scene.js` creates original pixel art and positions parts from replay state. `app.js` synchronizes the views and handles local imports. `scripts/serve.mjs` serves only the presentation folder on loopback.
+`presentation/model.js` is a DOM-free parser/checker. `data.js` contains explicitly illustrative records. `lunar.js` supplies fixed scene materials/scenery and removes obsolete comparison query parameters; `lunar.css` shares the Lunar material palette across pages. `scene.js` creates original pixel art and positions parts from replay state. `app.js` synchronizes the views and handles local imports. `scripts/serve.mjs` serves only the presentation folder on loopback.
 
 The solver pipeline saves actual samples, model coefficients, parameters, source/model/instance hashes, versions, run metadata and decoded official schedules, plus derived replays. Secrets remain in the execution environment; the browser needs no solver token. Classical references remain separate from returned solver samples. Current selection is recorded in `output/stage1-selected.json`, pointing to `output/stage1-local-ready/`; previous runs remain retained.
 

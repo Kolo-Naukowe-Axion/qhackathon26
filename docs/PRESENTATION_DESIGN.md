@@ -46,3 +46,34 @@ After the baseline works, add Stage 2 overlays only for selected, implemented co
 - Interactive diagrams compute permutation schedules, exactly-one penalties, all four compact A bit choices, factorial order counts and statevector memory. The explanatory text includes proof assumptions, complexity notation and the distinction between sampled feasibility and exact optimality.
 - Solver summaries now match `output/stage1-selected.json`; earlier p=5/2,000-sweep runs remain archived. Both remote solver holds remain in effect.
 - Checked desktop and 390-pixel phone layouts, keyboard-accessible controls, navigation and constraint feedback. The production build has 16 Node tests plus syntax checks.
+
+## Locked Lunar appearance — 2026-10-16
+
+The user selected **1 / Lunar Assembly** as the current design. The factory,
+control desk, six-chapter guide (including its QUBO matrix) and custom error page
+now use Lunar's ceramic consoles, blue steel, cool paper and lunar landscape.
+`presentation/lunar.css` holds the shared material variables and component styling;
+`presentation/lunar.js` supplies scene materials, craters and outpost equipment.
+The working floor remains clear; job colors/IDs and constraint source colors stay
+consistent and separate from ambient decoration.
+
+The live comparison, favorites, draggable picker and style preferences have been
+removed. Previous `variant`, `gallery` and `preview` URL parameters are discarded;
+old links open the normal Lunar page. Frame embedding is blocked again because
+comparison iframes are no longer needed.
+
+**2 / Frostline Works** and **3 / Blueprint Bureau**, including their source,
+comparison integration and preview images, are preserved in
+[the refined shortlist archive](design-archive/2026-10-16-refined-shortlist/README.md).
+The other seven directions remain in
+[the first exploration archive](design-archive/2026-10-16-first-variants/README.md).
+Archive material is not part of `dist/`.
+
+The guide includes the actual 8×8 matrix derivation and compact 4×4 example. Its
+dimensions tables distinguish the B×B coefficient matrix from the mathematical
+2^B×2^B quantum operator and the stored length-2^B vectors. The 39-bit classical
+path is never described as a quantum simulation. These teaching interactions and
+their coefficient/energy tests are retained in the release.
+
+This is the visual foundation for future Stage 2 development. New Stage 2 source
+being developed concurrently is outside this release, per the user's clarification.

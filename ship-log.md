@@ -46,3 +46,25 @@
 
 - User selected: deploy the completed release now and leave the ten visual variants in progress.
 - A further tutorial commit `e277c37` arrived before push. Integrated it in an isolated Git worktree, preserving its expanded derivation and the current-evidence notes; the in-progress variant workspace stays untouched.
+
+## 2026-10-16 — Lunar lock and completed Stage 1 guide release
+
+- Artifact: static web app 0.1.0; existing GitHub main → personal iwos/qfactoria pipeline.
+- Publishing authorization: user explicitly requests committing/pushing the current
+  completed work after docs updates; clarified that ongoing new Stage 2 work stays local.
+  This is the release approval; no repeated publishing confirmation is needed.
+- PASS completeness: fixed Lunar factory, desk, guide and custom 404; archived
+  Frostline/Blueprint and first explorations are outside the built viewer.
+- PASS tests: 18 Node; 19 core Python; 2 optional IQM compilation checks.
+- PASS local audits: factory 94 performance/100 accessibility; guide 90/100 after
+  contrast repairs. These are local mobile-emulation scores, not hosted guarantees.
+- PASS docs: README, design, context, changelog and dated development log updated;
+  current matrix/dimension teaching improvements retained. Version remains 0.1.0.
+- PASS configuration: no frontend dependencies, server runtime or production env
+  variables; sitemap, robots.txt, local fonts/licensing, CSP and 404 retained.
+- Release checkout preserves eight incoming methods-tutorial commits through
+  origin/main at 0c5fe1e. The release snapshot excludes concurrent Stage 2 work.
+- PASS final pre-publish gates: isolated production build, staged gitleaks scan
+  (no leaks), and whitespace checks. The explicitly approved publication uses Git
+  main; verify its exact-commit deployment after pushing. Neither external solver
+  hold is changed.

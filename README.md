@@ -28,7 +28,8 @@ npm run dev
 
 Open [the local factory replay](http://127.0.0.1:4173). The server listens only on this machine. Set `PORT` if 4173 is already occupied.
 
-- **Stage 1 guide:** open `/problem-explanation` from the top navigation. Six chapters explain the problem, interactive schedules, optimality, QUBO penalties, encodings, selected solver evidence and complexity.
+- **Stage 1 guide:** open `/problem-explanation` from the top navigation. Six chapters explain the problem, interactive schedules, optimality, QUBO penalties and a worked matrix derivation, encodings, selected solver evidence and complexity.
+- **Appearance:** Lunar Assembly is the fixed design across the factory, control desk, Stage 1 guide and error page. Frostline and Blueprint are preserved with source and screenshots in `docs/design-archive/2026-10-16-refined-shortlist/`; the earlier seven directions are in the adjacent first-variants archive. The live site has no style picker.
 - **Factory:** original pixel-art shop floor with moving parts, processing animations, replay/pause, time scrubbing, speed controls, and part selection.
 - **Timeline:** a synchronized Gantt chart; click an operation to jump to it.
 - **Validation:** independent checks for coverage, duration, capacity, and precedence, with source/method metadata.

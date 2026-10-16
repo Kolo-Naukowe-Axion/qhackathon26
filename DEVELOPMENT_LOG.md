@@ -105,3 +105,88 @@ Fresh seed-2026 exports and selection manifest point to output/stage1-local-read
 ## 2026-10-16 — Preserve the concurrent tutorial update before publishing
 
 A further GitHub tutorial commit arrived after release preparation. Integrated its expanded from-scratch QUBO derivation while retaining the release’s current-evidence note and updated source pointers. Built and checked an isolated committed checkout so the concurrently edited visual variants are excluded, as the user explicitly requested. Documentation remains updated before the integration commit and push.
+
+## 2026-10-16 — Ten pixel-game visual variants
+
+Added ten reversible art directions to the live factory, with distinct palettes,
+landmarks, UI materials and desktop HUD arrangements. Kept the original as a
+reference and shared the schedule/selection/clock between directions. Added a
+movable, keyboard-positionable, collapsible picker; an all-ten overview; larger
+previews; a favorite comparison; browser-local saved selection/favorite/position;
+and URL selection. Preview frames stop on close and do not run replay frame loops.
+
+Checked all ten rendered directions, the overview and two-way comparison, favorite
+selection/removal, original restoration, picker dragging and keyboard movement,
+rebuilding the two-machine scene, preserved time after theme changes, the Timeline
+and Validation desk, and the 390-pixel phone layout. Corrected inherited theme
+variables, improved machine shade detail and dark desk contrast, and made the phone
+picker start collapsed. The 1280×720 overview fits all ten choices without internal
+scrolling. The existing 16 Node tests and expanded syntax checks pass. This is local
+viewer work; no deployment, commit, push or external solver call was performed.
+
+## 2026-10-16 — Explain where the QUBO matrix comes from
+
+User asked how we obtain the matrix. Expanded chapter 03 of the Stage 1 guide with the path from processing durations to start variables, penalty expansion, coefficient collection and matrix storage. Added the actual 8-by-8 A model, staged exactly-once/capacity/precedence accumulation, inspectable coefficient provenance, the separate constant and triangular/symmetric conventions. Showed the compact 4-by-4 substitution and distinguished Q from the quantum cost operator.
+
+The teaching builder computes entries from the official durations and interval conflicts; tests match all coefficients and all 256 energies against the actual Python-generated model, including symmetric half-coefficients. The 18 Node tests and static build pass. Relevant README, changelog, presentation design and formulation notes were updated. This addition is local; no commit, push, deployment or external solver call was made.
+
+## 2026-10-16 — Refine Lunar, Frostline and Blueprint; archive other directions
+
+The user selected Lunar Assembly, Frostline Works and Blueprint Bureau for further
+iteration and asked to remove the other seven from comparison. Preserved the first
+variant definitions and styling in docs/design-archive/2026-10-16-first-variants/.
+That directory is outside the shipped presentation. The runtime registry, selector,
+keyboard cycle and gallery now contain exactly three options; retired URLs fall
+back to Lunar and retired favorites are cleared.
+
+Refined Lunar's ceramic HUD, deck materials, craters and outpost equipment. Gave
+Frostline a snow-covered conifer perimeter, warm lamps/active-work accents and a
+subtly warmer interior floor. Replaced Blueprint's universal wireframe treatment
+and crossed placeholder scenery with solid shaded machines, a quiet ink grid and
+sparse floor dimensions. Kept job colors/identifiers stable, refined navigation,
+control-desk contrast and invalid-state treatments, and preserved replay semantics.
+The art picker now remembers separate factory/desk and desktop/phone positions so
+a saved position does not cover the desk header. The hosting frame policy allows
+same-origin comparison previews while continuing to block embedding by other origins.
+
+Visual checks covered all three full-size factory views, the three-way gallery,
+favorite comparison, Lunar Timeline/Validation, Frostline's 390-pixel phone view
+and the phone gallery. Interaction checks covered state preservation at 2.0 h with
+Z1 selected after a two-machine replay rebuild, the three-option selector, retired
+URL fallback, favorite selection/removal, and separate desk placement. Corrected a
+selector-specificity issue in active-navigation colors and a thumbnail aspect-ratio
+issue discovered in the phone pass. Existing model/manual checks and syntax checks
+pass. No deployment, commit, push, Stage 2 simulation or external solver call.
+
+## 2026-10-16 — Distinguish QUBO and quantum-operator dimensions
+
+User asked whether a 2^n-by-2^n matrix appears. Checked `solver/quantum.py`: it constructs a 2^B-entry cost diagonal, computes statevector probabilities from local gates, and takes their dot product. It does not explicitly construct the dense whole-register operator. Added dimensions for x, Q, cost/unitary operators, state/probability/cost vectors and local gates, plus each actual Stage 1 encoding. Explained O(4^B) dense-operator storage versus O(2^B) statevector storage, the local B<=12 guard, and that B's classical annealer uses no quantum state. Updated the formulation notes alongside the local guide.
+
+## 2026-10-16 — Lock Lunar and publish the completed viewer/guide
+
+User selected direction 1 / Lunar Assembly and requested a docs-first commit/push.
+Archived refined Frostline/Blueprint source, integration and preview references
+under docs/design-archive/2026-10-16-refined-shortlist/. Removed live comparison,
+favorites and style switching. Shared fixed lunar.js/lunar.css now cover factory,
+control desk, guide and error page; old comparison URL parameters are removed.
+The guide's actual 8×8 matrix, coefficient stages, conventions, compact example
+and dimension explanations remain functional. Fixed low-contrast guide labels
+found by the accessibility audit. Restored frame-ancestors 'none' after removing
+comparison iframes. Version stays 0.1.0 for the existing same-day private web app.
+
+The user clarified: push completed Lunar + guide now, keep new Stage 2 work local.
+The release uses an isolated checkout from origin/main, preserving eight newer
+methods-tutorial commits through 0c5fe1e. Concurrent Stage 2 source/tests are not
+copied, edited or staged. The pre-existing hardware-access artifact update is
+retained as recorded evidence; no new remote-compute verification is claimed.
+
+Checks: 18 Node tests and syntax/build checks; 8 formulation plus 11 solver-boundary
+Python tests; 2 optional IQM compilation tests. Local Lighthouse: factory 94
+performance / 100 accessibility; guide 90 performance / 100 accessibility after
+contrast fixes. Browser checks cover Lunar factory, legacy URL normalization,
+manual scene and matrix stage/cell inspection. Secret scanning and the isolated
+candidate build precede the commit. Both remote solver holds remain in force.
+
+Release candidate: isolated production build, staged gitleaks scan (no leaks) and
+whitespace checks passed. Publish the approved snapshot through the existing main
+Git integration; verify the resulting commit and deployment after the push.
