@@ -43,3 +43,6 @@
 - PASS: staged gitleaks scan inspected ~225.61 MB of changes and found no leaks. Generated circuit ASCII diagrams retain their original trailing spaces; source/docs whitespace checks pass.
 - PASS: newer tutorial/literature commits integrated, append conflicts resolved by preserving both contributions, imported historical-result descriptions reconciled with the current selected evidence.
 - Repository visibility verified PRIVATE, default main. No visibility change is authorized or performed; public-source competition eligibility remains a separate documented condition.
+
+- User selected: deploy the completed release now and leave the ten visual variants in progress.
+- A further tutorial commit `e277c37` arrived before push. Integrated it in an isolated Git worktree, preserving its expanded derivation and the current-evidence notes; the in-progress variant workspace stays untouched.

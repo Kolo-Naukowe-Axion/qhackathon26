@@ -101,3 +101,7 @@ Fresh seed-2026 exports and selection manifest point to output/stage1-local-read
 - Preserved the two newer literature/tutorial commits from GitHub main while resolving README and Development Log append conflicts; both sets of documentation remain in the release. The web deployment contains only presentation assets, while source, solver evidence and documentation are published in the repository.
 
 - After integration, updated the imported methods tutorial and baseline literature review to distinguish their historical shared-X/XY experiments from the currently selected independent-X run. Preserved the original comparison results and linked the current selection/refinement evidence.
+
+## 2026-10-16 — Preserve the concurrent tutorial update before publishing
+
+A further GitHub tutorial commit arrived after release preparation. Integrated its expanded from-scratch QUBO derivation while retaining the release’s current-evidence note and updated source pointers. Built and checked an isolated committed checkout so the concurrently edited visual variants are excluded, as the user explicitly requested. Documentation remains updated before the integration commit and push.
