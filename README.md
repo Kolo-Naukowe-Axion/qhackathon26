@@ -69,6 +69,8 @@ dependencies are required.
 - `PROJECT_DESIGN.md`: current display model and planned solver interface.
 - `docs/PRESENTATION_DESIGN.md`: visual and interaction direction.
 - `docs/VELOXQ_IDEAS.md`: proposed VeloxQ formulation and experiment directions.
+- `literature/`: curated papers and guides — `STAGE2_LITERATURE.md` (Stage 2 extension), `BASELINE_METHODS_REVIEW.md` (baseline formulation, encodings, QAOA variants, penalties, VeloxQ), `reading_list.csv`, local PDFs where openly available.
+- `docs/METHODS_TUTORIAL.html`: self-contained beginner tutorial (open in a browser) on flow shops, QUBOs, time-indexed and domain-wall encodings, QAOA mixers, penalties and hybrid VeloxQ use, with an interactive 2×2 energy explorer.
 - `presentation/`: browser-native ES modules, original SVG art, and CSS; no frontend framework or external CDN dependency.
 
 ## AI use

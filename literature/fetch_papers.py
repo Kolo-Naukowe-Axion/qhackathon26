@@ -77,18 +77,27 @@ def main():
                 "validation": "PDF signature, pdfinfo parsing and expected-title text on first two pages",
                 "sources": records}
     (ROOT / "manifest.json").write_text(json.dumps(manifest, ensure_ascii=False, indent=2) + "\n")
-    lines = ["# Stage 2 literature collection", "",
-             "[Annotated reading guide](STAGE2_LITERATURE.md) · [Source catalog](sources.json) · [Download manifest](manifest.json)", "",
-             "The guide contains 19 main references; entry 16 also includes a follow-up paper.",
-             "PDFs are public publisher/author manuscripts. Their original copyright and license notices apply; the repository MIT license does not relicense third-party papers.",
-             "Existing contributions, including `papers/Learning to Optimize.pdf`, are retained separately.", "",
-             "| Guide entry | Paper | Local copy |", "| --- | --- | --- |"]
-    for record in records:
-        local = f"[PDF]({record['file']}) ({record['pages']} pages)" if record["file"] else "Source link; PDF unavailable"
-        lines.append(f"| {record['guide_entry']} | [{record['title']}]({record['source_url']}) | {local} |")
-    lines.extend(["", "To retry missing downloads: `python3 literature/fetch_papers.py` (requires curl and Poppler).",
+    collections = [
+        ("stage2", "Stage 2 extension literature", "STAGE2_LITERATURE.md", "Annotated Stage 2 guide"),
+        ("baseline-methods", "Baseline formulation and quantum-method literature", "BASELINE_METHODS_REVIEW.md", "Baseline and methods review"),
+    ]
+    lines = ["# Literature collection", "",
+             " · ".join(f"[{label}]({guide})" for _, _, guide, label in collections)
+             + " · [Reading list (CSV)](reading_list.csv) · [Source catalog](sources.json) · [Download manifest](manifest.json)", "",
+             "PDFs are public publisher/author manuscripts or arXiv preprints. Their original copyright and license notices apply; the repository MIT license does not relicense third-party papers.",
+             "Existing contributions, including `papers/Learning to Optimize.pdf`, are retained separately.", ""]
+    for key, heading, guide, label in collections:
+        subset = [r for r in records if r.get("collection", "stage2") == key]
+        got = sum(r["status"] == "downloaded" for r in subset)
+        lines.extend([f"## {heading}", "", f"Guide: [{label}]({guide}). {len(subset)} references; {got} with local PDFs.", "",
+                      "| Guide entry | Paper | Local copy |", "| --- | --- | --- |"])
+        for record in subset:
+            local = f"[PDF]({record['file']}) ({record['pages']} pages)" if record["file"] else "Source link; PDF unavailable"
+            lines.append(f"| {record['guide_entry']} | [{record['title']}]({record['source_url']}) | {local} |")
+        lines.append("")
+    lines.extend(["To retry missing downloads: `python3 literature/fetch_papers.py` (requires curl and Poppler).",
                   "Checksums, source URLs, retrieval failures and downloaded versions are recorded in the manifest.",
-                  "Downloaded availability does not mean a paper was fully reviewed or its experiments reproduced; see the evidence notes in the guide.", ""])
+                  "Downloaded availability does not mean a paper was fully reviewed or its experiments reproduced; see the evidence notes in each guide.", ""])
     (ROOT / "README.md").write_text("\n".join(lines))
     downloaded = sum(record["status"] == "downloaded" for record in records)
     print(f"Complete: {downloaded} PDFs, {len(records) - downloaded} link-only references", flush=True)
