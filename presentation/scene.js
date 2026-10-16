@@ -14,14 +14,29 @@ function machineArt(index) {
 
 export function createScene(container, replay, onSelect) {
   const stations = replay.machines.length === 2 ? [355, 755] : [280, 560, 840];
-  container.innerHTML = `<svg viewBox="0 0 1120 388" class="shop-svg" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="shop-title shop-desc">
-    <title id="shop-title">An illustrated ${replay.machines.length}-machine factory</title><desc id="shop-desc">Parts move through the displayed stations. Use the replay time slider or the part buttons below to inspect their state.</desc>
+  container.innerHTML = `<svg viewBox="0 -145 1120 700" preserveAspectRatio="xMidYMid slice" class="shop-svg" xmlns="http://www.w3.org/2000/svg" role="group" aria-labelledby="shop-title shop-desc">
+    <title id="shop-title">An illustrated ${replay.machines.length}-machine factory</title><desc id="shop-desc">Parts move through the displayed stations. Use the replay time slider or the parts inventory to inspect their state.</desc>
     <defs>
       <pattern id="grass" width="64" height="64" patternUnits="userSpaceOnUse"><rect width="64" height="64" fill="#b6bf98"/><path fill="#a6b388" d="M7 13h3v4H7zm34 28h3v4h-3zM20 52h5v2h-5zM56 9h4v2h-4z"/><path fill="#c5cba7" d="M12 36h6v3h-6zm34-11h5v3h-5z"/></pattern>
       <pattern id="floor" width="40" height="40" patternUnits="userSpaceOnUse"><rect width="40" height="40" fill="#d7d5bd"/><path fill="none" stroke="#c7c7ae" stroke-width="1" d="M0 0h40v40H0z"/><path fill="#e2dfc7" d="M2 2h35v2H2z"/></pattern>
       <pattern id="belt" width="18" height="18" patternUnits="userSpaceOnUse"><rect width="18" height="18" fill="#56675b"/><path fill="#82917a" d="m2 3 7 5-7 5v-4l3-1-3-1z"/></pattern>
     </defs>
-    <rect width="1120" height="388" fill="url(#grass)"/>
+    <rect x="-3000" y="-3000" width="6000" height="6000" fill="url(#grass)"/>
+    <g aria-hidden="true">
+      <path fill="#a7b68c" d="M-2000-2000h6000v2000H-2000z" opacity=".18"/>
+      <path fill="#c7bb92" d="M1010-2000h75v4000h-75zM-2000 185h6000v94H-2000z"/>
+      <path fill="#d2c7a0" d="M1020-2000h56v4000h-56zM-2000 193h6000v77H-2000z"/>
+      ${tree(51, -62, 1.3)}${pine(142, -34)}${tree(258, -139, .9)}${tree(915, -92, 1.2)}${pine(1097, -84)}
+      ${tree(51, 478, 1.3)}${pine(140, 539)}${tree(974, 497, 1.15)}${pine(1110, 493)}${tree(871, 617, .9)}
+      ${tree(61, -263, 1.4)}${pine(270, -365)}${tree(911, -356, 1.2)}${pine(1110, -235)}
+      ${tree(46, 739, 1.3)}${pine(270, 850)}${tree(900, 858, 1.4)}${pine(1102, 720)}
+      <path fill="#8b9d78" d="M18 422h111v9h16v58H26v-9H10v-43h8z"/>
+      <path fill="#7d9c8d" d="M29 429h95v9h13v43H34v-9H18v-34h11z"/>
+      <path fill="#9db5a0" d="M37 440h31v3H37zm40 18h38v3H77zM29 463h20v3H29z"/>
+      <path fill="#a0ac83" d="M222 409h10v6h-10zM235 417h5v4h-5zM811 413h9v5h-9zM793-40h15v6h-15z"/>
+      <g fill="#e8daa0"><path d="M182 397h4v4h-4zM190 404h4v4h-4zM888-23h4v4h-4zM897-18h4v4h-4zM450 461h4v4h-4z"/></g>
+      <g fill="#8a9977"><path d="M227 474h15v7h-15zm4-4h8v4h-8zM798-58h19v9h-19zm4-5h10v5h-10z"/></g>
+    </g>
     <path fill="#c7bb92" d="M0 185h1120v94H0zM1010 185h75v203h-75z"/>
     <path fill="#d2c7a0" d="M0 193h1120v77H0zM1020 193h56v195h-56z"/>
     <path fill="#9aa681" d="M142 65h836v258H142z"/><path fill="#78816b" d="M150 65h820v255H150z"/>
@@ -56,6 +71,16 @@ export function createScene(container, replay, onSelect) {
     </g>`).join('')}
   </svg>`;
   const svg = container.querySelector('svg');
+  let viewport = '';
+  function fitWorld() {
+    const size = `${container.clientWidth}:${container.clientHeight}`;
+    if (size === viewport) return;
+    viewport = size;
+    const width = container.clientWidth < 850 ? 1000 : 1120;
+    const height = width * container.clientHeight / Math.max(1, container.clientWidth);
+    svg.setAttribute('viewBox', `${(1120 - width) / 2} ${190 - height * .47} ${width} ${height}`);
+  }
+  fitWorld();
   const tokens = [...container.querySelectorAll('.part-token')];
   tokens.forEach((token, index) => {
     token.addEventListener('click', () => onSelect(replay.jobs[index].id));
@@ -63,6 +88,7 @@ export function createScene(container, replay, onSelect) {
   });
   return {
     update(time, selected, playing) {
+      fitWorld();
       svg.classList.toggle('playing', playing);
       replay.machines.forEach((machine, index) => {
         const active = replay.schedule.find(o => o.machine === machine.id && o.start <= time && time < o.end);
@@ -85,6 +111,7 @@ export function createScene(container, replay, onSelect) {
         if (state.kind === 'complete') { x = 1035; y = 228 + i * 17; }
         tokens[i].setAttribute('transform', `translate(${x} ${y})`);
         tokens[i].classList.toggle('selected', selected === job.id);
+        tokens[i].setAttribute('aria-pressed', String(selected === job.id));
         tokens[i].classList.toggle('dimmed', !!selected && selected !== job.id);
       });
     }

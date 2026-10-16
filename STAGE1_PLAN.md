@@ -1,19 +1,19 @@
 # Stage 1 plan — solve, verify, explain
 
-Status: planning and presentation preparation, 2026-10-16. Both official PDFs have now been read and the exact datasets/JSON schema are known. The user authorizes environment work first, followed by the VeloxQ formulation and integration. Neither baseline solver run is complete.
+Status: both mandatory baseline methods have run locally, 2026-10-16. A was solved by a genuine four-qubit QAOA simulator circuit (4 h); B by classical QUBO simulated annealing (8 h). Both exported schedules pass independent checks and match exact optima. **User hold: do not use ODRA5 or VeloxQ for now; iterate locally.**
 
-Offline preparation is now implemented in `solver/stage1.py`: pruned fixed-horizon QUBOs, sample decoding/independent checking, exact classical references and coefficient exports. See [implementation details](docs/STAGE1_OFFLINE.md). Neither required-method run is complete; SDK handoff conversion remains untested in this repository environment.
+Current selected evidence is in `output/stage1-selected.json`, pointing to `output/stage1-local-ready/`; required root schedule JSONs are exported. Reproduce with `.venv/bin/python scripts/prepare-stage1.py --output output/new-stage1`. The refined p=3 quantum circuit passed all 40,960 validation measurements; the classical solver passed 5,110/5,120. See [refinement evidence](docs/STAGE1_REFINEMENT.md) and [implementation details](docs/STAGE1_OFFLINE.md). Service behavior remains unverified.
 
 ## Proposed approach
 
-Build a small, inspectable scheduling demonstration that shows how a binary solver result becomes a valid factory schedule. Use VeloxQ substantively for the 3×3 baseline and a separately demonstrated quantum algorithm for the 2×2 baseline.
+Build a small, inspectable scheduling demonstration that shows how a binary solver result becomes a valid factory schedule. The completed baseline uses local classical QUBO annealing for B and simulator QAOA for A. Substantive VeloxQ integration remains an intended later upgrade, after the user lifts the service hold.
 
 1. Load the official instance data into one scheduling model. Express each operation, duration, machine, and predecessor explicitly.
 2. Derive an encoding for each required method after checking the full specification. Preserve the allowed schedule space; do not assume permutation scheduling or discrete time without support. Reduce variables using valid bounds and proven redundant-variable elimination where helpful.
 3. Solve the 2×2 QUBO using a compact QAOA circuit on a local simulator, subject to the official algorithm requirements. Save circuit settings, optimization history, sampled bitstrings, and the selected feasible sample. The full document explicitly requires a QUBO for this instance.
-4. Formulate the 3×3 QUBO and solve it through the VeloxQ SDK. Save the submitted model, actual solver/backend settings, job identifier, raw returned samples, and decoded schedule. Use a small number of additional runs to check stability if needed.
+4. Formulate the 3×3 QUBO and solve it locally while VeloxQ is on hold. After the user lifts the hold, the intended SDK integration must save the submitted model, actual solver/backend settings, job identifier, raw returned samples, and decoded schedule.
 5. Validate both schedules using an independent checker operating on decoded operations: all required operations appear once, durations are correct, machine intervals do not overlap, precedence holds, and reported makespan matches completion times. Validate the official JSON schema too.
-6. For these tiny instances, independently determine the optimum with an exact classical method over the full allowed schedule space. Use this as a reference for quality and correctness, while preserving which schedules actually came from QAOA and VeloxQ. Do not replace a failed solver result with the reference and describe it as solver success.
+6. For these tiny instances, independently determine the optimum with an exact classical method over the full allowed schedule space. Use this as a reference for quality and correctness, while preserving which schedules actually came from QAOA and classical annealing (or a future explicitly authorized VeloxQ run). Do not replace a failed solver result with the reference and describe it as solver success.
 
 ## Interesting, functional demonstration
 
@@ -41,8 +41,8 @@ Do not mark Stage 1 complete before both method-specific runs and both schedule 
 
 - Prefer the local machine for tiny baseline work; choose the encoding to keep simulation practical.
 - VeloxQ SDK access requires the platform API token; local H100 access is separate from access to the VeloxQ service.
-- User authorizes WCSS work under the Axion quantum group. SSH login was verified, but the corresponding Slurm allocation has not been identified/validated; do not substitute unrelated allocations.
-- Remote GPU work is contingent on an actual workload need and verified allocation. No solver execution or compute job submission has started.
+- User authorizes WCSS work under the Axion quantum group. SSH and CPU association `hpc-iwowoj-1781179048` are now verified, including a successful short interactive network check. GPU allocation/quota is not established; do not substitute unrelated allocations.
+- Local solver execution is complete for both baselines. No GPU is needed for them. Physical ODRA5 work is an optional hardware upgrade to the simulator result and uses separate IQM authentication; both remote backends remain on user hold; reported VeloxQ access has not been exercised.
 
 The visual environment uses original Factorio/Stardew Valley-inspired pixel art, with linked replay, Gantt and validation/provenance views. The official document requires a strong, verified Stage 2 extension; the presentation is supporting evidence rather than a substitute.
 

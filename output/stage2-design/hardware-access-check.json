@@ -1,0 +1,27 @@
+{
+  "checked_date": "2026-10-16",
+  "scope": "Read-only Slurm configuration checks; no allocation or compute job started",
+  "host_alias": "wcss",
+  "axion_account": "hpc-iwowoj-1781179048",
+  "account_association_present": true,
+  "qos": "hpc-iwowoj-1781179048",
+  "qos_group_gpu_cap": 32,
+  "qos_configured_group_gpu_minutes": 600000,
+  "remaining_gpu_minutes": null,
+  "remaining_gpu_minutes_note": "Configured quota is not remaining quota; current usage was not queried",
+  "gpu_partition": "lem-gpu-short",
+  "partition_state": "UP",
+  "partition_gpu_gres_type": "hopper",
+  "partition_allow_accounts": "ALL",
+  "partition_max_job_time": "3-00:00:00",
+  "partition_max_time_note": "Partition limit only; other scheduler limits and availability still apply",
+  "test_only_request": {
+    "gpu_count": 1,
+    "cpu_count": 8,
+    "memory_gb": 64,
+    "duration_minutes": 10,
+    "status": "not completed: SSH connection timed out before command execution",
+    "scheduled_job": false
+  },
+  "conclusion": "Axion account/QOS has explicit GPU allowance and a visible eligible Hopper partition. Actual job admission, remaining quota, queue delay and runtime CUDA access are not yet verified."
+}

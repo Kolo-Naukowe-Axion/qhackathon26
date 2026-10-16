@@ -16,6 +16,7 @@ def main():
     parser.add_argument("--seeds", type=int, default=10)
     parser.add_argument("--reads", type=int, default=256)
     parser.add_argument("--sweeps", type=int, default=2000)
+    parser.add_argument("--schedule", choices=("geometric", "linear"), default="geometric")
     args = parser.parse_args()
     if min(args.seeds, args.reads, args.sweeps) < 1:
         parser.error("Positive budgets required")
@@ -30,7 +31,7 @@ def main():
             model = build_qubo(instance, horizon, encoding)
             runs = []
             for seed in range(args.seeds):
-                records, metadata = anneal(model, reads=args.reads, sweeps=args.sweeps, seed=seed)
+                records, metadata = anneal(model, reads=args.reads, sweeps=args.sweeps, seed=seed, schedule=args.schedule)
                 checked = assess_samples(instance, model, records)
                 feasible = [r for r in checked if r["feasible"]]
                 runs.append(dict(seed=seed, feasible_rate=sum(r["count"] for r in feasible) / args.reads,
@@ -47,7 +48,7 @@ def main():
                                 successful_runs=sum(r["best_makespan"] is not None for r in runs),
                                 median_wall_seconds=statistics.median(r["wall_seconds"] for r in runs), runs=runs))
     report = dict(scope="Local simulated annealing only; VeloxQ performance unknown", reference_optimum=optimum,
-                  reads=args.reads, sweeps=args.sweeps, seeds=args.seeds, versions=versions(), results=results)
+                  reads=args.reads, sweeps=args.sweeps, schedule=args.schedule, seeds=args.seeds, versions=versions(), results=results)
     write_json(args.output, report)
     for row in results:
         print(f"H={row['horizon']} {row['encoding']}: n={row['variables']}, feasible={row['mean_feasible_rate']:.3%}, successful runs={row['successful_runs']}/{args.seeds}, max coefficient={row['coefficient_range'][1]}")

@@ -195,6 +195,8 @@ Let `O` be operation instances, `H` ticks, `K_o` machine/mode alternatives, `E` 
 
 Report start bits, state/assignment bits, slack bits, ancillas, nonzero couplers, density, coefficient range, generation time and validation time separately. Baseline 3×3 counts remain a separate required comparable result. The blueprint count is only the nominal manufacturing-start component, not a total QUBO size.
 
+The initial audited blueprint has 1,752 machine/mode alternatives across its 384 nominal operations: 672,768 candidate bits if every alternative receives all 384 start ticks, or 665,760 after removing only starts that finish outside the horizon. These deliberately naive counts precede release/precedence/certification pruning and do not represent a correct complete batch/transport/stochastic QUBO. They are logical binary counts, not physical qubit requirements.
+
 ## Environment and visual experience
 
 Keep the existing Stage 1 viewer as its own mode. Stage 2 needs a new versioned domain contract; its DAGs, conditional operations and 15 machines cannot be forced into `axion-replay.v1`.
@@ -241,6 +243,8 @@ Artifacts need instance/version/hash, snapshot and trace hashes, observation his
 7. **Counterfactual iteration:** mill lease, extra AGV, extra buffer slot, larger battery and cross-trained worker. Identify when the bottleneck migrates and when capacity investment has negative value.
 
 Hypotheses to falsify: a faster mill can worsen deliveries under grid contention; more buffer capacity can break a transport deadlock; locally earliest-due dispatch can starve assembly; a small, closed recovery QUBO can retain useful solutions after a large disruption; robustness and schedule stability can conflict.
+
+The faster-mill hypothesis concerns a specified policy or a forced operating change. Adding a free, optional action/resource while preserving every old feasible policy cannot worsen the mathematical optimum. A harmful mill lease can arise from its fixed fee, required footprint/power changes, or a heuristic's response. Keep these cases distinct when interpreting a counterfactual; otherwise a compelling story could conceal a modeling bug.
 
 Measure feasibility rate, fulfillment, weighted tardiness, CVaR, costs/carbon, churn, throughput, reference bounds/gaps, model sizes and whole-loop time. Diagnose any all-infeasible case before benchmarking algorithms. For stochastic policies report empirical uncertainty and the evaluated distribution; eight designed leaves are not evidence of real-world robustness.
 

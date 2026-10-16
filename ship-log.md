@@ -27,3 +27,19 @@
 - With action-time user approval, installed the official Vercel GitHub app for only `Kolo-Naukowe-Axion/qhackathon26` within the Axion organization.
 - Git integration connected successfully; production branch verified as `main`.
 - Pushed documentation commit `a98a54f` after connecting Git. This automatically created production deployment `dpl_84kyaF5kKjGqLyKRHJeUFms9vnEw`, READY, and GitHub's Vercel status is success. No scheduled polling is needed.
+
+## 2026-10-16 — Factory/manual and complete local baseline release
+
+- User explicitly requests all new work committed and pushed to main, with production deployment, after updating documentation. This is the publishing approval; no additional confirmation is needed.
+- Target reverified as personal `iwos/qfactoria`, project `prj_Bqj5S6AT4MsAsa2nT7uAxrAAg2l2`, domain qfactoria.com, repository Kolo-Naukowe-Axion/qhackathon26.
+- Documentation updated before staging: README, changelog, Project Design, context, presentation design, compliance/readiness and the public field manual’s selected results. Version remains 0.1.0 for the same-day private app release.
+- PASS: 16 Node tests, syntax checks and static production build. PASS: 19 core Python tests; 2 optional IQM compilation tests pass in the dedicated environment.
+- PASS: selected 4 h / 8 h outputs verify independently, including reconstruction of the saved quantum expectations/counts.
+- PASS: custom secret scan of 769 candidate files/archive members, including decompressed experiments, found no credential matches. A staged gitleaks scan follows before commit.
+- WARN: Lighthouse numerical performance/accessibility scores are not measured. Browser checks cover the core interactions and phone layout. No third-party frontend dependencies, production secrets or server-side runtime are needed.
+- GitHub main includes two newer literature/tutorial commits to preserve during integration. The hosted build excludes repository documents, solver evidence and PDFs.
+- External solver holds remain intact; this release makes no VeloxQ/ODRA5 call.
+
+- PASS: staged gitleaks scan inspected ~225.61 MB of changes and found no leaks. Generated circuit ASCII diagrams retain their original trailing spaces; source/docs whitespace checks pass.
+- PASS: newer tutorial/literature commits integrated, append conflicts resolved by preserving both contributions, imported historical-result descriptions reconciled with the current selected evidence.
+- Repository visibility verified PRIVATE, default main. No visibility change is authorized or performed; public-source competition eligibility remains a separate documented condition.

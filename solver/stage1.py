@@ -122,13 +122,18 @@ def domain_wall(onehot):
             indicators[old] = dict(constant=int(k == 0), terms=terms)
     # Determine conflict degree; exactly-one couplings are not conflicts.
     degree = [0] * len(indicators)
+    conflicts = []
     for i, j, q in onehot["quadratic"]:
         a, b = onehot["variables"][i], onehot["variables"][j]
         if (a["job"], a["machine"]) != (b["job"], b["machine"]):
+            conflicts.append((i, j, q))
             degree[i] += q
             degree[j] += q
     penalty = max(degree, default=0) + 1
-    linear, quadratic, offset = [0] * len(variables), {}, onehot["offset"]
+    # Remove exactly-one penalties rather than substituting their binary-only
+    # expansion: invalid walls can give x=-1, where x*x=x no longer holds.
+    # Keep one unsatisfied constant for each operation with an empty domain.
+    linear, quadratic, offset = [0] * len(variables), {}, onehot["offset"] - len(groups)
 
     def add_pair(i, j, value):
         if i == j:
@@ -137,12 +142,7 @@ def domain_wall(onehot):
             pair = tuple(sorted((i, j)))
             quadratic[pair] = quadratic.get(pair, 0) + value
 
-    for old, q in enumerate(onehot["linear"]):
-        expr = indicators[old]
-        offset += q * expr["constant"]
-        for i, a in expr["terms"]:
-            linear[i] += q * a
-    for old_i, old_j, q in onehot["quadratic"]:
+    for old_i, old_j, q in conflicts:
         a, b = indicators[old_i], indicators[old_j]
         offset += q * a["constant"] * b["constant"]
         for i, ai in a["terms"]:
@@ -289,9 +289,15 @@ def to_dimod(model):
     coefficients as raw biases/couplings would risk interpreting them as Ising.
     """
     import dimod
-    return dimod.BinaryQuadraticModel(dict(enumerate(model["linear"])),
-                                     {(i, j): q for i, j, q in model["quadratic"]},
-                                     model["offset"], dimod.BINARY)
+    # Adding all variables before edges fixes wire order even if a backend omits
+    # result labels. The bulk constructor may insert edge endpoints out of order.
+    bqm = dimod.BinaryQuadraticModel(dimod.BINARY)
+    bqm.add_linear_from(dict(enumerate(model["linear"])))
+    bqm.add_quadratic_from({(i, j): q for i, j, q in model["quadratic"]})
+    bqm.offset = model["offset"]
+    if list(bqm.variables) != list(range(len(model["variables"]))):
+        raise ValueError("BQM wire order is not canonical")
+    return bqm
 
 
 def main():

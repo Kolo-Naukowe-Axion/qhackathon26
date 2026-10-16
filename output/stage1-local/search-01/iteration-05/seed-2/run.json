@@ -1,0 +1,148 @@
+{
+  "schema": "stage1-run.v1",
+  "method": "QAOA p=4, local-x mixer (Qiskit Aer statevector simulator)",
+  "instance": "instance_2x2",
+  "timestamp": "2026-10-16T18:13:43.179065+00:00",
+  "instance_sha256": "ae9a61293664f0492f3f71a43cf329c05ebe5d6407585dadf78cffc6a08e0a87",
+  "model_sha256": "c1c897b6cabc7fade12266fd60942c542b0e2ff5fd5bd60a3144850903d16cbe",
+  "encoding": "domain-wall",
+  "variables": 4,
+  "horizon": 4,
+  "total_samples": 4096,
+  "feasible_samples": 4096,
+  "feasible_rate": 1.0,
+  "accepted": true,
+  "metadata": {
+    "algorithm": "QAOA with independently parameterized single-qubit X mixers",
+    "mixer": "local-x",
+    "trainable_parameters": 20,
+    "simulator": "Qiskit Aer statevector + measured shots",
+    "layers": 4,
+    "shots": 4096,
+    "seed": 2,
+    "restarts": 8,
+    "maxiter": 500,
+    "cost_scale": 1.0,
+    "optimized_parameters": [
+      -0.7853981757968745,
+      0.7853981543079267,
+      3.3098070297288635,
+      1.5707963413000676,
+      -1.570796362281519,
+      1.5707963797233335,
+      -1.5707962895908945,
+      1.5707962937144835,
+      -3.0511131683319763,
+      -2.3561945319999804,
+      -0.7853981920971314,
+      2.9671961180452406,
+      2.4498644497022277,
+      1.5707963262375337,
+      -4.438871556262685e-09,
+      -0.34343976795995873,
+      -0.7853981940794504,
+      1.9908264741551226e-09,
+      3.1415926544486457,
+      -0.7853981931360555
+    ],
+    "parameter_order": "all gamma, then all beta (layer-major qubit order for local-x)",
+    "optimizer": "BFGS, mean QUBO energy",
+    "expected_energy": 1.2609898034313347e-15,
+    "ideal_feasible_probability": 0.9999999999999984,
+    "elapsed_wall_seconds": 5.712066459003836,
+    "attempts": [
+      {
+        "restart": 0,
+        "expected_energy": 9.122565400971115e-15,
+        "evaluations": 1386,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 1,
+        "expected_energy": 1.2609898034313347e-15,
+        "evaluations": 1239,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 2,
+        "expected_energy": 1.481611706663129e-15,
+        "evaluations": 1071,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 3,
+        "expected_energy": 6.313220233860277e-15,
+        "evaluations": 2595,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 4,
+        "expected_energy": 0.059575417967774755,
+        "evaluations": 1008,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 5,
+        "expected_energy": 1.2646324578396762e-15,
+        "evaluations": 924,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 6,
+        "expected_energy": 2.9034769914226185e-14,
+        "evaluations": 2889,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 7,
+        "expected_energy": 0.0019992499264458764,
+        "evaluations": 945,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      }
+    ],
+    "circuit_depth": 18,
+    "circuit_operations": {
+      "rzz": 16,
+      "rx": 16,
+      "rz": 8,
+      "h": 4
+    },
+    "bit_order": "sample[i] is qubit i; raw Qiskit strings reversed on decoding",
+    "network_blocked_during_run": true
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "dimod": "0.12.22",
+    "dwave-samplers": "1.8.0",
+    "veloxq-sdk": "1.0.0"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "machine": "arm64"
+  },
+  "source_sha256": {
+    "solver/__init__.py": "8a447e643ac186cf2390ce81a48521bec3511c7d033ccbab71dcfff37c5134c1",
+    "solver/artifacts.py": "c08e4b4ede8437ba342e49e354cc460fc0c9a75f3e5d171e5ca8879c58d5d423",
+    "solver/audit.py": "5d0ae92e9f4bb17de8284dbb950d9eb8f1e513c69bd036e8970c4eed60523d92",
+    "solver/benchmark.py": "56143a794d4f6d40e5e5f803fe3c24a4dde7ec01f28630e38330c3cb1680bd31",
+    "solver/local.py": "e6ebeb3e0de0453aabd3402579d87e4740da748998aa75f6b41d9fadbc0871ec",
+    "solver/odra.py": "c99a20b1e9fbdfcde511d7c16a2d8a917675f16e0d5231a012b124df21937712",
+    "solver/quantum.py": "acc1464a1c6b58fc39e94fec9da4b1e97605d5992e88afda0e3a5b38b52e2ed0",
+    "solver/refine.py": "dd6719d8b23169ba71938720587e5b93f98bb2086891cb048f8681b87c5078a0",
+    "solver/stage1.py": "0b985f88fb2c5098c66d356191dbaf6962cb59adc4eb0e1bc4e085189102141d",
+    "solver/velox.py": "7a788c71fd073ae6313667d7714ac86233a0dcffb7a9301b7bcde9432bc08cdf",
+    "solver/verify.py": "73c08a1f14af0cb6e81e64f02b451c302c40da62ded06f3f89121d5a32e9eedb"
+  }
+}

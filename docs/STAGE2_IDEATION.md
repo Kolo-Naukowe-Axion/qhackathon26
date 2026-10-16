@@ -74,3 +74,13 @@ The three-minute demo can follow one pump through one disruption, reveal the cau
 Primary proposal: **MetalTech under pressure**, specified in `STAGE2_ENVIRONMENT.md`. All its major mechanisms belong to the intended flagship. The executable blueprint is a structural design artifact, not the engine or a solved benchmark.
 
 Next design questions are precise: can the chosen transport/buffer semantics avoid unavoidable gridlock; can a reachable WIP snapshot be generated; which resource/state interfaces a closed QUBO neighborhood needs; and which mode/quality/maintenance tables create meaningful competing decisions instead of a single universally dominant choice? These questions should drive the next experiments, with the full environment retained.
+
+## Iteration 8: challenge the proposal's own shortcuts
+
+- More free optional capacity cannot worsen the true optimum if all old policies remain feasible. Negative value must be attributed to investment costs, forced changes, or the tested policy, not to a mathematical paradox.
+- An eight-leaf exogenous tree is not the entire quality-information tree. Policy-dependent inspection outcomes require observation-history recourse or an explicitly declared approximation.
+- Counting each component's furnace start independently overcounts nominal decision choices and omits batch-consistency constraints. The reported manufacturing-start count is a sizing audit, not a finished QUBO.
+- A small recovery model is not a lossless compression of the full factory unless the candidate domain and boundary-state arguments establish that claim. Keep the unrestricted environment and report restriction gaps.
+- A valid 96-hour workload description is not evidence that 24 orders can be fulfilled within 96 hours. Reachability, physical feasibility and fulfillment need actual traces and separate checks.
+
+These objections refine the model without reducing its intended scope.

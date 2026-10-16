@@ -40,6 +40,14 @@ This makes the integration inspectable. These overlays are planned; the initial 
 
 ## Stage 2 candidate to investigate next
 
+Update, 2026-10-16: the user's ambition mandate led to the much richer working
+proposal in `STAGE2_ENVIRONMENT.md` and the design iterations in
+`STAGE2_IDEATION.md`. The single-disruption idea below is historical context;
+the target now includes physical logistics, BOM assembly, energy, tooling,
+quality and causal recovery. Investigate a closed recovery QUBO within that
+environment, preserving explicit boundary state and reporting restricted-pool
+gaps. This remains proposed solver work, not an executed integration.
+
 One coherent direction is **replanning after a machine disruption while preserving work already done**: freeze completed/in-progress operations, solve the remaining schedule, and compare against a classical reference under the same outage/partial-state model. The factory can show the actual disruption and recovery schedules side by side.
 
 Evaluate whether a compact residual QUBO gives VeloxQ a useful role relative to solving the full extended model. Measure quality, variable savings, repeated-run variability, and runtime across larger instances. This is a candidate, not a selected extension; formulation correctness and a realistic comparison take priority over adding more UI.

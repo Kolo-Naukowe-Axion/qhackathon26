@@ -36,3 +36,13 @@ After the baseline works, add Stage 2 overlays only for selected, implemented co
 - Replaced full pastel Gantt fills with neutral bars and small job-color markers. Selection uses a dark fill; unselected labels remain readable without low-opacity fading or heavy outlines.
 - Removed reserved empty scene/intro space and reduced the interface to tabs, instance selection, playback, parts, metrics, and the schedule.
 - The named pstack `/unslop` workflow was not installed or found in the session's skills/plugins. The user's concrete cleanup directions were applied directly.
+
+## Factory-world redesign and field manual — 2026-10-16
+
+- The live pixel factory now forms the full page landscape rather than an embedded illustration. Grass, paths, trees and stations share the same palette as timber-framed controls and parchment records.
+- The current HUD uses a typographic Axion emblem and locally bundled Manrope; earlier imported-logo/Space Grotesk notes above describe the previous design pass.
+- Top navigation exposes Factory world, Control desk and Stage 1 guide. The control desk contains Timeline and Validation; switching views preserves clock and selected part. World signposts also open those menus.
+- `/problem-explanation` uses a parchment field manual with six chapter links, previous/next controls and a return-to-factory link. The mobile chapter list scrolls horizontally.
+- Interactive diagrams compute permutation schedules, exactly-one penalties, all four compact A bit choices, factorial order counts and statevector memory. The explanatory text includes proof assumptions, complexity notation and the distinction between sampled feasibility and exact optimality.
+- Solver summaries now match `output/stage1-selected.json`; earlier p=5/2,000-sweep runs remain archived. Both remote solver holds remain in effect.
+- Checked desktop and 390-pixel phone layouts, keyboard-accessible controls, navigation and constraint feedback. The production build has 16 Node tests plus syntax checks.

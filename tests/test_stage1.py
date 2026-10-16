@@ -46,6 +46,25 @@ class FormulationTests(unittest.TestCase):
             self.assertEqual(energy(onehot, encode_schedule(onehot, schedule)), energy(compact, encode_schedule(compact, schedule)))
             self.assertEqual(decode(compact, encode_schedule(compact, schedule)), schedule)
 
+    def test_every_invalid_wall_on_small_models_obeys_proven_penalty_bound(self):
+        # More than two starts per operation is essential: the official 2x2 at
+        # H=4 has no internal walls and cannot expose negative-indicator bugs.
+        instance = dict(problem="erp_scheduling", jobs=[
+            dict(id=f"J{i}", operations=[dict(machine="T", duration=1), dict(machine="F", duration=1)])
+            for i in range(2)])
+        for horizon in (4, 5):
+            model = build_qubo(instance, horizon, "domain-wall")
+            for bits in itertools.product((0, 1), repeat=len(model["variables"])):
+                violations = sum((1 - bits[i]) * bits[j] for i, j in model["monotone_pairs"])
+                self.assertGreaterEqual(energy(model, bits), violations)
+                if violations:
+                    with self.assertRaises(ValueError):
+                        decode(model, bits)
+                else:
+                    schedule = decode(model, bits)
+                    makespan = max(s["end"] for s in schedule)
+                    self.assertEqual(energy(model, bits) == 0, not validate(instance, schedule, makespan))
+
     def test_3x3_conflict_penalties_match_direct_interval_checker(self):
         instance = load("3x3")
         model = build_qubo(instance, 8)

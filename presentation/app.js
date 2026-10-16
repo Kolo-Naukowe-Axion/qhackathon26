@@ -6,6 +6,7 @@ const $ = id => document.getElementById(id);
 const datasets = new Map([['slide', slideReplay], ['alternative', alternativeReplay], ['small', smallReplay]]);
 let replay, scene, validation;
 let time = 0, selected = null, playing = false, lastFrame = null;
+let activeView = 'factory', deskTab = 'timeline';
 const f = x => Number.isInteger(x) ? String(x) : x.toFixed(1);
 
 function selectPart(job) {
@@ -73,6 +74,7 @@ function update() {
   $('play-icon').textContent = playing ? 'Ⅱ' : '▶';
   $('play-label').textContent = playing ? 'Pause' : time >= end ? 'Replay' : 'Play';
   $('play').setAttribute('aria-label', playing ? 'Pause replay' : time >= end ? 'Replay from start' : 'Play replay');
+  document.body.dataset.playing = String(playing);
   $('scene-status').textContent = time >= end ? 'Finished' : playing ? 'Running' : time > 0 ? 'Paused' : 'Ready';
   $('clear-selection').hidden = !selected;
   scene.update(time, selected, playing);
@@ -106,15 +108,34 @@ function update() {
 }
 
 function setTab(tab) {
+  activeView = tab;
+  const inWorld = tab === 'factory';
+  if (!inWorld) deskTab = tab;
+  document.body.dataset.view = inWorld ? 'factory' : 'desk';
+  $('panel-factory').hidden = !inWorld;
+  $('desk-window').hidden = inWorld;
+  $('factory-scene').inert = !inWorld;
+  for (const mode of ['world', 'desk']) {
+    const active = (mode === 'world') === inWorld;
+    $(`${mode}-mode`).classList.toggle('active', active);
+    $(`${mode}-mode`).setAttribute('aria-pressed', String(active));
+  }
   for (const button of document.querySelectorAll('[data-tab]')) {
-    const active = button.dataset.tab === tab;
+    const active = button.dataset.tab === deskTab;
     button.classList.toggle('active', active);
     button.setAttribute('aria-selected', String(active));
     button.tabIndex = active ? 0 : -1;
-    $(`panel-${button.dataset.tab}`).hidden = !active;
+    $(`panel-${button.dataset.tab}`).hidden = inWorld || !active;
   }
   update();
 }
+
+$('world-mode').addEventListener('click', () => setTab('factory'));
+$('desk-mode').addEventListener('click', () => { setTab(deskTab); $(`tab-${deskTab}`).focus(); });
+$('open-timeline').addEventListener('click', () => { setTab('timeline'); $('tab-timeline').focus(); });
+$('open-validation').addEventListener('click', () => { setTab('evidence'); $('tab-evidence').focus(); });
+$('mini-validation').addEventListener('click', () => { setTab('evidence'); $('tab-evidence').focus(); });
+$('close-desk').addEventListener('click', () => { setTab('factory'); $('desk-mode').focus(); });
 
 for (const button of document.querySelectorAll('[data-tab]')) {
   button.addEventListener('click', () => setTab(button.dataset.tab));
@@ -139,6 +160,7 @@ $('schedule-select').addEventListener('change', e => { $('file-message').textCon
 window.addEventListener('resize', update);
 document.addEventListener('visibilitychange', () => { if (document.hidden) { playing = false; update(); } });
 document.addEventListener('keydown', e => {
+  if (e.key === 'Escape' && activeView !== 'factory') { setTab('factory'); $('desk-mode').focus(); }
   if (e.code === 'Space' && e.target === document.body) { e.preventDefault(); $('play').click(); }
 });
 $('present').addEventListener('click', async () => {
@@ -147,13 +169,14 @@ $('present').addEventListener('click', async () => {
     if (document.fullscreenElement) await document.exitFullscreen();
   } else {
     document.body.classList.add('presenting');
-    try { await document.documentElement.requestFullscreen(); } catch { /* Embedded browsers still get the compact presentation layout. */ }
+    try { await document.documentElement.requestFullscreen(); } catch { /* The world remains usable when fullscreen is unavailable. */ }
   }
-  $('present').textContent = document.body.classList.contains('presenting') ? 'Exit presentation' : 'Present';
+  $('present-label').textContent = document.body.classList.contains('presenting') ? 'Exit' : 'Present';
+  $('present').setAttribute('aria-label', document.body.classList.contains('presenting') ? 'Exit presentation' : 'Enter presentation mode');
   update();
 });
 document.addEventListener('fullscreenchange', () => {
-  if (!document.fullscreenElement) { document.body.classList.remove('presenting'); $('present').textContent = 'Present'; update(); }
+  if (!document.fullscreenElement) { document.body.classList.remove('presenting'); $('present-label').textContent = 'Present'; $('present').setAttribute('aria-label', 'Enter presentation mode'); update(); }
 });
 $('export-button').addEventListener('click', () => {
   const url = URL.createObjectURL(new Blob([JSON.stringify(replay, null, 2) + '\n'], { type: 'application/json' }));
@@ -178,7 +201,7 @@ $('import-file').addEventListener('change', async e => {
     loadReplay(value);
     $('file-message').classList.toggle('error', !validation.feasible);
     $('file-message').textContent = validation.feasible ? 'Schedule loaded.' : 'Schedule has conflicts. See Validation.';
-    if (!validation.feasible) setTab('evidence');
+    if (!validation.feasible) { setTab('evidence'); $('tab-evidence').focus(); }
   } catch (error) { $('file-message').classList.add('error'); $('file-message').textContent = `Could not load: ${error.message}`; }
   e.target.value = '';
 });

@@ -1,0 +1,199 @@
+{
+  "schema": "stage1-run.v1",
+  "method": "QAOA p=3, local-x mixer (Qiskit Aer statevector simulator)",
+  "instance": "instance_2x2",
+  "timestamp": "2026-10-16T18:15:08.511745+00:00",
+  "instance_sha256": "ae9a61293664f0492f3f71a43cf329c05ebe5d6407585dadf78cffc6a08e0a87",
+  "model_sha256": "c1c897b6cabc7fade12266fd60942c542b0e2ff5fd5bd60a3144850903d16cbe",
+  "encoding": "domain-wall",
+  "variables": 4,
+  "horizon": 4,
+  "total_samples": 4096,
+  "feasible_samples": 4096,
+  "feasible_rate": 1.0,
+  "accepted": true,
+  "metadata": {
+    "algorithm": "QAOA with independently parameterized single-qubit X mixers",
+    "mixer": "local-x",
+    "trainable_parameters": 15,
+    "simulator": "Qiskit Aer statevector + measured shots",
+    "layers": 3,
+    "shots": 4096,
+    "seed": 102,
+    "restarts": 16,
+    "maxiter": 500,
+    "cost_scale": 1.0,
+    "optimized_parameters": [
+      -0.7853981747562053,
+      0.78539816260292,
+      -1.570796328761508,
+      -1.5707963478374736,
+      -1.5707963289320883,
+      1.5707963248004824,
+      1.570796333922682,
+      1.718649970346624,
+      -0.7853981676863618,
+      -0.7853981703259704,
+      -0.46357899779111555,
+      -2.3561944984458796,
+      -1.126851167394684e-08,
+      -1.4382225138273167e-08,
+      -2.3561944957320438
+    ],
+    "parameter_order": "all gamma, then all beta (layer-major qubit order for local-x)",
+    "optimizer": "BFGS, mean QUBO energy",
+    "expected_energy": 8.558012276642415e-16,
+    "ideal_feasible_probability": 0.9999999999999996,
+    "elapsed_wall_seconds": 6.904175749979913,
+    "attempts": [
+      {
+        "restart": 0,
+        "expected_energy": 0.21988596783106823,
+        "evaluations": 944,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 1,
+        "expected_energy": 0.7691676848237368,
+        "evaluations": 848,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 2,
+        "expected_energy": 1.3180410350830203e-15,
+        "evaluations": 1312,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 3,
+        "expected_energy": 2.2866563592413957e-15,
+        "evaluations": 992,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 4,
+        "expected_energy": 2.797044991355102e-15,
+        "evaluations": 864,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 5,
+        "expected_energy": 0.2746347319623936,
+        "evaluations": 1100,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 6,
+        "expected_energy": 8.558012276642415e-16,
+        "evaluations": 416,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 7,
+        "expected_energy": 1.0625506935723508e-15,
+        "evaluations": 784,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 8,
+        "expected_energy": 0.2463743882269654,
+        "evaluations": 800,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 9,
+        "expected_energy": 9.429746737863556e-16,
+        "evaluations": 2668,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 10,
+        "expected_energy": 0.2299167124963306,
+        "evaluations": 1356,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 11,
+        "expected_energy": 0.4882900660254056,
+        "evaluations": 1419,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 12,
+        "expected_energy": 0.5608510184816414,
+        "evaluations": 1422,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 13,
+        "expected_energy": 2.832035239776597e-15,
+        "evaluations": 896,
+        "converged": true,
+        "message": "Optimization terminated successfully."
+      },
+      {
+        "restart": 14,
+        "expected_energy": 4.636535686660809e-15,
+        "evaluations": 1547,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      },
+      {
+        "restart": 15,
+        "expected_energy": 0.31514254884774323,
+        "evaluations": 800,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      }
+    ],
+    "circuit_depth": 14,
+    "circuit_operations": {
+      "rzz": 12,
+      "rx": 12,
+      "rz": 6,
+      "h": 4
+    },
+    "bit_order": "sample[i] is qubit i; raw Qiskit strings reversed on decoding",
+    "network_blocked_during_run": true
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "dimod": "0.12.22",
+    "dwave-samplers": "1.8.0",
+    "veloxq-sdk": "1.0.0"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "machine": "arm64"
+  },
+  "source_sha256": {
+    "solver/__init__.py": "8a447e643ac186cf2390ce81a48521bec3511c7d033ccbab71dcfff37c5134c1",
+    "solver/artifacts.py": "c08e4b4ede8437ba342e49e354cc460fc0c9a75f3e5d171e5ca8879c58d5d423",
+    "solver/audit.py": "5d0ae92e9f4bb17de8284dbb950d9eb8f1e513c69bd036e8970c4eed60523d92",
+    "solver/benchmark.py": "56143a794d4f6d40e5e5f803fe3c24a4dde7ec01f28630e38330c3cb1680bd31",
+    "solver/local.py": "e6ebeb3e0de0453aabd3402579d87e4740da748998aa75f6b41d9fadbc0871ec",
+    "solver/odra.py": "c99a20b1e9fbdfcde511d7c16a2d8a917675f16e0d5231a012b124df21937712",
+    "solver/quantum.py": "acc1464a1c6b58fc39e94fec9da4b1e97605d5992e88afda0e3a5b38b52e2ed0",
+    "solver/refine.py": "dd6719d8b23169ba71938720587e5b93f98bb2086891cb048f8681b87c5078a0",
+    "solver/stage1.py": "0b985f88fb2c5098c66d356191dbaf6962cb59adc4eb0e1bc4e085189102141d",
+    "solver/velox.py": "7a788c71fd073ae6313667d7714ac86233a0dcffb7a9301b7bcde9432bc08cdf",
+    "solver/verify.py": "73c08a1f14af0cb6e81e64f02b451c302c40da62ded06f3f89121d5a32e9eedb"
+  }
+}

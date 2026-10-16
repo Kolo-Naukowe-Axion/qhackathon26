@@ -9,8 +9,9 @@ const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
-    const path = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
+    let path = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
     if (!path.startsWith(root.endsWith(sep) ? root : root + sep)) { res.writeHead(403).end(); return; }
+    if ((await stat(path)).isDirectory()) path = resolve(path, 'index.html');
     if (!(await stat(path)).isFile()) throw new Error('Not a file');
     res.writeHead(200, { 'Content-Type': `${types[extname(path)] || 'application/octet-stream'}; charset=utf-8`, 'Cache-Control': 'no-store' });
     res.end(await readFile(path));

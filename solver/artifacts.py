@@ -5,8 +5,9 @@ import hashlib
 import importlib.metadata
 import json
 from pathlib import Path
+import platform
 
-from .stage1 import checked_bits, decode, energy, validate
+from .stage1 import ROOT, checked_bits, decode, energy, validate
 
 
 def digest(value):
@@ -64,7 +65,10 @@ def save_run(directory, instance_name, instance, model, records, method, metadat
                   horizon=model["horizon"], total_samples=total,
                   feasible_samples=sum(r["count"] for r in feasible),
                   feasible_rate=sum(r["count"] for r in feasible) / total if total else 0,
-                  accepted=bool(feasible), metadata=metadata, versions=versions())
+                  accepted=bool(feasible), metadata=metadata, versions=versions(),
+                  runtime=dict(python=platform.python_version(), platform=platform.platform(), machine=platform.machine()),
+                  source_sha256={str(path.relative_to(ROOT)): hashlib.sha256(path.read_bytes()).hexdigest()
+                                 for path in sorted((ROOT / "solver").glob("*.py"))})
     write_json(directory / "model.json", model)
     write_json(directory / "samples.json", assessed)
     write_json(directory / "run.json", report)
@@ -77,7 +81,8 @@ def save_run(directory, instance_name, instance, model, records, method, metadat
     replay = dict(schema="axion-replay.v1", unit="hours", provenance=dict(
         kind="solver", method=method, label=f"Verified {instance_name} solver run",
         description=f"Actual returned sample; evidence model SHA256 {digest(model)}",
-        source=str(directory), jobId=metadata.get("job_id"), timestamp=report["timestamp"]),
+        source=str(directory.relative_to(ROOT)) if directory.is_absolute() and directory.is_relative_to(ROOT) else str(directory),
+        jobId=metadata.get("job_id"), timestamp=report["timestamp"]),
         machines=[dict(id=op["machine"], name=op["machine"]) for op in instance["jobs"][0]["operations"]],
         jobs=[dict(job, color=["#648da3", "#ba8560", "#95a66b"][i % 3]) for i, job in enumerate(instance["jobs"])],
         schedule=schedule, declaredMakespan=official["makespan"])

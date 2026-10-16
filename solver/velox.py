@@ -105,7 +105,7 @@ def main():
     parser.add_argument("--backend-id", help="Override only with an actual organizer-supplied backend id")
     parser.add_argument("--timeout", type=float, default=300)
     args = parser.parse_args()
-    if min(args.num_rep, args.num_steps, args.timeout) <= 0:
+    if not math.isfinite(args.timeout) or min(args.num_rep, args.num_steps, args.timeout) <= 0:
         parser.error("Positive budgets required")
     if (args.output / "run.json").exists():
         parser.error("Completed evidence already exists; choose another output directory")
