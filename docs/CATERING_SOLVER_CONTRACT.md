@@ -1,7 +1,9 @@
 # Catering solver contract v1 — foundation handoff design
 
-17 October 2026. This is the interface to implement before releasing the common
-foundation, not a claim that the loader, adapters or fixtures already exist.
+17 October 2026. The first runnable core now implements the loader, exact energy,
+Ising conversion, decoder/checker, classical adapters and frozen fixtures.
+Start with [the runnable quick start](../catering/README.md). Quantum/VeloxQ
+adapters and the ambitious profile remain separate work.
 See [work allocation](CATERING_METHOD_WORKSPLIT.md) and
 [operational specification](CATERING_AMBITIOUS_SPEC.md).
 

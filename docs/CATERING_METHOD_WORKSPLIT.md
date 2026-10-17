@@ -12,8 +12,14 @@ agents were started or that assignments were sent. The user and this chat own
 the classical track as well as the foundation. The three other people take the
 VeloxQ, QAOA and VQE tracks; their names are not assigned here.
 Factory code, evidence and demo remain intact as a fallback. The catering
-foundation is not implemented or ready for method experiments merely because
-this document exists. IBM/VeloxQ execution holds remain unchanged.
+first runnable core is now released: see [the quick start](../catering/README.md)
+and the frozen inputs in output/catering-foundation-v1/. The full ambitious
+profile remains incomplete. IBM/VeloxQ execution holds remain unchanged.
+
+**Method owners can start now:** pull main and use the frozen quantum-qubo.json
+files for QAOA/VQE, complete-qubo.json for offline VeloxQ integration, and the
+same bundle hashes for direct method comparisons. The shared compiler/encoding
+is ours; do not rebuild it per method. New larger workloads will be versioned.
 
 Read the [ambitious specification](CATERING_AMBITIOUS_SPEC.md) for the target
 problem and the [solver contract](CATERING_SOLVER_CONTRACT.md) for shared inputs,

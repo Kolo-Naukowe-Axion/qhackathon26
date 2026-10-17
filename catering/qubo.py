@@ -1,6 +1,6 @@
 """Exact integer literal QUBO, bounded registers and Pauli-Z conversion."""
 from collections import Counter
-from .domain import digest, make_plan, residual_demand
+from .domain import digest, make_plan, residual_demand, validate_instance
 from .options import claims, conflict
 
 
@@ -15,6 +15,9 @@ def bounded_weights(limit):
 
 def compile_qubo(instance, state, programs, *, representation="complete-core-grid", parent_sha256=None):
     from .check import check_plan
+    validate_instance(instance)
+    if not check_plan(instance, state, make_plan(instance, state["fixed_batches"]))["valid"]:
+        raise ValueError("Invalid committed boundary")
     for p in programs:
         if not p["allocation_order"] or not check_plan(instance, state, make_plan(instance, state["fixed_batches"] + [p]))["valid"]:
             raise ValueError("Compiler accepts only individually valid nonempty programs")

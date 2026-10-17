@@ -2,6 +2,17 @@
 
 ## Active direction: try catering; shared foundation then methods — 17 October
 
+**First runnable handoff released:** catering/README.md points to the shared
+compiler, loader, Ising conversion, decoder/checker and frozen
+output/catering-foundation-v1/ inputs. Complete core widths27/91/9/46; deterministic
+cap16 widths17/18/9/18. Native optional-interval master and independent selection
+enumeration agree; quantum-size matrices also pass exhaustive bitstring audits.
+All four cases have zero missed lots/waste and one new batch; this is an easy
+small core, not a quantum/service advantage or full flagship.15tests pass.
+The user has sent the assignment to the other people; they can start now using
+our shared encoding rather than creating one per method. Our next classical
+work is a raw decision model independent of program enumeration.
+
 **Ownership clarification:** the user and this chat take classical benchmarking
 and the shared foundation. The other three people take VeloxQ, QAOA and VQE.
 The user authorized pushing the handoff to main now and starting our work.

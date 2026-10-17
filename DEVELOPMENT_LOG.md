@@ -1,5 +1,25 @@
 # Development log
 
+## 2026-10-17 — runnable catering foundation and first classical references
+
+Implemented the complete finite-grid contiguous-packing conservative core,
+four common-prefix event cases, explicit raw operation/material checker,
+QUBO/register/Ising compiler, decoder, stable loader/evaluator, native optional-
+interval program master, exact QUBO enumeration and seeded no-repair SA.
+The user committed the in-progress shared code as94f6cf1while work continued;
+preserved it and added boundary validation, quick start and frozen artifacts.
+
+First input release output/catering-foundation-v1/ has42artifact hashes and
+12source hashes verified. Full core widths/couplers:27/351,91/3782,9/36,46/946;
+quantum cap16:17/136,18/149,9/36,18/140. Independent full-domain raw-subset audits
+check27/4006/9/991selections. Restricted QUBOs exhaust131072/262144/512/262144
+bitstrings. Native references are OPTIMAL and agree with independent minima.
+All four optima have U=W=0 and B=1; R=0 for S0 and2otherwise. The restriction
+retains these optima but is not a lossless-domain proof. These are easy starter
+cases, not a performance/quantum advantage.15meaningful tests pass. Advanced
+failure/WIP/capacity/money profiles remain explicitly unsupported. No external
+compute, IBM or VeloxQ use. Method owners may now use our frozen encoding.
+
 ## 2026-10-17 — handoff push and classical ownership
 
 The user assigned this chat the classical track plus the shared catering

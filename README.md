@@ -7,8 +7,10 @@ the [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md),
 [four-person method allocation](docs/CATERING_METHOD_WORKSPLIT.md) and
 [common solver contract](docs/CATERING_SOLVER_CONTRACT.md). Codex builds the shared
 foundation first; independent owners then evaluate VeloxQ, QAOA, VQE and classical
-references. Catering foundation/bundles and method results are not implemented
-by these planning documents. IBM/VeloxQ execution remains held.
+references. The [first runnable core](catering/README.md) and frozen inputs at
+output/catering-foundation-v1/ now provide four checked cases, common QUBO/Ising
+encodings, decoder/checker, exact/native references and SA. The ambitious profile
+and quantum/service results remain incomplete. IBM/VeloxQ execution remains held.
 
 The existing factory implementation, results and demo below remain intact as
 a fallback. Its technical acceptance does not certify the new catering scope.
