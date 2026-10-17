@@ -1,5 +1,54 @@
 # Development log
 
+## 2026-10-17 — three formulation reviews and a standalone project design
+
+The user emphasized avoiding disruption to the other owners' in-flight models.
+No loss, QUBO coefficient, variable ordering, frozen instance or bundle hash was
+changed. Validation fixes affect only out-of-profile/malformed inputs. Current
+owners need no new input or rerun; any future migration must first be raised
+with the user. Kept the existing source snapshots and all retained runs.
+
+Rebuilt PROJECT_DESIGN.md around the active paired-meal model and retained the
+earlier factory design as folded history. The active document specifies the
+data/decisions, finite-grid physical rules, unit-demand anchor bijection,
+quadratic complete-meal/waste objective, exact lexicographic hierarchy,
+full-polynomial penalty bound, 4E Ising mapping and actual quantum algorithm.
+The proof deliberately handles negative objective values on invalid strings;
+the actual cell's all-ones objective is negative while the penalty remains safe.
+
+Added docs/CATERING_QUALITY.md and read-only catering.audit_math. Fresh checks
+recompute 13 small-domain exact optima, compare independent physical pairs with
+the conflict graph, verify polynomial/Ising identities and re-encode final
+incumbents in their final offered pools. Six of eight are same-pool optimal;
+all eight still trail raw CP. All eight final-step controls also tie the
+quantum outcome, so this finding establishes no cost-phase advantage. Distinct
+scalarizations, sampling success, feasibility, representation loss and search
+loss are reported separately, including the FEASIBLE S0/256 incumbent whose
+tuple matches a certified raw optimum.
+
+The user requested several problem-formulation review passes. Three read-only
+subagents examined loss/physical semantics, encoding/proofs and reference/quality
+consistency. They found no algebraic/material-balance defect in current fixtures,
+but reproduced two input-boundary bugs. Future, malformed or non-cooker outages
+passed validation despite the observed-withdrawal profile; future ordinary
+demand could enter a snapshot before reveal. Added fail-closed validation and
+independent checker guards, including integer/grid/horizon snapshot time.
+Regression tests cover those examples and constructor bypass, plus unequal
+priorities/nonempty previous plans and physical-subset/anchor equivalence.
+Current frozen artifacts satisfy the clarified boundaries and are unchanged.
+
+The initial full unittest discovery exposed optional adapter imports in the
+lightweight environment. Corrected the documented core test pattern and used
+the separate SDK environment for Qiskit and adapter pytest. Installed pytest
+as a local test tool; no runtime dependency or backend budget was changed.
+Fresh results: 51 core tests (50passed, 1 optional SDK skip), the dedicated Qiskit
+equivalence test passed, 66 offline adapter tests passed with three SDK deprecation
+warnings; static build and all 138 site tests pass. Retained recheck covers 965
+artifact hashes, 152340 bitstrings, 467003 sample frequencies and 8 final plans.
+Stage 1 selected evidence verifies optimal 4h/8h and matches the root schedules.
+Receipts and source hashes: output/catering-math-audit-v1/. No quantum training,
+service submission, QPU use, public release or repo cleanup occurred.
+
 ## 2026-10-17 — paired-meal foundation, complete quantum cell and retained scaling pilot
 
 Implemented paired-course v3: complete meals require main AND side, and reserved

@@ -16,6 +16,9 @@ The [submission checklist](docs/STAGE2_SUBMISSION.md) maps all 30 points and the
 separate VeloxQ criteria to evidence, remaining work and final release gates.
 GitHub stays private during development; public release is deferred to the final
 submission step, with time to verify access before the deadline.
+The [standalone project design](PROJECT_DESIGN.md) contains the current model
+and correctness proofs. The [quality audit](docs/CATERING_QUALITY.md) records
+exact versus incumbent status, sampling quality and representation/search gaps.
 
 The new paired-course profile requires both main and side for a complete meal,
 counts unmatched food as waste, and adds a quadratic service objective without

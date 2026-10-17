@@ -9,6 +9,17 @@ def _check_plan(instance, state, plan):
     horizon, step = instance["horizon_minutes"], instance["grid_minutes"]
     if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE,PAIRED_PROFILE):
         return dict(valid=False, violations=["Unsupported profile"], metrics=None)
+    now = state["current_time"]
+    if type(now) is not int or not 0 <= now < horizon or now % step:
+        return dict(valid=False, violations=["Invalid snapshot event time"], metrics=None)
+    if any(d["revealed"] > state["current_time"] for d in state["demand_groups"]):
+        errors.append("Snapshot exposes demand before its information reveal")
+    for outage in state["outages"]:
+        if (outage["resource"] not in instance["equipment"]["cook"]
+                or any(type(outage[k]) is not int for k in ("start","end"))
+                or not 0 <= outage["start"] <= state["current_time"] < outage["end"] <= horizon
+                or outage["start"] % step or outage["end"] % step):
+            errors.append("Invalid observed cooker outage in snapshot")
     recovery = state.get("recovery_operations",[])
     if plan.get("recovery_operations",[]) != recovery:
         errors.append("Mandatory post-repair clean changed or missing")

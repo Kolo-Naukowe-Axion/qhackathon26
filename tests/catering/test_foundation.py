@@ -38,6 +38,40 @@ class FoundationTests(unittest.TestCase):
         p=copy.deepcopy(self.instance);p["outage"]["resource"]="C1"
         with self.assertRaises(ValueError):snapshot(p,"S2")
 
+    def test_outage_domain_rejects_future_malformed_and_non_cooker_withdrawals(self):
+        invalid=[dict(start=20,end=61),dict(start=20.5,end=60),
+                 dict(start=70,end=60),dict(start=30,end=60),
+                 dict(start=0,end=20),dict(start=20,end=120),
+                 dict(resource="W2"),dict(start=True),dict(end=False)]
+        for changes in invalid:
+            with self.subTest(changes=changes):
+                instance=copy.deepcopy(self.instance)
+                instance["outage"].update(changes)
+                with self.assertRaises(ValueError):validate_instance(instance)
+        for event in (-10,20.0,True,110):
+            with self.subTest(event=event):
+                instance=copy.deepcopy(self.instance);instance["event_time"]=event
+                with self.assertRaises(ValueError):validate_instance(instance)
+        ongoing=copy.deepcopy(self.instance);ongoing["outage"]["start"]=10
+        self.assertEqual(snapshot(ongoing,"S2")["outages"][0]["start"],10)
+
+    def test_checker_rejects_forged_future_outage_even_with_valid_recovery_records(self):
+        state=copy.deepcopy(self.states["S2"])
+        state["outages"][0]["start"]=30
+        plan=make_plan(self.instance,state["fixed_batches"],state["recovery_operations"])
+        result=check_plan(self.instance,state,plan)
+        self.assertFalse(result["valid"])
+        self.assertIn("Invalid observed cooker outage in snapshot",result["violations"])
+
+    def test_checker_rejects_forged_noninteger_or_out_of_grid_event_time(self):
+        for event in (20.0,20.5,True,-10,110):
+            with self.subTest(event=event):
+                state=copy.deepcopy(self.states["S2"]);state["current_time"]=event
+                plan=make_plan(self.instance,state["fixed_batches"],state["recovery_operations"])
+                result=check_plan(self.instance,state,plan)
+                self.assertFalse(result["valid"])
+                self.assertIn("Invalid snapshot event time",result["violations"])
+
     def test_raw_full_plan_and_material_disposal(self):
         state=self.states["S0"]
         p=next(p for p in self.programs["S0"] if p["yield_lots"]==2)

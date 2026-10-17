@@ -1,5 +1,38 @@
 # QPoland Quantum Hackathon — running context
 
+## Formulation review, proofs and quality audit — 17 October
+
+The user emphasized that method owners are actively running models and that
+changes are inconvenient. Keep loss/encoding/coefficient/input contracts frozen.
+The review's validation guards do not alter current frozen workloads or require
+any owner migration. Flag any future input/encoding change and its rerun impact
+to the user before proceeding. No teammate message was sent.
+
+PROJECT_DESIGN.md is now the standalone active catering specification, with
+anchor equivalence, physical semantics, quadratic loss, exact lexicographic
+weights, all-bitstring penalty proof, Ising convention and actual multi-angle
+XY-QAOA settings. Prior factory design remains folded history in the same file.
+docs/CATERING_QUALITY.md gives exact statuses, sampling probabilities and
+raw/offered/returned comparisons. New read-only catering.audit_math checks 13
+small bundles, independent physical pairs and complete-cell subset enumeration.
+
+Three subagent reviews found no algebraic loss/encoding defect in the retained
+fixtures. They identified two input-boundary gaps: unsupported future/malformed
+outages and future-revealed active demand. Domain/snapshot validation and the
+independent checker now reject those; the checker also validates snapshot time.
+New regression tests cover constructor bypasses, unequal meal priorities and a
+nonempty previous plan. Frozen inputs/samples/schedules remain unchanged.
+
+Fresh checks: 51 core unittest cases (50 pass, 1 optional Qiskit skip), dedicated
+Qiskit equivalence test passed, 66 offline adapter pytest cases passed; site build
+passes 138 tests. Retained check validates 965 hashes, 152340 returned bitstrings,
+467003sample frequencies and 8 final plans. Official Stage 1 selected quantum
+evidence and root schedules recheck at 4h/8h. Six of eight final incumbents
+attain the exact optimum of their final attempted pool, but all trail raw CP;
+all eight final-step controls also tie their quantum outcome. This is a
+representation/search-loss finding, not quantum superiority. Receipts are in
+output/catering-math-audit-v1/. No quantum training or service calls occurred.
+
 ## Submission coverage and release privacy — 17 October
 
 docs/STAGE2_SUBMISSION.md now contains the active catering deliverables and

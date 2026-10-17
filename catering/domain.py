@@ -83,7 +83,8 @@ def validate_instance(instance):
         raise ValueError("Unsupported profile; ambitious mechanisms are not silently ignored")
     step = integer(instance["grid_minutes"], "grid", 1)
     end = integer(instance["horizon_minutes"], "horizon", step)
-    if end % step or instance["event_time"] % step:
+    event = integer(instance["event_time"], "event time")
+    if end % step or event % step or event >= end:
         raise ValueError("Grid-aligned calendar required")
     if instance["profile_id"] != LEGACY_PROFILE:
         duration = integer(instance["repair_clean_minutes"],"repair clean",1)
@@ -125,6 +126,14 @@ def validate_instance(instance):
         raise ValueError("This core profile requires exactly one packing line")
     if len(resources) != len(set(resources)) or set(resources) & set(instance["workers"]):
         raise ValueError("Resource identities must be distinct")
+    outage = instance.get("outage")
+    if not isinstance(outage, dict) or set(outage) != {"resource", "start", "end"}:
+        raise ValueError("Explicit observed cooker outage required")
+    start = integer(outage["start"], "outage start")
+    stop = integer(outage["end"], "outage end", 1)
+    if (outage["resource"] not in instance["equipment"]["cook"]
+            or start % step or stop % step or not start <= event < stop <= end):
+        raise ValueError("Outage must be a grid-aligned ongoing observed cooker withdrawal")
     for resource in resources + list(instance["workers"]):
         intervals = instance["calendars"].get(resource, [])
         if not intervals:
@@ -150,6 +159,8 @@ def snapshot(instance, scenario):
     demands = copy.deepcopy(instance["demand_groups"])
     if scenario in ("S1", "S3"):
         demands += copy.deepcopy(instance["urgent_groups"])
+    if any(d["revealed"] > instance["event_time"] for d in demands):
+        raise ValueError("Snapshot contains demand not yet revealed at the event time")
     fixed = copy.deepcopy(instance["fixed_batches"])
     result = dict(schema_version="catering-snapshot.v1", scenario_id=scenario,
                   current_time=instance["event_time"], demand_groups=demands,

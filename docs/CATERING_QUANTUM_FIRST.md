@@ -1,5 +1,12 @@
 # Catering: quantum-first method and current evidence
 
+**Mathematical specification:** [PROJECT_DESIGN.md](../PROJECT_DESIGN.md) now
+contains the complete active data model, anchor equivalence proof, quadratic
+objective, lexicographic and penalty proofs, Ising map and actual quantum method.
+The [quality audit](CATERING_QUALITY.md) reports current statuses and separates
+representation loss from within-portfolio search loss. Sections explicitly
+marked historical below are decision history, not the current formulation.
+
 **Accepted direction — 17 October 2026:** the user approved optimizing for the
 hackathon's judging criteria and targeting both the overall prize and best use
 of VeloxQ through one integrated catering-production project. Demonstrating
@@ -46,7 +53,8 @@ The local foundation is now implemented and frozen, with source snapshots:
 | output/catering-paired-pilot-v1/ | Eight predeclared QAOA runs:4paired cases,2seeds,8portfolio updates,16parameter evaluations/update,2048shots/update. Quantum samples construct valid improving plans, but all8final plans remain worse than raw CP. |
 | output/catering-v3-verification.json | Separate manifest, raw sample energy/validity, frequency, controller-update and final-plan rechecks. |
 | output/catering-paired-circuit-audit-v1/ | One35qubit pilot circuit:272CXall-to-all,925CXon a synthetic57node heavy-hex topology. |
-| output/catering-velox-scale-v3/ | 12-customer S3, nested 512/1,024/2,048 variables and 37,008/156,129/636,882 couplers. Local finite-budget references and checked idle witnesses; no service result. |
+| output/catering-velox-scale-v3/ | 12-customer S3, nested 512/1,024/2,048 variables and 37,008/156,129/636,882 couplers. Input bundles, finite-budget references and checked idle witnesses; actual service receipts are separately retained in output/catering-methods/veloxq/. |
+| output/catering-math-audit-v1/ | Fresh coefficient/penalty/Ising/physical-pair checks and exact-sector minima for 13 small bundles, independent physical subset audit of the complete cell, retained-evidence and test receipts. Six of eight final incumbents attain the exact optimum of their final attempted portfolio; all still trail raw CP. |
 | presentation/catering/ | V3 pixel-game replay with actual method/source switching, complete-meal counts, mandatory cleaning, equations and all larger pilot outcomes. |
 | output/catering-complete-cell-circuit-v3/ | Complete-cell p1circuit:702CXall-to-all,1914CXon the same synthetic topology. |
 
@@ -82,7 +90,8 @@ priority does not create an independent stability tradeoff in these inputs.
 Next gates are VQE/standard-QAOA results on shared bundles, better large-kitchen
 quantum quality, actual calibrated IBM compilation before spending, a bounded
 authorized VeloxQ campaign, and the synchronized demo/video/public submission.
-No service result or quantum advantage is claimed. Generic matrix-product-state
+The owner's first cold VeloxQ service results are documented separately;
+no quantum advantage is claimed. Generic matrix-product-state
 runtime probes are separate from these more connected QAOA circuits.
 
 ## Recommendation for winning the event

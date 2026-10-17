@@ -14,6 +14,13 @@ check and submission receipt remain open.
 
 The checklist below is the active catering turn-in plan.
 
+**Correctness/design preparation:** the active standalone specification and
+proofs are now in [PROJECT_DESIGN.md](../PROJECT_DESIGN.md). The
+[quality audit](CATERING_QUALITY.md) adds fresh exact checks and separates
+sampling, search and representation loss. Finish result selection and
+reproduction at the release commit; these checks do not improve or replace
+the measured larger-kitchen results.
+
 ## What we submit
 
 One project: **Axion Kitchen**, a paired-course batch-production scheduling

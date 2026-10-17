@@ -8,6 +8,9 @@ The [classical reference design](../docs/catering-methods/CLASSICAL.md) defines
 the independent raw CP model, exact same-input checks and SA controls, including
 how to distinguish representation loss from quantum search loss.
 For the talk and recording, use the [active presentation/demo plan](../docs/CATERING_PRESENTATION.md).
+The [standalone project design and proofs](../PROJECT_DESIGN.md) define the
+implemented model. The [quality audit](../docs/CATERING_QUALITY.md) separates
+full-grid, same-portfolio and returned-plan quality and records current checks.
 
 **Superseded results:** v1 omitted the mandatory post-repair clean in S2/S3.
 Use V3for the paired-meal extension, or output/catering-foundation-v2/ for
@@ -146,12 +149,28 @@ the Python standard library.
 
     python3 -m venv .venv-catering
     .venv-catering/bin/python -m pip install -r catering/requirements.txt
-    .venv-catering/bin/python -m unittest discover -s tests/catering -v
+    .venv-catering/bin/python -m unittest discover -s tests/catering -p 'test_[!v]*.py' -v
     .venv-catering/bin/python -m catering.run build --output output/my-catering-foundation
 
 The existing local .venv-stage2 also runs these commands. A build refuses to
 overwrite an output directory. Defaults use local CPU only; no network service,
 QPU, credit, H100 allocation or private credential is touched.
+
+The test pattern excludes the optional VeloxQ adapter's pytest file. Its
+dependencies and runner belong to that method environment; unittest discovery
+of the entire directory in the lightweight foundation environment would fail
+to import dimod. Qiskit circuit equivalence is optional in the core suite and
+can be run separately in the SDK environment. Current local checks:
+
+```sh
+.venv-stage2/bin/python -m unittest discover -s tests/catering -p 'test_[!v]*.py' -v
+.venv/bin/python -m unittest discover -s tests/catering -p test_meal_circuit.py -v
+.venv/bin/python -m pytest tests/catering/test_veloxq_adapter.py -q
+.venv-stage2/bin/python -m catering.audit_math --output output/NEW-MATH-AUDIT.json
+```
+
+The mathematical audit recomputes exact small-domain costs and physical pair
+checks from frozen inputs. It does not train, repair a sample or submit a job.
 
 ## Frozen inputs for method owners
 

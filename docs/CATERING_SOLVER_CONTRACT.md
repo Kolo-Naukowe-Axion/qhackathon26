@@ -9,6 +9,18 @@ portfolios have measured losses and are not final full-kitchen answers.
 
 ### V3 additions that every method must respect
 
+The current [project design](../PROJECT_DESIGN.md) proves the encoding and
+objective/penalty conventions. The [quality audit](CATERING_QUALITY.md) gives
+exact versus incumbent status and raw/offered/returned-domain comparisons.
+
+**17 October review: no method-owner migration.** The loss, frozen instance
+data, QUBO coefficients, bit ordering, bundle hashes and result format are
+unchanged. Validation now rejects out-of-profile future demand/outages and
+malformed snapshot times. Existing frozen workloads pass unchanged; in-flight
+runs need no restart, re-encoding or retraining. Preserve each run's existing
+source snapshot. Any later change requiring new inputs must be versioned and
+raised with the user before asking owners to rerun work.
+
 - A complete meal needs both main and side. U counts weighted complete meal
   misses; W counts component waste, including unpaired reserved components.
 - `service_model` defines the pairing. Plan `allocations` are component

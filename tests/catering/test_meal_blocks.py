@@ -48,6 +48,27 @@ class MealBlockTests(unittest.TestCase):
         plan["meal_handovers"]=[]
         self.assertFalse(check_plan(self.p,self.s,plan)["valid"])
 
+    def test_snapshot_and_checker_reject_unrevealed_future_meal_information(self):
+        instance=copy.deepcopy(self.p)
+        future={"customer-0/main","customer-0/side"}
+        for group in instance["demand_groups"]:
+            if group["id"] in future:group["revealed"]=80
+        with self.assertRaisesRegex(ValueError,"not yet revealed"):
+            snapshot(instance,"S0")
+        # Bypassing the constructor must not bypass the independent checker.
+        state=copy.deepcopy(self.s)
+        for group in state["demand_groups"]:
+            if group["id"] in future:group["revealed"]=80
+        plan=make_plan(instance,state["fixed_batches"])
+        result=check_plan(instance,state,plan)
+        self.assertFalse(result["valid"])
+        self.assertIn("Snapshot exposes demand before its information reveal",result["violations"])
+        instance=copy.deepcopy(self.p)
+        for group in instance["urgent_groups"]:group["revealed"]=80
+        snapshot(instance,"S0")  # The unobserved urgent meal is not exposed.
+        with self.assertRaisesRegex(ValueError,"not yet revealed"):
+            snapshot(instance,"S1")
+
     def test_all_hilbert_bitstrings_have_the_correct_zero_penalty_set(self):
         b=self.bundle;n=b["size"]["binary_variables"]
         self.assertLessEqual(n,10)
@@ -150,6 +171,54 @@ class MealBlockTests(unittest.TestCase):
         self.assertEqual(raw["reference_status"],"OPTIMAL")
         self.assertEqual(optimum["check"]["metrics"],raw["check"]["metrics"])
         self.assertEqual(raw["check"]["metrics"],dict(U=0,W=0,B=2,R=2))
+
+    def test_priority_and_nonempty_previous_plan_obey_the_full_lexicographic_proof(self):
+        # Current demo fixtures have unit priorities and R=B. Exercise the
+        # distinct priority and symmetric-difference terms on every bitstring.
+        instance=copy.deepcopy(self.p)
+        for priority,meal in zip((2,5,3),instance["service_model"]["meals"]):
+            meal["priority"]=priority
+        instance["previous_unstarted"]=[copy.deepcopy(self.pool[0])]
+        state=snapshot(instance,"S0")
+        bundle=compile_meal_blocks(instance,state,self.pool,tight_bounds=True)
+        weights=bundle["objective"]["weights"]
+        bounds=bundle["objective"]["component_bounds"]
+        feasible=[];invalid=[]
+        prior={self.pool[0]["id"]}
+        for bits in itertools.product((0,1),repeat=bundle["size"]["binary_variables"]):
+            bits=list(bits);result=decode(bundle,bits)
+            if not result["valid"]:
+                invalid.append(energy(bundle,bits));continue
+            metrics=result["check"]["metrics"]
+            produced=sum(p["yield_lots"] for p in result["plan"]["batches"])
+            self.assertEqual(metrics["W"],produced-2*result["check"]["completed_meal_lots"])
+            chosen={p["id"] for i,p in enumerate(bundle["options"]) if bits[i]}
+            self.assertEqual(metrics["R"],len(chosen^prior))
+            self.assertEqual(energy(bundle,bits),sum(weights[k]*metrics[k] for k in weights))
+            self.assertTrue(all(0<=metrics[k]<=bounds[k] for k in bounds))
+            feasible.append((tuple(metrics[k] for k in ("U","W","B","R")),energy(bundle,bits)))
+        self.assertGreater(len(set(m for m,_ in feasible)),1)
+        self.assertEqual(sorted(set(feasible)),sorted(set(feasible),key=lambda row:row[1]))
+        self.assertGreater(min(invalid),max(value for _,value in feasible))
+
+    def test_anchor_register_is_a_bijection_on_physically_feasible_subsets(self):
+        # Begin with the physical checker, independently of anchor/conflict
+        # constraints. Every compatible subset must have exactly one encoding.
+        b=self.bundle;expected=set()
+        for mask in range(1<<len(b["options"])):
+            selected=[i for i in range(len(b["options"])) if mask>>i&1]
+            plan=make_plan(self.p,self.s["fixed_batches"]+[b["options"][i] for i in selected])
+            if not check_plan(self.p,self.s,plan)["valid"]:continue
+            bits=[0]*b["size"]["binary_variables"]
+            for group in b["onehot_groups"]:
+                offered=[i for i in group["program_indices"] if i in selected]
+                self.assertLessEqual(len(offered),1)
+                bits[offered[0] if offered else group["idle_index"]]=1
+            self.assertTrue(decode(b,bits)["valid"])
+            expected.add(tuple(bits))
+        observed={tuple(sector_bits(b,self.sector,i)) for i in range(self.sector["states"])
+                  if decode(b,sector_bits(b,self.sector,i))["valid"]}
+        self.assertEqual(observed,expected)
 
     def test_raw_reference_optimizes_complete_meals_and_runs_mandatory_clean(self):
         normal=solve_native(self.p,self.s,dict(wall_time_limit_s=3))
