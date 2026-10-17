@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {activateRun,mealOrders,deliveredMeals,allOperations} from '../presentation/catering/model.js';
 import {withAlternative} from '../presentation/catering/kitchen-state.js';
-import {productionSequence,componentStatus,playbackEnd,adjacentEvent,eventDescription} from '../presentation/catering/production-sequence.js';
+import {productionSequence,componentStatus,playbackEnd,adjacentEvent,eventDescription,departureLabel} from '../presentation/catering/production-sequence.js';
 const {cases}=JSON.parse(await readFile(new URL('../presentation/catering/replay-data.json',import.meta.url)));
 const cell=activateRun(cases[0]);
 
@@ -51,4 +51,12 @@ test('event stepping includes attendance-independent operation boundaries, depar
   const disrupted=activateRun(cases.find(c=>c.id==='S2'));
   assert.ok(productionSequence(disrupted).eventTimes.includes(70));
   assert.match(eventDescription(disrupted,70),/Recovery clean/);
+});
+
+test('deadline labels count down to departure and do not expose unrevealed order times',()=>{
+  const meal={departure:80,revealed:20};
+  assert.equal(departureLabel(meal,0),'Not yet revealed');
+  assert.equal(departureLabel(meal,20),'LEAVES 11:50 · in 60m');
+  assert.equal(departureLabel(meal,79.9),'LEAVES 11:50 · in 1m');
+  assert.equal(departureLabel(meal,80),'DEPARTURE 11:50');
 });

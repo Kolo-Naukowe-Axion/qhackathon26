@@ -43,7 +43,9 @@ Keep the pixel kitchen style and concrete scheduling language. Avoid slogans,
 vanity qubit counts and invented results. The audience should understand the
 orders, choices, constraints and score before hearing solver names.
 
-- Viewer: `PORT=4192 npm run dev`, then `/catering/`.
+- Viewer: `PORT=4192 npm run dev`, then `/catering/`. It holds at the final
+  service outcome by default; looping is opt-in. The clipboard can jump to
+  the outcome, and evidence-download failures have a retry action.
 - Private studio: `.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193`.
 - Video script: [CATERING_VOICEOVER.md](docs/CATERING_VOICEOVER.md).
 - Live script/operator cues: [CATERING_LIVE.md](docs/CATERING_LIVE.md).

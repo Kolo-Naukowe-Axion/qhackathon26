@@ -57,3 +57,9 @@ export function eventDescription(c,time){
   const ends=allOperations(c).filter(o=>o.end===time).map(o=>`${o.recovery?'Recovery clean':`${{prepare:'Prep',cook:'Cook',pack:'Pack',clean:'Clean'}[o.kind]} ${c.plan.batches.find(b=>b.id===o.batch_id)?.menu??''}`} finishes`);
   return [...starts,...departures].join(' + ')||ends.join(' + ')||'Start of replay';
 }
+
+export function departureLabel(meal,time){
+  if(time<meal.revealed)return 'Not yet revealed';
+  if(time>=meal.departure)return `DEPARTURE ${clock(meal.departure)}`;
+  return `LEAVES ${clock(meal.departure)} · in ${Math.ceil(meal.departure-time)}m`;
+}

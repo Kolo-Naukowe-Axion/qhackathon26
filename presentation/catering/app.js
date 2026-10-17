@@ -3,10 +3,10 @@ import {kitchenSVG,prepareScene,renderWorker,renderKitchen} from './scene.js';
 import {buildWorkerTrack,workerPoseAt} from './worker-motion.js';
 import {decodedActions,stationState,withAlternative} from './kitchen-state.js';
 import {decisionSteps,decisionComparison} from './decision-story.js';
-import {productionSequence,playbackEnd,componentStatus,orderName,adjacentEvent,eventDescription} from './production-sequence.js';
+import {productionSequence,playbackEnd,componentStatus,orderName,adjacentEvent,eventDescription,departureLabel} from './production-sequence.js';
 
 const $=s=>document.querySelector(s),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
-let data,current,referenceCase,fixture,inspected=-1,time=20,playing=false,looping=true,speed=1,lastFrame=0,lastDraw=0,workerTracks=new Map();
+let data,current,referenceCase,fixture,inspected=-1,time=20,playing=false,looping=false,speed=1,lastFrame=0,lastDraw=0,workerTracks=new Map();
 let sequence,timelineView='batch',endHold=0;
 let decodeTour=null,decodeStage=0,decodeElapsed=0,decodeAuto=!reduced,vectorBeforeTour=false;
 $('#kitchen').innerHTML=kitchenSVG();
@@ -82,11 +82,13 @@ function drawSequence(){
   }else $('#sequence-insight').innerHTML='<summary>How to read this sequence</summary><p>Each batch keeps its recipe order. The timeline shows when separate batches overlap, and when cleaning frees a cooker.</p>';
 }
 function updateSequence(){
-  $('#sequence-now').textContent=`NOW · ${clock(time)}`;
-  $('#sequence-active').textContent=activeOperations(current,time).map(o=>`${label(o)} / ${o.resource}`).join(' + ')||'No operation running';
+  const finished=time>=sequence.end;
+  $('#sequence-now').textContent=finished?`FINAL OUTCOME · ${clock(time)}`:`NOW · ${clock(time)}`;
+  $('#sequence-active').textContent=finished?`${deliveredMeals(current,time)} / ${requestedMeals(current)} meals served · ${discardedComponents(current,time)} portions discarded`:activeOperations(current,time).map(o=>`${label(o)} / ${o.resource}`).join(' + ')||'No operation running';
   const next=adjacentEvent(sequence,time,1);
-  $('#next-event-label').textContent=time>=sequence.end?'Last departure reached':`${clock(next)} · ${eventDescription(current,next)}`;
+  $('#next-event-label').textContent=time>=sequence.end?'Replay finished':`${clock(next)} · ${eventDescription(current,next)}`;
   $('#next-event-label').title=$('#next-event-label').textContent;
+  $('#show-outcome').disabled=finished;$('#show-outcome').textContent=finished?'Final outcome shown':'Jump to final outcome ↗';
   $('#previous-event').disabled=time<=0;$('#next-event').disabled=time>=sequence.end;
   for(const list of [$('#cooking-order'),$('#packing-order')]){
     let nextMarked=false;
@@ -125,8 +127,8 @@ function updateDynamic(){
   $('#cursor').style.left=`${time/playbackEnd(current)*100}%`;
   updateSequence();
   const active=activeOperations(current,time),orders=mealOrders(current),chosen=selectedPrograms(current);
-  $('#event-title').textContent=time<current.snapshot.current_time?'Before the decision':active.length?active.map(label).join(' + '):'Between kitchen operations';
-  $('#event-copy').textContent=active.length?active.map(o=>`${o.resource} · ${time<o.attended_end?o.worker:'unattended'}`).join(' / '):CASES[current.id].event;
+  $('#event-title').textContent=time>=sequence.end?'Replay finished':time<current.snapshot.current_time?'Before the decision':active.length?active.map(label).join(' + '):'Between kitchen operations';
+  $('#event-copy').textContent=time>=sequence.end?`${deliveredMeals(current,time)} / ${requestedMeals(current)} meals served · ${discardedComponents(current,time)} portions discarded`:active.length?active.map(o=>`${o.resource} · ${time<o.attended_end?o.worker:'unattended'}`).join(' / '):CASES[current.id].event;
   $('#meal-count').textContent=`${deliveredMeals(current,time)} / ${requestedMeals(current)} served`;
   const waste=discardedComponents(current,time);
   $('#waste-count').textContent=waste;
@@ -135,7 +137,7 @@ function updateDynamic(){
     const hidden=time<m.revealed,departed=time>=m.departure,ready=m.ready_at!==null&&time>=m.ready_at;
     const status=hidden?'unrevealed':departed?(m.handed?'served':'missed'):ready?'ready to leave':m.handed?'scheduled':'incomplete';
     const courses=['main','side'].map(course=>componentStatus(current,m,course,time));
-    return `<button class="order ${ready?'ready':''} ${departed&&m.handed?'delivered':''} ${departed&&!m.handed?'missed':''}" data-meal="${m.id}" aria-label="Follow ${orderName(m)} departure at ${clock(m.departure)}"><div class="order-title"><b>${hidden?'Not yet revealed':`${orderName(m)} · ${current.instance.lot_size} meals`}</b><span>${status}</span></div><small class="order-departure">LEAVES ${clock(m.departure)}${m.revealed?' · urgent':''}</small>${hidden?'':courses.map(course=>`<span class="order-course ${course.state}"><b>${course.label}</b><span>${course.status}</span></span>`).join('')}</button>`;
+    return `<button class="order ${ready?'ready':''} ${departed&&m.handed?'delivered':''} ${departed&&!m.handed?'missed':''}" data-meal="${m.id}" ${hidden?'disabled':''} aria-label="${hidden?'Order not yet revealed':`${orderName(m)}: ${status}. Jump to departure at ${clock(m.departure)}`}"><div class="order-title"><b>${hidden?'Not yet revealed':`${orderName(m)} · ${current.instance.lot_size} meals`}</b><span>${status}</span></div><small class="order-departure">${departureLabel(m,time)}</small>${hidden?'':courses.map(course=>`<span class="order-course ${course.state}"><b>${course.label}</b><span>${course.status}</span></span>`).join('')}</button>`;
   }).join('');
   for(const id of RESOURCES){
     const el=$(`#station-${id}`),state=stationState(current,id,time),op=state.operation;
@@ -171,7 +173,7 @@ function loadCase(id,key='qaoa'){
 function setPlaying(value){playing=value;document.body.classList.toggle('is-paused',!value);$('#play').innerHTML=value?'Ⅱ <span>Pause</span>':'▶ <span>Play</span>';$('#play').setAttribute('aria-label',value?'Pause replay':'Play replay');if(current)updateDynamic();}
 function openInspector(value=true){if(value){openSequence(false);cancelDecode();openTrace(false);setPlaying(false);}document.body.classList.toggle('inspector-open',value);$('#inspect-toggle').setAttribute('aria-expanded',String(value));}
 function openTrace(value=true){$('#solution-trace').hidden=!value;$('#trace-toggle').setAttribute('aria-expanded',String(value));document.body.classList.toggle('trace-open',value);if(value){openSequence(false);cancelDecode();openInspector(false);setPlaying(false);}}
-function seek(t,index=inspected){cancelDecode();endHold=0;time=Number(t);inspected=index;setPlaying(false);drawBits();drawInspector();updateDynamic();}
+function seek(t,index=inspected){if(!current)return;cancelDecode();endHold=0;time=Number(t);inspected=index;setPlaying(false);drawBits();drawInspector();updateDynamic();}
 function setVectorOpen(value){document.body.classList.toggle('vector-collapsed',!value);$('#vector-toggle').textContent=value?'Hide full x':'Show full x';$('#vector-toggle').setAttribute('aria-expanded',String(value));}
 function cancelDecode(){if(!decodeTour)return;decodeTour=null;document.body.classList.remove('decoding');delete document.body.dataset.decodeStage;$('#decode-step').hidden=true;$('#decode-controls').hidden=true;document.querySelectorAll('.decode-target,.decode-selected').forEach(el=>el.classList.remove('decode-target','decode-selected'));setVectorOpen(vectorBeforeTour);}
 function renderDecode(){
@@ -209,11 +211,12 @@ $('#tradeoff-content').onclick=e=>{const b=e.target.closest('[data-alternative]'
 for(const [id,tradeoff] of [['instructions-tab',false],['tradeoff-tab',true]])$(`#${id}`).onclick=()=>{$('#trace-content').hidden=tradeoff;$('#tradeoff-content').hidden=!tradeoff;$('#instructions-tab').setAttribute('aria-pressed',String(!tradeoff));$('#tradeoff-tab').setAttribute('aria-pressed',String(tradeoff));};
 $('#why-bits').onclick=()=>{const value=$('#bit-explanation').hidden;$('#bit-explanation').hidden=!value;$('#why-bits').setAttribute('aria-expanded',String(value));};
 $('#run-solution').onclick=startDecode;$('#decode-prev').onclick=()=>stepDecode(-1,true);$('#decode-next').onclick=()=>stepDecode(1,true);$('#decode-skip').onclick=finishDecode;$('#decode-auto').onclick=()=>{decodeAuto=!decodeAuto;renderDecode();};
-function togglePlayback(){cancelDecode();if(!playing&&time>=playbackEnd(current)){time=0;endHold=0;}setPlaying(!playing);}
+function togglePlayback(){if(!current)return;cancelDecode();if(!playing&&time>=playbackEnd(current)){time=0;endHold=0;}setPlaying(!playing);}
 $('#play').onclick=togglePlayback;$('#restart').onclick=()=>seek(0);
 $('#scrubber').oninput=e=>seek(e.target.value);$('#speed').onchange=e=>speed=Number(e.target.value);$('#loop').onclick=()=>{looping=!looping;$('#loop').setAttribute('aria-pressed',String(looping));};
 $('#timeline-toggle').onclick=()=>{const closed=document.body.classList.toggle('timeline-closed');$('#timeline-toggle').setAttribute('aria-expanded',String(!closed));};
 $('#sequence-toggle').onclick=()=>openSequence(!document.body.classList.contains('sequence-open'));$('#close-sequence').onclick=()=>openSequence(false);
+$('#show-outcome').onclick=()=>seek(sequence.end);
 $('#previous-event').onclick=()=>seek(adjacentEvent(sequence,time,-1));$('#next-event').onclick=()=>seek(adjacentEvent(sequence,time,1));
 $('#production-sequence').addEventListener('click',e=>{const b=e.target.closest('[data-sequence-operation]');if(b)followOperation(b.dataset.sequenceOperation);});
 for(const [id,view] of [['batch-view','batch'],['equipment-view','equipment']])$(`#${id}`).onclick=()=>{timelineView=view;drawTimeline();updateDynamic();};
@@ -223,7 +226,7 @@ if(matchMedia('(max-width:760px)').matches)openSequence(false);
 function showEvidence(open){$('#evidence').hidden=!open;$('#evidence-toggle').setAttribute('aria-expanded',String(open));if(open){cancelDecode();setPlaying(false);$('#close-evidence').focus();}else $('#evidence-toggle').focus();}
 $('#evidence-toggle').onclick=()=>showEvidence($('#evidence').hidden);$('#close-evidence').onclick=()=>showEvidence(false);
 for(const button of document.querySelectorAll('[data-evidence-tab]'))button.onclick=()=>{for(const b of document.querySelectorAll('[data-evidence-tab]'))b.setAttribute('aria-pressed',String(b===button));for(const p of document.querySelectorAll('[data-evidence-panel]'))p.hidden=p.dataset.evidencePanel!==button.dataset.evidenceTab;};
-document.addEventListener('keydown',e=>{if(e.key==='Tab'&&!$('#evidence').hidden){const focusable=[...$('#evidence').querySelectorAll('button,a[href]')].filter(el=>el.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}if(e.key==='Escape'){cancelDecode();openTrace(false);openInspector(false);showEvidence(false);updateDynamic();}if(e.code==='Space'&&!['INPUT','SELECT','BUTTON','A'].includes(document.activeElement.tagName)){e.preventDefault();togglePlayback();}});
+document.addEventListener('keydown',e=>{if(!current)return;if(e.key==='Tab'&&!$('#evidence').hidden){const focusable=[...$('#evidence').querySelectorAll('button,a[href]')].filter(el=>el.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}if(e.key==='Escape'){cancelDecode();openTrace(false);openInspector(false);showEvidence(false);updateDynamic();}if(e.code==='Space'&&!['INPUT','SELECT','BUTTON','A'].includes(document.activeElement.tagName)){e.preventDefault();togglePlayback();}});
 document.addEventListener('visibilitychange',()=>lastFrame=0);
 function frame(now){
   const elapsed=lastFrame?Math.min((now-lastFrame)/1000,.1):0;lastFrame=now;
@@ -239,4 +242,22 @@ function frame(now){
   }
   requestAnimationFrame(frame);
 }
-try{await artReady;const response=await fetch('./replay-data.json');if(!response.ok)throw new Error(`Replay returned ${response.status}`);data=await response.json();if(data.schema!=='catering-kitchen-replay.v3')throw new Error('V3 evidence required');evidenceContent();loadCase('CELL');setPlaying(!reduced);requestAnimationFrame(frame);}catch(e){$('#error').hidden=false;$('#error').textContent=`Kitchen replay could not load: ${e.message}`;setPlaying(false);}
+async function loadReplay(){
+  $('#retry-load').hidden=true;$('#error').hidden=true;
+  document.querySelector('main').inert=true;
+  try{
+    await artReady;
+    const response=await fetch('./replay-data.json');
+    if(!response.ok)throw new Error(`Replay returned ${response.status}`);
+    const payload=await response.json();
+    if(payload.schema!=='catering-kitchen-replay.v3')throw new Error('V3 evidence required');
+    data=payload;evidenceContent();loadCase('CELL');setPlaying(!reduced);
+    document.querySelector('main').inert=false;requestAnimationFrame(frame);
+  }catch(error){
+    current=null;data=null;$('#scenario').disabled=true;$('#method').disabled=true;
+    $('#error-message').textContent=`Kitchen evidence could not load: ${error.message}`;
+    $('#error').hidden=false;$('#retry-load').hidden=false;setPlaying(false);
+  }
+}
+$('#retry-load').onclick=loadReplay;
+await loadReplay();

@@ -52,8 +52,9 @@ Cooking is A→C→B; packing is A-main→A-side→B-side→B-main. C is one sha
 20-portion side batch. This is a description of the checked schedule, not an
 inferred explanation of the optimizer's internal search or a unique optimum.
 
-Replay stops at the last displayed operation/departure (12:10 in the small cell),
-then holds the outcome for three seconds before looping. The instance's larger
+Replay stops at the last displayed operation/departure (12:10 in the small cell)
+and holds its final meal/waste summary. Looping is opt-in. The production
+clipboard has a Jump to final outcome action, and tickets show deadline countdowns. The instance's larger
 planning horizon remains unchanged. Clocks, queues, highlights and tickets all
 follow the same replay time. Source selector and manual interventions rebuild
 these projections from their actual plans.
@@ -114,3 +115,8 @@ Production opens this catering demo at the site root. Stage 1 remains at
 `/baseline/`, with its original assets and formulation guide. The kitchen
 header and Model & results panel link to it. Private live-demo sampling and
 speaker materials stay in the local studio, outside the static deployment.
+
+If the retained evidence download fails, the viewer disables its workspace and
+shows a retry button plus a Stage 1 fallback. Retry reloads evidence only; it
+never starts a solver. Tickets before their reveal time hide their deadlines
+and cannot be clicked to seek to that unrevealed departure.

@@ -1,5 +1,23 @@
 # Development log
 
+## 2026-10-17 — public demo first-use flow and recovery
+
+The user requested another improvement pass. The public kitchen now holds at
+its actual final outcome instead of automatically looping after three seconds.
+The clipboard can jump directly there and shows served meals and discarded
+component portions. Looping remains available explicitly. Order tickets show
+remaining time to departure; unrevealed tickets hide that time and are disabled.
+These are read-only projections of the same retained plans.
+
+Evidence loading now keeps the workspace inert until initialization succeeds.
+A failed download offers retry and Stage 1 fallback. Playback/seek shortcuts
+ignore the unloaded state. Retry fetches retained evidence and does not run any
+optimizer. Browser fault injection confirms an initial 503 recovers on retry,
+the controls reactivate, final playback remains at 12:10 after the former loop
+interval, the new outcome action works, and deadline/reveal behavior is correct.
+There are no browser errors or optimizer calls. The build passes 145 tests.
+Frozen JSONs, solver code, coefficients, run settings and hashes are unchanged.
+
 ## 2026-10-17 — catering production entry and deployment preparation
 
 The user requested continued improvement, deployment and push to origin/main.

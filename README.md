@@ -18,7 +18,8 @@ PORT=4192 npm run dev
 Open [the kitchen](http://127.0.0.1:4192/catering/). This replays checked results;
 it does not launch a solver. Click a batch to inspect its instructions or skip
 it in a checked intervention. The board reports meal handovers and discarded
-component portions at the current replay time.
+component portions at the current replay time. Use **Jump to final outcome**
+on the production clipboard to see the completed service; playback holds there.
 
 For the presentation studio and fresh local QAOA sampling, use the existing
 `.venv-stage2` environment, or install the pinned foundation dependencies:
