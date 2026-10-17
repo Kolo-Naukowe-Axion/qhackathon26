@@ -138,5 +138,21 @@ class VQETest(unittest.TestCase):
             self.assertEqual(bool(sec["valid"][k]), decode(bundle, list(map(int, sec["X"][k])))["valid"])
 
 
+    def test_method_result_passes_central_evaluator(self):
+        import tempfile
+        from pathlib import Path
+        from catering.contracts import save_json
+        from catering.run import evaluate
+        bundle = load_bundle(CELL)
+        res = V.solve_qubo(bundle, dict(shots=128), dict(V.RECOMMENDED, layers=1))
+        self.assertEqual(sum(s["count"] for s in res["samples"]), 128)
+        with tempfile.TemporaryDirectory() as tmp:
+            save_json(Path(tmp) / "result.json", res)
+            checked = evaluate(Path(CELL), Path(tmp) / "result.json", Path(tmp) / "evaluation.json")
+        self.assertTrue(any(c["valid"] for c in checked))
+        with self.assertRaises(ValueError):
+            V.run(V.Problem(bundle), V.Spec("sector", optimizer="lbfgs", train_shots=64), 0)
+
+
 if __name__ == "__main__":
     unittest.main()

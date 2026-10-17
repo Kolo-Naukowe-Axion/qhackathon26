@@ -479,6 +479,8 @@ def build(prob, spec: Spec, rng):
 
 
 def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
+    if spec.train_shots and spec.optimizer in ("lbfgs", "adam"):
+        raise ValueError("gradient optimizers use exact adjoint gradients; shot training needs spsa/cobyla/nft")
     rng = np.random.default_rng(seed)
     t0 = time.perf_counter()
     ans = build(prob, spec, rng)
@@ -644,30 +646,37 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
 # --------------------------------------------------------------------------
 # Contract adapter (docs/CATERING_SOLVER_CONTRACT.md section 6)
 # --------------------------------------------------------------------------
-def solve_qubo(bundle, budget, method_config, output_dir=None):
+def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
     """Run one VQE configuration and return a normalized MethodResult.
 
     method_config: Spec fields (ansatz, layers, pairs, cross, inblock, loss, alpha,
-    optimizer, budget, train_shots, init, init_noise) plus 'seed'.
+    optimizer, budget, train_shots, init, init_noise) plus 'seed'. Default = the
+    recommended configuration in docs/catering-methods/VQE.md.
     budget: dict with optional 'shots' (final samples, default 1024) and
     'max_objective_evaluations' (overrides Spec.budget).
+    output_dir: optional fresh directory; receives result.json and artifacts.json.
+    Samples use the central evaluator format {bits, count, reported_energy}.
     """
+    import hashlib
     import platform
     from collections import Counter
     from pathlib import Path
     from catering.contracts import method_result, save_json
-    cfg = dict(method_config)
+    budget = dict(budget or {})
+    cfg = dict(RECOMMENDED if method_config is None else method_config)
     seed = int(cfg.pop("seed", 0))
     if budget.get("max_objective_evaluations"):
         cfg["budget"] = int(budget["max_objective_evaluations"])
+    if output_dir is not None and Path(output_dir).exists():
+        raise ValueError("Choose a fresh output directory")
     spec = Spec(**cfg)
     prob = Problem(bundle)
     t0 = time.perf_counter()
     r = run(prob, spec, seed, shots=int(budget.get("shots", 1024)))
     total = time.perf_counter() - t0
     counts = Counter(tuple(int(v) for v in row) for row in r["_samples"])
-    samples = [dict(bits=list(bits), multiplicity=m, reported_energy=str(int(prob.energy_bits([bits])[0])))
-               for bits, m in sorted(counts.items(), key=lambda kv: -kv[1])]
+    samples = [dict(bits=list(bits), count=int(m), reported_energy=str(int(prob.energy_bits([bits])[0])))
+               for bits, m in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))]
     res = method_result(bundle, "catering-vqe", samples,
                         timings=dict(build_s=r["t_build"], optimize_s=r["t_opt"], total_s=total),
                         work=dict(objective_evaluations=r["nfev"], adjoint_gradient_evaluations=r["n_grad"],
@@ -678,13 +687,20 @@ def solve_qubo(bundle, budget, method_config, output_dir=None):
                configuration=dict(spec=asdict(spec), tag=spec.tag(), n_params=r["n_params"], gates=r["gates"],
                                   expectation="exact ideal" if not spec.train_shots else f"{spec.train_shots}-shot estimates",
                                   gradient="adjoint" if r["n_grad"] else "none (gradient-free)",
-                                  initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True),
+                                  initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True,
+                                  repair=False),
                environment=dict(python=platform.python_version(), numpy=np.__version__,
                                 processor=platform.machine(), backend="numpy one-hot-sector / block statevector"),
                exact_distribution=dict(p_optimal=r["p_opt"], p_valid=r["p_valid"], p_onehot_sector=r["p_sector"],
                                        mean_energy=r["mean_energy"], sector_minimum_energy=r["Emin"],
-                                       note="computed from the exact simulated state; reference minimum used only for reporting"))
-    if output_dir:
-        out = Path(output_dir); out.mkdir(parents=True, exist_ok=True)
-        save_json(out / f"{bundle['scenario_id']}-{spec.name()}-seed{seed}.json", res)
+                                       note="from the exact simulated state; the sector minimum is used only for reporting"))
+    if output_dir is not None:
+        out = Path(output_dir)
+        out.mkdir(parents=True)
+        save_json(out / "result.json", res)
+        save_json(out / "artifacts.json", dict(files={"result.json": hashlib.sha256((out / "result.json").read_bytes()).hexdigest()}))
     return res
+
+
+RECOMMENDED = dict(ansatz="sector", pairs="coupled", cross="cgiv", inblock="giv", layers=2,
+                   loss="cvar", alpha=0.1, optimizer="lbfgs", init="w", init_noise=0.2, seed=0)
