@@ -1,0 +1,65 @@
+{
+  "written_before_running": "2026-10-17T21:45:14",
+  "held_out_cases": {
+    "S2": "output/catering-foundation-v3/S2/quantum-qubo.json",
+    "S3": "output/catering-foundation-v3/S3/quantum-qubo.json"
+  },
+  "selection_evidence": "E1-v1, E2-v1, E3-v1 on cell/S0/S1 only; S2/S3 never run before this file",
+  "primary": {
+    "ansatz": "sector",
+    "pairs": "coupled",
+    "cross": "cgiv",
+    "inblock": "giv",
+    "layers": 2,
+    "loss": "cvar",
+    "alpha": 0.1,
+    "optimizer": "lbfgs",
+    "init": "w",
+    "init_noise": 0.2,
+    "gradient": "adjoint (exact ideal simulation)"
+  },
+  "controls": [
+    {
+      "name": "same, alpha 0.05, L1",
+      "layers": 1,
+      "alpha": 0.05
+    },
+    {
+      "name": "block-only (no cross-block)",
+      "pairs": "none",
+      "layers": 1
+    },
+    {
+      "name": "random block pairs, same count",
+      "pairs": "random",
+      "layers": 2
+    },
+    {
+      "name": "mean-energy loss",
+      "loss": "mean",
+      "layers": 2
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9
+  ],
+  "final_samples": 1024,
+  "primary_metric": "seeds (of 10) whose 1024 final samples contain a valid optimal plan (sector minimum)",
+  "secondary": [
+    "exact P(optimum)",
+    "exact P(valid)",
+    "objective evaluations",
+    "hardware-equivalent circuits (parameter-shift)"
+  ],
+  "prediction": "primary >= block-only and >= random-pairs on both cases; mean-energy loss worse than CVaR",
+  "vqe_source_sha256": "df4b1cc066d7d88f2ef40de0dd58e3dcb608382ceb01445488d956d2d97a9f4e"
+}
