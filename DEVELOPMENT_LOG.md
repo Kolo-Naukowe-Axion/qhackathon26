@@ -144,6 +144,13 @@ the cooks, placed their working positions closer to the benches and attached
 the chopping tool to the moving hand instead of animating it independently on
 the worktop. Replay time still drives movement; physical schedules are unchanged.
 
+The final clean export of `3653fd7d` passed all 13 release stages: 152 site
+tests, 43 core checks, three adversarial baseline checks, the full 400-run QAOA
+archive audit, VQE/VeloxQ checks and three fixed-angle local launches. Each
+launch returned 20 meals and zero waste. The [final review receipt](output/catering-submission-review-v1/verification.json)
+records the tested source and raw checks. No new training campaign, service
+job, QPU call or video recording was performed.
+
 ## AI use and remaining steps
 
 Codex assisted with formulation, implementation, experiments, tests and
