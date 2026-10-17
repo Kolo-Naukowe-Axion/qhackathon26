@@ -355,6 +355,25 @@ def test_v3_references_have_literal_energy(case):
                 assert vq.qubo_energy(q, sample["bits"]) == int(sample["reported_energy"])
 
 
+CLASSICAL_SCALE = vq.ROOT / "output/catering-classical-scale-v3"
+
+
+@pytest.mark.parametrize("width", [512, 1024, 2048])
+def test_classical_scale_controls_match_frozen_scale_bundles(width):
+    path = SCALE / f"scale-{width}-qubo.json"
+    if not path.exists() or not CLASSICAL_SCALE.exists():
+        pytest.skip("scale matrices not restored or classical scale release missing")
+    from catering.contracts import load_bundle
+
+    bundle = load_bundle(path)
+    q = vq.load_qubo(bundle)
+    for control in ("reference", "sa"):
+        payload = json.loads((CLASSICAL_SCALE / f"scale-{width}-{control}.json").read_text())
+        assert payload["bundle_sha256"] == bundle["bundle_sha256"]
+        for sample in payload["samples"]:
+            assert vq.qubo_energy(q, sample["bits"]) == int(sample["reported_energy"])
+
+
 @needs_v3
 @pytest.mark.parametrize("omit_offset", [False, True])
 def test_float32_energies_on_scale_256_are_accepted(omit_offset):

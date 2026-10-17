@@ -142,7 +142,7 @@ cap 3, used 1). No catering bundle has been sent to VeloxQ.
 | Path | Content |
 |---|---|
 | `catering/methods/veloxq.py` | Adapter 0.2.0: `solve_qubo(bundle, budget, method_config, output_dir)` and CLI |
-| `tests/catering/test_veloxq_adapter.py` | 63 offline tests, no token or network |
+| `tests/catering/test_veloxq_adapter.py` | 66 offline tests, no token or network |
 | `output/catering-methods/veloxq/pilot_manifest.json` | Caps, frozen settings, case hashes, baselines and comparison declared before results |
 | `output/catering-methods/veloxq/offline-readiness-v3.json` | One `not_run` record per released v3 bundle (16), with sizes, coefficient ranges, packet dtype/size and timings |
 | `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 1) |
@@ -201,6 +201,10 @@ draft schema.
 is accepted as-is by `python -m catering.run evaluate`. VeloxQ-specific fields
 (`bundle` identity, `budget`, `representation`, `failure`, `backend_statistics`,
 `backend_timeline`, per-sample `reported_energy_spin_scaled`) are kept alongside.
+The shared-checker gate above was run on the adapter's offline results for the
+complete cell, scale-512 and scale-2048 (accepted; no samples, status `not_run`),
+and on fake-service results with samples in the tests. This machine has no
+`.venv-stage2`; `.venv` was used.
 
 ### Offline verification on released inputs
 
@@ -218,18 +222,19 @@ Build + serialize + exact re-read takes 2.6 s at width 2,048 (local CPU).
 
 ### Frozen baselines (before any VeloxQ result)
 
-| Bundle | Vars | Offered-domain CP | Same-QUBO SA best E |
-|---|---:|---|---:|
-| v3 S0–S3 scale-128 | 128 | OPTIMAL (E 7.83e6–1.04e7) | 1.66–1.75× optimum |
-| v3 S0–S3 scale-256 | 256 | 3 OPTIMAL, S0 FEASIBLE (gap to bound) | 1.25–2.5× incumbent; some returns invalid |
-| scale-512 | 512 | FEASIBLE, E 277,300, (7,2,10,10) | not provided |
-| scale-1024 | 1,024 | FEASIBLE, E 321,040, (8,8,10,10) | not provided |
-| scale-2048 | 2,048 | UNKNOWN, no incumbent | not provided |
+| Bundle | Vars | Offered-domain CP | Same-QUBO cold SA |
+|---|---:|---|---|
+| v3 S0–S3 scale-128 | 128 | OPTIMAL (E 7.83e6–1.04e7) | best E 1.66–1.75× optimum |
+| v3 S0–S3 scale-256 | 256 | 3 OPTIMAL, S0 FEASIBLE (gap to bound) | best E 1.25–2.5× incumbent; some returns invalid |
+| scale-512 | 512 | 30 s FEASIBLE, E 237,205, (6,1,10,10) | best valid E 483,579, (12,15,9,9); 4/4 valid |
+| scale-1024 | 1,024 | 30 s FEASIBLE, E 277,328, (7,2,11,11) | best valid E 481,392, (12,12,9,9); 1/1 valid |
+| scale-2048 | 2,048 | 30 s FEASIBLE, E 317,339, (8,3,8,8) | no valid returned state |
 
-Exact values and hashes are in `pilot_manifest.json`. **Gap:** the handoff asks
-for a same-literal-QUBO SA control on the scale tiers; none is released for
-512/1024/2048. It belongs to the classical track and should exist before the
-step-2 jobs.
+Scale-tier rows use the stronger controls in `output/catering-classical-scale-v3/`
+(30 s one-worker CP, 2 s cold SA, seed 2026). Their bundle hashes were checked
+to equal the frozen scale bundles, and every returned sample recomputes to its
+stated literal energy. None of these incumbents is a certified optimum. Exact
+values and hashes are in `pilot_manifest.json`.
 
 ### Service plan (held)
 
