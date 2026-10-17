@@ -30,11 +30,15 @@ classical controls; larger scale cases expose quality/runtime/representation
 tradeoffs. Record all cases, seeds or service replicates, raw feasibility,
 objective tuples, reference bounds/gaps and end-to-end timings. A sponsor call
 alone or a different problem disguised as a scale comparison is insufficient.
-Budget-aware offline preparation may continue. The VeloxQ owner has since
-committed four separately authorized service submissions: a contract smoke and
-one cold run at each of 512/1024/2048 variables. Read the actual receipts and limits
-in [the method report](catering-methods/VELOXQ.md). This does not authorize further
-calls, uploads or credit spending. No catering IBM hardware result is claimed.
+The combined VeloxQ ledger now contains 61 attempts: 54 prior-owner attempts
+plus seven separately authorized representation follow-ups. The initial four
+submissions were the historical contract smoke and three cold scale runs.
+Read the receipts in [the method report](catering-methods/VELOXQ.md) and the
+[current no-idle study](CATERING_VELOXQ_TUNING.md#measured-follow-up). No-idle
+returns 512/512 valid shots at actual widths 486/998/2022; at source width 512
+and equal 20,000 steps, best U improves 13→9 relative to deletion-bound alone.
+Classical controls still find better schedules. This does not authorize further
+calls, uploads or spending. No catering IBM hardware result is claimed.
 The [presentation/demo plan](CATERING_PRESENTATION.md) defines the current
 three-minute story and the next measured improvement needed for the prize track.
 
@@ -55,6 +59,9 @@ The local foundation is now implemented and frozen, with source snapshots:
 | output/catering-paired-circuit-audit-v1/ | One35qubit pilot circuit:272CXall-to-all,925CXon a synthetic57node heavy-hex topology. |
 | output/catering-velox-scale-v3/ | 12-customer S3, nested 512/1,024/2,048 variables and 37,008/156,129/636,882 couplers. Input bundles, finite-budget references and checked idle witnesses; actual service receipts are separately retained in output/catering-methods/veloxq/. |
 | output/catering-math-audit-v1/ | Fresh coefficient/penalty/Ising/physical-pair checks and exact-sector minima for 13 small bundles, independent physical subset audit of the complete cell, retained-evidence and test receipts. Six of eight final incumbents attain the exact optimum of their final attempted portfolio; all still trail raw CP. |
+| output/catering-qaoa-review-v1/verification.json | Independent audit of all 400 archived QAOA campaign runs, 715,166 returned bitstrings and 1,638,400 shot counts, manifest hashes, budgets and regenerated summaries. Frozen held-out S2/S3 setup hits each fixed offered-pool optimum in 10/10 seeds at both 256/2048-evaluation budgets. |
+| output/catering-methods/vqe/integration-v2/verification.json | Five fresh per-case exports, including the cell, independently checked across 5,120 shot counts. Historical E5 CSV reports 10/10 S2 and 9/10 S3 primary hits; its per-seed angles/raw samples are not archived. |
+| output/catering-velox-conditioned-service-v1/ | Seven retained follow-up jobs, proven penalty conditioning and no-idle reformulation. Same feasible objective; new sampling matrix identities. All 512 shots valid at 486/998/2022 actual service bits; checked objective improvement at source 512. |
 | presentation/catering/ | V3 pixel-game replay with actual method/source switching, complete-meal counts, mandatory cleaning, equations and all larger pilot outcomes. |
 | output/catering-complete-cell-circuit-v3/ | Complete-cell p1circuit:702CXall-to-all,1914CXon the same synthetic topology. |
 
@@ -87,11 +94,14 @@ The complete-cell replay traces output/catering-complete-cell-demo-v3.json to it
 actual p1/seed2026 sample. See presentation/catering/README.md.
 In the current V3fixtures previous_unstarted is empty, so R=B; the fourth
 priority does not create an independent stability tradeoff in these inputs.
-Next gates are VQE/standard-QAOA results on shared bundles, better large-kitchen
-quantum quality, actual calibrated IBM compilation before spending, a bounded
-authorized VeloxQ campaign, and the synchronized demo/video/public submission.
-The owner's first cold VeloxQ service results are documented separately;
-no quantum advantage is claimed. Generic matrix-product-state
+The QAOA campaign and five VQE exports are now integrated; the bounded VeloxQ
+follow-up is complete. Present trained QAOA plus the VeloxQ representation result,
+with VQE as a second ansatz. The [quality audit](CATERING_QUALITY.md#primary-emphasis-and-comparison-boundaries)
+states the repeated-run evidence and unequal-budget comparison boundaries.
+Remaining gates are clean-environment reproduction, a frozen result/source set,
+synchronized demo/video, rehearsal and the authorized final public submission.
+No additional hardware or service campaign is a release requirement or authorized
+here. No quantum advantage is claimed. Generic matrix-product-state
 runtime probes are separate from these more connected QAOA circuits.
 
 ## Recommendation for winning the event
@@ -538,13 +548,15 @@ C1. output/catering-foundation-v2/ is the current common-method release.
 The v1 outage results omitted this mandatory task and are superseded.
 
 
-## Prepared larger VeloxQ workload — 17 October
+## Historical preparation of the larger VeloxQ workload — 17 October
 
 `output/catering-velox-scale-v3/` now contains the 12-customer S3 nested
 512/1,024/2,048-variable inputs, with 37,008/156,129/636,882 couplers.
 These extend the same paired-meal decision; they are not a new domain or independent
 copies. See [the owner handoff](catering-methods/VELOXQ.md). Five-second local
-references and checked idle witnesses exist; no backend call was made. The scale
+references and checked idle witnesses existed; no backend call accompanied that
+preparation step. Subsequent service studies are linked in the current evidence
+section above; this paragraph is historical. The scale
 compiler optionally tightens feasible anchor bounds without changing the priority
 order; historical inputs remain immutable. These dense inputs and finite-budget
 reference statuses establish neither sparse suitability nor a speedup.

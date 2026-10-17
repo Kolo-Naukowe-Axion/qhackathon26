@@ -10,9 +10,46 @@ the scaled Ising map. Tiny exhaustive tests and a separate physical checker
 support those arguments. Correct formulation does not guarantee that a heuristic
 will return the ground state.
 
-Current quality is strongest on the complete small cell. Larger runs measure
-restriction and search losses; they are not certified full-kitchen quantum
-optima. The tables below state those distinctions explicitly.
+The complete small cell establishes end-to-end correctness. The current primary
+method evidence is the frozen, trained QAOA campaign: all 400 retained runs were
+audited, and the selected configuration hits the offered-pool optimum in all
+ten seeds of each held-out case at both budgets. Larger offered pools remain
+restrictions of the raw kitchen. Neither those results nor the later VQE and
+VeloxQ exports are certified full-kitchen quantum optima.
+
+## Primary emphasis and comparison boundaries
+
+Present **trained QAOA plus the same-model VeloxQ representation study**, with
+VQE as a second implemented ansatz and classical methods as references. QAOA
+has the strongest retained repeated-run evidence chain: frozen configuration,
+per-run parameters/samples, independent energy and physical checks, and held-out
+configuration evaluation. The original six-trial cell and eight-run changing
+portfolio pilot below remain development evidence, not the latest campaign.
+
+- QAOA and VQE use the identical five frozen cell/S0–S3 bundles. Both attain
+  their offered-pool optimum in the five selected exported schedules. Only the
+  cell offers its complete declared grid; S0–S3 retain representation loss.
+- QAOA's held-out S2/S3 selected setup hits the optimum in 10/10 seeds at both
+  256 and 2,048 loss evaluations, with 4,096 final shots. VQE's primary E5 CSV
+  reports 10/10 and 9/10 at 1,024 shots, with higher median per-shot optimum
+  probabilities. Optimizers, parameters, training work and shots differ: this
+  establishes no matched-budget method winner. The split holds out configuration
+  selection; each case still optimizes its own angles.
+- The five VQE exports have independent raw checks, including the cell. The
+  historical E5 per-seed angles and samples are not archived; those CSV aggregate
+  counts have a narrower verification scope than the QAOA campaign. Simulator
+  adjoint evaluations and legacy hardware-circuit heuristics are different units.
+- The larger VeloxQ no-idle inputs preserve each source pool's feasible schedules
+  and objective, but change invalid-state energies and matrix width. They are
+  equivalent optimization formulations, not identical-matrix timing comparisons
+  with the original one-hot inputs or the smaller quantum cases.
+- **R=B in all current V3 fixtures**, because the previous unstarted plan is
+  empty. The stability term has an algebraic proof and nonempty-prior tests;
+  the retained presentation cases do not measure independent plan stability.
+
+Current method receipts: [QAOA](catering-methods/QAOA.md#integration-verification-and-packaging-fix),
+[VQE](catering-methods/VQE.md#integration-check-and-export-fixes), and
+[VeloxQ conditioning](CATERING_VELOXQ_TUNING.md#measured-follow-up).
 
 ## Complete small cell
 
@@ -113,6 +150,8 @@ does not require a supervised-learning split.
 
 ## Larger same-model VeloxQ workload
 
+### Historical first cold settings
+
 These are twelve-customer S3 inputs, with nested restrictions of 18182 generated
 local programs. Width includes idle bits. Each service row is one cold job
 with 512 returns, 2000 steps and no tuning. Backend running times are 0.17/0.55/1.93 s;
@@ -136,11 +175,51 @@ Sources: `docs/catering-methods/VELOXQ.md`, each committed service
 Service rows here are the owner's independently evaluated retained receipts;
 the new small-domain mathematical audit does not rerun those service jobs.
 
-The scale inputs exercise integration and expose the current feasibility
-bottleneck. Improved settings or a new proven penalty construction need a
-new version/hash, checked results and a capped authorized experiment. Current
-evidence neither establishes VeloxQ's best attainable quality nor a win over
-the retained classical controls.
+These first cold settings exposed a feasibility bottleneck. The subsequent
+same-model representation study below supersedes this early feasibility status;
+the first receipts and their matrices remain unchanged.
+
+### Current no-idle representation: feasibility and objective improvement
+
+The seven retained follow-up jobs use a proven deletion penalty bound. Removing
+26 redundant idle bits then gives a bijection on feasible schedules and preserves
+their original objective values. Every selected program remains unchanged;
+reconstructing redundant idles does not remove programs or repair conflicts.
+
+| Source / service bits | Formulation | Steps | Valid shots / 512 | Best checked (U,W,B,R) |
+|---|---|---:|---:|---|
+| 512 / 512 | Deletion-bound, cold | 20,000 | 17/512 | (13,3,3,3) |
+| 512 / 486 | No-idle, cold | 20,000 | 512/512 | (9,6,9,9) |
+| 512 / 486 | No-idle, cold | 100,000 | 512/512 | (8,7,12,12) |
+| 1,024 / 998 | No-idle, cold | 20,000 | 512/512 | (11,6,10,10) |
+| 2,048 / 2,022 | No-idle, cold | 20,000 | 512/512 | (13,3,2,2) |
+
+The two 20,000-step source-512 jobs share source bundle
+`4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b`,
+512 replicas, backend, cold initialization and objective. The formulation change
+improves both validity and the best primary objective: **13 to 9 missed meal
+lots**. With fourteen equally weighted meal lots requested, that means **10 to
+50 complete meals served**. Waste rises from three to six component lots; the
+declared lexicographic policy ranks the four additional served meal lots first.
+At 100,000 steps the no-idle best serves 60 meals, with a different search budget.
+These are best observed outcomes of exploratory single jobs, not replicated
+performance guarantees or raw-grid optima.
+
+The same-formulation local SA controls attain best U=7/8/11 across the three
+source widths; the older 30-second offered CP incumbents attain U=6/7/8. Their
+budgets and hardware differ, and none of these large CP rows is certified
+optimal. VeloxQ therefore has a measured formulation improvement, while retained
+classical controls still find better schedules. No speedup follows. Backend,
+transport and recovered-download timings remain distinct.
+
+Sources: `output/catering-velox-conditioned-service-v1/report.json`, the
+`cold-long-512/evaluation.json`, `noidle-long-512/recovered-evaluation.json`,
+`noidle-deeper-512/evaluation.json` and the corresponding larger-job evaluations;
+`output/catering-velox-noidle-controls-v1/report.json`. The complete proof,
+conditioning ablation and scope are in [the tuning report](CATERING_VELOXQ_TUNING.md).
+The combined ledger records 61 attempts, including 54 prior-owner attempts and
+seven follow-ups; download recovery added no solver submissions. This audit
+performs no further service work.
 
 ## What correctness verification covers
 

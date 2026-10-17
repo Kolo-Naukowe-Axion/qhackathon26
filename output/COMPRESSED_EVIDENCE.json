@@ -355,7 +355,79 @@
       "raw_sha256": "cf790cd8d771c6885d44f35f9910b36b30d8e197780baa52c0553a65d14312a5",
       "gzip_bytes": 2643063,
       "gzip_sha256": "b6db84975554215afa002162afaa4d330388392cece054340e5b593990c3ff89"
+    },
+    {
+      "path": "output/catering-methods/vqe/integration-v1/S0-evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-integration-v1-S0-evaluation.json.gz",
+      "raw_bytes": 3774622,
+      "raw_sha256": "6a81fdc72ae9d1d25dfd79b3d23ed7635172b78b0a870ed5aa2bb8803091238f",
+      "gzip_bytes": 122852,
+      "gzip_sha256": "6df9878b0028b9b725866e5c941ac40bf358847461be721a3c6db8116cc2e22f"
+    },
+    {
+      "path": "output/catering-methods/vqe/integration-v1/S1-evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-integration-v1-S1-evaluation.json.gz",
+      "raw_bytes": 3597988,
+      "raw_sha256": "ca79e8f440dcc3dd0a7c1c40e29a9d071fc8edf504323798c294cd3addd473d8",
+      "gzip_bytes": 122070,
+      "gzip_sha256": "bc8049b4e8028b1a3ec72346532ed8c6f419972da7e97a7c25d1a37315de6b11"
+    },
+    {
+      "path": "output/catering-methods/vqe/integration-v1/S2-evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-integration-v1-S2-evaluation.json.gz",
+      "raw_bytes": 2799811,
+      "raw_sha256": "9c3270439d0924c1e2dfb9d89926e5461f1da3a1b2870fafe7fdab3358537264",
+      "gzip_bytes": 82895,
+      "gzip_sha256": "6e0b5f0fd5315cff38bc9ff410c56b8d6cbd43d52c111acf0bb8a5a2f536d741"
+    },
+    {
+      "path": "output/catering-methods/vqe/integration-v1/S3-evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-integration-v1-S3-evaluation.json.gz",
+      "raw_bytes": 4017036,
+      "raw_sha256": "f422437740792ded99df9c35740983c0a1222a00271f9596d5be1d1453cff93c",
+      "gzip_bytes": 127194,
+      "gzip_sha256": "890eabdd166d005ed1106f0cb910f94944b9a3568ec0ac20ba3d9541bc329b01"
+    },
+    {
+      "path": "output/catering-methods/vqe/method-results/S0/evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-method-results-S0-evaluation.json.gz",
+      "raw_bytes": 3774622,
+      "raw_sha256": "38f8f7d5642b8c81cd27cf90191ee98d99d35e8d4e7da294572f85e2c5c4e90f",
+      "gzip_bytes": 102135,
+      "gzip_sha256": "9e7e3ceaf809d9b09ade29373fe93d28b890daf78a95057021abc0b6341df063"
+    },
+    {
+      "path": "output/catering-methods/vqe/method-results/S1/evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-method-results-S1-evaluation.json.gz",
+      "raw_bytes": 3597988,
+      "raw_sha256": "48defe56e721e313c7135b07472739b9c48a7e938ec9dd37002a11cbf95b0827",
+      "gzip_bytes": 101614,
+      "gzip_sha256": "1f332d8bb601670d2b6a2a7ecae6416e07d8dacc28de768746d7bd682fb2cfb3"
+    },
+    {
+      "path": "output/catering-methods/vqe/method-results/S2/evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-method-results-S2-evaluation.json.gz",
+      "raw_bytes": 2799811,
+      "raw_sha256": "a2400aa1bc6bc58d41ce7b2a19e401a850780fa7d9b6c6749e2cd96408372209",
+      "gzip_bytes": 76070,
+      "gzip_sha256": "7a87ce85819116f46ba8fde6a081484ece036f36d451e4e23f815d62d9a951ef"
+    },
+    {
+      "path": "output/catering-methods/vqe/method-results/S3/evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-method-results-S3-evaluation.json.gz",
+      "raw_bytes": 4017036,
+      "raw_sha256": "6064cc8f314acecb1534031dde42e5aef87e2f9951adbecd19a4745db7cf399c",
+      "gzip_bytes": 105760,
+      "gzip_sha256": "a1d9eaf8deef826b255e92e708c0236d7dc3d96ef778e1979ce7662ef9f3965c"
+    },
+    {
+      "path": "output/catering-methods/vqe/method-results/cell/evaluation.json",
+      "gzip_path": "output/compressed-evidence/vqe-method-results-cell-evaluation.json.gz",
+      "raw_bytes": 1938450,
+      "raw_sha256": "8aae02cd9591096fe29d306ec29e75002ca251bfa2154e4d8481fd0b2fcdf1ba",
+      "gzip_bytes": 49591,
+      "gzip_sha256": "4031e45f057ca702e1b6ce1e728c64cb72a4e9250cbee73b1c024ce64cd28bda"
     }
   ],
-  "description": "Lossless in-Git gzip copies of large raw JSON files (stage-2 search evidence, catering scale QUBOs and VeloxQ-track results/bundles over 10 MB). Raw files stay local and ignored; npm pretest restores verified copies without network access; scripts/restore_veloxq_evidence.py restores the VeloxQ entries without Node."
+  "description": "Lossless in-Git gzip copies of large raw JSON evidence: historical search outputs, catering scale matrices, VeloxQ artifacts and VQE evaluator records. Original raw paths and SHA256 identities are restored by npm pretest without network access; the Python VeloxQ restorer handles its own entries."
 }

@@ -28,7 +28,7 @@ test('rehearsal clock flags wrap-up and the actual three-minute limit', () => {
 });
 
 import {readFile} from 'node:fs/promises';
-import {comparisonRows,serviceRows,formatTuple} from '../presentation/catering/benchmarks/benchmarks.js';
+import {comparisonRows,serviceRows,formatTuple,identityDetails} from '../presentation/catering/benchmarks/benchmarks.js';
 const bench=JSON.parse(await readFile(new URL('../presentation/catering/benchmarks/data.json',import.meta.url)));
 test('benchmark filters keep evaluation budgets and method scopes explicit',()=>{
  const rows=comparisonRows(bench,'S2',256);
@@ -61,4 +61,35 @@ test('quantum comparison separates held-out medians and unequal final shots',()=
    [['S2',10,10,[1024]],['S3',10,9,[1024]]]);
  assert.ok(bench.vqe.primary_heldout.every(r=>r.probability>0.12&&r.probability<0.13));
  assert.ok(bench.vqe.primary_heldout.every(r=>r.median_shift_equivalents>r.median_evaluations));
+});
+
+
+import {captureOptions,chapterShots} from '../scripts/catering-showcase/capture-plan.mjs';
+test('capture defaults to no video and no sampler; explicit dry run cannot execute either',()=>{
+ assert.deepEqual(captureOptions([]),{record:false,sample:false,dryRun:true});
+ assert.deepEqual(captureOptions(['--dry-run']),{record:false,sample:false,dryRun:true});
+ assert.deepEqual(captureOptions(['--sample']),{record:false,sample:true,dryRun:false});
+ assert.deepEqual(captureOptions(['--record']),{record:true,sample:true,dryRun:false});
+ assert.throws(()=>captureOptions(['--dry-run','--record']),/cannot sample or record/);
+ assert.throws(()=>captureOptions(['--sample','--dry-run']),/cannot sample or record/);
+});
+test('recording shots derive durations and include operational outcomes and real code',async()=>{
+ const story=JSON.parse(await readFile(new URL('../scripts/catering-showcase/story.json',import.meta.url)));
+ const shots=chapterShots(story);
+ assert.equal(shots.length,12);assert.equal(shots.at(-1).end,260);
+ assert.ok(shots.every(c=>c.shot&&c.editor_cue&&c.time>c.start&&c.time<c.end));
+ assert.ok(shots.find(c=>c.id==='service').still_progress>.8);
+ assert.ok(shots.find(c=>c.id==='encoding').still_progress>.55);
+});
+
+
+test('follow-up service rows expose distinct source sampling and packet identities',()=>{
+ const rows=bench.veloxq.filter(r=>r.source_bundle_sha256);
+ assert.equal(rows.length,7);
+ assert.ok(rows.every(r=>r.source_bundle_sha256.length===64&&r.sampling_bundle_sha256.length===64));
+ const detail=identityDetails(rows[0]);
+ assert.match(detail,/Source bundle SHA-256/);assert.match(detail,/Sampling bundle SHA-256/);
+ if(rows[0].packet_sha256)assert.match(detail,/Packet SHA-256/);
+ assert.deepEqual(bench.velox_payoff.rows.map(r=>[r.complete_meals,r.discarded_portions,r.valid_shots]),
+  [[10,30,17],[50,60,512]]);
 });

@@ -54,7 +54,9 @@ def export():
                 valid=r['valid_rows'],shots=r['total_rows'],best=r['best'],steps=r['settings']['num_steps'],
                 reps=r['settings']['num_rep'],backend_s=r['backend_statistics'].get('running_time'),
                 wall_s=None if r['recovery'] else r['adapter_total_s'],download_recovered=bool(r['recovery']),
-                representation=r['settings']['conditioning']['policy'])
+                representation=r['settings']['conditioning']['policy'],
+                source_bundle_sha256=r['settings']['source_bundle_sha256'],
+                sampling_bundle_sha256=r['settings']['sampling_bundle_sha256'])
         else:
             suffix='output/'+entry['output_dir'].split('/output/',1)[-1] if '/output/' in entry['output_dir'] else entry['output_dir']
             directory=ROOT/suffix
@@ -97,6 +99,7 @@ def export():
     data=dict(schema='catering-benchmarks.v1',qaoa=qaoa,qaoa_runs=runs,classical=classical,veloxq=service,
         source_files=list(sources.values()),scale=load('output/catering-velox-scale-v3/report.json'),
         controls=load('output/catering-velox-noidle-controls-v1/report.json'),vqe=vqe,
+        velox_payoff=load('output/catering-velox-payoff-v1/verification.json'),
         notes=['QAOA compares the identical frozen portfolio; full-grid references measure representation loss.',
           'VeloxQ formulations/pools/objectives differ: compare identities before ranking.',
           'Simulator exact probabilities train QAOA; final measurements use4096 shots.',

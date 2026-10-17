@@ -11,11 +11,11 @@ reported campaign medians from checked exported schedules.
 
 ## 0:26–0:50 · Two orders sharing a side batch
 
-> Two customers each need ten meals. Main A is already cooking. We choose Main B and a twenty-portion side batch shared between both orders. The schedule assigns equipment, workers, preparation, cooking, packing and cleaning. Separate cookers can overlap, but both orders use the same packing line.
+> Two customers each need ten meals. Main A is already cooking. A checked QAOA sample selects Main B and one twenty-portion side batch shared between both orders. Its schedule assigns equipment, workers and phase times. Both orders leave complete by their departures, using one packing line.
 
 ## 0:50–1:02 · What happens without the side batch
 
-> Remove the side batch and neither order receives a complete meal, despite both mains being cooked. Twenty component portions are discarded. This is a checked manual intervention that exposes the consequence of a batch choice.
+> Now remove only the side batch from that plan. Neither order receives a complete meal, and twenty main portions are discarded. This is a checked manual intervention, not another solver. It shows why service and waste must depend on paired components.
 
 ## 1:02–1:28 · Batch selection and scheduling constraints
 
@@ -31,7 +31,7 @@ reported campaign medians from checked exported schedules.
 
 ## 2:14–2:39 · Run the trained QAOA circuit locally
 
-> We now run the trained depth-three circuit locally with its saved angles. Cost and conflict phases alternate with blockwise XY mixing. That mixer preserves one choice per block; the checker still rejects cross-block resource and allocation clashes. We sample four thousand ninety-six shots and check every distinct schedule. This is fresh sampling of the selected training-case circuit, with no retraining or remote calls.
+> Return to the original batch choices and run the trained depth-three QAOA circuit locally. Cost and conflict phases alternate with blockwise XY mixing. The mixer preserves one choice per block; the independent checker rejects physical clashes. We draw four thousand ninety-six fresh samples with saved angles. The receipt reports the best checked outcome, separately from the retained kitchen replay.
 
 ## 2:39–3:08 · QAOA: trained angles improve sampling
 
@@ -41,9 +41,9 @@ reported campaign medians from checked exported schedules.
 
 > VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.
 
-## 3:28–3:56 · VeloxQ: fix the representation
+## 3:28–3:56 · VeloxQ: better plans after idle elimination
 
-> VeloxQ uses the larger version of the same kitchen. We proved that idle choices can be removed: selecting no program in a block means idle. A tighter deletion bound preserves feasibility and the optimal schedules. On the five-hundred-twelve-bit source at equal twenty-thousand steps, valid returns rise from seventeen to all five hundred twelve. The new representation also returns all-valid samples at nine hundred ninety-eight and two thousand twenty-two solver variables. Classical controls still find better schedules.
+> VeloxQ solves the larger kitchen. Removing redundant idle bits preserves feasible schedules and their objective. At equal twenty-thousand-step budgets, the best checked plan serves fifty meals instead of ten, out of one hundred forty. Waste rises from thirty to sixty portions: complete service has priority. Valid returns rise from seventeen to all five hundred twelve. This is one exploratory job per representation; classical controls still find better plans.
 
 ## 3:56–4:08 · What scales, and where each method fits
 
@@ -51,11 +51,11 @@ reported campaign medians from checked exported schedules.
 
 ## 4:08–4:20 · Checked results and benchmarks
 
-> The checked cell serves twenty meals with no discarded portions. The benchmark page compares every retained campaign and explains the scaling limits. Our repository contains the formulation, proofs, source-hashed results and development log.
+> The retained solver plan serves twenty meals with no discarded portions; removing its shared side serves none. Fresh execution has a separate checked receipt. The benchmark page contains the wider comparisons, while the repository preserves the formulation, proofs, sources and development log.
 
 ## Recording notes
 
-611 spoken words. Leave pauses for the code, equation and actual launch.
+614 spoken words. Leave pauses for the code, equation and actual launch.
 The current local MP4 is silent. Its pictures remain useful, but record the
 updated narration for this result set. Earlier cuts have obsolete result slides.
 

@@ -465,6 +465,10 @@
     "vqe_verification": {
       "path": "output/catering-methods/vqe/integration-v2/verification.json",
       "sha256": "723d13d1aef3ba58bce0237851473027e683bec978d80ea8ad9b24a48e6c2533"
+    },
+    "velox_payoff": {
+      "path": "output/catering-velox-payoff-v1/verification.json",
+      "sha256": "dff47ca623375d8eb747b889b41a6e6d4b330cd814d258f5eed6e1147dc6cda0"
     }
   },
   "velox": {
@@ -514,7 +518,24 @@
       "after": 512,
       "total": 512,
       "steps": 20000,
-      "baseline": "Same deletion-bound penalty, explicit idle bits"
+      "baseline": "Same deletion-bound penalty, explicit idle bits",
+      "before_meals": 10,
+      "after_meals": 50,
+      "requested_meals": 140,
+      "before_waste": 30,
+      "after_waste": 60,
+      "before_metrics": {
+        "B": 3,
+        "R": 3,
+        "U": 13,
+        "W": 3
+      },
+      "after_metrics": {
+        "B": 9,
+        "R": 9,
+        "U": 9,
+        "W": 6
+      }
     }
   },
   "stage1": {

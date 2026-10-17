@@ -1,5 +1,42 @@
 # Development log
 
+## 2026-10-17 — finish the demonstration and reproducible release path
+
+Fixed the presentation emphasis: trained QAOA is the live circuit, VQE is an
+unequal-budget ansatz comparison, and VeloxQ supplies the larger equivalent-
+representation study. The kitchen story shows a retained solver plan, a single
+manual side-batch removal, restoration of the choices, and a separately labeled
+fresh execution. The recording sheet is generated from the same timed source
+as the voiceover/live scripts. Still-only capture defaults to no sampling and
+no video; actual human speaking rehearsals and final recording remain pending.
+
+Independently rechecked raw handovers for the equal 20k-step VeloxQ comparison:
+the same source/objective improves from 10 to 50 complete meals (of 140), with
+valid returns 17→512/512 and discarded portions 30→60. Service has lexicographic
+priority. This is one exploratory job per representation, not a held-out result
+or a win over CP/SA. The benchmark exposes source, sampling and packet hashes.
+
+Added portable read-only QAOA and release verifiers. The QAOA audit streams
+archives without extraction, verifies all 1,204 manifest hashes and can recheck
+all 715,166 return records/1,638,400 shot counts with the raw checker. The old
+local audit's temporary-path and current-source assumptions are not required.
+A new Python 3.11 environment passed the method checks (one optional Qiskit test
+skips); a separate clean foundation environment uses the documented 3.14 pins.
+The release checker also performs three fixed-seed local sampling executions;
+these establish repeat execution, not independent training or human rehearsal.
+
+Consolidated active setup/design/submission guides and preserved old handoffs
+and manufacturing sections in linked archives. Nine large VQE evaluator JSONs
+are packed losslessly from 30,317,364 to 890,181 bytes using the existing evidence
+catalog. Original local files, restored paths and hashes stay unchanged. No raw
+sample is discarded and no Git history is rewritten. Added the Q&A drill,
+human rehearsal record and prepared submission fields; public release, final
+video and actual submission still require their own completed steps.
+
+No new training campaign, external optimizer or physical QPU was run for this
+preparation. Final clean-export verification is recorded separately against its
+source commit.
+
 ## 2026-10-17 — model replay, loss checks and five-case VQE integration
 
 Merged the teammate's a3ce2135 VQE exports with the reviewed adapter fixes.

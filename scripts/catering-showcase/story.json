@@ -7,7 +7,10 @@
     "live_duration": 20,
     "narration": "Stage One reaches four and eight hours. Our extension plans catering production: batch quantities and shared allocations, cookers and qualified workers, and preparation, cooking, packing and cleaning. Departures, freshness and resource calendars constrain the plan. Urgent orders and outages trigger replanning while started work stays fixed. We minimize missed meals, waste, batches and changes.",
     "live_action": "Start R; explain the full problem before the small example.",
-    "live_narration": "We plan catering batches, allocations, equipment, workers and times. The constraints include freshness, departures, cleaning and resource calendars. Urgent orders and cooker outages change the plan; started work stays fixed. We prioritize complete meals, then waste, batches and changes."
+    "live_narration": "We plan catering batches, allocations, equipment, workers and times. The constraints include freshness, departures, cleaning and resource calendars. Urgent orders and cooker outages change the plan; started work stays fixed. We prioritize complete meals, then waste, batches and changes.",
+    "shot": "Full implemented problem beside the pixel kitchen.",
+    "editor_cue": "Keep all input/constraint rows and the priority order visible. No decorative introduction.",
+    "still_progress": 0.45
   },
   {
     "id": "service",
@@ -15,9 +18,12 @@
     "kicker": "ORDERS AND BATCHES",
     "duration": 24,
     "live_duration": 16,
-    "narration": "Two customers each need ten meals. Main A is already cooking. We choose Main B and a twenty-portion side batch shared between both orders. The schedule assigns equipment, workers, preparation, cooking, packing and cleaning. Separate cookers can overlap, but both orders use the same packing line.",
+    "narration": "Two customers each need ten meals. Main A is already cooking. A checked QAOA sample selects Main B and one twenty-portion side batch shared between both orders. Its schedule assigns equipment, workers and phase times. Both orders leave complete by their departures, using one packing line.",
     "live_action": "Play this chapter through both departures; it then holds.",
-    "live_narration": "Each customer needs ten meals. Main A is already cooking. We choose a new Main B and one shared side batch. Preparation, cooking, packing and cleaning reserve real equipment and workers. Both orders share the packing line."
+    "live_narration": "Each customer needs ten meals. Main A is already cooking. This checked QAOA sample selects a new Main B and one shared side batch. Both orders leave complete; equipment, workers and phase times are checked.",
+    "shot": "Retained solver plan replays through both departures.",
+    "editor_cue": "Hold the final 20/20 count long enough to read. The label must say retained QAOA sample.",
+    "still_progress": 0.9
   },
   {
     "id": "counter",
@@ -25,9 +31,12 @@
     "kicker": "BATCH REMOVAL",
     "duration": 12,
     "live_duration": 7,
-    "narration": "Remove the side batch and neither order receives a complete meal, despite both mains being cooked. Twenty component portions are discarded. This is a checked manual intervention that exposes the consequence of a batch choice.",
+    "narration": "Now remove only the side batch from that plan. Neither order receives a complete meal, and twenty main portions are discarded. This is a checked manual intervention, not another solver. It shows why service and waste must depend on paired components.",
     "live_action": "Show the checked side-batch removal.",
-    "live_narration": "Remove the side batch and we serve no complete meals. Twenty component portions become waste. This is a checked manual intervention."
+    "live_narration": "Remove only the side batch: zero complete meals and twenty wasted main portions. This checked manual intervention explains what the optimizer must avoid.",
+    "shot": "Same plan with only side C removed.",
+    "editor_cue": "Show 0/20 meals and 20 discarded portions. Retain the manual-intervention label; this is not a new optimizer result.",
+    "still_progress": 0.9
   },
   {
     "id": "encoding",
@@ -37,7 +46,10 @@
     "live_duration": 16,
     "narration": "Each program describes one batch: quantity, allocations, equipment, crew and phase times. A bit selects it. Programs sharing an anchor demand form a one-hot block with an idle choice. Cross-block penalties forbid duplicate allocations and resource clashes. The small cell includes all thirty-two legal programs, plus three idle bits.",
     "live_action": "Play past halfway for the compiler excerpt.",
-    "live_narration": "A bit selects one batch program: quantity, allocations, resources and times. One-hot blocks choose a program or idle; pairwise penalties forbid clashes. The small cell offers all thirty-two legal programs, plus three idle bits."
+    "live_narration": "A bit selects one batch program: quantity, allocations, resources and times. One-hot blocks choose a program or idle; pairwise penalties forbid clashes. The small cell offers all thirty-two legal programs, plus three idle bits.",
+    "shot": "Side-C program bit, one-hot block, then actual compiler excerpt.",
+    "editor_cue": "Keep the program/resource explanation before code. Excerpt appears after 55% of the chapter.",
+    "still_progress": 0.72
   },
   {
     "id": "loss",
@@ -47,7 +59,10 @@
     "live_duration": 18,
     "narration": "For a meal lot, binary main coverage times side coverage gives complete service. Their sum minus twice their product counts unpaired components. Coverage is linear in batch-selection bits, so both expressions remain quadratic without auxiliary product bits. We prioritize missed meals, waste, batches and plan changes. Integer bounds prove that ordering and the hard-constraint penalty.",
     "live_action": "Point to MS, then the priority order.",
-    "live_narration": "Main coverage times side coverage gives complete service. Their sum minus twice the product counts unpaired food. Both expand quadratically without product bits. We prove the objective priority order and a penalty bound that makes every ground state feasible."
+    "live_narration": "Main coverage times side coverage gives complete service. Their sum minus twice the product counts unpaired food. Both expand quadratically without product bits. We prove the objective priority order and a penalty bound that makes every ground state feasible.",
+    "shot": "Paired coverage truth table, quadratic objective and penalty.",
+    "editor_cue": "Point to the main-times-side term; keep priority and ground-state proof readable. R=B is a fixture caveat, not a claimed stability gain.",
+    "still_progress": 0.45
   },
   {
     "id": "recovery",
@@ -55,7 +70,10 @@
     "kicker": "RECOVERY CLEANING",
     "duration": 18,
     "live_duration": 0,
-    "narration": "A repaired cooker still needs cleaning. Here the qualified worker first finishes committed work, then cleans the repaired cooker from eleven forty to eleven fifty. Both worker and cooker are reserved. The independent checker reconstructs these intervals, freshness and meal handovers from raw schedule records."
+    "narration": "A repaired cooker still needs cleaning. Here the qualified worker first finishes committed work, then cleans the repaired cooker from eleven forty to eleven fifty. Both worker and cooker are reserved. The independent checker reconstructs these intervals, freshness and meal handovers from raw schedule records.",
+    "shot": "S3 repair/clean timestamps and actual resource replay.",
+    "editor_cue": "This is the independently checked raw reference. Keep it distinct from the cell QAOA replay.",
+    "still_progress": 0.45
   },
   {
     "id": "run",
@@ -63,9 +81,12 @@
     "kicker": "FROZEN p=3 ANGLES \u00b7 FRESH SAMPLES",
     "duration": 25,
     "live_duration": 20,
-    "narration": "We now run the trained depth-three circuit locally with its saved angles. Cost and conflict phases alternate with blockwise XY mixing. That mixer preserves one choice per block; the checker still rejects cross-block resource and allocation clashes. We sample four thousand ninety-six shots and check every distinct schedule. This is fresh sampling of the selected training-case circuit, with no retraining or remote calls.",
+    "narration": "Return to the original batch choices and run the trained depth-three QAOA circuit locally. Cost and conflict phases alternate with blockwise XY mixing. The mixer preserves one choice per block; the independent checker rejects physical clashes. We draw four thousand ninety-six fresh samples with saved angles. The receipt reports the best checked outcome, separately from the retained kitchen replay.",
     "live_action": "Click Run trained QAOA; read the fresh checked receipt.",
-    "live_narration": "This button runs the trained depth-three circuit with saved angles. It samples four thousand ninety-six shots locally and checks every returned schedule. The angles are frozen; the samples are fresh."
+    "live_narration": "Return to the original choices. We run the saved depth-three circuit, draw four thousand ninety-six fresh samples and check them. Read the actual meals and waste from this receipt.",
+    "shot": "Actual local launch, followed by its fresh checked receipt.",
+    "editor_cue": "Preserve the click-to-completion sequence. Hold meals, waste and valid shots; do not replace a failed launch with an unlabeled saved result.",
+    "still_progress": 0.45
   },
   {
     "id": "results",
@@ -75,7 +96,10 @@
     "live_duration": 20,
     "narration": "We selected the QAOA configuration on the cell and S0/S1. On held-out S2/S3, it finds the offered-pool optimum in all ten seeds at both budgets. At two hundred fifty-six evaluations, median optimum probability per shot is about eleven and twenty-two times random-angle search. Angles are optimized per instance. These restricted portfolios still exclude better full-grid schedules.",
     "live_action": "Compare trained and random probabilities, then point to the restriction gap.",
-    "live_narration": "On both held-out disruption cases, QAOA finds the offered-pool optimum in all ten seeds. With two hundred fifty-six evaluations, optimum probability per shot is about eleven and twenty-two times random-angle search. The full kitchen still has better schedules than these restricted portfolios."
+    "live_narration": "On both held-out disruption cases, QAOA finds the offered-pool optimum in all ten seeds. With two hundred fifty-six evaluations, optimum probability per shot is about eleven and twenty-two times random-angle search. The full kitchen still has better schedules than these restricted portfolios.",
+    "shot": "Held-out QAOA trained-versus-random probability bars.",
+    "editor_cue": "Keep 256 evaluations, ten seeds and offered-pool scope on screen; do not crop the restriction gap.",
+    "still_progress": 0.45
   },
   {
     "id": "vqe",
@@ -85,17 +109,23 @@
     "live_duration": 12,
     "narration": "VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.",
     "live_narration": "VQE concentrates about twelve percent probability on the optimum in both cases. Its budgets and shot count differ from QAOA, so we show the methods separately.",
-    "live_action": "Compare per-shot probabilities; point to the different budgets and final shots."
+    "live_action": "Compare per-shot probabilities; point to the different budgets and final shots.",
+    "shot": "VQE/QAOA per-shot probabilities with unequal-budget note.",
+    "editor_cue": "Show reported medians and final shot counts. No matched-budget ranking or hardware-speed claim.",
+    "still_progress": 0.45
   },
   {
     "id": "velox",
-    "title": "VeloxQ: fix the representation",
+    "title": "VeloxQ: better plans after idle elimination",
     "kicker": "SAME FEASIBLE SCHEDULES \u00b7 DIFFERENT SEARCH LANDSCAPE",
     "duration": 28,
     "live_duration": 19,
-    "narration": "VeloxQ uses the larger version of the same kitchen. We proved that idle choices can be removed: selecting no program in a block means idle. A tighter deletion bound preserves feasibility and the optimal schedules. On the five-hundred-twelve-bit source at equal twenty-thousand steps, valid returns rise from seventeen to all five hundred twelve. The new representation also returns all-valid samples at nine hundred ninety-eight and two thousand twenty-two solver variables. Classical controls still find better schedules.",
+    "narration": "VeloxQ solves the larger kitchen. Removing redundant idle bits preserves feasible schedules and their objective. At equal twenty-thousand-step budgets, the best checked plan serves fifty meals instead of ten, out of one hundred forty. Waste rises from thirty to sixty portions: complete service has priority. Valid returns rise from seventeen to all five hundred twelve. This is one exploratory job per representation; classical controls still find better plans.",
     "live_action": "Show the equal-budget 17 \u2192 512 comparison and all three actual widths.",
-    "live_narration": "For VeloxQ, we remove redundant idle choices and prove the optimum is preserved. At the same step budget, valid returns rise from seventeen to five hundred twelve out of five hundred twelve. All three tested scales return valid schedules; classical controls still find better plans."
+    "live_narration": "For VeloxQ, proved idle elimination improves the best plan from ten to fifty meals served at the same step budget. Waste increases; our objective prioritizes service. Valid returns rise from seventeen to five hundred twelve. Classical controls still find better plans.",
+    "shot": "Idle elimination: best plan serves 10\u219250 of 140 meals; validity 17\u2192512/512 at equal steps.",
+    "editor_cue": "Keep 20,000 steps and single-job scope visible. Waste rises30\u219260 portions because service has priority. Same source programs/objective, different sampling matrices; CP/SA still better.",
+    "still_progress": 0.45
   },
   {
     "id": "scaling",
@@ -105,7 +135,10 @@
     "live_duration": 10,
     "narration": "More orders and time choices create more programs and conflicts. QAOA uses thirty-one to thirty-five qubits in explicitly restricted portfolios. VeloxQ runs the larger coupled matrices. Classical references measure quality and representation loss. Variable count alone does not prove classical hardness or quantum advantage.",
     "live_narration": "Orders, time choices and conflicts drive scale. Quantum circuits use small portfolios; VeloxQ handles larger matrices. Size alone does not establish hardness.",
-    "live_action": "Show source choices, actual solver widths and the benchmark browser link."
+    "live_action": "Show source choices, actual solver widths and the benchmark browser link.",
+    "shot": "Program/conflict growth and distinct compute regimes.",
+    "editor_cue": "Keep portfolio qubits separate from VeloxQ solver variables. Benchmark link is the optional inspection route.",
+    "still_progress": 0.45
   },
   {
     "id": "close",
@@ -113,8 +146,11 @@
     "kicker": "RESULTS YOU CAN INSPECT",
     "duration": 12,
     "live_duration": 7,
-    "narration": "The checked cell serves twenty meals with no discarded portions. The benchmark page compares every retained campaign and explains the scaling limits. Our repository contains the formulation, proofs, source-hashed results and development log.",
+    "narration": "The retained solver plan serves twenty meals with no discarded portions; removing its shared side serves none. Fresh execution has a separate checked receipt. The benchmark page contains the wider comparisons, while the repository preserves the formulation, proofs, sources and development log.",
     "live_action": "Show the completed handovers and benchmark link; stop.",
-    "live_narration": "Twenty meals, no waste in this cell. The benchmark page contains the comparisons, scope and scaling limits."
+    "live_narration": "The checked plan serves twenty meals without waste. Its shared side makes both orders complete. Benchmarks and proof sources are linked.",
+    "shot": "Finished retained plan: 20 meals, zero waste; source links.",
+    "editor_cue": "End on the operational result. Add final repository/video links only after release verification.",
+    "still_progress": 0.8
   }
 ]

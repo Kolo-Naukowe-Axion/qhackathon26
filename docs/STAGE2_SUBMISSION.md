@@ -28,25 +28,30 @@ extension of the original factory problem. Main plus side completes a meal;
 unpaired components become waste. Scheduling decisions include shared yields,
 equipment, qualified workers, phase times, freshness and recovery cleaning.
 
-The default Stage 2 headline is **QAOA plus VeloxQ**, with classical references:
+The frozen presentation emphasis is **QAOA plus VeloxQ**, with VQE comparison
+and classical references:
 
 - QAOA supplies the currently checked quantum method and sampled schedules.
 - VeloxQ solves larger instances of the same versioned meal model and supplies
   the integrated backend/scaling study for its prize criteria.
 - Raw CP, same-domain CP, exact small audits and SA establish feasibility,
   quality and representation loss. These remain supporting evidence.
-- VQE is an additional method comparison if its owner delivers a checked,
-  reproducible result before the freeze. It replaces QAOA as the headline only
-  if measured quality/reliability and the explanation justify the change.
+- VQE is now integrated: five retained exports pass independent evaluation,
+  and the E5 CSV reports higher per-shot optimum probability than QAOA on the
+  same held-out portfolios. Training budgets differ; historical E5 angles and
+  raw per-seed samples are absent. Showcase both with these limits; do not call
+  this a matched-budget method win.
 
 Present one primary quantum method well. Keep additional implemented methods
 in the repository and comparison table. The official rubric has no separate
 points for algorithm count, largest qubit count or physical hardware use.
 Neither method names nor adding VQE automatically increases creativity credit.
 
-**Current verification, 17 October:** fetched remote main; it contains the
-retained QAOA catering pilot and VeloxQ receipts, but no separately delivered
-VQE result package. GitHub reports this repository private, default branch main.
+**Current verification, 17 October:** main now includes the audited 400-run QAOA
+campaign, the VeloxQ representation study, and all five checked VQE exports.
+The benchmark browser links 148 retained source hashes. The Vercel check on
+dec1869b reports success. The last visibility check recorded GitHub private,
+default branch main; recheck signed-out access only at the authorized release.
 Both root baseline JSONs and MIT LICENSE exist. No visibility change or service
 call is authorized or performed by this checklist.
 
@@ -77,9 +82,9 @@ The official VeloxQ criteria do not list numerical weights. Cover all of them:
 | Criterion | Existing contribution | Work that raises the case |
 |---|---|---|
 | Elegant, correct integration | Shared model/decoder, exact integer packets, sign/offset checks, no silent repair, raw receipts. | Keep the backend boundary small and reproducible; explain one concrete precision/encoding decision. |
-| Quality of obtained solutions | Checked cold runs at 512/1024/2048 variables, with classical controls and idle witnesses. | Main priority: improve feasible-return rate, then valid objective quality under a capped authorized experiment. Feature the best reproducible checked setting with its scope and budget. |
+| Quality of obtained solutions | The no-idle formulation returns 512/512 feasible samples at actual solver widths 486/998/2022. At 512 source bits and 20,000 steps the controlled change improves validity 17→512/512. | Valid objective quality still trails retained CP/SA. Explain the measured representation improvement; further service experiments need a separate capped budget. |
 | Scaling with size/complexity | Nested larger portfolios of the same 12-customer input, measured bits/couplers/density. | Compare quality and feasibility along with loader/upload/queue/backend/total times. Escalate only when the smaller-tier result is useful. Large matrices alone are weak evidence. |
-| Experimental insight | Current cold returns expose one-hot violations and penalty-dominated energies. | Show a controlled change and what it fixes. Preserve the unchanged control and disclose any new bundle/coefficient version. |
+| Experimental insight | Proven penalty conditioning and redundant-idle elimination retain feasible optima while greatly improving service feasibility. Cold controls and failed attempts remain in the ledger. | Present the controlled comparison and its limits; feasibility improvement is distinct from best schedule quality. |
 | Clarity and reproducibility | Frozen inputs, hashes, method result schema, ledger, offline packet checks and retained evaluations. | One documented restore/run/check path and a compact result table linked to raw artifacts. |
 
 Do not treat backend running time as end-to-end time. The current service
@@ -92,13 +97,13 @@ measurement. See the owner's report for approved versus still-proposed work.
 | Deliverable | Current status | Before turn-in |
 |---|---|---|
 | Working Stage 1 A and B | Selected simulator QAOA evidence and root schedule files exist; 4h/8h. | Re-run selected-evidence validator and inspect official JSON format at the release commit. Failure of either baseline excludes further assessment. |
-| Stage 2 source and selected results | Implemented catering compiler, checker, QAOA pilot, references, VeloxQ adapter/receipts. | Select primary method, evaluate returned samples, freeze settings/result IDs and reproduce the documented launch. |
+| Stage 2 source and selected results | Compiler/checker, audited QAOA campaign, five checked VQE exports, classical references and VeloxQ representation study. Primary emphasis and live angles are fixed. | Freeze the final release commit and reproduce the documented launch; historical E5 VQE angles remain absent. |
 | Clearly separated baseline / extension | solver/, catering/ and corresponding viewer paths exist. | README should offer the jury one obvious route to Stage1 and one to current catering; archive links stay subordinate. |
 | Public Git repository with MIT | MIT file exists. GitHub visibility checked private on 17 October. User wants it kept private during development. | Review credentials/private assets beforehand. Publish only at the final submission step, then verify access while signed out and submit. A public website does not satisfy public-source access. |
 | README with run instructions and AI-use description | Both sections exist, including current catering and service disclosure. | Keep disclosure aligned with final delivered methods; verify commands from a clean environment. |
 | Dated Development Log | Exists. | Final entry records chosen methods, measured outcomes, decisions and verification. |
 | Project Design | Exists with active catering entry and linked math. | Finish coherent current design and cross-check it against selected implementation. |
-| Demo video URL, at most 5 min | Silent 4:20 rough cut and timecoded voiceover draft exist; final owner results and audio pending. | Upload and play through as a viewer. Include real launch/result, code/model/method walkthrough and log summary. |
+| Demo video URL, at most 5 min | Current 4:20 storyboard/script and verified v3 stills exist. The silent v2 rough cut is obsolete; final recording/audio are pending. | Record the current route, add human voiceover, upload and play through as a viewer. Include real launch/result, model/method walkthrough and log summary. |
 | Live presentation, at most 3 min plus about 2 min Q&A | 2:45 executable live route with chapter holds, audience view, operator cues, fresh sample and Q&A cheats prepared. | Rehearse actual launch and screen-share layout, prepare fallback, attend assigned slot. |
 | Organizer submission | No receipt recorded here. | Submit through the supplied form and retain acknowledgment, commit, video URL and team details. |
 
@@ -121,103 +126,49 @@ measurement. See the owner's report for approved versus still-proposed work.
    Live presentations start 18:00 UTC+2; use the assigned slot. A public demo
    website can expose the idea independently of repository visibility; its
    visibility must be considered separately before release.
-5. Repo cleanup remains deferred. At packaging, improve the entry path and
-   separate current work from archives first. Before moving/deleting anything,
-   preserve evidence and check imports, tests, manifests and source-hash links.
-   Do not rewrite history or remove raw results during the final freeze.
+5. The entry paths are consolidated: the current catering guide, project design
+   and checklist lead to active evidence; older mixed handoffs and factory
+   sections are archived with links. Frozen research artifacts remain at their
+   source-hashed paths. Do not rewrite history or bulk-remove raw results.
+
+## Release check and handoff
+
+Run `python scripts/check-catering-release.py --output /tmp/NEW-RELEASE-CHECK`
+in the documented foundation environment. It performs local technical checks,
+including three fixed-angle sampling executions, and writes a release receipt.
+Use `--full-qaoa` to independently decode every archived QAOA sample as well as
+verify archive hashes. This command records no video and calls no service.
+
+The package emphasis is fixed:
+
+- Live circuit: complete-cell QAOA p=3, budget256/seed2026 trained angles,
+  4096 fresh samples at sampling seed17102026.
+- Method evidence: frozen QAOA400-run campaign, primary coupled-L2/CVaR0.1
+  VQE E5 comparison and five checked exports; no equal-work winner claim.
+- VeloxQ: equal20k-step source512 representation comparison plus the three
+  actual solver widths. Keep changed matrix identities visible.
+- Stage1: selected checked4h/8h JSONs. Design, log and MIT source accompany them.
+
+Prepare these final form fields from the actual release; pending means pending:
+
+| Field | Prepared value / remaining action |
+|---|---|
+| Project | Axion Kitchen |
+| Description | Batch-production scheduling with paired-meal service and waste, quantum circuit optimization, and a proven VeloxQ representation improvement. |
+| Repository | https://github.com/Kolo-Naukowe-Axion/qhackathon26 — keep private until the final authorized release; verify signed-out access then |
+| Demo | https://qfactoria.com/catering/ |
+| Benchmarks | https://qfactoria.com/catering/benchmarks/ |
+| Source commit | Final checked release SHA; record it after the remaining edits are committed |
+| Video URL | Pending current recording, human voiceover, upload and playback check |
+| Team/contact declarations | Confirm actual organizer fields and team-provided details |
+| Submission receipt | Pending; retain acknowledgment and exact submitted links |
+
+See the [recording sheet](CATERING_RECORDING.md) and [Q&A/rehearsal sheet](CATERING_QA.md).
+No public visibility change, upload or form submission is performed by this prep.
 
 Rules authority: local `Quantum_Hackathon_2026_ERP_Challenge.pdf`, §§6–12 and 15.
 No document completeness or proposed experiment guarantees points or either award.
 
 ## Archived factory package
 
-17 October 2026. This is prepared local content, not a submitted entry or a
-public release. Actual VeloxQ use, physical QPU calls, public-source publication
-and final submission remain held. The user authorized syncing the private
-repository and its configured automatic site deployment; see [current status](STAGE2_STATUS.md).
-
-**Technical acceptance:** all 14 agreed non-VeloxQ core requirements passed.
-The final test/build receipt records 52 targeted Python tests and 113 site tests.
-See [current status](STAGE2_STATUS.md) and the [acceptance matrix](STAGE2_MERIT_ACCEPTANCE.md).
-This closes technical merit; it does not complete the external/human duties below.
-
-## Suggested title and description
-
-**QFactoria: preserve the choices that recover a factory deadline**
-
-QFactoria asks which capacity rescues manufacturing deadlines and which QUBO
-representations preserve its value. Two complete 16-operation pump recipes
-jointly assign machines, qualified workers and start times, with assembly joins,
-calendars, transfers and family changeovers. Replacing heat capacity eliminates
-45 weighted late minutes in a certified complete-model comparison. An exactly
-solved 781-bit pool misses that recovery; deterministic enrichment restores it
-at 2,078 bits. Our support-pruned complete optimization encoding uses 2,499 bits, while an exact hard-deadline
-query needs 818 bits. These alternatives have different guarantees.
-
-A whole-recipe QAOA bridge recombines all 32 operations through eight component
-groups, using 18–36 logical qubits. QAOA and classical annealing each return
-18/18 valid same-pool optimal schedules; uniform sampling returns 6/18 valid
-optimal encodings. The constructor already finds the optimal recovery plan,
-sector energies are enumerated classically, and budgets differ. No quantum
-advantage is claimed. Independent circuit replay verifies the six 18-qubit
-circuits; larger circuits receive logical resource audits.
-
-Six fixed-horizon feature ablations quantify bits, couplers, coefficient scale
-and solution quality. Scaling reaches 128 operations with explicit UNKNOWN
-complete references and checked bounds. An exact economic ledger values four
-checked plans under synthetic energy, standby, labor, night premiums, startup and
-lateness prices, with 135 sensitivities and purchase/event-fee thresholds. It
-values priority-optimal schedules; it is not calibrated industrial ROI or full
-weekly minimum-cost optimization. Failed representations and cold annealing
-controls remain part of the evidence.
-
-## Prepared material
-
-| Item | Authoritative local evidence |
-|---|---|
-| Official Stage 1 outputs | `schedule_2x2.json`, `schedule_3x3.json`, `output/stage1-selected.json`; QAOA simulation, independent optima 4/8 hours |
-| Design and full merit map | `PROJECT_DESIGN.md`, `docs/STAGE2_COMBINED_DIRECTION.md`, `docs/STAGE2_MERIT_ACCEPTANCE.md` |
-| Complete recovery pair | `output/manufacturing-recovery-v2/`, `output/manufacturing-full-recovery-v1/` |
-| Nested enriched frontier | `output/capacity-frontier-review-v1/` |
-| Exact deadline query | `output/deadline-decision-review-v1/` |
-| Cold controls | `output/deadline-anneal-review-v1/`, physically rechecked in `output/deadline-anneal-report-audit-v2/`: 0/640 raw-valid returned samples at stated budgets |
-| Full-recipe QAOA | `output/recipe-bridge-review-v2/`, circuit audit `output/recipe-bridge-circuit-audit-v1/`, return/count audit `output/recipe-bridge-reporting-audit-v1.json` |
-| Feature and scaling costs | `output/realism-frontier-v1/`, exact dense count supplement `output/realism-continuous-counts-v2/` |
-| Capacity economics | `output/capacity-economics-v2/`, `output/capacity-economics-independent-audit-v1.json` |
-| Four current cold SDK files | `output/sponsor-merit-packets-v1/` plus `output/sponsor-enriched-matched-penalty-v1/`: 818 deadline, 2078 enriched at two penalties, 2499 complete; 815,121 coefficient/constant equality checks |
-| Smaller independent quantum study | `output/stage2-entry-v2/`, its circuit/claim audits; 60/60 optimal actual schedules, 57/60 exact measured minima. Separate scope from the bridge |
-| Demo | `.venv-stage2/bin/python -m stage2.entry_demo --port 4192`; `/manufacturing/` includes saved comparisons, fresh local whole-recipe QAOA, economics and feature table |
-| Reproducibility | `scripts/verify-stage2-merit.py`, final validation and independent consistency receipts linked by the acceptance matrix |
-| Explanation and disclosure | `docs/STAGE2_LIVE_SCRIPT.md`, `DEVELOPMENT_LOG.md`, README AI-use disclosure |
-
-Frozen artifacts retain input definitions, literal source snapshots, parameters,
-raw samples, checks, QASM where applicable and SHA-256 manifests. Final checks
-verify those historical bytes without requiring them to equal later code.
-The static website does not execute Python or contain credentials.
-
-The earlier six-model cold/witness packet campaign is retained separately; it
-is not the four-file current comparison. Offline SDK serialization proves no
-backend speed, sample quality, acceptance, credit availability or sponsor
-eligibility. Native CP solves these small decision queries quickly; failed local
-annealing does not establish intrinsic hardness or predict a VeloxQ win.
-
-## Video and external duties
-
-The existing [161.9493-second manufacturing review cut](../output/manufacturing-video-v3/qfactoria-manufacturing-review.mp4)
-predates the enriched/deadline/whole-recipe/economics additions. It remains a
-review draft, made from edited real UI captures with synthetic narration. It
-is not the final synchronized video. Use the current live script for the final
-recording; human review and accessible hosting are still required.
-
-Human actions remain: review the exact release and narration, rehearse the live
-slot and Q&A, confirm team declarations, authorize the public MIT release,
-record/upload the final video, and submit the required public repository,
-schedules, design/log, team information and video URL through the official
-form. Preserve a submission receipt. The recorded organizer deadline is
-18 October, 15:00 Warsaw; verify the actual form before external submission.
-No final video, publication or submission is implied by completed merit checks.
-
-Actual VeloxQ requires separate explicit authorization for a bounded pilot,
-current credits/access checks and a preserved raw result. The runbook specifies
-same-input comparisons, feasible objective/target quality, time, returned-sample
-counts and exact decode checks. No paid or remote action has occurred here.
+[Preserved in the historical archive](archive/2026-10-17/FACTORY_PACKAGE_BEFORE_RELEASE.md#submission). It is not the active catering package.

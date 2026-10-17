@@ -16,6 +16,7 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [Benchmark browser](http://127.0.0.1:4192/catering/benchmarks/) | Filter all retained campaigns, compare budgets and inspect source hashes |
 | [CATERING_PRESENTATION.md](CATERING_PRESENTATION.md) | Presentation structure and remaining result gates |
 | [CATERING_VOICEOVER.md](CATERING_VOICEOVER.md) | Timed video narration |
+| [CATERING_RECORDING.md](CATERING_RECORDING.md) | Source-driven shot list, dry run and final capture/voiceover instructions |
 | [CATERING_LIVE.md](CATERING_LIVE.md) | Live speaker and operator cues |
 | [CATERING_QA.md](CATERING_QA.md) | Quick answers and technical follow-ups |
 | [STAGE2_SUBMISSION.md](STAGE2_SUBMISSION.md) | Official criteria, deliverables and final checks |
@@ -57,3 +58,7 @@ baseline methods. Historical transcripts and plans are retained under
 Those older source paths remain in place because research scripts, verifiers
 and retained source manifests reference them. Presentation-facing duplicates
 are consolidated first; moving bulk evidence needs a separate dependency audit.
+
+The old mixed catering guide and factory submission/design sections are
+preserved in the archive. Active entry documents now contain the current
+catering route; no frozen JSON, source snapshot or raw result was removed.

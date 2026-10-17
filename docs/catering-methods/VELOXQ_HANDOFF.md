@@ -7,15 +7,21 @@ and what is still open.
 
 ## State in one paragraph
 
-The adapter (`catering/methods/veloxq.py` 0.2.0) works end to end against the
-service with exact integer packets. 54 service attempts are recorded in
-`output/catering-methods/veloxq/job_ledger.json`, across phases C–H. Every
-returned sample was decoded by `catering.run evaluate` without repair.
+The adapter (`catering/methods/veloxq.py` 0.3.0) works end to end against the
+service with exact integer packets and recoverable storage downloads. The combined
+`output/catering-methods/veloxq/job_ledger.json` records **61 attempts**: 54 from
+historical phases C–H and seven representation follow-ups. Returns are independently
+checked without removing selected programs or repairing physical conflicts.
 
-**Result:** VeloxQ reaches the CP-SAT optimum on the 31–35-variable QUBOs. From
-256 variables up it is behind seeded SA on the same matrix, and at 2,048 it
-returns no valid state. Smaller local penalties, low-conflict program pools and
-a 20–128× larger budget each changed the best U by at most 1–2 lots.
+**Current result:** VeloxQ reaches the offered-pool optimum on the shared
+31–35-variable inputs. The proven no-idle formulation returns 512/512 valid
+shots at actual service widths 486/998/2022, corresponding to 512/1024/2048-bit
+source pools. At equal 20,000 steps on source 512, the best tuple improves from
+(13,3,3,3) to (9,6,9,9), alongside validity 17→512/512. The source choices and
+feasible objective are unchanged. With 100,000 steps its best is (8,7,12,12).
+Retained CP and same-formulation SA still find better schedules. See the
+[proof and complete follow-up table](../CATERING_VELOXQ_TUNING.md#measured-follow-up)
+and [comparison boundaries](../CATERING_QUALITY.md#current-no-idle-representation-feasibility-and-objective-improvement).
 
 **No further service jobs are authorized.** The user approves each new cap.
 
@@ -24,7 +30,8 @@ a 20–128× larger budget each changed the best U by at most 1–2 lots.
 - Token only via the `VELOX_TOKEN` environment variable; never write it to
   files, commands or logs. Check presence with `[ -n "$VELOX_TOKEN" ]`.
 - `--max-service-jobs N` is the **ledger total** including every earlier
-  attempt (currently 54). Set and record the cap in
+  attempt (61 at this handoff). Recheck the ledger before any separately authorized
+  work; this document grants no additional allowance. Set and record the cap in
   `output/catering-methods/veloxq/pilot_manifest.json` **before** submitting.
 - No automatic retries. An attempt counts even if it fails.
 - `ConnectError` is frequent (about 1 in 6 attempts; more often under heavy
@@ -40,7 +47,11 @@ a 20–128× larger budget each changed the best U by at most 1–2 lots.
   `uv pip install --python .venv/bin/python ortools==9.15.6755` (no pip in this
   venv). Node is not installed on the original machine.
 
-## Phases and what each one showed
+## Historical phases C–H: first 54 attempts
+
+This table preserves the owner's earlier one-hot-matrix study. Statements about
+no valid large outputs apply to those matrices/settings, and are superseded for
+the equivalent no-idle representation by the current result above.
 
 | Phase | Ledger | What | Finding |
 |---|---:|---|---|
@@ -97,10 +108,25 @@ a 20–128× larger budget each changed the best U by at most 1–2 lots.
 A job that ended with `ConnectError` but has a `job_id` was recovered by
 `Job.from_id(job_id)`. The result was downloaded and parsed with the adapter's
 own `parse_samples`, and the original failure was kept under `recovery` in
-`result.json`. This is not yet an adapter option. Adding `--resume-job-id` to
-`catering/methods/veloxq.py` (with tests) is the first open task.
+`result.json`. That was the historical 0.2.0 recovery procedure. The current
+`catering.veloxq_pilot --output <existing-directory> --resume` retrieves an existing
+job without submitting another. Retain both the initial failed-download receipt
+and recovered result; do not report the failed attempt's wall time as a successful
+end-to-end measurement.
 
-## Open questions and suggested next steps
+## Current release tasks
+
+Reproduce the offline restore/check route, freeze source and sampling-matrix
+hashes, and present the source-512 20,000-step comparison with both validity and
+best objective. The current priority is release preparation, not another service
+campaign. Report R=B in these empty-prior fixtures; independent stability has
+only algebraic/regression-test coverage.
+
+## Historical open questions after phase H
+
+These were suggestions before the seven-job follow-up. Idle elimination and
+download recovery have since been implemented; none of the suggestions authorizes
+another job or establishes that a further experiment is required for release.
 
 1. **Adapter:** add `--resume-job-id` (see above). Optionally add the SDK's
    `SBMSolver` (Simulated Bifurcation, parameters `discrete_version`, `dt`) as a

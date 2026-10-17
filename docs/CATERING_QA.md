@@ -25,6 +25,36 @@ current evidence, not the result of experiments still running elsewhere.
 | Why 35 qubits on a laptop? | The one-hot circuit stays in a 1045-state invariant sector. We simulate that sector, not a dense 35-qubit statevector. |
 | Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits gives 512/512 valid at all three tested scales. CP and SA still find better plans. |
 
+## Two-minute team drill
+
+Keep one speaker, one operator and one technical backup. Use the live script
+for the three-minute slot; this sheet is for questions afterward.
+
+| Ask without warning | A complete answer must include |
+|---|---|
+| What does one bit mean? | One local batch program; the solver combines programs, rather than selecting a pre-solved whole schedule. |
+| Why does a lone main count as waste? | Service requires both components by departure; production equals served components plus discarded components. |
+| Which solver won? | VQE has higher reported per-shot optimum probability; budgets differ. QAOA has the complete archived/live evidence chain. |
+| What did VeloxQ actually improve? | Same source, equal step budget, proven equivalent representation; both feasibility and best delivered service improve. |
+| Is this really 35 qubits? | Logical encoding is 35; invariant sector is 1,045 states; no generic dense 35-qubit simulation or hardware claim. |
+| Does stability help these results? | R=B here. The general stability expression is tested, but these fixtures do not isolate its benefit. |
+
+Give the short answer in 15–20 seconds, then stop. The operator should be able
+to open the exact benchmark row/source rather than search during the answer.
+If the jury asks about an unmeasured quantity, identify it and show the closest
+verified result; do not substitute a rehearsed paragraph on a different topic.
+
+Human rehearsal record (leave blank until actually performed):
+
+| Attempt | Speaker / operator | Spoken duration | Fresh launch or disclosed fallback | One correction |
+|---|---|---|---|---|
+| 1 | pending | pending | pending | pending |
+| 2 | pending | pending | pending | pending |
+| 3 | pending | pending | pending | pending |
+
+Target under 2:50 including operator holds. Technical repeat-execution checks
+are recorded separately; they do not establish the team's speaking time.
+
 ## When the question is unclear
 
 These bridges buy a moment while identifying what the jury wants. Pick one,

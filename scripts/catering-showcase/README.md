@@ -47,7 +47,8 @@ and continue. Do not represent replay as completed fresh execution.
 ## Recording and human voiceover
 
 `story.json` is the single source for video and live narration, actions and
-durations. `npm run docs:write` regenerates both speaker scripts;
+durations, shot framing and edit cues. `npm run docs:write` regenerates the speaker
+scripts and [recording sheet](../../docs/CATERING_RECORDING.md);
 `npm run docs:check` prevents drift. Live mode shows `live_narration`.
 `playback.js` handles continuous video timing and live chapter holds.
 `evidence.json` is a small read-only export of the retained audited results,
@@ -55,12 +56,24 @@ including source hashes and an actual compiler excerpt. It includes the 400-run 
 checked exported plans, plus the proven no-idle VeloxQ representation study.
 The linked `/catering/benchmarks/` page exposes runs, budgets and source hashes.
 
-Record the actual local studio with the capture script:
+Prepare stills without a video or sampler execution first:
+
+```sh
+AXION_NODE_MODULES=/path/to/bundled/node_modules \
+node scripts/capture-catering-showcase.mjs --dry-run \
+  --output output/playwright/catering-showcase-v4/dry-run
+```
+
+No flags also defaults to this stills-only dry run. `--sample` explicitly adds
+one frozen-angle local sample to the stills. `--dry-run` refuses either
+`--sample` or `--record`; its receipt must report zero sampling and video.
+
+Later, record the actual local studio with the capture script:
 
 ```sh
 AXION_NODE_MODULES=/path/to/bundled/node_modules \
 node scripts/capture-catering-showcase.mjs \
-  --output output/playwright/catering-showcase-v3/recording --record
+  --output output/playwright/catering-showcase-v4/recording --record
 ```
 
 The optional environment path is unnecessary if `playwright` is installed

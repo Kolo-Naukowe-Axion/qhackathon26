@@ -302,3 +302,15 @@ output/catering-methods/qaoa/source-v1/qaoa.py with the plan's original hash, an
 the campaign runner selects that frozen source when reproducing plan-v1.
 No campaign was retrained for this integration. Review receipt:
 output/catering-qaoa-review-v1/verification.json.
+
+Portable verification from any checkout, without the old local audit script's
+temporary path or extraction into frozen result folders:
+
+```sh
+python scripts/check-catering-qaoa.py --output /tmp/NEW-QAOA-CHECK.json
+python scripts/check-catering-qaoa.py --full-samples --output /tmp/NEW-QAOA-FULL-CHECK.json
+```
+
+Both verify all archive/campaign hashes and regenerate summaries. The second
+also independently decodes every raw return; the default relies on the
+hash-verified retained evaluation records. Neither trains or rewrites evidence.

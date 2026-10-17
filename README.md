@@ -46,6 +46,7 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 | Interactive comparisons and source hashes | [Benchmark browser](http://127.0.0.1:4192/catering/benchmarks/) |
 | Setup, reproduction and frozen inputs | [Catering guide](catering/README.md) |
 | Video narration | [Timecoded script](docs/CATERING_VOICEOVER.md) |
+| Video capture and edit preparation | [Recording sheet](docs/CATERING_RECORDING.md) |
 | Live demo and speaker cues | [Live runbook](docs/CATERING_LIVE.md) |
 | Likely jury questions | [Q&A sheet](docs/CATERING_QA.md) |
 | Deliverables, scoring and remaining gates | [Submission checklist](docs/STAGE2_SUBMISSION.md) |
@@ -80,6 +81,13 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 .venv-stage2/bin/python scripts/check-catering-demo.py
 npm run build
 ```
+
+For the complete local release check, run
+`.venv-catering/bin/python scripts/check-catering-release.py --output /tmp/axion-check-01`
+after the setup above. It checks retained evidence and performs three fresh
+sampling executions; it records no video, retrains no campaign and calls no
+service. Add `--full-qaoa` to independently recheck every archived QAOA return.
+The receipt keeps human rehearsal and final release/submission gates pending.
 
 The build runs site tests and syntax checks, then copies only `presentation/`
 to `dist/`. See the [catering guide](catering/README.md) for Python math,

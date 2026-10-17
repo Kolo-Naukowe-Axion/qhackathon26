@@ -71,7 +71,12 @@ statevector. Retained replay, fresh sampling and manual interventions keep
 separate labels. Chapter holds pause animation, not the speaker's allotted time. R starts an
 independent rehearsal clock. Both speaker docs are generated from story.json;
 run npm run docs:write after edits.
-Final model-comparison review, human voiceover, rehearsal and upload remain open.
+Method emphasis is fixed: trained QAOA live, VQE as an unequal-budget ansatz
+comparison, and the VeloxQ equivalent-representation study. The v4 recording
+sheet and safe still-only capture route are prepared; no new video is recorded.
+The portable release checker covers archives, math, exports and three fixed-seed
+local sampling executions. Actual human voiceover/rehearsal, upload and final
+authorized publication/submission remain open.
 
 ## Repository and release
 
