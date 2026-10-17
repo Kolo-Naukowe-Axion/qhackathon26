@@ -219,10 +219,18 @@ Do not promise VQE will beat QAOA; its purpose is an informative alternative.
 
 ## 6. Our track — classical reference and controls
 
+The concrete formulation, supported adapters, comparison protocol and output
+requirements are in [the classical reference design](catering-methods/CLASSICAL.md).
+The raw CP implementation is catering/native_slots.py. It is the full declared
+physical reference; the older catering/native.py is a program-domain master
+and rejects the coverage-reward encoding. Exact literal enumeration and the
+independent subset audit supply references on the identical quantum inputs.
+
 **Own:**
 
     catering/methods/classical.py
     catering/native.py
+    catering/native_slots.py
     tests/catering/test_classical.py
     tests/catering/test_native.py
     docs/catering-methods/CLASSICAL.md

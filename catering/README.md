@@ -3,6 +3,9 @@
 Current corrected release: v2, 17 October 2026. The project is quantum-first;
 classical methods provide reference checks. Read the current method, proofs and
 acceptance gates in [the quantum-first design](../docs/CATERING_QUANTUM_FIRST.md).
+The [classical reference design](../docs/catering-methods/CLASSICAL.md) defines
+the independent raw CP model, exact same-input checks and SA controls, including
+how to distinguish representation loss from quantum search loss.
 
 **Superseded results:** v1 omitted the mandatory post-repair clean in S2/S3.
 Use output/catering-foundation-v2/ for new method runs. Existing v1 files are

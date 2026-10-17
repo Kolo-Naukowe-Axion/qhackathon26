@@ -1,5 +1,20 @@
 # Development log
 
+## 2026-10-17 — classical reference formulation and comparison design
+
+Authored docs/catering-methods/CLASSICAL.md at the user's request. The design
+maps the existing direct batch-slot CP-SAT implementation to raw quantities,
+allocations, timing, resource/worker intervals, mandatory repair clean and exact
+lexicographic U/W/B/R. It explains slot-bound completeness and semantic prior-plan
+matching, and documents the corrected S2/S3 regression answers. Separate raw
+and same-input exact references distinguish representation loss from quantum
+search loss; literal SA remains a no-repair heuristic control. The design sets
+status/bound/timing rules and a minimal execution order so classical validation
+does not become the project's centerpiece. Linked the quick start and work split.
+No solver implementation, frozen release, service/QPU run or remote allocation
+was changed by this documentation pass. The 32-test catering suite was the last
+verified implementation state before the pass; no new experiment is implied.
+
 ## 2026-10-17 — quantum-first direction and mandatory repair-clean correction
 
 The user redirected the project toward quantum-first modeling, with classical

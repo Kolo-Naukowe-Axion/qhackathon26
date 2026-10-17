@@ -1,5 +1,18 @@
 # QPoland Quantum Hackathon — running context
 
+## Classical reference design — 17 October
+
+The user requested the classical solution design. The concrete design is now
+docs/catering-methods/CLASSICAL.md: direct raw batch-slot CP-SAT, exact references
+on the actual quantum bundles and same-QUBO no-repair SA. It specifies quantities,
+intervals, staffing, freshness, mandatory cleaning, semantic plan changes, exact
+lexicographic priorities, statuses and comparisons. Distinguish full-model
+representation loss from within-pool quantum search loss. Existing implementations
+cover the current small cases; a larger independent-set exact adapter is optional
+future work, not a new implemented result. Quantum remains the central method.
+This design pass does not alter the frozen physics/encoding, spend service/QPU
+credits or start external compute. Concurrent UI edits remain separate.
+
 ## Current correction and quantum-first priority — 17 October
 
 The user clarified that the quantum method is the main project; classical
