@@ -31,7 +31,7 @@ import numpy as np
 from ..contracts import load_bundle, method_result, save_json
 from ..qubo import checked_bits, energy
 
-METHOD_VERSION = 1
+METHOD_VERSION = 2
 VARIANTS = ("standard", "xy", "xy_multiangle_warm")
 OPTIMIZERS = ("COBYLA", "Nelder-Mead", "L-BFGS-B", "random", "layerwise")
 MAX_STANDARD_QUBITS = 26
@@ -359,11 +359,13 @@ def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
     if output_dir is not None:
         output_dir.mkdir(parents=True)
         save_json(output_dir / "training.json", dict(trace=trace, evaluations=counter["evaluations"]))
-        save_json(output_dir / "result.json", result)
         result["raw_artifacts"] = [dict(path=str(output_dir / name),
                                         sha256=hashlib.sha256((output_dir / name).read_bytes()).hexdigest())
-                                   for name in ("training.json", "result.json")]
+                                   for name in ("training.json",)]
         save_json(output_dir / "result.json", result)
+        save_json(output_dir / "artifacts.json", dict(files={name:
+            hashlib.sha256((output_dir / name).read_bytes()).hexdigest()
+            for name in ("training.json", "result.json")}))
     return result
 
 

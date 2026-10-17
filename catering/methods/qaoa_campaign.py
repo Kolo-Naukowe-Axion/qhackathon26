@@ -40,6 +40,22 @@ def sha(path):
     return hashlib.sha256(Path(path).read_bytes()).hexdigest()
 
 
+def adapter_path(expected_hash):
+    if sha(ADAPTER)==expected_hash:return ADAPTER
+    frozen=ROOT/'output/catering-methods/qaoa/source-v1/qaoa.py'
+    if frozen.exists() and sha(frozen)==expected_hash:return frozen
+    raise ValueError('No adapter source matches the frozen plan')
+
+
+def frozen_solver(expected_hash):
+    import importlib.util
+    path=adapter_path(expected_hash)
+    spec=importlib.util.spec_from_file_location('catering.methods._frozen_qaoa',path)
+    module=importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    return module.solve_qubo
+
+
 def write_plan(path, selection_evidence):
     path = Path(path)
     if path.exists():
@@ -71,7 +87,7 @@ def _job(args):
     case_name, case, config_name, config, budget, seed, plan, run_dir = args
     from catering.contracts import load_bundle
     from catering.decode import decode
-    from catering.methods.qaoa import solve_qubo
+    solve_qubo = frozen_solver(plan["adapter_sha256"])
     bundle = load_bundle(ROOT / case["bundle"])
     started = time.monotonic()
     result = solve_qubo(bundle, dict(training_objective_evaluations=max(budget, 1), shots=plan["shots"],
@@ -101,8 +117,7 @@ def _job(args):
 
 def run(plan_path, split, output, workers=8):
     plan = json.loads(Path(plan_path).read_text())
-    if sha(ADAPTER) != plan["adapter_sha256"]:
-        raise ValueError("Adapter source changed after the plan was frozen")
+    adapter_path(plan["adapter_sha256"])
     output = Path(output)
     if output.exists():
         raise ValueError("Fresh output directory required")
@@ -132,7 +147,7 @@ def run(plan_path, split, output, workers=8):
     (output / "runs.json").write_text(json.dumps(rows, indent=1) + "\n")
     (output / "summary.json").write_text(json.dumps(summary, indent=1) + "\n")
     (output / "manifest.json").write_text(json.dumps(dict(
-        plan_sha256=sha(plan_path), adapter_sha256=sha(ADAPTER), split=split,
+        plan_sha256=sha(plan_path), adapter_sha256=plan["adapter_sha256"], split=split,
         files={str(p.relative_to(output)): sha(p) for p in sorted(output.rglob("*.json"))}), indent=1) + "\n")
     return summary
 

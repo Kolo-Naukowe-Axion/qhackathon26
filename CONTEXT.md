@@ -28,7 +28,12 @@ would require reruns, tell the user before changing that contract.
   all trail raw-grid CP. Final-step controls tie. No quantum advantage follows.
 - Actual initial VeloxQ service jobs exist at 512/1,024/2,048 variables; see
   [the owner report](docs/catering-methods/VELOXQ.md). Final comparison awaits
-  integration. This chat has spent no VeloxQ allowance.
+  integration. This chat added seven service jobs (36,640 quota units, reported USD0).
+  Idle elimination returns 512/512 valid at actual widths 486/998/2022; CP/SA
+  still produce better schedules. The reconciled shared ledger has 61 attempts.
+- Karina QAOA campaign is merged: 400 runs independently checked. Frozen p3
+  multi-angle XY reaches each held-out offered-pool optimum in 10/10 seeds at
+  both budgets; exact simulator training, with a full-kitchen restriction gap.
 - No catering physical-QPU result. VQE is an owner track, not a delivered result
   until a checked package is integrated.
 

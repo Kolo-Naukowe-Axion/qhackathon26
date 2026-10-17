@@ -1,5 +1,21 @@
 # Development log
 
+## 2026-10-17 — integrate and independently check Karina's QAOA campaign
+
+Merged branch iwosmu/catering-qaoa at2ca4731a. Independently checked all400
+archived runs,715,166 returned sample records and1,638,400 shot counts against
+frozen input hashes, literal energies and the raw physical checker. The1,204
+campaign-manifest hashes and regenerated summaries match. The frozen setup
+finds both held-out offered-pool optima in10/10 seeds at both budgets.
+
+Fixed a packaging bug for future runs: result.json no longer claims its own
+pre-rewrite hash. A separate artifacts.json hashes the final files. The original
+v1 source is retained with the frozen plan's exact hash, and the campaign runner
+loads that source when reproducing v1. No objective, circuit, optimizer, angles
+or retained result changed; no campaign was retrained. Original archive manifests
+remain authoritative. The extended QAOA tests cover final file hashes and frozen
+source resolution.
+
 ## 2026-10-17 — proven VeloxQ conditioning and idle elimination
 
 At the user's request, investigated the weak initial cold runs and implemented

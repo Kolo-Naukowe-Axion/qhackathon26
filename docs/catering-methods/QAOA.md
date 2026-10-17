@@ -284,3 +284,21 @@ itself is a restriction of the full kitchen:
 - Raw per-run files are large; committed evidence is the plan, summaries,
   run tables, manifests and selection data, with the raw run folders archived
   separately (hashes in the manifests).
+
+## Integration verification and packaging fix
+
+The integrator checked all 400 archived runs: 715,166 returned bitstrings covering
+1,638,400 shot counts, exact literal energies, independent physical checks,
+training budgets, 1,204 campaign-manifest file hashes and regenerated summaries.
+Both held-out frozen setups hit their offered-pool optimum in 10/10 seeds at each
+budget. These are independently trained angles per instance; the held-out split
+concerns configuration selection, not zero-shot transfer of trained angles.
+
+V1 embedded a stale self-hash in result.json. Campaign manifests are correct and
+remain authoritative for those unchanged archives. Adapter v2 fixes future output
+packaging with an external artifacts.json; it changes no circuit, optimizer,
+loss, budget or sample rule. The exact v1 adapter is retained at
+output/catering-methods/qaoa/source-v1/qaoa.py with the plan's original hash, and
+the campaign runner selects that frozen source when reproducing plan-v1.
+No campaign was retrained for this integration. Review receipt:
+output/catering-qaoa-review-v1/verification.json.

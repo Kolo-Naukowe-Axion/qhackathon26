@@ -534,4 +534,10 @@ See [the proof and bounded pilot](../CATERING_VELOXQ_TUNING.md). A new, separate
 hashed penalty variant preserves feasible objectives and global optima while
 reducing P by 126–642x. Original owner receipts and inputs stay unchanged;
 local controls do not constitute a new VeloxQ result. Adapter 0.3.0 additionally
-supports a checked explicit warm-start Spectrum, offline tested.
+supports a checked explicit warm-start Spectrum and recoverable storage downloads.
+Seven additional service runs are retained. No-idle uses actual widths486/998/2022
+for the frozen512/1024/2048 choices and returns512/512 valid at each tier.
+Scheduling quality still trails CP and matching SA. The combined ledger has61
+attempts (54 prior-owner plus seven follow-up),54 created job IDs. Reported new
+quota usage36,640 and charged costUSD0. This later result supersedes the earlier
+statement that no tested representation yields feasible large outputs.

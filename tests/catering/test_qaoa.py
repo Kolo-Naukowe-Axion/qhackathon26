@@ -218,6 +218,23 @@ class AdapterContract(unittest.TestCase):
                 if variant != "standard":
                     self.assertTrue(all(r["onehot_valid"] for r in checked))
 
+    def test_saved_artifact_hashes_match_final_files(self):
+        import hashlib
+        from catering.methods.qaoa_campaign import adapter_path,frozen_solver
+        b=toy(0,[-4,-3],[(0,1,6)])
+        with tempfile.TemporaryDirectory() as tmp:
+            out=Path(tmp)/'run'
+            r=qaoa.solve_qubo(b,dict(shots=16),dict(variant='standard',depth=0),out)
+            for artifact in r['raw_artifacts']:
+                self.assertEqual(hashlib.sha256(Path(artifact['path']).read_bytes()).hexdigest(),artifact['sha256'])
+            receipt=json.loads((out/'artifacts.json').read_text())
+            for name,expected in receipt['files'].items():
+                self.assertEqual(hashlib.sha256((out/name).read_bytes()).hexdigest(),expected)
+        root=Path(__file__).resolve().parents[2]
+        plan=json.loads((root/'output/catering-methods/qaoa/plan-v1.json').read_text())
+        self.assertEqual(hashlib.sha256(adapter_path(plan['adapter_sha256']).read_bytes()).hexdigest(),plan['adapter_sha256'])
+        self.assertEqual(frozen_solver(plan['adapter_sha256']).__globals__['METHOD_VERSION'],1)
+
     def test_refusals(self):
         with self.assertRaises(ValueError):
             qaoa.solve_qubo(toy(0, [1]*(qaoa.MAX_STANDARD_QUBITS+1)), None, dict(variant="standard"))
