@@ -32,7 +32,11 @@ Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:
 | block-only, CVaR 0.1 | 9/10 | 6/10 |
 | coupled pairs, L=2, mean energy | 0/10 | 0/10 |
 
-## Contract results (primary configuration, seed 0, `method-results/`)
+## Contract results (recommended configuration, seed 0)
+
+`output/catering-methods/vqe/method-results/<case>/` holds `result.json` (MethodResult, samples as
+`{bits, count, reported_energy}`), `evaluation.json` from `python -m catering.run evaluate` and
+`artifacts.json` (hashes). Reproduce with `solve_qubo(load_bundle(path), {"shots": 1024}, None, fresh_dir)`.
 
 | Case | Qubits | Valid-sample rate | Best valid (U,W,B,R) | Sector reference | Evaluations | Parameter-shift circuits |
 |---|---:|---:|---|---|---:|---:|
@@ -42,7 +46,7 @@ Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:
 | S2 | 31 | 0.55 | (5, 4, 4, 4) | (5, 4, 4, 4) | 35 | 25,725 |
 | S3 | 35 | 0.44 | (6, 4, 4, 4) | (6, 4, 4, 4) | 18 | 17,910 |
 
-Best samples were checked with `catering.decode.decode`. The S0-S3 fixed portfolios themselves
+Every sample was checked by the central evaluator (literal energy, decoder, raw checker; no repair). The S0-S3 fixed portfolios themselves
 miss 5/7/5/6 meal lots versus the raw full-kitchen reference 2/3/2/3 (README); that is a
 portfolio restriction loss, not a VQE search loss.
 

@@ -14,5 +14,6 @@
     "S1": "output/catering-foundation-v3/S1/quantum-qubo.json",
     "cell": "output/catering-complete-cell-v3/quantum-qubo.json"
   },
-  "source_sha256": "06c92798246f9e4d86be02f452895a6045641c67d55a0e5d467fa86d5f2c118b"
+  "source_sha256": "06c92798246f9e4d86be02f452895a6045641c67d55a0e5d467fa86d5f2c118b",
+  "provenance_note": "Workers import catering/methods/vqe.py at launch; source_sha256 above was hashed when the run finished and so does not identify the launch source. Use commit history on main (VQE commits 472bdc34..) to reproduce. During E1 the module gained CVaR, extra optimisers and gate qubit labels (code paths not used by E1 specs). Review re-run of 12 sampled E1/E2 rows with the committed code: 11 bit-identical; 1 (cell A3-coupled-L2 mean seed 0) differs in the last digits (gap 55705 vs 55881, same trapped outcome) because the mean energy is now evaluated as p.E."
 }
