@@ -41,6 +41,8 @@ The local foundation is now implemented and frozen, with source snapshots:
 | output/catering-paired-pilot-v1/ | Eight predeclared QAOA runs:4paired cases,2seeds,8portfolio updates,16parameter evaluations/update,2048shots/update. Quantum samples construct valid improving plans, but all8final plans remain worse than raw CP. |
 | output/catering-v3-verification.json | Separate manifest, raw sample energy/validity, frequency, controller-update and final-plan rechecks. |
 | output/catering-paired-circuit-audit-v1/ | One35qubit pilot circuit:272CXall-to-all,925CXon a synthetic57node heavy-hex topology. |
+| output/catering-velox-scale-v3/ | 12-customer S3, nested 512/1,024/2,048 variables and 37,008/156,129/636,882 couplers. Local finite-budget references and checked idle witnesses; no service result. |
+| presentation/catering/ | V3 pixel-game replay with actual method/source switching, complete-meal counts, mandatory cleaning, equations and all larger pilot outcomes. |
 | output/catering-complete-cell-circuit-v3/ | Complete-cell p1circuit:702CXall-to-all,1914CXon the same synthetic topology. |
 
 In the complete cell, all6predeclared runs (p1/p2, seeds2026/2027/2028,
@@ -63,11 +65,13 @@ widths. Matched operational quality, not variable count, remains the gate.
 The current V3contract and quick start describe additional quadratic objective
 terms, one-hot idle data qubits, whole-meal service and per-batch disposal.
 V2 remains immutable regression evidence; method owners opt into V3 explicitly.
-The existing untracked catering viewer still exports foundation-v1 data. Its
-green animation tests do not validate V3semantics or the mandatory-clean fix.
-It must be ported before presentation. A backend demo receipt containing an
-actual p1/seed2026QAOA sample is output/catering-complete-cell-demo-v3.json;
-this is ready for UI integration, not a claim that the browser now uses it.
+The game viewer now exports checked V3 evidence for five cases and sixteen source
+views: actual QAOA samples, controls, exact same-portfolio references and independent
+raw-grid references. Meal counters require both courses, and recovery cleaning is
+included in equipment and worker timelines. The source selector switches the real
+schedule. Model & results documents the formulation, measured gaps and source hashes.
+The complete-cell replay traces output/catering-complete-cell-demo-v3.json to its
+actual p1/seed2026 sample. See presentation/catering/README.md.
 In the current V3fixtures previous_unstarted is empty, so R=B; the fourth
 priority does not create an independent stability tradeoff in these inputs.
 Next gates are VQE/standard-QAOA results on shared bundles, better large-kitchen

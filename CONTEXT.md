@@ -21,15 +21,16 @@ encoded CP, subset audit and exact-sector reference agree on(0,0,2,2). All6
 p1/p2simulator trials recover that optimum, as do initializer/mixer-only controls.
 It is a complete small-cell correctness example, not advantage. An actual
 QAOA sample is exported to output/catering-complete-cell-demo-v3.json for UI.
-The current other-chat presentation/catering exporter still uses foundation-v1;
-it must be ported before presentation, despite its passing animation tests.
+The presentation/catering exporter now reads V3 evidence: five cases, sixteen
+checked method/source views, complete-meal counters and mandatory recovery clean.
+The actual game replay, equation/results panel and sources are integrated.
 
 Independent output/catering-v3-verification.json rechecks965artifact hashes,
 152340retained bitstrings,467003sample frequencies and8final raw plans.
 Offline35qubit circuit audits give925CX(pilot) and1914CX(complete cell) on
 synthetic57nodeheavyhex, not actual IBM target estimates. Width alone is not
-hardware readiness. Current tests:44Python cases (one SDK test skipped there),
-separate Qiskit test passes; npm run build passes with current UI worktree.
+hardware readiness. Current tests:45Python cases (one SDK test skipped there),
+separate Qiskit test passes; npm run build passes with134site tests.
 Preserve concurrent UI/package/test edits. V2inputs remain unchanged.
 Older unbuilt/unpushed-profile notes below are historical; consult actual Git
 state for remote publication, and do not assume teammate notification.
@@ -52,8 +53,8 @@ account entitlement and no service advantage is promised. The supplied PDF
 Section15lists2000PLNoverall and1000PLNbestVeloxQ, with no explicit exclusion;
 simultaneous awards to one team are not explicitly confirmed. Calls/uploads/
 credentials/credit spending and IBM execution remain on hold. Preparing a
-dual-award entry does not itself lift the spending hold. V3code/docs and local
-screens remain unpushed; do not imply teammates have received the new profile.
+dual-award entry does not itself lift the spending hold. The V3 foundation is published at2fd816f and the larger scale handoff atd29038ad.
+Do not infer that any teammate has pulled or completed their method.
 
 ## Paired-meal quantum workload and hardness gate — 17 October
 
@@ -63,7 +64,7 @@ side for a delivered meal, encodes completion/disposal quadratically without
 product auxiliaries, and uses one-hot anchor blocks with local XY mixers.
 Cross-block conflicts remain penalized; it is not a fully feasible mixer.
 Quantum-led changing portfolios preserve incumbents; noCPteacher/repair.
-This is not yet the frozen remote handoff. See the current top sections of
+The frozen remote handoff is now available. See the current top sections of
 docs/CATERING_QUANTUM_FIRST.md; its older MIS-only section is historical.
 
 Fresh local screen output/catering-paired-classical-screen-v1: S3customers4/8/12,
@@ -568,3 +569,24 @@ Added catering/meal_scale.py and output/catering-velox-scale-v3/: same V3 model,
 node scripts/restore-compressed-evidence.mjs restores exact hashed JSON locally.
 No service calls or quota use; the service hold persists. Current game UI work
 is still being ported and is separate from this scale handoff commit.
+
+
+### 17 October — V3 game viewer integration
+
+presentation/catering/ now exports five V3 cases and 16 checked method/source
+views. CELL replays the actual p1/seed2026 QAOA sample (count13), its controls and
+raw reference. Larger S0–S3 trace the final accepted seed2026 sample, same-step
+exact portfolio reference and raw CP reference. Full pilot results are shown,
+including all gaps. Complete-meal handovers replace component-allocation counts.
+Mandatory recovery clean is rendered in the worker and resource timelines.
+Skip-batch interventions remain explicitly manual. Model/results include equations,
+actual sizes, scope, source hashes and limitations. No IBM/VeloxQ calls.
+
+
+### 17 October — stronger classical scale controls
+
+output/catering-classical-scale-v3/ uses the frozen scale bundle hashes,30second
+one-worker references and2second cold SA, seed2026. Raw CP FEASIBLE(5,1,11,11).
+Offered CP FEASIBLE(6,1,10,10)/(7,2,11,11)/(8,3,8,8). No optima certified; SA has
+no valid returned state at2048. See docs/catering-methods/VELOXQ.md for the table,
+initializer/scope caveats and reproduction. Zero service or hardware calls.

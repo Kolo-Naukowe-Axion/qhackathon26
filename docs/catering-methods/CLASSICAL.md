@@ -280,3 +280,31 @@ The implementation order is deliberately limited: use the existing raw CP,
 exact audit and SA controls now; integrate method returns; add a larger exact
 adapter only if a released quantum case needs it. Quantum encoding, circuit
 design and the main workload remain the project's central work.
+
+
+## Current local reference and integration status — 17 October
+
+The V3 classical foundation is implemented, not waiting on a new compute allocation.
+`output/catering-foundation-v3/` has independently checked raw CP optima for all four
+six-customer scenarios and same-offered-input references/SA. The complete small
+35-bit cell agrees across raw CP, offered-domain CP, subset audit and sector
+exhaustion at (0,0,2,2). The new 12-customer S3 scale release has finite five-second
+references (FEASIBLE/FEASIBLE/UNKNOWN at 512/1024/2048); no optimum is inferred.
+See [the scale handoff](VELOXQ.md) for the measured tuples and workload scope.
+
+The V3 game viewer exposes the raw versus offered-domain distinction and shows
+all eight larger quantum pilot gaps. The standard raw decoder/checker remains the
+acceptance gate for the other owners' returns. Current verification: 45 Python
+catering tests (one optional SDK test skipped in the lightweight environment),
+with the SDK circuit-equivalence test available in the quantum environment.
+
+
+A second predeclared local pass now exists in output/catering-classical-scale-v3/:
+30seconds/reference, one worker, seed2026, plus2seconds of cold raw-bit SA per
+frozen scale bundle. Raw CP FEASIBLE(5,1,11,11); same-offered CP returns FEASIBLE
+(6,1,10,10)/(7,2,11,11)/(8,3,8,8) at512/1024/2048. Cold SA's returned states include
+valid weak incumbents at512/1024 and no valid return at2048. No optimum or backend
+advantage follows. The longer experiment preserves the original five-second
+receipts, uses the same bundle hashes, reports call/loading/solver time separately,
+and never feeds its plans to quantum initialization. Reproduce with
+python -m catering.benchmark_meal_scale --output output/NEW-CLASSICAL-SCALE.

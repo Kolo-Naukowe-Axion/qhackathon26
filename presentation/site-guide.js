@@ -1,5 +1,6 @@
 // Shared orientation for the small example, field manual and factory workspace.
 const route=[
+ ['/catering/','NEW','Kitchen in motion','Watch the catering decisions become a working kitchen.'],
  ['/problems/','01','The two problems','Concepts and mathematics.'],
  ['/problem-explanation/#schedules','02','Try a different order','Reorder jobs. Compare finishing times.'],
  ['/stage2/?view=research&section=problem','03','Meet the full factory','Parts, robots and deadlines.'],

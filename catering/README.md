@@ -66,11 +66,14 @@ final full-kitchen quality gate and must be shown with those gaps. Changing
 portfolios can explore more choices, but has no global convergence guarantee.
 Sources are copied and hashed in source_snapshot/; v2 is preserved byte-for-byte.
 
-UI integration remains separate: the existing presentation/catering/build-data.py
-still reads foundation-v1, whose outage-clean results are superseded. Do not
-present those traces as current V3evidence. The actual-sample receipt
-`output/catering-complete-cell-demo-v3.json` provides an independently checked
-QAOA plan for the next viewer update; producing that file does not port the UI.
+The game-style viewer at `presentation/catering/` now consumes checked V3 evidence.
+It replays the complete-cell actual QAOA sample, its controls, larger final quantum
+plans, their exact offered-domain references and independent raw-grid references.
+The source selector changes the actual schedule. Meal counters use complete
+handovers, and mandatory post-repair cleaning occupies C2 and W2. Model & results
+explains the QUBO and reports all larger pilot gaps. See
+[the viewer guide](../presentation/catering/README.md). Rebuild the evidence with
+`.venv-stage2/bin/python presentation/catering/build-data.py`; this invokes no solver.
 
 Reproduce into fresh directories:
 

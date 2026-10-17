@@ -1085,3 +1085,38 @@ hardness or advantage evidence. Added optional feasible anchor bounds to avoid
 unnecessary coefficient inflation while preserving lexicographic priorities;
 existing frozen inputs are unchanged. The service owner still needs a capped
 pilot manifest and explicit user authorization. Zero VeloxQ/IBM calls.
+
+
+### 17 October — game viewer follows the actual paired-meal evidence
+
+Replaced the stale V1 replay export with five V3 cases / 16 independently checked
+views. Preserved the pixel kitchen/art and expanded it from one selected batch to
+multiple programs and idle data bits. Complete handovers now require both courses;
+orphans contribute to component waste. Included the separate mandatory recovery
+operations in equipment, attendance, props and inspector timelines. Source selector
+switches real QAOA, control, offered-domain exact and independent raw-reference
+plans; sample frequency/hash and scope remain explicit. Added a readable model/results
+dialog with objective/penalty equations and all eight larger pilot outcomes. Existing
+uncommitted UI was backed up before integration; cleanup remains deferred. No live
+solver calls, credits, hardware or deployment verification are implied by this work.
+
+
+V3 viewer verification: npm run build passes134site tests;45Python catering tests
+pass with one optional SDK skip in the lightweight environment, and the Qiskit
+circuit-equivalence test passes separately. Independent replay checks cover16views
+and48manual interventions. Desktop and390×844portrait browser checks verify the
+actual recovery clean, raw S3completion, skip-side material outcome, model equations
+and retained results. Evidence and screenshots: output/catering-ui-v3-qa/. This
+is local verification; production deployment and final video remain separate.
+
+
+### 17 October — stronger local classical comparisons for the service owner
+
+Frozen a separate30second,one-worker reference campaign on the existing scale
+bundles, plus2second seeded cold raw-bit SA controls. Raw CP improved toFEASIBLE
+(5,1,11,11); offered-domain incumbents at512/1024/2048 became(6,1,10,10),
+(7,2,11,11),(8,3,8,8), allFEASIBLE. The original five-second references remain.
+SA has valid weak returns on the two smaller tiers and no valid return at2048.
+All raw responses/statuses/bounds, load and call times and source snapshots
+are retained. No hardship/speedup claim from finite budgets or failed SA;
+no reference plan teaches the quantum search. No credits or QPU calls.

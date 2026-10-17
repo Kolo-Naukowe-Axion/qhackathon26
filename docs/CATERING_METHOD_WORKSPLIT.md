@@ -53,6 +53,22 @@ Read the [ambitious specification](CATERING_AMBITIOUS_SPEC.md) for the target
 problem and the [solver contract](CATERING_SOLVER_CONTRACT.md) for shared inputs,
 outputs, coefficient conventions and evidence requirements.
 
+## Returning results to the shared checker
+
+Every owner returns the standard method-result JSON with exact bundle SHA-256,
+ordered binary samples, positive counts, literal energy, settings and work/timing.
+Use this local gate before sending a result for integration:
+
+```sh
+.venv-stage2/bin/python -m catering.run evaluate \
+  --bundle output/catering-complete-cell-v3/quantum-qubo.json \
+  --samples PATH-TO-YOUR-RESULT.json --output output/NEW-checked-result.json
+```
+
+The same gate accepts each scale bundle with its own result/hash. It performs
+no optimization or repair. A passing encoding check does not by itself establish
+service quality, speed or superiority; preserve the checked metrics and failures.
+
 ## 1. Ownership
 
 | Owner | Work | Primary outcome |

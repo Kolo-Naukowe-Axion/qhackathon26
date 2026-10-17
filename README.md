@@ -20,6 +20,17 @@ optima or the accepted final quantum workload. The QAOA pilot and offline circui
 audit are separate from the input release. Method owners must opt into the new
 profile explicitly; v2 component-demand inputs remain unchanged for regression.
 
+The catering game viewer runs at `/catering/` in the static site. It replays actual
+QAOA samples, controls and independent classical references, with complete-meal
+handovers, the mandatory recovery clean and a model/results panel. See the
+[viewer guide](presentation/catering/README.md). Start it with `PORT=4192 npm run dev`.
+
+The VeloxQ owner has a [concrete scale handoff](docs/catering-methods/VELOXQ.md):
+nested 512/1,024/2,048-variable workloads of the same model, with 12 customers,
+checked witnesses and local reference statuses. After pulling, run
+`node scripts/restore-compressed-evidence.mjs` to restore the large matrices.
+These files were generated locally; no service credits were used.
+
 The [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md) describes additional
 future mechanisms, not features already implemented or required before delivery.
 IBM and VeloxQ execution/spending remain held; no remote result is implied.

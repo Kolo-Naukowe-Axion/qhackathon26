@@ -56,6 +56,33 @@ only the unknown true nested-domain optimum is guaranteed not to worsen.
 Read report.json, experiment-plan.json, *-reference.json, *-witness.json and
 manifest.json for hashes, bounds, timing, actual sizes and limitations.
 
+### Stronger local controls (additional frozen run)
+
+`output/catering-classical-scale-v3/` retains a separate predeclared 30-second,
+one-worker CP pass and two-second cold literal-QUBO SA controls, seed2026.
+The original five-second receipts remain unchanged. The longer raw CP run is
+FEASIBLE (5,1,11,11), **not certified optimal**.
+
+| Width | 30-second offered CP | Checked (U,W,B,R) | Cold SA |
+|---:|---|---|---|
+| 512 | FEASIBLE | (6,1,10,10) | Best valid returned tuple (12,15,9,9) |
+| 1,024 | FEASIBLE | (7,2,11,11) | Best valid returned tuple (12,12,9,9) |
+| 2,048 | FEASIBLE | (8,3,8,8) | No valid returned state |
+
+These are reference incumbents, not target optima or evidence that classical
+methods cannot do better. Cold SA starts from unrestricted random bits; it is
+not the same initializer/sector as XY-QAOA. Raw feasibility and scope must
+accompany any comparison. Runtime caps, loader time and whole-call wall times
+are recorded separately; solver/presolve/scheduler overhead may exceed a nominal
+cap. No VeloxQ, hardware or remote compute was used.
+
+Reproduce into a new directory:
+
+```sh
+.venv-stage2/bin/python -m catering.benchmark_meal_scale \
+  --output output/NEW-CLASSICAL-SCALE
+```
+
 ## Owner deliverables and service gate
 
 1. Build and test the offline adapter on the shared small case. Preserve semantic
