@@ -1,5 +1,34 @@
 # Development log
 
+## 2026-10-17 — full problem overview, model comparison and benchmark browser
+
+Reworked the private pixel-kitchen presentation to introduce implemented inputs,
+decisions, constraints, event handling and objective before the small example.
+The 4:20 video and 2:45 live routes now include the frozen p3 QAOA campaign,
+reported held-out VQE probabilities with explicit unequal compute budgets,
+checked VQE exports, the proven VeloxQ no-idle comparison and scaling boundaries.
+The local sample button uses source-hashed trained p3 angles from the cell run;
+it performs fresh sampling and checking, with no training or service/QPU call.
+
+Added a public read-only benchmark notebook linked from kitchen and studio.
+It filters all 400 QAOA records, all 61 service attempts (including failures),
+VQE experiment rows and four checked exports. Held-out comparison rows show
+per-shot probabilities, sampled hits, feasibility, final shots and training
+work without declaring a matched-budget winner. Archived VQE circuit counts
+are labeled as an unvalidated legacy heuristic; E2 NFT is identified as a
+limited control, separately from primary E5 L-BFGS-B/CVaR. Source paths and 132 hashes
+are exported reproducibly; preflight rejects stale evidence. Source variables,
+actual solver width, restricted portfolios, graph density and exact-sector
+simulation have separate explanations on the scaling screen.
+
+Browser verification checks case/budget/run filters, four VQE exports, mobile
+390px width, probability-bar ratios and operator/stage fit at 1280×720,
+1440×900 and 1920×1080. No page errors. Build passes 148 site tests and all
+syntax checks; generated scripts match the chapter source and read-only demo
+preflight passes. Current stills and checks are retained locally under
+output/playwright/catering-showcase-v3/. The silent v2 MP4 predates this update;
+a new final recording, human voiceover and timed team rehearsal remain open.
+
 ## 2026-10-17 — integrate and independently check Karina's QAOA campaign
 
 Merged branch iwosmu/catering-qaoa at2ca4731a. Independently checked all400

@@ -23,16 +23,26 @@ def run_demo(output,shots=4096,seed=17102026):
     if not 1<=shots<=16384:raise ValueError("Local demo supports 1–16384 shots")
     output.mkdir(parents=True)
     base=ROOT/'output/catering-complete-cell-v3'
-    paths=dict(bundle=base/'quantum-qubo.json',parameters=base/'p1-seed-2026/training.json',
-               initialization=base/'p1-seed-2026/warm-start.json')
+    paths=dict(bundle=base/'quantum-qubo.json',parameters=ROOT/'scripts/catering-showcase/live-parameters.json')
     manifest=json.loads((base/'manifest.json').read_text())
     hashes={name:hashlib.sha256(path.read_bytes()).hexdigest() for name,path in paths.items()}
-    for name,path in paths.items():
-        if hashes[name]!=manifest['files'][str(path.relative_to(base))]:
-            raise ValueError("Frozen demo input hash mismatch: "+name)
+    if hashes['bundle']!=manifest['files']['quantum-qubo.json']:
+        raise ValueError('Frozen bundle hash mismatch')
+    frozen=json.loads(paths['parameters'].read_text())
+    # Verify the retained campaign source, without extracting or retraining it.
+    import tarfile
+    source=frozen['source']
+    with tarfile.open(ROOT/source['archive']) as archive:
+        raw=archive.extractfile(source['member']).read()
+    if hashlib.sha256(raw).hexdigest()!=source['sha256']:
+        raise ValueError('Frozen trained-parameter source hash mismatch')
+    original=json.loads(raw)
+    params=original['configuration']['best_params']
+    if [v for layer in frozen['parameters'] for v in layer]!=params:
+        raise ValueError('Export differs from frozen trained angles')
     bundle=load_bundle(paths['bundle'])
-    parameters=json.loads(paths['parameters'].read_text())['parameters']
-    warm=json.loads(paths['initialization'].read_text())
+    if frozen['bundle_sha256']!=bundle['bundle_sha256']:raise ValueError('Parameter/bundle mismatch')
+    parameters=frozen['parameters'];warm=frozen
     sector=sector_data(bundle)
     state=warm_state(bundle,sector,set(warm['incumbent_program_ids']),warm['exploration'])
     state=evolve(state,sector,parameters,bundle['objective']['weights']['U'])
@@ -41,7 +51,7 @@ def run_demo(output,shots=4096,seed=17102026):
     result=method_result(bundle,'live_frozen_angle_xy_qaoa',measured['samples'])
     result.update(execution_kind='quantum_simulator',shots=shots,valid_shots=measured['valid_shots'],
                   configuration=dict(seed=seed,depth=len(parameters),frozen_parameters=True,
-                                     training_runs=0,repair=False,parameter_source_sha256=hashes['parameters']))
+                                     training_runs=0,repair=False,parameter_source_sha256=hashes['parameters'],parameter_campaign_source=frozen['source']))
     (output/'samples.json').write_text(json.dumps(result,indent=2,sort_keys=True)+'\n')
     # Recheck every raw return rather than trusting the sampler's summary.
     checks=[]
@@ -62,7 +72,7 @@ def run_demo(output,shots=4096,seed=17102026):
                  displayed_retained_sample_observed_shots=displayed_count,
                  seed=seed,training_runs=0,parameters_frozen=True,repair=False,
                  veloxq_calls=0,physical_qpu_calls=0,bundle_sha256=bundle['bundle_sha256'],
-                 input_sha256=hashes,total_s=time.monotonic()-started,
+                 input_sha256=hashes,depth=len(parameters),parameter_configuration=frozen['configuration'],total_s=time.monotonic()-started,
                  source_result=str(output/'samples.json'),
                  limitation='Classically enumerated one-hot sector. No training, hardware or advantage claim.')
     (output/'checks.json').write_text(json.dumps(checks,indent=2)+'\n')

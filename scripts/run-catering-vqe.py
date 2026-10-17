@@ -93,7 +93,13 @@ def work(job):
     prob = _P[case]
     try:
         r = run(prob, spec, seed)
-        r.pop("x"); r.pop("_samples", None)
+        parameters = r.pop("x").tolist()
+        r.pop("_samples", None)
+        r["_checkpoint"] = dict(schema_version="catering-vqe-parameters.v1", case=case,
+            bundle_sha256=prob.bundle["bundle_sha256"], spec=__import__('dataclasses').asdict(spec),
+            seed=seed, optimized_parameters=parameters,
+            adapter_sha256=hashlib.sha256(Path("catering/methods/vqe.py").read_bytes()).hexdigest(),
+            exact_distribution=dict(p_optimal=r["p_opt"], p_valid=r["p_valid"], mean_energy=r["mean_energy"]))
         r["status"] = "completed"
     except Exception as e:  # keep failures
         r = dict(spec=spec.name(), tag=spec.tag(), seed=seed, status="failed", error=repr(e)[:200])
@@ -117,8 +123,16 @@ def main():
                              j[1].optimizer == "lbfgs"))
     t0 = time.time()
     fields = None
+    (out / "parameters").mkdir()
     with open(out / "runs.csv", "w", newline="") as fh, Pool(a.workers) as pool:
         for i, r in enumerate(pool.imap_unordered(work, jobs)):
+            checkpoint = r.pop("_checkpoint", None)
+            if checkpoint is not None:
+                label = hashlib.sha256(r["tag"].encode()).hexdigest()[:16]
+                target = out / "parameters" / f"{r['case']}-{label}-seed{r['seed']}.json"
+                with target.open("x") as params:
+                    json.dump(checkpoint, params, indent=2, allow_nan=False)
+                    params.write("\n")
             if fields is None:
                 fields = sorted(set(r) | {"error", "status", "stop"})
                 w = csv.DictWriter(fh, fieldnames=fields, extrasaction="ignore"); w.writeheader()

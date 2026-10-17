@@ -27,15 +27,17 @@ would require reruns, tell the user before changing that contract.
 - Eight larger final pilot plans: six attain their final offered-pool optimum;
   all trail raw-grid CP. Final-step controls tie. No quantum advantage follows.
 - Actual initial VeloxQ service jobs exist at 512/1,024/2,048 variables; see
-  [the owner report](docs/catering-methods/VELOXQ.md). Final comparison awaits
-  integration. This chat added seven service jobs (36,640 quota units, reported USD0).
+  [the owner report](docs/catering-methods/VELOXQ.md). The representation comparison is
+  integrated in the studio and benchmark browser. This chat added seven service jobs (36,640 quota units, reported USD0).
   Idle elimination returns 512/512 valid at actual widths 486/998/2022; CP/SA
   still produce better schedules. The reconciled shared ledger has 61 attempts.
 - Karina QAOA campaign is merged: 400 runs independently checked. Frozen p3
   multi-angle XY reaches each held-out offered-pool optimum in 10/10 seeds at
   both budgets; exact simulator training, with a full-kitchen restriction gap.
-- No catering physical-QPU result. VQE is an owner track, not a delivered result
-  until a checked package is integrated.
+- VQE primary held-out CSV medians are about 12.4%/12.8% optimum probability
+  with 10/10 and 9/10 sampled hits. Four exported S0–S3 plans are independently
+  checked. QAOA/VQE budgets and shots differ; no matched-budget winner is claimed.
+- No catering physical-QPU result.
 
 Use [PROJECT_DESIGN.md](PROJECT_DESIGN.md) for the mathematics and
 [CATERING_QUALITY.md](docs/CATERING_QUALITY.md) for exact statuses and limits.
@@ -55,15 +57,21 @@ orders, choices, constraints and score before hearing solver names.
 - Video script: [CATERING_VOICEOVER.md](docs/CATERING_VOICEOVER.md).
 - Live script/operator cues: [CATERING_LIVE.md](docs/CATERING_LIVE.md).
 - Questions: [CATERING_QA.md](docs/CATERING_QA.md).
-- Local silent cut: ignored `output/playwright/catering-showcase-v2/recording/`.
+- Benchmarks: `/catering/benchmarks/` exposes all 400 QAOA runs, 61 service
+  attempts, VQE grids, checked exports and source hashes. No optimizer runs there.
+- Current v3 stills: ignored `output/playwright/catering-showcase-v3/`. Existing
+  silent v2 cut predates these results and scaling; record a new final cut.
 
-Fresh local execution reuses saved angles, samples the exact one-hot sector and
+The opening screen states full implemented scope, then introduces the small
+example. Results compare both quantum methods with their budgets; scaling
+distinguishes portfolio limits from service width. Fresh local execution reuses
+the selected trained p3 angles, samples the exact one-hot sector and
 checks raw bitstrings. It is neither retraining nor a generic dense 35-qubit
 statevector. Retained replay, fresh sampling and manual interventions keep
 separate labels. Chapter holds pause animation, not the speaker's allotted time. R starts an
 independent rehearsal clock. Both speaker docs are generated from story.json;
 run npm run docs:write after edits.
-Final owner results, human voiceover, rehearsal and upload remain open.
+Final model-comparison review, human voiceover, rehearsal and upload remain open.
 
 ## Repository and release
 

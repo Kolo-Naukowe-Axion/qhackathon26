@@ -478,7 +478,61 @@ def build(prob, spec: Spec, rng):
     return a
 
 
+def cvar_loss(energies, alpha):
+    """Exact lower-tail CVaR and its probability derivative (away from cut kinks).
+
+    The fractional boundary state matters: averaging ceil(alpha * states)
+    energies would weight states rather than probability mass.
+    """
+    if not 0 < alpha <= 1:
+        raise ValueError("CVaR alpha must be in (0, 1]")
+    energies = np.asarray(energies)
+    order = np.argsort(energies, kind="stable")
+    Es = energies[order]
+
+    def loss(p):
+        ps = p[order]
+        cum = np.cumsum(ps)
+        take = np.clip(alpha - (cum - ps), 0.0, ps)
+        val = float(take @ Es) / alpha
+        k = int(np.searchsorted(cum, alpha))
+        Ecut = Es[min(k, len(Es) - 1)]
+        grad = np.zeros_like(p)
+        grad[order[:k]] = (Es[:k] - Ecut) / alpha
+        return val, grad
+    return loss
+
+
+def validate_spec(spec, shots):
+    if spec.ansatz not in {"product", "block_hea", "sector"}:
+        raise ValueError("Unknown ansatz")
+    if spec.loss not in {"mean", "cvar"}:
+        raise ValueError("Unknown loss")
+    if not 0 < spec.alpha <= 1:
+        raise ValueError("CVaR alpha must be in (0, 1]")
+    if shots <= 0 or spec.train_shots < 0 or spec.budget < 0 or spec.layers < 0:
+        raise ValueError("Invalid shots, budget or layers")
+    if spec.train_shots and spec.optimizer in {"lbfgs", "adam"}:
+        raise ValueError("Adjoint optimizers use exact expectations; choose a shot-based optimizer")
+    if spec.optimizer == "nft" and (spec.loss != "mean" or spec.ansatz == "sector"):
+        raise ValueError("Three-point NFT needs a single-frequency mean loss; sector/CVaR is unsupported")
+
+
+def replay_parameters(bundle, spec, seed, parameters):
+    """Rebuild the exact final distribution without optimization or sampling.
+
+    The seed also fixes random block pairs, so parameters alone are insufficient.
+    """
+    prob = Problem(bundle)
+    ans = build(prob, spec, np.random.default_rng(seed))
+    parameters = np.asarray(parameters, dtype=float)
+    if parameters.shape != (ans.n_params,) or not np.isfinite(parameters).all():
+        raise ValueError("Parameter vector does not match the circuit")
+    return ans.sector_probs(parameters)
+
+
 def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
+    validate_spec(spec, shots)
     rng = np.random.default_rng(seed)
     t0 = time.perf_counter()
     ans = build(prob, spec, rng)
@@ -488,25 +542,10 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
     else:
         w0 = ans.w0 + spec.init_noise * rng.standard_normal(ans.n_params)
     calls = {"n": 0, "grad": 0}
-    E_sorted_order = None
     if spec.loss == "cvar" and not spec.train_shots:
         if not isinstance(ans, SectorAnsatz):
             raise ValueError("exact CVaR needs the full distribution: sector engine only")
-        E_sorted_order = np.argsort(ans.E, kind="stable")
-
-    def cvar_exact(p):
-        Es, ps = ans.E[E_sorted_order], p[E_sorted_order]
-        cum = np.cumsum(ps)
-        before = cum - ps
-        take = np.clip(spec.alpha - before, 0.0, ps)
-        val = float(take @ Es) / spec.alpha
-        k = int(np.searchsorted(cum, spec.alpha))              # cut state
-        Ecut = Es[min(k, len(Es) - 1)]
-        g = np.zeros_like(p)
-        g[E_sorted_order[:k]] = (Es[:k] - Ecut) / spec.alpha
-        return val, g
-
-    loss_fn = cvar_exact if (spec.loss == "cvar" and not spec.train_shots) else None
+    loss_fn = cvar_loss(ans.E, spec.alpha) if (spec.loss == "cvar" and not spec.train_shots) else None
 
     def fg(w):                                   # exact loss + adjoint gradient
         calls["n"] += 1; calls["grad"] += 1
@@ -546,10 +585,12 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
 
     t1 = time.perf_counter()
     budget = spec.budget or 4000
+    converged = False
     if spec.optimizer == "lbfgs":
         res = minimize(fg, w0, jac=True, method="L-BFGS-B", callback=cb,
                        options=dict(maxiter=spec.maxiter, maxfun=budget, ftol=1e-11, gtol=1e-7))
         x, message, nit = res.x, str(res.message), int(res.nit)
+        converged = bool(res.success)
     elif spec.optimizer == "adam":
         x, m1, m2 = w0.copy(), np.zeros_like(w0), np.zeros_like(w0)
         b1, b2, eps = 0.9, 0.999, 1e-8
@@ -562,7 +603,7 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
                 message = "maxprob"; break
         nit = it
     elif spec.optimizer == "nft":
-        # sequential exact single-angle minimisation; every gate here gives a + b cos t + c sin t
+        # Single-frequency mean losses only (validated above).
         x = w0.copy(); f0 = fval(x); message = "budget"; nit = 0
         while calls["n"] + 2 <= budget:
             for j in rng.permutation(len(x)):
@@ -601,12 +642,13 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
     elif spec.optimizer == "cobyla":
         res = minimize(fval, w0, method="COBYLA", options=dict(maxiter=budget, rhobeg=0.5, tol=1e-8))
         x, message, nit = res.x, str(res.message), int(getattr(res, "nfev", 0))
+        converged = bool(res.success)
     else:
         raise ValueError(spec.optimizer)
 
     class _R:  # minimal result shim for the reporting code below
         pass
-    res = _R(); res.x = x; res.nit = nit; res.success = True; res.message = message
+    res = _R(); res.x = x; res.nit = nit; res.success = converged; res.message = message
     res.fun = (ans.value_grad(x)[0] if not isinstance(ans, SectorAnsatz) else float(ans.probs(x) @ ans.E))
     t_opt = time.perf_counter() - t1
     ps = ans.sector_probs(res.x)
@@ -653,6 +695,7 @@ def solve_qubo(bundle, budget, method_config, output_dir=None):
     'max_objective_evaluations' (overrides Spec.budget).
     """
     import platform
+    import hashlib
     from collections import Counter
     from pathlib import Path
     from catering.contracts import method_result, save_json
@@ -661,30 +704,43 @@ def solve_qubo(bundle, budget, method_config, output_dir=None):
     if budget.get("max_objective_evaluations"):
         cfg["budget"] = int(budget["max_objective_evaluations"])
     spec = Spec(**cfg)
+    target = None
+    if output_dir:
+        case_label = bundle['case_id'].replace('/', '_')
+        target = Path(output_dir) / f"{case_label}-{spec.name()}-seed{seed}.json"
+        if target.exists():
+            raise ValueError('Choose a fresh output; existing evidence is never overwritten')
     prob = Problem(bundle)
     t0 = time.perf_counter()
     r = run(prob, spec, seed, shots=int(budget.get("shots", 1024)))
     total = time.perf_counter() - t0
     counts = Counter(tuple(int(v) for v in row) for row in r["_samples"])
-    samples = [dict(bits=list(bits), multiplicity=m, reported_energy=str(int(prob.energy_bits([bits])[0])))
+    samples = [dict(bits=list(bits), count=m, reported_energy=str(int(prob.energy_bits([bits])[0])))
                for bits, m in sorted(counts.items(), key=lambda kv: -kv[1])]
     res = method_result(bundle, "catering-vqe", samples,
                         timings=dict(build_s=r["t_build"], optimize_s=r["t_opt"], total_s=total),
                         work=dict(objective_evaluations=r["nfev"], adjoint_gradient_evaluations=r["n_grad"],
                                   training_shots_total=r["train_shots_total"],
-                                  hardware_equivalent_circuits=r["hw_circuits_equiv"],
+                                  legacy_two_shift_circuit_estimate=r["hw_circuits_equiv"],
                                   final_sample_shots=r["shots"], repeats=1, seed=seed))
-    res.update(execution_kind="quantum_simulation", method_version=1,
+    res.update(execution_kind="quantum_simulation", method_version=2,
                configuration=dict(spec=asdict(spec), tag=spec.tag(), n_params=r["n_params"], gates=r["gates"],
                                   expectation="exact ideal" if not spec.train_shots else f"{spec.train_shots}-shot estimates",
                                   gradient="adjoint" if r["n_grad"] else "none (gradient-free)",
                                   initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True),
+               optimized_parameters=np.asarray(r["x"]).tolist(),
+               adapter_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+               optimizer_status=dict(converged=r["converged"], stop=r["stop"]),
                environment=dict(python=platform.python_version(), numpy=np.__version__,
                                 processor=platform.machine(), backend="numpy one-hot-sector / block statevector"),
                exact_distribution=dict(p_optimal=r["p_opt"], p_valid=r["p_valid"], p_onehot_sector=r["p_sector"],
                                        mean_energy=r["mean_energy"], sector_minimum_energy=r["Emin"],
                                        note="computed from the exact simulated state; reference minimum used only for reporting"))
-    if output_dir:
-        out = Path(output_dir); out.mkdir(parents=True, exist_ok=True)
-        save_json(out / f"{bundle['scenario_id']}-{spec.name()}-seed{seed}.json", res)
+    res["configuration"]["resource_note"] = (
+        "Exact simulator adjoint gradients. Legacy 2P+1 arithmetic is not a validated "
+        "hardware circuit count: Givens generators can require four shifts, and CVaR "
+        "needs probability derivatives rather than shifting the scalar CVaR loss.")
+    if target:
+        target.parent.mkdir(parents=True, exist_ok=True)
+        save_json(target, res)
     return res

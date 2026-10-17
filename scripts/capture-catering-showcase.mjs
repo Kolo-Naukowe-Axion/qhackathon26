@@ -15,7 +15,7 @@ try{playwright=require('playwright');}catch(error){if(!process.env.AXION_NODE_MO
 await mkdir(output,{recursive:true});
 const studioRoot=resolve(dirname(fileURLToPath(import.meta.url)),'catering-showcase');
 const sourceHashes={};
-for(const name of ['index.html','studio.js','playback.js','studio.css','story.json','evidence.json']){
+for(const name of ['index.html','studio.js','playback.js','studio.css','story.json','evidence.json','live-parameters.json']){
  sourceHashes[name]=createHash('sha256').update(await readFile(resolve(studioRoot,name))).digest('hex');
 }
 const browser=await playwright.chromium.launch({headless:true});
@@ -24,10 +24,10 @@ let page=await context.newPage();const errors=[];
 page.on('pageerror',error=>errors.push(error.message));
 const url=new URL(base);url.searchParams.set('clean','1');url.searchParams.set('autolaunch','1');
 await page.goto(url.toString());await page.waitForFunction(()=>window.axionStudio?.ready===true);
-const timings=[2,27,53,77,110,144,170,199,232,252];const captures=[];
+const story=JSON.parse(await readFile(resolve(studioRoot,'story.json'),'utf8'));let start=0;const chapters=story.map(c=>{const entry={...c,start};start+=c.duration;return entry;});const timings=chapters.map(c=>c.start+c.duration*.45);const captures=[];
 for(const [index,t]of timings.entries()){
  await page.evaluate(t=>window.axionStudio.setTime(t),t);
- if(t===170)await page.waitForFunction(()=>window.axionStudio.state.lastRun!==null);
+ if(chapters[index].id==='run')await page.waitForFunction(()=>window.axionStudio.state.lastRun!==null);
  await page.waitForTimeout(130);
  const filename=`scene-${String(index+1).padStart(2,'0')}.png`;
  await page.screenshot({path:resolve(output,filename)});
@@ -57,7 +57,7 @@ if(errors.length)throw new Error(errors.join('\n'));
 await context.close();await browser.close();
 const receipt={status:'Local silent rough cut; not submitted or uploaded',width:1920,height:1080,captures,errors,live_route_seconds:165,video_route_seconds:260,
  studio_source_sha256:sourceHashes,fresh_sampling_receipt:state.lastRun,continuous_studio_capture:args.includes('--record'),training_runs:0,veloxq_calls:0,physical_qpu_calls:0,
- placeholders:['Final method-owner result selection','Final VeloxQ experiment comparison','Human voiceover'],raw_video:videoPath};
+ placeholders:['Human voiceover and final team rehearsal'],raw_video:videoPath};
 if(state.lastRun?.status==='completed'){
  const retained=resolve(output,'fresh-sampling');
  await cp(dirname(state.lastRun.source_result),retained,{recursive:true});

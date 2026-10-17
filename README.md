@@ -20,6 +20,8 @@ it does not launch a solver. Click a batch to inspect its instructions or skip
 it in a checked intervention. The board reports meal handovers and discarded
 component portions at the current replay time. Use **Jump to final outcome**
 on the production clipboard to see the completed service; playback holds there.
+Open [Benchmarks](http://127.0.0.1:4192/catering/benchmarks/) to filter retained
+QAOA, VQE, VeloxQ and classical results by case, configuration and budget.
 
 For the presentation studio and fresh local QAOA sampling, use the existing
 `.venv-stage2` environment, or install the pinned foundation dependencies:
@@ -41,6 +43,7 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 |---|---|
 | Model, variables, constraints and correctness proofs | [Project design](PROJECT_DESIGN.md) |
 | Measured quality, controls and scope limits | [Quality audit](docs/CATERING_QUALITY.md) |
+| Interactive comparisons and source hashes | [Benchmark browser](http://127.0.0.1:4192/catering/benchmarks/) |
 | Setup, reproduction and frozen inputs | [Catering guide](catering/README.md) |
 | Video narration | [Timecoded script](docs/CATERING_VOICEOVER.md) |
 | Live demo and speaker cues | [Live runbook](docs/CATERING_LIVE.md) |
@@ -58,11 +61,17 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 - Larger QAOA pilot: six of eight final incumbents attain their final offered-pool
   optimum; all eight trail the full-grid reference. This measures representation
   and search losses, without establishing quantum superiority.
-- VeloxQ: actual initial service runs at **512 / 1,024 / 2,048 variables** are in
-  [the owner report](docs/catering-methods/VELOXQ.md). Final comparison is pending
-  integration. These variables are not physical qubits.
-- The silent 4:20 rough cut and 2:45 live route are prepared. Final result
-  selection, human voiceover, video upload, rehearsal and submission remain open.
+- Trained QAOA: **400 retained runs**; the frozen setup samples each held-out
+  portfolio optimum in 10/10 seeds at both evaluation budgets.
+- VQE: primary held-out CSV median optimum probabilities **12.4% / 12.8%**,
+  with 10/10 and 9/10 sampled hits; four exported schedules independently checked.
+  Budgets and final shots differ from QAOA, so no matched-budget winner is claimed.
+- VeloxQ: proven idle elimination returns **512/512 valid samples** at actual
+  widths **486 / 998 / 2,022**. The [representation study](docs/CATERING_VELOXQ_TUNING.md)
+  retains all jobs; CP/SA still find better schedules. These are solver bits.
+- The revised 4:20 video script and 2:45 live route are prepared. The old silent
+  v2 cut predates these result screens. Final human voiceover/recording, upload,
+  rehearsal and submission remain open.
   No catering physical-QPU result is claimed.
 
 ## Verify

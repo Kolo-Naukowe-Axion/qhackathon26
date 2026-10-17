@@ -1,5 +1,5 @@
 {
-  "status": "Working cut; final method-owner results not frozen",
+  "status": "Checked QAOA campaign and VeloxQ representation study; voiceover pending",
   "cell": {
     "exact_raw_encoded_agreement": true,
     "limitations": [
@@ -437,31 +437,164 @@
     "pilot": {
       "path": "output/catering-paired-pilot-v1/report.json",
       "sha256": "6bb0d3bd439303d5de4c4aac32625fbae836235bb3ad9bfc0eda7a89e1963902"
+    },
+    "qaoa_test": {
+      "path": "output/catering-methods/qaoa/test-v1/summary.json",
+      "sha256": "8ea634fd426ec0da8fdfcdab4cae3c7f0dbda007e9560f863e9c03e08839a894"
+    },
+    "qaoa_plan": {
+      "path": "output/catering-methods/qaoa/plan-v1.json",
+      "sha256": "851369d7bf2262a174ae2891025b615fe0d102b06afe90f2e8f7ecc41837fddf"
+    },
+    "qaoa_review": {
+      "path": "output/catering-qaoa-review-v1/verification.json",
+      "sha256": "b1456fb43008d559a02cf4fb3450ae15519d46b05d34144c4fea80d5f63e38b6"
+    },
+    "velox_study": {
+      "path": "output/catering-velox-conditioned-service-v1/report.json",
+      "sha256": "3af1aec407bc59b9fa5f5fa2c18d277b8e0f453469fb15c821f8879e2a0de081"
+    },
+    "velox_controls": {
+      "path": "output/catering-velox-noidle-controls-v1/report.json",
+      "sha256": "3fe87ad6d109d8f0770f601853e2718343ca8b74defee07040389097210ffcc5"
+    },
+    "vqe_heldout": {
+      "path": "output/catering-methods/vqe/E5-v1/runs.csv",
+      "sha256": "1cbfa107a58258e20a09d03e67abb91498102bebb65e20a5a04043d2ecedad41"
+    },
+    "vqe_verification": {
+      "path": "output/catering-methods/vqe/integration-v1/verification.json",
+      "sha256": "6e48433bcdcde79bd2421493d2b5e9c48aa7335524f7644fe8d69d74e230c261"
     }
   },
   "velox": {
-    "widths": [
-      512,
-      1024,
-      2048
+    "state": "Checked exploratory representation study",
+    "steps": 20000,
+    "shots": 512,
+    "rows": [
+      {
+        "source_variables": 512,
+        "solver_variables": 486,
+        "valid": 512,
+        "total": 512,
+        "best": {
+          "B": 9,
+          "R": 9,
+          "U": 9,
+          "W": 6
+        }
+      },
+      {
+        "source_variables": 1024,
+        "solver_variables": 998,
+        "valid": 512,
+        "total": 512,
+        "best": {
+          "B": 10,
+          "R": 10,
+          "U": 11,
+          "W": 6
+        }
+      },
+      {
+        "source_variables": 2048,
+        "solver_variables": 2022,
+        "valid": 512,
+        "total": 512,
+        "best": {
+          "B": 2,
+          "R": 2,
+          "U": 13,
+          "W": 3
+        }
+      }
     ],
-    "couplers": [
-      37008,
-      156129,
-      636882
-    ],
-    "valid_rows": [
-      5,
-      1,
-      0
-    ],
-    "returned_per_job": 512,
-    "state": "First cold jobs; final quality experiment pending"
+    "controlled512": {
+      "before": 17,
+      "after": 512,
+      "total": 512,
+      "steps": 20000,
+      "baseline": "Same deletion-bound penalty, explicit idle bits"
+    }
   },
   "stage1": {
     "A": 4,
     "B": 8
   },
   "code_excerpt": "119      for meal in meals:\n120          a,b=meal[\"main\"],meal[\"side\"]\n121          constant+=weights[\"W\"]*(fixed_coverage[a]+fixed_coverage[b])\n122          for i in cover[a]+cover[b]:linear[i]+=weights[\"W\"]\n123          product(a,b,-weights[\"U\"]*meal[\"priority\"]-2*weights[\"W\"])\n124      objective_pairs={key:value for key,value in pairs.items() if value}\n125      objective_linear=linear.copy();objective_constant=constant\n126      span=sum(abs(c) for c in linear)+sum(abs(c) for c in objective_pairs.values())\n127      penalty=span+1\n128      membership={i:j for j,g in enumerate(groups) for i in g[\"program_indices\"]}",
-  "code_source_sha256": "c9f652395dfe2ec672ab9733825cff12aa3fae96fb0827b7b5526d0293750d25"
+  "code_source_sha256": "c9f652395dfe2ec672ab9733825cff12aa3fae96fb0827b7b5526d0293750d25",
+  "qaoa": {
+    "depth": 3,
+    "loss": "CVaR 0.1",
+    "optimizer": "layerwise COBYLA",
+    "shots": 4096,
+    "seeds": 10,
+    "budget": 256,
+    "cases": [
+      {
+        "case": "S2",
+        "label": "Cooker outage",
+        "trained": 0.008711808887021125,
+        "random": 0.000810538878676637,
+        "trained_hit": 1.0,
+        "random_hit": 1.0,
+        "reference": {
+          "portfolio_optimum": [
+            5,
+            4,
+            4,
+            4
+          ],
+          "raw_cp_optimum": [
+            2,
+            1,
+            6,
+            6
+          ]
+        }
+      },
+      {
+        "case": "S3",
+        "label": "Outage + urgent order",
+        "trained": 0.010130129078709433,
+        "random": 0.00046985092723364865,
+        "trained_hit": 1.0,
+        "random_hit": 0.6,
+        "reference": {
+          "portfolio_optimum": [
+            6,
+            4,
+            4,
+            4
+          ],
+          "raw_cp_optimum": [
+            3,
+            1,
+            6,
+            6
+          ]
+        }
+      }
+    ]
+  },
+  "vqe": {
+    "cases": [
+      {
+        "case": "S2",
+        "probability": 0.12371282640608924,
+        "hits": 10,
+        "seeds": 10,
+        "median_evaluations": 26.0
+      },
+      {
+        "case": "S3",
+        "probability": 0.12789945740082115,
+        "hits": 9,
+        "seeds": 10,
+        "median_evaluations": 18.0
+      }
+    ],
+    "final_shots": 1024,
+    "primary": "coupled Givens \u00b7 L2 \u00b7 exact CVaR0.1 \u00b7 adjoint L-BFGS-B"
+  }
 }

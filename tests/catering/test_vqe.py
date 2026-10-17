@@ -120,6 +120,85 @@ class VQETest(unittest.TestCase):
             onehot = np.all([X[:, g].sum(1) == 1 for g in prob.groups], axis=0)
             self.assertLess(abs(onehot.mean() - ans.sector_probs(w).sum()), 0.01)
 
+    def test_contract_counts_and_same_scenario_exports_do_not_collide(self):
+        from unittest.mock import patch
+        import tempfile
+        from pathlib import Path
+        def fake_run(prob,spec,seed,shots):
+            bits=np.zeros(prob.n,dtype=int)
+            for g in prob.bundle['onehot_groups']:bits[g['idle_index']]=1
+            return dict(_samples=np.tile(bits,(shots,1)),t_build=0.,t_opt=0.,nfev=0,n_grad=0,
+                train_shots_total=0,hw_circuits_equiv=0,shots=shots,n_params=0,gates={},p_opt=0.,
+                p_valid=1.,p_sector=1.,mean_energy=float(energy(prob.bundle,bits.tolist())),Emin=0,
+                x=np.array([]),converged=False,stop='test fixture')
+        first=load_bundle(CELL);second=load_bundle('output/catering-foundation-v3/S0/quantum-qubo.json')
+        self.assertEqual(first['scenario_id'],second['scenario_id'])
+        with tempfile.TemporaryDirectory() as tmp,patch.object(V,'run',side_effect=fake_run):
+            for b in [first,second]:
+                r=V.solve_qubo(b,dict(shots=3),dict(ansatz='sector'),tmp)
+                self.assertEqual(sum(s['count'] for s in r['samples']),3)
+                self.assertNotIn('multiplicity',r['samples'][0])
+            self.assertEqual(len(list(Path(tmp).glob('*.json'))),2)
+            with patch.object(V,'run',side_effect=AssertionError('must refuse before training')):
+                with self.assertRaises(ValueError):V.solve_qubo(first,dict(shots=3),dict(ansatz='sector'),tmp)
+
+    def test_cvar_fractional_boundary_and_adjoint(self):
+        value, _ = V.cvar_loss(np.array([0., 10., 20.]), .5)(np.array([.2,.5,.3]))
+        self.assertAlmostEqual(value, 6.)  # 0.2*0 + 0.3*10, divided by 0.5
+        prob = V.Problem(toy_bundle(9))
+        rng = np.random.default_rng(3)
+        for cross in ('cgiv','zz'):
+            ans = V.build(prob,V.Spec('sector',layers=2,pairs='all',cross=cross),rng)
+            w = ans.w0 + .3*rng.standard_normal(ans.n_params)
+            direction = rng.standard_normal(ans.n_params)
+            for alpha in (.1,.37,1.):
+                loss = V.cvar_loss(ans.E,alpha)
+                _, grad = ans.value_grad(w,loss)
+                h = 1e-6
+                fd = (ans.value_grad(w+h*direction,loss)[0]-ans.value_grad(w-h*direction,loss)[0])/(2*h)
+                self.assertAlmostEqual(fd,float(grad@direction),places=6)
+
+    def test_saved_parameters_replay_without_training(self):
+        from dataclasses import asdict
+        from unittest.mock import patch
+        b = toy_bundle(7)
+        b.update(case_id='toy',bundle_sha256='toy',representation_id='toy')
+        spec = V.Spec('sector',layers=1,pairs='random',loss='cvar',budget=4)
+        r = V.solve_qubo(b,dict(shots=32),dict(asdict(spec),seed=8))
+        with patch.object(V,'run',side_effect=AssertionError('replay cannot optimize')):
+            ps = V.replay_parameters(b,spec,8,r['optimized_parameters'])
+        p = V.Problem(b)
+        self.assertAlmostEqual(float(ps[p.sector['opt']].sum()),r['exact_distribution']['p_optimal'],places=13)
+        self.assertEqual(sum(s['count'] for s in r['samples']),32)
+        self.assertEqual(len(r['adapter_sha256']),64)
+        with self.assertRaises(ValueError):V.replay_parameters(b,spec,8,[float('nan')])
+
+    def test_invalid_loss_optimizer_combinations_fail_before_training(self):
+        p = V.Problem(toy_bundle())
+        for spec in [V.Spec('sector',loss='cvar',alpha=0), V.Spec('sector',train_shots=32),
+                     V.Spec('sector',optimizer='nft'),V.Spec('product',optimizer='nft',loss='cvar'),
+                     V.Spec('typo'),V.Spec('sector',loss='typo')]:
+            with self.assertRaises(ValueError):V.run(p,spec,0,shots=4)
+
+    def test_givens_requires_generalized_shift_rule(self):
+        # Generator eigenvalues {0,+1/2,-1/2}: expectation frequencies 1/2 and 1.
+        p = V.Problem(toy_bundle(9))
+        rng = np.random.default_rng(3)
+        a = V.build(p,V.Spec('sector',layers=2,pairs='all'),rng)
+        w = rng.uniform(-2,2,a.n_params)
+        _, grad = a.value_grad(w)
+        two, four = [], []
+        for j in range(a.n_params):
+            def difference(shift):
+                wp, wm = w.copy(), w.copy()
+                wp[j] += shift; wm[j] -= shift
+                return float((a.probs(wp)-a.probs(wm))@a.E)
+            naive = .5*difference(np.pi/2)
+            two.append(naive)
+            four.append(naive+(1-np.sqrt(2))/4*difference(np.pi))
+        self.assertGreater(float(np.max(np.abs(np.array(two)-grad))),.01)
+        np.testing.assert_allclose(four,grad,atol=1e-12)
+
     def test_frozen_cell_energies_and_optimum(self):
         bundle = load_bundle(CELL)
         prob = V.Problem(bundle)

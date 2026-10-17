@@ -16,13 +16,22 @@ def preflight():
     base=ROOT/'output/catering-complete-cell-v3'
     try:
         manifest=json.loads((base/'manifest.json').read_text())['files']
-        for name in ('quantum-qubo.json','p1-seed-2026/training.json','p1-seed-2026/warm-start.json'):
+        for name in ('quantum-qubo.json',):
             digest=hashlib.sha256((base/name).read_bytes()).hexdigest()
             check('Frozen sampling input: '+name,digest==manifest[name])
+        import tarfile
+        frozen=json.loads((ROOT/'scripts/catering-showcase/live-parameters.json').read_text())
+        with tarfile.open(ROOT/frozen['source']['archive']) as archive:
+            raw=archive.extractfile(frozen['source']['member']).read()
+        check('Frozen trained p3 parameters',hashlib.sha256(raw).hexdigest()==frozen['source']['sha256'] and json.loads(raw)['configuration']['best_params']==[v for layer in frozen['parameters'] for v in layer])
         evidence=json.loads((ROOT/'scripts/catering-showcase/evidence.json').read_text())
         for name,item in evidence['source_files'].items():
             digest=hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()
             check('Displayed evidence: '+name,digest==item['sha256'],item['path'])
+        benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
+        stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
+        check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')
+        check('Benchmark coverage',len(benchmarks['qaoa_runs'])==400 and len(benchmarks['veloxq'])==61 and len(benchmarks['vqe']['verification']['checked_results'])==4)
         story=json.loads((ROOT/'scripts/catering-showcase/story.json').read_text())
         check('Video fits five minutes',sum(c['duration'] for c in story)<=300)
         check('Live route leaves speaking margin',sum(c['live_duration'] for c in story)<=165)
@@ -34,7 +43,7 @@ def preflight():
         check('Required file: '+name,(ROOT/name).is_file())
     return dict(ready_for_rehearsal=all(c['passed'] for c in checks),
                 checks=checks,training_runs=0,sampling_runs=0,service_calls=0,
-                pending=['Final method/VeloxQ result integration','Human voiceover and rehearsal','Video upload and submission'])
+                pending=['Human voiceover and rehearsal','Video upload and submission'])
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

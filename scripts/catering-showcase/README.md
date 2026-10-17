@@ -26,7 +26,7 @@ Speaker notes stay outside the recorded stage. Use a dedicated shared window.
 ## What the live button actually does
 
 It runs `scripts/catering_live.py`: loads the frozen complete-cell bundle,
-checks manifest hashes, loads the retained p1/seed2026 parameters, evolves
+checks manifest hashes, loads the trained p3/seed2026 parameters from the selected cell/budget256 run, evolves
 the exact one-hot sector, draws 4096 fresh local samples with a declared fixed
 seed, then independently decodes and checks every raw return.
 
@@ -51,15 +51,16 @@ durations. `npm run docs:write` regenerates both speaker scripts;
 `npm run docs:check` prevents drift. Live mode shows `live_narration`.
 `playback.js` handles continuous video timing and live chapter holds.
 `evidence.json` is a small read-only export of the retained audited results,
-including source hashes and an actual compiler excerpt. Final method-owner
-selection and the VeloxQ final comparison remain replacement slots.
+including source hashes and an actual compiler excerpt. It includes the 400-run QAOA campaign, reported held-out VQE aggregates and
+checked exported plans, plus the proven no-idle VeloxQ representation study.
+The linked `/catering/benchmarks/` page exposes runs, budgets and source hashes.
 
 Record the actual local studio with the capture script:
 
 ```sh
 AXION_NODE_MODULES=/path/to/bundled/node_modules \
 node scripts/capture-catering-showcase.mjs \
-  --output output/playwright/catering-showcase-v1/recording --record
+  --output output/playwright/catering-showcase-v3/recording --record
 ```
 
 The optional environment path is unnecessary if `playwright` is installed
@@ -67,9 +68,11 @@ normally. Chromium and ffmpeg are required. Capture makes preview stills,
 then opens a separate context for a continuous studio recording. It performs
 one local sample during still QA and one during the recorded execution chapter.
 The result is a silent MP4, with a receipt, hashes of the studio sources and
-preserved raw fresh samples. The revised capture is under
-`output/playwright/catering-showcase-v2/recording/`. Earlier v1 footage retains
-the old copy and unfinished closing replay; use v2 for further editing.
+preserved raw fresh samples. Current v3 stills and browser verification are under
+`output/playwright/catering-showcase-v3/`. The existing silent v2 cut at
+`output/playwright/catering-showcase-v2/recording/` predates the current problem
+overview and new QAOA/VQE/VeloxQ/scaling chapters. Record v3 before final editing;
+older footage is a fallback, not evidence of the current script.
 
 The visual playback compresses schedule time and edits between explanatory
 screens; it is not a 260-second unedited view of factory time. The sampler action

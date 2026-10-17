@@ -12,7 +12,8 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [catering/README.md](../catering/README.md) | Installation, reproduction and frozen inputs |
 | [CATERING_SOLVER_CONTRACT.md](CATERING_SOLVER_CONTRACT.md) | Shared input/output conventions |
 | [CATERING_METHOD_WORKSPLIT.md](CATERING_METHOD_WORKSPLIT.md) | Method ownership and handoffs |
-| [catering-methods/](catering-methods/) | Classical and VeloxQ implementation details |
+| [catering-methods/](catering-methods/) | Classical, QAOA, VQE and VeloxQ implementation details |
+| [Benchmark browser](http://127.0.0.1:4192/catering/benchmarks/) | Filter all retained campaigns, compare budgets and inspect source hashes |
 | [CATERING_PRESENTATION.md](CATERING_PRESENTATION.md) | Presentation structure and remaining result gates |
 | [CATERING_VOICEOVER.md](CATERING_VOICEOVER.md) | Timed video narration |
 | [CATERING_LIVE.md](CATERING_LIVE.md) | Live speaker and operator cues |
@@ -32,7 +33,10 @@ it is not a list of delivered features.
 - `output/catering-paired-pilot-v1/`: all larger restricted-portfolio trials.
 - `output/catering-foundation-v3/`: frozen shared inputs for method owners.
 - `output/catering-velox-scale-v3/`: larger same-model input tiers.
+- `output/catering-methods/qaoa/`: 400-run campaign, frozen plan and archives.
+- `output/catering-methods/vqe/`: experiment CSVs and checked exported schedules.
 - `output/catering-methods/veloxq/`: actual service receipts and raw evaluations.
+- `output/catering-velox-conditioned-service-v1/`: no-idle representation study.
 - `output/catering-math-audit-v1/`: read-only formulation/quality audit receipts.
 - `output/playwright/`: ignored local recordings, screenshots and demo checks.
 

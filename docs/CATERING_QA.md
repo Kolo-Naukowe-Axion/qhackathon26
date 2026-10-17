@@ -21,9 +21,9 @@ current evidence, not the result of experiments still running elsewhere.
 | Why is it quadratic? | Main coverage times side coverage gives complete service. Both coverage expressions are linear in selection bits. |
 | How is correctness established? | We prove the encoding and penalty bound, then compare exact references and check raw schedules independently. |
 | Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
-| Did QAOA outperform the controls? | No. The controls also attain the cell optimum and tie the final pilot steps. The contribution is the checked model and method study. |
+| Did QAOA outperform the controls? | The trained setup increases median per-shot optimum probability about 11x/22x over random-angle search on S2/S3 at 256 evaluations. Both are restricted portfolios; this is no classical or hardware advantage. |
 | Why 35 qubits on a laptop? | The one-hot circuit stays in a 1045-state invariant sector. We simulate that sector, not a dense 35-qubit statevector. |
-| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Use the final integrated owner's receipt for its quality claim. |
+| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits gives 512/512 valid at all three tested scales. CP and SA still find better plans. |
 
 ## When the question is unclear
 
@@ -201,7 +201,7 @@ mixer-only controls also find the small-cell optimum.
 
 **What is running live? Are you retraining?**
 
-“Fresh local sampling from the saved p=1 QAOA angles, followed by independent
+“Fresh local sampling from the saved p=3 QAOA angles, followed by independent
 checks of every returned state. The seed is fixed for reproducibility.
 This is a new execution, not another independent training trial.”
 
@@ -220,20 +220,26 @@ exactly. It is not a generic dense 35-qubit statevector simulation.”
 “The current catering results are simulator results. We have logical/native
 and synthetic-routing checks, but no catering IBM hardware outcome to report.”
 
-**Why QAOA rather than VQE?**
+**Which quantum method performs better?**
 
-“QAOA gives us a checked implementation with a mixer respecting the block
-structure. VQE is another owner track on the same cost. We will feature a
-different primary method only when its completed results justify that choice.”
+“VQE's primary held-out median optimum probability is about 12.4%/12.8% on
+S2/S3; QAOA's is about 0.87%/1.01% at 256 evaluations. Both use the same offered
+portfolios, but their optimizers, parameter counts, training work and final
+shots differ. This is higher observed probability, not a matched-budget win.”
 
-Update this answer after final method selection. Do not imply VQE is delivered
-or worse if its owner has not yet returned a checked package.
+QAOA has 10/10 sampled optimum hits on both cases at both budgets. The primary
+VQE report has 10/10 and 9/10 at 1024 shots. The four exported VQE S0–S3 plans
+were independently checked; the per-seed aggregates remain reported CSV results.
+Both are showcased with those evidence boundaries.
+Archived VQE circuit counts are a two-shifts-per-parameter heuristic, not a
+validated hardware cost for the controlled gates/CVaR objective. E2 three-point
+NFT is a limited experimental control; the primary E5 optimizer is L-BFGS-B.
 
 **Where is the train/test split?**
 
-“Instance-wise variational optimization doesn't need a supervised-learning
-split. A claim about generalizing hyperparameters across kitchens would need
-separate tuning and held-out cases. The current pilot makes no such claim.”
+“QAOA settings were chosen on the cell and S0/S1, then frozen for held-out
+S2/S3. Angles are still optimized separately on each instance; the test checks
+configuration transfer, not a single trained circuit solving unseen kitchens.”
 
 ## VeloxQ and scale
 
@@ -245,18 +251,19 @@ small quantum cases to the larger backend experiment.”
 
 **Is VeloxQ a quantum hardware result?**
 
-“No. It is the integrated optimization backend. The QAOA simulator is our
-separate quantum-method execution path on the same type of QUBO.”
+“No. It is the integrated optimization backend. The QAOA and VQE simulators are our
+quantum-method execution paths on the same type of QUBO.”
 
 **What is the strongest VeloxQ result?**
 
-“The first cold runs establish the actual integration and reveal a feasibility
-bottleneck. Our owner is working toward the final quality/settings comparison.
-We will use their checked receipt for the final result.”
+“We remove redundant idle choices and prove the feasible schedules and optimum
+are preserved. At equal 20,000-step budgets on the 512-bit source, valid returns
+rise from 17/512 to 512/512. The new representation also returns 512/512 valid
+at actual widths 998 and 2022. CP and same-formulation SA still find better plans.”
 
-Replace this paragraph with the final frozen experiment. Until then, the
-committed cold runs have 5/512, 1/512, 0/512 valid rows at 512/1024/2048 variables;
-they do not outperform the retained classical controls.
+These are exploratory single-job measurements. They demonstrate a checked
+representation improvement, not held-out superiority or a runtime advantage.
+The old cold jobs remain in the benchmark ledger rather than being discarded.
 
 **Why is the integration nontrivial?**
 
