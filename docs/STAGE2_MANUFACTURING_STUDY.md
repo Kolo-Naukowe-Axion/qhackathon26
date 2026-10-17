@@ -147,3 +147,32 @@ npm run build
 ```
 
 Outputs refuse an existing directory. Source snapshots pin historical study-v1; current scenario definitions use recovery-v2 due dates, so rerunning current sources is not a byte-for-byte recreation of the older heat fixtures. CP parallel search can return a different optimal witness. The packet preparer reads the six explicitly named retained models, not a newly solved reference. Python environments have different dependencies; the SDK and annealer run only in `.venv`, native CP in `.venv-stage2`.
+
+## Post-hoc explanation of the original pool loss — 17 October
+
+The [membership/energy diagnostic](../output/recovery-pool-diagnostic-v1/report.json)
+compares a retained cap64on-time optimal witness with the original781-bit pool.
+Of its32operation assignments,31already exist in that pool. The sole absent row
+is **P02assembly on A1, attended by W06, at720–780minutes**. The witness's spare
+H3assignment (P01housing, W02,360–480) is already present in the original pool.
+
+Adding that known-reference row yields a782-bit/26357-coupler pool. Its encoded
+witness passes the original checker and has literal QUBO energy855. The retained
+complete-model optimum provides lower bound855; therefore the augmented pool
+also attains855. The original pool's retained exact optimum remains65790.
+No optimizer or sampler was run to establish this diagnostic; literal
+compilation, membership, energy and raw-schedule checks suffice.
+
+This is a privileged post-hoc explanation, **not a blind candidate generator**:
+we read the added row from an already known optimal reference. It does not
+replace the2078-bit deterministic enrichment result, imply a universal782-bit
+formulation, or prove a minimal qubit count. The earlier experiment's generation
+used no CPteacher; this diagnostic explicitly does. Existing sponsor packets,
+inputs and historical results remain unchanged. The useful operational insight
+is downstream assembly coordination, not just the availability of a furnace.
+
+Reproduce in a new directory:
+
+```sh
+.venv-stage2/bin/python scripts/explain-recovery-pool-loss.py --output output/NEW-POOL-DIAGNOSTIC
+```

@@ -1,5 +1,12 @@
 # Stage 2 current status — 17 October 2026
 
+**Latest direction update:** the user selected catering as the direction to try.
+The [shared-foundation/method allocation](CATERING_METHOD_WORKSPLIT.md) and
+[solver contract](CATERING_SOLVER_CONTRACT.md) define the next work. Catering's
+foundation and full method experiments are not built. All completion statements
+below concern the existing factory scope, retained as a fallback; they do not
+certify catering. Actual service/QPU use remains held.
+
 **The agreed non-VeloxQ technical merit scope is complete: all 14 core
 requirements passed.** Actual VeloxQ measurements, the synchronized final video,
 human rehearsal and public release/submission remain open. Completion does not

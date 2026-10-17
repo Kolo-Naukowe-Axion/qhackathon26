@@ -4,6 +4,210 @@ Decision memo, 17 October 2026. Research and proposed problem definition, not an
 executed VeloxQ experiment or a claim of industrial deployment. The optional
 offline algebra probe described below is a separate, much smaller model.
 
+**Latest decision:** the user now selected catering as the direction to try.
+The earlier factory-selected/catering-parked decisions below are historical.
+Keep the implemented factory as a fallback. Catering remains one integrated
+Stage 2 effort, with no independent VeloxQ side project. Codex owns the shared
+foundation; four people then own methods under the
+[async work allocation](CATERING_METHOD_WORKSPLIT.md) and
+[common solver contract](CATERING_SOLVER_CONTRACT.md).
+
+**Detailed ambitious design:** [Lunch under pressure — full specification](CATERING_AMBITIOUS_SPEC.md)
+now defines an expanded proposal with explicit disposal, phase-aware WIP
+continuations, interrupted cooking, ingredient/holding/power capacities, exact
+QUBO equations, alternative encodings and implementation gates. It uses a
+proposed 10:50–11:30 lunch-window outage instead of the earlier illustrative
+09:30–10:10 interval. It supersedes this discussion memo where the assumptions
+differ; none of those expanded mechanisms is implemented by writing the spec.
+In particular its cumulative-capacity registers add to the earlier M+22/M+26
+core formulas. Keep the measured 18/16-bit toy distinct from both full proposals.
+
+## Recap refinement — strongest focused first version
+
+### User clarification: retain the disruption
+
+The user explicitly wants to retain the disruption/replanning scenario; asking
+why it was included was not a request to remove it. It tests a different decision
+from planning an empty kitchen: adapt to newly revealed demand/capacity while
+preserving committed production. The illustrative09:30 time is not a requirement.
+Declare event timing and frozen-state semantics before evaluating results; use
+the idle-boundary outage policy already specified below. This clarification does
+not reverse the decision to keep the factory as the main entry.
+
+### Qubit accounting and reduction strategy
+
+The only compiled catering instances remain18bits/93couplers (nominal) and
+16bits/72couplers (outage-filtered). These are supplied-option algebra audits,
+not the full kitchen or executed QAOA circuits. A direct register encoding uses
+one circuit qubit per QUBO bit, excluding implementation-dependent workspace;
+connectivity, depth and gate counts still require compilation. VeloxQ binary
+variables are not physical qubits. The factory's28-qubit bridge is a different
+model and does not establish a catering register size.
+
+For the proposed direct option encoding, let M be the number of retained local
+batch-program options. With bounded binary missed-demand registers, the base
+register size is M + sum_d ceil(log2(D_d+1)); there are no further auxiliaries
+in this direct squared-balance/pair-conflict core. The twelve nominal demand
+groups in the flagship table contribute22missed-demand bits. The urgent order
+adds two new demand groups of two lots each, adding four bits before boundary
+substitution; it also changes the option domain. Residual demand after committing
+started batches can lower these counts. Thus nominal M+22 and urgent M'+26 are
+accounting formulas, not measured full-kitchen sizes. M/M' have not been compiled.
+Keeping shared customer departures fixed is part of this count's scope.
+The revealed event is classical input to a new solve, not a quantum register of
+possible worlds. Nominal/event runs reuse a device; their qubit counts are not
+added together. A joint stochastic/robust scenario model would be a different
+formulation and could require additional variables.
+
+For the four event variants, the base direct-register accounting before freezing
+started work is:
+
+| Event case | Full proposed register | Measured supplied-option toy |
+|---|---|---|
+| Normal day | M_normal + 22 | 18 bits |
+| Urgent order | M_urgent + 26 | Not built |
+| Cooker outage | M_outage + 22 | 16 bits |
+| Urgent order and outage | M_both + 26 | Not built |
+
+Each M is that case's own count of retained batch-program options; none of these
+full counts is measured. The toy column describes a different, much smaller
+demand/option domain and must not be substituted into the full-model formulas.
+For a revealed-state replan, replace22/26by the sum of register lengths for the
+actual residual demand after boundary substitution. Four runs need the largest
+register of the four, not their sum. With the unmodified full direct encoding,
+a140qubit ceiling leaves at most118option bits nominal/outage, or114with the
+urgent order, before any extra implementation workspace. This is an arithmetic
+condition, not evidence that the full kitchen fits those option limits.
+
+Excess production is the current food-waste proxy. It does not establish actual
+discarded/expired portions. An explicit disposal rule/quantity would need its own
+semantics, coefficients and register accounting. Keeping the current excess
+cost does not by itself add bits beyond the option selections; the chosen yield
+and allocated lots determine each option's excess coefficient.
+
+Use safe unary filtering (calendar/departure/freshness/skills), exact substitution
+of committed decisions, and proved interchangeable-resource symmetries before
+restricting choices. Only remove a dominated option when replacement preserves
+coverage, all resource/boundary compatibility and objective. After any reduction,
+combine the selected decisions with the committed plan and independently check
+the complete kitchen outcome.
+
+Complete tiny instances can target roughly18–28decision qubits as a development
+goal, retaining active batch/yield/sharing/resource/freshness tradeoffs. There is
+no guarantee every feature or a meaningful disruption fits that budget. A smaller
+conditional neighborhood must be labeled as such, with outside decisions fixed
+by exact substitution. Candidate caps, coarser time grids and shorter windows
+restrict the original decision domain; measure their objective loss against a
+broader independent reference. Binary indexing may reduce choice-register bits
+but can introduce higher-order interactions or quadratization auxiliaries; it
+is not a free QUBO reduction. Counter encodings may reduce couplers while adding
+bits. Report both costs, coefficient ranges and circuit compilation resources.
+
+The proposed scientific contribution is a measured representation/resource
+tradeoff with verified scheduling value. Neither a large register nor deliberate
+solver difficulty establishes originality, points or a VeloxQ advantage. No new
+catering run, QPU call or VeloxQ call accompanies this clarification.
+
+### Resource envelope supplied by the user
+
+The user reports a maximum accessible physical device size of140qubits, with
+possible simulation access to one H100 or a CPU with128GBRAM. Treat these as
+planning assumptions, not verified bookings, free-memory measurements or permission
+to provision remote compute. No hardware/backend identity, calibration, H100
+variant or actual simulator performance has been confirmed by this exchange.
+
+For a generic dense double-precision statevector, memory for the state alone is
+16*2^n bytes:28qubits=4GiB,30=16GiB,31=32GiB,32=64GiB,33=128GiB.
+This follows the [Aer memory model](https://qiskit.github.io/qiskit-aer/stubs/qiskit_aer.StatevectorSimulator.html).
+[NVIDIA lists H100 variants with80/94GB](https://www.nvidia.com/en-sg/data-center/h100/);
+the actual available GPU capacity is unknown.32qubits may fit a single state on
+those resources, but simulator workspace, stored diagonals, multiple vectors,
+parallel jobs and repeated optimization evaluations reduce usable capacity/time.
+33double-precision qubits leave no workspace in128GiB and exceed128decimalGB.
+Single precision halves the state storage; any use must validate numerical results.
+Symmetry-sector or tensor-network simulation can exceed dense-statevector limits
+for suitable circuits, but has no generic140-qubit capacity guarantee.
+
+Plan routine generic simulation around24–28qubits, then benchmark30–32only when
+the exact circuit/implementation fits memory and the experiment budget. Begin
+physical compilation assessments on a small useful18–28qubit core; device width
+140is a ceiling, not a target or a guarantee of useful deep QAOA. Measure native
+two-qubit gates, routed depth and actual calibration/connectivity before choosing
+a physical run. No hardware execution is authorized by these resource assumptions.
+
+The integrated plan remains a broader classical/QUBO model for native references
+and possible VeloxQ, plus a small meaningful quantum core/neighborhood from that
+same decision. Reduce exact redundancies first; measure the loss of any later
+restriction. Keep active batch/yield/allocation/freshness/resource tradeoffs in
+the quantum fixture, and compare against the identical restricted classical
+problem plus a broader reference. This recommendation does not activate catering
+or supersede the factory main entry. It also does not claim that the unknown
+full catering register will fit32or140qubits.
+
+The user requested a full reminder and the strongest catering version, without
+reversing the factory decision. The recommended first catering core is joint
+batch creation/yield selection, same-menu output allocation across customers,
+and freshness-constrained equipment/worker scheduling, with customer departures
+fixed as inputs. Only lots packed before their departure and within the declared
+synthetic cook-end-to-departure age limit may serve demand. Unserved demand is
+explicitly counted as missed lots, rather than silently moving departure times.
+
+This deliberately narrows the older soft-lateness proposal below. With fixed
+departures, prioritize missed confirmed lots, then excess produced lots, batch
+count and changes to the unstarted plan; derive scalarization weights from
+finite bounds. No separate lateness term is needed when successful allocations
+must meet the fixed departure. The same quadratic demand-balance/resource-conflict
+formulation applies, with individually invalid options filtered before encoding.
+
+If soft departure delays are added later and each customer has one combined
+handover, all of that customer's portions must use that shared actual departure
+in freshness checks. Independent portion handover times would represent split
+handover service and must not be described as a single customer departure.
+That semantic choice needs explicit decisions/linking, not an unnoticed shortcut.
+
+The proposed memorable result remains a tradeoff to demonstrate, not an outcome
+already observed: a larger shared batch saves cooking/cleaning occupation but
+may be too old for a later customer; smaller separate batches can preserve
+freshness at a capacity cost. Compare a reasonable fixed-per-order/greedy batching
+policy with joint planning, native raw-model CP and same-QUBO samplers. Keep
+VeloxQ inside this one workflow and preserve its existing execution hold.
+
+No new catering implementation or experiment accompanies this recap. The18/16-bit
+audit remains the full extent of completed catering evidence.
+
+## Reassessment after the later mentor response
+
+The user subsequently supplied an [official response](STAGE2_MENTOR_FEEDBACK.md)
+welcoming another domain when it adds genuine mathematical/algorithmic complexity,
+value, originality and correctness. This reduces the earlier concern about
+leaving MetalTech; it does not approve this particular kitchen formulation or
+confirm simultaneous award eligibility. The original proposal below remains
+a proposed direction, not a decision to replace the current factory entry.
+
+The substantive distinction is endogenous production: choose batch yields and
+allocate their output across customers, rather than only placing a fixed set of
+operations. Demand balance couples those choices, while cooking/packing capacity
+and freshness constrain timing. For example, one40-meal batch may share output
+across customers, while two20-meal batches may fit freshness/departure requirements
+at the cost of extra cooking/cleaning occupation. This tradeoff must be shown in
+actual checked fixtures; it is not established by the story alone.
+
+Current evidence is limited to the18/16-bit supplied-option audit. Both nominal
+and outage toy optima have the same tuple (0,0,0,2), so this audit proves algebra
+on those domains, not a useful disruption benefit or full-kitchen optimum.
+The flagship optional-batch/worker/replanning model and exact counter alternative
+are not yet implemented/evaluated. Coverage squares may create dense couplings;
+there is no basis to assume this is a favorable VeloxQ instance family.
+
+Updated recommendation: retain the verified factory as the current main entry.
+Before any pivot, perform a bounded offline comparison that establishes a genuine
+batch-sharing/freshness tradeoff, independent raw-model reference and correct
+QUBO, with construction/variable/coupler costs. If pursued, catering should be a
+controlled generalization or a replacement centerpiece in the same project,
+not a detached VeloxQ side project. Select the best evidenced workload before
+spending limited service usage. No new experiment or service call is made by
+this reassessment.
+
 ## Recommendation
 
 Build a central catering kitchen that **chooses production batches, shares each

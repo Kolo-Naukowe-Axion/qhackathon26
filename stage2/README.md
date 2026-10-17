@@ -1,5 +1,11 @@
 # Stage 2 research implementation
 
+**Direction update:** catering is the active direction to try. Its
+[foundation/method work allocation](../docs/CATERING_METHOD_WORKSPLIT.md) and
+[solver contract](../docs/CATERING_SOLVER_CONTRACT.md) are written; the catering
+foundation is not yet implemented. This directory and the results below describe
+the verified factory fallback. They are not catering results.
+
 **Current technical status — 17 October 2026:** all 14 agreed non-VeloxQ core
 requirements passed. Start with [current status](../docs/STAGE2_STATUS.md),
 [manufacturing study](../docs/STAGE2_MANUFACTURING_STUDY.md) and
@@ -148,6 +154,13 @@ and the separate larger statevector simulator additionally use
 use `stage2/requirements-reference.txt`. A full research fit additionally needs
 Torch; the Axion records retain the actual CPU Torch2.14.1+cpu runtime.
 No Torch or GPU is needed to replay a selected NumPy policy.
+
+The subsequent [local QAOA training study](../docs/STAGE2_QAOA_LOCAL_TRAINING.md)
+adds reversible adjoint gradients, multistart depth search and CVaR tail lifting
+for the existing whole-recipe assignment circuit. Fitting uses the optional
+`stage2/requirements-qaoa-fit.txt` environment; it runs entirely on this Mac.
+Its retained trials and independent circuit/transfer checks are separate from
+the original bridge evidence and do not establish quantum advantage.
 
 A package version or source hash records the measured environment; it does not
 normalize timings across machines. The isolated Stage2 files are separate from

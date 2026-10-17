@@ -1,5 +1,146 @@
 # Development log
 
+## 2026-10-17 — handoff push and classical ownership
+
+The user assigned this chat the classical track plus the shared catering
+foundation and authorized pushing the handoff to main so the three other
+people/agents can take VeloxQ, QAOA and VQE. Updated the allocation and context.
+Pre-push build found the explanatory guide's current README hash stale;
+regenerated only its derived start-data export and updated the guide hash.
+All120site tests, syntax checks and static build now pass. Four local QAOA
+gradient tests pass with the optional SciPy fit test skipped in this environment.
+Retained pending local studies/diagnostic are included in the repository sync;
+no new experiment is implied. Fetched a teammate's newer VQE commit and preserve
+it during integration. Catering runnable fixtures remain the next foundation
+task; no catering solver, remote compute, IBM or VeloxQ usage yet.
+
+## 2026-10-17 — catering activated; foundation then four async methods
+
+The user selected catering to try and requested four asynchronous human
+workstreams. Their clarification superseded a component-based split: Codex owns
+the common foundation first, then people independently own VeloxQ, QAOA, VQE
+(interpreting “qve”) and classical native/SA benchmarks. Authored
+docs/CATERING_METHOD_WORKSPLIT.md and docs/CATERING_SOLVER_CONTRACT.md with file
+ownership, copyable assignments, immutable fixture tiers, release gates, raw
+result contract, coefficient/measurement conventions and centrally held usage caps.
+Updated entry points so earlier parked-catering/factory-only guidance is
+historical; factory code/evidence/demo remain intact as a fallback.
+
+This creates a concrete handoff contract, not the actual foundation or method
+implementations. No human names assigned, subagents launched or messages sent.
+No branch/worktree, dependency change, solver job, external compute, quantum/
+VeloxQ call, commit or deployment. Documentation/JSON cleanup remains deferred.
+
+## 2026-10-17 — detailed ambitious catering specification
+
+At the user's request, wrote docs/CATERING_AMBITIOUS_SPEC.md as a proposed
+implementation contract. It expands the earlier sketch with real disposal
+semantics, phase-aware WIP continuations and cooker-failure loss, mandatory
+post-repair cleaning, ingredient/holding/power capacities, full QUBO energy and
+penalty/scalarization conditions, compact/restricted alternatives, scenario
+register accounting, classical/quantum controls, IBM budget, demo and build gates.
+Proposed the explicit10:50–11:30 outage to intersect the lunch production window;
+the older09:30 timing remains an optional declared sensitivity.
+
+Two self-review passes clarified that mandatory recovery tasks need exactly-one
+option groups/cross-option cleaning precedence, and that aggregate capacities
+need slack registers rather than only pair conflicts. An unpruned initial-day
+capacity example has363slack bits, plus22nominal demand bits, before any options.
+This is not a compiled register or a lower bound. Verified local links, bounded
+register coverage for128bounds, exhaustive lexicographic order on960tuples,
+retained toy counts and shot/register arithmetic; git diff whitespace check passes.
+An initial inline verification loop checked scalarization before finishing its
+weights; corrected that check and reran successfully. No scheduling implementation,
+solver/service call, remote compute, QPU execution, commit or deployment was added.
+Factory remains the selected implemented entry; no cleanup was performed.
+
+## 2026-10-17 — four catering cases versus IBM allowance
+
+Mapped nominal/urgent/outage/combined cases to separate direct-register formulas
+M_normal+22, M_urgent+26, M_outage+22 and M_both+26 before committing started work.
+Full option counts remain uncompiled; only the smaller18/16-bit audit is measured.
+Documented that excess production is a waste proxy, not actual measured disposal.
+Added a24-circuit four-case shot-budget example to compute notes, explicitly
+conditional on compiled timing and circuit construction/quality. No solver,
+hardware or external compute job was started; factory main entry unchanged.
+
+## 2026-10-17 — live read-only compute and public quantum allowance check
+
+Verified the local M5 Pro/48 GB hardware and WCSS authentication, Axion account,
+CPU/Hopper partitions and eligibility using non-submitting Slurm tests. Bem
+128 GB CPU predicted a near-term start; Lem batch CPU/GPU predictions were later.
+Interactive sbatch dry tests were refused by the srun-only policy; no allocation
+was attempted. Vast.ai read-only listing has no instances; pracus SSH timed out.
+The user clarified IBM Quantum, not IQM, as the free-minute provider. Checked
+official Open Plan/conditional promotion and usage accounting; actual balance
+and backend remain unknown. Saved inventory, limitations and illustrative shot
+budget arithmetic in docs/STAGE2_COMPUTE_ACCESS.md. No QPU/VeloxQ/rental/compute
+job; the user's queue remains empty. Also restated the catering objective in
+conversation while continuing these checks; factory remains selected.
+
+## 2026-10-17 — user compute envelope and reduction priorities
+
+Recorded the user-reported140qubit hardware ceiling and possible H100/128GBRAM
+simulation envelope, without treating access as verified or authorizing a job.
+Checked official Aer dense-state memory accounting and NVIDIA H100 memory specs.
+Documented24–28qubit routine generic simulation, benchmarked30–32stretch cases,
+and small18–28qubit initial hardware-compilation targets subject to routing/gates.
+Kept broader-model VeloxQ binary variables separate from physical qubits, exact
+reductions separate from lossy restrictions, and held all external compute calls.
+
+## 2026-10-17 — catering disruption retained and register accounting clarified
+
+The user clarified that asking for the disruption's rationale did not authorize
+dropping it. Recorded that it remains part of the parked catering proposal,
+with event timing and committed-state semantics declared before evaluation.
+Separated the verified18/16-bit toy counts from the uncompiled flagship and
+the unrelated28-qubit factory bridge. Derived the direct option-model accounting:
+M+22bits nominal, M'+26with two new urgent-order demand groups, before frozen
+boundary substitution. Option counts remain unknown. Documented exact filtering
+versus lossy restriction, conditional quantum neighborhoods, and bit/coupler/depth
+tradeoffs. No experiments or service calls; main-entry factory decision unchanged.
+
+## 2026-10-17 — factory locked and missing-choice diagnosis
+
+The user chose the factory and asked how to strengthen it. Parked catering and
+updated the priorities toward an explainable same-project contribution, bounded
+VeloxQ measurements only after quota/authorization, honest hardware feasibility,
+and a reliable demonstration/defense. No additional factory mechanisms were added.
+
+Read retained evidence and found a specific counterfactual: an enriched optimal
+0/855schedule uses31assignments already in the original pool. Only P02assembly
+on A1/W06 at720–780is missing; its H3assignment is already retained. The new
+`scripts/explain-recovery-pool-loss.py` compiles the original and augmented pools,
+checks membership, encodes/decodes the known witness and verifies literal energy.
+The augmented pool has782bits/26357couplers and attains855, matching the retained
+complete-model lower bound. Source-sealed evidence is retained separately in
+`output/recovery-pool-diagnostic-v1/`. No optimizer, sampling, SDK or network call.
+
+This is deliberately post-hoc, using an already known optimum as a diagnostic
+teacher. It is not presented as a new search algorithm, a lossless compression,
+or a replacement for the blind2078-bit enrichment experiment. Existing packets
+and all prior results stay untouched. This sharper explanation should help the
+team defend why a smaller pool lost capacity value without claiming large
+encodings are necessary for this one recovered optimum.
+
+
+## 2026-10-17 — later scope response and catering reassessment
+
+The user supplied a later response described as official, welcoming another
+domain when it adds genuine mathematical/algorithmic complexity, value,
+originality and correctness. Preserved it alongside the earlier mentor reply
+in `docs/STAGE2_MENTOR_FEEDBACK.md`; author/date/permalink are not supplied.
+Updated the catering proposal and priorities so manufacturing preference is
+not treated as exclusion of other domains.
+
+Reassessed the retained catering evidence without running new experiments:
+only18/16-bit fixed-option algebra checks exist, both with optimum tuple
+(0,0,0,2). Endogenous batch sizing, demand sharing and freshness provide a
+substantive proposed distinction, but full-kitchen correctness, comparative
+value and backend performance are unmeasured. The factory remains the stronger
+implemented submission; any pivot should first earn stronger offline evidence.
+No new solver/API call or VeloxQ usage accompanies this documentation update.
+
 ## 2026-10-17 — game-like recovery demo and integrated Stage2 framing
 
 The user preferred the richer game-like factory over the formal workspace and

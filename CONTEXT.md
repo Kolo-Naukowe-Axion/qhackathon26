@@ -1,5 +1,111 @@
 # QPoland Quantum Hackathon — running context
 
+## Active direction: try catering; shared foundation then methods — 17 October
+
+**Ownership clarification:** the user and this chat take classical benchmarking
+and the shared foundation. The other three people take VeloxQ, QAOA and VQE.
+The user authorized pushing the handoff to main now and starting our work.
+
+The user now explicitly selected catering to try, superseding the earlier
+factory-selected/catering-parked status below. Keep the verified factory as a
+fallback. They requested four asynchronous human workstreams and clarified the
+split: Codex first builds/freezes the common problem, QUBO, decoder, independent
+checker and fixture bundles; then people independently own VeloxQ, QAOA, VQE
+(interpreting “qve”) and classical native/SA benchmarks. Do not split the four
+people into different kitchen-model implementations.
+
+See [method work allocation](docs/CATERING_METHOD_WORKSPLIT.md) and
+[solver contract](docs/CATERING_SOLVER_CONTRACT.md). These establish ownership,
+handoff gates, exact coefficient/bit conventions, common outputs and controls.
+No human names assigned, agent runs started or messages dispatched by this
+allocation. Foundation code/bundles are not implemented by writing the plan.
+Method work begins on immutable verified tiers as released. The ambitious
+specification remains the target, with the same named core/stretch gates.
+All IBM/QPU/VeloxQ execution holds and repository-cleanup deferral remain.
+
+## Detailed catering specification requested — 17 October
+
+The user requested a very detailed description of the most ambitious credible
+catering version. Authored [the full specification](docs/CATERING_AMBITIOUS_SPEC.md):
+batch creation/sharing, identified workers, fixed departures/freshness, explicit
+discarded food/material, phase-aware WIP and interrupted cooking, four paired
+event cases, finite ingredients/holding/power, exact QUBO/counter/factored options,
+IBM budgets, validation, game-like demo and build/de-scoping gates. Proposed
+10:50–11:30 outage addresses the earlier 09:30 fixture possibly missing the
+fresh lunch production window. These are proposed new semantics, not executed
+results or an activated pivot; preserve factory as the implemented main entry.
+The full ambitious register additionally counts cumulative-capacity slacks and
+recovery-task options. A deliberately unpruned initial capacity construction
+would add 363 slack bits (385 with nominal demand slacks) before batch options;
+this is accounting, not a compiled size or lower bound. No full-140-qubit claim.
+All existing service/QPU execution holds remain.
+
+## User-reported compute envelope — 17 October
+
+**Live verification supersedes the earlier unverified-access notes:** see
+[compute access and quantum budget](docs/STAGE2_COMPUTE_ACCESS.md). Mac hardware
+is verified (M5 Pro, 15 CPU cores, 16 GPU cores, 48 GB). WCSS SSH works; the
+Axion account accepted non-submitting 128 GB Bem/Lem CPU, 1 TB Lem CPU and one
+Hopper GPU request tests. Queue predictions vary widely; no nodes were allocated.
+Vast.ai lists zero current instances; pracus SSH timed out. The user clarified
+the free-minute provider is IBM Quantum, whose public Open Plan is 10 QPU minutes
+per 28-day window. Personal balance/backend is unverified; IQM uses free credits.
+No simulation job, rental, QPU call or VeloxQ call accompanied these checks.
+
+User reports140qubits as the maximum accessible physical-device size, and possible
+H100/128GBCPU simulation resources. Use140as a ceiling, not a useful-QAOA target.
+Resources/backend/calibrations are not independently verified; no remote compute
+or quantum execution is authorized by this statement. Generic complex128 states
+need4/16/32/64/128GiB for28/30/31/32/33qubits, before workspace. Start with a small
+useful18–28qubit quantum core;30–32generic simulation is a measured stretch,
+not a guarantee. Exact reductions first; restricted domains need loss accounting.
+The broader model and integrated VeloxQ path need not fit a quantum register.
+See catering proposal resource notes; factory remains the chosen main entry.
+
+## Factory selected; current improvement work — 17 October
+
+The user explicitly chose the factory over catering. Keep catering parked;
+strengthen the same factory entry rather than split into a second project.
+Priorities are an explainable recovery/representation result, bounded integrated
+VeloxQ evidence after quota/authorization, an honest hardware feasibility check,
+and a reliable demo/code defense/final submission. Actual remote-use holds remain.
+
+A new offline post-hoc membership/energy diagnostic found that the retained
+cap64on-time witness uses31of32assignments already in the original781-bit pool.
+The single absent row is P02/pump/step0 on A1 with W06 at720–780. Its H3row was
+already present. Adding this known-reference row gives782bits/26357couplers;
+the checked encoded witness has energy855, equal to the retained full optimum.
+Evidence: output/recovery-pool-diagnostic-v1/. This uses a known optimal plan as
+a diagnostic teacher; it is not a new blind search method or lossless encoding.
+Do not imply2078bits are necessary: that count belongs to the independently
+constructed deterministic enrichment experiment. No optimizer/VeloxQ/QPU ran.
+
+Current restricted QAOAcircuits retain all32operations at18/28/36circuitqubits
+(default28), not the full assignment domain. Replacement p2all-connectivity
+counts are196/548/932CX, depth71/185/250, before physical routing/calibration.
+The complete optimization encoding has2499binary variables; its direct
+one-bit-per-qubit QAOA register would require2499circuitqubits. No hardware
+readiness or error-corrected logical-qubit claim follows from those counts.
+
+## Latest extension-scope guidance — 17 October
+
+The user supplied a later response described as official: manufacturing is
+particularly valuable, but another domain may be equally interesting if it
+adds genuine mathematical/algorithmic complexity, value, originality and
+correctness. Saved verbatim in `docs/STAGE2_MENTOR_FEEDBACK.md`; author/date/link
+were not supplied. Do not treat the earlier manufacturing preference as a ban
+on other domains or the new response as approval of a specific model/award.
+
+The user asked to reassess catering. The proposal chooses batches/yields,
+shares output across customer demand and couples freshness to departure timing.
+Only the18/16-bit fixed-option algebra audit exists; both toy optima remain
+(missing,tardiness,excess,batches)=(0,0,0,2). No full flagship kitchen, native
+raw-model comparison, large benchmark, QAOA or VeloxQ result exists for it.
+Current recommendation: factory is the stronger evidenced submission today;
+catering has potential as a substantive alternative/generalization only after
+a bounded offline result justifies a pivot. Neither a new project nor limited
+VeloxQ spending is authorized by this question. Keep one integrated Stage2 story.
+
 ## Technical merit complete — 17 October, supersedes historical status below
 
 **Closeout:** all 14 agreed non-VeloxQ core requirements passed. The completed goal was technical merit implementation; actual VeloxQ, final synchronized video, human rehearsal and public release/submission remain open. [Current status](docs/STAGE2_STATUS.md) links evidence, limits and next actions. Final checks passed 52 targeted Python tests, all 113 site tests and the static build.

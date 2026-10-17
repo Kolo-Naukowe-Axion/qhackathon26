@@ -1,0 +1,77 @@
+{
+  "status": "passed",
+  "scope": "Post-hoc diagnostic using a retained enriched optimum; not a blind generator or solver benchmark",
+  "original": {
+    "variables": 781,
+    "couplers": 26307,
+    "retained_exact_objective": 65790,
+    "retained_weighted_late_minutes": 45
+  },
+  "witness": {
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 0,
+      "makespan": 855,
+      "objective": 855
+    },
+    "assignments": 32,
+    "represented_in_original": 31,
+    "missing_assignments": [
+      {
+        "operation": "P02/pump/step0",
+        "machine": "A1",
+        "worker": "W06",
+        "start": 720,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "B"
+      }
+    ],
+    "spare_furnace_assignments": [
+      {
+        "operation": "P01/housing/step3",
+        "machine": "H3",
+        "worker": "W02",
+        "start": 360,
+        "end": 480,
+        "attended_end": 365,
+        "hall": "B",
+        "already_in_original_pool": true
+      }
+    ]
+  },
+  "augmented": {
+    "variables": 782,
+    "couplers": 26357,
+    "compiler_penalty": 1038796,
+    "energy": 855,
+    "encoded_makespan": 855,
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 0,
+      "makespan": 855,
+      "objective": 855
+    },
+    "optimum_certificate": "Checked representable witness gives upper bound855; retained complete-model optimum gives lower bound855, since this pool is a restriction of the same raw model"
+  },
+  "caveats": [
+    "The added row was read from a known optimal reference: this is privileged post-hoc diagnosis.",
+    "This does not replace the independently generated 2078-bit enrichment experiment.",
+    "782 is not a lower bound on correct formulation size, and the repair is not a lossless full-domain encoding.",
+    "The existing four sponsor packets and all historical inputs/results are unchanged.",
+    "Compilation uses the original conservative compiler penalty; no sampler performance follows."
+  ],
+  "input_sha256": {
+    "output/manufacturing-recovery-v2/heat-lease-32/problem.json": "44300511d4ab1694dd3dc98e768760aa7fe30c979d15a6e49ae06348b23d07c6",
+    "output/manufacturing-recovery-v2/heat-lease-32/columns.json": "8a3a31837652568f28a452d12abefe6866dc47f9c7fefefe7617c7f3559fda2a",
+    "output/manufacturing-recovery-v2/heat-lease-32/report.json": "173ae766fe8e2c9ae9786057d59763267b26d67d1e0b3b4b341ec9ac34fc740b",
+    "output/capacity-frontier-review-v1/heat-lease-32/baseline.json": "8a3a31837652568f28a452d12abefe6866dc47f9c7fefefe7617c7f3559fda2a",
+    "output/capacity-frontier-review-v1/heat-lease-32/cap-64/report.json": "3f727edc1668403d6c3e2c2fea53e500b0f34baabab92e2f1d972478adf64929"
+  },
+  "optimizer_calls": 0,
+  "sampling_calls": 0,
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

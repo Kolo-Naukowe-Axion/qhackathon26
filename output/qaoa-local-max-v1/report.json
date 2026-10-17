@@ -1,0 +1,399 @@
+{
+  "protocol": {
+    "schema": "stage2-local-qaoa-training.v1",
+    "source_campaign": "/Users/iwosmura/projects/qhackathon26/output/recipe-bridge-review-v2",
+    "cases": [
+      "heat-outage-32",
+      "heat-lease-32"
+    ],
+    "cap": 4,
+    "depths": [
+      2,
+      4,
+      8,
+      12
+    ],
+    "starts_per_depth": 4,
+    "max_adjoint_evaluations_per_start": 256,
+    "alpha": 0.25,
+    "workers": 4,
+    "selection": "Minimum CVaR training objective; no exact-hit/optimum-based selection",
+    "initialization": "First start: historical p2 angles; later depths: trained lower-depth angles plus small-angle layers; second start perturbs that circuit; remaining starts random",
+    "sampling_seeds": [
+      101,
+      102,
+      103,
+      104,
+      105,
+      106,
+      107,
+      108,
+      109,
+      110
+    ],
+    "shots_per_replica": 512,
+    "source_hashes": {
+      "qaoa_training.py": "0a9f9f8308634b3a6e6cf6e8c3d1cf8eee81cafad6e4805aa647a4c2c0eced28",
+      "qaoa_campaign.py": "fa69383ca8a555975a753d883b44fbeb70c6fa61c78c7e5b737e9cb4769cfa42",
+      "assignment_qaoa.py": "469a535a201c9b3f5a6ccf67a2977f98150f53ec9f2dcb3912ffacf717adfc9d",
+      "column_qubo.py": "4c0964029724b389298a3e9dee517bd62dc121fa9825d97aaf975f95f89b8776",
+      "window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+      "trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+      "column_parents.py": "e00dd626ab6b643565715aa282a905ce34a1519b5e871f301a0f6cd5cbf850b9",
+      "recipe_bridge.py": "c1c4d7e1862b360b089ea884b703edd848a46d2eb04bd2cd201683a039ca430c"
+    },
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "cpu_count": 15,
+    "physical_memory_bytes": 51539607552,
+    "remote_calls": 0,
+    "physical_qpu_calls": 0,
+    "limitations": [
+      "Known development instances and previously frozen restricted pools",
+      "Reused candidate construction; its historical cost is not new search work",
+      "Exact sector energies and exact simulated gradients, not hardware-shot training",
+      "Ten Born replicas per trained distribution are not ten independent problems",
+      "Adjoint calls include a forward and reverse pass, unlike a value-only evaluation",
+      "Historical64-evaluation baseline has a smaller compute budget"
+    ]
+  },
+  "rows": [
+    {
+      "case": "heat-outage-32",
+      "layers": 2,
+      "seed": 17235,
+      "value": -1.1805713119298311,
+      "evaluations": 16,
+      "hit": 0.024112740494383056,
+      "feasible": 0.02911791853768943,
+      "seconds": 1.4686155831441283
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 2,
+      "seed": 18244,
+      "value": -1.1805713119298333,
+      "evaluations": 29,
+      "hit": 0.024112740688306034,
+      "feasible": 0.02911791870410343,
+      "seconds": 2.802480125334114
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 2,
+      "seed": 19253,
+      "value": -1.5359989998698014,
+      "evaluations": 43,
+      "hit": 0.014833025843454709,
+      "feasible": 0.020981955197436907,
+      "seconds": 3.901110500097275
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 2,
+      "seed": 20262,
+      "value": -1.4499581867472942,
+      "evaluations": 26,
+      "hit": 0.012860648431672084,
+      "feasible": 0.017004398266037255,
+      "seconds": 2.3286706670187414
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 2,
+      "seed": 17235,
+      "value": -1.4597839928988765,
+      "evaluations": 14,
+      "hit": 0.0548741405547462,
+      "feasible": 0.059268543025092935,
+      "seconds": 1.3418136253021657
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 2,
+      "seed": 18244,
+      "value": -1.4597839928988816,
+      "evaluations": 15,
+      "hit": 0.05487414057917263,
+      "feasible": 0.059268543049839785,
+      "seconds": 1.3522937502712011
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 2,
+      "seed": 19253,
+      "value": 1.4915921238688383,
+      "evaluations": 27,
+      "hit": 0.0026292816308401273,
+      "feasible": 0.004782798602037687,
+      "seconds": 2.2842819998040795
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 2,
+      "seed": 20262,
+      "value": -1.4597839928988792,
+      "evaluations": 37,
+      "hit": 0.0548741405762938,
+      "feasible": 0.059268543041524346,
+      "seconds": 2.594172124750912
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 4,
+      "seed": 17429,
+      "value": -2.5546203465324324,
+      "evaluations": 40,
+      "hit": 0.010275421605775057,
+      "feasible": 0.027895320531018657,
+      "seconds": 6.830345917027444
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 4,
+      "seed": 18438,
+      "value": -2.590924137074414,
+      "evaluations": 35,
+      "hit": 0.01757873349159684,
+      "feasible": 0.032026559400277446,
+      "seconds": 5.9613687908276916
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 4,
+      "seed": 19447,
+      "value": 1.1011165493629345,
+      "evaluations": 69,
+      "hit": 0.0002322183217193936,
+      "feasible": 0.0032118666786519006,
+      "seconds": 12.367845041677356
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 4,
+      "seed": 20456,
+      "value": -0.17124814197326765,
+      "evaluations": 32,
+      "hit": 3.440595742662924e-06,
+      "feasible": 0.009128192801719148,
+      "seconds": 5.478804749902338
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 4,
+      "seed": 17429,
+      "value": -2.8335976953461266,
+      "evaluations": 41,
+      "hit": 0.13768139095271548,
+      "feasible": 0.21611777738045007,
+      "seconds": 7.204986625351012
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 4,
+      "seed": 18438,
+      "value": -2.9842531653265643,
+      "evaluations": 30,
+      "hit": 0.26059178382024173,
+      "feasible": 0.28587864264791724,
+      "seconds": 5.30881612515077
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 4,
+      "seed": 19447,
+      "value": -2.7625640611450115,
+      "evaluations": 88,
+      "hit": 0.1367850075127028,
+      "feasible": 0.19812096897151707,
+      "seconds": 13.625779791269451
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 4,
+      "seed": 20456,
+      "value": -2.2415062498504446,
+      "evaluations": 50,
+      "hit": 0.09010508497478341,
+      "feasible": 0.09217364674192623,
+      "seconds": 7.422561916988343
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 8,
+      "seed": 18826,
+      "value": -3.245525130034725,
+      "evaluations": 159,
+      "hit": 0.0541975763149192,
+      "feasible": 0.0896027152359122,
+      "seconds": 56.425373958889395
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 8,
+      "seed": 19835,
+      "value": 3.8111001934193074,
+      "evaluations": 79,
+      "hit": 4.298431638103327e-06,
+      "feasible": 2.9863359182780783e-05,
+      "seconds": 28.267907874658704
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 8,
+      "seed": 20844,
+      "value": -2.042040547350219,
+      "evaluations": 145,
+      "hit": 5.057189035285348e-08,
+      "feasible": 0.027556167859302625,
+      "seconds": 50.88089741719887
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 8,
+      "seed": 17817,
+      "value": -2.9842531653265643,
+      "evaluations": 4,
+      "hit": 0.25979182115028787,
+      "feasible": 0.286053863394779,
+      "seconds": 1.4388088751584291
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 8,
+      "seed": 18826,
+      "value": -2.9842531653265643,
+      "evaluations": 11,
+      "hit": 0.2518745214714643,
+      "feasible": 0.26995418833171947,
+      "seconds": 3.7873641662299633
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 8,
+      "seed": 19835,
+      "value": 4.13879729434051,
+      "evaluations": 103,
+      "hit": 3.478203235418651e-05,
+      "feasible": 0.0001762101876088808,
+      "seconds": 33.601234749890864
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 8,
+      "seed": 20844,
+      "value": -0.8027585247535329,
+      "evaluations": 125,
+      "hit": 0.024577988824649268,
+      "feasible": 0.04709852224909031,
+      "seconds": 39.48819587472826
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 8,
+      "seed": 17817,
+      "value": -3.253811724765118,
+      "evaluations": 171,
+      "hit": 0.05360894249673202,
+      "feasible": 0.09142257809654605,
+      "seconds": 49.87588370917365
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 12,
+      "seed": 21232,
+      "value": -3.746323134465907,
+      "evaluations": 213,
+      "hit": 0.24857051409366687,
+      "feasible": 0.28427311426733315,
+      "seconds": 121.44491841690615
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 12,
+      "seed": 18205,
+      "value": -2.9842531653265643,
+      "evaluations": 9,
+      "hit": 0.2677038278640629,
+      "feasible": 0.28113956654323374,
+      "seconds": 5.290296166669577
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 12,
+      "seed": 18205,
+      "value": -3.281714155173293,
+      "evaluations": 256,
+      "hit": 0.05900717476937449,
+      "feasible": 0.0966650979276896,
+      "seconds": 136.6762845418416
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 12,
+      "seed": 19214,
+      "value": -3.7316488684315448,
+      "evaluations": 256,
+      "hit": 0.23656599818726892,
+      "feasible": 0.25126468235866845,
+      "seconds": 139.10490758297965
+    },
+    {
+      "case": "heat-outage-32",
+      "layers": 12,
+      "seed": 20223,
+      "value": -1.7600864856172962,
+      "evaluations": 256,
+      "hit": 0.016305040377053402,
+      "feasible": 0.025501908410865328,
+      "seconds": 143.56513062492013
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 12,
+      "seed": 21232,
+      "value": -2.9842531653265643,
+      "evaluations": 40,
+      "hit": 0.2505149146012619,
+      "feasible": 0.2663223174872458,
+      "seconds": 19.396368749905378
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 12,
+      "seed": 19214,
+      "value": -2.9842531653265643,
+      "evaluations": 115,
+      "hit": 0.2526280017703622,
+      "feasible": 0.41854265434917026,
+      "seconds": 56.66282687522471
+    },
+    {
+      "case": "heat-lease-32",
+      "layers": 12,
+      "seed": 20223,
+      "value": -1.2047582788149456,
+      "evaluations": 197,
+      "hit": 0.06803227379766162,
+      "feasible": 0.06877031379334503,
+      "seconds": 81.63364999974146
+    }
+  ],
+  "wall_seconds": 272.8638604581356,
+  "training_cpu_seconds": 1040.483111,
+  "selected": {
+    "heat-outage-32": {
+      "layers": 12,
+      "seed": 21232,
+      "scaled_training_value": -3.746323134465907
+    },
+    "heat-lease-32": {
+      "layers": 12,
+      "seed": 18205,
+      "scaled_training_value": -2.9842531653265643
+    }
+  },
+  "source_stable": false,
+  "model_and_training_source_stable": true,
+  "resumed": true,
+  "timings_scope": "This invocation wall time; retained completed fit CPU only. Interrupted in-flight CPU is unmeasured. Prior invocation progress retained in resume receipt."
+}

@@ -1,6 +1,19 @@
 # QHackathon 2026
 
-## Current local Stage 2 work
+## Active Stage 2 direction: catering
+
+The user selected catering as the direction to try on 17 October. Start with
+the [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md),
+[four-person method allocation](docs/CATERING_METHOD_WORKSPLIT.md) and
+[common solver contract](docs/CATERING_SOLVER_CONTRACT.md). Codex builds the shared
+foundation first; independent owners then evaluate VeloxQ, QAOA, VQE and classical
+references. Catering foundation/bundles and method results are not implemented
+by these planning documents. IBM/VeloxQ execution remains held.
+
+The existing factory implementation, results and demo below remain intact as
+a fallback. Its technical acceptance does not certify the new catering scope.
+
+## Existing factory implementation and fallback
 
 **Technical closeout, 17 October:** all 14 agreed non-VeloxQ core requirements passed; 52 targeted Python tests, 113 site tests and the static build passed. Read the [current status and remaining work](docs/STAGE2_STATUS.md). Actual VeloxQ execution, the final synchronized video, human rehearsal and public release/submission remain open.
 
