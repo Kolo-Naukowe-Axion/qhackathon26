@@ -8,7 +8,7 @@ This preserves the earlier mixed v2/v3 handoff; statuses and test counts below a
 Current extension: paired-course v3, 17 October 2026. One integrated project
 targets the overall award and best use of VeloxQ. A substantive quantum method
 remains central; classical methods provide references. Read the method, proofs and
-acceptance gates in [the quantum-first design](../../CATERING_QUANTUM_FIRST.md).
+acceptance gates in [the quantum-first design](../planning/CATERING_QUANTUM_FIRST.md).
 The [classical reference design](../../catering-methods/CLASSICAL.md) defines
 the independent raw CP model, exact same-input checks and SA controls, including
 how to distinguish representation loss from quantum search loss.
@@ -22,9 +22,9 @@ Use V3for the paired-meal extension, or output/catering-foundation-v2/ for
 component-demand regression runs. Existing v1 files are
 retained as historical evidence; their outage answers are not spec-conformant.
 
-Read [method ownership](../../CATERING_METHOD_WORKSPLIT.md) and
+Read [method ownership](../../internal/CATERING_METHOD_WORKSPLIT.md) and
 [solver conventions](../../CATERING_SOLVER_CONTRACT.md). The
-[ambitious specification](../../CATERING_AMBITIOUS_SPEC.md) is the larger target,
+[ambitious specification](../planning/CATERING_AMBITIOUS_SPEC.md) is the larger target,
 not the scope already implemented here.
 
 ## New paired-course extension and shared research inputs

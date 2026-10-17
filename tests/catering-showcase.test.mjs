@@ -93,3 +93,20 @@ test('follow-up service rows expose distinct source sampling and packet identiti
  assert.deepEqual(bench.velox_payoff.rows.map(r=>[r.complete_meals,r.discarded_portions,r.valid_shots]),
   [[10,30,17],[50,60,512]]);
 });
+
+
+test('speaker scripts fit each chapter and separate result cues from spoken text',async()=>{
+ const story=JSON.parse(await readFile(new URL('../scripts/catering-showcase/story.json',import.meta.url)));
+ const words=s=>s.trim().split(/\s+/).length;
+ for(const chapter of story){
+  assert.ok(words(chapter.narration)*60/chapter.duration<=170,chapter.id+' video is rushed');
+  if(chapter.live_duration)assert.ok(words(chapter.live_narration)*60/chapter.live_duration<=170,chapter.id+' live is rushed');
+ }
+ const run=story.find(c=>c.id==='run');
+ assert.doesNotMatch(run.live_narration,/Read the actual|Click|expected20/);
+ assert.match(run.live_result_cue,/only if/);
+ assert.match(run.live_action,/Only after completion/);
+ const close=story.find(c=>c.id==='close');
+ assert.equal(close.log_summary.length,3);assert.match(close.narration,/Our log records/);
+ assert.match(story.find(c=>c.id==='encoding').narration,/product expands.*coefficient span plus one/is);
+});

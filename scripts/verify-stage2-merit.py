@@ -1,5 +1,8 @@
 """Read-only acceptance audit of retained non-VeloxQ merit evidence.
 
+Historical factory audit: run at the commit recorded by its source receipts.
+The active catering release uses check-catering-release.py.
+
 No optimizer, SDK, network, quantum simulation or external publication is run.
 Outputs are written only to a new, explicitly selected directory. A missing
 agreed core artifact produces PENDING, never an inferred success.

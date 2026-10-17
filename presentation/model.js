@@ -3,7 +3,7 @@ const fail = message => { throw new Error(message); };
 const isText = x => typeof x === 'string' && x.length > 0 && x.length <= 4000;
 
 // This viewer deliberately accepts a narrow, versioned display contract.
-// Official submission JSON will get its own adapter once its schema is known.
+// Official submission JSON enters through the adapter below.
 export function parseReplay(value) {
   if (!value || value.schema !== 'axion-replay.v1') fail('Expected an axion-replay.v1 file.');
   if (value.unit !== 'hours') fail('This viewer currently displays time in hours.');

@@ -3,7 +3,7 @@
 Active implementation: `paired-course-contiguous.v3`, encoding
 `paired-course-anchor-onehot.v1`. Updated 17 October 2026. Synthetic inputs.
 This document specifies the implemented problem and its correctness argument.
-The [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md) is a separate
+The [ambitious specification](docs/archive/planning/CATERING_AMBITIOUS_SPEC.md) is a separate
 backlog. Historical factory design is folded at the end.
 
 ```mermaid
@@ -222,6 +222,78 @@ This proof includes negative objective coefficients and values off the feasible
 set. A heuristic is not guaranteed to find a ground state. Large safe penalties
 can cause numerical/conditioning difficulties; changing them requires a new
 validated bound and bundle identity. For the cell, P=11141287.
+
+## 5.1. The price of realism
+
+The smallest submitted baseline-B formulation uses **3 binary order variables**.
+The official comparison is **72** time-indexed variables at H=8; chain-window
+pruning gives **39**. Our three bits represent the six common job permutations,
+with an earliest-start decoder and factorial classical cost tabulation. They do
+not preserve every timed schedule. The optimum on official B is still 8h.
+See [the baseline derivation](docs/STAGE1_COMPACT.md).
+
+For the extension, distinguish a new decision from a new restriction on existing
+choices. A program already specifies quantity, allocation order, equipment,
+crew and all phase times. Its constraints may remove choices or add conflicts;
+new quantities/resources can increase the program count K. The register is
+K+G, including one idle bit for each of the G nonempty anchor blocks.
+
+A concrete unpruned time-indexed comparator for the **same complete cell** is:
+
+1. Use K_m optional batch slots per menu, bounded by residual component demand.
+2. A configuration alpha selects yield, a nonempty ordered allocation, equipment
+   and qualified crew, without times. Introduce one activation bit per slot/configuration.
+3. Add prep, cook and pack start registers over T grid starts. Cleaning immediately
+   follows cooking and is included in its known occupancy profile. Impose
+   sum_t x_phase,t = activation, at most one configuration per slot, and the
+   timing/resource/allocation exclusions. These are unary or quadratic constraints.
+4. Component coverage is linear in activations, so the paired service/waste
+   objective is quadratic. In this cell the previous unstarted plan is empty.
+
+Thus N_TI = sum_m K_m |A_m| (1+3|T|). For distinct unit-demand groups,
+|A_m| counts all equipment/qualified-crew choices times all yield/nonempty
+allocation-order choices. Here |T|=14; B has K=1, |A|=2 and C has K=2, |A|=12.
+The unpruned total is 26 activation bits + 1092 start bits = **1118**.
+This is an explicitly specified analytical comparator, not a compiled or timed
+reference solver, a minimum or a claim of speedup. Unary pruning would reduce it.
+
+| Cell choices | Analytic unpruned time indexing | Complete program register |
+|---|---:|---:|
+| C1 only | 559 | 8 programs + 2 idle = 10 |
+| Yield1 only | 430 | 18 programs + 2 idle = 20 |
+| No shared batches | 774 | 30 programs + 3 idle = 33 |
+| Full declared cell | 1118 | 32 programs + 3 idle = 35 |
+
+Each restricted row independently filters the full cell; rows are not additive.
+Adding the second cooker costs 559 comparator bits versus 25 program bits;
+allowing yield 2 costs 688 versus 15; allowing sharing costs 344 versus 2.
+The chosen-register counts are read directly from the complete retained domain.
+Compiling those locally valid programs is classical preprocessing, not free work.
+
+| Added constraint or objective | Extra comparator registers | Extra program registers |
+|---|---|---|
+| Phase precedence and immediate cooker cleaning | 0; forbid incompatible start pairs | 0; reject invalid local programs |
+| Fixed departures and freshness | 0; remove illegal starts or time pairs | 0; remove illegal programs |
+| Calendars, observed outages and fixed started work | 0; substitute known occupancy and remove clashes | 0; prune programs against the fixed state |
+| Mandatory post-repair clean at the declared fixed time | 0; known worker/cooker occupancy | 0; known worker/cooker occupancy |
+| Unit-capacity equipment and attended-worker clashes | 0; pair exclusions between timed choices | 0; pair exclusions between programs |
+| Paired complete service and unpaired waste | 0; quadratic activation coverage | 0; quadratic program coverage |
+| Stability in these empty-prior fixtures | 0; R=B | 0; R=B |
+
+Zero extra registers does not mean zero extra coefficients or unchanged total
+bits. At the same offered register, the paired objective has 200 quadratic pairs:
+182 reuse hard edges and 18 add distinct edges. The full cell has 236 one-hot
+pairs, 266 cross-block conflicts and 18 extra objective edges, totaling 520 couplers.
+Conflict causes overlap and must not be summed. Nonempty-prior exact-timed-match
+terms would require additional accounting in the analytical comparator.
+
+Reproduce these counts without solving or changing a model:
+
+```sh
+python scripts/report-catering-realism.py --output /tmp/NEW-REALISM-COUNTS.json
+```
+
+The checked report is [catering-realism-cost-v1](output/catering-realism-cost-v1/report.json).
 
 ## 6. Ising, quantum method and simulation scope
 

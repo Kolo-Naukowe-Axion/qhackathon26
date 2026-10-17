@@ -158,6 +158,26 @@ Local enumeration is classical preprocessing. The exact-sector simulator also
 enumerates its sector energies; do not imply that this preprocessing is cheap
 at arbitrary scale.
 
+**What is the price of realism in qubits?**
+
+“The complete cell uses 32 batch-program bits plus three idle choices. Our
+specified unpruned phase-start comparator uses 1,118 bits for the same cell.
+That comparator is analytic, not a measured solver benchmark; pruning it would
+reduce the count. Program enumeration is classical work, not free compression.”
+
+Independently restricting the cell to one cooker gives 10 program/idle bits;
+yield-one only gives 20; no sharing gives 33. These are separate restrictions,
+not additive feature costs. Timing rules and paired service require no extra
+registers in the program encoding, but can change the offered programs and
+couplers. See the [count derivation](../PROJECT_DESIGN.md#51-the-price-of-realism).
+
+**Why only three qubits for Stage 1 B?**
+
+“They encode the six common job permutations, with earliest-start decoding.
+We tabulate their costs classically. That preserves B's eight-hour optimum,
+but it does not encode every feasible timed schedule or avoid factorial
+preprocessing. The official time-indexed comparison is 72 bits, or 39 pruned.”
+
 **Does anchor grouping discard feasible plans?**
 
 “Two programs sharing an anchor both allocate the same unit demand, so they

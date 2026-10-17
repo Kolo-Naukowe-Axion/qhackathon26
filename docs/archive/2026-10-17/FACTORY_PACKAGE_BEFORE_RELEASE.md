@@ -11,11 +11,11 @@ results; use the current [submission checklist](../../STAGE2_SUBMISSION.md) and
 17 October 2026. This is prepared local content, not a submitted entry or a
 public release. Actual VeloxQ use, physical QPU calls, public-source publication
 and final submission remain held. The user authorized syncing the private
-repository and its configured automatic site deployment; see [current status](../../STAGE2_STATUS.md).
+repository and its configured automatic site deployment; see [current status](../manufacturing/STAGE2_STATUS.md).
 
 **Technical acceptance:** all 14 agreed non-VeloxQ core requirements passed.
 The final test/build receipt records 52 targeted Python tests and 113 site tests.
-See [current status](../../STAGE2_STATUS.md) and the [acceptance matrix](../../STAGE2_MERIT_ACCEPTANCE.md).
+See [current status](../manufacturing/STAGE2_STATUS.md) and the [acceptance matrix](../manufacturing/STAGE2_MERIT_ACCEPTANCE.md).
 This closes technical merit; it does not complete the external/human duties below.
 
 ## Suggested title and description
@@ -113,17 +113,17 @@ It does not define the active catering model or its current execution status.
 
 The main demonstration uses complete 16-operation recipes (32–128 operations). Replacing heat capacity changes certified full-model weighted tardiness from 45 to 0; the original 781-bit operation pool stays at 45. Nested deterministic enrichment restores recovery with 2,078 bits, versus 2,499 for complete optimization. A distinct exact deadline-decision QUBO uses 818 bits and 33,817 couplers for the replacement query. Its zero-energy guarantee concerns feasibility, not the original soft-objective landscape.
 
-The integrated [recipe bridge](../../STAGE2_RECIPE_BRIDGE.md) keeps all 32 operations in eight component groups, recombining independently constructed complete routes. Its 18/28/36 logical-qubit models have 512/26,244/262,144 one-hot sector states. QAOA and sector annealing each produce 18/18 physically valid same-pool optimal schedules across two capacity cases, three caps and three seeds. The constructor already supplies an optimal incumbent; exact sector construction reveals minima classically. This is quantum integration and a sampling comparison, without advantage or scalable quantum-simulation claims. An independent circuit audit checks emitted QASM; the six 18-qubit circuits receive full-Hilbert probability checks, while larger circuits receive resource audits.
+The integrated [recipe bridge](../manufacturing/STAGE2_RECIPE_BRIDGE.md) keeps all 32 operations in eight component groups, recombining independently constructed complete routes. Its 18/28/36 logical-qubit models have 512/26,244/262,144 one-hot sector states. QAOA and sector annealing each produce 18/18 physically valid same-pool optimal schedules across two capacity cases, three caps and three seeds. The constructor already supplies an optimal incumbent; exact sector construction reveals minima classically. This is quantum integration and a sampling comparison, without advantage or scalable quantum-simulation claims. An independent circuit audit checks emitted QASM; the six 18-qubit circuits receive full-Hilbert probability checks, while larger circuits receive resource audits.
 
-[Feature ablations](../../STAGE2_REALISM_FRONTIER.md) fix horizon/grid and count unary/support bits, couplers and coefficient scale. All six ablations have exact native and restricted references. Larger 64/128-operation native runs remain UNKNOWN with checked bounds. [Economics](../../STAGE2_CAPACITY_ECONOMICS.md) computes an exact rational ledger and 135 sensitivities for four checked saved plans under synthetic prices. It values schedules selected for deadline priority; it is not a minimum-money weekly optimizer. The studio exposes these assumptions and purchase/event-fee thresholds.
+[Feature ablations](../manufacturing/STAGE2_REALISM_FRONTIER.md) fix horizon/grid and count unary/support bits, couplers and coefficient scale. All six ablations have exact native and restricted references. Larger 64/128-operation native runs remain UNKNOWN with checked bounds. [Economics](../manufacturing/STAGE2_CAPACITY_ECONOMICS.md) computes an exact rational ledger and 135 sensitivities for four checked saved plans under synthetic prices. It values schedules selected for deadline priority; it is not a minimum-money weekly optimizer. The studio exposes these assumptions and purchase/event-fee thresholds.
 
-See [the evidence map](../../STAGE2_MANUFACTURING_STUDY.md), [combined design](../../STAGE2_COMBINED_DIRECTION.md), and [acceptance record](../../STAGE2_MERIT_ACCEPTANCE.md). Local studio: http://127.0.0.1:4192/manufacturing/. Four new cold offline packets support the future integrated VeloxQ backend comparison, including matched original-objective penalties. VeloxQ is part of this same Stage2 extension. No VeloxQ execution or physical QPU call; private-remote sync and automatic site deployment are authorized, while public-source release/submission remain pending. Earlier sections below retain their explicitly smaller scopes.
+See [the evidence map](../manufacturing/STAGE2_MANUFACTURING_STUDY.md), [combined design](../manufacturing/STAGE2_COMBINED_DIRECTION.md), and [acceptance record](../manufacturing/STAGE2_MERIT_ACCEPTANCE.md). Local studio: http://127.0.0.1:4192/manufacturing/. Four new cold offline packets support the future integrated VeloxQ backend comparison, including matched original-objective penalties. VeloxQ is part of this same Stage2 extension. No VeloxQ execution or physical QPU call; private-remote sync and automatic site deployment are authorized, while public-source release/submission remain pending. Earlier sections below retain their explicitly smaller scopes.
 
-Status: agreed non-VeloxQ technical merit scope complete, 17 October 2026; all 14 core requirements passed. See [current status](../../STAGE2_STATUS.md) for evidence and the remaining VeloxQ, synchronized video, rehearsal and release duties. The complete-recipe bridge is integrated; the residual-cell study below retains its separate scope. No VeloxQ or physical ODRA5 execution is claimed.
+Status: agreed non-VeloxQ technical merit scope complete, 17 October 2026; all 14 core requirements passed. See [current status](../manufacturing/STAGE2_STATUS.md) for evidence and the remaining VeloxQ, synchronized video, rehearsal and release duties. The complete-recipe bridge is integrated; the residual-cell study below retains its separate scope. No VeloxQ or physical ODRA5 execution is claimed.
 
 ## Main-model mathematical specification
 
-[Mathematics of the complete-recipe manufacturing model](../../STAGE2_MANUFACTURING_MATH.md)
+[Mathematics of the complete-recipe manufacturing model](../manufacturing/STAGE2_MANUFACTURING_MATH.md)
 is the readable formulation reference for the main32-operation entry. It defines
 raw assignment domains, processing/attendance calendars, metric setup and worker
 travel assumptions, material precedence, the completion register, full quadratic
@@ -136,7 +136,7 @@ quantum bridge. Owning code, exhaustive tests and frozen evidence are linked.
 
 The smaller validation cell’s numerical definition, complete equations, reduction proof,
 source-sealed experiment protocol, results, scopes and rubric map are in
-[STAGE2_ENTRY.md](../../STAGE2_ENTRY.md). The decision is how to schedule remaining
+[STAGE2_ENTRY.md](../manufacturing/STAGE2_ENTRY.md). The decision is how to schedule remaining
 pump machining, a material-join assembly and inspections after capacity changes,
 including shared workers, cross-training, alternate machines, calendars and due
 dates. This stays within manufacturing. All data are explicitly synthetic.
@@ -168,7 +168,7 @@ retained; `scripts/verify-stage2-entry.py` rechecks claims and every TEST plan.
 
 Each job visits the common machine route, with the fixed processing durations in `instances/`. Each operation runs once, machine processing intervals do not overlap, and a predecessor completes before a successor starts. Minimize the latest completion time. Baseline outputs use nonnegative integer hours and `end = start + duration`.
 
-Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator. Instance B requires its QUBO to be solved using a QUBO solver. Both selected outputs use actual local QAOA simulation of the compact order QUBOs, with exact makespans 4/8 hours; see [STAGE1_COMPACT.md](../../STAGE1_COMPACT.md). The earlier fixed-horizon time-indexed QUBO, weights, window bounds, feasibility argument and classical reference remain comparison evidence in [STAGE1_OFFLINE.md](../../STAGE1_OFFLINE.md) and [STAGE1_REFINEMENT.md](../../STAGE1_REFINEMENT.md). Neither VeloxQ nor ODRA5 executed; both remain on user hold.
+Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator. Instance B requires its QUBO to be solved using a QUBO solver. Both selected outputs use actual local QAOA simulation of the compact order QUBOs, with exact makespans 4/8 hours; see [STAGE1_COMPACT.md](../../STAGE1_COMPACT.md). The earlier fixed-horizon time-indexed QUBO, weights, window bounds, feasibility argument and classical reference remain comparison evidence in [STAGE1_OFFLINE.md](../baseline/STAGE1_OFFLINE.md) and [STAGE1_REFINEMENT.md](../baseline/STAGE1_REFINEMENT.md). Neither VeloxQ nor ODRA5 executed; both remain on user hold.
 
 ## Implemented display model
 
@@ -252,7 +252,7 @@ See `stage2/README.md`, `docs/STAGE2_METHOD_AUDIT.md` and
 precomputation costs. Reserved final tapes remain distinct from development.
 
 The frozen campaign is complete: 23,552 valid executions across 74 method/context
-groups, with 41 declared comparisons. The later [solution-quality supplement](../../SOLUTION_QUALITY.md)
+groups, with 41 declared comparisons. The later [solution-quality supplement](../baseline/SOLUTION_QUALITY.md)
 quantifies realized-primary gap intervals using unchanged final outcomes and
 stronger offline necessary-quality bounds. Exact deterministic reference makespans
 and full-factory missing-order certificates have separate scopes; neither implies

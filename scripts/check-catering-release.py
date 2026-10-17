@@ -26,7 +26,10 @@ def verify(output, full_qaoa=False):
     # No command below reads credentials, installs dependencies or contacts a service.
     stages = [
         ('site', ['npm','run','build']),
+        ('stage1', [sys.executable,'scripts/check-stage1.py','--output',str(output/'stage1.json')]),
+        ('submission-tests', [sys.executable,'-m','unittest','discover','-s','tests','-p','test_submission_checks.py','-q']),
         ('preflight', [sys.executable,'scripts/check-catering-demo.py','--output',str(output/'preflight.json')]),
+        ('realism-counts', [sys.executable,'scripts/report-catering-realism.py','--output',str(output/'realism.json')]),
         ('mathematics', [sys.executable,'-m','catering.audit_math','--output',str(output/'mathematics.json')]),
         ('qaoa-archives', [sys.executable,'scripts/check-catering-qaoa.py','--output',str(output/'qaoa.json')]
                          + (['--full-samples'] if full_qaoa else [])),
@@ -72,7 +75,10 @@ def verify(output, full_qaoa=False):
     paths = ['schedule_2x2.json','schedule_3x3.json','LICENSE','README.md','PROJECT_DESIGN.md',
              'DEVELOPMENT_LOG.md','scripts/catering-showcase/story.json',
              'scripts/catering-showcase/evidence.json','scripts/catering-showcase/live-parameters.json',
-             'presentation/catering/benchmarks/data.json','output/catering-methods/qaoa/plan-v1.json']
+             'presentation/catering/benchmarks/data.json','output/catering-methods/qaoa/plan-v1.json',
+             'scripts/check-stage1.py','scripts/report-catering-realism.py',
+             'scripts/check-catering-release.py','tests/test_submission_checks.py',
+             'output/catering-realism-cost-v1/report.json']
     paths += ['docs/'+name+'.md' for name in ['CATERING_PRESENTATION','CATERING_VOICEOVER',
         'CATERING_LIVE','CATERING_RECORDING','CATERING_QA','STAGE2_SUBMISSION']]
     dependencies = {}

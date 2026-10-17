@@ -1,15 +1,15 @@
 # Stage 2 research implementation
 
 **Direction update:** catering is the active direction to try. Its
-[foundation/method work allocation](../docs/CATERING_METHOD_WORKSPLIT.md) and
+[foundation/method work allocation](../docs/internal/CATERING_METHOD_WORKSPLIT.md) and
 [solver contract](../docs/CATERING_SOLVER_CONTRACT.md) are written; the catering
 foundation is not yet implemented. This directory and the results below describe
 the verified factory fallback. They are not catering results.
 
 **Current technical status — 17 October 2026:** all 14 agreed non-VeloxQ core
-requirements passed. Start with [current status](../docs/STAGE2_STATUS.md),
-[manufacturing study](../docs/STAGE2_MANUFACTURING_STUDY.md) and
-[whole-recipe quantum bridge](../docs/STAGE2_RECIPE_BRIDGE.md). The main studio
+requirements passed. Start with [current status](../docs/archive/manufacturing/STAGE2_STATUS.md),
+[manufacturing study](../docs/archive/manufacturing/STAGE2_MANUFACTURING_STUDY.md) and
+[whole-recipe quantum bridge](../docs/archive/manufacturing/STAGE2_RECIPE_BRIDGE.md). The main studio
 shows the 32-operation recovery case, representation frontier, 18–36 logical-qubit
 QAOA bridge, feature accounting and synthetic economics. Scaling reaches 128
 operations with explicit reference limits. No quantum advantage is established.
@@ -20,12 +20,12 @@ operations with explicit reference limits. No quantum advantage is established.
 
 Open [the production studio](http://127.0.0.1:4192/manufacturing/#merit).
 Fresh execution is local simulation; the static build displays retained results.
-The [smaller residual-cell study](../docs/STAGE2_ENTRY.md) remains at `/entry/`.
+The [smaller residual-cell study](../docs/archive/manufacturing/STAGE2_ENTRY.md) remains at `/entry/`.
 Actual VeloxQ service/credit use, final synchronized video, human rehearsal and
 public release/submission remain separate open duties.
 
 For the original model, read
-[the current complete explanation](../docs/STAGE2_CURRENT_EXPLAINED.md) first,
+[the current complete explanation](../docs/archive/manufacturing/STAGE2_CURRENT_EXPLAINED.md) first,
 or open the local [Start here guide](http://127.0.0.1:4187/stage2/start.html).
 They distinguish the full physical factory below from the later, separately
 simplified planning cells, and identify which results are classical or quantum.
@@ -37,12 +37,12 @@ profile uses one-minute time steps and a 96-hour horizon by default. All measure
 solvers below preserve the physical specification; their routing, admission and
 candidate restrictions are explicit algorithm choices.
 
-Start with [measured capability and limits](../docs/STAGE2_RESULTS.md), then the
-[judge-facing explanation and formal requirement matrix](../docs/STAGE2_JUDGES_EXPLANATION.md).
+Start with [measured capability and limits](../docs/archive/manufacturing/STAGE2_RESULTS.md), then the
+[judge-facing explanation and formal requirement matrix](../docs/archive/manufacturing/STAGE2_JUDGES_EXPLANATION.md).
 The current final-evaluation status and all incomplete/submission limitations are
 explicit there; a replay or a valid partial execution is not a completed order set.
 For why a constant macro setting still produces dynamic scheduling, see
-[the control layers and proof meanings](../docs/STAGE2_CONTROL_LAYERS.md).
+[the control layers and proof meanings](../docs/archive/manufacturing/STAGE2_CONTROL_LAYERS.md).
 
 ## Factory
 
@@ -155,7 +155,7 @@ use `stage2/requirements-reference.txt`. A full research fit additionally needs
 Torch; the Axion records retain the actual CPU Torch2.14.1+cpu runtime.
 No Torch or GPU is needed to replay a selected NumPy policy.
 
-The subsequent [local QAOA training study](../docs/STAGE2_QAOA_LOCAL_TRAINING.md)
+The subsequent [local QAOA training study](../docs/archive/manufacturing/STAGE2_QAOA_LOCAL_TRAINING.md)
 adds reversible adjoint gradients, multistart depth search and CVaR tail lifting
 for the existing whole-recipe assignment circuit. Fitting uses the optional
 `stage2/requirements-qaoa-fit.txt` environment; it runs entirely on this Mac.

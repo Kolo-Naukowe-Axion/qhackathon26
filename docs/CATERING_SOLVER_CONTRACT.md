@@ -56,8 +56,8 @@ adapters and scope. Do not compare results across different bundle hashes.
 Ising conversion, decoder/checker, classical adapters and frozen fixtures.
 Start with [the runnable quick start](../catering/README.md). Quantum/VeloxQ
 adapters and the ambitious profile remain separate work.
-See [work allocation](CATERING_METHOD_WORKSPLIT.md) and
-[operational specification](CATERING_AMBITIOUS_SPEC.md).
+See [work allocation](internal/CATERING_METHOD_WORKSPLIT.md) and
+[operational specification](archive/planning/CATERING_AMBITIOUS_SPEC.md).
 
 The integrator owns this contract and shared code. Four method owners consume
 versioned bundles and return raw results. Backend-specific circuits, optimizers

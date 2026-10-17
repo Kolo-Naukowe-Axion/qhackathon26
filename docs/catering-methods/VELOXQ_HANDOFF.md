@@ -1,7 +1,7 @@
 # VeloxQ track: handoff (17 October 2026)
 
 For the next agent or owner of Person 1's VeloxQ track
-([workplit](../CATERING_METHOD_WORKSPLIT.md)). Full evidence and tables are in
+([workplit](../internal/CATERING_METHOD_WORKSPLIT.md)). Full evidence and tables are in
 [VELOXQ.md](VELOXQ.md). This page covers the state, the rules, where things are
 and what is still open.
 

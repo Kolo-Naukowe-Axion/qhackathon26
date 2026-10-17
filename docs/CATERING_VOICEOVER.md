@@ -15,11 +15,11 @@ reported campaign medians from checked exported schedules.
 
 ## 0:50–1:02 · What happens without the side batch
 
-> Now remove only the side batch from that plan. Neither order receives a complete meal, and twenty main portions are discarded. This is a checked manual intervention, not another solver. It shows why service and waste must depend on paired components.
+> Remove only the side batch. Neither order receives a complete meal; twenty main portions are wasted. This checked manual intervention shows why the objective couples main and side.
 
 ## 1:02–1:28 · Batch selection and scheduling constraints
 
-> Each program describes one batch: quantity, allocations, equipment, crew and phase times. A bit selects it. Programs sharing an anchor demand form a one-hot block with an idle choice. Cross-block penalties forbid duplicate allocations and resource clashes. The small cell includes all thirty-two legal programs, plus three idle bits.
+> A bit selects one batch program: quantity, allocations, equipment, crew and phase times. Anchor blocks choose a program or idle; pairwise penalties exclude clashes. In the code, product expands main and side coverage into quadratic terms. The coefficient span plus one sets a safe hard penalty. This complete cell has thirty-two programs and three idle bits.
 
 ## 1:28–1:56 · Complete meals and food waste
 
@@ -47,17 +47,17 @@ reported campaign medians from checked exported schedules.
 
 ## 3:56–4:08 · What scales, and where each method fits
 
-> More orders and time choices create more programs and conflicts. QAOA uses thirty-one to thirty-five qubits in explicitly restricted portfolios. VeloxQ runs the larger coupled matrices. Classical references measure quality and representation loss. Variable count alone does not prove classical hardness or quantum advantage.
+> More orders and time choices create programs and conflicts. Quantum circuits use restricted portfolios; VeloxQ uses larger matrices. The benchmark page separates search quality, restriction loss and feasibility.
 
 ## 4:08–4:20 · Checked results and benchmarks
 
-> The retained solver plan serves twenty meals with no discarded portions; removing its shared side serves none. Fresh execution has a separate checked receipt. The benchmark page contains the wider comparisons, while the repository preserves the formulation, proofs, sources and development log.
+> Our log records three decisions: correct repair cleaning, optimize complete-meal service, and prove idle elimination. The checked cell serves twenty meals without waste. Benchmarks and code are linked.
 
 ## Recording notes
 
-614 spoken words. Leave pauses for the code, equation and actual launch.
-The current local MP4 is silent. Its pictures remain useful, but record the
-updated narration for this result set. Earlier cuts have obsolete result slides.
+578 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
+The earlier local MP4 is silent and has obsolete result screens. Record the
+current route and narration for this result set.
 
 Record one paragraph at a time in a quiet room. Align and retime the visuals,
 add final subtitles, and check the export end to end. Keep the submitted video

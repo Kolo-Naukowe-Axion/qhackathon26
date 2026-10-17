@@ -63,7 +63,7 @@ Open `/catering/benchmarks/` from the kitchen or studio. It includes all 400
 QAOA runs, all 61 service attempts, VQE experiment rows and five checked VQE
 exports. Filters expose cases, budgets, failed attempts and source hashes. The
 page downloads retained data only; no optimizer or service call runs there.
-Regenerate with `.venv-stage2/bin/python scripts/export-catering-benchmarks.py`.
+Regenerate with `.venv-catering/bin/python scripts/export-catering-benchmarks.py`.
 
 QAOA and VQE use the same restricted 31–35-qubit portfolios. Report per-shot
 probability, sampled optimum hits, feasibility and training work separately;

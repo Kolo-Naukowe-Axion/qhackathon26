@@ -274,7 +274,7 @@ checker and fixture bundles; then people independently own VeloxQ, QAOA, VQE
 (interpreting “qve”) and classical native/SA benchmarks. Do not split the four
 people into different kitchen-model implementations.
 
-See [method work allocation](../../CATERING_METHOD_WORKSPLIT.md) and
+See [method work allocation](../../internal/CATERING_METHOD_WORKSPLIT.md) and
 [solver contract](../../CATERING_SOLVER_CONTRACT.md). These establish ownership,
 handoff gates, exact coefficient/bit conventions, common outputs and controls.
 No human names assigned, agent runs started or messages dispatched by this
@@ -286,7 +286,7 @@ All IBM/QPU/VeloxQ execution holds and repository-cleanup deferral remain.
 ## Detailed catering specification requested — 17 October
 
 The user requested a very detailed description of the most ambitious credible
-catering version. Authored [the full specification](../../CATERING_AMBITIOUS_SPEC.md):
+catering version. Authored [the full specification](../planning/CATERING_AMBITIOUS_SPEC.md):
 batch creation/sharing, identified workers, fixed departures/freshness, explicit
 discarded food/material, phase-aware WIP and interrupted cooking, four paired
 event cases, finite ingredients/holding/power, exact QUBO/counter/factored options,
@@ -303,7 +303,7 @@ All existing service/QPU execution holds remain.
 ## User-reported compute envelope — 17 October
 
 **Live verification supersedes the earlier unverified-access notes:** see
-[compute access and quantum budget](../../STAGE2_COMPUTE_ACCESS.md). Mac hardware
+[compute access and quantum budget](../manufacturing/STAGE2_COMPUTE_ACCESS.md). Mac hardware
 is verified (M5 Pro, 15 CPU cores, 16 GPU cores, 48 GB). WCSS SSH works; the
 Axion account accepted non-submitting 128 GB Bem/Lem CPU, 1 TB Lem CPU and one
 Hopper GPU request tests. Queue predictions vary widely; no nodes were allocated.
@@ -368,15 +368,15 @@ VeloxQ spending is authorized by this question. Keep one integrated Stage2 story
 
 ## Technical merit complete — 17 October, supersedes historical status below
 
-**Closeout:** all 14 agreed non-VeloxQ core requirements passed. The completed goal was technical merit implementation; actual VeloxQ, final synchronized video, human rehearsal and public release/submission remain open. [Current status](../../STAGE2_STATUS.md) links evidence, limits and next actions. Final checks passed 52 targeted Python tests, all 113 site tests and the static build.
+**Closeout:** all 14 agreed non-VeloxQ core requirements passed. The completed goal was technical merit implementation; actual VeloxQ, final synchronized video, human rehearsal and public release/submission remain open. [Current status](../manufacturing/STAGE2_STATUS.md) links evidence, limits and next actions. Final checks passed 52 targeted Python tests, all 113 site tests and the static build.
 
-The user emphasized doing the scoped merit, math, visuals and docs thoroughly, and explicitly requested UI improvement. The main-model [math specification](../../STAGE2_MANUFACTURING_MATH.md) is independently reviewed, with coefficient/penalty proofs and scope boundaries. The user prefers the game-like factory style and authorized it as the main demo. The current manufacturing workspace combines four recovery decisions, detailed machines/actual processing and attendance, complete pump progress, focused presentation and separate evidence views;120site tests/build and desktop browser checks pass. A fresh local28-qubit run returns0/855. VeloxQ belongs within this same Stage2 factory extension, not a separate project; officialPDFSections5/11/15 support integrated use. See [UI verification](../../STAGE2_UI_DESIGN.md); mobile appearance is not visually certified. Final video/formal release remains deferred until after VeloxQ; its authorization hold is unchanged.
+The user emphasized doing the scoped merit, math, visuals and docs thoroughly, and explicitly requested UI improvement. The main-model [math specification](../manufacturing/STAGE2_MANUFACTURING_MATH.md) is independently reviewed, with coefficient/penalty proofs and scope boundaries. The user prefers the game-like factory style and authorized it as the main demo. The current manufacturing workspace combines four recovery decisions, detailed machines/actual processing and attendance, complete pump progress, focused presentation and separate evidence views;120site tests/build and desktop browser checks pass. A fresh local28-qubit run returns0/855. VeloxQ belongs within this same Stage2 factory extension, not a separate project; officialPDFSections5/11/15 support integrated use. See [UI verification](../manufacturing/STAGE2_UI_DESIGN.md); mobile appearance is not visually certified. Final video/formal release remains deferred until after VeloxQ; its authorization hold is unchanged.
 
-The user resumed work, explicitly requested multiple subagent passes, fixes and completion of the merit side except actual VeloxQ, and requested ongoing documentation. Current centerpiece: [complete-recipe manufacturing recovery](../../STAGE2_MANUFACTURING_STUDY.md), [combined direction](../../STAGE2_COMBINED_DIRECTION.md). Recovery-v2 certifies full-model weighted tardiness45→0 with replacement heat capacity; the original781-bit pool stays45. Deterministic enrichment restores0/855 using2078bits. Complete optimization has2499bits; exact deadline feasibility has818bits. Distinguish lossless pruning, lossy choice restrictions and a changed query.
+The user resumed work, explicitly requested multiple subagent passes, fixes and completion of the merit side except actual VeloxQ, and requested ongoing documentation. Current centerpiece: [complete-recipe manufacturing recovery](../manufacturing/STAGE2_MANUFACTURING_STUDY.md), [combined direction](../manufacturing/STAGE2_COMBINED_DIRECTION.md). Recovery-v2 certifies full-model weighted tardiness45→0 with replacement heat capacity; the original781-bit pool stays45. Deterministic enrichment restores0/855 using2078bits. Complete optimization has2499bits; exact deadline feasibility has818bits. Distinguish lossless pruning, lossy choice restrictions and a changed query.
 
-The [recipe bridge](../../STAGE2_RECIPE_BRIDGE.md) integrates simulated QAOA with all32operations through complete component choices at18–36logical qubits. QAOA and sectorSA each return18/18 valid same-pool optimal schedules; the constructor already finds the best plan, and sector enumeration is classical. No quantum advantage. Failed boundary-release attempts remain preserved. Six fixed-horizon feature ablations,32/64/128 scaling, exact count-only dense audit,135 synthetic economic sensitivities and four cold sponsor packets are implemented. Economics values checked priority-optimal plans rather than optimizing money. Cold operation-level annealing returns0valid of640; it does not prove those instances hard.
+The [recipe bridge](../manufacturing/STAGE2_RECIPE_BRIDGE.md) integrates simulated QAOA with all32operations through complete component choices at18–36logical qubits. QAOA and sectorSA each return18/18 valid same-pool optimal schedules; the constructor already finds the best plan, and sector enumeration is classical. No quantum advantage. Failed boundary-release attempts remain preserved. Six fixed-horizon feature ablations,32/64/128 scaling, exact count-only dense audit,135 synthetic economic sensitivities and four cold sponsor packets are implemented. Economics values checked priority-optimal plans rather than optimizing money. Cold operation-level annealing returns0valid of640; it does not prove those instances hard.
 
-Current local studio: http://127.0.0.1:4192/manufacturing/ with `stage2.entry_demo`; it includes fresh recipe QAOA, representation comparisons, feature costs and adjustable economic assumptions. Final requirements/evidence are in [acceptance](../../STAGE2_MERIT_ACCEPTANCE.md). No VeloxQ or physical QPU calls. The user authorized all-work private-remote sync and automatic site deployment; snapshot cdc4b8d is pushed and live, with this game-style refinement following it. Human presentation/video/public-source-release duties remain separate. The older paused state below is historical.
+Current local studio: http://127.0.0.1:4192/manufacturing/ with `stage2.entry_demo`; it includes fresh recipe QAOA, representation comparisons, feature costs and adjustable economic assumptions. Final requirements/evidence are in [acceptance](../manufacturing/STAGE2_MERIT_ACCEPTANCE.md). No VeloxQ or physical QPU calls. The user authorized all-work private-remote sync and automatic site deployment; snapshot cdc4b8d is pushed and live, with this game-style refinement following it. Human presentation/video/public-source-release duties remain separate. The older paused state below is historical.
 
 Updated: 2026-10-17 (Europe/Warsaw). Maintained as context arrives.
 
@@ -387,7 +387,7 @@ No optimization processes remain running and no further search/training/hardware
 jobs are scheduled. The latest larger probes completed before the pause; their
 UNKNOWN results are retained, not classified as interrupted runs.
 
-Start with [the current full explanation](../../STAGE2_CURRENT_EXPLAINED.md) and
+Start with [the current full explanation](../manufacturing/STAGE2_CURRENT_EXPLAINED.md) and
 the local [visual guide](http://127.0.0.1:4187/stage2/start.html). These distinguish
 the official Stage 1 cases, the full physical factory, smaller physical reference
 fixtures and newer deterministic planning cells. The strongest full-factory
@@ -397,7 +397,7 @@ were rejected after worsening results. Later Mac work and the explanation are
 local additions, without a new commit, deployment or submission.
 
 The later owner request for a document is answered by
-[the written factory/encoding walkthrough](../../STAGE2_PROBLEM_WALKTHROUGH.md)
+[the written factory/encoding walkthrough](../manufacturing/STAGE2_PROBLEM_WALKTHROUGH.md)
 and [its standalone HTML edition](../../stage2-problem/index.html). It explains
 stock, routes, lane capacity, both battery systems, electrical balance, fixed
 parameters/decisions/random outcomes, and actual encodings. Current Stage 2

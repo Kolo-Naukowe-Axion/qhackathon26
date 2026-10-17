@@ -61,7 +61,7 @@ conditioned runs must identify their own matrix and controls explicitly.
 
 ```sh
 .venv/bin/python -m pytest tests/catering/test_conditioning.py tests/catering/test_veloxq_adapter.py -q
-.venv-stage2/bin/python -m catering.tune_veloxq --output output/NEW-CONDITIONING
+.venv-catering/bin/python -m catering.tune_veloxq --output output/NEW-CONDITIONING
 .venv/bin/python -m catering.veloxq_pilot --output output/NEW-OFFLINE-PILOT
 ```
 

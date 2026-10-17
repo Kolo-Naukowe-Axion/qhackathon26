@@ -2,7 +2,7 @@
 
 **Active direction, 17 October:** use the
 [Axion Kitchen presentation/demo plan](CATERING_PRESENTATION.md) and
-[current catering design](CATERING_QUANTUM_FIRST.md). The timed script, live
+[current catering design](../PROJECT_DESIGN.md). The timed script, live
 launch preparation, video storyboard, evidence map and VeloxQ improvement gates
 are there. The owner has committed actual initial VeloxQ service receipts in
 [the method report](catering-methods/VELOXQ.md). They are not factory results.
@@ -49,8 +49,8 @@ Neither method names nor adding VQE automatically increases creativity credit.
 
 **Current verification, 17 October:** main now includes the audited 400-run QAOA
 campaign, the VeloxQ representation study, and all five checked VQE exports.
-The benchmark browser links 148 retained source hashes. The Vercel check on
-dec1869b reports success. The last visibility check recorded GitHub private,
+The benchmark browser links 148 retained source hashes. The previous release-preparation receipt records its checked source commit;
+run the final check below on the new candidate. The last visibility check recorded GitHub private,
 default branch main; recheck signed-out access only at the authorized release.
 Both root baseline JSONs and MIT LICENSE exist. No visibility change or service
 call is authorized or performed by this checklist.
@@ -62,12 +62,12 @@ the categories; the jury determines the points.
 
 | Criterion | Points | Evidence we should put in the jury's path | Remaining gate / risk |
 |---|---:|---|---|
-| Correct QUBO formulation for quantum implementation | 5 | A concrete program bit; paired main/side objective; one-hot and conflict penalties; penalty bound; exact Ising convention; independent decoding/checks. Full derivation: CATERING_QUANTUM_FIRST.md. | Final chosen method must consume the declared bundle, preserve bit order and return raw samples with source hashes. Keep exact versus restricted domains explicit. |
+| Correct QUBO formulation for quantum implementation | 5 | A concrete program bit; paired main/side objective; one-hot and conflict penalties; penalty bound; exact Ising convention; independent decoding/checks. Full derivation: PROJECT_DESIGN.md, including the price-of-realism count ledger. | Final chosen method must consume the declared bundle, preserve bit order and return raw samples with source hashes. Keep exact versus restricted domains explicit. |
 | Solution quality versus reference | 5 | Stage 1 actual QAOA schedules A=4h and B=8h; Stage 2 small-cell optimum (0,0,2,2), all six QAOA trials and controls; larger method/reference table. | Largest substantive technical risk: larger quantum pilots trail raw CP. Improve the quantum search/representation where feasible, then freeze the strongest reproducible result. Stage 2 uses (U,W,B,R), not makespan; show that extension objective explicitly. |
 | Creativity and complexity beyond baseline | 5 | Joint batch yields/sharing and paired-course service/waste terms without product-register qubits; constrained scheduling and compulsory recovery clean; measured loss from restricted portfolios. | Show why this changes the mathematics and decisions beyond a domain reskin. Do not claim unimplemented ingredients, power or money. No extra feature backlog needed for this argument. |
-| Development log | 3 | Dated decisions and actual failures/corrections in DEVELOPMENT_LOG.md: repair clean, pairing formulation, encoding scope, precision, method trials. | Add a short reader route to pivotal entries and final method choices. Record AI-assisted work and the team's own review. Do not rewrite failed experiments as successes. |
-| Project design | 3 | PROJECT_DESIGN.md active catering section, linked complete formulation, data model, assumptions and solver contract. | Produce one readable active narrative including units, feasibility, objective weights, proofs, method settings and known limits. Archived factory material must be visibly historical. |
-| Demo video | 3 | At most five minutes: actual program launch/result, core-code/model explanation, method and development-log summary. CATERING_PRESENTATION.md links the executable studio and silent 4:20 rough cut. | Fresh frozen-angle sampling is rehearsed and recorded. Freeze owner results, add human voiceover, upload and verify the playable URL. A static replay alone does not demonstrate a fresh solver launch. |
+| Development log | 3 | Dated decisions and actual failures/corrections in DEVELOPMENT_LOG.md: repair clean, pairing formulation, encoding scope, precision, method trials. | The curated dated log links pivotal decisions and the full working archive. Its closing presentation frame summarizes three actual corrections. Verify the spoken summary at rehearsal. Do not rewrite failed experiments as successes. |
+| Project design | 3 | PROJECT_DESIGN.md active catering section, linked complete formulation, data model, assumptions and solver contract. | The active design covers units, feasibility, objective weights, proofs and known limits; §5.1 derives variable counts by feature. Confirm the team can explain those choices. |
+| Demo video | 3 | At most five minutes: actual program launch/result, core-code/model explanation, method and development-log summary. CATERING_PRESENTATION.md links the current executable 4:20 storyboard. | Technical fresh-sampling checks pass; human rehearsal and final recording remain pending. Record the current route, add human voiceover, upload and verify the playable URL. A static replay alone does not demonstrate a fresh solver launch. |
 | Live presentation and Q&A | 3 | Three-minute story using the game UI, a short launch, readable objective/results and rehearsed answers. | Rehearse three times under 2:50. One speaker and operator, local fallback ready, all team members able to explain the central math. |
 | Consistency of log/code/presentation | 3 | Versioned source/bundle hashes, common checker, explicit method labels and same metric definitions throughout. | Freeze one release commit and result set. Check every spoken number, screenshot, table and schedule against it. Separate fresh execution from saved samples and manual interventions. |
 
@@ -103,7 +103,7 @@ measurement. See the owner's report for approved versus still-proposed work.
 | README with run instructions and AI-use description | Both sections exist, including current catering and service disclosure. | Keep disclosure aligned with final delivered methods; verify commands from a clean environment. |
 | Dated Development Log | Exists. | Final entry records chosen methods, measured outcomes, decisions and verification. |
 | Project Design | Exists with active catering entry and linked math. | Finish coherent current design and cross-check it against selected implementation. |
-| Demo video URL, at most 5 min | Current 4:20 storyboard/script and verified v3 stills exist. The silent v2 rough cut is obsolete; final recording/audio are pending. | Record the current route, add human voiceover, upload and play through as a viewer. Include real launch/result, model/method walkthrough and log summary. |
+| Demo video URL, at most 5 min | Current 4:20 storyboard/script and verified v5 stills exist. The silent v2 rough cut is obsolete; final recording/audio are pending. | Record the current route, add human voiceover, upload and play through as a viewer. Include real launch/result, model/method walkthrough and log summary. |
 | Live presentation, at most 3 min plus about 2 min Q&A | 2:45 executable live route with chapter holds, audience view, operator cues, fresh sample and Q&A cheats prepared. | Rehearse actual launch and screen-share layout, prepare fallback, attend assigned slot. |
 | Organizer submission | No receipt recorded here. | Submit through the supplied form and retain acknowledgment, commit, video URL and team details. |
 

@@ -11,9 +11,8 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [CATERING_QUALITY.md](CATERING_QUALITY.md) | Exact references, sampled quality and limitations |
 | [catering/README.md](../catering/README.md) | Installation, reproduction and frozen inputs |
 | [CATERING_SOLVER_CONTRACT.md](CATERING_SOLVER_CONTRACT.md) | Shared input/output conventions |
-| [CATERING_METHOD_WORKSPLIT.md](CATERING_METHOD_WORKSPLIT.md) | Method ownership and handoffs |
-| [catering-methods/](catering-methods/) | Classical, QAOA, VQE and VeloxQ implementation details |
-| [Benchmark browser](http://127.0.0.1:4192/catering/benchmarks/) | Filter all retained campaigns, compare budgets and inspect source hashes |
+| [catering-methods/](catering-methods) | Classical, QAOA, VQE and VeloxQ implementation details |
+| [Benchmark browser](https://qfactoria.com/catering/benchmarks/) | Filter all retained campaigns, compare budgets and inspect source hashes |
 | [CATERING_PRESENTATION.md](CATERING_PRESENTATION.md) | Presentation structure and remaining result gates |
 | [CATERING_VOICEOVER.md](CATERING_VOICEOVER.md) | Timed video narration |
 | [CATERING_RECORDING.md](CATERING_RECORDING.md) | Source-driven shot list, dry run and final capture/voiceover instructions |
@@ -22,10 +21,10 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [STAGE2_SUBMISSION.md](STAGE2_SUBMISSION.md) | Official criteria, deliverables and final checks |
 | [DEVELOPMENT_LOG.md](../DEVELOPMENT_LOG.md) | Dated decisions, experiments and corrections |
 
-The paired-course profile is `paired-course-contiguous.v3`.
-[CATERING_QUANTUM_FIRST.md](CATERING_QUANTUM_FIRST.md) explains the design choices.
-[CATERING_AMBITIOUS_SPEC.md](CATERING_AMBITIOUS_SPEC.md) is a broader proposal;
-it is not a list of delivered features.
+The implemented profile is `paired-course-contiguous.v3`.
+[PROJECT_DESIGN.md](../PROJECT_DESIGN.md) is the current specification. Earlier
+proposals are in [archive/planning/](archive/planning/); they include features
+that are not implemented.
 
 ## Evidence locations
 
@@ -46,19 +45,14 @@ are part of the contract; do not bulk-delete, rename or rewrite them for tidines
 Earlier v1 catering outage results omitted recovery cleaning; v2 uses a different
 component-demand objective. Keep both as historical/regression evidence.
 
-## Historical factory work
+## Historical work and team notes
 
-The `STAGE2_*` family mostly describes earlier manufacturing studies. The active
-exception is [STAGE2_SUBMISSION.md](STAGE2_SUBMISSION.md), which identifies its
-archived factory section explicitly. Read [stage2/README.md](../stage2/README.md)
-for the older executable model; use [STAGE1_COMPACT.md](STAGE1_COMPACT.md) for
-baseline methods. Historical transcripts and plans are retained under
-[archive/2026-10-17/](archive/2026-10-17/).
+Earlier factory studies, baseline drafts and broad proposals are grouped under
+[archive/](archive/README.md). The older executable model stays in
+[stage2/](../stage2/README.md); the current baseline explanation is
+[STAGE1_COMPACT.md](STAGE1_COMPACT.md). Team coordination and workspace notes
+are under [internal/](internal/).
 
-Those older source paths remain in place because research scripts, verifiers
-and retained source manifests reference them. Presentation-facing duplicates
-are consolidated first; moving bulk evidence needs a separate dependency audit.
-
-The old mixed catering guide and factory submission/design sections are
-preserved in the archive. Active entry documents now contain the current
-catering route; no frozen JSON, source snapshot or raw result was removed.
+Frozen inputs, raw results and source snapshots retain their original paths
+and hashes. Archived source manifests refer to their recorded commits; the
+archive index explains how to recover those exact versions.

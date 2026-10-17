@@ -27,7 +27,7 @@ c=next(c for c in s['contexts']if c['operations']==32)
 assert c['same_problem_time_indexed_qubo']['problem_sha256']==sector['master']['problem_sha256']
 recipes=[dict(id=o['id'].replace('P01/',''),process=next(iter(o['durations'])) .rstrip('12'),predecessors=[p.replace('P01/','')for p in o['predecessors']],attendance=o['attendance'])for o in c['problem']['operations']if o['id'].startswith('P01/')]
 a=read('instances/instance_2x2.json');b=read('instances/instance_3x3.json')
-for name in ['docs/STAGE2_RESULTS.md','docs/SOLUTION_QUALITY.md','docs/STAGE2_PLANNING_CORE.md','stage2/README.md']:
+for name in ['docs/archive/manufacturing/STAGE2_RESULTS.md','docs/archive/baseline/SOLUTION_QUALITY.md','docs/archive/manufacturing/STAGE2_PLANNING_CORE.md','stage2/README.md']:
  p=ROOT/name;sources[name]=hashlib.sha256(p.read_bytes()).hexdigest()
 data=dict(schema='stage2-start-guide.v1',role='Explanation of retained evidence; no new results',stage1=dict(A=a,B=b),selected_classical=selected,mpc=mpc,quantum_scope=f['quantum_scope'],primary_contrasts=f['primary_contrasts'],planning=planning,recipe=recipes,sector=dict(max_qubits=max(r['qubits_max']for r in q),qaoa_end=[r['energy']for r in q],proposal_end=[r['energy']for r in proposal],initial=sector['best_parent_objective'],reference=sector['native_raw_reference']['objective'],physical_qpu_calls=0),source_sha256=sources,no_factory_runs=True,no_solver_runs=True)
 (HERE/'start-data.json').write_text(json.dumps(data,indent=2)+'\n')

@@ -282,8 +282,8 @@ performance where possible, but do not replace the evidence with projections.
 Reproduce the mathematical audit and retained checks without training:
 
 ```sh
-.venv-stage2/bin/python -m catering.audit_math --output output/NEW-MATH-AUDIT.json
-.venv-stage2/bin/python -m catering.verify_meals \
+.venv-catering/bin/python -m catering.audit_math --output output/NEW-MATH-AUDIT.json
+.venv-catering/bin/python -m catering.verify_meals \
   output/catering-foundation-v3 output/catering-paired-pilot-v1 \
   output/catering-complete-cell-v3 --output output/NEW-RETAINED-CHECK.json
 ```

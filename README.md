@@ -23,8 +23,8 @@ on the production clipboard to see the completed service; playback holds there.
 Open [Benchmarks](http://127.0.0.1:4192/catering/benchmarks/) to filter retained
 QAOA, VQE, VeloxQ and classical results by case, configuration and budget.
 
-For the presentation studio and fresh local QAOA sampling, use the existing
-`.venv-stage2` environment, or install the pinned foundation dependencies:
+For the presentation studio and fresh local QAOA sampling, create the pinned
+foundation environment:
 
 ```sh
 python3 -m venv .venv-catering
@@ -54,6 +54,13 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 
 ## Evidence and current status
 
+The selected baseline B QUBO uses **3 bits**, compared with the official
+72-variable time-indexed model at H=8, or 39 after start-window pruning. This
+represents all six common job permutations with classical cost tabulation;
+it is not an encoding of every timed schedule. See the [baseline derivation](docs/STAGE1_COMPACT.md).
+The [price-of-realism ledger](PROJECT_DESIGN.md#51-the-price-of-realism) compares
+the extension's register costs with an explicitly defined time-indexed comparator.
+
 - Stage 1: checked QAOA simulator schedules at **4 h / 8 h** in
   [schedule_2x2.json](schedule_2x2.json) and [schedule_3x3.json](schedule_3x3.json).
 - Complete catering cell: all 32 legal programs, **35 data qubits**, and an
@@ -78,7 +85,7 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 ## Verify
 
 ```sh
-.venv-stage2/bin/python scripts/check-catering-demo.py
+.venv-catering/bin/python scripts/check-catering-demo.py
 npm run build
 ```
 
@@ -96,11 +103,9 @@ to `dist/`. See the [catering guide](catering/README.md) for Python math,
 checker, circuit and adapter checks. Restore large retained matrices with
 `node scripts/restore-compressed-evidence.mjs`; never overwrite differing evidence.
 
-Keep frozen inputs, result JSONs, manifests and source snapshots at their current
-paths while method owners are running. The older manufacturing implementation
-remains available through [stage2/README.md](stage2/README.md); it is historical
-work, not the current submission. [Earlier workspace instructions](docs/archive/2026-10-17/README_BEFORE_CLEANUP.md)
-are retained for reference.
+Frozen inputs, result JSONs and source snapshots retain their paths and hashes.
+Earlier factory studies and planning notes are under [the archive](docs/archive/README.md).
+The earlier executable implementation remains in [stage2/](stage2/README.md).
 
 ## License, AI use and release
 

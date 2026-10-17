@@ -11,8 +11,8 @@ below describe their original snapshot.
 We are building one catering-production extension for both the overall award
 and best use of VeloxQ. The goal is a correct compact formulation, good checked
 solutions and clear experiments; a quantum advantage is not a release requirement.
-Read the [current method, mathematics and evidence](../../CATERING_QUANTUM_FIRST.md),
-[runnable quick start](../../../catering/README.md), [four-person allocation](../../CATERING_METHOD_WORKSPLIT.md)
+Read the [current method, mathematics and evidence](../planning/CATERING_QUANTUM_FIRST.md),
+[runnable quick start](../../../catering/README.md), [four-person allocation](../../internal/CATERING_METHOD_WORKSPLIT.md)
 and [solver contract](../../CATERING_SOLVER_CONTRACT.md).
 
 The [presentation and demo runbook](../../CATERING_PRESENTATION.md) contains the
@@ -56,7 +56,7 @@ These input files were generated locally. The owner has since committed the
 first authorized service runs and raw evaluations; see the handoff's Phase D
 results. Further calls require the owner's concrete budget authorization.
 
-The [ambitious specification](../../CATERING_AMBITIOUS_SPEC.md) describes additional
+The [ambitious specification](../planning/CATERING_AMBITIOUS_SPEC.md) describes additional
 future mechanisms, not features already implemented or required before delivery.
 No catering IBM hardware result is claimed. VeloxQ's retained cold runs are
 actual service results; their quality and feasibility limits are documented.
@@ -66,19 +66,19 @@ a fallback. Its technical acceptance does not certify the new catering scope.
 
 ## Existing factory implementation and fallback
 
-**Technical closeout, 17 October:** all 14 agreed non-VeloxQ core requirements passed; 52 targeted Python tests, 113 site tests and the static build passed. Read the [current status and remaining work](../../STAGE2_STATUS.md). Actual VeloxQ execution, the final synchronized video, human rehearsal and public release/submission remain open.
+**Technical closeout, 17 October:** all 14 agreed non-VeloxQ core requirements passed; 52 targeted Python tests, 113 site tests and the static build passed. Read the [current status and remaining work](../manufacturing/STAGE2_STATUS.md). Actual VeloxQ execution, the final synchronized video, human rehearsal and public release/submission remain open.
 
-The [manufacturing recovery study](../../STAGE2_MANUFACTURING_STUDY.md) is the main demonstration: complete pump recipes, capacity recovery, representation loss, QAOA on the same 32 operations, feature ablations and an explicit cost ledger. The original 781-bit pool loses a certified 45→0 weighted-lateness recovery; deterministic enrichment restores it at 2,078 bits. A separate exact deadline query uses 818 bits. Complete optimization uses 2,499 bits. These are different representations with stated guarantees.
+The [manufacturing recovery study](../manufacturing/STAGE2_MANUFACTURING_STUDY.md) is the main demonstration: complete pump recipes, capacity recovery, representation loss, QAOA on the same 32 operations, feature ablations and an explicit cost ledger. The original 781-bit pool loses a certified 45→0 weighted-lateness recovery; deterministic enrichment restores it at 2,078 bits. A separate exact deadline query uses 818 bits. Complete optimization uses 2,499 bits. These are different representations with stated guarantees.
 
-The [whole-recipe quantum bridge](../../STAGE2_RECIPE_BRIDGE.md) recombines all eight component groups using 18–36 logical qubits. The constructor already finds an optimal recovery plan; QAOA and classical annealing both recover it. Sector enumeration is classical and budgets differ. This establishes integration, not quantum advantage. The [economics](../../STAGE2_CAPACITY_ECONOMICS.md) values saved schedules under synthetic prices; it does not optimize monetary cost or establish calibrated ROI.
+The [whole-recipe quantum bridge](../manufacturing/STAGE2_RECIPE_BRIDGE.md) recombines all eight component groups using 18–36 logical qubits. The constructor already finds an optimal recovery plan; QAOA and classical annealing both recover it. Sector enumeration is classical and budgets differ. This establishes integration, not quantum advantage. The [economics](../manufacturing/STAGE2_CAPACITY_ECONOMICS.md) values saved schedules under synthetic prices; it does not optimize monetary cost or establish calibrated ROI.
 
 ```sh
 .venv-stage2/bin/python -m stage2.entry_demo --port 4192
 ```
 
-Open [the local manufacturing studio](http://127.0.0.1:4192/manufacturing/). It provides checked schedule comparisons, a fresh whole-recipe QAOA action, adjustable capacity economics and the price-of-realism table. Static builds support retained evidence; fresh execution requires the Python server. The [combined direction](../../STAGE2_COMBINED_DIRECTION.md), [acceptance record](../../STAGE2_MERIT_ACCEPTANCE.md) and [submission preparation](../../STAGE2_SUBMISSION.md) describe scope and remaining duties. Four new cold SDK packets cover deadline, enriched and complete models, including matched-penalty controls. VeloxQ calls, physical QPU work and public-source release remain held.
+Open [the local manufacturing studio](http://127.0.0.1:4192/manufacturing/). It provides checked schedule comparisons, a fresh whole-recipe QAOA action, adjustable capacity economics and the price-of-realism table. Static builds support retained evidence; fresh execution requires the Python server. The [combined direction](../manufacturing/STAGE2_COMBINED_DIRECTION.md), [acceptance record](../manufacturing/STAGE2_MERIT_ACCEPTANCE.md) and [submission preparation](../../STAGE2_SUBMISSION.md) describe scope and remaining duties. Four new cold SDK packets cover deadline, enriched and complete models, including matched-penalty controls. VeloxQ calls, physical QPU work and public-source release remain held.
 
-The game-like desktop studio follows four recovery decisions through detailed equipment, real scheduled workpieces and all16steps of a selected pump. It supports event stepping, replay speed and a focused presentation view; predicted deadline results stay separate from completed work. Maths and results remain one click away. Read the [complete main-model mathematics](../../STAGE2_MANUFACTURING_MATH.md) for variables, constraints, coefficient conventions, penalty proofs and exact-versus-restricted scope. Current UI checks pass all120site tests, with desktop review and a fresh checked28-qubit run. [UI design and verification](../../STAGE2_UI_DESIGN.md) records the limits. VeloxQ is an integrated backend path within this same Stage2 extension, currently prepared offline.
+The game-like desktop studio follows four recovery decisions through detailed equipment, real scheduled workpieces and all16steps of a selected pump. It supports event stepping, replay speed and a focused presentation view; predicted deadline results stay separate from completed work. Maths and results remain one click away. Read the [complete main-model mathematics](../manufacturing/STAGE2_MANUFACTURING_MATH.md) for variables, constraints, coefficient conventions, penalty proofs and exact-versus-restricted scope. Current UI checks pass all120site tests, with desktop review and a fresh checked28-qubit run. [UI design and verification](../manufacturing/STAGE2_UI_DESIGN.md) records the limits. VeloxQ is an integrated backend path within this same Stage2 extension, currently prepared offline.
 
 Team workspace for the QPoland Quantum Hackathon 2026.
 
@@ -105,7 +105,7 @@ predeclared tape10004/actor900000, 12/12 shipped within its96-hour cutoff.
 The header also selects the `selected-stretch-32` final replay, 32/32 shipped
 over240 hours. These individual traces illustrate the policies; the final
 probability-weighted results and limitations remain in
-[Stage2 results](../../STAGE2_RESULTS.md). Both controllers are classical.
+[Stage2 results](../manufacturing/STAGE2_RESULTS.md). Both controllers are classical.
 
 The frozen final-evaluation bundle is retained on `main`, except three
 files above GitHub's100MiB blob limit, preserved as release assets with exact
@@ -166,7 +166,7 @@ uv pip sync --python .venv/bin/python requirements-solver.lock.txt
 .venv/bin/python scripts/prepare-stage1.py --output output/stage1-reproduction
 ```
 
-The complete command runs the solver tests, original formulation audit, compact QAOA for both instances and a matched classical annealer, without invoking either remote adapter. Choose a fresh output directory. Add `--export-final` to update both root schedules, selection and guide evidence. A uses 1 qubit / 1 layer; B uses 3 qubits / 2 layers. Twenty fresh seeds returned 81,920/81,920 optimal measurements per instance, at exact makespans 4/8 h. See [current formulation, experiments and limitations](../../STAGE1_COMPACT.md). The compact cost construction evaluates all 2/6 common orders classically; no quantum speedup or scalable compilation is claimed. Use `--time-indexed` to reproduce the earlier 4/39-bit methods and [earlier refinement](../../STAGE1_REFINEMENT.md).
+The complete command runs the solver tests, original formulation audit, compact QAOA for both instances and a matched classical annealer, without invoking either remote adapter. Choose a fresh output directory. Add `--export-final` to update both root schedules, selection and guide evidence. A uses 1 qubit / 1 layer; B uses 3 qubits / 2 layers. Twenty fresh seeds returned 81,920/81,920 optimal measurements per instance, at exact makespans 4/8 h. See [current formulation, experiments and limitations](../../STAGE1_COMPACT.md). The compact cost construction evaluates all 2/6 common orders classically; no quantum speedup or scalable compilation is claimed. Use `--time-indexed` to reproduce the earlier 4/39-bit methods and [earlier refinement](../baseline/STAGE1_REFINEMENT.md).
 
 ```sh
 npm run check
@@ -200,16 +200,16 @@ dependencies are required.
 
 ## Stage 2 implementation and research
 
-The [combined Stage 2 direction](../../STAGE2_COMBINED_DIRECTION.md) joins
+The [combined Stage 2 direction](../manufacturing/STAGE2_COMBINED_DIRECTION.md) joins
 manufacturing recovery, the measured cost of compact formulations and conditional
 capacity economics. It records the checked full-domain versus restricted-pool
 recovery result and assesses QOBLIB as an optional external benchmark.
-The [independent review passes](../../STAGE2_REVIEW_PASSES.md) add deterministic
+The [independent review passes](../manufacturing/STAGE2_REVIEW_PASSES.md) add deterministic
 pool enrichment, an exact818-variable deadline decision formulation and measured
 local-search/boundary-gate failures, with explicit scope and retained evidence.
 
 **Manufacturing entry refinement resumed by the user, 17 October.** Start with
-[the smaller quantum validation and point-by-point evidence](../../STAGE2_ENTRY.md).
+[the smaller quantum validation and point-by-point evidence](../manufacturing/STAGE2_ENTRY.md).
 It adds a complete residual manufacturing cell, 18–34 logical-qubit simulated
 QAOA, independent references, source-sealed TRAIN/TEST results and offline-only
 VeloxQ packets. The larger factory and earlier failures remain separate evidence.
@@ -228,10 +228,10 @@ the static page shows labeled retained evidence. Publication holds still apply.
 
 For the original, broader factory model, start with
 [the written factory and encoding walkthrough](../../stage2-problem/index.html)
-([Markdown source](../../STAGE2_PROBLEM_WALKTHROUGH.md)) for the step-by-step
+([Markdown source](../manufacturing/STAGE2_PROBLEM_WALKTHROUGH.md)) for the step-by-step
 problem definition, all factory systems and the domain-wall/one-hot distinction.
 Then read
-[what we actually have](../../STAGE2_CURRENT_EXPLAINED.md): the full problem,
+[what we actually have](../manufacturing/STAGE2_CURRENT_EXPLAINED.md): the full problem,
 Stage 1 comparison, all implemented conditions, solver scope, measured results,
 QUBO boundaries and limitations. The local interactive
 [Start here guide](http://127.0.0.1:4187/stage2/start.html) walks through the same
@@ -240,7 +240,7 @@ local working-tree additions; the earlier frozen release does not imply that
 these additions have been committed, published or deployed.
 
 For the solution-quality scoring evidence, see
-[solution quality against classical references](../../SOLUTION_QUALITY.md): exact
+[solution quality against classical references](../baseline/SOLUTION_QUALITY.md): exact
 extended makespan references, the four-pump certified interval, and the later
 full-factory realized-primary gap audit. The latter preserves all frozen outcomes
 and distinguishes missing-order certificates from deadline/cost optimality.
@@ -255,8 +255,8 @@ rules. The minute-resolution engine and independent physical checker are in
 allocation costs are retained under `output/stage2-search/`.
 
 See [`stage2/README.md`](../../../stage2/README.md) for execution and solver scope,
-[`docs/STAGE2_EXPERIMENT_LOG.md`](../../STAGE2_EXPERIMENT_LOG.md) for measured
-development results, and [`docs/STAGE2_FINAL_EVALUATION.md`](../../STAGE2_FINAL_EVALUATION.md)
+[`docs/STAGE2_EXPERIMENT_LOG.md`](../manufacturing/STAGE2_EXPERIMENT_LOG.md) for measured
+development results, and [`docs/STAGE2_FINAL_EVALUATION.md`](../manufacturing/STAGE2_FINAL_EVALUATION.md)
 for the reserved final protocol. The separate local Stage 2 viewer is at
 `/stage2/`; its sources distinguish illustrations, checked examples and cohorts.
 

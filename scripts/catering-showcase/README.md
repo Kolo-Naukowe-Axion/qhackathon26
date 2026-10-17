@@ -7,13 +7,13 @@ uses the existing checked viewer. No shared model or frozen input is modified.
 Start from the repository root:
 
 ```sh
-.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193
+.venv-catering/bin/python scripts/serve-catering-showcase.py --port 4193
 ```
 
 Open `http://127.0.0.1:4193/` for the video cut, or
 `http://127.0.0.1:4193/?mode=live` for the shorter manual presentation.
 The video route is 260 seconds (4:20); the live route is 165 seconds (2:45).
-Before presenting, run `.venv-stage2/bin/python scripts/check-catering-demo.py`.
+Before presenting, run `.venv-catering/bin/python scripts/check-catering-demo.py`.
 It checks dependencies, frozen hashes and evidence without starting a sampler.
 
 Arrows change chapters. Space plays/pauses. In live mode each chapter holds at
@@ -38,7 +38,7 @@ The server binds 127.0.0.1 only; its fixed local sampler endpoint checks Origin.
 Terminal fallback, using a fresh output directory each time:
 
 ```sh
-.venv-stage2/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
+.venv-catering/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
 ```
 
 If fresh launch fails, use the retained kitchen viewer, disclose the fallback
@@ -56,12 +56,14 @@ including source hashes and an actual compiler excerpt. It includes the 400-run 
 checked exported plans, plus the proven no-idle VeloxQ representation study.
 The linked `/catering/benchmarks/` page exposes runs, budgets and source hashes.
 
-Prepare stills without a video or sampler execution first:
+For capture, install Playwright once with
+`npm install --no-save --package-lock=false playwright@1.62.1` and
+`npx playwright install chromium`. Then prepare stills without a video or
+sampler execution:
 
 ```sh
-AXION_NODE_MODULES=/path/to/bundled/node_modules \
 node scripts/capture-catering-showcase.mjs --dry-run \
-  --output output/playwright/catering-showcase-v4/dry-run
+  --output output/playwright/catering-showcase-final/dry-run
 ```
 
 No flags also defaults to this stills-only dry run. `--sample` explicitly adds
@@ -71,21 +73,19 @@ one frozen-angle local sample to the stills. `--dry-run` refuses either
 Later, record the actual local studio with the capture script:
 
 ```sh
-AXION_NODE_MODULES=/path/to/bundled/node_modules \
 node scripts/capture-catering-showcase.mjs \
-  --output output/playwright/catering-showcase-v4/recording --record
+  --output output/playwright/catering-showcase-final/recording --record
 ```
 
-The optional environment path is unnecessary if `playwright` is installed
-normally. Chromium and ffmpeg are required. Capture makes preview stills,
-then opens a separate context for a continuous studio recording. It performs
-one local sample during still QA and one during the recorded execution chapter.
-The result is a silent MP4, with a receipt, hashes of the studio sources and
-preserved raw fresh samples. Current v3 stills and browser verification are under
-`output/playwright/catering-showcase-v3/`. The existing silent v2 cut at
-`output/playwright/catering-showcase-v2/recording/` predates the current problem
-overview and new QAOA/VQE/VeloxQ/scaling chapters. Record v3 before final editing;
-older footage is a fallback, not evidence of the current script.
+Chromium and ffmpeg are required. Capture makes preview stills, then opens a
+separate context for a continuous studio recording. It performs one local
+sample during still QA and one during the recorded execution chapter. The
+result is a silent MP4 with source hashes and preserved raw samples.
+
+The current still-only verification is under
+`output/playwright/catering-showcase-v5/`. The earlier silent v2 cut predates
+the current problem, method and scaling chapters. Record the current route
+before final editing; the old cut is not a recording of the current script.
 
 The visual playback compresses schedule time and edits between explanatory
 screens; it is not a 260-second unedited view of factory time. The sampler action
