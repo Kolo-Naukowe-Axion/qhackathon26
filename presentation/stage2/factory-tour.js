@@ -1,3 +1,4 @@
+import {completionRecord} from './run-completion.js';
 // Chapters are selected from this trace's actual activities, never a second run.
 export function buildFactoryTour(trace){
  const chapters=[],operations=trace.operations.filter(op=>!op.kind||op.kind==='process').sort((a,b)=>a.start-b.start);
@@ -5,10 +6,10 @@ export function buildFactoryTour(trace){
  const focusOrder=assembly?.order_id??operations[0]?.order_id;
  const first=operations.find(op=>!focusOrder||op.order_id===focusOrder);
  const focusUnits=new Set(operations.filter(op=>!focusOrder||op.order_id===focusOrder).flatMap(op=>[op.unit_id,...op.parent_unit_ids??[]]));
- const add=(id,title,description,start,end,selection)=>{
+ const add=(id,title,description,start,end,selection,orderId=focusOrder)=>{
   if(!Number.isFinite(start)||!Number.isFinite(end))return;
   const from=Math.max(0,start),to=Math.min(trace.horizon_ticks,end);if(to<=from)return;
-  chapters.push({id,title,description,start:from,end:to,selection,orderId:focusOrder});
+  chapters.push({id,title,description,start:from,end:to,selection,orderId});
  };
  const componentNames=new Set(operations.filter(op=>op.order_id===first?.order_id).map(op=>op.unit_id.split('/')[1]));
  if(first)add('parts','Make the parts.',componentNames.has('housing')&&componentNames.has('rotor')&&componentNames.has('flange')?'Housing, rotor and flange follow different recipes.':'Each part needs time on a shared machine.',first.start,Math.min(first.end,first.start+24),{kind:'machine',id:first.machine_id,source:'a'});
@@ -27,6 +28,11 @@ export function buildFactoryTour(trace){
  if(shipment){
   const finalMove=trace.moves.find(row=>row.unit_id===shipment.unit_id&&row.drop_tick===shipment.tick);
   add('shipment','Ship the pump.','The order counts when the pump reaches shipping.',finalMove?Math.max(finalMove.pickup_tick,finalMove.drop_tick-2):Math.max(0,shipment.tick-1),shipment.tick,{kind:'unit',id:shipment.unit_id,source:'a'});
+ }
+ const completed=completionRecord(trace);
+ if(completed.completionTick!==null&&completed.completionTick>(chapters.at(-1)?.end??0)){
+  const final=completed.lastShipment,move=trace.moves.find(row=>row.unit_id===final.unit_id&&row.drop_tick===final.tick);
+  add('completion','Ship the last pump.','The final required order reaches shipping.',Math.max(chapters.at(-1)?.end??0,move?Math.max(move.pickup_tick,final.tick-2):final.tick-1),final.tick,{kind:'unit',id:final.unit_id,source:'a'},final.order_id||final.unit_id.split('/')[0]);
  }
  return chapters;
 }

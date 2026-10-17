@@ -8,7 +8,7 @@ const run=normalizeTrace(JSON.parse(readFileSync(new URL('../presentation/stage2
 
 test('guided chapters point to real activities, shared resources, bridge travel and shipment',()=>{
  const chapters=buildFactoryTour(run);
- assert.deepEqual(chapters.map(row=>row.id),['parts','sharing','transport','assembly','inspection','shipment']);
+ assert.deepEqual(chapters.map(row=>row.id),['parts','sharing','transport','assembly','inspection','shipment','completion']);
  for(let i=1;i<chapters.length;i++)assert.ok(chapters[i].start>=chapters[i-1].end,'the walkthrough must not jump backwards in time');
  for(const chapter of chapters){assert.ok(chapter.start>=0&&chapter.end<=run.horizon_ticks&&chapter.end>chapter.start);assert.ok(Math.abs((chapter.end-chapter.start)/tourRate(chapter)-8)<1e-8);}
  for(const chapter of chapters.filter(row=>row.selection.kind==='machine'))assert.equal(machineStatus(run,chapter.selection.id,chapter.start).state,'working');

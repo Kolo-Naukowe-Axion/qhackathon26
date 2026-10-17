@@ -1,9 +1,9 @@
 // Shared orientation for the small example, field manual and factory workspace.
 const route=[
- ['/problem-explanation/#brief','01','Start small','Jobs share machines.'],
+ ['/problems/','01','The two problems','Concepts and mathematics.'],
  ['/problem-explanation/#schedules','02','Try a different order','Reorder jobs. Compare finishing times.'],
  ['/stage2/?view=research&section=problem','03','Meet the full factory','Parts, robots and deadlines.'],
- ['/stage2/?tour=1','04','Follow a real replay','Parts to shipping, in six steps.'],
+ ['/stage2/?tour=1','04','Follow a real replay','Parts to the final shipment.'],
  ['/stage2/?view=research&section=overview','05','Read the results','Results, checks and limits.'],
 ];
 const header=document.querySelector('.top-actions')??document.querySelector('.masthead');
