@@ -33,7 +33,7 @@ from ..qubo import checked_bits, energy
 
 METHOD_VERSION = 1
 VARIANTS = ("standard", "xy", "xy_multiangle_warm")
-OPTIMIZERS = ("COBYLA", "Nelder-Mead", "L-BFGS-B", "random")
+OPTIMIZERS = ("COBYLA", "Nelder-Mead", "L-BFGS-B", "random", "layerwise")
 MAX_STANDARD_QUBITS = 26
 DEFAULTS = dict(variant="xy", depth=1, optimizer="COBYLA", restarts=4, loss="cvar", alpha=0.1,
                 shots=4096, seed=2026, energy_scale=None, gamma_range=[0.0, math.pi],
@@ -192,7 +192,7 @@ def train(bundle, space, variant, config, budget, rng, started):
     counter = dict(evaluations=0, timed_out=False)
 
     def loss_of(params, start_index):
-        if counter["evaluations"] >= limit:
+        if counter["evaluations"] >= min(limit, counter.get("stage_cap", limit)):
             raise _BudgetExhausted
         if time.monotonic() - started > wall:
             counter["timed_out"] = True
@@ -216,6 +216,37 @@ def train(bundle, space, variant, config, budget, rng, started):
                 loss_of(_random_params(rng, variant, int(config["depth"]), config), j)
         except _BudgetExhausted:
             pass
+    elif config["optimizer"] == "layerwise":
+        # INTERP-style growth: optimize depth 1, then extend the best angles by one
+        # layer (initialized at half the previous layer) and re-optimize, up to p.
+        # Depth d receives a share of the budget proportional to d; COBYLA restarts
+        # near the stage's best point if it converges before its share is spent.
+        depth = int(config["depth"])
+        if limit < depth:
+            raise ValueError("Layerwise training needs at least one evaluation per depth")
+        per = 3 if variant == "xy_multiangle_warm" else 2
+        total, x = depth*(depth + 1)//2, None
+        for d in range(1, depth + 1):
+            cap = limit if d == depth else min(limit*(d*(d + 1)//2)//total, limit - (depth - d))
+            counter["stage_cap"] = cap
+            x = _random_params(rng, variant, 1, config) if x is None else np.concatenate([x, 0.5*x[-per:]])
+            best.update(loss=math.inf, params=None)
+            try:
+                while counter["evaluations"] < cap:
+                    minimize(loss_of, x, args=(d,), method="COBYLA",
+                             options=dict(maxiter=max(len(x) + 2, cap - counter["evaluations"]), rhobeg=0.3))
+                    if best["params"] is not None:
+                        x = best["params"]
+                    if counter["evaluations"] < cap:
+                        x = x + rng.normal(0, 0.2, len(x))
+            except _BudgetExhausted:
+                if counter["timed_out"]:
+                    break
+            if best["params"] is not None:
+                x = best["params"]
+        counter.pop("stage_cap", None)
+        if best["params"] is not None and len(best["params"]) != depth*per:
+            raise RuntimeError("Wall-time budget ended before the final depth was trained")
     else:
         per_start = max(1, limit // max(1, restarts))
         for start_index in range(restarts):

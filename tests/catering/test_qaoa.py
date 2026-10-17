@@ -179,6 +179,23 @@ class AdapterContract(unittest.TestCase):
             self.assertLessEqual(result["work"]["training_objective_evaluations"], 10)
             self.assertGreater(result["work"]["training_objective_evaluations"], 0)
 
+    def test_layerwise_grows_depth_within_budget(self):
+        bundle = meal_bundle()
+        with tempfile.TemporaryDirectory() as tmp:
+            result = qaoa.solve_qubo(bundle, dict(training_objective_evaluations=60, shots=64),
+                                     dict(variant="xy_multiangle_warm", depth=3, optimizer="layerwise"),
+                                     Path(tmp) / "run")
+            trace = json.loads((Path(tmp) / "run" / "training.json").read_text())["trace"]
+        self.assertEqual(result["work"]["training_objective_evaluations"], 60)
+        self.assertEqual(len(result["configuration"]["best_params"]), 9)
+        # Stages run in order 1, 2, 3 and each stage optimizes a circuit of that depth.
+        stages = [t["start"] for t in trace]
+        self.assertEqual(stages, sorted(stages))
+        self.assertEqual(set(stages), {1, 2, 3})
+        self.assertTrue(all(len(t["params"]) == 3*t["start"] for t in trace))
+        with self.assertRaises(ValueError):
+            qaoa.solve_qubo(bundle, dict(training_objective_evaluations=2), dict(depth=3, optimizer="layerwise"))
+
     def test_same_seed_reproduces_samples(self):
         b = toy(0, [-4, -3, 2], [(0, 1, 6), (1, 2, -3)])
         runs = [qaoa.solve_qubo(b, dict(training_objective_evaluations=15, shots=128),
