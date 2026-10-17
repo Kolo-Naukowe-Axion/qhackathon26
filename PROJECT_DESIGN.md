@@ -63,10 +63,10 @@ For a batch of menu m and yield y, a local program fixes prep start a, cook
 start b, packing start c, equipment and workers. With menu durations p, d(y),
 k per packed lot, and cleaning duration l, it obeys:
 
-\[
+$$
 a+p\le b,\qquad b+d(y)\le c,\qquad
 \text{clean}=[b+d(y),b+d(y)+l).
-\]
+$$
 
 Prep, packing and cleaning require full worker attendance. Cooking reserves
 its cooker for its full duration but requires the cooking worker only during
@@ -112,9 +112,9 @@ Each program's anchor is its lexicographically smallest allocated component-grou
 ID. Programs with the same anchor form block g. Introduce x_i for every offered
 program and one idle bit x_idle(g) per nonempty block:
 
-\[
+$$
 \sum_{i\in g}x_i=1,\qquad x_i\in\{0,1\}.
-\]
+$$
 
 N=m+number_of_blocks data bits/qubits are needed in this encoding. Idle bits
 are included in N. There are no separate missing-meal or product registers.
@@ -145,17 +145,19 @@ For meal d, write M_d and S_d for its main and side coverage. On feasible
 selections both are binary. Let p_d be the meal priority, y_i its batch yield,
 r_i its number of allocations, and F the fixed batches. Then:
 
-\[
+$$
 U=\sum_d p_d(1-M_dS_d),
-\]
-\[
+$$
+
+$$
 W=\sum_{b\in F}(y_b-r_b)+\sum_{i\in P}(y_i-r_i)x_i
   +\sum_d(M_d+S_d-2M_dS_d),
-\]
-\[
+$$
+
+$$
 B=\sum_{i\in P}x_i,\qquad
 R=|T|+\sum_{i\in P}(1-2\mathbf1_{i\in T})x_i,
-\]
+$$
 
 where T is the set of previous unstarted program IDs. R is exactly the size
 of the symmetric difference with that set, including removal of a previous
@@ -185,9 +187,9 @@ on invalid selections.
 Starting with w_R=1, define each higher weight as one plus the sum of lower
 weights times their bounds. Minimize:
 
-\[
+$$
 C(x)=w_UU+w_WW+w_BB+w_RR.
-\]
+$$
 
 **Priority proof.** If two feasible schedules first differ at component k,
 an improvement is at least one integer unit. Its weighted gain is at least
@@ -205,10 +207,10 @@ Weights differ across representations; compare operational tuples across them.
 Write the expanded objective as C=c0+sum a_i x_i+sum(i<j)b_ij x_i x_j.
 Let S=sum|a_i|+sum|b_ij| and choose P=S+1. The compiled energy is:
 
-\[
+$$
 E(x)=C(x)+P\sum_g\left(\sum_{i\in g}x_i-1\right)^2
             +P\sum_{(i,j)\in\mathcal F}x_ix_j.
-\]
+$$
 
 For every pair of binary strings, |C(x)-C(y)| <= S, because every linear
 or quadratic monomial changes by at most one. Every hard violation incurs an
@@ -299,11 +301,11 @@ The checked report is [catering-realism-cost-v1](output/catering-realism-cost-v1
 
 With z_i=1-2x_i and Pauli Z eigenvalues z_i, the integer export represents 4E:
 
-\[
+$$
 4E=\left(4c+2\sum_i q_i+\sum_{i<j}Q_{ij}\right)
  +\sum_i\left(-2q_i-\sum_{j\ne i}Q_{ij}\right)z_i
  +\sum_{i<j}Q_{ij}z_iz_j.
-\]
+$$
 
 Here c,q,Q are the full penalized QUBO coefficients. The exporter
 `catering/qubo.py:ising` emits this convention. VeloxQ's s=2x-1 uses the
