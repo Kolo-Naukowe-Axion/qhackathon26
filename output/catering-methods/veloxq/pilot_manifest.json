@@ -1,0 +1,274 @@
+{
+  "manifest_version": 3,
+  "date": "2026-10-17",
+  "status": "phase C smoke passed (1/3 jobs used); v3 phase D cases, settings and comparison frozen; service jobs held until the user sets a cap",
+  "source_commit": "d29038ad",
+  "hard_caps": {
+    "phase_C_connectivity_smoke": {
+      "max_service_jobs_total": 3,
+      "wall_time_limit_s_per_job": 60,
+      "used": 1
+    },
+    "phase_D": {
+      "max_service_jobs_total": null,
+      "note": "to be set by the user. --max-service-jobs is the LEDGER TOTAL including phase C.",
+      "proposal": {
+        "step_1": "1 job: scale-512 (ledger total 2)",
+        "step_2_if_step_1_useful": "+1 job each scale-1024, scale-2048 (ledger total 4)",
+        "step_3_optional": "+8 jobs: v3 S0-S3 scale-128/256 four-event comparison (ledger total 12)",
+        "step_4_optional": "+5 jobs: complete cell and v3 S0-S3 quantum, shared with QAOA/VQE (ledger total 17)"
+      }
+    },
+    "retries": "disabled",
+    "ledger": "output/catering-methods/veloxq/job_ledger.json (counts every attempted submission)"
+  },
+  "phase_C_result": {
+    "output": "output/catering-methods/veloxq/smoke-20261017T162002/result.json",
+    "result_schema": "catering-method-result/v1-draft (adapter 0.1.0, float32 packet)",
+    "job_id": "717caf69-b5c0-4b90-bd5c-a2ce846f7058",
+    "best": {
+      "bits": [
+        1,
+        0
+      ],
+      "energy": "-4"
+    },
+    "energy_convention": "SPIN, reported = 4*E_qubo - offset (Ising offset omitted)",
+    "returned_energy_dtype": "float32",
+    "quota": {
+      "total_quota_usage": 46,
+      "solver_cost": 0.55,
+      "total_cost": 0.0
+    }
+  },
+  "settings": {
+    "adapter": "catering/methods/veloxq.py 0.2.0, result schema catering-method-result.v1",
+    "solver": "VeloxQSolver (veloxq-sdk 1.0.0 default backend VeloxQH100_1)",
+    "num_rep": 512,
+    "num_steps": 2000,
+    "initializer": "none (cold start)",
+    "seed": "not supported by SDK",
+    "wall_time_limit_s_per_job": 60,
+    "repeats": "one job per case; repeated jobs are replicates without seed control",
+    "repair": "disabled",
+    "tuning": "none before step 1; any later num_rep/num_steps grid must be declared here first",
+    "packet": "exact integer HDF5 (int32/int64) via the SDK writer; re-read and compared exactly before upload",
+    "packet_risk": "the service has only been exercised with a float32 packet (phase C); integer-packet acceptance is first confirmed by step 1"
+  },
+  "cases": {
+    "scale_tiers_primary": [
+      {
+        "bundle": "catering-velox-scale-v3/scale-512-qubo.json",
+        "bundle_id": "paired-lunch-12-v1/S3/meal-block-486",
+        "bundle_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b",
+        "variables": 512,
+        "offered_domain_cp_5s": {
+          "status": "FEASIBLE",
+          "objective_E": "277300",
+          "bound": 92414.0
+        },
+        "witness_E": "551853 (all-idle, U=14,W=1)",
+        "checked_tuple": "(7,2,10,10)"
+      },
+      {
+        "bundle": "catering-velox-scale-v3/scale-1024-qubo.json",
+        "bundle_id": "paired-lunch-12-v1/S3/meal-block-998",
+        "bundle_sha256": "516a53d929f2e48b6e0e077bdca2acede26f0b8f86a1498a1a17c74143dc4f1c",
+        "variables": 1024,
+        "offered_domain_cp_5s": {
+          "status": "FEASIBLE",
+          "objective_E": "321040",
+          "bound": -408212887.0
+        },
+        "witness_E": "551853 (all-idle, U=14,W=1)",
+        "checked_tuple": "(8,8,10,10)"
+      },
+      {
+        "bundle": "catering-velox-scale-v3/scale-2048-qubo.json",
+        "bundle_id": "paired-lunch-12-v1/S3/meal-block-2022",
+        "bundle_sha256": "804a3238d0f70b5f0ed360d55fa2ddf8cc4d0fd267c967566d5fea965fc3ffb8",
+        "variables": 2048,
+        "offered_domain_cp_5s": {
+          "status": "UNKNOWN",
+          "objective_E": null,
+          "bound": 0.0
+        },
+        "witness_E": "551853 (all-idle, U=14,W=1)",
+        "checked_tuple": "no CP incumbent"
+      }
+    ],
+    "integration_four_event": [
+      {
+        "bundle": "catering-foundation-v3/S0/scale-128-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S0/meal-block-115",
+        "bundle_sha256": "c9b20479469db69d1c162e909c207d1500ee8b0ad777d469ec7ac58b254e45a6",
+        "variables": 128,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "7832094",
+          "bound": "7832094"
+        },
+        "sa_best_E": "13093273"
+      },
+      {
+        "bundle": "catering-foundation-v3/S0/scale-256-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S0/meal-block-243",
+        "bundle_sha256": "ea3a7cb6da9413a2a0fe0b6baca42c29a9f625879ab85946d053eef10bfeafc5",
+        "variables": 256,
+        "offered_domain_cp": {
+          "status": "FEASIBLE",
+          "objective_E": "49059134",
+          "bound": 27886016.0
+        },
+        "sa_best_E": "122883529"
+      },
+      {
+        "bundle": "catering-foundation-v3/S1/scale-128-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S1/meal-block-113",
+        "bundle_sha256": "60c54de1b38b0fdea75d37b8e71d7a897e132f880dca9ffd8eb81f010e0fcf38",
+        "variables": 128,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "7876266",
+          "bound": "7876266"
+        },
+        "sa_best_E": "13100543"
+      },
+      {
+        "bundle": "catering-foundation-v3/S1/scale-256-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S1/meal-block-241",
+        "bundle_sha256": "74acc003d80312dff9aa699918681fdb5c9b0070a086e934447ac163d51f5f77",
+        "variables": 256,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "74494866",
+          "bound": "74494866"
+        },
+        "sa_best_E": "149222044"
+      },
+      {
+        "bundle": "catering-foundation-v3/S2/scale-128-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S2/meal-block-116",
+        "bundle_sha256": "67233d674fcf1a9dad07495d590dd6fce8c90875716bc19597da4a1e49c7aaa7",
+        "variables": 128,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "7858194",
+          "bound": "7858194"
+        },
+        "sa_best_E": "13128459"
+      },
+      {
+        "bundle": "catering-foundation-v3/S2/scale-256-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S2/meal-block-244",
+        "bundle_sha256": "4e23a95ddfdb5f56420add719909dd01f4971296cbc1eaf059d3b7e8d8c39533",
+        "variables": 256,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "49041901",
+          "bound": "49041901"
+        },
+        "sa_best_E": "122752355"
+      },
+      {
+        "bundle": "catering-foundation-v3/S3/scale-128-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S3/meal-block-114",
+        "bundle_sha256": "0f756835411d49bed172b61123408342b01e87b36b59be1b30b8063cc7aab00a",
+        "variables": 128,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "10435105",
+          "bound": "10435105"
+        },
+        "sa_best_E": "18303864"
+      },
+      {
+        "bundle": "catering-foundation-v3/S3/scale-256-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S3/meal-block-242",
+        "bundle_sha256": "61a0944758e65bfe1eb0439471549a88bb0349d895d8976df4911f143f9ee26b",
+        "variables": 256,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "98554001",
+          "bound": "98554001"
+        },
+        "sa_best_E": "123295532"
+      }
+    ],
+    "shared_small_qubo": [
+      {
+        "bundle": "catering-complete-cell-v3/quantum-qubo.json",
+        "bundle_id": "paired-meal-complete-cell-v3/S0/meal-block-32",
+        "bundle_sha256": "4dccaee4ff667f06a24e855457d17eaf7e541663be3400b36522a14a1fa8cdd5",
+        "variables": 35,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "68",
+          "bound": "68"
+        }
+      },
+      {
+        "bundle": "catering-foundation-v3/S0/quantum-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S0/meal-block-20",
+        "bundle_sha256": "df6eb3da9ea1d63653b3eab022037a9840b1ccd7266e0486648704f06215a521",
+        "variables": 33,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "66216",
+          "bound": "66216"
+        }
+      },
+      {
+        "bundle": "catering-foundation-v3/S1/quantum-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S1/meal-block-20",
+        "bundle_sha256": "8da3db96ad699b66449f8c6ecb52dbab30d67efb0ba677bb2b2c6ee77e64d186",
+        "variables": 35,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "101893",
+          "bound": "101893"
+        }
+      },
+      {
+        "bundle": "catering-foundation-v3/S2/quantum-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S2/meal-block-19",
+        "bundle_sha256": "f20506a16df1e9e40661cbd2f8e969200fc54534e6b8f1cff37587994b310534",
+        "variables": 31,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "63684",
+          "bound": "63684"
+        }
+      },
+      {
+        "bundle": "catering-foundation-v3/S3/quantum-qubo.json",
+        "bundle_id": "paired-lunch-6-v1/S3/meal-block-21",
+        "bundle_sha256": "9179b3cb4e4629bb3138d4856ca36531018d2bf8a082e21e5d6bb3fdd2fa1c6f",
+        "variables": 35,
+        "offered_domain_cp": {
+          "status": "OPTIMAL",
+          "objective_E": "103668",
+          "bound": "103668"
+        }
+      }
+    ]
+  },
+  "comparison_frozen_before_results": {
+    "evaluation": "python -m catering.run evaluate --bundle <bundle> --samples <result.json> --output <fresh file>; no repair",
+    "same_matrix_references": "<bundle>-reference.json (offered-domain CP, finite budget: OPTIMAL/FEASIBLE/UNKNOWN as recorded) and the all-idle witness",
+    "same_matrix_sa": "available for v3 S0-S3 (quantum/scale-128/scale-256: *-sa.json); NOT provided for scale-512/1024/2048 - requested from the classical track before step 2",
+    "representation_loss": "output/catering-velox-scale-v3/raw-reference.json (raw-grid CP, FEASIBLE (8,1,7,7), objective 352219 in raw-model units) - not a same-matrix baseline",
+    "metrics": [
+      "valid-row rate by count after central decode/check",
+      "best checked (U,W,B,R) and literal E vs reference incumbent/bound",
+      "rows at or better than the reference incumbent",
+      "distinct samples",
+      "all adapter timings (build, serialize, upload, submit, backend wait, download, parse, total)",
+      "backend_statistics (quota, cost, pending/running time)",
+      "returned energy dtype and convention deviation"
+    ],
+    "comparability": "same bundle_sha256 only; compare operational tuples across bundles, never raw energies"
+  },
+  "offline_readiness": "output/catering-methods/veloxq/offline-readiness-v3.json (16 bundles, all not_run, exact integer packets)",
+  "token": "read from VELOX_TOKEN environment variable only; never stored in repo or artifacts"
+}

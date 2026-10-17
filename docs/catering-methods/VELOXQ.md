@@ -103,3 +103,122 @@ Further 4,096-variable or 24-customer cases are **optional next workloads**, not
 already generated or required before the other owners begin. Check local memory,
 coefficient ranges, upload constraints and the agreed account cap first. A
 well-measured 2,048-variable study is preferable to an unsupported size claim.
+
+---
+
+## Owner status (Person 1, 17 October 2026)
+
+**Offline deliverables 1–3 above are done; deliverables 4–6 wait for a
+user-set service cap.** One connectivity smoke job has run (phase C, approved
+cap 3, used 1). No catering bundle has been sent to VeloxQ.
+
+| Path | Content |
+|---|---|
+| `catering/methods/veloxq.py` | Adapter 0.2.0: `solve_qubo(bundle, budget, method_config, output_dir)` and CLI |
+| `tests/catering/test_veloxq_adapter.py` | 63 offline tests, no token or network |
+| `output/catering-methods/veloxq/pilot_manifest.json` | Caps, frozen settings, case hashes, baselines and comparison declared before results |
+| `output/catering-methods/veloxq/offline-readiness-v3.json` | One `not_run` record per released v3 bundle (16), with sizes, coefficient ranges, packet dtype/size and timings |
+| `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 1) |
+| `output/catering-methods/veloxq/smoke-20261017T162002/` | Phase C raw input/output and result |
+
+### Conventions (checked by tests)
+
+- Input: literal integer QUBO (`constant`, `linear`, `quadratic`, `variable_order`)
+  from the bundle's top level or a `qubo` object. Malformed, non-canonical or
+  duplicate entries are rejected. Variable order and bundle hash pass through.
+- Spin form sent to VeloxQ: `s = 2x - 1`, scaled by 4 so it stays integral:
+  `h_i = 2a_i + sum_j b_ij`, `J_ij = b_ij`, `offset = 4c + 2*sum a + sum b`,
+  `E_spin = 4E` exactly. This equals the foundation's Pauli-Z form
+  (`z = 1 - 2x = -s`) with the linear sign flipped; a test checks this on every
+  frozen bundle.
+- Returned rows: labels must be exactly `0..n-1`; SPIN or BINARY values. Each
+  reported energy must equal `4E` (full model) or `4E - offset`, consistently,
+  within a tolerance set by the returned dtype. Otherwise the job is `failed`.
+  Literal energies are always recomputed exactly; no repair.
+
+### Coefficient precision (deliverable 2)
+
+The SDK's HDF5 writer (veloxq-sdk 1.0.0) stores coefficients as **float32
+unless it receives Python integers**, in which case it picks an exact integer
+dtype. On the v3 scale bundles, 90–100% of spin coefficients are not
+representable in float32 (dynamic range up to 1.7e8 at width 2,048), so a float
+packet would silently solve a rounded model. Adapter 0.2.0 therefore:
+
+- sends exact integer packets (int32/int64; 20.6 MB at width 2,048),
+- re-reads every packet and refuses upload unless it equals the model exactly,
+- records `packet_coefficient_dtype`, `float32_inexact_spin_coefficients`,
+  `spin_dynamic_range` and `spin_l1` in each result,
+- accepts float32 returned energies (VeloxQ returns them; phase C did) with a
+  dtype-scaled tolerance, still rejecting shifts beyond rounding.
+
+Open: phase C used a float32 packet, so integer-packet acceptance by the service
+and the backend's internal arithmetic are unverified. The first authorized scale
+job answers the first question; the second is visible only through solution
+quality (whether B/R tie-breaks with weight 27/1 against coefficients up to 1.5e10
+are resolved).
+
+### Phase C smoke result
+
+Contract section 5 example, one job, 60 s, no retries:
+`job_id 717caf69-b5c0-4b90-bd5c-a2ce846f7058`, backend `VeloxQH100_1`,
+`num_rep=512`, `num_steps=2000`. Best `[1,0]`, E = -4 (454/512 rows); `[0,1]`,
+E = -3 (58 rows). Quota 46, solver cost 0.55, total cost 0.0; running 0.046 s,
+pending 0.73 s; end-to-end 6.39 s (upload 2.04, backend wait 3.20).
+Energy convention: **SPIN, Ising offset omitted** (`reported = 4E - offset`),
+float32 energies. This result predates the v1 schema alignment and stays in the
+draft schema.
+
+### Result format
+
+`result.json` follows `catering-method-result.v1` (`catering/contracts.py`) and
+is accepted as-is by `python -m catering.run evaluate`. VeloxQ-specific fields
+(`bundle` identity, `budget`, `representation`, `failure`, `backend_statistics`,
+`backend_timeline`, per-sample `reported_energy_spin_scaled`) are kept alongside.
+
+### Offline verification on released inputs
+
+All 16 bundles (complete cell; v3 S0–S3 quantum/scale-128/scale-256;
+scale-512/1024/2048) plus the v2 regression `complete-qubo` files:
+
+- literal energy equals `catering.qubo.energy`, spin energy equals `4E`,
+- every sample in v3 `*-reference.json` and `*-sa.json` recomputes to its
+  stated energy,
+- fake service runs on v3 S1 quantum/scale-128/scale-256, returning reference,
+  SA and random rows with float32 energies, pass `catering.run evaluate`, with
+  the reference solution ranked first and decoded valid.
+
+Build + serialize + exact re-read takes 2.6 s at width 2,048 (local CPU).
+
+### Frozen baselines (before any VeloxQ result)
+
+| Bundle | Vars | Offered-domain CP | Same-QUBO SA best E |
+|---|---:|---|---:|
+| v3 S0–S3 scale-128 | 128 | OPTIMAL (E 7.83e6–1.04e7) | 1.66–1.75× optimum |
+| v3 S0–S3 scale-256 | 256 | 3 OPTIMAL, S0 FEASIBLE (gap to bound) | 1.25–2.5× incumbent; some returns invalid |
+| scale-512 | 512 | FEASIBLE, E 277,300, (7,2,10,10) | not provided |
+| scale-1024 | 1,024 | FEASIBLE, E 321,040, (8,8,10,10) | not provided |
+| scale-2048 | 2,048 | UNKNOWN, no incumbent | not provided |
+
+Exact values and hashes are in `pilot_manifest.json`. **Gap:** the handoff asks
+for a same-literal-QUBO SA control on the scale tiers; none is released for
+512/1024/2048. It belongs to the classical track and should exist before the
+step-2 jobs.
+
+### Service plan (held)
+
+Following "begin with one scale tier": step 1 is one job on scale-512 (ledger
+total 2); step 2 adds scale-1024 and scale-2048 only if step 1 is useful (total 4);
+optional steps add the v3 four-event scale-128/256 set (total 12) and the shared
+small QUBOs (total 17). Settings: `num_rep=512`, `num_steps=2000`, cold start,
+60 s, one job per case, no retries, no tuning before step 1.
+
+    # offline (packet + not_run result):
+    .venv/bin/python -m catering.methods.veloxq --bundle output/catering-velox-scale-v3/scale-512-qubo.json
+    # only after the user sets the cap; N is the LEDGER TOTAL incl. phase C:
+    .venv/bin/python -m catering.methods.veloxq --bundle output/catering-velox-scale-v3/scale-512-qubo.json \
+        --allow-external --max-service-jobs 2 --timeout 60
+
+Each remote attempt is recorded in the ledger before upload and counts even if
+it fails. A GPU service result is not physical quantum execution; the service
+returns only final samples, so time-to-first-feasible is not observable.
+Warm start (`init_state`) is not used.

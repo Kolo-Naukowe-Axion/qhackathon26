@@ -1,0 +1,142 @@
+{
+  "backend_statistics": {
+    "backend_cost_scale": 1.0,
+    "backend_usage_scale": 1.0,
+    "cost_solver_time": 0.0,
+    "pending_time": 0.733493,
+    "quota_solver_time": 0.046,
+    "running_time": 0.046,
+    "solver_cost": 0.55,
+    "solver_usage_scale": 1.0,
+    "total_cost": 0.0,
+    "total_quota_usage": 46,
+    "usage_time": 1.438889
+  },
+  "backend_timeline": [
+    {
+      "name": "created",
+      "value": "2026-10-17T14:20:04.709240Z"
+    },
+    {
+      "name": "pending",
+      "value": 0.733493
+    },
+    {
+      "name": "running",
+      "value": 0.046
+    },
+    {
+      "name": "completed",
+      "value": "2026-10-17T14:20:06.148129Z"
+    }
+  ],
+  "budget": {
+    "allow_external_execution": true,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 3,
+    "wall_time_limit_s": 60.0
+  },
+  "bundle": {
+    "bundle_id": "contract-smoke-v1",
+    "case_id": "smoke",
+    "qubo_sha256": "fd2c1694f2f41902034309c9bbc182958d380b56bdaea14f1a284a5ac7b82590",
+    "representation_id": "contract-section5-example",
+    "variable_order_sha256": "b64e3448a83a5b86466465080361c1a7e1157a27ddccd4b68069cb18caffb74a"
+  },
+  "configuration": {
+    "backend_id": "a87c8e0c-c883-4d6a-8495-6cd55e95ed96",
+    "backend_name": "VeloxQH100_1",
+    "initializer": "none (cold start)",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 2000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "returned": {
+      "energy_convention": "Ising offset omitted by result",
+      "reported_minus_scaled_energy": 8.0,
+      "returned_vartype": "SPIN",
+      "spin_scale": 4
+    },
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "solver_id": "3bce1dfa-e7af-4040-a283-67cff253cf94",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": null,
+  "method_id": "veloxq",
+  "method_version": "0.1.0",
+  "raw_artifacts": {
+    "file_id": "954a5903-458b-43a7-8f68-081b43244ce9",
+    "ising_input": {
+      "path": "/home/raf/Projects/axion/qhackathon26/output/catering-methods/veloxq/smoke-20261017T162002/ising-input.h5",
+      "sha256": "fc2eb1590a3e6f2c82fcd11824b8949dc2a85e0f7f90b07497627f7332f9a79e"
+    },
+    "job_id": "717caf69-b5c0-4b90-bd5c-a2ce846f7058",
+    "raw_result": {
+      "path": "/home/raf/Projects/axion/qhackathon26/output/catering-methods/veloxq/smoke-20261017T162002/raw-result.h5",
+      "sha256": "6b05e3887618f497280239d358d0154d5b7fff146a7046e2761b2edb3783d9a9"
+    }
+  },
+  "representation": {
+    "couplers": 1,
+    "float64_exact": true,
+    "n": 2,
+    "qubo_max_abs": 6,
+    "qubo_min_nonzero_abs": 3,
+    "spin_max_abs_including_offset": 8
+  },
+  "samples": [
+    {
+      "bits": [
+        1,
+        0
+      ],
+      "count": 454,
+      "energy": "-4",
+      "reported_energy_spin_scaled": -8.0
+    },
+    {
+      "bits": [
+        0,
+        1
+      ],
+      "count": 58,
+      "energy": "-3",
+      "reported_energy_spin_scaled": -4.0
+    }
+  ],
+  "schema_version": "catering-method-result/v1-draft",
+  "status": "completed",
+  "timings": {
+    "backend_wait_s": 3.1995940650012926,
+    "build_s": 1.197600067825988e-05,
+    "download_s": 0.3822613550000824,
+    "parse_s": 0.011199275999388192,
+    "serialize_s": 0.20501656100532273,
+    "submit_s": 0.5495972719945712,
+    "total_s": 6.389859956994769,
+    "upload_s": 2.0369611700007226
+  },
+  "work": {
+    "distinct_samples": 2,
+    "returned_rows": 512,
+    "service_jobs_submitted": 1
+  }
+}
