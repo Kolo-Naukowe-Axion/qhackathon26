@@ -22,7 +22,8 @@ profile explicitly; v2 component-demand inputs remain unchanged for regression.
 
 The catering game viewer runs at `/catering/` in the static site. It replays actual
 QAOA samples, controls and independent classical references, with complete-meal
-handovers, the mandatory recovery clean and a model/results panel. See the
+handovers, the mandatory recovery clean and a model/results panel. A visible batch
+timeline, cooking/packing queues and per-course tickets explain production order. See the
 [viewer guide](presentation/catering/README.md). Start it with `PORT=4192 npm run dev`.
 
 The VeloxQ owner has a [concrete scale handoff](docs/catering-methods/VELOXQ.md):

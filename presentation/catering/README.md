@@ -30,6 +30,34 @@ Repair ends at60; C2 waits until the clean and cannot resume cooking before80.
 Cleaning occupies equipment and the cleaning worker, is visible on the timeline,
 and can be inspected through C2 or the recovery-clean bar.
 
+## Production sequence and order flow
+
+The batch timeline is visible by default. Each row is one selected batch, with
+prep/cook/pack on its main line and cleaning below, because packing and cleaning
+can overlap. Switch to Equipment to see resource occupation and the outage.
+Departure markers jump to each order's deadline. Timeline bars seek to the actual
+operation start and highlight its station.
+
+On desktop the production clipboard opens alongside the kitchen. Cooking order
+sorts batches by their cook start; entries may overlap on separate cookers.
+Packing → orders follows actual packing allocations on the shared packing line.
+Click a queue entry to follow that exact operation. Previous/Next kitchen event
+steps through recorded operation boundaries and departures without inventing work.
+The order tickets show both courses separately, including prepared-but-waiting,
+cooking, packing, packed, served, missing and discarded states. Mobile keeps the
+timeline visible and opens the clipboard with the Sequence button.
+
+In the default retained sample, B is prepped before C but C cooks before B.
+Cooking is A→C→B; packing is A-main→A-side→B-side→B-main. C is one shared
+20-portion side batch. This is a description of the checked schedule, not an
+inferred explanation of the optimizer's internal search or a unique optimum.
+
+Replay stops at the last displayed operation/departure (12:10 in the small cell),
+then holds the outcome for three seconds before looping. The instance's larger
+planning horizon remains unchanged. Clocks, queues, highlights and tickets all
+follow the same replay time. Source selector and manual interventions rebuild
+these projections from their actual plans.
+
 ## Interaction and visual direction
 
 The room retains the pixel-game art, native directional chef sprites and timber

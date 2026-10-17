@@ -1120,3 +1120,24 @@ SA has valid weak returns on the two smaller tiers and no valid return at2048.
 All raw responses/statuses/bounds, load and call times and source snapshots
 are retained. No hardship/speedup claim from finite budgets or failed SA;
 no reference plan teaches the quantum search. No credits or QPU calls.
+
+
+### 17 October — make the production sequence explicit
+
+The user asked how production order and overlap are chosen, then requested the
+explanation in the demo. Added read-only production-sequence projections of the
+retained plan: cook-start order, per-order packing queue, component waiting and
+ready states, and event stepping. The batch timeline now opens by default,
+with a separate equipment view, cleaning on a second lane and departure markers.
+The default sample explicitly shows B prepped first but C cooked first; one
+shared C batch supplies both orders. Existing result hashes/physics/encoding stay
+unchanged. Replay ends at the last action/departure and holds the outcome before
+looping, without changing the physical planning horizon. No VQE/QAOA training,
+classical optimization, account access, QPU or VeloxQ call was performed.
+
+Verification: all138site tests and the static build pass. Browser checks confirm
+waiting after prep, exact packing→order links, concurrent clean/pack/cook at11:40,
+separate repair/wait/clean windows, mobile clipboard access, final20/20handovers,
+and preserving that result when paused before the loop. Only local rendering,
+source reads and deterministic projection checks were used; no training or solver
+run accompanied this UI pass.

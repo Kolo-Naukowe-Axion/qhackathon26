@@ -3,9 +3,11 @@ import {kitchenSVG,prepareScene,renderWorker,renderKitchen} from './scene.js';
 import {buildWorkerTrack,workerPoseAt} from './worker-motion.js';
 import {decodedActions,stationState,withAlternative} from './kitchen-state.js';
 import {decisionSteps,decisionComparison} from './decision-story.js';
+import {productionSequence,playbackEnd,componentStatus,orderName,adjacentEvent,eventDescription} from './production-sequence.js';
 
 const $=s=>document.querySelector(s),reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
 let data,current,referenceCase,fixture,inspected=-1,time=20,playing=false,looping=true,speed=1,lastFrame=0,lastDraw=0,workerTracks=new Map();
+let sequence,timelineView='batch',endHold=0;
 let decodeTour=null,decodeStage=0,decodeElapsed=0,decodeAuto=!reduced,vectorBeforeTour=false;
 $('#kitchen').innerHTML=kitchenSVG();
 const artReady=prepareScene($('#kitchen'));
@@ -56,9 +58,62 @@ function drawInspector(){
   drawTimeline();
 }
 function drawTimeline(){
-  const H=current.instance.horizon_minutes;
-  const bar=o=>`<button class="op ${o.recovery?'recovery':o.kind} ${current.plan.batches.find(b=>b.id===o.batch_id)?.menu==='A'?'committed':''}" data-operation="${o.id}" title="${clock(o.start)}–${clock(o.end)} · ${label(o)} · ${o.worker}" style="left:${o.start/H*100}%;width:${(o.end-o.start)/H*100}%">${o.recovery?'CLEAN':o.kind==='cook'?'COOK':PHASES[o.kind]}</button>`;
-  $('#timeline').innerHTML=`<div class="timeline-grid"><div class="ruler">${Array.from({length:Math.floor(H/20)+1},(_,i)=>`<span style="left:${i*20/H*100}%">${clock(i*20)}</span>`).join('')}</div>${RESOURCES.map(id=>`<div class="resource-row"><span class="resource-label">${id}</span>${current.snapshot.outages.filter(o=>o.resource===id).map(o=>`<span class="outage" style="left:${o.start/H*100}%;width:${(o.end-o.start)/H*100}%">OFF</span>`).join('')}${allOperations(current).filter(o=>o.resource===id).map(bar).join('')}</div>`).join('')}<div id="cursor" class="cursor"></div></div>`;
+  const H=playbackEnd(current),ops=allOperations(current);
+  const bar=o=>`<button class="op ${o.recovery?'recovery':o.kind} ${current.snapshot.fixed_batches.some(b=>b.id===o.batch_id)?'committed':''}" data-operation="${o.id}" title="${clock(o.start)}–${clock(o.end)} · ${label(o)} · ${o.resource} · ${o.worker}${o.attended_end<o.end?` attended until ${clock(o.attended_end)}`:''}" aria-label="Follow ${label(o)}, ${clock(o.start)} to ${clock(o.end)}, ${o.resource}, ${o.worker}" style="left:${o.start/H*100}%;width:${(o.end-o.start)/H*100}%">${o.recovery?'Recovery clean':o.kind==='cook'?`Cook ${o.resource}`:PHASES[o.kind]}</button>`;
+  const unavailable=id=>current.snapshot.outages.filter(o=>o.resource===id).map(o=>`<span class="outage" title="${id} under repair ${clock(o.start)}–${clock(o.end)}" style="left:${o.start/H*100}%;width:${(o.end-o.start)/H*100}%">REPAIR</span>`).join('')+(current.plan.recovery_operations??[]).filter(o=>o.resource===id&&o.start>o.repair_end).map(o=>`<span class="outage awaiting-clean" title="${id} waiting for mandatory clean ${clock(o.repair_end)}–${clock(o.start)}" style="left:${o.repair_end/H*100}%;width:${(o.start-o.repair_end)/H*100}%">WAIT</span>`).join('');
+  const rows=timelineView==='batch'?sequence.cooking.map(row=>`<div class="resource-row batch-row"><span class="resource-label">${row.label}<small>${row.batch.yield_lots*current.instance.lot_size} portions${row.committed?' · started':''}</small></span>${row.operations.map(bar).join('')}</div>`).join('')+(current.plan.recovery_operations?.length?`<div class="resource-row batch-row"><span class="resource-label">Recovery<small>required clean</small></span>${[...new Set(current.plan.recovery_operations.map(o=>o.resource))].map(unavailable).join('')}${ops.filter(o=>o.recovery).map(bar).join('')}</div>`:''):RESOURCES.map(id=>`<div class="resource-row equipment-row"><span class="resource-label">${id}</span>${unavailable(id)}${ops.filter(o=>o.resource===id).map(bar).join('')}</div>`).join('');
+  const departures=mealOrders(current).map(m=>`<button class="handover-marker ${m.handed?'':'unfilled'}" data-departure="${m.departure}" title="${orderName(m)} · ${clock(m.departure)} · ${m.handed?'complete meals depart':'incomplete order'}" aria-label="Follow ${orderName(m)} departure at ${clock(m.departure)}" style="left:${m.departure/H*100}%">${orderName(m).replace('Order ','').replace('Urgent order','!')}</button>`).join('');
+  $('#timeline').innerHTML=`<div class="timeline-grid"><div class="ruler">${Array.from({length:Math.floor(H/20)+1},(_,i)=>`<span style="left:${i*20/H*100}%">${clock(i*20)}</span>`).join('')}</div>${rows}<div class="departure-row"><span class="resource-label">Departures</span>${departures}</div><div id="cursor" class="cursor"></div></div>`;
+  $('#schedule-heading').textContent=timelineView==='batch'?'SCHEDULE BY BATCH':'SCHEDULE BY EQUIPMENT';
+  $('#batch-view').setAttribute('aria-pressed',String(timelineView==='batch'));$('#equipment-view').setAttribute('aria-pressed',String(timelineView==='equipment'));
+}
+function drawSequence(){
+  $('#production-sequence').scrollTop=0;
+  const meals=mealOrders(current),count=meals.length;
+  $('#sequence-intro').textContent=`${count*current.instance.lot_size} meals · ${count} orders · main + side`;
+  $('#cooking-order').innerHTML=sequence.cooking.map((r,i)=>`<li><button data-sequence-operation="${r.cook.id}" data-start="${r.cook.start}" data-end="${r.cook.end}"><span class="queue-number">${i+1}</span><span><b>${r.label}${r.committed?' · already started':''}</b><small>${clock(r.cook.start)}–${clock(r.cook.end)} · ${r.cook.resource} · ${r.batch.yield_lots*current.instance.lot_size} portions</small></span><i>↗</i></button></li>`).join('');
+  $('#packing-order').innerHTML=sequence.packing.map((r,i)=>`<li><button data-sequence-operation="${r.operation.id}" data-start="${r.operation.start}" data-end="${r.operation.end}"><span class="queue-number">${i+1}</span><span><b>${r.label} → ${r.order}</b><small>${clock(r.operation.start)}–${clock(r.operation.end)} · ${r.operation.resource} / ${r.operation.worker}</small></span><i>↗</i></button></li>`).join('');
+  const inversion=sequence.inversion;
+  if(inversion){
+    const a=inversion.preparedFirst,b=inversion.cookedFirst;
+    const targets=[...new Set(sequence.packing.filter(r=>r.operation.batch_id===b.batch.id&&r.meal).map(r=>`${r.order} ${clock(r.meal.departure)}`))];
+    const overlaps=sequence.cooking.filter(r=>r.batch.id!==b.batch.id&&r.cook.start<b.cook.end&&b.cook.start<r.cook.end);
+    $('#sequence-insight').innerHTML=`<summary>${a.batch.menu} preps first. ${b.batch.menu} cooks first.</summary><p>${b.label} supplies ${targets.join(' + ')}. ${overlaps.length?`Its cooking overlaps ${overlaps.map(r=>r.label).join(' + ')}.`:`It cooks ${clock(b.cook.start)}–${clock(b.cook.end)} on ${b.cook.resource}.`}</p>`;
+  }else $('#sequence-insight').innerHTML='<summary>How to read this sequence</summary><p>Each batch keeps its recipe order. The timeline shows when separate batches overlap, and when cleaning frees a cooker.</p>';
+}
+function updateSequence(){
+  $('#sequence-now').textContent=`NOW · ${clock(time)}`;
+  $('#sequence-active').textContent=activeOperations(current,time).map(o=>`${label(o)} / ${o.resource}`).join(' + ')||'No operation running';
+  const next=adjacentEvent(sequence,time,1);
+  $('#next-event-label').textContent=time>=sequence.end?'Last departure reached':`${clock(next)} · ${eventDescription(current,next)}`;
+  $('#next-event-label').title=$('#next-event-label').textContent;
+  $('#previous-event').disabled=time<=0;$('#next-event').disabled=time>=sequence.end;
+  for(const list of [$('#cooking-order'),$('#packing-order')]){
+    let nextMarked=false;
+    for(const el of list.querySelectorAll('[data-sequence-operation]')){
+      const start=Number(el.dataset.start),end=Number(el.dataset.end),active=start<=time&&time<end;
+      el.classList.toggle('is-running',active);el.classList.toggle('is-complete',time>=end);
+      const queued=start>time&&!nextMarked;el.classList.toggle('is-next',queued);if(queued)nextMarked=true;
+      el.setAttribute('aria-current',active?'step':'false');
+    }
+  }
+  for(const el of $('#timeline').querySelectorAll('[data-operation]')){
+    const op=allOperations(current).find(o=>o.id===el.dataset.operation);
+    el.classList.toggle('is-running',op.start<=time&&time<op.end);
+  }
+}
+function updateLayout(){
+  document.documentElement.style.setProperty('--plan-top',`${Math.ceil($('.decision-strip').getBoundingClientRect().bottom+10)}px`);
+  document.documentElement.style.setProperty('--plan-bottom',`${Math.ceil(innerHeight-$('.replay').getBoundingClientRect().top+10)}px`);
+}
+function openSequence(open=true){
+  if(open){openInspector(false);openTrace(false);}
+  document.body.classList.toggle('sequence-open',open);$('#sequence-toggle').setAttribute('aria-expanded',String(open));
+}
+function followOperation(id){
+  const op=allOperations(current).find(o=>o.id===id);if(!op)return;
+  seek(op.start,op.recovery?-2:current.options.findIndex(p=>p.id===op.batch_id));
+  for(const resource of RESOURCES)$(`#station-${resource}`).classList.toggle('is-focused',resource===op.resource);
 }
 function updateWorkers(){
   ['W1','W2','W3'].map(id=>({el:$(`#chef-${id}`),pose:workerPoseAt(workerTracks.get(id),time)})).sort((a,b)=>a.pose.y-b.pose.y).forEach(({el,pose})=>{renderWorker(el,pose);$('#workers').append(el);});
@@ -67,16 +122,17 @@ function updateDynamic(){
   if(!current)return;
   renderKitchen(current,time);updateWorkers();
   $('#time').textContent=clock(time);$('#scene-clock').textContent=clock(time);$('#scrubber').value=time;
-  $('#cursor').style.left=`${time/current.instance.horizon_minutes*100}%`;
+  $('#cursor').style.left=`${time/playbackEnd(current)*100}%`;
+  updateSequence();
   const active=activeOperations(current,time),orders=mealOrders(current),chosen=selectedPrograms(current);
   $('#event-title').textContent=time<current.snapshot.current_time?'Before the decision':active.length?active.map(label).join(' + '):'Between kitchen operations';
   $('#event-copy').textContent=active.length?active.map(o=>`${o.resource} · ${time<o.attended_end?o.worker:'unattended'}`).join(' / '):CASES[current.id].event;
   $('#meal-count').textContent=`${deliveredMeals(current,time)} / ${requestedMeals(current)} served`;
   $('#orders').innerHTML=orders.map(m=>{
     const hidden=time<m.revealed,departed=time>=m.departure,ready=m.ready_at!==null&&time>=m.ready_at;
-    const status=hidden?'unrevealed':departed?(m.handed?'served':'missed'):ready?'both packed':m.handed?'scheduled':'incomplete';
-    const a=m.allocations.filter(Boolean).length;
-    return `<button class="order ${ready?'ready':''} ${departed&&m.handed?'delivered':''} ${departed&&!m.handed?'missed':''}" data-meal="${m.id}"><span class="order-icon">${hidden?'?':departed?(m.handed?'✓':'×'):ready?'▪':'·'}</span><div><b>${hidden?'Not yet revealed':`${current.instance.lot_size} × ${m.id==='committed'?'A + side':'B + side'}`}</b><small>${clock(m.departure)}${m.revealed?' · urgent':''} · ${hidden?'':`${a}/2 courses scheduled`}</small></div><span>${status}</span></button>`;
+    const status=hidden?'unrevealed':departed?(m.handed?'served':'missed'):ready?'ready to leave':m.handed?'scheduled':'incomplete';
+    const courses=['main','side'].map(course=>componentStatus(current,m,course,time));
+    return `<button class="order ${ready?'ready':''} ${departed&&m.handed?'delivered':''} ${departed&&!m.handed?'missed':''}" data-meal="${m.id}" aria-label="Follow ${orderName(m)} departure at ${clock(m.departure)}"><div class="order-title"><b>${hidden?'Not yet revealed':`${orderName(m)} · ${current.instance.lot_size} meals`}</b><span>${status}</span></div><small class="order-departure">LEAVES ${clock(m.departure)}${m.revealed?' · urgent':''}</small>${hidden?'':courses.map(course=>`<span class="order-course ${course.state}"><b>${course.label}</b><span>${course.status}</span></span>`).join('')}</button>`;
   }).join('');
   for(const id of RESOURCES){
     const el=$(`#station-${id}`),state=stationState(current,id,time),op=state.operation;
@@ -100,16 +156,19 @@ function provenance(){
   $('#scope-note').textContent=current.id==='CELL'?'All 32 local programs of the declared small grid are included. QAOA and both simple controls attain the optimum.':'This QAOA plan comes from changing, restricted portfolios. Its result trails the full-grid classical reference. Compare methods using the selector above.';
 }
 function loadCase(id,key='qaoa'){
-  cancelDecode();fixture=data.cases.find(c=>c.id===id);referenceCase=activateRun(fixture,key);current=referenceCase;time=current.snapshot.current_time;inspected=firstChoice();
+  if(!data)return;
+  endHold=0;
+  for(const resource of RESOURCES)$(`#station-${resource}`).classList.remove('is-focused');
+  cancelDecode();fixture=data.cases.find(c=>c.id===id);referenceCase=activateRun(fixture,key);current=referenceCase;sequence=productionSequence(current);time=current.snapshot.current_time;inspected=firstChoice();
   $('#scenario').disabled=false;$('#method').disabled=false;$('#scenario').value=id;$('#method').innerHTML=fixture.runs.map(r=>`<option value="${r.key}">${r.label}</option>`).join('');$('#method').value=key;
-  $('#scrubber').max=current.instance.horizon_minutes;$('#end-time').textContent=`/ ${clock(current.instance.horizon_minutes)}`;
+  $('#scrubber').max=playbackEnd(current);$('#end-time').textContent=`/ ${clock(playbackEnd(current))}`;
   workerTracks=new Map(['W1','W2','W3'].map(id=>[id,buildWorkerTrack(current,id)]));
-  drawBits();drawInspector();drawTranslation();provenance();updateDynamic();
+  drawBits();drawInspector();drawTranslation();drawSequence();provenance();updateDynamic();updateLayout();
 }
 function setPlaying(value){playing=value;document.body.classList.toggle('is-paused',!value);$('#play').innerHTML=value?'Ⅱ <span>Pause</span>':'▶ <span>Play</span>';$('#play').setAttribute('aria-label',value?'Pause replay':'Play replay');if(current)updateDynamic();}
-function openInspector(value=true){if(value){cancelDecode();openTrace(false);setPlaying(false);}document.body.classList.toggle('inspector-open',value);$('#inspect-toggle').setAttribute('aria-expanded',String(value));}
-function openTrace(value=true){$('#solution-trace').hidden=!value;$('#trace-toggle').setAttribute('aria-expanded',String(value));document.body.classList.toggle('trace-open',value);if(value){cancelDecode();openInspector(false);setPlaying(false);}}
-function seek(t,index=inspected){cancelDecode();time=Number(t);inspected=index;setPlaying(false);drawBits();drawInspector();updateDynamic();}
+function openInspector(value=true){if(value){openSequence(false);cancelDecode();openTrace(false);setPlaying(false);}document.body.classList.toggle('inspector-open',value);$('#inspect-toggle').setAttribute('aria-expanded',String(value));}
+function openTrace(value=true){$('#solution-trace').hidden=!value;$('#trace-toggle').setAttribute('aria-expanded',String(value));document.body.classList.toggle('trace-open',value);if(value){openSequence(false);cancelDecode();openInspector(false);setPlaying(false);}}
+function seek(t,index=inspected){cancelDecode();endHold=0;time=Number(t);inspected=index;setPlaying(false);drawBits();drawInspector();updateDynamic();}
 function setVectorOpen(value){document.body.classList.toggle('vector-collapsed',!value);$('#vector-toggle').textContent=value?'Hide full x':'Show full x';$('#vector-toggle').setAttribute('aria-expanded',String(value));}
 function cancelDecode(){if(!decodeTour)return;decodeTour=null;document.body.classList.remove('decoding');delete document.body.dataset.decodeStage;$('#decode-step').hidden=true;$('#decode-controls').hidden=true;document.querySelectorAll('.decode-target,.decode-selected').forEach(el=>el.classList.remove('decode-target','decode-selected'));setVectorOpen(vectorBeforeTour);}
 function renderDecode(){
@@ -120,10 +179,10 @@ function renderDecode(){
   const actions=decodedActions(current,firstChoice());
   for(const id of RESOURCES)$(`#station-${id}`).classList.toggle('decode-target',decodeStage===3&&actions.some(a=>a.resource===id));
 }
-function startDecode(){cancelDecode();openTrace(false);openInspector(false);setPlaying(false);time=current.snapshot.current_time;vectorBeforeTour=!document.body.classList.contains('vector-collapsed');setVectorOpen(true);decodeTour=decisionSteps(current);decodeStage=0;decodeElapsed=0;decodeAuto=!reduced;document.body.classList.add('decoding');updateDynamic();}
+function startDecode(){openSequence(false);cancelDecode();openTrace(false);openInspector(false);setPlaying(false);time=current.snapshot.current_time;vectorBeforeTour=!document.body.classList.contains('vector-collapsed');setVectorOpen(true);decodeTour=decisionSteps(current);decodeStage=0;decodeElapsed=0;decodeAuto=!reduced;document.body.classList.add('decoding');updateDynamic();}
 function finishDecode(){cancelDecode();time=current.snapshot.current_time;setPlaying(true);}
 function stepDecode(delta,manual=false){if(!decodeTour)return;if(manual)decodeAuto=false;if(decodeStage+delta>=decodeTour.length){finishDecode();return;}decodeStage=Math.max(0,decodeStage+delta);decodeElapsed=0;renderDecode();}
-function replayAlternative(index){cancelDecode();current=current.manual?referenceCase:withAlternative(referenceCase,index);time=current.snapshot.current_time;inspected=firstChoice();workerTracks=new Map(['W1','W2','W3'].map(id=>[id,buildWorkerTrack(current,id)]));drawBits();drawInspector();drawTranslation();provenance();openTrace(false);openInspector(false);setPlaying(true);}
+function replayAlternative(index){cancelDecode();current=current.manual?referenceCase:withAlternative(referenceCase,index);sequence=productionSequence(current);time=current.snapshot.current_time;inspected=firstChoice();workerTracks=new Map(['W1','W2','W3'].map(id=>[id,buildWorkerTrack(current,id)]));drawBits();drawInspector();drawTranslation();drawSequence();provenance();openTrace(false);openInspector(false);setPlaying(true);}
 function evidenceContent(){
   const rows=data.evidence.pilot.rows;
   $('#results-table').innerHTML=`<thead><tr><th>Scenario / seed</th><th>QAOA (U,W,B,R)</th><th>Raw CP optimum</th><th>Max bits</th></tr></thead><tbody>${rows.map(r=>`<tr><th>${r.case}</th><td>(${tuple(r.final)})</td><td>(${tuple(r.reference)})</td><td>${r.max_qubits}</td></tr>`).join('')}</tbody>`;
@@ -137,7 +196,7 @@ $('#decoded-strip').onclick=e=>{const b=e.target.closest('[data-program]');if(b)
 $('#trace-content').onclick=e=>{const b=e.target.closest('[data-seek]');if(b)seek(b.dataset.seek);};
 $('#program-phases').onclick=e=>{const b=e.target.closest('[data-program-seek]');if(b&& (inspected<0||current.bits[inspected]))seek(b.dataset.programSeek);};
 $('#bits').onclick=e=>{const b=e.target.closest('[data-bit]');if(b){inspected=Number(b.dataset.bit);drawBits();drawInspector();openInspector();}};
-$('#timeline').onclick=e=>{const b=e.target.closest('[data-operation]');if(!b)return;const op=allOperations(current).find(o=>o.id===b.dataset.operation);seek(op.start,op.recovery?-2:current.options.findIndex(p=>p.id===op.batch_id));openInspector();};
+$('#timeline').onclick=e=>{const b=e.target.closest('[data-operation]'),d=e.target.closest('[data-departure]');if(b)followOperation(b.dataset.operation);else if(d)seek(d.dataset.departure);};
 $('#orders').onclick=e=>{const b=e.target.closest('[data-meal]');if(!b)return;const m=mealOrders(current).find(m=>m.id===b.dataset.meal);seek(m.departure);};
 function inspectStation(id){const op=activeOperations(current,time).find(o=>o.resource===id)??allOperations(current).find(o=>o.resource===id&&o.start>time);if(op)inspected=op.recovery?-2:current.options.findIndex(p=>p.id===op.batch_id);drawBits();drawInspector();openInspector();}
 $('#kitchen').onclick=e=>{const b=e.target.closest('[data-station]');if(b)inspectStation(b.dataset.station);};
@@ -147,13 +206,34 @@ $('#tradeoff-content').onclick=e=>{const b=e.target.closest('[data-alternative]'
 for(const [id,tradeoff] of [['instructions-tab',false],['tradeoff-tab',true]])$(`#${id}`).onclick=()=>{$('#trace-content').hidden=tradeoff;$('#tradeoff-content').hidden=!tradeoff;$('#instructions-tab').setAttribute('aria-pressed',String(!tradeoff));$('#tradeoff-tab').setAttribute('aria-pressed',String(tradeoff));};
 $('#why-bits').onclick=()=>{const value=$('#bit-explanation').hidden;$('#bit-explanation').hidden=!value;$('#why-bits').setAttribute('aria-expanded',String(value));};
 $('#run-solution').onclick=startDecode;$('#decode-prev').onclick=()=>stepDecode(-1,true);$('#decode-next').onclick=()=>stepDecode(1,true);$('#decode-skip').onclick=finishDecode;$('#decode-auto').onclick=()=>{decodeAuto=!decodeAuto;renderDecode();};
-$('#play').onclick=()=>{cancelDecode();if(time>=current.instance.horizon_minutes)time=0;setPlaying(!playing);};$('#restart').onclick=()=>seek(0);
+function togglePlayback(){cancelDecode();if(!playing&&time>=playbackEnd(current)){time=0;endHold=0;}setPlaying(!playing);}
+$('#play').onclick=togglePlayback;$('#restart').onclick=()=>seek(0);
 $('#scrubber').oninput=e=>seek(e.target.value);$('#speed').onchange=e=>speed=Number(e.target.value);$('#loop').onclick=()=>{looping=!looping;$('#loop').setAttribute('aria-pressed',String(looping));};
 $('#timeline-toggle').onclick=()=>{const closed=document.body.classList.toggle('timeline-closed');$('#timeline-toggle').setAttribute('aria-expanded',String(!closed));};
+$('#sequence-toggle').onclick=()=>openSequence(!document.body.classList.contains('sequence-open'));$('#close-sequence').onclick=()=>openSequence(false);
+$('#previous-event').onclick=()=>seek(adjacentEvent(sequence,time,-1));$('#next-event').onclick=()=>seek(adjacentEvent(sequence,time,1));
+$('#production-sequence').addEventListener('click',e=>{const b=e.target.closest('[data-sequence-operation]');if(b)followOperation(b.dataset.sequenceOperation);});
+for(const [id,view] of [['batch-view','batch'],['equipment-view','equipment']])$(`#${id}`).onclick=()=>{timelineView=view;drawTimeline();updateDynamic();};
+for(const [id,packing] of [['cooking-queue-tab',false],['packing-queue-tab',true]])$(`#${id}`).onclick=()=>{$('#cooking-order').hidden=packing;$('#packing-order').hidden=!packing;$('#cooking-queue-tab').setAttribute('aria-pressed',String(!packing));$('#packing-queue-tab').setAttribute('aria-pressed',String(packing));$('#queue-caption').textContent=packing?'One packing line · portions go to these orders.':'Start order · separate cookers can overlap.';};
+const layoutObserver=new ResizeObserver(updateLayout);layoutObserver.observe($('.decision-strip'));layoutObserver.observe($('.replay'));window.addEventListener('resize',updateLayout);
+if(matchMedia('(max-width:760px)').matches)openSequence(false);
 function showEvidence(open){$('#evidence').hidden=!open;$('#evidence-toggle').setAttribute('aria-expanded',String(open));if(open){cancelDecode();setPlaying(false);$('#close-evidence').focus();}else $('#evidence-toggle').focus();}
 $('#evidence-toggle').onclick=()=>showEvidence($('#evidence').hidden);$('#close-evidence').onclick=()=>showEvidence(false);
 for(const button of document.querySelectorAll('[data-evidence-tab]'))button.onclick=()=>{for(const b of document.querySelectorAll('[data-evidence-tab]'))b.setAttribute('aria-pressed',String(b===button));for(const p of document.querySelectorAll('[data-evidence-panel]'))p.hidden=p.dataset.evidencePanel!==button.dataset.evidenceTab;};
-document.addEventListener('keydown',e=>{if(e.key==='Tab'&&!$('#evidence').hidden){const focusable=[...$('#evidence').querySelectorAll('button,a[href]')].filter(el=>el.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}if(e.key==='Escape'){cancelDecode();openTrace(false);openInspector(false);showEvidence(false);updateDynamic();}if(e.code==='Space'&&!['INPUT','SELECT','BUTTON','A'].includes(document.activeElement.tagName)){e.preventDefault();cancelDecode();setPlaying(!playing);}});
+document.addEventListener('keydown',e=>{if(e.key==='Tab'&&!$('#evidence').hidden){const focusable=[...$('#evidence').querySelectorAll('button,a[href]')].filter(el=>el.getClientRects().length);const first=focusable[0],last=focusable.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus();}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus();}}if(e.key==='Escape'){cancelDecode();openTrace(false);openInspector(false);showEvidence(false);updateDynamic();}if(e.code==='Space'&&!['INPUT','SELECT','BUTTON','A'].includes(document.activeElement.tagName)){e.preventDefault();togglePlayback();}});
 document.addEventListener('visibilitychange',()=>lastFrame=0);
-function frame(now){const elapsed=lastFrame?Math.min((now-lastFrame)/1000,.1):0;lastFrame=now;if(decodeTour&&decodeAuto&&!document.hidden){decodeElapsed+=elapsed;if(decodeElapsed>=decodeTour[decodeStage].duration)stepDecode(1);}if(current&&playing&&!document.hidden){time+=elapsed*speed*1.5;if(time>=current.instance.horizon_minutes){if(looping)time=0;else{time=current.instance.horizon_minutes;setPlaying(false);}}if(now-lastDraw>100){updateDynamic();lastDraw=now;}else updateWorkers();}requestAnimationFrame(frame);}
+function frame(now){
+  const elapsed=lastFrame?Math.min((now-lastFrame)/1000,.1):0;lastFrame=now;
+  if(decodeTour&&decodeAuto&&!document.hidden){decodeElapsed+=elapsed;if(decodeElapsed>=decodeTour[decodeStage].duration)stepDecode(1);}
+  if(current&&playing&&!document.hidden){
+    time+=elapsed*speed*1.5;
+    if(time>=playbackEnd(current)){
+      time=playbackEnd(current);
+      if(!looping)setPlaying(false);
+      else{endHold+=elapsed;if(endHold>=3){time=0;endHold=0;}}
+    }
+    if(now-lastDraw>100){updateDynamic();lastDraw=now;}else updateWorkers();
+  }
+  requestAnimationFrame(frame);
+}
 try{await artReady;const response=await fetch('./replay-data.json');if(!response.ok)throw new Error(`Replay returned ${response.status}`);data=await response.json();if(data.schema!=='catering-kitchen-replay.v3')throw new Error('V3 evidence required');evidenceContent();loadCase('CELL');setPlaying(!reduced);requestAnimationFrame(frame);}catch(e){$('#error').hidden=false;$('#error').textContent=`Kitchen replay could not load: ${e.message}`;setPlaying(false);}

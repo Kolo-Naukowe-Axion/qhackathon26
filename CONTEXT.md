@@ -30,7 +30,7 @@ Independent output/catering-v3-verification.json rechecks965artifact hashes,
 Offline35qubit circuit audits give925CX(pilot) and1914CX(complete cell) on
 synthetic57nodeheavyhex, not actual IBM target estimates. Width alone is not
 hardware readiness. Current tests:45Python cases (one SDK test skipped there),
-separate Qiskit test passes; npm run build passes with134site tests.
+separate Qiskit test passes; npm run build passes with138site tests.
 Preserve concurrent UI/package/test edits. V2inputs remain unchanged.
 Older unbuilt/unpushed-profile notes below are historical; consult actual Git
 state for remote publication, and do not assume teammate notification.
@@ -590,3 +590,15 @@ one-worker references and2second cold SA, seed2026. Raw CP FEASIBLE(5,1,11,11).
 Offered CP FEASIBLE(6,1,10,10)/(7,2,11,11)/(8,3,8,8). No optima certified; SA has
 no valid returned state at2048. See docs/catering-methods/VELOXQ.md for the table,
 initializer/scope caveats and reproduction. Zero service or hardware calls.
+
+
+### 17 October — production order UI
+
+presentation/catering/production-sequence.js projects cook/packing order, per-course
+states and event times from the saved checked plan. The timeline opens in batch
+view by default, with equipment switching and visible departures/parallel cleaning.
+Cooking and Packing→orders tabs, Next/Previous event, and component tickets make
+prep B→C versus cook C→B explicit. Replay duration is last action/departure rather
+than unused model-horizon tail; physical instance/bundle files are unchanged.
+No new training or solver/service execution. Current VQE split question was
+informational; the user explicitly directed continuing the UI without training.

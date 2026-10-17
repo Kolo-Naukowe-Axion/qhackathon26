@@ -22,6 +22,25 @@ backend-check.json independently rechecks16source views,48manual interventions,
 source hashes, three larger bundle manifests, raw-plan validity and exact gzip
 round trips. These checks run no solver, QPU or remote service.
 
-The site build passes134tests. Catering Python tests pass45cases (one optional
+The initial viewer build passed134tests; the production-order pass below adds coverage. Catering Python tests pass45cases (one optional
 SDK test skipped in the lightweight environment); that Qiskit circuit-equivalence
 test passes separately in .venv. The live UI performs no optimization.
+
+## Production-order pass
+
+The new sequence view was checked against the retained plans, without running
+any optimizer or training circuit:
+
+- Small cell: visible cooking A→C→B and packing A-main→A-side→B-side→B-main.
+- Next event at minute30: B is prepared and waits for its cook at minute70.
+- Packing C for A seeks minute70: C2 cleaning, K1 packing C and C1 cooking B
+  appear together; A's main is packed while B's side waits for its packing slot.
+- S3 Equipment view: repair20–60, waiting-for-clean60–70 and recovery clean70–80
+  are distinct. Clicking recovery clean seeks its actual start and highlights C2.
+- Mobile390 CSS-pixel width: no horizontal overflow; the Sequence control opens
+  the clipboard and both queues are accessible. Temporary viewport overrides reset.
+- Four added projection tests check actual queues/status boundaries, all16source
+  views, manual missing-course behavior, event stepping and unchanged horizon.
+
+Screenshots: sequence-desktop.png, sequence-packing.png, sequence-recovery.png.
+The current site build passes138tests. Existing backend evidence remains unchanged.
