@@ -254,7 +254,7 @@ itself is a restriction of the full kitchen:
   including both held-out cases.
 - Its advantage over random angle search (the pilot's method) at 256 circuits
   grows with difficulty: about 2–5× higher P(opt) on the training cases, about
-  11× on S2 and about 20× on S3, where random search also misses the optimum in
+  11× on S2 and about 22× on S3, where random search also misses the optimum in
   4 of 10 seeds.
 - The untrained start state finds the S2/S3 optimum in 1/10 and 0/10 seeds, so
   the held-out result comes from training, not from the initializer. On S1 the

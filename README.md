@@ -45,7 +45,7 @@ verification command, see [Run & reproduce](catering/README.md).
 | Start here | What it contains |
 |---|---|
 | [Project design](PROJECT_DESIGN.md) | Problem, QUBO derivation, proofs and variable costs |
-| [Stage 1](docs/STAGE1_COMPACT.md) · [A](schedule_2x2.json) · [B](schedule_3x3.json) | Required baseline schedules: **4 h / 8 h** |
+| [Stage 1: run & verify](docs/STAGE1_COMPACT.md) · [A](schedule_2x2.json) · [B](schedule_3x3.json) | Required baseline schedules: **4 h / 8 h** |
 | [Development log](DEVELOPMENT_LOG.md) | Decisions, experiments and corrections |
 | [Verification receipt](output/catering-submission-review-v1/verification.json) | Checked source commit, technical checks and remaining submission steps |
 | [Documentation index](docs/README.md) | Method reports, presentation scripts and live-demo runbook |
@@ -53,6 +53,9 @@ verification command, see [Run & reproduce](catering/README.md).
 ## License and AI use
 
 Source is [MIT-licensed](LICENSE); assets and fonts retain their accompanying
-notices. OpenAI Codex assisted with formulation, code, experiments, tests, UI and
-documentation under the team's direction. Measured results and limitations are
-recorded in the development log and retained evidence.
+notices. OpenAI Codex and Anthropic Claude assisted with formulation, code,
+experiments, tests, UI and documentation. Team members set the project direction
+and solver assignments and handle the final presentation and submission.
+AI-assisted working notes remain in `docs/internal/` and `docs/archive/`; the
+links above identify the active project documents. Measured results and
+limitations are recorded in the development log and retained evidence.

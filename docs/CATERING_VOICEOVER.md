@@ -35,7 +35,7 @@ reported campaign medians from checked exported schedules.
 
 ## 2:39–3:08 · Training improves sampling
 
-> We selected the QAOA configuration on the cell and S0/S1. On held-out S2/S3, it finds the offered-pool optimum in all ten seeds at both budgets. At two hundred fifty-six evaluations, median optimum probability per shot is about eleven and twenty-two times random-angle search. Angles are optimized per instance. These restricted portfolios still exclude better full-grid schedules.
+> We selected the QAOA configuration on the cell and S0/S1. On held-out S2/S3, it finds the offered-pool optimum in all ten seeds at both budgets. Random-angle search also hits all ten on S2. At two hundred fifty-six evaluations, median optimum probability per shot is about eleven and twenty-two times random-angle search. Angles are optimized per instance. These restricted portfolios still exclude better full-grid schedules.
 
 ## 3:08–3:28 · A second quantum circuit
 
@@ -55,7 +55,7 @@ reported campaign medians from checked exported schedules.
 
 ## Recording notes
 
-574 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
+582 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
 The earlier local MP4 is silent and has obsolete result screens. Record the
 current route and narration for this result set.
 
