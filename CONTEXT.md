@@ -1,5 +1,21 @@
 # QPoland Quantum Hackathon — running context
 
+## Submission coverage and release privacy — 17 October
+
+docs/STAGE2_SUBMISSION.md now contains the active catering deliverables and
+all eight scoring categories (30 points), a separate VeloxQ criteria map and
+release checklist. Current headline: QAOA plus larger same-model VeloxQ, with
+classical references; VQE becomes a featured method only after checked results
+justify it. No separate VQE result package was present on fetched main at this
+audit. Do not equate method count with points.
+
+GitHub was checked private. The user explicitly wants it private until the
+final submission step to avoid early copying. Review the release beforehand,
+then leave enough time to verify public access and submit before 18 October 15:00
+Warsaw time. No visibility change or publication was performed. Repo cleanup
+remains deferred; preserve evidence/manifests and avoid a last-minute history
+rewrite. Public website exposure is a separate consideration from GitHub privacy.
+
 ## Presentation preparation and service update — 17 October
 
 Active talk/demo planning is in docs/CATERING_PRESENTATION.md: the two-course

@@ -1165,3 +1165,28 @@ The spoken draft is 345 words. Entry-document links and git whitespace checks
 pass; npm run build passes all 138 site tests and produces the static site.
 This prepares the plan and checker demonstration; recording, fresh optimizer
 launch rehearsal and later VeloxQ improvement experiments remain open.
+
+### 17 October — audit all submission points and preserve release privacy
+
+Mapped all eight official scoring categories (30 points), every required
+deliverable and the separate unweighted VeloxQ criteria to current evidence
+and remaining gates in docs/STAGE2_SUBMISSION.md. QAOA plus VeloxQ is the
+current presentation default; a VQE result must pass the common checks and
+justify inclusion before the freeze. More method names are not rubric points.
+The major technical gaps are larger-instance quantum quality and VeloxQ
+feasibility/quality. Half the points concern documentation, video, defense
+and consistency, so those have explicit acceptance work too.
+
+Read the official requirements, current result receipts, root schedules and
+MIT file; checked the actual GitHub visibility as private and fetched main
+for delivered method work. Added the current catering AI-use disclosure and
+corrected the presentation measurement plan: final-only service samples do
+not expose time to first feasible solution. The user explicitly wants GitHub
+private until the final submission step. Preparation targets preserve that
+preference while leaving access-check/submission time before the deadline.
+No repo visibility change, deletion, cleanup, service call or training occurred.
+
+Checklist verification: all eight rubric rows total30points; changed Markdown
+links resolve locally; root schedules report4h/8h; the cited complete-cell
+report contains all six trials with the stated reference tuple. Whitespace
+checks pass. These documentation checks do not constitute a final release run.

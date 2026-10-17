@@ -50,7 +50,8 @@ the integration effective on this production decision:
    the concrete submission cap. Keep the original cold run. Record every new
    job, returned sample and quota change. Do not automatically escalate width.
 4. **Quality comparison:** compare validated (U,W,B,R), valid-return rate and
-   time to first feasible plan. Separate upload, queue, backend and total time.
+   runtime. Separate upload, queue, backend and total time. The current service
+   returns only final samples, so time to first feasible plan is not observable.
    Use identical bundle hashes for solver comparisons and comparable declared
    budgets/initialization. A CP FEASIBLE incumbent is not a proven optimum.
 5. **Presentation gate:** feature the best reproducible supported result, with

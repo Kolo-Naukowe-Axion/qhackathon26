@@ -12,6 +12,10 @@ and [solver contract](docs/CATERING_SOLVER_CONTRACT.md).
 The [presentation and demo runbook](docs/CATERING_PRESENTATION.md) contains the
 three-minute script, five-minute video storyboard, exact kitchen interactions,
 live-launch preparation and the VeloxQ prize experiment priorities.
+The [submission checklist](docs/STAGE2_SUBMISSION.md) maps all 30 points and the
+separate VeloxQ criteria to evidence, remaining work and final release gates.
+GitHub stays private during development; public release is deferred to the final
+submission step, with time to verify access before the deadline.
 
 The new paired-course profile requires both main and side for a complete meal,
 counts unmatched food as waste, and adds a quadratic service objective without
@@ -255,6 +259,17 @@ QUBO. The executable simulator, controller experiments and trace checker are
 separate artifacts. No physical ODRA run or full-factory quantum speedup is claimed.
 
 ## AI use
+
+For the current catering extension, Codex also assisted with paired-meal
+formulation, program enumeration, independent checking, quantum simulator and
+classical reference code, evidence export, the game UI, presentation planning
+and documentation. The team's method owners develop and review their adapters
+and experiments. Actual catering QAOA evidence is under
+`output/catering-complete-cell-v3/` and `output/catering-paired-pilot-v1/`;
+the separately authorized initial VeloxQ service results and ledger are under
+`output/catering-methods/veloxq/`. Those receipts establish actual calls and
+checked outcomes, not a performance advantage. No catering physical-QPU result
+is claimed. Team members must understand and defend the submitted work.
 
 The manufacturing entry refinement also used Codex for the complete assignment mixer, offline SDK precision checks, generated evidence view and documentation. Any local draft demo marked synthetic narration uses the macOS text-to-speech voice; it is not a team member speaking. The team must review and can replace that narration before upload.
 
