@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>QAOA, built from arrows — interactive guide (qhackathon26)</title>
+<style>
+:root{--bg:#14171c;--panel:#1b1f27;--panel2:#222733;--text:#e8e6e3;--mut:#9aa3ad;--blue:#58C4DD;--yellow:#FFD54A;--green:#83C167;--red:#FC6255;--purple:#B48EDB;--faint:#323844;}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--text);font:17px/1.6 "Charter","Iowan Old Style","Palatino Linotype",Georgia,serif}
+.wrap{display:grid;grid-template-columns:250px minmax(0,1fr);gap:0;max-width:1400px;margin:0 auto}
+nav{position:sticky;top:0;align-self:start;height:100vh;overflow:auto;padding:22px 14px;border-right:1px solid var(--faint);font:14px/1.45 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+nav a{display:block;color:var(--mut);text-decoration:none;padding:4px 8px;border-radius:6px}
+nav a:hover{color:var(--text);background:var(--panel)}
+nav .nt{color:var(--yellow);font-weight:700;margin:0 8px 10px}
+main{padding:26px 46px 80px;min-width:0}
+h1{font-size:2.1em;margin:.2em 0 .1em;color:#fff;letter-spacing:.2px}
+.sub{color:var(--mut);margin:0 0 1.4em}
+section{margin:0 0 54px;padding-top:6px}
+h2{font-size:1.5em;color:var(--blue);border-bottom:1px solid var(--faint);padding-bottom:6px;margin:0 0 .6em}
+h2 .n{color:var(--yellow);margin-right:.45em}
+h3{color:#fff;font-size:1.12em;margin:1.3em 0 .4em}
+p{margin:.55em 0;max-width:62em}
+code{font:0.88em ui-monospace,Menlo,Consolas,monospace;background:var(--panel2);padding:1px 5px;border-radius:4px;color:#f2e6c4}
+b{color:#fff}
+.key{border-left:4px solid var(--yellow);background:var(--panel);padding:12px 16px;border-radius:0 10px 10px 0;margin:14px 0;max-width:62em}
+.key.g{border-color:var(--green)}.key.r{border-color:var(--red)}.key.b{border-color:var(--blue)}
+.notation{background:var(--panel);border:1px solid var(--faint);border-radius:12px;padding:10px 18px;margin:14px 0;max-width:62em}
+.notation dt{color:var(--yellow);float:left;clear:left;width:9.5em;font-weight:700}
+.notation dd{margin:0 0 6px 10em}
+.widget{background:var(--panel);border:1px solid var(--faint);border-radius:14px;padding:16px 18px;margin:18px 0;overflow-x:auto}
+.widget .wt{font:600 13px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--yellow);margin-bottom:8px}
+.ctrl{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:center;margin:10px 0;font:14px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+.btn{background:#2b3240;color:var(--text);border:1px solid #3d4556;border-radius:8px;padding:6px 12px;font:14px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;cursor:pointer}
+.btn:hover{border-color:var(--blue)}.btn.on{border-color:var(--yellow);color:var(--yellow)}.btn.ghost{background:transparent}
+.btn:disabled{opacity:.5;cursor:wait}
+select{background:#2b3240;color:var(--text);border:1px solid #3d4556;border-radius:8px;padding:5px 8px;font:14px -apple-system,sans-serif}
+.sl{display:flex;align-items:center;gap:8px}
+.sl .nm{color:var(--yellow);font:italic 700 17px Georgia,serif;min-width:1.2em}
+.sl input{width:220px;accent-color:var(--yellow)}
+.sl .val{min-width:5.5em;color:var(--text);font:14px ui-monospace,Menlo,monospace}
+.chk{display:flex;align-items:center;gap:4px;color:var(--text)}
+.readout{font:14.5px/1.5 -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--text);margin:6px 0}
+.readout.small{font-size:13px;color:var(--mut)}
+.readout .ok,.ginfo .ok,.ok{color:var(--green)} .readout .no,.ginfo .no,.no{color:var(--red)}
+.legend{font:13px -apple-system,sans-serif;color:var(--mut);margin:6px 0}
+.cap{font:13.5px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--mut);margin:6px 0 2px}
+.log{font:12.5px ui-monospace,Menlo,monospace;color:var(--mut);min-height:1.4em;margin:6px 0}
+.row{display:flex;flex-wrap:wrap;gap:18px;align-items:flex-start}
+.col{flex:1 1 320px;min-width:0}
+svg{display:block;max-width:100%;height:auto}
+svg text{font-family:-apple-system,"Segoe UI",Helvetica,Arial,sans-serif;fill:var(--text)}
+.phasors{width:100%}
+.cellbg{fill:#171b22;stroke:#262c37}
+.pick{cursor:pointer}.pick:hover .cellbg{stroke:var(--blue)}.sel .cellbg{stroke:var(--yellow);stroke-width:2}
+.unit{fill:none;stroke:#4a5263;stroke-width:1.2}
+.axis{stroke:#2c3340;stroke-width:1}
+.blabel{font:700 14px ui-monospace,Menlo,monospace;text-anchor:middle;fill:#fff}
+.blabelS{font:11px ui-monospace,Menlo,monospace;text-anchor:middle}
+.etext{font-size:11.5px;text-anchor:middle;fill:var(--mut)}
+.ptext{font-size:11.5px;text-anchor:middle;fill:var(--text)}
+.pbg{fill:#2a303b}
+.tick{font-size:11px;text-anchor:middle;fill:var(--mut)}
+.axl{font:italic 14px Georgia,serif;text-anchor:middle;fill:var(--yellow)}
+.chain{display:inline-block;width:190px;vertical-align:top;text-align:center}
+.chainT{font:700 13px ui-monospace,Menlo,monospace;color:#fff}
+.chainP{font:12.5px -apple-system,sans-serif;color:var(--text);min-height:2.6em}
+.chainsvg{width:180px;margin:0 auto}
+.heat{width:100%;max-width:560px}
+.chart{width:100%;max-width:440px}
+.hist{width:100%}
+.drag{width:260px;touch-action:none}
+.scale{width:100%;max-width:640px}
+.gantt{margin:8px 0}.ganttsvg{width:100%;max-width:470px}.gjob{font:700 11px sans-serif;text-anchor:middle;fill:#111}
+.ginfo{font:14px -apple-system,sans-serif}
+.loopdg{width:100%;max-width:760px}
+.cpubox{fill:#17283a;stroke:var(--blue);stroke-width:1.5}.qpubox{fill:#2a1d3a;stroke:var(--purple);stroke-width:1.5}
+.boxT{font-weight:700;font-size:14px;text-anchor:middle}.boxS{font-size:12.5px;text-anchor:middle;fill:var(--text)}
+.circ{width:100%;max-width:900px}
+.wire{stroke:#8a93a3;stroke-width:1.4}.qlab{font:italic 15px Georgia,serif}
+.gtxt{font:700 12px sans-serif;text-anchor:middle;fill:#111}.gsub{font-size:11px;text-anchor:middle;fill:#111}
+.gsub2{font-size:11px;fill:var(--blue)}
+.circ>text.gsub{fill:var(--yellow)} .cg>text.gsub{fill:var(--mut)}
+.cg{transition:opacity .4s}.cg.dim{opacity:.25}
+table.tt{border-collapse:collapse;margin:10px 0;font:14px -apple-system,"Segoe UI",Helvetica,Arial,sans-serif}
+table.tt th,table.tt td{border:1px solid var(--faint);padding:5px 10px;text-align:center}
+table.tt th{background:var(--panel2);color:var(--yellow);font-weight:600}
+math{font-size:1.06em}
+math[display=block]{margin:.6em 0;overflow-x:auto;overflow-y:hidden}
+.eq{background:#181c23;border-radius:10px;padding:4px 14px;margin:10px 0;max-width:62em;overflow-x:auto}
+.tag{display:inline-block;font:700 11px -apple-system,sans-serif;letter-spacing:.06em;padding:1px 7px;border-radius:5px;margin-right:6px;vertical-align:2px}
+.tag.cpu{background:#17283a;color:var(--blue);border:1px solid var(--blue)}
+.tag.qpu{background:#2a1d3a;color:var(--purple);border:1px solid var(--purple)}
+.ans{color:var(--mut)}
+details.q{background:var(--panel);border:1px solid var(--faint);border-radius:10px;padding:8px 14px;margin:12px 0;max-width:62em}
+details.q summary{cursor:pointer;color:var(--yellow);font-weight:700}
+.foot{color:var(--mut);font-size:.9em;border-top:1px solid var(--faint);padding-top:14px}
+@media (max-width:1000px){.wrap{grid-template-columns:1fr}nav{position:static;height:auto;border-right:0;border-bottom:1px solid var(--faint)}main{padding:18px}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<nav>
+<div class="nt">QAOA from arrows</div>
+<a href="#s1">1 · The question</a>
+<a href="#s2">2 · Amplitudes are arrows</a>
+<a href="#s3">3 · Start: random guessing</a>
+<a href="#s4">4 · Cost step: rotate</a>
+<a href="#s5">5 · Mixer gate on one qubit</a>
+<a href="#s6">6 · Interference</a>
+<a href="#s7">7 · One full layer</a>
+<a href="#s8">8 · Cost step from gates</a>
+<a href="#s9">9 · Which gates, and why</a>
+<a href="#s10">10 · The QAOA loop</a>
+<a href="#s11">11 · Reading off the answer</a>
+<a href="#s12">12 · Instance A, 4 qubits</a>
+<a href="#s13">13 · What is real here</a>
+<a href="VQE_INTERACTIVE.html">→ VQE from arrows</a>
+<a href="METHODS_TUTORIAL.html">← back to the methods tutorial</a>
+</nav>
+<main>
+<h1>QAOA, built from arrows</h1>
+<p class="sub">An interactive guide for the qhackathon26 scheduling baseline. It picks up where sections 1–5 of the <a href="METHODS_TUTORIAL.html" style="color:var(--blue)">methods tutorial</a> stop: you know what bits, the energy <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>x</mi><mrow><mo>&#x022A4;</mo></mrow></msup><mi>Q</mi><mi>x</mi><mo>&#x0002B;</mo><mi>c</mi></mrow></math> and the encodings are. Every picture on this page is computed live in your browser by an exact simulation of the quantum state. Move the sliders, press the buttons.</p>
+
+<div class="notation"><dl>
+<dt>bitstring <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math></dt><dd>one candidate answer, e.g. <code>01</code>. With <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> bits there are <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math> bitstrings.</dd>
+<dt>energy <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math></dt><dd>the QUBO score of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math>; in our model <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> means a valid schedule, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003E;</mo><mn>0</mn></mrow></math> means some rule is broken.</dd>
+<dt>amplitude <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>c</mi><mi>x</mi></msub></mrow></math></dt><dd>a complex number attached to bitstring <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math>; drawn as an arrow.</dd>
+<dt>state</dt><dd>the list of all <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math> amplitudes, always in the order <code>00</code>, <code>01</code>, <code>10</code>, <code>11</code>, …</dd>
+<dt><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>i</mi></mrow></math></dt><dd>the imaginary unit, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>i</mi><mn>2</mn></msup><mo>&#x0003D;</mo><mo>&#x02212;</mo><mn>1</mn></mrow></math>.</dd>
+<dt><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0002C;</mo><mi>&#x003B2;</mi></mrow></math></dt><dd>the two knobs (angles) of one QAOA layer: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi></mrow></math> for the cost step, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math> for the mixer.</dd>
+<dt><span class="tag cpu">CPU</span> <span class="tag qpu">QPU</span></dt><dd>where a step is computed: an ordinary computer, or the quantum chip.</dd>
+</dl></div>
+
+<!-- =========================== 1 =========================== -->
+<section id="s1">
+<h2><span class="n">1</span>The question QAOA answers</h2>
+<p>We use the smallest scheduling problem that still has a clash: <b>one machine, two jobs A and B, each 1 hour, deadline <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>2</mn></mrow></math></b>. Each job may start at hour 0 or hour 1, so one bit per job is enough: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math> means "A starts at hour 1", <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0003D;</mo><mn>0</mn></mrow></math> means "A starts at hour 0" (same for B).</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0002C;</mo><msub><mi>y</mi><mi>B</mi></msub><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>1</mn><mo>&#x02212;</mo><msub><mi>y</mi><mi>A</mi></msub><mo>&#x02212;</mo><msub><mi>y</mi><mi>B</mi></msub><mo>&#x0002B;</mo><mn>2</mn><mspace width="0.167em" /><msub><mi>y</mi><mi>A</mi></msub><msub><mi>y</mi><mi>B</mi></msub></mrow></math></div>
+<table class="tt">
+<tr><th><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi><mo>&#x0003D;</mo><msub><mi>y</mi><mi>A</mi></msub><msub><mi>y</mi><mi>B</mi></msub></mrow></math></th><th>A starts</th><th>B starts</th><th><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math></th><th>meaning</th></tr>
+<tr><td><code>00</code></td><td>0</td><td>0</td><td>1</td><td class="no">clash at hour 0</td></tr>
+<tr><td><code>01</code></td><td>0</td><td>1</td><td><b>0</b></td><td class="ok">A then B ✓</td></tr>
+<tr><td><code>10</code></td><td>1</td><td>0</td><td><b>0</b></td><td class="ok">B then A ✓</td></tr>
+<tr><td><code>11</code></td><td>1</td><td>1</td><td>1</td><td class="no">clash at hour 1</td></tr>
+</table>
+<div class="key g"><b>The goal.</b> Find a bitstring with the lowest energy. If that energy is 0, a schedule fitting in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> hours exists, and the bitstring <i>is</i> that schedule. To find the <i>shortest</i> schedule we later repeat this with smaller <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> (section 11).</div>
+<p>Of course here we can read the answer off the table. The point is that for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> bits the table has <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math> rows (Instance B: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mn>30</mn></mrow></msup><mo>&#x02248;</mo><msup><mn>10</mn><mn>9</mn></msup></mrow></math>), and we want a method that never writes the table down.</p>
+</section>
+
+<!-- =========================== 2 =========================== -->
+<section id="s2">
+<h2><span class="n">2</span>A quantum state is a list of arrows</h2>
+<p>A classical computer holds <i>one</i> bitstring at a time. Two qubits hold a list of <b>four numbers</b>, one per bitstring:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mtext>state</mtext><mo>&#x0003D;</mo><mo minsize="1.2em" maxsize="1.2em">(</mo><msub><mi>c</mi><mrow><mn>00</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>01</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>10</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>11</mn></mrow></msub><mo minsize="1.2em" maxsize="1.2em">)</mo></mrow></math></div>
+<p>Each <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>c</mi><mi>x</mi></msub></mrow></math> is a complex number. Draw it as an <b>arrow</b> in a circle: the arrow's <b>length</b> is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x0007C;</mo><msub><mi>c</mi><mi>x</mi></msub><mo stretchy="false">&#x0007C;</mo></mrow></math> and its <b>direction</b> is the complex phase. Two rules are all you need:</p>
+<div class="key b"><b>Rule 1 (measurement).</b> Measuring all qubits gives <b>one</b> bitstring <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math>, with probability <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mo stretchy="false">&#x0007C;</mo><msub><mi>c</mi><mi>x</mi></msub><msup><mo stretchy="false">&#x0007C;</mo><mn>2</mn></msup></mrow></math>, the arrow's length squared. The list itself is never seen; only that one bitstring comes out.<br>
+<b>Rule 2 (gates).</b> We cannot write the list directly. A <b>gate</b> is an operation on one or two qubits that turns the list into a new list. Lengths squared always add up to 1.</div>
+<div class="widget"><div class="wt">Try it · direction does not matter for probability</div>
+<p style="margin-top:0">Drag the arrow (or click anywhere in the circle). The direction changes, the length stays <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></math>, so the probability stays <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math>.</p>
+<div id="w-drag"></div></div>
+</section>
+
+<!-- =========================== 3 =========================== -->
+<section id="s3">
+<h2><span class="n">3</span>The start: equal arrows = random guessing</h2>
+<p>A Hadamard gate on each qubit, applied to <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x0007C;</mo><mn>00</mn><mi>&#x027E9;</mi></mrow></math>, gives every bitstring the same arrow:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mo minsize="1.2em" maxsize="1.2em">(</mo><msub><mi>c</mi><mrow><mn>00</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>01</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>10</mn></mrow></msub><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><msub><mi>c</mi><mrow><mn>11</mn></mrow></msub><mo minsize="1.2em" maxsize="1.2em">)</mo><mo>&#x0003D;</mo><mo minsize="1.2em" maxsize="1.2em">(</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mfrac><mn>1</mn><mn>2</mn></mfrac><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mfrac><mn>1</mn><mn>2</mn></mfrac><mo minsize="1.2em" maxsize="1.2em">)</mo></mrow></math></div>
+<p>It does not depend on the problem at all: we do not know which bitstrings are good, so we start fair. Measured, it gives a valid schedule with probability <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo>&#x0002F;</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math> where <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi></mrow></math> is the number of valid bitstrings: here <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn><mo>&#x0002F;</mo><mn>4</mn><mo>&#x0003D;</mo><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math>. That is exactly <b>random guessing</b>. For Instance A at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>4</mn></mrow></math> it is only <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><mn>16</mn></mrow></math>.</p>
+<div class="widget"><div class="wt">Try it · measure the start state <span class="tag qpu">QPU</span></div>
+<div id="w-measure"></div></div>
+<p>Everything QAOA does from here on is a way to push this fraction up, using only the energy <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math>.</p>
+</section>
+
+<!-- =========================== 4 =========================== -->
+<section id="s4">
+<h2><span class="n">4</span>The cost step: rotate each arrow by its energy</h2>
+<p>The cost step multiplies every amplitude by a phase that depends on its energy:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msub><mi>c</mi><mi>x</mi></msub><mspace width="0.278em" /><mi>&#x027F6;</mi><mspace width="0.278em" /><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B3;</mi><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></msup><mspace width="0.167em" /><msub><mi>c</mi><mi>x</mi></msub></mrow></math></div>
+<p>A phase <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B8;</mi></mrow></msup></mrow></math> is a complex number of length 1, so multiplying by it <b>rotates the arrow by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x003B8;</mi></mrow></math> and keeps its length</b>. With <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> the arrow does not move; with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>1</mn></mrow></math> it turns by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x003B3;</mi></mrow></math>. This is the <b>only</b> place where the problem enters the circuit.</p>
+<div class="widget"><div class="wt">Try it · the cost step <span class="tag qpu">QPU</span></div>
+<div id="w-cost"></div></div>
+<div class="key r"><b>Look at the probability bars:</b> they never move. Rotating an arrow does not change its length, so after the cost step alone the probability of a valid schedule is still <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo>&#x0002F;</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math>. The energy is now written into the arrows' directions, but invisibly. We need a step that turns directions into lengths.</div>
+</section>
+
+<!-- =========================== 5 =========================== -->
+<section id="s5">
+<h2><span class="n">5</span>The mixer gate on one qubit</h2>
+<p>Start with one qubit, so there are only two arrows, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><msub><mi>c</mi><mn>0</mn></msub><mo>&#x0002C;</mo><msub><mi>c</mi><mn>1</mn></msub><mo stretchy="false">&#x00029;</mo></mrow></math>. A one-qubit gate is a <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn><mo>&#x000D7;</mo><mn>2</mn></mrow></math> matrix, and applying it means multiplying this matrix by the column of amplitudes. The two simplest gates are "do nothing" and "flip the bit":</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>I</mi><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mi>X</mi><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mi>X</mi><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>c</mi><mn>0</mn></msub></mtd></mtr><mtr><mtd><msub><mi>c</mi><mn>1</mn></msub></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><msub><mi>c</mi><mn>1</mn></msub></mtd></mtr><mtr><mtd><msub><mi>c</mi><mn>0</mn></msub></mtd></mtr></mtable><mo>&#x0005D;</mo></mrow></math></div>
+<p>We want a <b>dial</b> between them, with knob <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math>: at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> nothing happens, at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>2</mn></mrow></math> the bit is flipped, in between part of each arrow moves to the other bitstring. The mixer is that blend:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mi>cos</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><mi>I</mi><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><mi>X</mi><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mi>cos</mi><mi>&#x003B2;</mi></mtd><mtd><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi></mtd></mtr><mtr><mtd><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi></mtd><mtd><mi>cos</mi><mi>&#x003B2;</mi></mtd></mtr></mtable><mo>&#x0005D;</mo></mrow></math></div>
+<p>Multiplying out the matrix–vector product row by row:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msubsup><mi>c</mi><mn>0</mn><mrow><mtext>new</mtext></mrow></msubsup><mo>&#x0003D;</mo><mi>cos</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><msub><mi>c</mi><mn>0</mn></msub><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><msub><mi>c</mi><mn>1</mn></msub></mrow></math></div>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msubsup><mi>c</mi><mn>1</mn><mrow><mtext>new</mtext></mrow></msubsup><mo>&#x0003D;</mo><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><msub><mi>c</mi><mn>0</mn></msub><mo>&#x0002B;</mo><mi>cos</mi><mi>&#x003B2;</mi><mspace width="0.278em" /><msub><mi>c</mi><mn>1</mn></msub></mrow></math></div>
+<p>Each new arrow is <b>a kept part</b> (its own old arrow times <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>cos</mi><mi>&#x003B2;</mi></mrow></math>) <b>plus a received part</b> (the other arrow times <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi></mrow></math>). On hardware this gate is called <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>X</mi></msub><mo stretchy="false">&#x00028;</mo><mn>2</mn><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math>.</p>
+<p><b>Why <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>cos</mi></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>sin</mi></mrow></math> and the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>i</mi></mrow></math>?</b> So that probabilities still add up to 1 for every <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math> and every starting state. Tick "remove the −i" below with the equal start <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002F;</mo><msqrt><mn>2</mn></msqrt><mo>&#x0002C;</mo><mn>1</mn><mo>&#x0002F;</mo><msqrt><mn>2</mn></msqrt><mo stretchy="false">&#x00029;</mo></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>4</mn></mrow></math>: the total becomes 2, which is impossible. The <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>i</mi></mrow></math> makes <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math> a legal quantum gate. (It also equals <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B2;</mi><mi>X</mi></mrow></msup></mrow></math>, but you do not need that here.)</p>
+<div class="widget"><div class="wt">Try it · the mixer as a dial</div>
+<div id="w-dial"></div>
+<p class="cap">From <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x0002C;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo></mrow></math> you get <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>cos</mi><mi>&#x003B2;</mi><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math>, so <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>cos</mi><mn>2</mn></msup><mi>&#x003B2;</mi></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>sin</mi><mn>2</mn></msup><mi>&#x003B2;</mi></mrow></math>. From the equal start the probabilities stay <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mfrac><mn>1</mn><mn>2</mn></mfrac></mrow></math> for every <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math>: watch the arrows turn but the bars stay put.</p></div>
+</section>
+
+<!-- =========================== 6 =========================== -->
+<section id="s6">
+<h2><span class="n">6</span>Interference: why the mixer needs the cost step</h2>
+<p>This is the one genuinely new idea in QAOA. Toy problem with one qubit: <code>0</code> is good (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math>), <code>1</code> is bad (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>1</mn></mrow></math>). The mixer builds each new arrow by <b>adding two arrows head to tail</b>: the kept part and the received part.</p>
+<table class="tt"><tr><th>the two parts arriving at a bitstring</th><th>their sum</th><th>probability</th></tr>
+<tr><td>same direction</td><td>long arrow</td><td>large</td></tr>
+<tr><td>opposite directions</td><td>nothing</td><td>zero</td></tr>
+<tr><td>at right angles</td><td>in between</td><td>in between</td></tr></table>
+<div class="widget"><div class="wt">Try it · kept part + received part</div>
+<div id="w-interf"></div></div>
+<ul>
+<li><b>Untick the cost step.</b> The parts arriving at both bitstrings are always at right angles, so both sums have the same length: still a coin flip, for every <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math>. The mixer alone cannot tell good from bad, because it does not know <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math>.</li>
+<li><b>With the cost step</b> the bad arrow was turned by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>2</mn></mrow></math>. At <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mo>&#x02212;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>4</mn></mrow></math> the two parts line up at <code>0</code> and cancel at <code>1</code>: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mn>0</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mn>1</mn></mrow></math>. At <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi><mo>&#x0003D;</mo><mo>&#x0002B;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>4</mn></mrow></math> it is the other way round: everything lands on the <b>bad</b> bitstring.</li>
+</ul>
+<div class="key"><b>The whole mechanism.</b> The cost step marks bitstrings by turning their arrows according to energy (invisible). The mixer adds neighbouring arrows, which turns the marks into probability (visible). Whether probability piles up on good or on bad bitstrings depends on the angles <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0002C;</mo><mi>&#x003B2;</mi></mrow></math>, and that is why they have to be tuned.</div>
+</section>
+
+<!-- =========================== 7 =========================== -->
+<section id="s7">
+<h2><span class="n">7</span>One full QAOA layer on two qubits</h2>
+<p>Back to the two-job problem: four arrows. One layer is: start (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> on each qubit) → cost step with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi></mrow></math> → mixer <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>M</mi><mo stretchy="false">&#x00028;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math> on qubit A <i>and</i> on qubit B → measure. Applying the one-qubit mixer to both qubits means every new arrow collects a contribution from <b>all four</b> old arrows, weighted by how many bits differ:</p>
+<table class="tt"><tr><th>how <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>y</mi></mrow></math> differs from <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>x</mi></mrow></math></th><th>weight <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>w</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x0002C;</mo><mi>y</mi><mo stretchy="false">&#x00029;</mo></mrow></math></th></tr>
+<tr><td>same bitstring</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>cos</mi><mn>2</mn></msup><mi>&#x003B2;</mi></mrow></math></td></tr>
+<tr><td>neighbour (1 bit differs)</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><mi>cos</mi><mi>&#x003B2;</mi></mrow></math></td></tr>
+<tr><td>2 bits differ</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mo>&#x02212;</mo><mi>i</mi><mi>sin</mi><mi>&#x003B2;</mi><msup><mo stretchy="false">&#x00029;</mo><mn>2</mn></msup><mo>&#x0003D;</mo><mo>&#x02212;</mo><msup><mi>sin</mi><mn>2</mn></msup><mi>&#x003B2;</mi></mrow></math></td></tr></table>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msubsup><mi>c</mi><mi>x</mi><mrow><mtext>new</mtext></mrow></msubsup><mo>&#x0003D;</mo><munder><mo>&#x02211;</mo><mrow><mi>y</mi></mrow></munder><mi>w</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo>&#x0002C;</mo><mi>y</mi><mo stretchy="false">&#x00029;</mo><mspace width="0.278em" /><msub><mi>c</mi><mi>y</mi></msub></mrow></math></div>
+<div class="widget"><div class="wt">Try it · one layer, and the landscape of all angle pairs</div>
+<div id="w-layer"></div></div>
+<p>The map on the right is the <b>landscape</b>: for every pair <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>&#x003B3;</mi><mo>&#x0002C;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math> it shows the average energy you would measure after one layer. Dark is good. At <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>&#x003B3;</mi><mo>&#x0002C;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>2</mn><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mn>3</mn><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>8</mn><mo stretchy="false">&#x00029;</mo></mrow></math> the clashes cancel completely and every shot is a valid schedule; at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo stretchy="false">&#x00028;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>2</mn><mo>&#x0002C;</mo><mtext>&#x000A0;</mtext><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>8</mn><mo stretchy="false">&#x00029;</mo></mrow></math> the good schedules cancel instead. Along <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> the map is flat at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x027E8;</mi><mi>E</mi><mi>&#x027E9;</mi><mo>&#x0003D;</mo><mn>0.5</mn></mrow></math>: no cost step, no progress.</p>
+<p><b>The catch:</b> on a real problem we cannot draw this map. Each pixel needs the full list of arrows, which exists only inside the quantum chip. All we can get out is measured bitstrings. Section 10 is how we search the map anyway.</p>
+</section>
+
+<!-- =========================== 8 =========================== -->
+<section id="s8">
+<h2><span class="n">8</span>Building the cost step from gates (no <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math> energies)</h2>
+<p>A natural worry: to apply <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B3;</mi><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></msup></mrow></math> to every bitstring, don't we have to compute <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math> for all <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math> of them? <b>No.</b> The cost step is built from the <i>terms</i> of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math>, not from its values. Because a phase of a sum is a product of phases, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mi>a</mi><mo>&#x0002B;</mo><mi>b</mi></mrow></msup><mo>&#x0003D;</mo><msup><mi>e</mi><mrow><mi>a</mi></mrow></msup><msup><mi>e</mi><mrow><mi>b</mi></mrow></msup></mrow></math>:</p>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B3;</mi><mi>E</mi></mrow></msup><mo>&#x0003D;</mo><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B3;</mi></mrow></msup><mo>&#x000B7;</mo><msup><mi>e</mi><mrow><mo>&#x0002B;</mo><mi>i</mi><mi>&#x003B3;</mi><msub><mi>y</mi><mi>A</mi></msub></mrow></msup><mo>&#x000B7;</mo><msup><mi>e</mi><mrow><mo>&#x0002B;</mo><mi>i</mi><mi>&#x003B3;</mi><msub><mi>y</mi><mi>B</mi></msub></mrow></msup><mo>&#x000B7;</mo><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mn>2</mn><mi>i</mi><mi>&#x003B3;</mi><mspace width="0.167em" /><msub><mi>y</mi><mi>A</mi></msub><msub><mi>y</mi><mi>B</mi></msub></mrow></msup></mrow></math></div>
+<table class="tt"><tr><th>factor</th><th>one gate</th><th>which arrows it turns</th></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x0002B;</mo><mi>i</mi><mi>&#x003B3;</mi><msub><mi>y</mi><mi>A</mi></msub></mrow></msup></mrow></math></td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math> on qubit A</td><td>every bitstring with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math>, by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0002B;</mo><mi>&#x003B3;</mi></mrow></math></td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x0002B;</mo><mi>i</mi><mi>&#x003B3;</mi><msub><mi>y</mi><mi>B</mi></msub></mrow></msup></mrow></math></td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math> on qubit B</td><td>every bitstring with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>B</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math>, by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x0002B;</mo><mi>&#x003B3;</mi></mrow></math></td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mn>2</mn><mi>i</mi><mi>&#x003B3;</mi><msub><mi>y</mi><mi>A</mi></msub><msub><mi>y</mi><mi>B</mi></msub></mrow></msup></mrow></math></td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math> on qubits A, B</td><td>every bitstring with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0003D;</mo><msub><mi>y</mi><mi>B</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math>, by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mn>2</mn><mi>&#x003B3;</mi></mrow></math></td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>e</mi><mrow><mo>&#x02212;</mo><mi>i</mi><mi>&#x003B3;</mi></mrow></msup></mrow></math></td><td>none</td><td>all arrows equally, so nothing measurable changes: dropped</td></tr></table>
+<p>A gate on qubit A does not visit the arrows one by one: it is one physical operation on one qubit, and its effect on the bookkeeping list is that <i>all</i> bitstrings with <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mi>A</mi></msub><mo>&#x0003D;</mo><mn>1</mn></mrow></math> turn at once.</p>
+<div class="widget"><div class="wt">Try it · apply the gates one by one (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0003D;</mo><mi>&#x003C0;</mi><mo>&#x0002F;</mo><mn>4</mn></mrow></math>)</div>
+<div id="w-gates"></div>
+<p class="cap">After gates 1–3 every arrow has turned by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x02212;</mo><mi>&#x003B3;</mi><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002B;</mo><mi>&#x003B3;</mi></mrow></math>, the right phase up to one common turn; gate 4 (the constant) only adds that common turn.</p></div>
+<div class="widget"><div class="wt">How the cost grows</div><div id="w-scale"></div></div>
+<p>A QUBO has at most one linear term per bit and one pair term per pair of bits, so one cost step needs at most <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi><mo>&#x0002B;</mo><mi>n</mi><mo stretchy="false">&#x00028;</mo><mi>n</mi><mo>&#x02212;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn><mo>&#x0003D;</mo><mi>n</mi><mo stretchy="false">&#x00028;</mo><mi>n</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn></mrow></math> gates: about <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mi>n</mi><mn>2</mn></msup><mo>&#x0002F;</mo><mn>2</mn></mrow></math>, never <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mi>n</mi></msup></mrow></math>. The ordinary computer does evaluate <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo></mrow></math>, but only for the bitstrings that come back as shots: about a thousand per try.</p>
+</section>
+
+<!-- =========================== 9 =========================== -->
+<section id="s9">
+<h2><span class="n">9</span>Which gates, and are they arbitrary?</h2>
+<table class="tt">
+<tr><th>part</th><th>gates</th><th>fixed or chosen?</th></tr>
+<tr><td>start</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> on every qubit</td><td>chosen to match the mixer: fair to all bitstrings, and the <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>X</mi></mrow></math> mixer alone leaves it unchanged</td></tr>
+<tr><td>cost</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math> (one-bit terms), <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math> (two-bit terms)</td><td><b>fixed by <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Q</mi></mrow></math></b>; only <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi></mrow></math> is free</td></tr>
+<tr><td>mixer</td><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>X</mi></msub><mo stretchy="false">&#x00028;</mo><mn>2</mn><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math> on every qubit (standard), or XY gates on pairs</td><td>a design choice, with hard rules</td></tr>
+</table>
+<p><b>Rules for any mixer.</b> (1) It must move amplitude <i>between</i> bitstrings (add arrows of different bitstrings); a gate that only turns arrows would be another cost step. (2) It must be able to reach every bitstring that could be the answer. A QUBO cost needs only <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math> and <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math>; a higher-order (HUBO) term like <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mn>1</mn></msub><msub><mi>y</mi><mn>2</mn></msub><msub><mi>y</mi><mn>3</mn></msub></mrow></math> would need a three-qubit phase gate, which is one reason we reduce everything to a QUBO first.</p>
+<div class="row">
+<div class="col"><svg viewBox="0 0 300 200" style="max-width:320px"><text x="150" y="16" class="tick" style="fill:#FFD54A;font-size:13px">X mixer: flip one bit</text>
+<line x1="70" y1="50" x2="230" y2="50" stroke="#58C4DD" stroke-width="2.5"/><line x1="70" y1="170" x2="230" y2="170" stroke="#58C4DD" stroke-width="2.5"/><line x1="70" y1="50" x2="70" y2="170" stroke="#58C4DD" stroke-width="2.5"/><line x1="230" y1="50" x2="230" y2="170" stroke="#58C4DD" stroke-width="2.5"/>
+<circle cx="70" cy="50" r="20" fill="#2a1d1d" stroke="#FC6255"/><text x="70" y="55" class="blabel">00</text>
+<circle cx="230" cy="50" r="20" fill="#1d2a1d" stroke="#83C167"/><text x="230" y="55" class="blabel">01</text>
+<circle cx="70" cy="170" r="20" fill="#1d2a1d" stroke="#83C167"/><text x="70" y="175" class="blabel">10</text>
+<circle cx="230" cy="170" r="20" fill="#2a1d1d" stroke="#FC6255"/><text x="230" y="175" class="blabel">11</text></svg></div>
+<div class="col"><svg viewBox="0 0 300 200" style="max-width:320px"><text x="150" y="16" class="tick" style="fill:#FFD54A;font-size:13px">XY mixer: swap two bits</text>
+<line x1="230" y1="50" x2="70" y2="170" stroke="#B48EDB" stroke-width="2.5"/>
+<circle cx="70" cy="50" r="20" fill="#2a1d1d" stroke="#FC6255"/><text x="70" y="55" class="blabel">00</text>
+<circle cx="230" cy="50" r="20" fill="#1d2a1d" stroke="#83C167"/><text x="230" y="55" class="blabel">01</text>
+<circle cx="70" cy="170" r="20" fill="#1d2a1d" stroke="#83C167"/><text x="70" y="175" class="blabel">10</text>
+<circle cx="230" cy="170" r="20" fill="#2a1d1d" stroke="#FC6255"/><text x="230" y="175" class="blabel">11</text></svg></div>
+</div>
+<p class="cap">Lines show which arrows a mixer adds together. The XY mixer only mixes <code>01</code> ↔ <code>10</code> and never changes how many 1s there are. With the one-hot encoding ("exactly one start time per job") that keeps every arrow inside the valid patterns.</p>
+<p>The choice matters. In an earlier exact simulation of Instance A at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>p</mi><mo>&#x0003D;</mo><mn>3</mn></mrow></math>, run with the same optimiser budget for all three set-ups, the probability of the optimal schedule was:</p>
+<table class="tt"><tr><th>encoding + mixer</th><th>qubits</th><th><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mtext>optimal</mtext><mo stretchy="false">&#x00029;</mo></mrow></math></th></tr>
+<tr><td>one-hot + <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>X</mi></mrow></math> mixer</td><td>8</td><td>0.11</td></tr>
+<tr><td>one-hot + XY mixer</td><td>8</td><td>0.89</td></tr>
+<tr><td>domain wall + <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>X</mi></mrow></math> mixer</td><td>4</td><td>0.89</td></tr></table>
+<p><b>Why this recipe at all?</b> QAOA is a step-by-step version of <i>quantum annealing</i>: start in the start state (the lowest-energy state of the mixer) and slowly change from "mixer only" to "cost only". If that is done slowly enough, the system ends in the lowest-energy state of the cost, i.e. the best schedule. Alternating cost and mixer layers imitates that slow change in chunks (Farhi, Goldstone, Gutmann 2014). With enough layers QAOA can reach the optimum; with few layers the tuned angles do the best they can. On real hardware a compiler rewrites each gate into the chip's native gates (e.g. <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math> becomes CNOT, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math>, CNOT); the effect on the arrows is identical.</p>
+</section>
+
+<!-- =========================== 10 =========================== -->
+<section id="s10">
+<h2><span class="n">10</span>The QAOA loop</h2>
+<p>We cannot see the arrows or draw the landscape; we can only run the circuit and collect bitstrings. So we <b>score</b> a pair of angles by what comes out, and let an ordinary optimiser improve the score.</p>
+<table class="tt" style="text-align:left">
+<tr><th>step</th><th>where</th><th>what happens</th></tr>
+<tr><td>0</td><td><span class="tag cpu">CPU</span></td><td>write the problem as <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo stretchy="false">&#x00028;</mo><mi>x</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><msup><mi>x</mi><mrow><mo>&#x022A4;</mo></mrow></msup><mi>Q</mi><mi>x</mi><mo>&#x0002B;</mo><mi>c</mi></mrow></math></td></tr>
+<tr><td>1</td><td><span class="tag cpu">CPU</span></td><td>turn each term of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math> into a gate (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math>); the mixer is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>X</mi></msub><mo stretchy="false">&#x00028;</mo><mn>2</mn><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo></mrow></math> on every qubit</td></tr>
+<tr><td>2</td><td><span class="tag cpu">CPU</span></td><td>choose the depth <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>p</mi></mrow></math> (layers) and starting angles: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn><mi>p</mi></mrow></math> numbers</td></tr>
+<tr><td>3</td><td><span class="tag qpu">QPU</span></td><td>run the circuit: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> on all qubits, then (cost, mixer) <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mo>&#x000D7;</mo><mspace width="0.167em" /><mi>p</mi></mrow></math>, then measure. Repeat ~1000 times (shots). Only bitstrings come back</td></tr>
+<tr><td>4</td><td><span class="tag cpu">CPU</span></td><td>score: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math> of each returned bitstring, averaged</td></tr>
+<tr><td>5</td><td><span class="tag cpu">CPU</span></td><td>the optimiser proposes new angles that should lower the score; back to step 3; stop when the score stops improving</td></tr>
+<tr><td>6</td><td><span class="tag cpu">CPU</span></td><td>answer: the lowest-energy bitstring among the final shots, decoded and checked</td></tr>
+</table>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mtext>score</mtext><mo stretchy="false">&#x00028;</mo><mi>&#x003B3;</mi><mo>&#x0002C;</mo><mi>&#x003B2;</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0003D;</mo><mfrac><mrow><mn>1</mn></mrow><mrow><mi>S</mi></mrow></mfrac><munderover><mo>&#x02211;</mo><mrow><mi>s</mi><mo>&#x0003D;</mo><mn>1</mn></mrow><mrow><mi>S</mi></mrow></munderover><mi>E</mi><mo minsize="1.2em" maxsize="1.2em">(</mo><msup><mi>x</mi><mrow><mo stretchy="false">&#x00028;</mo><mi>s</mi><mo stretchy="false">&#x00029;</mo></mrow></msup><mo minsize="1.2em" maxsize="1.2em">)</mo><mspace width="0.278em" /><mo>&#x02248;</mo><mspace width="0.278em" /><mi>&#x027E8;</mi><mi>E</mi><mi>&#x027E9;</mi></mrow></math></div>
+<div class="widget"><div class="wt">Try it · the loop on the two-job problem</div>
+<div id="w-loop"></div>
+<p class="cap">The optimiser here is Nelder–Mead, a simple derivative-free method of the same family as COBYLA (used in the repository). It sees only the noisy shot averages, never the map. Click the map before running to start somewhere else.</p></div>
+</section>
+
+<!-- =========================== 11 =========================== -->
+<section id="s11">
+<h2><span class="n">11</span>Reading off the answer, and the shortest schedule</h2>
+<p>The average energy is used <b>only for tuning</b>. The answer is one bitstring: among the shots from the final angles, take the one with the lowest <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math>, decode it into start times and check it with an ordinary schedule validator. One measurement gives a whole bitstring (every qubit measured), not a single number.</p>
+<div class="key g"><b>One run answers a yes/no question:</b> "is there a schedule that fits in <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> hours?" The <b>horizon search</b> repeats the whole loop with smaller <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> (fewer bits, new <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi></mrow></math>). The smallest <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi></mrow></math> that still yields an <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> bitstring is the optimal makespan. For Instance A, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>3</mn></mrow></math> is impossible: the lathe has 3 hours of work in total, so whichever job is turned second finishes on the lathe at hour 3 at the earliest and still needs the mill. The optimum is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>4</mn></mrow></math>.</div>
+<p>QAOA is a heuristic: if it never returns an <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math> bitstring, that does not prove none exists. That is why the tiny instances are also checked by brute force.</p>
+</section>
+
+<!-- =========================== 12 =========================== -->
+<section id="s12">
+<h2><span class="n">12</span>The real baseline: Instance A on 4 qubits</h2>
+<p>Instance A (jobs Z1 and Z2, route lathe T → mill F) at <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>H</mi><mo>&#x0003D;</mo><mn>4</mn></mrow></math> in the domain-wall encoding has four bits. Each bit says "this operation starts at its later allowed hour":</p>
+<table class="tt"><tr><th>bit</th><th>= 0</th><th>= 1</th></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mn>1</mn></msub></mrow></math></td><td>Z1 lathe at 0</td><td>Z1 lathe at 1</td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mn>2</mn></msub></mrow></math></td><td>Z1 mill at 2</td><td>Z1 mill at 3</td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mn>3</mn></msub></mrow></math></td><td>Z2 lathe at 0</td><td>Z2 lathe at 1</td></tr>
+<tr><td><math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>y</mi><mn>4</mn></msub></mrow></math></td><td>Z2 mill at 1</td><td>Z2 mill at 2</td></tr></table>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>2</mn><mo>&#x02212;</mo><msub><mi>y</mi><mn>2</mn></msub><mo>&#x0002B;</mo><msub><mi>y</mi><mn>3</mn></msub><mo>&#x02212;</mo><msub><mi>y</mi><mn>1</mn></msub><msub><mi>y</mi><mn>2</mn></msub><mo>&#x0002B;</mo><msub><mi>y</mi><mn>1</mn></msub><msub><mi>y</mi><mn>3</mn></msub><mo>&#x0002B;</mo><msub><mi>y</mi><mn>2</mn></msub><msub><mi>y</mi><mn>4</mn></msub><mo>&#x02212;</mo><msub><mi>y</mi><mn>3</mn></msub><msub><mi>y</mi><mn>4</mn></msub></mrow></math></div>
+<div class="eq"><math xmlns="http://www.w3.org/1998/Math/MathML" display="block"><mrow><mi>Q</mi><mo>&#x0003D;</mo><mo>&#x0005B;</mo><mtable><mtr><mtd><mn>0</mn></mtd><mtd><mo>&#x02212;</mo><mn>1</mn></mtd><mtd><mn>1</mn></mtd><mtd><mn>0</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mo>&#x02212;</mo><mn>1</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>1</mn></mtd><mtd><mo>&#x02212;</mo><mn>1</mn></mtd></mtr><mtr><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd><mtd><mn>0</mn></mtd></mtr></mtable><mo>&#x0005D;</mo><mo>&#x0002C;</mo><mspace width="2em" /><mi>c</mi><mo>&#x0003D;</mo><mn>2</mn></mrow></math></div>
+<p>Only <code>1100</code> has <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>E</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math>: Z2 lathe 0–1, Z1 lathe 1–3, Z2 mill 1–3, Z1 mill 3–4, makespan 4. Two linear terms give two <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mi>Z</mi></msub></mrow></math> gates, four pair terms give four <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>R</mi><mrow><mi>Z</mi><mi>Z</mi></mrow></msub></mrow></math> gates. Each angle is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>2</mn><mi>&#x003B3;</mi><mo>&#x000D7;</mo></mrow></math> its Ising coefficient (<math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>h</mi><mn>2</mn></msub><mo>&#x0003D;</mo><mn>0.5</mn></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>h</mi><mn>3</mn></msub><mo>&#x0003D;</mo><mo>&#x02212;</mo><mn>0.5</mn></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>J</mi><mrow><mn>12</mn></mrow></msub><mo>&#x0003D;</mo><msub><mi>J</mi><mrow><mn>34</mn></mrow></msub><mo>&#x0003D;</mo><mo>&#x02212;</mo><mn>0.25</mn></mrow></math>, <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msub><mi>J</mi><mrow><mn>13</mn></mrow></msub><mo>&#x0003D;</mo><msub><mi>J</mi><mrow><mn>24</mn></mrow></msub><mo>&#x0003D;</mo><mn>0.25</mn></mrow></math>, from <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>y</mi><mo>&#x0003D;</mo><mo stretchy="false">&#x00028;</mo><mn>1</mn><mo>&#x02212;</mo><mi>z</mi><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn></mrow></math>).</p>
+<div class="widget"><div class="wt">Try it · Instance A, p = 3 (16 arrows)</div>
+<div id="w-insta"></div>
+<p class="cap">Click any bitstring to see the schedule it encodes. "Tuned angles" are the best of several optimiser restarts (exact simulation); "run optimiser" does one run from a ramp start (γ increasing, |β| decreasing, like a slow anneal) with 512 shots per try.</p></div>
+<p>With the tuned angles, P(<code>1100</code>) grows layer by layer from <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mn>1</mn><mo>&#x0002F;</mo><mn>16</mn><mo>&#x02248;</mo><mn>0.06</mn></mrow></math> to 0.18, 0.51 and finally 0.96 (each cost step leaves it unchanged; each mixer raises it). Instance B needs 30 qubits in this encoding: <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><msup><mn>2</mn><mrow><mn>30</mn></mrow></msup></mrow></math> arrows, still about 465 cost gates at most per layer.</p>
+</section>
+
+<!-- =========================== 13 =========================== -->
+<section id="s13">
+<h2><span class="n">13</span>What is real on this page, and what is not</h2>
+<ul>
+<li>Every arrow, probability and shot here comes from an <b>exact state-vector simulation</b> running in your browser, with seeded pseudo-random shots. None of it ran on quantum hardware; ODRA 5 has not been used yet.</li>
+<li>The repository's own runs use the Qiskit Aer simulator and optimise the angles on exact probabilities. The team's selected Stage 1 result (<code>output/stage1-selected.json</code>) uses a different, compact order QUBO, not the time-indexed domain-wall model shown here.</li>
+<li>VeloxQ is a classical (quantum-inspired) solver, not a quantum computer.</li>
+</ul>
+<p>Next: <a href="VQE_INTERACTIVE.html" style="color:var(--blue)">VQE for a QUBO, built from arrows</a>, the same pictures with a general-purpose circuit instead of one built from Q.</p>
+<details class="q"><summary>Check yourself (answers hidden)</summary>
+<p>1. After the cost step alone, what is <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>P</mi><mo stretchy="false">&#x00028;</mo><mtext>valid</mtext><mo stretchy="false">&#x00029;</mo></mrow></math>? <span class="ans">Still <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>V</mi><mo>&#x0002F;</mo><msup><mn>2</mn><mi>n</mi></msup></mrow></math>: phases have length 1.</span></p>
+<p>2. With <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B3;</mi><mo>&#x0003D;</mo><mn>0</mn></mrow></math>, can any <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>&#x003B2;</mi></mrow></math> help? <span class="ans">No: without marks, the mixer treats all bitstrings alike (flat line on the map).</span></p>
+<p>3. How many gates does one cost step need for <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi></mrow></math> bits? <span class="ans">At most <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>n</mi><mo stretchy="false">&#x00028;</mo><mi>n</mi><mo>&#x0002B;</mo><mn>1</mn><mo stretchy="false">&#x00029;</mo><mo>&#x0002F;</mo><mn>2</mn></mrow></math>, one per non-zero entry of <math xmlns="http://www.w3.org/1998/Math/MathML" display="inline"><mrow><mi>Q</mi></mrow></math>.</span></p>
+<p>4. What leaves the chip? <span class="ans">Only bitstrings. Energies, averages and new angles are all computed on the CPU.</span></p>
+</details>
+<p class="foot">qhackathon26 · Kolo Naukowe Axion · interactive QAOA guide. No external scripts or fonts: math is MathML, figures are SVG drawn by the inline script. Prepared with an AI research assistant; numbers were checked against an independent Python simulation.</p>
+</section>
+</main>
+</div>
+<script>
+/* ===== QAOA core: exact state-vector simulation (no DOM) ===== */
+const Q = {};
+(function (Q) {
+  // A state on n qubits is {n, re, im}: amplitude of bitstring k is re[k] + i im[k].
+  // Bit order: qubit 0 is the LEFT-most character of the bitstring label.
+  Q.uniform = function (n) {
+    const N = 1 << n, a = 1 / Math.sqrt(N);
+    return { n, re: new Float64Array(N).fill(a), im: new Float64Array(N) };
+  };
+  Q.basis = function (n, k) {
+    const N = 1 << n, s = { n, re: new Float64Array(N), im: new Float64Array(N) };
+    s.re[k] = 1; return s;
+  };
+  Q.fromList = function (n, list) { // list of [re, im]
+    const s = { n, re: new Float64Array(1 << n), im: new Float64Array(1 << n) };
+    list.forEach((c, k) => { s.re[k] = c[0]; s.im[k] = c[1]; });
+    return s;
+  };
+  Q.clone = s => ({ n: s.n, re: Float64Array.from(s.re), im: Float64Array.from(s.im) });
+  Q.label = (n, k) => k.toString(2).padStart(n, '0');
+  // cost step: c_x -> exp(-i g E(x)) c_x
+  Q.phase = function (s, E, g) {
+    for (let k = 0; k < s.re.length; k++) {
+      const t = -g * E[k], c = Math.cos(t), sn = Math.sin(t), r = s.re[k], m = s.im[k];
+      s.re[k] = r * c - m * sn; s.im[k] = r * sn + m * c;
+    }
+    return s;
+  };
+  // mixer on one qubit: M(b) = cos b I - i sin b X
+  Q.mixQubit = function (s, q, b, noI) {
+    const m = 1 << (s.n - 1 - q), c = Math.cos(b), sn = Math.sin(b);
+    for (let k = 0; k < s.re.length; k++) {
+      if (k & m) continue;
+      const j = k | m, ar = s.re[k], ai = s.im[k], dr = s.re[j], di = s.im[j];
+      if (noI) { // the "wrong" blend cos b I + sin b X (not a legal gate)
+        s.re[k] = c * ar + sn * dr; s.im[k] = c * ai + sn * di;
+        s.re[j] = sn * ar + c * dr; s.im[j] = sn * ai + c * di;
+      } else {
+        s.re[k] = c * ar + sn * di; s.im[k] = c * ai - sn * dr;
+        s.re[j] = sn * ai + c * dr; s.im[j] = -sn * ar + c * di;
+      }
+    }
+    return s;
+  };
+  Q.mixAll = function (s, b, noI) { for (let q = 0; q < s.n; q++) Q.mixQubit(s, q, b, noI); return s; };
+  Q.probs = s => Array.from(s.re, (r, k) => r * r + s.im[k] * s.im[k]);
+  Q.expE = (s, E) => Q.probs(s).reduce((a, p, k) => a + p * E[k], 0);
+  Q.qaoa = function (n, E, gs, bs) {
+    const s = Q.uniform(n);
+    for (let k = 0; k < gs.length; k++) { Q.phase(s, E, gs[k]); Q.mixAll(s, bs[k]); }
+    return s;
+  };
+  // states after each half-step: [start, cost1, mix1, cost2, mix2, ...]
+  Q.stages = function (n, E, gs, bs) {
+    const out = [Q.uniform(n)];
+    let s = Q.uniform(n);
+    for (let k = 0; k < gs.length; k++) {
+      s = Q.phase(Q.clone(s), E, gs[k]); out.push(s);
+      s = Q.mixAll(Q.clone(s), bs[k]); out.push(s);
+    }
+    return out;
+  };
+  Q.hamming = function (a, b) { let x = a ^ b, d = 0; while (x) { d += x & 1; x >>= 1; } return d; };
+  // contributions to output x of the full mixer: w(x,y) c_y with w = cos^(n-d) (-i sin)^d
+  Q.contributions = function (s, x, b) {
+    const n = s.n, c = Math.cos(b), sn = Math.sin(b), out = [];
+    const rot = [[1, 0], [0, -1], [-1, 0], [0, 1]]; // (-i)^d
+    for (let y = 0; y < s.re.length; y++) {
+      const d = Q.hamming(x, y), mag = Math.pow(c, n - d) * Math.pow(sn, d), r = rot[d % 4];
+      const wr = mag * r[0], wi = mag * r[1];
+      out.push({ y, d, re: wr * s.re[y] - wi * s.im[y], im: wr * s.im[y] + wi * s.re[y] });
+    }
+    out.sort((u, v) => u.d - v.d || u.y - v.y);
+    return out;
+  };
+  // seeded random numbers (mulberry32)
+  Q.rng = function (seed) {
+    let a = seed >>> 0;
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      let t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  };
+  Q.sample = function (p, shots, rand) {
+    const cum = []; let acc = 0; p.forEach(v => { acc += v; cum.push(acc); });
+    const counts = new Array(p.length).fill(0);
+    for (let i = 0; i < shots; i++) {
+      const u = rand() * acc; let lo = 0, hi = cum.length - 1;
+      while (lo < hi) { const mid = (lo + hi) >> 1; if (cum[mid] < u) lo = mid + 1; else hi = mid; }
+      counts[lo]++;
+    }
+    return counts;
+  };
+  // Nelder-Mead as a generator: yields points, receives their scores.
+  Q.nelderMead = function* (x0, step, maxEval) {
+    const n = x0.length;
+    let S = [x0.slice()];
+    for (let i = 0; i < n; i++) { const v = x0.slice(); v[i] += step[i]; S.push(v); }
+    let F = [];
+    for (const v of S) F.push(yield v);
+    let ev = n + 1;
+    const order = () => {
+      const idx = S.map((_, i) => i).sort((a, b) => F[a] - F[b]);
+      S = idx.map(i => S[i]); F = idx.map(i => F[i]);
+    };
+    while (ev < maxEval) {
+      order();
+      const cen = new Array(n).fill(0);
+      for (let i = 0; i < n; i++) for (let j = 0; j < n; j++) cen[j] += S[i][j] / n;
+      const w = S[n];
+      const xr = cen.map((c, j) => 2 * c - w[j]); const fr = yield xr; ev++;
+      if (fr < F[0]) {
+        const xe = cen.map((c, j) => 3 * c - 2 * w[j]); const fe = yield xe; ev++;
+        if (fe < fr) { S[n] = xe; F[n] = fe; } else { S[n] = xr; F[n] = fr; }
+      } else if (fr < F[n - 1]) { S[n] = xr; F[n] = fr; }
+      else {
+        const xc = fr < F[n] ? cen.map((c, j) => c + 0.5 * (xr[j] - c)) : cen.map((c, j) => c + 0.5 * (w[j] - c));
+        const fc = yield xc; ev++;
+        if (fc < Math.min(fr, F[n])) { S[n] = xc; F[n] = fc; }
+        else {
+          for (let i = 1; i <= n; i++) {
+            S[i] = S[i].map((v, j) => S[0][j] + 0.5 * (v - S[0][j]));
+            F[i] = yield S[i]; ev++;
+          }
+        }
+      }
+    }
+    order();
+    return { x: S[0], f: F[0] };
+  };
+  // problems
+  Q.toy = { n: 2, E: [1, 0, 0, 1], valid: [1, 2] }; // 00 01 10 11 (A, B)
+  Q.instA = (function () {
+    const E = [];
+    for (let k = 0; k < 16; k++) {
+      const y1 = k >> 3 & 1, y2 = k >> 2 & 1, y3 = k >> 1 & 1, y4 = k & 1;
+      E.push(2 - y2 + y3 - y1 * y2 + y1 * y3 + y2 * y4 - y3 * y4);
+    }
+    return { n: 4, E, opt: 12, gammas: [0.719, 1.321, 1.528], betas: [-0.807, -0.683, -0.354] };
+  })();
+})(Q);
+if (typeof module !== 'undefined') module.exports = Q;
+
+</script>
+<script>
+/* ===== QAOA interactive widgets (plain SVG + JS, no libraries) ===== */
+(function () {
+  const PI = Math.PI, NS = 'http://www.w3.org/2000/svg';
+  const COL = { blue: '#58C4DD', yellow: '#FFD54A', green: '#83C167', red: '#FC6255', purple: '#B48EDB',
+    teal: '#5CD0B3', grey: '#7d8590', faint: '#323844', text: '#e8e6e3', white: '#ffffff' };
+  const reduce = typeof window !== 'undefined' && window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const $ = id => document.getElementById(id);
+  function el(tag, attrs, parent, text) {
+    const e = document.createElementNS(NS, tag);
+    for (const k in attrs || {}) e.setAttribute(k, attrs[k]);
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function h(tag, attrs, parent, text) {
+    const e = document.createElement(tag);
+    for (const k in attrs || {}) { if (k === 'cls') e.className = attrs[k]; else e.setAttribute(k, attrs[k]); }
+    if (text !== undefined) e.textContent = text;
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  const ease = t => t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const raf = (typeof requestAnimationFrame !== 'undefined') ? requestAnimationFrame : (f => setTimeout(() => f(Date.now()), 16));
+  const now = () => (typeof performance !== 'undefined' ? performance.now() : Date.now());
+  function tween(dur, fn, token) {
+    return new Promise(res => {
+      if (reduce || dur <= 0) { fn(1); res(); return; }
+      const t0 = now();
+      (function f() {
+        if (token && token.cancel) { res(); return; }
+        const t = Math.min(1, (now() - t0) / dur); fn(ease(t));
+        if (t < 1) raf(f); else res();
+      })();
+    });
+  }
+  const sleep = ms => new Promise(r => setTimeout(r, reduce ? 0 : ms));
+  function piFrac(v) {
+    const k = v / (PI / 8), r = Math.round(k);
+    if (Math.abs(k - r) < 0.015) {
+      if (r === 0) return '0';
+      let num = r, den = 8; const g = (a, b) => b ? g(b, a % b) : Math.abs(a); const d = g(num, den);
+      num /= d; den /= d;
+      const s = (num === 1 ? '' : num === -1 ? '−' : String(num).replace('-', '−')) + 'π';
+      return den === 1 ? s : s + '/' + den;
+    }
+    return v.toFixed(2).replace('-', '−');
+  }
+  const f3 = v => (Math.abs(v) < 5e-4 ? 0 : v).toFixed(3).replace('-', '−');
+  function cfmt(re, im) {
+    if (Math.abs(re) < 5e-4) re = 0; if (Math.abs(im) < 5e-4) im = 0;
+    if (im === 0) return f3(re);
+    if (re === 0) return (im < 0 ? '−' : '') + Math.abs(im).toFixed(3) + 'i';
+    return f3(re) + (im < 0 ? ' − ' : ' + ') + Math.abs(im).toFixed(3) + 'i';
+  }
+  function slider(host, o) {
+    const w = h('label', { cls: 'sl' }, host);
+    h('span', { cls: 'nm' }, w, o.label);
+    const inp = h('input', { type: 'range', min: o.min, max: o.max, step: o.step || 0.001, value: o.value }, w);
+    const val = h('span', { cls: 'val' }, w);
+    const show = () => { val.textContent = (o.fmt || piFrac)(+inp.value); };
+    inp.addEventListener('input', () => { show(); o.oninput && o.oninput(+inp.value); });
+    show();
+    return { get: () => +inp.value, set: v => { inp.value = v; show(); }, input: inp };
+  }
+  function button(host, text, fn, cls) { const b = h('button', { cls: cls || 'btn', type: 'button' }, host, text); b.addEventListener('click', fn); return b; }
+  function arrowPath(x, y, len) {
+    // arrow from (0,0) to (x,y); head proportional to length
+    if (len < 1e-6) return { line: 'M0 0', head: '' };
+    const hl = Math.min(9, len * 0.35), hw = hl * 0.55, ux = x / len, uy = y / len;
+    const bx = x - ux * hl, by = y - uy * hl;
+    return { line: `M0 0 L${bx.toFixed(2)} ${by.toFixed(2)}`,
+      head: `${x.toFixed(2)},${y.toFixed(2)} ${(bx - uy * hw).toFixed(2)},${(by + ux * hw).toFixed(2)} ${(bx + uy * hw).toFixed(2)},${(by - ux * hw).toFixed(2)}` };
+  }
+  function Arrow(parent, color, width) {
+    const g = el('g', {}, parent);
+    const line = el('path', { stroke: color, 'stroke-width': width || 3, 'stroke-linecap': 'round', fill: 'none' }, g);
+    const head = el('polygon', { fill: color }, g);
+    return {
+      g, set(x0, y0, x1, y1) {
+        const dx = x1 - x0, dy = y1 - y0, L = Math.hypot(dx, dy), a = arrowPath(dx, dy, L);
+        g.setAttribute('transform', `translate(${x0.toFixed(2)},${y0.toFixed(2)})`);
+        line.setAttribute('d', a.line); head.setAttribute('points', a.head);
+      },
+      color(c) { line.setAttribute('stroke', c); head.setAttribute('fill', c); },
+      show(v) { g.style.display = v ? '' : 'none'; }
+    };
+  }
+  const energyColor = E => E === 0 ? COL.green : COL.red;
+
+  /* ---------- Phasors: one circle + arrow + probability bar per bitstring ---------- */
+  function Phasors(host, o) {
+    const N = o.labels.length, R = o.R || 36, cols = o.cols || N, rows = Math.ceil(N / cols);
+    const cw = 2 * R + 26, ch = 2 * R + (o.energies ? 74 : 60);
+    const svg = el('svg', { viewBox: `0 0 ${cols * cw} ${rows * ch}`, class: 'phasors', role: 'img' }, host);
+    svg.style.maxWidth = (cols * cw * (o.scale || 1.25)) + 'px';
+    const cells = [];
+    for (let k = 0; k < N; k++) {
+      const cx = (k % cols) * cw + cw / 2, cy = Math.floor(k / cols) * ch + 20 + R;
+      const g = el('g', { transform: `translate(${cx},${cy})`, class: o.onPick ? 'pick' : '' }, svg);
+      el('rect', { x: -cw / 2 + 2, y: -R - 20, width: cw - 4, height: ch - 4, rx: 8, class: 'cellbg' }, g);
+      el('circle', { r: R, class: 'unit' }, g);
+      el('line', { x1: -R, y1: 0, x2: R, y2: 0, class: 'axis' }, g);
+      el('line', { x1: 0, y1: -R, x2: 0, y2: R, class: 'axis' }, g);
+      const lab = el('text', { x: 0, y: -R - 6, class: 'blabel' }, g, o.labels[k]);
+      const col = o.energies ? energyColor(o.energies[k]) : COL.blue;
+      const ar = Arrow(g, col, o.width || (R > 30 ? 3.2 : 2.4));
+      let et = null;
+      if (o.energies) et = el('text', { x: 0, y: R + 15, class: 'etext' }, g, 'E = ' + o.energies[k]);
+      const by = R + (o.energies ? 24 : 10);
+      el('rect', { x: -R, y: by, width: 2 * R, height: 9, rx: 2, class: 'pbg' }, g);
+      const bar = el('rect', { x: -R, y: by, width: 0, height: 9, rx: 2, fill: col }, g);
+      const pt = el('text', { x: 0, y: by + 24, class: 'ptext' }, g, '');
+      if (o.onPick) g.addEventListener('click', () => o.onPick(k));
+      cells.push({ g, ar, bar, pt, lab, R });
+    }
+    const self = { svg, cur: new Array(N).fill(null).map(() => [0, 0]), token: null };
+    self.draw = function (pol) {
+      let tot = 0;
+      pol.forEach((p, k) => {
+        const c = cells[k], x = p[0] * R * Math.cos(p[1]), y = -p[0] * R * Math.sin(p[1]);
+        c.ar.set(0, 0, x, y);
+        const P = p[0] * p[0]; tot += P;
+        c.bar.setAttribute('width', Math.min(2 * R, P * 2 * R * (o.barScale || 1)).toFixed(2));
+        c.pt.textContent = 'P = ' + P.toFixed(3);
+      });
+      self.cur = pol.map(p => p.slice());
+      if (o.onDraw) o.onDraw(tot);
+    };
+    const toPolar = s => Array.from(s.re, (r, k) => [Math.hypot(r, s.im[k]), Math.atan2(s.im[k], r)]);
+    self.set = function (s) { if (self.token) self.token.cancel = true; self.draw(toPolar(s)); };
+    self.animateTo = function (s, dur) {
+      if (self.token) self.token.cancel = true;
+      const tok = self.token = {}, from = self.cur.map(p => p.slice()), to = toPolar(s);
+      return tween(dur === undefined ? 900 : dur, t => {
+        self.draw(from.map((p, k) => {
+          const q = to[k]; let th0 = p[1];
+          if (p[0] < 1e-6) th0 = q[1];
+          let d = q[1] - th0; while (d > PI) d -= 2 * PI; while (d < -PI) d += 2 * PI;
+          if (q[0] < 1e-6) d = 0;
+          return [p[0] + (q[0] - p[0]) * t, th0 + d * t];
+        }));
+      }, tok);
+    };
+    self.highlight = function (k) { cells.forEach((c, j) => c.g.classList.toggle('sel', j === k)); };
+    return self;
+  }
+
+  /* ---------- Chain: head-to-tail addition of mixer contributions ---------- */
+  const kindCol = [COL.blue, COL.yellow, COL.purple];
+  function Chain(host, o) {
+    const R = o.R || 70, W = 2 * R + 40;
+    const box = h('div', { cls: 'chain' }, host);
+    h('div', { cls: 'chainT' }, box, o.title || '');
+    const svg = el('svg', { viewBox: `${-W / 2} ${-W / 2} ${W} ${W}`, class: 'chainsvg' }, box);
+    el('circle', { r: R, class: 'unit' }, svg);
+    el('line', { x1: -R - 10, y1: 0, x2: R + 10, y2: 0, class: 'axis' }, svg);
+    el('line', { x1: 0, y1: -R - 10, x2: 0, y2: R + 10, class: 'axis' }, svg);
+    const parts = [], res = Arrow(svg, COL.white, 3.6);
+    el('circle', { r: 3, fill: COL.text }, svg);
+    const out = h('div', { cls: 'chainP' }, box, '');
+    const self = { box };
+    self.draw = function (contribs, t, scale) {
+      const sc = (scale || 1) * R;
+      while (parts.length < contribs.length) parts.push(Arrow(svg, COL.blue, 2.6));
+      parts.forEach((a, i) => a.show(i < contribs.length));
+      let x = 0, y = 0; const n = contribs.length;
+      contribs.forEach((c, i) => {
+        const a = parts[i]; a.color(kindCol[Math.min(2, c.d)]);
+        const ti = Math.max(0, Math.min(1, t * n - i));
+        if (ti <= 0) { a.show(false); return; }
+        a.show(true);
+        const x1 = x + c.re * sc * ti, y1 = y - c.im * sc * ti;
+        a.set(x, y, x1, y1);
+        x += c.re * sc; y -= c.im * sc;
+      });
+      const sr = contribs.reduce((a, c) => a + c.re, 0), si = contribs.reduce((a, c) => a + c.im, 0);
+      res.show(t >= 1 && Math.hypot(sr, si) > 1e-3);
+      res.set(0, 0, sr * sc, -si * sc);
+      svg.appendChild(res.g);
+      out.innerHTML = t >= 1 ? `new amplitude ${cfmt(sr, si)} &nbsp;→&nbsp; <b>P = ${(sr * sr + si * si).toFixed(3)}</b>` : '&nbsp;';
+    };
+    return self;
+  }
+
+  /* ---------- Heatmap of a function of (gamma, beta) ---------- */
+  function cmap(v) { // 0 (dark blue) -> 1 (yellow)
+    const st = [[0, [16, 30, 62]], [0.35, [40, 98, 140]], [0.7, [92, 192, 170]], [1, [255, 213, 74]]];
+    v = Math.max(0, Math.min(1, v));
+    for (let i = 1; i < st.length; i++) if (v <= st[i][0]) {
+      const a = st[i - 1], b = st[i], t = (v - a[0]) / (b[0] - a[0]);
+      return 'rgb(' + a[1].map((c, j) => Math.round(c + (b[1][j] - c) * t)).join(',') + ')';
+    }
+    return 'rgb(255,213,74)';
+  }
+  function Heatmap(host, o) {
+    const W = 420, H = 230, L = 46, T = 10, B = 36, nx = o.nx || 64, ny = o.ny || 32;
+    const svg = el('svg', { viewBox: `0 0 ${L + W + 70} ${T + H + B}`, class: 'heat' }, host);
+    const g = el('g', { transform: `translate(${L},${T})` }, svg);
+    const [x0, x1] = o.xr, [y0, y1] = o.yr, lo = o.vmin, hi = o.vmax;
+    const sx = x => (x - x0) / (x1 - x0) * W, sy = y => H - (y - y0) / (y1 - y0) * H;
+    for (let i = 0; i < nx; i++) for (let j = 0; j < ny; j++) {
+      const x = x0 + (i + 0.5) * (x1 - x0) / nx, y = y0 + (j + 0.5) * (y1 - y0) / ny;
+      el('rect', { x: (i * W / nx).toFixed(2), y: (H - (j + 1) * H / ny).toFixed(2), width: (W / nx + 0.6).toFixed(2), height: (H / ny + 0.6).toFixed(2), fill: cmap((o.f(x, y) - lo) / (hi - lo)) }, g);
+    }
+    el('rect', { x: 0, y: 0, width: W, height: H, fill: 'none', stroke: COL.grey }, g);
+    (o.xt || []).forEach(v => { el('line', { x1: sx(v), x2: sx(v), y1: H, y2: H + 5, stroke: COL.grey }, g); el('text', { x: sx(v), y: H + 18, class: 'tick' }, g, piFrac(v)); });
+    (o.yt || []).forEach(v => { el('line', { x1: -5, x2: 0, y1: sy(v), y2: sy(v), stroke: COL.grey }, g); el('text', { x: -8, y: sy(v) + 4, class: 'tick', 'text-anchor': 'end' }, g, piFrac(v)); });
+    el('text', { x: W / 2, y: H + 33, class: 'axl' }, g, o.xl || 'γ');
+    el('text', { x: -34, y: H / 2, class: 'axl', transform: `rotate(-90 -34 ${H / 2})` }, g, o.yl || 'β');
+    // colour bar
+    const cb = el('g', { transform: `translate(${W + 18},0)` }, g);
+    for (let k = 0; k < 40; k++) el('rect', { x: 0, y: H - (k + 1) * H / 40, width: 12, height: H / 40 + 0.5, fill: cmap(k / 39) }, cb);
+    el('text', { x: 16, y: H, class: 'tick', 'text-anchor': 'start' }, cb, String(lo));
+    el('text', { x: 16, y: 10, class: 'tick', 'text-anchor': 'start' }, cb, String(hi));
+    el('text', { x: 16, y: H / 2, class: 'tick', 'text-anchor': 'start' }, cb, o.cl || '');
+    const path = el('polyline', { points: '', fill: 'none', stroke: COL.white, 'stroke-width': 1.6, 'stroke-dasharray': '3 3' }, g);
+    const dots = el('g', {}, g);
+    const mark = el('circle', { r: 7, fill: 'none', stroke: COL.white, 'stroke-width': 2.5 }, g);
+    const hit = el('rect', { x: 0, y: 0, width: W, height: H, fill: 'transparent', style: 'cursor:crosshair' }, g);
+    const wrapX = x => ((x - x0) % (x1 - x0) + (x1 - x0)) % (x1 - x0) + x0;
+    const wrapY = y => ((y - y0) % (y1 - y0) + (y1 - y0)) % (y1 - y0) + y0;
+    hit.addEventListener('click', ev => {
+      const r = hit.getBoundingClientRect(); if (!r.width) return;
+      const x = x0 + (ev.clientX - r.left) / r.width * (x1 - x0), y = y1 - (ev.clientY - r.top) / r.height * (y1 - y0);
+      o.onPick && o.onPick(x, y);
+    });
+    const pts = [];
+    return {
+      mark(x, y) { mark.setAttribute('cx', sx(wrapX(x))); mark.setAttribute('cy', sy(wrapY(y))); },
+      clearPath() { pts.length = 0; path.setAttribute('points', ''); while (dots.firstChild) dots.removeChild(dots.firstChild); },
+      addPoint(x, y) {
+        const px = sx(wrapX(x)), py = sy(wrapY(y)); pts.push(px.toFixed(1) + ',' + py.toFixed(1));
+        path.setAttribute('points', pts.join(' '));
+        el('circle', { cx: px, cy: py, r: 2.6, fill: COL.white }, dots);
+      }
+    };
+  }
+
+  /* ---------- small line chart ---------- */
+  function Chart(host, o) {
+    const W = 360, H = 150, L = 40, T = 10, B = 30;
+    const svg = el('svg', { viewBox: `0 0 ${L + W + 10} ${T + H + B}`, class: 'chart' }, host);
+    const g = el('g', { transform: `translate(${L},${T})` }, svg);
+    el('rect', { x: 0, y: 0, width: W, height: H, fill: 'none', stroke: COL.faint }, g);
+    const yl = o.ymax;
+    [0, yl / 2, yl].forEach(v => { el('text', { x: -6, y: H - v / yl * H + 4, class: 'tick', 'text-anchor': 'end' }, g, String(+v.toFixed(2))); el('line', { x1: 0, x2: W, y1: H - v / yl * H, y2: H - v / yl * H, stroke: COL.faint }, g); });
+    el('text', { x: W / 2, y: H + 26, class: 'axl' }, g, o.xl || 'evaluation');
+    el('text', { x: -30, y: H / 2, class: 'axl', transform: `rotate(-90 -30 ${H / 2})` }, g, o.yl || '');
+    const line = el('polyline', { points: '', fill: 'none', stroke: COL.yellow, 'stroke-width': 2 }, g);
+    const bestl = el('polyline', { points: '', fill: 'none', stroke: COL.green, 'stroke-width': 2, 'stroke-dasharray': '4 3' }, g);
+    let data = [];
+    function redraw() {
+      const n = Math.max(o.xmax || 10, data.length);
+      const sx = i => (i + 0.5) / n * W, sy = v => H - Math.min(v, yl) / yl * H;
+      line.setAttribute('points', data.map((v, i) => sx(i).toFixed(1) + ',' + sy(v).toFixed(1)).join(' '));
+      let b = Infinity; bestl.setAttribute('points', data.map((v, i) => { b = Math.min(b, v); return sx(i).toFixed(1) + ',' + sy(b).toFixed(1); }).join(' '));
+    }
+    return { push(v) { data.push(v); redraw(); }, clear() { data = []; redraw(); } };
+  }
+
+  /* ---------- histogram of shot counts ---------- */
+  function Hist(host, o) {
+    const N = o.labels.length, bw = o.bw || 34, W = N * bw, H = 110;
+    const svg = el('svg', { viewBox: `0 0 ${W + 10} ${H + 40}`, class: 'hist' }, host);
+    svg.style.maxWidth = ((W + 10) * 1.3) + 'px';
+    const bars = [], tx = [];
+    for (let k = 0; k < N; k++) {
+      const col = o.energies ? energyColor(o.energies[k]) : COL.blue;
+      bars.push(el('rect', { x: 5 + k * bw + 3, y: H, width: bw - 6, height: 0, fill: col }, svg));
+      tx.push(el('text', { x: 5 + k * bw + bw / 2, y: H - 4, class: 'tick' }, svg, ''));
+      el('text', { x: 5 + k * bw + bw / 2, y: H + 16, class: 'blabelS', transform: N > 8 ? `rotate(-60 ${5 + k * bw + bw / 2} ${H + 16})` : '' }, svg, o.labels[k]);
+    }
+    el('line', { x1: 0, x2: W + 10, y1: H, y2: H, stroke: COL.grey }, svg);
+    return {
+      set(counts) {
+        const m = Math.max(1, ...counts);
+        counts.forEach((c, k) => { const hh = c / m * (H - 16); bars[k].setAttribute('y', H - hh); bars[k].setAttribute('height', hh); tx[k].setAttribute('y', H - hh - 3); tx[k].textContent = c ? c : ''; });
+      }
+    };
+  }
+
+  /* ---------- schedules: decode + Gantt ---------- */
+  function decodeToy(k) {
+    const a = k >> 1 & 1, b = k & 1;
+    return { H: 2, machines: ['machine'], ops: [{ m: 0, s: a, d: 1, job: 'A' }, { m: 0, s: b, d: 1, job: 'B' }], prec: [] };
+  }
+  function decodeA(k) {
+    const y1 = k >> 3 & 1, y2 = k >> 2 & 1, y3 = k >> 1 & 1, y4 = k & 1;
+    return { H: 4, machines: ['lathe T', 'mill F'], ops: [
+      { m: 0, s: y1, d: 2, job: 'Z1' }, { m: 1, s: 2 + y2, d: 1, job: 'Z1' },
+      { m: 0, s: y3, d: 1, job: 'Z2' }, { m: 1, s: 1 + y4, d: 2, job: 'Z2' }], prec: [[0, 1], [2, 3]] };
+  }
+  function check(sch) {
+    const bad = new Set(), msgs = [];
+    for (let i = 0; i < sch.ops.length; i++) for (let j = i + 1; j < sch.ops.length; j++) {
+      const a = sch.ops[i], b = sch.ops[j];
+      if (a.m === b.m && a.s < b.s + b.d && b.s < a.s + a.d) { bad.add(i); bad.add(j); msgs.push(`${a.job} and ${b.job} overlap on the ${sch.machines[a.m]}`); }
+    }
+    sch.prec.forEach(([i, j]) => { const a = sch.ops[i], b = sch.ops[j]; if (b.s < a.s + a.d) { bad.add(j); msgs.push(`${b.job} starts on the ${sch.machines[b.m]} before its ${sch.machines[a.m]} step ends`); } });
+    const mk = Math.max(...sch.ops.map(o => o.s + o.d));
+    return { ok: msgs.length === 0, msgs, bad, makespan: mk };
+  }
+  function Gantt(host) {
+    const box = h('div', { cls: 'gantt' }, host);
+    const svg = el('svg', { viewBox: '0 0 360 96', class: 'ganttsvg' }, box);
+    const info = h('div', { cls: 'ginfo' }, box);
+    return {
+      show(sch, label) {
+        while (svg.firstChild) svg.removeChild(svg.firstChild);
+        const r = check(sch), L = 70, W = 270, Hh = Math.max(sch.H, r.makespan), u = W / (Hh + 0.0001);
+        sch.machines.forEach((m, i) => el('text', { x: L - 6, y: 28 + i * 30, class: 'tick', 'text-anchor': 'end' }, svg, m));
+        for (let t = 0; t <= Hh; t++) { el('line', { x1: L + t * u, x2: L + t * u, y1: 8, y2: 14 + sch.machines.length * 30, stroke: COL.faint }, svg); el('text', { x: L + t * u, y: 26 + sch.machines.length * 30, class: 'tick' }, svg, String(t)); }
+        el('line', { x1: L + sch.H * u, x2: L + sch.H * u, y1: 4, y2: 16 + sch.machines.length * 30, stroke: COL.yellow, 'stroke-dasharray': '4 3' }, svg);
+        sch.ops.forEach((o, i) => {
+          const c = o.job === 'A' || o.job === 'Z1' ? COL.blue : COL.purple, y = 14 + o.m * 30 + (r.bad.has(i) ? (i % 2) * 6 - 3 : 0);
+          el('rect', { x: L + o.s * u + 1, y, width: o.d * u - 2, height: 20, rx: 4, fill: c, 'fill-opacity': 0.85, stroke: r.bad.has(i) ? COL.red : 'none', 'stroke-width': 3 }, svg);
+          el('text', { x: L + (o.s + o.d / 2) * u, y: y + 14, class: 'gjob' }, svg, o.job);
+        });
+        info.innerHTML = `<code>${label}</code>: ` + (r.ok ? `<span class="ok">valid schedule, makespan ${r.makespan} h</span>` : `<span class="no">invalid: ${r.msgs.join('; ')}</span>`);
+      }
+    };
+  }
+
+  /* ================= widgets ================= */
+  const T2 = Q.toy, L2 = ['00', '01', '10', '11'];
+
+  // --- measuring the start state
+  function wMeasure() {
+    const host = $('w-measure'); if (!host) return;
+    const ph = Phasors(host, { labels: L2, energies: T2.E });
+    ph.set(Q.uniform(2));
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const hist = Hist(host, { labels: L2, energies: T2.E });
+    const out = h('div', { cls: 'readout' }, host);
+    const rnd = Q.rng(11); let counts = [0, 0, 0, 0];
+    const upd = () => { hist.set(counts); const n = counts.reduce((a, b) => a + b, 0); out.innerHTML = n ? `${n} shots, valid schedules (<code>01</code> or <code>10</code>): <b>${counts[1] + counts[2]}</b> = ${((counts[1] + counts[2]) / n * 100).toFixed(1)} %` : 'No shots yet.'; };
+    const shoot = k => { const c = Q.sample(Q.probs(Q.uniform(2)), k, rnd); counts = counts.map((v, i) => v + c[i]); upd(); };
+    button(ctr, 'Measure once', () => shoot(1)); button(ctr, 'Measure 100 times', () => shoot(100)); button(ctr, 'Reset', () => { counts = [0, 0, 0, 0]; upd(); }, 'btn ghost');
+    upd();
+  }
+
+  // --- drag one arrow: length fixed, probability fixed
+  function wDrag() {
+    const host = $('w-drag'); if (!host) return;
+    const R = 90, svg = el('svg', { viewBox: '-120 -120 240 240', class: 'drag' }, host);
+    el('circle', { r: R, class: 'unit' }, svg);
+    el('circle', { r: R / Math.SQRT2, fill: 'none', stroke: COL.faint, 'stroke-dasharray': '3 4' }, svg);
+    el('line', { x1: -R - 15, x2: R + 15, y1: 0, y2: 0, class: 'axis' }, svg); el('line', { y1: -R - 15, y2: R + 15, x1: 0, x2: 0, class: 'axis' }, svg);
+    el('text', { x: R + 4, y: -6, class: 'tick', 'text-anchor': 'start' }, svg, '1');
+    el('text', { x: 4, y: -R - 4, class: 'tick', 'text-anchor': 'start' }, svg, 'i');
+    const ar = Arrow(svg, COL.blue, 4); const knob = el('circle', { r: 11, fill: COL.blue, 'fill-opacity': 0.25, stroke: COL.blue, style: 'cursor:grab' }, svg);
+    const out = h('div', { cls: 'readout' }, host);
+    let th = 0.6; const r = 1 / Math.SQRT2;
+    function draw() {
+      const x = r * R * Math.cos(th), y = -r * R * Math.sin(th); ar.set(0, 0, x, y); knob.setAttribute('cx', x); knob.setAttribute('cy', y);
+      out.innerHTML = `amplitude ${cfmt(r * Math.cos(th), r * Math.sin(th))} &nbsp; direction ${(th * 180 / PI).toFixed(0)}° &nbsp; length ${r.toFixed(3)} &nbsp; → &nbsp;<b>P = length² = ${(r * r).toFixed(3)}</b>`;
+    }
+    let drag = false;
+    const pos = ev => { const b = svg.getBoundingClientRect(); const x = (ev.clientX - b.left) / b.width * 240 - 120, y = (ev.clientY - b.top) / b.height * 240 - 120; th = Math.atan2(-y, x); draw(); };
+    knob.addEventListener('pointerdown', ev => { drag = true; knob.setPointerCapture && knob.setPointerCapture(ev.pointerId); });
+    svg.addEventListener('pointermove', ev => { if (drag) pos(ev); });
+    svg.addEventListener('pointerup', () => { drag = false; });
+    svg.addEventListener('click', ev => pos(ev));
+    draw();
+  }
+
+  // --- cost step on the toy
+  function wCost() {
+    const host = $('w-cost'); if (!host) return;
+    const ph = Phasors(host, { labels: L2, energies: T2.E });
+    const ctr = h('div', { cls: 'ctrl' }, host), out = h('div', { cls: 'readout' }, host);
+    const state = g => Q.phase(Q.uniform(2), T2.E, g);
+    const txt = g => { const p = Q.probs(state(g)); out.innerHTML = `γ = ${piFrac(g)}: good arrows (E = 0) turn by 0, bad arrows (E = 1) turn by −γ = ${piFrac(-g)} rad. Probabilities: ${p.map((v, k) => `<code>${L2[k]}</code> ${v.toFixed(3)}`).join(', ')} (unchanged).`; };
+    const sl = slider(ctr, { label: 'γ', min: 0, max: 2 * PI, step: 0.001, value: 0, oninput: g => { ph.set(state(g)); txt(g); } });
+    button(ctr, 'Play: γ from 0 to π/2', async () => {
+      const g1 = PI / 2; await tween(1600, t => { const g = g1 * t; sl.set(g); ph.set(state(g)); txt(g); });
+    });
+    ph.set(state(0)); txt(0);
+  }
+
+  // --- one-qubit mixer dial
+  function wDial() {
+    const host = $('w-dial'); if (!host) return;
+    let start = 'zero', noI = false;
+    const tot = h('div', { cls: 'readout' }, document.createElement('div'));
+    const ph = Phasors(host, { labels: ['0', '1'], R: 52, onDraw: t => { tot.innerHTML = `total probability P(0) + P(1) = <b class="${Math.abs(t - 1) < 1e-6 ? 'ok' : 'no'}">${t.toFixed(3)}</b>` + (Math.abs(t - 1) < 1e-6 ? '' : ' — impossible: this is not a legal quantum gate'); } });
+    host.appendChild(tot);
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const st = () => {
+      const s = start === 'zero' ? Q.basis(1, 0) : Q.uniform(1);
+      return Q.mixQubit(s, 0, sl.get(), noI);
+    };
+    const sl = slider(ctr, { label: 'β', min: 0, max: PI, value: 0, oninput: () => ph.set(st()) });
+    const sel = h('select', {}, ctr);
+    [['zero', 'start (c₀, c₁) = (1, 0)'], ['plus', 'start (c₀, c₁) = (1/√2, 1/√2)']].forEach(([v, t]) => h('option', { value: v }, sel, t));
+    sel.addEventListener('change', () => { start = sel.value; ph.set(st()); });
+    const lb = h('label', { cls: 'chk' }, ctr); const cb = h('input', { type: 'checkbox' }, lb); lb.appendChild(document.createTextNode(' remove the −i (use cos β I + sin β X)'));
+    cb.addEventListener('change', () => { noI = cb.checked; ph.set(st()); });
+    button(ctr, 'Play: β from 0 to π/2', async () => { await tween(1800, t => { sl.set(PI / 2 * t); ph.set(st()); }); });
+    ph.set(st());
+  }
+
+  // --- one-qubit interference: kept part + received part
+  function wInterf() {
+    const host = $('w-interf'); if (!host) return;
+    const top = h('div', { cls: 'row' }, host);
+    const left = h('div', { cls: 'col' }, top); h('div', { cls: 'cap' }, left, 'Before the mixer');
+    const ph = Phasors(left, { labels: ['0 (good)', '1 (bad)'], energies: [0, 1], R: 46 });
+    const right = h('div', { cls: 'col' }, top); h('div', { cls: 'cap' }, right, 'Mixer: new arrow = kept part + received part');
+    const crow = h('div', { cls: 'row' }, right);
+    const c0 = Chain(crow, { title: 'new arrow of 0', R: 62 }), c1 = Chain(crow, { title: 'new arrow of 1', R: 62 });
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const lb = h('label', { cls: 'chk' }, ctr); const cb = h('input', { type: 'checkbox' }, lb); cb.checked = true; lb.appendChild(document.createTextNode(' apply the cost step first (γ = π/2)'));
+    const sl = slider(ctr, { label: 'β', min: -PI / 2, max: PI / 2, value: -PI / 4, oninput: () => draw(1) });
+    const legend = h('div', { cls: 'legend' }, host);
+    legend.innerHTML = '<span style="color:#58C4DD">■</span> kept part (cos β × own amplitude) &nbsp; <span style="color:#FFD54A">■</span> received part (−i sin β × the other amplitude) &nbsp; <span style="color:#fff">■</span> sum = new amplitude';
+    const inState = () => cb.checked ? Q.phase(Q.uniform(1), [0, 1], PI / 2) : Q.uniform(1);
+    function draw(t) { const s = inState(), b = sl.get(); ph.set(s); c0.draw(Q.contributions(s, 0, b), t); c1.draw(Q.contributions(s, 1, b), t); }
+    cb.addEventListener('change', () => draw(1));
+    button(ctr, 'Play the addition', async () => { await tween(2000, t => draw(t)); });
+    draw(1);
+  }
+
+  // --- one full layer on two qubits
+  function wLayer() {
+    const host = $('w-layer'); if (!host) return;
+    let g = PI / 2, b = 3 * PI / 8, stage = 2;
+    const row = h('div', { cls: 'row' }, host);
+    const a = h('div', { cls: 'col' }, row);
+    const capS = h('div', { cls: 'cap' }, a, '');
+    const ph = Phasors(a, { labels: L2, energies: T2.E, R: 34 });
+    const stc = h('div', { cls: 'ctrl' }, a);
+    const ro = h('div', { cls: 'readout' }, a);
+    const hm = h('div', { cls: 'col' }, row);
+    h('div', { cls: 'cap' }, hm, 'Average energy ⟨E⟩ after one layer, for every (γ, β). Click to choose angles.');
+    const heat = Heatmap(hm, { xr: [0, 2 * PI], yr: [0, PI], vmin: 0, vmax: 1, cl: '⟨E⟩', xt: [0, PI / 2, PI, 3 * PI / 2, 2 * PI], yt: [0, PI / 4, PI / 2, 3 * PI / 4, PI],
+      f: (x, y) => Q.expE(Q.qaoa(2, T2.E, [x], [y]), T2.E), onPick: (x, y) => { g = x; b = y; sg.set(g); sb.set(b); stage = 2; upd(); } });
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const sg = slider(ctr, { label: 'γ', min: 0, max: 2 * PI, value: g, oninput: v => { g = v; stage = 2; upd(); } });
+    const sb = slider(ctr, { label: 'β', min: 0, max: PI, value: b, oninput: v => { b = v; stage = 2; upd(); } });
+    h('div', { cls: 'cap' }, host, 'How each new amplitude is made by the mixer (all four old amplitudes contribute):');
+    const crow = h('div', { cls: 'row' }, host);
+    const chains = L2.map(l => Chain(crow, { title: 'new ' + l, R: 52 }));
+    const legend = h('div', { cls: 'legend' }, host);
+    legend.innerHTML = '<span style="color:#58C4DD">■</span> itself: cos²β &nbsp; <span style="color:#FFD54A">■</span> 1-bit neighbours: −i sinβ cosβ &nbsp; <span style="color:#B48EDB">■</span> 2 bits differ: −sin²β';
+    const states = () => { const s0 = Q.uniform(2), s1 = Q.phase(Q.clone(s0), T2.E, g), s2 = Q.mixAll(Q.clone(s1), b); return [s0, s1, s2]; };
+    const names = ['1. start (Hadamards): equal arrows', '2. after the cost step (γ)', '3. after the mixer (β)'];
+    function upd(anim) {
+      const S = states();
+      capS.textContent = names[stage];
+      if (anim) ph.animateTo(S[stage]); else ph.set(S[stage]);
+      const p = Q.probs(S[stage]);
+      ro.innerHTML = `P(valid) = P(01) + P(10) = <b>${(p[1] + p[2]).toFixed(3)}</b> &nbsp; ⟨E⟩ = ${Q.expE(S[stage], T2.E).toFixed(3)}`;
+      chains.forEach((c, x) => c.draw(Q.contributions(S[1], x, b), 1));
+      heat.mark(g, b);
+      [...stc.children].forEach((bt, i) => bt.classList && bt.classList.toggle('on', i === stage));
+    }
+    names.forEach((n, i) => button(stc, ['start', 'after cost', 'after mixer'][i], () => { stage = i; upd(true); }));
+    button(stc, '▶ play layer', async () => { stage = 0; upd(); await sleep(400); stage = 1; await ph.animateTo(states()[1]); upd(); await sleep(300); stage = 2; await ph.animateTo(states()[2], 1200); upd(); });
+    upd();
+  }
+
+  // --- building the cost step from gates
+  function wGates() {
+    const host = $('w-gates'); if (!host) return;
+    const g = PI / 4;
+    const ph = Phasors(host, { labels: L2, energies: T2.E });
+    const tbl = h('table', { cls: 'tt small' }, host);
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const acc = [0, 0, 0, 0]; let applied = [];
+    const gates = [
+      { name: 'gate on A  (term −y_A)', aff: k => (k >> 1 & 1) ? 1 : 0, rot: +1 },
+      { name: 'gate on B  (term −y_B)', aff: k => (k & 1) ? 1 : 0, rot: +1 },
+      { name: 'gate on A,B  (term +2 y_A y_B)', aff: k => (k === 3) ? 1 : 0, rot: -2 },
+      { name: 'constant  (term +1)', aff: () => 1, rot: -1 }];
+    const st = () => { const s = Q.uniform(2); for (let k = 0; k < 4; k++) { const c = Math.cos(acc[k] * g), sn = Math.sin(acc[k] * g); const r = s.re[k]; s.re[k] = r * c; s.im[k] = r * sn; } return s; };
+    const mult = v => v === 0 ? '0' : (v === 1 ? '' : v === -1 ? '−' : String(v).replace('-', '−')) + 'γ';
+    function table() {
+      tbl.innerHTML = '<tr><th>bitstring</th><th>rotation so far</th><th>goal: −γE(x)</th><th>goal without the constant: −γE(x) + γ</th></tr>' + L2.map((l, k) => `<tr><td><code>${l}</code></td><td>${mult(acc[k])}</td><td>${mult(-T2.E[k])}</td><td>${mult(-T2.E[k] + 1)}</td></tr>`).join('');
+    }
+    gates.forEach((gt, i) => {
+      const bt = button(ctr, (i + 1) + '. ' + gt.name, async () => {
+        if (applied.includes(i)) return; applied.push(i); bt.classList.add('on');
+        for (let k = 0; k < 4; k++) acc[k] += gt.aff(k) * gt.rot;
+        table(); await ph.animateTo(st(), 900);
+      });
+    });
+    button(ctr, 'Reset', () => { acc.fill(0); applied = []; [...ctr.children].forEach(b => b.classList.remove('on')); ph.set(st()); table(); }, 'btn ghost');
+    ph.set(st()); table();
+    // scaling
+    const sc = $('w-scale'); if (!sc) return;
+    const out = h('div', { cls: 'readout' }, sc);
+    const bars = el('svg', { viewBox: '0 0 520 70', class: 'scale' }, sc);
+    const b1 = el('rect', { x: 120, y: 8, height: 18, width: 0, fill: COL.red }, bars), b2 = el('rect', { x: 120, y: 40, height: 18, width: 0, fill: COL.green }, bars);
+    el('text', { x: 112, y: 22, class: 'tick', 'text-anchor': 'end' }, bars, 'energies 2ⁿ'); el('text', { x: 112, y: 54, class: 'tick', 'text-anchor': 'end' }, bars, 'gates ≤ n(n+1)/2');
+    const t1 = el('text', { x: 0, y: 22, class: 'tick', 'text-anchor': 'start' }, bars, ''), t2 = el('text', { x: 0, y: 54, class: 'tick', 'text-anchor': 'start' }, bars, '');
+    const ctr2 = h('div', { cls: 'ctrl' }, sc);
+    const f = n => { const e = Math.pow(2, n), gg = n * (n + 1) / 2, w = v => Math.log10(v) / 16 * 380;
+      b1.setAttribute('width', w(e)); b2.setAttribute('width', w(gg)); t1.setAttribute('x', 126 + w(e)); t2.setAttribute('x', 126 + w(gg));
+      t1.textContent = e.toLocaleString('en-US'); t2.textContent = gg.toLocaleString('en-US');
+      out.innerHTML = `n = ${n} bits: a classical list of all energies has ${e.toLocaleString('en-US')} entries; one cost step needs at most ${gg} gates. (Bar lengths on a log scale.)`; };
+    slider(ctr2, { label: 'n', min: 2, max: 50, step: 1, value: 30, fmt: v => String(v), oninput: f }); f(30);
+  }
+
+  // --- the full loop on the toy, with shots and Nelder-Mead
+  function wLoop() {
+    const host = $('w-loop'); if (!host) return;
+    // diagram
+    const dg = el('svg', { viewBox: '0 0 640 150', class: 'loopdg' }, host);
+    const cpu = el('g', {}, dg), qpu = el('g', {}, dg);
+    el('rect', { x: 10, y: 20, width: 230, height: 110, rx: 12, class: 'cpubox' }, cpu); el('text', { x: 125, y: 44, class: 'boxT' }, cpu, 'CPU (ordinary computer)');
+    const cpuTxt = el('text', { x: 125, y: 80, class: 'boxS' }, cpu, 'choose angles'); const cpuTxt2 = el('text', { x: 125, y: 102, class: 'boxS' }, cpu, '');
+    el('rect', { x: 400, y: 20, width: 230, height: 110, rx: 12, class: 'qpubox' }, qpu); el('text', { x: 515, y: 44, class: 'boxT' }, qpu, 'QPU (quantum chip)');
+    const qpuTxt = el('text', { x: 515, y: 80, class: 'boxS' }, qpu, 'waiting'); const qpuTxt2 = el('text', { x: 515, y: 102, class: 'boxS' }, qpu, '');
+    el('path', { d: 'M245 55 L395 55', stroke: COL.grey, 'marker-end': 'url(#ah)', fill: 'none' }, dg);
+    el('path', { d: 'M395 100 L245 100', stroke: COL.grey, 'marker-end': 'url(#ah)', fill: 'none' }, dg);
+    const defs = el('defs', {}, dg); const mk = el('marker', { id: 'ah', viewBox: '0 0 10 10', refX: 9, refY: 5, markerWidth: 7, markerHeight: 7, orient: 'auto' }, defs); el('path', { d: 'M0 0 L10 5 L0 10 z', fill: COL.grey }, mk);
+    el('text', { x: 320, y: 48, class: 'tick' }, dg, 'gate list with angles γ, β');
+    el('text', { x: 320, y: 118, class: 'tick' }, dg, 'bitstrings only');
+    const pk1 = el('circle', { r: 7, fill: COL.yellow, cx: 245, cy: 55, opacity: 0 }, dg), pk2 = el('circle', { r: 7, fill: COL.green, cx: 395, cy: 100, opacity: 0 }, dg);
+    // panels
+    const row = h('div', { cls: 'row' }, host);
+    const c1 = h('div', { cls: 'col' }, row); h('div', { cls: 'cap' }, c1, 'Where the optimiser has looked (map = exact ⟨E⟩, click to pick the start)');
+    let x0 = [0.5, 0.3];
+    const heat = Heatmap(c1, { xr: [0, 2 * PI], yr: [0, PI], vmin: 0, vmax: 1, cl: '⟨E⟩', xt: [0, PI / 2, PI, 3 * PI / 2, 2 * PI], yt: [0, PI / 2, PI],
+      f: (x, y) => Q.expE(Q.qaoa(2, T2.E, [x], [y]), T2.E), onPick: (x, y) => { if (running) return; x0 = [x, y]; heat.clearPath(); heat.mark(x, y); log.textContent = `start set to (γ, β) = (${x.toFixed(2)}, ${y.toFixed(2)})`; } });
+    heat.mark(x0[0], x0[1]);
+    const c2 = h('div', { cls: 'col' }, row); h('div', { cls: 'cap' }, c2, 'Score of each try: average energy of the shots (yellow), best so far (green)');
+    const chart = Chart(c2, { ymax: 1, xmax: 40, yl: 'average E' });
+    h('div', { cls: 'cap' }, c2, 'Shots from the latest try');
+    const hist = Hist(c2, { labels: L2, energies: T2.E });
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const shotsSel = h('select', {}, ctr); [100, 500, 2000].forEach(v => { const o = h('option', { value: v }, shotsSel, v + ' shots per try'); if (v === 500) o.selected = true; });
+    const speedSel = h('select', {}, ctr); [['1', 'normal speed'], ['0.25', 'fast'], ['0', 'instant']].forEach(([v, t]) => h('option', { value: v }, speedSel, t));
+    const runB = button(ctr, '▶ Run the QAOA loop', () => run());
+    button(ctr, 'Reset', () => { tok.cancel = true; running = false; chart.clear(); heat.clearPath(); hist.set([0, 0, 0, 0]); log.textContent = ''; ans.innerHTML = ''; runB.disabled = false; }, 'btn ghost');
+    const log = h('div', { cls: 'log' }, host);
+    const ans = h('div', { cls: 'readout' }, host);
+    const gan = Gantt(host);
+    let running = false, tok = {};
+    async function run() {
+      if (running) return; running = true; runB.disabled = true; tok = { cancel: false }; const my = tok;
+      chart.clear(); heat.clearPath(); ans.innerHTML = '';
+      const shots = +shotsSel.value, sp = () => +speedSel.value, rnd = Q.rng(7);
+      const gen = Q.nelderMead(x0.slice(), [0.5, 0.5], 40);
+      let it = gen.next(), ev = 0, best = { f: Infinity }, last = null;
+      while (!it.done) {
+        if (my.cancel) return;
+        const x = it.value; ev++;
+        cpuTxt.textContent = `try ${ev}: choose γ = ${x[0].toFixed(2)}, β = ${x[1].toFixed(2)}`; cpuTxt2.textContent = '';
+        heat.mark(x[0], x[1]); heat.addPoint(x[0], x[1]);
+        if (sp() > 0) { pk1.setAttribute('opacity', 1); await tween(500 * sp(), t => pk1.setAttribute('cx', 245 + 150 * t), my); pk1.setAttribute('opacity', 0); }
+        qpuTxt.textContent = `run circuit ${shots}×, measure`;
+        const p = Q.probs(Q.qaoa(2, T2.E, [x[0]], [x[1]])), c = Q.sample(p, shots, rnd);
+        qpuTxt2.textContent = L2.map((l, k) => l + ':' + c[k]).join('  ');
+        if (sp() > 0) { await sleep(350 * sp()); pk2.setAttribute('opacity', 1); await tween(500 * sp(), t => pk2.setAttribute('cx', 395 - 150 * t), my); pk2.setAttribute('opacity', 0); }
+        const f = c.reduce((a, v, k) => a + v * T2.E[k], 0) / shots;
+        cpuTxt2.textContent = `score: average E = ${f.toFixed(3)}`;
+        hist.set(c); chart.push(f); last = { x, c };
+        if (f < best.f) best = { f, x, c };
+        log.textContent = `try ${ev}: (γ, β) = (${x[0].toFixed(3)}, ${x[1].toFixed(3)}) → counts ${L2.map((l, k) => l + ' ' + c[k]).join(', ')} → average E = ${f.toFixed(3)}`;
+        if (sp() > 0) await sleep(500 * sp()); else await sleep(0);
+        it = gen.next(f);
+      }
+      running = false; runB.disabled = false;
+      qpuTxt.textContent = 'done'; cpuTxt.textContent = 'stop: no more improvement';
+      const xb = it.value.x; heat.mark(xb[0], xb[1]);
+      const cnt = best.c; let kb = -1; cnt.forEach((v, k) => { if (v > 0 && (kb < 0 || T2.E[k] < T2.E[kb] || (T2.E[k] === T2.E[kb] && v > cnt[kb]))) kb = k; });
+      ans.innerHTML = `Finished after ${ev} tries. Best angles (γ, β) = (${best.x[0].toFixed(3)}, ${best.x[1].toFixed(3)}), compare (π/2, 3π/8) = (1.571, 1.178). Lowest-energy bitstring among its shots: <code>${L2[kb]}</code>, E = ${T2.E[kb]}.`;
+      gan.show(decodeToy(kb), L2[kb]);
+    }
+  }
+
+  // --- circuit diagram for Instance A
+  function drawCircuit(host, stageRef) {
+    const svg = el('svg', { viewBox: '0 0 760 200', class: 'circ' }, host);
+    const ys = [30, 70, 110, 150], X0 = 40, X1 = 740;
+    ys.forEach((y, i) => { el('line', { x1: X0, x2: X1, y1: y, y2: y, class: 'wire' }, svg); el('text', { x: 18, y: y + 5, class: 'qlab' }, svg, 'y' + (i + 1)); });
+    const groups = [];
+    const box = (g, x, y, t, sub, c) => { el('rect', { x: x - 22, y: y - 14, width: 44, height: 28, rx: 4, fill: c, class: 'gbox' }, g); el('text', { x, y: y + (sub ? -1 : 5), class: 'gtxt' }, g, t); if (sub) el('text', { x, y: y + 10, class: 'gsub' }, g, sub); };
+    const zz = (g, x, a, b, sub) => { el('line', { x1: x, x2: x, y1: ys[a], y2: ys[b], stroke: COL.blue, 'stroke-width': 3 }, g); el('circle', { cx: x, cy: ys[a], r: 6, fill: COL.blue }, g); el('circle', { cx: x, cy: ys[b], r: 6, fill: COL.blue }, g); el('text', { x: x + 5, y: (ys[a] + ys[b]) / 2 + 4, class: 'gsub2', 'text-anchor': 'start' }, g, sub); };
+    let g = el('g', { class: 'cg' }, svg); groups.push(g); ys.forEach(y => box(g, 75, y, 'H', '', COL.red));
+    g = el('g', { class: 'cg' }, svg); groups.push(g);
+    box(g, 140, ys[1], 'RZ', 'γ', COL.blue); box(g, 140, ys[2], 'RZ', '−γ', COL.blue);
+    zz(g, 200, 0, 1, '−γ/2'); zz(g, 270, 0, 2, 'γ/2'); zz(g, 340, 1, 3, 'γ/2'); zz(g, 410, 2, 3, '−γ/2');
+    el('text', { x: 275, y: 190, class: 'gsub' }, g, 'cost step  e^{−iγE}');
+    g = el('g', { class: 'cg' }, svg); groups.push(g); ys.forEach(y => box(g, 520, y, 'RX', '2β', COL.purple));
+    el('text', { x: 520, y: 190, class: 'gsub' }, g, 'mixer');
+    el('path', { d: 'M110 8 L110 2 L560 2 L560 8', fill: 'none', stroke: COL.yellow }, svg); el('text', { x: 335, y: 16, class: 'gsub', fill: COL.yellow }, svg, 'repeat p = 3 times with (γ₁, β₁), (γ₂, β₂), (γ₃, β₃)');
+    g = el('g', { class: 'cg' }, svg); groups.push(g);
+    ys.forEach(y => { el('rect', { x: 620, y: y - 14, width: 40, height: 28, rx: 4, fill: '#555b66', class: 'gbox' }, g); el('path', { d: `M628 ${y + 7} A12 12 0 0 1 652 ${y + 7}`, fill: 'none', stroke: '#fff', 'stroke-width': 1.6 }, g); el('line', { x1: 640, y1: y + 7, x2: 650, y2: y - 7, stroke: '#fff', 'stroke-width': 1.6 }, g); });
+    return { svg, focus(i) { groups.forEach((gg, j) => gg.classList.toggle('dim', i >= 0 && j !== i)); } };
+  }
+
+  // --- Instance A: the real baseline
+  function wInstA() {
+    const host = $('w-insta'); if (!host) return;
+    const A = Q.instA, LA = [...Array(16).keys()].map(k => Q.label(4, k));
+    const circ = drawCircuit(host);
+    let gs = A.gammas.slice(), bs = A.betas.slice(), pos = 6;
+    const ctr0 = h('div', { cls: 'ctrl' }, host);
+    const stepNames = ['start: H on every qubit (all 16 arrows equal)', 'layer 1: after cost', 'layer 1: after mixer', 'layer 2: after cost', 'layer 2: after mixer', 'layer 3: after cost', 'layer 3: after mixer (measure here)'];
+    const posSl = slider(ctr0, { label: 'step', min: 0, max: 6, step: 1, value: 6, fmt: v => stepNames[Math.round(v)], oninput: v => { pos = Math.max(0, Math.min(6, Math.round(v))); upd(); } });
+    const ph = Phasors(host, { labels: LA, energies: A.E, R: 26, cols: 8, onPick: k => pick(k), scale: 1.05 });
+    const ro = h('div', { cls: 'readout' }, host);
+    const ctr = h('div', { cls: 'ctrl' }, host);
+    const angBox = h('div', { cls: 'readout small' }, host);
+    const gan = Gantt(host);
+    h('div', { cls: 'cap' }, host, '4096 shots at the current angles (after all three layers):');
+    const hist = Hist(host, { labels: LA, energies: A.E, bw: 30 });
+    const best = h('div', { cls: 'readout' }, host);
+    const chartBox = h('div', {}, host); const chart = Chart(chartBox, { ymax: 2.5, xmax: 150, yl: 'average E' }); chartBox.style.display = 'none';
+    function stages() { return Q.stages(4, A.E, gs, bs); }
+    function pick(k) { ph.highlight(k); gan.show(decodeA(k), LA[k]); }
+    function upd(anim) {
+      const S = stages(), s = S[pos], p = Q.probs(s);
+      if (anim) ph.animateTo(s, 700); else ph.set(s);
+      circ.focus(pos === 0 ? 0 : (pos % 2 === 1 ? 1 : 2));
+      ro.innerHTML = `${stepNames[pos]} &nbsp;|&nbsp; P(<code>1100</code>) = <b>${p[12].toFixed(3)}</b> &nbsp; ⟨E⟩ = ${Q.expE(s, A.E).toFixed(3)}`;
+      angBox.innerHTML = `γ = (${gs.map(v => v.toFixed(3)).join(', ')}) &nbsp; β = (${bs.map(v => v.toFixed(3)).join(', ')})`;
+      const fin = Q.probs(S[6]), c = Q.sample(fin, 4096, Q.rng(2026)); hist.set(c);
+      let kb = -1; c.forEach((v, k) => { if (v > 0 && (kb < 0 || A.E[k] < A.E[kb])) kb = k; });
+      best.innerHTML = `Most frequent: <code>${LA[c.indexOf(Math.max(...c))]}</code> (${Math.max(...c)} of 4096). Lowest energy sampled: <code>${LA[kb]}</code>, E = ${A.E[kb]}.`;
+    }
+    button(ctr, '▶ play through the circuit', async () => { for (let i = 0; i <= 6; i++) { pos = i; posSl.set(i); upd(true); await sleep(1000); } });
+    button(ctr, 'all angles 0', () => { gs = [0, 0, 0]; bs = [0, 0, 0]; upd(); });
+    button(ctr, 'tuned angles', () => { gs = A.gammas.slice(); bs = A.betas.slice(); upd(); });
+    const runB = button(ctr, 'run optimiser (512 shots per try)', async () => {
+      runB.disabled = true; chartBox.style.display = ''; chart.clear();
+      const rnd = Q.rng(2026), gen = Q.nelderMead([0.3, 0.6, 0.9, -0.6, -0.4, -0.2], new Array(6).fill(0.4), 150);
+      let it = gen.next(), n = 0;
+      while (!it.done) {
+        const x = it.value; const p = Q.probs(Q.qaoa(4, A.E, x.slice(0, 3), x.slice(3))); const c = Q.sample(p, 512, rnd);
+        const f = c.reduce((a, v, k) => a + v * A.E[k], 0) / 512; chart.push(f); n++;
+        if (n % 5 === 0) { gs = x.slice(0, 3); bs = x.slice(3); pos = 6; posSl.set(6); upd(); await sleep(30); }
+        it = gen.next(f);
+      }
+      gs = it.value.x.slice(0, 3); bs = it.value.x.slice(3); pos = 6; posSl.set(6); upd(); runB.disabled = false;
+    });
+    upd(); pick(12);
+  }
+
+  function init() { [wMeasure, wDrag, wCost, wDial, wInterf, wLayer, wGates, wLoop, wInstA].forEach(f => { try { f(); } catch (e) { console.error(f.name, e); } }); }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
+  window.__qaoaUI = { decodeA, decodeToy, check };
+})();
+
+</script>
+</body>
+</html>
