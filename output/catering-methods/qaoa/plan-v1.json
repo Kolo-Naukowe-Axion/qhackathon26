@@ -1,0 +1,97 @@
+{
+  "adapter_sha256": "e50a101f1d82c4788ff913b01dad9f846ba56b92073f25474fb195e630748834",
+  "alpha": 0.1,
+  "budgets": [
+    256,
+    2048
+  ],
+  "cases": {
+    "S0": {
+      "bundle": "output/catering-foundation-v3/S0/quantum-qubo.json",
+      "bundle_sha256": "df6eb3da9ea1d63653b3eab022037a9840b1ccd7266e0486648704f06215a521",
+      "qubits": 33,
+      "raw_reference": "output/catering-foundation-v3/S0/raw-reference.json",
+      "sector_reference": "output/catering-foundation-v3/S0/quantum-sector-reference.json",
+      "split": "train"
+    },
+    "S1": {
+      "bundle": "output/catering-foundation-v3/S1/quantum-qubo.json",
+      "bundle_sha256": "8da3db96ad699b66449f8c6ecb52dbab30d67efb0ba677bb2b2c6ee77e64d186",
+      "qubits": 35,
+      "raw_reference": "output/catering-foundation-v3/S1/raw-reference.json",
+      "sector_reference": "output/catering-foundation-v3/S1/quantum-sector-reference.json",
+      "split": "train"
+    },
+    "S2": {
+      "bundle": "output/catering-foundation-v3/S2/quantum-qubo.json",
+      "bundle_sha256": "f20506a16df1e9e40661cbd2f8e969200fc54534e6b8f1cff37587994b310534",
+      "qubits": 31,
+      "raw_reference": "output/catering-foundation-v3/S2/raw-reference.json",
+      "sector_reference": "output/catering-foundation-v3/S2/quantum-sector-reference.json",
+      "split": "test"
+    },
+    "S3": {
+      "bundle": "output/catering-foundation-v3/S3/quantum-qubo.json",
+      "bundle_sha256": "9179b3cb4e4629bb3138d4856ca36531018d2bf8a082e21e5d6bb3fdd2fa1c6f",
+      "qubits": 35,
+      "raw_reference": "output/catering-foundation-v3/S3/raw-reference.json",
+      "sector_reference": "output/catering-foundation-v3/S3/quantum-sector-reference.json",
+      "split": "test"
+    },
+    "cell": {
+      "bundle": "output/catering-complete-cell-v3/quantum-qubo.json",
+      "bundle_sha256": "4dccaee4ff667f06a24e855457d17eaf7e541663be3400b36522a14a1fa8cdd5",
+      "qubits": 35,
+      "raw_reference": "output/catering-complete-cell-v3/reference-raw.json",
+      "sector_reference": "output/catering-complete-cell-v3/reference-sector.json",
+      "split": "train"
+    }
+  },
+  "circuit_counting": "Gradient-free optimizers: one training circuit per loss evaluation",
+  "configs": {
+    "frozen": {
+      "depth": 3,
+      "optimizer": "layerwise",
+      "variant": "xy_multiangle_warm"
+    },
+    "random_angles": {
+      "depth": 3,
+      "optimizer": "random",
+      "variant": "xy_multiangle_warm"
+    },
+    "start_only": {
+      "depth": 0,
+      "variant": "xy_multiangle_warm"
+    },
+    "uniform_sector": {
+      "depth": 0,
+      "variant": "xy"
+    },
+    "xy_layerwise": {
+      "depth": 3,
+      "optimizer": "layerwise",
+      "variant": "xy"
+    }
+  },
+  "frozen_at": "2026-10-17T19:13:51+0200",
+  "initializer": "xy_multiangle_warm: incumbent_ids=[] -> 85% weight on each block's idle qubit (the release's all-idle witness plan as declared initializer); xy: uniform one-hot sector",
+  "loss": "cvar",
+  "regime": "exact simulator probabilities for training; 4096 shot samples for returned plans",
+  "schema_version": "catering-qaoa-plan.v1",
+  "seeds": [
+    2026,
+    2027,
+    2028,
+    2029,
+    2030,
+    2031,
+    2032,
+    2033,
+    2034,
+    2035
+  ],
+  "selection": "Chosen on TRAIN cases (cell, S0, S1) only, by mean rank of median P(optimum) over 5 seeds at 64 and 256 evaluations; S2/S3 never inspected before freezing",
+  "selection_evidence": "output/catering-methods/qaoa/selection-v1",
+  "shots": 4096,
+  "wall_time_limit_s": 1800
+}
