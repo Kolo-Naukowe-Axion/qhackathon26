@@ -24,7 +24,7 @@ must say dry_run=true, sampling_runs=0 and continuous_studio_capture=false.
 
 | Video time | Picture | Hold / edit cue |
 |---|---|---|
-| 0:00–0:26 | Full implemented problem beside the pixel kitchen. | Keep all input/constraint rows and the priority order visible. No decorative introduction. |
+| 0:00–0:26 | Four-second Axion Kitchen title over the kitchen, then the implemented problem. | Opening is 0:00–0:04 within this chapter. Reveal the problem at 0:04; keep all constraints and the priority order readable. |
 | 0:26–0:50 | Retained solver plan replays through both departures. | Hold the final 20/20 count long enough to read. The label must say retained QAOA sample. |
 | 0:50–1:02 | Same plan with only side C removed. | Show 0/20 meals and 20 discarded portions. Retain the manual-intervention label; this is not a new optimizer result. |
 | 1:02–1:28 | Side-C program bit, one-hot block, then actual compiler excerpt. | Show the program first, then actual code after 55%: product(...) expands coverage products; span+1 bounds the hard penalty. Point at the highlighted source lines. |

@@ -7,7 +7,7 @@ reported campaign medians from checked exported schedules.
 
 ## 0:00–0:26 · The catering problem
 
-> Stage One reaches four and eight hours. Our extension plans catering production: batch quantities and shared allocations, cookers and qualified workers, and preparation, cooking, packing and cleaning. Departures, freshness and resource calendars constrain the plan. Urgent orders and outages trigger replanning while started work stays fixed. We minimize missed meals, waste, batches and changes.
+> Axion Kitchen: quantum optimization for catering production. We plan batch quantities and shared allocations, cookers and qualified workers, and preparation, cooking, packing and cleaning. Departures, freshness and calendars constrain the plan. Urgent orders and outages trigger replanning while started work stays fixed. We minimize missed meals, waste, batches and changes.
 
 ## 0:26–0:50 · Two orders sharing a side batch
 
@@ -29,23 +29,23 @@ reported campaign medians from checked exported schedules.
 
 > A repaired cooker still needs cleaning. Here the qualified worker first finishes committed work, then cleans the repaired cooker from eleven forty to eleven fifty. Both worker and cooker are reserved. The independent checker reconstructs these intervals, freshness and meal handovers from raw schedule records.
 
-## 2:14–2:39 · Run the trained QAOA circuit locally
+## 2:14–2:39 · Run QAOA
 
 > Return to the original batch choices and run the trained depth-three QAOA circuit locally. Cost and conflict phases alternate with blockwise XY mixing. The mixer preserves one choice per block; the independent checker rejects physical clashes. We draw four thousand ninety-six fresh samples with saved angles. The receipt reports the best checked outcome, separately from the retained kitchen replay.
 
-## 2:39–3:08 · QAOA: trained angles improve sampling
+## 2:39–3:08 · Training improves sampling
 
 > We selected the QAOA configuration on the cell and S0/S1. On held-out S2/S3, it finds the offered-pool optimum in all ten seeds at both budgets. At two hundred fifty-six evaluations, median optimum probability per shot is about eleven and twenty-two times random-angle search. Angles are optimized per instance. These restricted portfolios still exclude better full-grid schedules.
 
-## 3:08–3:28 · VQE concentrates more probability on the optimum
+## 3:08–3:28 · A second quantum circuit
 
 > VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.
 
-## 3:28–3:56 · VeloxQ: better plans after idle elimination
+## 3:28–3:56 · VeloxQ: remove idle bits
 
 > VeloxQ solves the larger kitchen. Removing redundant idle bits preserves feasible schedules and their objective. At equal twenty-thousand-step budgets, the best checked plan serves fifty meals instead of ten, out of one hundred forty. Waste rises from thirty to sixty portions: complete service has priority. Valid returns rise from seventeen to all five hundred twelve. This is one exploratory job per representation; classical controls still find better plans.
 
-## 3:56–4:08 · What scales, and where each method fits
+## 3:56–4:08 · From 35 qubits to 2,022 variables
 
 > More orders and time choices create programs and conflicts. Quantum circuits use restricted portfolios; VeloxQ uses larger matrices. The benchmark page separates search quality, restriction loss and feasibility.
 
@@ -55,7 +55,7 @@ reported campaign medians from checked exported schedules.
 
 ## Recording notes
 
-578 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
+574 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
 The earlier local MP4 is silent and has obsolete result screens. Record the
 current route and narration for this result set.
 

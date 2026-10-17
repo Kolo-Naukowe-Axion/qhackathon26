@@ -22,7 +22,7 @@ outside the share.
 
 | Target time | Operator | Speaker |
 |---|---|---|
-| 0:00–0:20 | Start R; explain the full problem before the small example. | We plan catering batches, allocations, equipment, workers and times. The constraints include freshness, departures, cleaning and resource calendars. Urgent orders and cooker outages change the plan; started work stays fixed. We prioritize complete meals, then waste, batches and changes. |
+| 0:00–0:20 | Start R. Hold the opening for four seconds, then explain the kitchen and its constraints. | Axion Kitchen: quantum optimization for catering production. We choose batches, allocations, equipment, workers and times. Departures, freshness, cleaning and calendars constrain the plan. Urgent orders and outages change it; started work stays fixed. We prioritize complete meals, then waste, batches and changes. |
 | 0:20–0:36 | Play this chapter through both departures; it then holds. | Each customer needs ten meals. Main A is already cooking. This checked QAOA sample selects a new Main B and one shared side batch. Both orders leave complete; equipment, workers and phase times are checked. |
 | 0:36–0:43 | Show the checked side-batch removal. | Remove the side: zero complete meals and twenty wasted portions. This is a manual intervention. |
 | 0:43–0:59 | Play past halfway; point to product(...) and penalty=span+1 in the actual compiler excerpt. | A bit selects a scheduled batch. Blocks choose one program or idle. The product call builds main/side couplings; span plus one sets the hard penalty. This cell has thirty-two programs and three idle bits. |
@@ -34,7 +34,7 @@ outside the share.
 | 2:28–2:38 | Show source choices, actual solver widths and the benchmark browser link. | Orders, time choices and conflicts drive scale. Quantum circuits use small portfolios; VeloxQ handles larger matrices. Size alone does not establish hardness. |
 | 2:38–2:45 | Show final handovers and the three development-log decisions; stop. | Twenty meals, zero waste. We fixed cleaning, paired main and side, and proved idle elimination. |
 
-330 scripted words; the fastest chapter is 132 words/minute. The results use the integrated QAOA campaign and checked no-idle VeloxQ study. Rehearse three times
+333 scripted words; the fastest chapter is 132 words/minute. The results use the integrated QAOA campaign and checked no-idle VeloxQ study. Rehearse three times
 under 2:50 with the actual speaker, operator and final result set.
 
 ## Reading the live result
