@@ -1,5 +1,41 @@
 # Development log
 
+## 2026-10-17 — game-like recovery demo and integrated Stage2 framing
+
+The user preferred the richer game-like factory over the formal workspace and
+explicitly authorized combining that style with the verified study. Added a
+pure cutaway-scene renderer and selected-pump progress inspector, preserving
+actual processing, attendance, availability, all16recipe steps and final
+inspection. No AGV execution, shipment or solver improvement is invented.
+Guided choices retain the measured45→0→45→0lateness sequence; the original
+and enriched replacement pools both retain H3 availability.
+
+Added restart, next-event stepping, replay speed, paused-by-default playback,
+focused presentation with Escape exit, unavailable-machine inspection and
+recipe-to-operation seeking. Independent review caught replay continuing
+across some plan changes and a consumed seek button losing focus. Centralized
+pause-on-plan-change and stable focus fallbacks address both. Reduced-motion
+support and no-live-chatter playback remain.
+
+The user also clarified that VeloxQ must contribute within Stage2. Checked the
+official challenge PDF: Sections5/11/15 support integrated use and end-to-end
+comparison. The UI now presents one factory extension with classical references,
+local simulated QAOA and prepared larger VeloxQ QUBOs. The sponsor prize is a
+separate award, not a separate application; no simultaneous-eligibility claim.
+Actual service calls remain held and unmeasured.
+
+The static build passes120site tests, including six new semantic checks.
+Desktop browser verification covers recovery choices, actual completion
+progress, machine/recipe inspection, replay controls, focused view and current
+Stage2 framing. A fresh28-qubit local action returns checked0lateness/855minutes
+in0.54seconds, artifact `output/recipe-bridge-live/20261017T123902Z-3797789b`.
+The constructor already finds the optimum; this is no advantage claim. Current
+UI proof is kept in `output/manufacturing-game-qa-v1/`; historical receipts stay
+intact. Mobile visual verification is not claimed. Numerical campaign/model
+sources remain unchanged. Authorized private sync/site deployment continues;
+Markdown/JSON cleanup, final video and public-source submission stay deferred.
+
+
 ## 2026-10-17 — authorized repository sync and lossless evidence packaging
 
 The user requested committing and pushing all current work to the existing

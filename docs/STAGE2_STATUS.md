@@ -6,14 +6,16 @@ human rehearsal and public release/submission remain open. Completion does not
 establish prize eligibility, a winning score or quantum advantage.
 
 **UI and math refinement after technical closeout:** the
-[workspace design record](STAGE2_UI_DESIGN.md) documents the new four-step
-recovery rail, separate views and114passing site tests. Desktop browser checks
-pass, including a fresh local28-qubit0-lateness/855-minute result and corrected
-keyboard/comparison interactions. Mobile visual verification is not claimed.
+[workspace design record](STAGE2_UI_DESIGN.md) documents the user-preferred
+game-like factory: actual processing/attendance, complete pump progress,
+four recovery decisions and focused presentation, with120passing site tests.
+Desktop checks include a fresh local28-qubit0-lateness/855-minute result.
+The model/results view places prepared VeloxQ work inside this same Stage2
+extension alongside classical references and local simulated QAOA; actual
+service performance remains unmeasured. Mobile visual verification is not claimed.
 The [main-model mathematics](STAGE2_MANUFACTURING_MATH.md) specifies the actual
 variables, constraints, QUBO coefficients, penalty proof and reduction boundaries.
-Older receipts certify their own source snapshots; numerical campaign results
-remain unchanged.
+Older receipts certify their own snapshots; numerical campaigns remain unchanged.
 
 Start with the [manufacturing studio](http://127.0.0.1:4192/manufacturing/#merit),
 [combined design](STAGE2_COMBINED_DIRECTION.md) and

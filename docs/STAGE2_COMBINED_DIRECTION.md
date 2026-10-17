@@ -110,7 +110,7 @@ This audit did not rerun optimization or independently re-prove CP optimality.
    incumbent kept by the surrounding policy. This question remains open.
 
 The main-prize narrative is the formulation and measured decision consequence.
-VeloxQ provides a separate, meaningful backend experiment once authorized. Its
+Within this same Stage2 extension, VeloxQ provides a controlled backend comparison once authorized. Its
 published sparse-instance results are motivation, not our expected performance.
 Existing holds on remote jobs, credits, physical hardware and publication remain.
 
@@ -185,6 +185,29 @@ operation choices, costs and precedence remain factory semantics. Do not claim
 that MIS performance proves scheduling performance, or compare leaderboard
 timings as equal-budget experiments. No QOBLIB experiment or submission has
 been performed by this synthesis.
+
+## One Stage2 project, including VeloxQ
+
+Clarified with the user on17October: VeloxQ is part of the manufacturing
+extension, not a separate project. The official challenge PDF Section5 lists
+VeloxQ within Stage2; Section11 evaluates integration, solution quality, scaling,
+insight and reproducibility; Section15 describes end-to-end integration that
+complements classical and quantum approaches. The sponsor award is a separate
+judging opportunity, not a separate application requirement.
+
+The common task is recovering factory deadlines and valuing capacity. Classical
+code builds/audits the model; native references certify comparisons; local QAOA
+uses restricted complete component routes; VeloxQ is intended to solve the
+larger scheduling QUBOs. Each return must be decoded and checked against the
+original factory constraints before entering the same capacity comparison.
+Prepared packets demonstrate input correctness only. Actual backend execution
+and useful performance remain unmeasured and held pending authorization.
+
+The creative contribution to test is whether this integrated backend can retain
+more valuable scheduling choices at a stated total budget, recover a deadline,
+or supply distinct competitive plans. It is not sufficient merely to call an API
+or show unrelated benchmark scores. Different representation objectives must
+remain explicit. Simultaneous prize eligibility still needs organizer confirmation.
 
 ## Sponsor-prize priority: find a useful VeloxQ operating region
 
@@ -290,7 +313,7 @@ limited applicability; do not claim a general three-qubit factory solution.
 
 QOBLIB trials, additional domains and unrelated algorithm exploration stay
 secondary to these steps. The objective is one coherent entry supporting the
-main rubric and a meaningful separate VeloxQ experiment. This plan does not
+main rubric and a meaningful integrated VeloxQ backend comparison. This plan does not
 establish prize eligibility or predict jury scores.
 
 ## Three-minute presentation

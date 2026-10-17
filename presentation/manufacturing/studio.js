@@ -1,9 +1,9 @@
-import {colors,kind,pump,checkedCase,commitments,stateAt,readiness,lower} from './model.js';
-import {positions} from '../stage2/factory-layout.js';
+import {colors,kind,pump,checkedCase,commitments,stateAt,readiness,lower,pumpJourney,nextPlanEvent} from './model.js';
+import {renderFactoryScene,machineAvailability} from './factory-scene.js';
 import {glyphBody} from '../stage2/factory-parts.js';
 import {attachMeritPlans} from './merit-model.js';
 import {mountMerit} from './merit.js';
-import {storySteps,selectedStory,elapsed} from './story.js';
+import {storySteps,selectedStory,elapsed,observations} from './story.js';
 const $=s=>document.querySelector(s),n=(x,d=0)=>Number(x).toLocaleString('en',{maximumFractionDigits:d});
 const esc=x=>String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const labels={'nominal-32':'32 ops · nominal capacity','mill-down-32':'32 ops · milling capacity lost','rush-and-outage-32':'32 ops · expedited order + mill outage','lease-recovery-32':'32 ops · delayed replacement mill','crew-shortage-32':'32 ops · multi-skilled worker absent','heat-outage-32':'32 ops · furnace outage + tight deadlines','heat-lease-32':'32 ops · replacement furnace from 360m','nominal-64':'64 ops · four complete pumps','nominal-128':'128 ops · eight complete pumps'};
@@ -11,26 +11,26 @@ const data=await fetch('data.json').then(r=>{if(!r.ok)throw Error('Saved study u
 const merit=await fetch('merit-data.json').then(r=>{if(!r.ok)throw Error('Merit study unavailable');return r.json()});
 attachMeritPlans(data.cases,merit);
 for(const c of Object.values(data.cases))checkedCase(c);
-const state={case:'heat-outage-32',method:'raw_reference',order:'P01',operation:'P01/housing/step0',tick:360,resource:'machine',playing:false,ghost:false};
-const point=id=>id==='H3'?[1120,335]:id==='F4'?[1120,165]:positions[id]??[570,250];
+const state={case:'heat-outage-32',method:'raw_reference',order:'P02',operation:'P02/housing/step3',tick:360,machine:null,resource:'machine',playing:false,ghost:false};
 const current=()=>data.cases[state.case],plan=()=>current().plans.find(s=>s.id===state.method)??current().plans[0];
-function operationName(id){const [,k,step]=id.split('/');return `${k} · ${Number(step.slice(4))+1}`;}
-function machineBody(id,active,missing,selected){
- const process=id.replace(/\d/g,''),[x,y]=point(id),h=colors[kind(active?.operation??'P01/pump/x')];
- const equipment=process==='H'?`<rect x="-28" y="-37" width="58" height="48" fill="#778a94"/><rect x="-20" y="-28" width="42" height="28" fill="${active?'#b87a46':'#526976'}"/><path d="M-24 -44H27M-16 -50H18" stroke="#5b7480" stroke-width="5"/>`:process==='T'||process==='F'?`<rect x="-33" y="-22" width="66" height="34" fill="#88a0ae"/><rect x="-26" y="-33" width="27" height="25" fill="#b6c7cf"/><circle class="spindle" cx="14" cy="-20" r="12" fill="#4f7183"/><path d="M14 -31V-9M3 -20H25" stroke="#bfced5" stroke-width="3"/>`:process==='WASH'?`<rect x="-32" y="-31" width="65" height="41" fill="#8da9b8"/><path d="M-24 -15H23M-24 -4H23" stroke="#bed2dc" stroke-width="5"/>`:process==='A'?`<rect x="-35" y="-17" width="70" height="14" fill="#a4bac6"/><path d="M-27 -3V14M27 -3V14" stroke="#668595" stroke-width="6"/>`:`<rect x="-32" y="-22" width="64" height="33" fill="#93aeba"/><path d="M-20 -22V-43H13V-29" stroke="#567888" stroke-width="6"/>`;
- return `<g tabindex="0" role="button" aria-label="Inspect machine ${id}" data-machine="${id}" class="${active?'processing ':''}${missing?'offline':''}" transform="translate(${x} ${y})"><path d="M-55 -13L0 -39L55 -13L0 15Z" fill="#c1d1da" stroke="${selected?'#365d73':'#9eb5c2'}" stroke-width="${selected?3:1}"/><path d="M-55 -13V1L0 29L55 1V-13L0 15Z" fill="#a9bfcc" stroke="#91aab9"/>${equipment}<circle class="status-dot" cx="39" cy="-34" r="4" fill="${missing?'#a16c50':'#a4b7c2'}"/>${active?`<g transform="translate(-11 -27) scale(.6)">${glyphBody(kind(active.operation))}</g><rect x="-42" y="37" width="84" height="16" fill="${h}"/><text x="0" y="48" text-anchor="middle" style="fill:white;font-size:8px">${esc(pump(active.operation))} / ${esc(kind(active.operation))}</text>`:`<text class="machine-caption" x="0" y="48" text-anchor="middle">${missing?'OFFLINE':((id==='H3'||id==='F4')&&state.tick<360?'AVAILABLE FROM 360m':'IDLE AT THIS TIME')}</text>`}<text x="0" y="72" text-anchor="middle" style="font-size:13px;font-weight:600">${id}</text>${missing?'<path d="M-30 -45L35 16M35 -45L-30 16" stroke="#9e6848" stroke-width="4"/>':''}</g>`;
-}
 function renderFloor(c,s){
- const snap=stateAt(c,s,state.tick),selected=s.plan.find(r=>r.operation===state.operation);
- const ids=[...new Set([...Object.keys(positions).filter(id=>/^(T|F|S|WASH|H|QA|A)\d+$/.test(id)),...Object.keys(c.problem.machines)])];
- let dependencies='';
- if(selected){const o=c.problem.operations.find(o=>o.id===selected.operation);dependencies=o.predecessors.map(id=>{const prior=s.plan.find(r=>r.operation===id),a=point(prior.machine),b=point(selected.machine);return `<path d="M${a[0]} ${a[1]+15}Q${(a[0]+b[0])/2} ${Math.min(a[1],b[1])-100} ${b[0]} ${b[1]-20}" fill="none" stroke="${colors[kind(id)]}" stroke-width="3" stroke-dasharray="7 6" opacity=".8"/>`;}).join('');}
- $('#floor').innerHTML=`<svg viewBox="0 0 1250 585" role="group" aria-label="Two-hall planning schematic at minute ${n(state.tick)}"><defs><pattern id="deck" width="40" height="25" patternUnits="userSpaceOnUse"><path d="M40 0H0V25" fill="none" stroke="#a6bccb" stroke-width=".6"/></pattern></defs><path d="M55 84L370 35L550 135V534L110 550L55 470Z" fill="#c4d4de" stroke="#afc4d1"/><path d="M630 84L1040 35L1210 135V534L680 550L630 470Z" fill="#c4d4de" stroke="#afc4d1"/><rect x="65" y="95" width="480" height="420" fill="url(#deck)"/><rect x="640" y="95" width="565" height="420" fill="url(#deck)"/><path d="M540 260H640" stroke="#a2bac9" stroke-width="32"/><path d="M540 260H640" stroke="#d7e2e8" stroke-width="22"/><text class="hall-title" x="90" y="65">HALL A / MACHINING</text><text class="hall-title" x="660" y="65">HALL B / JOIN & FINISH</text>${dependencies}${ids.map(id=>machineBody(id,snap.active.find(r=>r.machine===id),!c.problem.machines[id],selected?.machine===id)).join('')}</svg>`;
+ $('#floor').innerHTML=renderFactoryScene({c,s,tick:state.tick,selectedOperation:state.operation,selectedOrder:state.order,selectedMachine:state.machine,playing:state.playing});
+ const snap=stateAt(c,s,state.tick),done=commitments(c,s).filter(r=>r.end<=state.tick).length;
+ $('#world-status').innerHTML=`<span><strong>${snap.completed.size} / ${c.operations}</strong> operations finished</span><span><strong>${snap.active.length}</strong> processing</span><span><strong>${snap.attending.length}</strong> workers attending</span><span><strong>${done} / ${c.pumps}</strong> pumps inspected</span>`;
+}
+function renderJourney(c,s){
+ const j=pumpJourney(c,s,state.order,state.tick);
+ $('#pump-journey').innerHTML=`<div class="journey-heading"><div><p class="eyebrow">FOLLOW THE PUMP</p><h3>${j.order} <span>${j.completed} / ${j.total} steps</span></h3></div><svg class="pump-glyph" viewBox="0 0 36 36" aria-hidden="true">${glyphBody('pump')}</svg></div><p class="journey-phase">${j.phase}</p><div class="journey-progress" role="progressbar" aria-label="${j.order} completed operations" aria-valuemin="0" aria-valuemax="${j.total}" aria-valuenow="${j.completed}"><i style="width:${100*j.completed/j.total}%"></i></div>${j.components.map(part=>`<div class="component-row ${part.complete?'component-complete':''}"><svg viewBox="0 0 36 36" aria-hidden="true">${glyphBody(part.name)}</svg><div><div class="component-label"><strong>${part.name[0].toUpperCase()+part.name.slice(1)}</strong><span>${part.completed}/${part.steps.length}</span></div><p>${part.complete?'Component ready':part.active?`Processing on ${part.active.machine}`:`Next: ${part.next.machine} at ${elapsed(part.next.start)}`}</p><div class="recipe-dots">${part.steps.map((r,i)=>`<button class="recipe-step ${r.status}" data-operation="${r.operation}" aria-label="Inspect ${r.operation}: ${r.status}" aria-pressed="${r.operation===state.operation}" title="${part.name} step ${i+1} · ${r.machine} · ${r.status}">${r.status==='complete'?'✓':i+1}</button>`).join('')}</div></div></div>`).join('')}<div class="join-route">${[j.assembly,j.inspection].map((r,i)=>`<button data-operation="${r.operation}" class="join-step ${r.status}" aria-pressed="${r.operation===state.operation}"><span>${r.status==='complete'?'✓':i+4}</span>${i?'Final inspection':'Assemble pump'}<small>${r.status==='complete'?'Complete':r.status==='active'?'Processing':elapsed(r.start)}</small></button>`).join('')}</div><p class="journey-note">Progress follows the saved schedule. Inspection completion is not shipment.</p>`;
 }
 function renderCommitments(c,s){
- $('#commitments').innerHTML=commitments(c,s).map(r=>`<button class="commitment" data-order="${r.order}" aria-pressed="${r.order===state.order}"><b>${r.order}</b><span class="${r.tardy?'late':'ontime'}">${r.tardy?n(r.tardy)+'m late':'On time'}</span><small>Due ${n(r.due)}m · final QA ends ${n(r.end)}m<br>${r.end<=state.tick?'Final inspection completed':'Planned completion; not a shipment event'}</small></button>`).join('');
+ $('#commitments').innerHTML=commitments(c,s).map(r=>`<button class="commitment" data-order="${r.order}" aria-pressed="${r.order===state.order}"><b>${r.order}</b><span class="${r.tardy?'late':'ontime'}">${r.tardy?n(r.tardy)+'m late':'On-time plan'}</span><small>Due ${elapsed(r.due)} · inspection ${elapsed(r.end)}<br>${r.end<=state.tick?'✓ Final inspection complete':'○ Inspection not yet complete'}</small></button>`).join('');
  const r=s.plan.find(r=>r.operation===state.operation),o=c.problem.operations.find(o=>o.id===state.operation);
- $('#inspector').innerHTML=r?`<p class="eyebrow">SELECTED OPERATION</p><h3>${esc(state.operation.replaceAll('/',' / '))}</h3><dl><div><dt>Machine / hall</dt><dd>${r.machine} / ${r.hall}</dd></div><div><dt>Worker</dt><dd>${r.worker}</dd></div><div><dt>Processing</dt><dd>${n(r.start)}–${n(r.end)}m</dd></div><div><dt>Attendance ends</dt><dd>${n(r.attended_end)}m</dd></div><div><dt>Family</dt><dd>${esc(o.family)}</dd></div></dl><p class="reason">${esc(readiness(c,s,state.operation,state.tick))}</p>`:'';
+ $('#inspector').innerHTML=r?`<p class="eyebrow">SELECTED OPERATION</p><h3>${esc(state.operation.replaceAll('/',' / '))}</h3><dl><div><dt>Machine / hall</dt><dd>${r.machine} / ${r.hall}</dd></div><div><dt>Worker</dt><dd>${r.worker}</dd></div><div><dt>Processing</dt><dd>${n(r.start)}–${n(r.end)}m</dd></div><div><dt>Attendance ends</dt><dd>${n(r.attended_end)}m</dd></div><div><dt>Family</dt><dd>${esc(o.family)}</dd></div></dl><p class="reason">${esc(readiness(c,s,state.operation,state.tick))}</p><button class="seek-operation" data-seek="${r.start}">See this step at ${elapsed(r.start)} →</button>`:'';
+}
+function renderMachineInspector(c,s){
+ const id=state.machine,av=machineAvailability(c.problem,id,state.tick),machine=c.problem.machines[id];
+ const rows=s.plan.filter(r=>r.machine===id).sort((a,b)=>a.start-b.start),active=rows.find(r=>r.start<=state.tick&&state.tick<r.end),next=rows.find(r=>r.start>state.tick);
+ $('#inspector').innerHTML=`<p class="eyebrow">SELECTED MACHINE</p><h3>${esc(id)}${machine?' / Hall '+esc(machine.hall):''}</h3><dl><div><dt>Current state</dt><dd>${active?'Processing':esc(av.label)}</dd></div><div><dt>Completed steps</dt><dd>${rows.filter(r=>r.end<=state.tick).length} / ${rows.length}</dd></div>${active?`<div><dt>Operation</dt><dd>${esc(active.operation)}</dd></div><div><dt>Attending now</dt><dd>${state.tick<active.attended_end?esc(active.worker):'No worker required'}</dd></div>`:''}</dl><p class="reason">${active?`Processing until minute ${active.end}. Attendance ends at ${active.attended_end}.`:!machine?'Unavailable for this complete planning window. No assignment can use this machine.':esc(av.detail)}${next?` Next saved assignment: ${esc(next.operation)} at ${elapsed(next.start)}.`:''}</p>${next?`<button class="seek-operation" data-seek="${next.start}">See the next assignment →</button>`:''}`;
 }
 function renderBOM(c,s){
  const ops=c.problem.operations.filter(o=>pump(o.id)===state.order),coords=new Map();
@@ -58,15 +58,20 @@ function renderEncoding(c){
  $('#encoding-detail').innerHTML=`<div class="encoding-note"><p><b>${esc(labels[c.id])}.</b> ${full?`The complete domain has ${n(full.variables)} bits and ${n(full.couplers)} couplers after exact support pruning.`:'A complete time-indexed QUBO was not materialized for this case.'} The candidate pool has ${n(pool?.variables)} bits / ${n(pool?.couplers)} couplers. It retains every operation, but restricts choices.</p><p>${cert?`<b>Checked-incumbent penalty:</b> ${n(cert.original_penalty)} → ${n(cert.penalty)} (${n(cert.ratio,1)}× smaller). This preserves feasible ground states using a checked heuristic witness, not the CP optimum.`:''} Native references are independent of the compiler. No VeloxQ output is shown.</p></div>`;
 }
 function updateClock(){
- const active=document.activeElement,group=active?.closest?.('#floor,#commitments,#bom,#gantt')?.id;
- const key=group?['operation','order','machine'].find(k=>active.dataset[k]):null,value=key?active.dataset[key]:null;
+ const active=document.activeElement,group=active?.closest?.('#floor,#commitments,#bom,#gantt,#pump-journey,#inspector')?.id;
+ const key=group?['operation','order','machine','seek'].find(k=>active.dataset[k]):null,value=key?active.dataset[key]:null;
  const c=current(),s=plan(),choice=s.plan.find(r=>r.operation===state.operation);
  $('#math-choice').textContent=choice?`Selected schedule example: ${choice.operation} · ${choice.machine} · ${choice.worker} · start ${choice.start} min, finish ${choice.end} min.`:'';
- $('#time').value=state.tick;$('#clock').value=`${n(state.tick/60,1)} h`;$('#clock-label').textContent=`${n(state.tick)} / ${n(c.problem.horizon)} MIN`;
- renderFloor(c,s);renderCommitments(c,s);renderBOM(c,s);renderGantt(c,s);
- if(group&&key){const next=[...document.getElementById(group).querySelectorAll(`[data-${key}]`)].find(el=>el.dataset[key]===value);next?.focus({preventScroll:true});}
+ $('#time').value=state.tick;$('#clock').value=elapsed(state.tick);$('#clock-label').textContent=`SAVED PLAN · ${state.playing?'PLAYING':'PAUSED'}`;$('#next-event').disabled=nextPlanEvent(c,s,state.tick)===null;
+ renderFloor(c,s);renderCommitments(c,s);if(state.machine)renderMachineInspector(c,s);renderJourney(c,s);renderBOM(c,s);renderGantt(c,s);
+ if(group&&key){
+  const next=[...document.getElementById(group).querySelectorAll(`[data-${key}]`)].find(el=>el.dataset[key]===value);
+  const fallback=state.machine?[...$('#floor').querySelectorAll('[data-machine]')].find(el=>el.dataset.machine===state.machine):[...$('#pump-journey').querySelectorAll('[data-operation]')].find(el=>el.dataset.operation===state.operation);
+  (next??fallback)?.focus({preventScroll:true});
+ }
 }
 function renderCase(){
+ setPlaying(false);state.machine=null;
  const c=current();if(!c.plans.some(s=>s.id===state.method))state.method=c.plans.some(s=>s.id==='pool_reference')?'pool_reference':'list';
  $('#method').innerHTML=c.plans.map(s=>`<option value="${s.id}">${esc(s.name)}${s.optimal?(s.id==='raw_reference'?' · COMPLETE OPTIMUM':' · POOL OPTIMUM'):''}</option>`).join('');$('#method').value=state.method;
  const orders=[...new Set(c.problem.operations.map(o=>pump(o.id)))];if(!orders.includes(state.order))state.order=orders[0];
@@ -77,11 +82,14 @@ function renderCase(){
  $('#story-tag').textContent=step?.tag??'EXPLORE THE SAVED STUDY';
  $('#story-title').textContent=step?.title??'Inspect the production plan.';
  $('#story-copy').textContent=step?.copy??labels[c.id]+'. Each view uses the selected checked schedule.';
+ $('#world-state').textContent=step?['The furnace outage','Bring in spare capacity','The missing choices','The recovered deadline'][storySteps.indexOf(step)]:'Explore the selected plan';
+ $('#story-observation').textContent=observations[step?.id]??'Select a machine or a recipe step to inspect its actual planned assignment. Playback changes the view, not the schedule.';
+ $('#next-story').textContent=step&&storySteps.indexOf(step)<3?'Next decision →':'See the model & results →';
  document.querySelectorAll('[data-story-step]').forEach(b=>{if(b.dataset.storyStep===step?.id)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
- $('#case-summary').innerHTML=`<strong class="result-number ${s.check.weighted_terminal_tardiness?'late':'ontime'}">${s.check.weighted_terminal_tardiness?n(s.check.weighted_terminal_tardiness):'On time'}${s.check.weighted_terminal_tardiness?'<small>min late</small>':''}</strong><span class="result-label">${s.check.weighted_terminal_tardiness?'Weighted terminal tardiness':'All modeled due dates met'}</span><p>Completion ${elapsed(s.check.makespan)}<br>${c.operations} mandatory operations</p>`;
+ $('#case-summary').innerHTML=`<strong class="result-number ${s.check.weighted_terminal_tardiness?'late':'ontime'}">${s.check.weighted_terminal_tardiness?n(s.check.weighted_terminal_tardiness):'On-time plan'}${s.check.weighted_terminal_tardiness?'<small>min late</small>':''}</strong><span class="result-label">${s.check.weighted_terminal_tardiness?'Weighted terminal tardiness':'Predicted from this saved schedule'}</span><p>Completion ${elapsed(s.check.makespan)}<br>${c.operations} mandatory operations</p>`;
  $('#run-notice').textContent=s.run_notice??'';$('#run-notice').hidden=!s.run_notice;
  $('.story-facts').hidden=!['heat-outage-32','heat-lease-32'].includes(state.case);
- $('#schedule-scope').textContent=`${s.quality_label??(exact?'Complete-model optimum certified.':s.id==='pool_reference'?'Restricted-pool optimum; complete-model quality may differ.':'Checked saved schedule; no complete-model optimality claim.')} Whole-model objective interval: [${n(lower(c))}, ${n(Math.min(...c.plans.map(s=>s.check.objective)))}]. ${Object.keys(c.problem.workers).length} workers; ${Object.keys(c.problem.machines).length} available machines. Final inspection is not shipment.`;
+ $('#schedule-scope').textContent=`${s.quality_label??(exact?'Complete-model optimum certified.':s.id==='pool_reference'?'Restricted-pool optimum; complete-model quality may differ.':'Checked saved schedule; no complete-model optimality claim.')} Whole-model objective interval: [${n(lower(c))}, ${n(Math.min(...c.plans.map(s=>s.check.objective)))}]. ${Object.keys(c.problem.workers).length} workers; ${Object.keys(c.problem.machines).length} modeled machines. Final inspection is not shipment.`;
 
  $('#compare-capacity').textContent=state.case==='heat-lease-32'?'Remove replacement capacity ↗':'Test replacement capacity ↗';renderEncoding(c);updateClock();
 }
@@ -90,35 +98,48 @@ function showView(view,focus=false){
  for(const p of document.querySelectorAll('.workspace-panel'))p.hidden=p.id!=='view-'+view;
  if(focus)document.querySelector('#tab-'+view).focus({preventScroll:true});
 }
+function focusWorld(focused){document.body.classList.toggle('factory-focused',focused);$('#focus-world').setAttribute('aria-pressed',String(focused));$('#focus-world').textContent=focused?'Exit focus ⤡':'Focus factory ⤢';}
+$('#focus-world').addEventListener('click',()=>focusWorld(!document.body.classList.contains('factory-focused')));
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('factory-focused')){focusWorld(false);$('#focus-world').focus();}});
 const tabs=[...document.querySelectorAll('[data-workspace-view]')];
 for(const b of tabs){b.addEventListener('click',()=>showView(b.dataset.workspaceView));b.addEventListener('keydown',e=>{
  const i=tabs.indexOf(b),j=e.key==='ArrowRight'?(i+1)%tabs.length:e.key==='ArrowLeft'?(i+tabs.length-1)%tabs.length:e.key==='Home'?0:e.key==='End'?tabs.length-1:null;
  if(j!==null){e.preventDefault();showView(tabs[j].dataset.workspaceView);tabs[j].focus();}
 });}
 $('#story-steps').innerHTML=storySteps.map((s,i)=>`<button class="story-step" data-story-step="${s.id}"><span>0${i+1}</span><span>${s.label}</span></button>`).join('');
-for(const b of document.querySelectorAll('[data-story-step]'))b.addEventListener('click',()=>{
- const step=storySteps.find(s=>s.id===b.dataset.storyStep);state.case=step.case;state.method=step.method;state.tick=360;state.playing=false;$('#play').textContent='▶';$('#play').setAttribute('aria-label','Play saved schedule');showView('floor');renderCase();$('.workspace').scrollTop=0;
-});
+function selectStory(step){
+ state.case=step.case;state.method=step.method;state.tick=360;state.operation=state.order+'/housing/step3';setPlaying(false);showView('floor');renderCase();$('.workspace').scrollTop=0;
+}
+for(const b of document.querySelectorAll('[data-story-step]'))b.addEventListener('click',()=>selectStory(storySteps.find(s=>s.id===b.dataset.storyStep)));
+$('#next-story').addEventListener('click',()=>{const i=storySteps.indexOf(selectedStory(state.case,state.method));if(i>=0&&i<3){selectStory(storySteps[i+1]);document.querySelector(`[data-story-step="${storySteps[i+1].id}"]`).focus({preventScroll:true});}else{showView('analysis',true);$('.workspace').scrollTop=0;}});
 showView(location.hash==='#merit'?'analysis':'floor');
 $('#scenario').innerHTML=Object.keys(data.cases).map(id=>`<option value="${id}">${labels[id]}</option>`).join('');
-$('#scenario').addEventListener('change',e=>{state.case=e.target.value;state.method='raw_reference';renderCase();});
-$('#method').addEventListener('change',e=>{state.method=e.target.value;renderCase();});
-$('#order').addEventListener('change',e=>{state.order=e.target.value;state.operation=state.order+'/housing/step0';updateClock();});
+$('#scenario').addEventListener('change',e=>{state.case=e.target.value;state.method='raw_reference';setPlaying(false);renderCase();});
+$('#method').addEventListener('change',e=>{state.method=e.target.value;setPlaying(false);renderCase();});
+$('#order').addEventListener('change',e=>{state.machine=null;state.order=e.target.value;state.operation=state.order+'/housing/step0';updateClock();});
 $('#compare-capacity').addEventListener('click',()=>{state.case=state.case==='heat-lease-32'?'heat-outage-32':'heat-lease-32';state.method='raw_reference';renderCase();});
-$('#time').addEventListener('input',e=>{state.tick=Number(e.target.value);updateClock();});
+$('#time').addEventListener('input',e=>{state.tick=Number(e.target.value);setPlaying(false);updateClock();});
 $('#ghost').addEventListener('change',e=>{state.ghost=e.target.checked;renderGantt(current(),plan());});
 document.querySelectorAll('[data-resource]').forEach(b=>b.addEventListener('click',()=>{state.resource=b.dataset.resource;document.querySelectorAll('[data-resource]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));renderGantt(current(),plan());}));
 document.addEventListener('click',e=>{
- const el=e.target.closest('[data-operation],[data-order],[data-machine],[data-case]');if(!el)return;
+ const el=e.target.closest('[data-operation],[data-order],[data-machine],[data-case],[data-seek]');if(!el)return;
+ if(el.dataset.seek!==undefined){state.tick=Number(el.dataset.seek);setPlaying(false);updateClock();return;}
  if(el.dataset.case){state.case=el.dataset.case;state.method='raw_reference';return renderCase();}
- if(el.dataset.order){state.order=el.dataset.order;state.operation=state.order+'/housing/step0';}
- if(el.dataset.operation){state.operation=el.dataset.operation;state.order=pump(state.operation);}
- if(el.dataset.machine){const rows=plan().plan.filter(r=>r.machine===el.dataset.machine);const r=rows.find(r=>r.start<=state.tick&&state.tick<r.end)??rows.filter(r=>r.start>=state.tick).sort((a,b)=>a.start-b.start)[0]??rows[0];if(r){state.operation=r.operation;state.order=pump(r.operation);}}
+ if(el.dataset.order){state.machine=null;state.order=el.dataset.order;state.operation=state.order+'/housing/step0';}
+ if(el.dataset.operation){state.machine=null;state.operation=el.dataset.operation;state.order=pump(state.operation);}
+ if(el.dataset.machine){state.machine=el.dataset.machine;const rows=plan().plan.filter(r=>r.machine===el.dataset.machine);const r=rows.find(r=>r.start<=state.tick&&state.tick<r.end)??rows.filter(r=>r.start>=state.tick).sort((a,b)=>a.start-b.start)[0]??rows[0];if(r){state.operation=r.operation;state.order=pump(r.operation);}}
  $('#order').value=state.order;updateClock();
 });
-document.addEventListener('keydown',e=>{const control=e.target.closest?.('[data-operation],[data-machine]');if((e.key==='Enter'||e.key===' ')&&control){e.preventDefault();control.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
-let last=0;$('#play').addEventListener('click',()=>{state.playing=!state.playing;$('#play').textContent=state.playing?'Ⅱ':'▶';$('#play').setAttribute('aria-label',state.playing?'Pause saved schedule':'Play saved schedule');last=0;});
-function animate(t){if(state.playing&&t-last>100){state.tick+=Math.max(3,current().problem.horizon/180);if(state.tick>current().problem.horizon)state.tick=0;updateClock();last=t;}requestAnimationFrame(animate);}requestAnimationFrame(animate);
+document.addEventListener('keydown',e=>{const control=e.target.closest?.('[data-operation],[data-machine]');if((e.key==='Enter'||e.key===' ')&&control instanceof SVGElement){e.preventDefault();control.dispatchEvent(new MouseEvent('click',{bubbles:true}));}});
+let last=0;
+function setPlaying(playing){state.playing=playing;$('#play').textContent=playing?'Ⅱ':'▶';$('#play').setAttribute('aria-label',playing?'Pause saved schedule':'Play saved schedule');last=0;}
+$('#play').addEventListener('click',()=>{if(!state.playing&&state.tick>=plan().check.makespan)state.tick=0;setPlaying(!state.playing);updateClock();});
+$('#restart').addEventListener('click',()=>{state.tick=0;setPlaying(false);updateClock();});
+$('#next-event').addEventListener('click',()=>{const next=nextPlanEvent(current(),plan(),state.tick);if(next!==null)state.tick=next;setPlaying(false);updateClock();});
+function animate(t){
+ if(state.playing){if(!last)last=t;const delta=t-last;if(delta>=100){state.tick=Math.min(plan().check.makespan,state.tick+Math.min(delta,300)*Number($('#speed').value)/1000);last=t;if(state.tick>=plan().check.makespan)setPlaying(false);updateClock();}}
+ requestAnimationFrame(animate);
+}requestAnimationFrame(animate);
 $('#scaling').innerHTML=['nominal-32','nominal-64','nominal-128'].map(id=>{const c=data.cases[id];return `<tr><td><button data-case="${id}">${c.pumps} complete pumps ↗</button></td><td>${c.operations}</td><td>${n(c.initializer_cost.raw_assignment_candidates)}</td><td>${n(c.pool.variables)} / ${n(c.pool.couplers)}</td><td>${c.reference.status}${c.reference.optimal?' · certified':''}</td><td>${n(Math.min(...c.plans.map(s=>s.check.objective)))} / ${n(lower(c))}</td></tr>`;}).join('');
 $('#provenance').textContent=Object.entries(data.source_sha256).map(([p,h])=>`${p}\nSHA-256 ${h}`).join('\n\n');
 $('#packet-status').textContent='Four current cold SDK files: 818-bit deadline, 2,078-bit enriched (two penalty settings), and 2,499-bit complete optimization. Every literal coefficient and offset was audited. Earlier six-model cold/witness packets are retained separately. Service calls: 0.';

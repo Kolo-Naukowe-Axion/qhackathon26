@@ -6,4 +6,10 @@ export const storySteps=[
  {id:'enrichment',case:'heat-lease-32',method:'enriched_reference',label:'Keep the recovery choices',tag:'THE RECOVERY',title:'Better choices. Deadline saved.',copy:'Deterministic enrichment restores the on-time optimum at 2,078 bits. The complete optimization encoding uses 2,499.'}
 ];
 export function selectedStory(caseId,method){return storySteps.find(s=>s.case===caseId&&s.method===method)??null;}
-export function elapsed(minutes){const h=Math.floor(minutes/60),m=Math.round(minutes%60);return `${h}h ${String(m).padStart(2,'0')}m`;}
+export function elapsed(minutes){const t=Math.floor(minutes+1e-7),h=Math.floor(t/60),m=t%60;return `${h}h ${String(m).padStart(2,'0')}m`;}
+export const observations={
+ outage:'H2 is unavailable for the whole planning window. The remaining heat capacity cannot keep both pumps within the 15-hour deadline.',
+ capacity:'H3 becomes eligible at hour 6. Extra heat capacity allows a coordinated plan that finishes both pumps in 14h 15m.',
+ restriction:'H3 is still available. The small pool retains its assignment rows, but loses other coordinated choices needed to recover the deadline.',
+ enrichment:'Enrichment adds scheduling choices. Its certified pool optimum now matches the complete-model recovery: both pumps inspected by 14h 15m.'
+};

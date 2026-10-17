@@ -1,73 +1,87 @@
-# Manufacturing workspace — current UI revision
+# Manufacturing demo — game-like factory with checked schedules
 
-17 October 2026. This revision responds to the user's assessment that the long,
-flat manufacturing page was visually weak. It implements the working story in
-the actual UI; final recording, deployment and submission packaging remain later
-work. Numerical experiment inputs/results are unchanged.
+17 October 2026. The user explicitly prefers the richer game-like factory
+style and authorized combining it with the verified recovery study. This
+supersedes the preceding formal workspace design; older source-sealed receipts
+remain historical snapshots.
 
-## Design and behavior
+## Design and interaction
 
-Visual thesis: an industrial planning workspace with a dark navigation rail,
-a light work surface, readable type and the actual shop floor as the visual
-anchor. The existing Axion mark and Manrope type remain; broad gray report panels
-are replaced by a clear frame and fewer simultaneous views.
+Visual thesis: a small cutaway factory world with detailed machines, warm
+material cues and readable operational status, framed by the Axion workshop.
+Content plan: four recovery decisions, the factory world and selected-pump
+progress, followed by mathematical explanation and evidence. Interaction thesis:
+interval-driven machine activity, selectable recipe steps and event-based replay.
 
-Content plan: the left rail establishes the fictional two-pump recovery scenario;
-the main heading shows the active question and measured outcome; the floor and
-resource inspector show the selected saved plan. Four steps select actual
-retained schedules: outage45/945, complete replacement0/855, original restricted
-pool45/945 and enriched pool0/855. Fiction and synthetic measurements are labeled.
+The four story choices load actual retained schedules: outage45/945, complete
+replacement0/855, original restricted pool45/945 and enriched pool0/855.
+The guided next-decision action explains what to notice, then opens results.
+H3 is available in both replacement pools: missing coordinated choices cause
+the original pool's loss, not a missing furnace. Story selection is playback,
+not a new optimization. The setting and input data are labeled fictional/synthetic.
 
-Interaction thesis: selecting a step updates the schedule, result and inspector;
-playback reveals processing state; tabs expose recipe/timeline, mathematical
-explanation, results and answers without stacking them below the floor. Motion
-is restrained and respects reduced-motion preferences.
+The two cutaway halls contain distinct turning, milling, welding, washing,
+heat-treatment, inspection and assembly equipment. Workpieces, progress bars
+and attending workers derive from the selected schedule. Processing uses
+[start,end); worker attendance uses [start,attended_end). Availability comes
+from the actual machine domain, release restrictions and calendars. Offline
+machines remain selectable and explain why no assignment uses them.
 
-The four view tabs support native focus and arrow/Home/End navigation. Advanced
-scenario and schedule selectors remain available in an expandable control area.
-The model/results view retains the full tables, cost controls, local QAOA action,
-failures and provenance. Selecting a representation opens its actual schedule.
-The questions view explains representation loss, quantum contribution and scope.
+The inspector follows all16mandatory steps of a selected pump: housing, rotor
+and flange recipes, assembly and final inspection. The saved plan's predicted
+deadline result is separate from playback completion. No shipment is inferred.
+A selected operation links to its machine/worker and can seek its actual start.
 
-The mathematical explanation includes a selected assignment example, the
-weighted-tardiness/completion objective, one-hot and forbidden-pair quadratic
-penalties, completion consistency, and the checked-witness penalty argument.
-It distinguishes the assignment optimization encoding, deadline feasibility
-query and restricted component-route quantum bridge.
+Replay supports restart, next-event stepping, scrubbing, speed and pause; it
+stops at the selected schedule's completion. Every plan/scenario switch pauses
+replay. Manual exploration preserves time clamped to the new horizon; guided
+story choices reset to minute360. Playback speed changes only the display.
+The Focus factory control hides surrounding explanations for presentation;
+Exit focus or Escape returns to the complete workspace. Tabs, SVG machines,
+recipe buttons and seek actions support keyboard focus through redraws.
+Reduced-motion preferences disable ornamental equipment effects and transitions.
 
-## Verification and limits
+## One Stage2 extension, including VeloxQ
 
-The semantic story test checks all four UI choices against the saved original
-models and due dates. All114site tests, syntax checks and static build pass after
-the redesign. An initially failed build exposed a stale source hash in the older
-Start guide after the preceding documentation update; its read-only export was
-regenerated from retained evidence, with both frozen evidence exports unchanged.
+The user clarified that VeloxQ should contribute creatively within the project.
+The [official challenge](../Quantum_Hackathon_2026_ERP_Challenge.pdf) supports this:
+Section5 lists VeloxQ as a Stage2 extension direction; Section11 assesses
+integration/quality/scaling/insight/reproducibility; Section15 describes the
+end-to-end solution and complementary classical/quantum approaches.
 
-The loopback Python preview now uses ThreadingHTTPServer, so an idle browser
-preconnection cannot monopolize a single-request server. Host/Origin checks,
-request bounds, allowed cases and fresh-run behavior retain their prior scope.
-No remote solver or credentials are used.
+The model/results view explicitly groups classical references, local simulated
+QAOA and the prepared larger VeloxQ QUBOs as paths within one factory extension.
+Their representation scopes remain different. The same schedule checker and
+capacity comparison determine operational value. Actual VeloxQ service quality
+is still unmeasured; offline packet preparation is not a successful backend run.
+A separate sponsor award does not imply a separate modeled project, and
+simultaneous prize eligibility has not been confirmed.
 
-Desktop browser verification passed after the user loaded the HTTP preview.
-All four story choices display their expected measured outcomes; keyboard SVG
-selection preserves focus, keyboard tab navigation works, and representation
-selection returns focus to a visible floor tab. Nominal comparison now lives in
-the visible timeline; People comparison uses attendance rather than machine
-processing duration. The math panel and answer view were inspected visually.
-The fresh action completed a28-qubit local simulation in1.43seconds, returning
-a checked0-lateness/855-minute schedule; its result notice remains visible after
-switching to the floor. Browser warning/error logs are empty. Source review
-independently identified the five interaction issues; all were corrected.
+## Mathematical evidence and verification
 
-The prior browser policy block was resolved by the user loading the actual HTTP
-preview. No alternative browser or policy workaround was used. Desktop screenshots
-and current sources are retained in `output/manufacturing-workspace-qa-v1/`.
-Responsive CSS is implemented; mobile visual verification is not claimed.
-The full [mathematical guide](STAGE2_MANUFACTURING_MATH.md) independently checks
-raw-model semantics, polynomial coefficients, penalty proofs and reduction scope.
+The mathematical walkthrough, representation comparison, exact cost ledger,
+quantum disclosures, failed controls and provenance remain accessible. Read the
+[main-model specification](STAGE2_MANUFACTURING_MATH.md) for the actual domains,
+coefficients, integer hierarchy, penalty proof and reduction guarantees.
+The new UI does not change any numerical campaign or compiler evidence.
 
-The earlier acceptance, browser screenshots and test receipts describe their
-own prior source snapshots. They are preserved, not silently re-sealed as proof
-of this revised layout. Mathematical and numerical evidence remains linked by
-[current status](STAGE2_STATUS.md), [the study](STAGE2_MANUFACTURING_STUDY.md),
-and [the working story](STAGE2_STORY_AND_ANSWERS.md).
+The full static build passes120site tests, including six new semantic checks
+for actual process/attendance boundaries, future availability, unavailable
+machine selection, per-pump progress and on-time-plan versus completion state.
+Desktop review checks all four measured outcomes, recipe/machine keyboard
+selection, focused mode, event stepping, restart, end-state progress and the
+integrated Stage2 explanation. Independent review identified replay-state and
+seek-focus edges; these were fixed before the final verification.
+
+A fresh browser action returns a checked28-qubit local QAOA result at0weighted
+lateness/855minutes in0.54seconds. Artifact:
+`output/recipe-bridge-live/20261017T123902Z-3797789b`.
+The constructor already supplies an optimal incumbent; no speedup or quantum
+advantage follows from this UI action. Browser warnings/errors are absent in
+the reviewed session. Desktop screenshots and verification are saved separately
+in `output/manufacturing-game-qa-v1/`. Mobile visual verification is not claimed.
+
+The configured private-repository sync and automatic site deployment are
+user-authorized. Actual VeloxQ execution, physical QPU work, public-source release,
+final video and submission retain their existing holds/deferred scope.
+Markdown/JSON cleanup remains explicitly deferred.
