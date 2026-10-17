@@ -15,7 +15,7 @@ const facing=resource=>resource?.startsWith('C')?'left':'up';
 
 export function buildWorkerTrack(c,worker){
   const rest=REST_SPOTS[worker],horizon=c.instance.horizon_minutes,ops=[];
-  const lane={W1:710,W2:750,W3:870}[worker];
+  const lane={W1:710,W2:910,W3:870}[worker];
   const route=(from,to)=>corridorRoute(from,to,lane);
   for(const raw of allOperations(c).filter(o=>o.worker===worker).sort((a,b)=>a.start-b.start)){
     const o={...raw,end:raw.attended_end},prev=ops.at(-1);
