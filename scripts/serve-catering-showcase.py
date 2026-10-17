@@ -18,12 +18,14 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self):
         name=unquote(urlsplit(self.path).path)
         base=studio if name=='/' or name.startswith('/studio/') else ROOT/'presentation'
-        relative='index.html' if name=='/' else name.removeprefix('/studio/') if name.startswith('/studio/') else name.lstrip('/')
+        relative='index.html' if name=='/' or name.rstrip('/')=='/baseline' else name.removeprefix('/studio/') if name.startswith('/studio/') else name.lstrip('/')
         path=(base/relative).resolve()
         if not path.is_relative_to(base.resolve()):self.send_error(403);return
         if path.is_dir():path=path/'index.html'
         if not path.is_file():self.send_error(404);return
-        data=path.read_bytes();self.send_response(200)
+        data=path.read_bytes()
+        if name.rstrip('/')=='/baseline':data=data.replace(b'<head>',b'<head>\n<base href="/" />',1)
+        self.send_response(200)
         self.send_header('Content-Type',mimetypes.guess_type(str(path))[0] or 'application/octet-stream')
         self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(data)));self.end_headers();self.wfile.write(data)
 

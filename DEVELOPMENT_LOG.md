@@ -1,5 +1,27 @@
 # Development log
 
+## 2026-10-17 — catering production entry and deployment preparation
+
+The user requested continued improvement, deployment and push to origin/main.
+Production root now redirects temporarily to /catering/, while /baseline/
+preserves the original Stage 1 viewer with a root asset base. Its HTML is
+generated from the existing source, not maintained as a second copy. The local
+static server and private studio support that same baseline path. The kitchen
+header and model/results dialog link to Stage 1; the shared view guide separates
+the active catering entry from historical manufacturing studies.
+
+Simplified public evidence headings, clarified component-lot/priority units,
+and exposed the six-of-eight final offered-pool result alongside its full-grid
+and control limitations. Frozen data and models are unchanged. The navigation
+check follows kitchen → working Stage 1 → kitchen without browser errors or
+optimizer calls. All 144 site tests and the static build pass. Private studio,
+speaker notes, repository docs and local video files are excluded from dist.
+
+The existing Vercel production alias was inspected Ready before this change.
+The release uses the main-branch Git integration; exact new deployment status
+and commit identity must be checked after push. GitHub privacy is unchanged.
+No quantum training, service credits or QPU execution accompanies this release.
+
 ## 2026-10-17 — single-source scripts, timed rehearsal and documentation cleanup
 
 The user requested tighter narration/live preparation and to start cleaning the

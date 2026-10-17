@@ -1,3 +1,4 @@
+import { baselinePage } from './baseline-page.mjs';
 import { createServer } from 'node:http';
 import { readFile, stat } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
@@ -9,6 +10,11 @@ const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    if(pathname==='/baseline/'||pathname==='/baseline'){
+      const html=await readFile(resolve(root,'index.html'),'utf8');
+      res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});
+      res.end(baselinePage(html));return;
+    }
     let path = resolve(root, `.${pathname === '/' ? '/index.html' : pathname}`);
     if (!path.startsWith(root.endsWith(sep) ? root : root + sep)) { res.writeHead(403).end(); return; }
     if ((await stat(path)).isDirectory()) path = resolve(path, 'index.html');

@@ -93,6 +93,10 @@ and defends the work. Actual executions and their limitations are recorded in
 [the development log](DEVELOPMENT_LOG.md) and retained evidence. AI-written
 explanations are not experimental results.
 
+Production opens [the catering demo](https://qfactoria.com/catering/); the
+[Stage 1 viewer](https://qfactoria.com/baseline/) remains available. The production
+root redirects to catering.
+
 GitHub remains private until the final release step. A push to `main` triggers
 the configured static-viewer deployment; it does not publish repository docs or
 local videos. Public source access, the final video URL and submission receipt

@@ -62,6 +62,8 @@ Final owner results, human voiceover, rehearsal and upload remain open.
 
 The user authorizes ordinary private-main pushes. Fetch before pushing and
 preserve teammate work. Keep GitHub private until the final release step.
+The user explicitly requested deployment and push to origin/main. Production
+now routes the root to /catering/ and preserves the Stage 1 viewer at /baseline/.
 A main push triggers the configured static deployment, which copies only
 `presentation/`; draft studio assets live under `scripts/`.
 

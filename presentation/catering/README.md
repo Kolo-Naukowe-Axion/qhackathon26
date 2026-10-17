@@ -109,3 +109,8 @@ be integrated once measured; no service or hardware result is invented here.
 The order board shows actual handovers and discarded component portions at the
 current replay time. The waste count follows the recorded disposal events; it
 is not the final objective projected backward over the animation.
+
+Production opens this catering demo at the site root. Stage 1 remains at
+`/baseline/`, with its original assets and formulation guide. The kitchen
+header and Model & results panel link to it. Private live-demo sampling and
+speaker materials stay in the local studio, outside the static deployment.
