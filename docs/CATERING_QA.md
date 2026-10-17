@@ -1,0 +1,311 @@
+# Axion Kitchen: Q&A desk sheet
+
+Use the short answer first. Stop after two sentences unless they ask for more.
+The jury has about two minutes for questions. These answers describe the
+current evidence, not the result of experiments still running elsewhere.
+
+## Five lines to keep beside the screen
+
+1. “Each meal needs a main and a side. One course alone is waste, not service.”
+2. “A bit selects one local batch program. The optimizer chooses a compatible set.”
+3. “We distinguish physical feasibility, the offered-pool optimum and the full-grid optimum.”
+4. “The live action samples frozen QAOA angles locally. It does not retrain or call a QPU.”
+5. “All methods use versioned inputs and the same independent physical checker.”
+
+## When the question is unclear
+
+These bridges buy a moment while identifying what the jury wants. Pick one,
+then answer the question. Do not recite several or hide a missing measurement.
+
+- “Are you asking about the full kitchen or the restricted QUBO portfolio?”
+- “Do you mean the cost of simulating the circuit, or direct classical optimization?”
+- “Let me separate feasibility from optimality, because we measure both.”
+- “Is your question about the encoding itself, or the solver we used on it?”
+- “Could you repeat the last part? I want to answer the comparison you mean.”
+- “The result we verified is [one precise result]. The broader claim would need another experiment.”
+- “We haven't measured that specific quantity. What we can show is [the closest relevant evidence].”
+
+A useful answer structure is: **claim, evidence, boundary**. Example:
+“The cell's optimum is certified. Independent raw CP and exact encoding checks
+agree on (0,0,2,2). That certificate applies to this declared small cell.”
+Sounding obscure adds follow-up risk; a precise boundary is easier to defend.
+
+## If you freeze: a ten-second reset
+
+“Let me explain it through the kitchen. A bit chooses one batch program. We
+select compatible batches, then independently check whether complete meals
+reach their departures. Which part would you like us to unpack?”
+
+Use this once to recover, then address their actual question. If you do not
+know the answer: “We haven't measured that; our verified result is narrower.”
+An unrelated speech will consume the short Q&A slot without answering them.
+
+**What is original here? Is the formula itself new?**
+
+“We are not claiming to have invented binary multiplication or QAOA. Our
+extension connects shared batch yields, paired-course service, unpaired waste
+and physical scheduling, with explicit correctness checks and representation
+loss measurements.”
+
+## The problem and loss
+
+**What are you actually optimizing?**
+
+“First weighted missed complete meals, then discarded component lots, then
+new batches and changes to the unstarted plan. The scalar weights preserve
+that exact priority order.”
+
+If pressed: U is in priority-weighted meal lots; W is in component lots. A
+lot is 10 portions. They are different units, ordered lexicographically.
+
+**Why not just minimize cooking time?**
+
+“Orders have fixed departures and freshness limits. Finishing one course early
+doesn't help if its partner is missing, and food can become stale. Complete
+service and waste capture that decision directly.”
+
+The required Stage 1 makespan problems remain separate: A=4h, B=8h.
+
+**Isn't catering just renaming factory machines?**
+
+“The extension changes the decisions and objective: batch yields are shared
+between customers, and main/side coverage interacts through complete-meal
+service and unpaired waste. Those coupling terms are absent from plain makespan.”
+
+**Why is the pairing quadratic?**
+
+“For binary main coverage M and side coverage S, MS is one exactly when both
+exist. Missing service is 1−MS, and unpaired food is M+S−2MS.”
+
+On physically feasible schedules, M and S are binary.
+Each coverage is linear in program bits. Expanding gives degree at most two,
+so the current two-course model needs no product-register qubits.
+
+**Could the objective reward cooking food nobody can use?**
+
+“Every produced component is either part of a completed meal or discarded.
+The independent identity is W=produced component lots−2×completed meal lots.
+We check that material balance, and waste precedes batch count in the loss.”
+
+**Are you double-counting waste?**
+
+“No. Surplus was never allocated; orphan waste was allocated but lacked its
+partner. The per-batch ledger requires those categories plus served components
+to equal the batch yield.”
+
+**Is this a financial optimum?**
+
+“No. The implemented policy prioritizes service, then food waste and batch
+usage. Monetary prices are outside this profile.”
+
+**What does plan stability add in your examples?**
+
+“The formula counts the symmetric difference from a previous unstarted plan.
+In the current published fixtures that plan is empty, so R=B. We test the
+general formula, but these examples do not demonstrate a separate stability gain.”
+
+## Encoding and correctness
+
+**Are you selecting among pre-solved kitchen schedules?**
+
+“No. One program describes one locally valid batch with its quantity, timing
+and resources. The optimizer must combine those batches without conflicts.”
+
+Local enumeration is classical preprocessing. The exact-sector simulator also
+enumerates its sector energies; do not imply that this preprocessing is cheap
+at arbitrary scale.
+
+**Does anchor grouping discard feasible plans?**
+
+“Two programs sharing an anchor both allocate the same unit demand, so they
+cannot coexist. Every compatible offered subset gets exactly one encoding
+by selecting idle in unused blocks. Restricting the offered programs can lose plans.”
+
+**Does the XY mixer make every sample feasible?**
+
+“It preserves exactly one choice per block. It does not eliminate cross-block
+equipment, worker or duplicate-allocation conflicts. Those remain penalized
+and independently checked.”
+
+**How do you choose penalty weights?**
+
+“P is one plus the sum of absolute nonconstant objective coefficients. That
+exceeds the objective's whole bit-domain range, so a hard violation cannot
+beat a feasible state, even with negative objective terms.”
+
+If pressed: every violated hard term is a positive integer and an all-idle
+continuation is feasible. Large conservative penalties can still be difficult
+for heuristic or finite-precision solvers; the proof is not a convergence guarantee.
+
+**Why don't different objective units break the weighting?**
+
+“We bound every nonnegative integer component. Each higher-priority weight
+exceeds the largest possible combined lower-priority cost. That proves the
+scalar ordering equals our declared lexicographic ordering.”
+
+**How do you know the checker isn't simply repeating the QUBO?**
+
+“It reconstructs resource intervals, qualifications, freshness, handovers and
+material balance from raw plan records. It doesn't import the compiler or
+conflict graph. We also use a raw CP model without program enumeration.”
+
+Shared schemas and basic domain helpers remain shared. Do not claim two fully
+independent industrial software systems or a formal proof of every Python line.
+
+**What did your review actually catch?**
+
+“Two information-boundary gaps: future demand could enter an observed snapshot,
+and future or malformed outages could pass validation. We now reject those
+unsupported inputs. Frozen models and existing result tuples are unchanged.”
+
+## Quantum method and results
+
+**Why use quantum methods if CP solves the small case easily?**
+
+“The small case certifies the formulation and circuit behavior. The larger
+experiments study the effect of restricted quantum portfolios and backend
+choices. We are not claiming a speedup on this cell.”
+
+**Did quantum beat the classical reference?**
+
+“The small quantum result matches the certified optimum, as do the controls.
+The larger pilot still trails the full-grid reference. We measure how much
+comes from missing choices versus search within the choices we offered.”
+
+**What does 6/8 mean?**
+
+“Six final retained plans equal the exact optimum of their final offered
+portfolio. All eight remain worse than the full-grid optimum. Final-step
+controls also tie, so 6/8 does not establish a benefit from trained cost phases.”
+
+**Does 6/6 mean every measurement was optimal?**
+
+“No. Each of the six runs observed an optimal sample among 4096 shots. The ideal
+per-shot ground-state probabilities are about 0.30–0.73 percent in those runs.”
+
+Feasibility and best-of-run success are separate metrics. The initializer and
+mixer-only controls also find the small-cell optimum.
+
+**What is running live? Are you retraining?**
+
+“Fresh local sampling from the saved p=1 QAOA angles, followed by independent
+checks of every returned state. The seed is fixed for reproducibility.
+This is a new execution, not another independent training trial.”
+
+The recorded kitchen is a retained schedule. The live receipt reports whether
+that exact retained bitstring also appeared in the fresh sample; do not silently
+relabel an old replay as the newly selected schedule.
+
+**How many qubits are you actually simulating?**
+
+“The circuit encoding uses 35 data qubits, including idle choices. The small
+cell's invariant one-hot sector has only 1045 states, so we simulate that sector
+exactly. It is not a generic dense 35-qubit statevector simulation.”
+
+**Did you run on IBM hardware?**
+
+“The current catering results are simulator results. We have logical/native
+and synthetic-routing checks, but no catering IBM hardware outcome to report.”
+
+**Why QAOA rather than VQE?**
+
+“QAOA gives us a checked implementation with a mixer respecting the block
+structure. VQE is another owner track on the same cost. We will feature a
+different primary method only when its completed results justify that choice.”
+
+Update this answer after final method selection. Do not imply VQE is delivered
+or worse if its owner has not yet returned a checked package.
+
+**Where is the train/test split?**
+
+“Instance-wise variational optimization doesn't need a supervised-learning
+split. A claim about generalizing hyperparameters across kitchens would need
+separate tuning and held-out cases. The current pilot makes no such claim.”
+
+## VeloxQ and scale
+
+**What is VeloxQ doing in the same project?**
+
+“It solves larger offered-program QUBOs of the same paired-meal scheduling
+model. The common input version, objective and physical checker connect the
+small quantum cases to the larger backend experiment.”
+
+**Is VeloxQ a quantum hardware result?**
+
+“No. It is the integrated optimization backend. The QAOA simulator is our
+separate quantum-method execution path on the same type of QUBO.”
+
+**What is the strongest VeloxQ result?**
+
+“The first cold runs establish the actual integration and reveal a feasibility
+bottleneck. Our owner is working toward the final quality/settings comparison.
+We will use their checked receipt for the final result.”
+
+Replace this paragraph with the final frozen experiment. Until then, the
+committed cold runs have 5/512, 1/512, 0/512 valid rows at 512/1024/2048 variables;
+they do not outperform the retained classical controls.
+
+**Why is the integration nontrivial?**
+
+“Coefficient scale, spin signs and offsets affect what problem the backend
+receives. We preserve exact integer packets, recompute literal energies and
+check raw returned schedules, without silently repairing them.”
+
+Backend internal arithmetic is not independently established merely because
+the uploaded packet is integral.
+
+**Does 2048 mean 2048 physical qubits?**
+
+“No. Those are binary variables in the VeloxQ workload. Our current quantum
+circuits use at most 35 data qubits.”
+
+**Are the large problems proven classically hard?**
+
+“No. Finite-time CP incumbents and failed heuristic returns don't prove
+hardness. We report the actual quality, bounds and runtime scope at each size.”
+
+**How do you compare runtime fairly?**
+
+“We distinguish preprocessing, training, sampling and checking. For the service
+we separately record upload, queue, backend and total time. Backend running
+time alone is not end-to-end time, and current budgets are not all matched.”
+
+**How much allowance is left?**
+
+“The service owner has the job ledger and quota receipts. We can show the
+recorded usage; I don't want to guess the current account balance.”
+
+The presentation runner uses zero paid service calls. Do not confuse that
+with the separate owner's already executed jobs.
+
+## Deliberate scope limits
+
+**What happens if cooking is interrupted halfway?**
+
+“This profile fixes whole started batches and withdraws idle capacity. It
+rejects an outage that interrupts committed work. Interrupted cooking would
+need a separate phase-aware state model.”
+
+**Do you optimize when to perform the repair clean?**
+
+“No. The current conservative policy fixes the earliest clean compatible with
+committed work and qualified staff. Both the QUBO and raw reference use that
+same boundary policy.”
+
+**Which real-world features are still missing?**
+
+“Aggregate ingredient, holding and power capacity, monetary costs and interrupted
+cooking are disabled. The current model explicitly implements paired service,
+shared batches, phase timing, resource/crew conflicts, freshness and cleaning.”
+
+## If the live launch fails
+
+“The fresh launch hasn't completed, so we'll use the retained checked result
+to explain the schedule. Its source and bundle hashes are available here.”
+
+Show the saved replay, continue, and keep the failure distinct from a completed
+live solver result. One speaker answers. If a specialist detail is needed,
+hand over with: “Our method owner can give the implementation detail.”
+
+Evidence: [project design](../PROJECT_DESIGN.md),
+[quality audit](CATERING_QUALITY.md), [VeloxQ report](catering-methods/VELOXQ.md).

@@ -12,6 +12,10 @@ and [solver contract](docs/CATERING_SOLVER_CONTRACT.md).
 The [presentation and demo runbook](docs/CATERING_PRESENTATION.md) contains the
 three-minute script, five-minute video storyboard, exact kitchen interactions,
 live-launch preparation and the VeloxQ prize experiment priorities.
+The [private local studio](scripts/catering-showcase/README.md),
+[live operator sheet](docs/CATERING_LIVE.md), [voiceover draft](docs/CATERING_VOICEOVER.md)
+and [Q&A cheats](docs/CATERING_QA.md) are ready for rehearsal. A silent 4:20 rough
+cut was recorded locally; final owner results, voiceover and submission are pending.
 The [submission checklist](docs/STAGE2_SUBMISSION.md) maps all 30 points and the
 separate VeloxQ criteria to evidence, remaining work and final release gates.
 GitHub stays private during development; public release is deferred to the final

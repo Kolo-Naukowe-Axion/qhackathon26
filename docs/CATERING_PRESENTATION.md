@@ -2,7 +2,25 @@
 
 Planning draft, 17 October 2026. Active catering entry. The factory scripts are
 historical fallback material. This document plans the talk, recording and next
-implementation work; it is not a completed recording or submission.
+implementation work. A silent local rough cut now exists; final results, human
+voiceover, upload and submission remain open.
+
+## Prepared studio and speaker pack
+
+The executable [private studio](../scripts/catering-showcase/README.md) now
+provides a 4:20 recording route and a 2:45 live route. Start it with
+`.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193`.
+The active [live operator sheet](CATERING_LIVE.md),
+[timecoded narration](CATERING_VOICEOVER.md) and [Q&A desk sheet](CATERING_QA.md)
+supersede the provisional timing and launch instructions below. The silent
+rough cut and capture receipts live locally under ignored
+`output/playwright/catering-showcase-v1/recording/`. They are not uploaded.
+
+A real fresh 4096-shot frozen-angle QAOA sample was recorded, with independent
+checking and no training, service or QPU calls. Result: (0,0,2,2), 20 complete
+meals, zero waste; 3771 valid shots. Keep this execution distinct from the
+retained animated schedule. Final method-owner and VeloxQ comparison slots
+are visibly draft. Shared models and frozen workloads were not changed.
 
 ## The story
 
@@ -154,42 +172,27 @@ the tickets and timeline fit. Pause autoplay and disable looping for the talk.
    frame if the modal is too small on the shared screen. Show only meal pairing
    and one-hot/conflict terms; keep the full proof available for Q&A.
 
-### Local launch already available
+### Rehearsed fresh local launch
 
-Both rules §9 and §10 require showing program launch and result. This existing
-command runs the real hash-aware sample decoder and physical checker locally:
+The studio button invokes the same runner as this terminal command. Use a new
+output directory each time:
 
 ```sh
-demo_dir=$(mktemp -d /tmp/axion-presentation.XXXXXX)
-.venv-stage2/bin/python -m catering.run evaluate \
-  --bundle output/catering-complete-cell-v3/quantum-qubo.json \
-  --samples output/catering-complete-cell-v3/p1-seed-2026/samples.json \
-  --output "$demo_dir/evaluation.json"
-.venv-stage2/bin/python - "$demo_dir/evaluation.json" <<'PY'
-import json, sys
-payload = json.load(open(sys.argv[1]))
-valid = [r for r in payload['results'] if r['valid']]
-if not valid:
-    raise SystemExit('No physically valid retained sample')
-best = min(valid, key=lambda r: tuple(r['check']['metrics'][k] for k in ('U','W','B','R')))
-print('RETAINED QAOA SAMPLE / FRESH LOCAL VALIDATION / NO REPAIR')
-print('Best checked (U,W,B,R):', tuple(best['check']['metrics'][k] for k in ('U','W','B','R')))
-print('Bundle:', payload['bundle_sha256'])
-PY
+.venv-stage2/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
 ```
 
-This launches validation, **not fresh optimization**. Before recording, prepare
-a short launch of the selected optimizer with its owner and time it. A bounded
-local classical solve on the same cell is a useful launch demonstration;
-the strongest quantum demonstration is a fresh sample from frozen parameters,
-clearly distinguished from training. No such sampling/training is launched by
-this planning task. Rehearsal must settle the final command and its duration.
-Do not describe a replay or checker as a fresh solver run. If launch fails,
-show the retained result, state the fallback, and continue.
+This verifies frozen inputs and angles, evolves the exact one-hot sector,
+samples 4096 shots with a declared fixed seed, then checks every distinct return.
+It saves samples, checks and a receipt. It performs no retraining or backend
+calls. The measured local execution is reproducible, not a new training trial.
+See [operator details and fallback](CATERING_LIVE.md). Do not describe a replay
+as fresh execution. If launch fails, show the retained result and state that
+fallback explicitly.
 
 ## Five-minute video storyboard
 
-Target 4:35, leaving 25 seconds of margin. Record the terminal and browser at
+Original storyboard target 4:35. The implemented [4:20 cut](CATERING_VOICEOVER.md)
+is the active timing source; this table retains coverage ideas for final editing. Record the terminal and browser at
 readable size. Capture actual launches; trimming waiting time must be visible.
 Do not fake terminal output or replace a failed run with an animation.
 
@@ -258,18 +261,18 @@ measured here. Money, ingredients, holding and interrupted cooking are disabled.
 
 ## Work to finish, in order
 
-1. **Us:** rehearse this story against the existing UI; prepare objective,
-   evidence and conclusion frames in the same pixel/wood visual family, with
-   large readable text. Keep full equations and audit detail in backup material.
+1. **Us:** studio, objective/results frames, actual source excerpt, fresh local
+   launch, silent rough cut and Q&A pack are prepared. Rehearse with the human
+   speaker; keep full equations and audit details in backup material.
 2. **VeloxQ owner:** produce the capped improvement proposal and, after its
    authorization, the checked finding and comparable quality/runtime table.
 3. **QAOA / VQE owners:** supply one source-hashed selected result, precise
    execution label, circuit/optimizer settings, all trial outcomes and a short
    reproducible launch. Feature the strongest measured method; do not wait
    indefinitely for every method to appear on the main stage.
-4. **Us:** finalize and time the live launch, synchronize the viewer's results
-   text and support frames, record the ≤5-minute video, and rehearse the live
-   talk three times below 2:50. Keep a local recording and screenshots as fallback.
+4. **Us:** integrate frozen owner results, synchronize support frames and
+   narration, add human voiceover and export the final ≤5-minute video. Rehearse
+   three live runs below 2:50. The local silent cut and screenshots are ready.
 5. **Team release owner:** verify Stage1 files, MIT/public-repository requirement,
    run instructions, current project design/log, video URL and submission receipt.
    Official deadline is 18 October 15:00 UTC+2; live presentations start 18:00 UTC+2.

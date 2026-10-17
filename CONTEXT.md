@@ -1,5 +1,29 @@
 # QPoland Quantum Hackathon — running context
 
+## Local recording, live studio and Q&A pack — 17 October
+
+Prepared scripts/catering-showcase outside the deployed presentation root: actual
+kitchen replay plus large model/code/results frames, a 4:20 silent video route
+and 2:45 live route. The loopback server runs on 4193; the existing 4192 viewer
+is untouched. docs/CATERING_LIVE.md, CATERING_VOICEOVER.md and CATERING_QA.md give
+operator cues, timed human narration and likely questions with concise answers.
+The Q&A pack includes clarifying bridges and direct disclosures for unmeasured
+claims. It does not fabricate answers or quantum/VeloxQ superiority.
+
+Recorded and visually checked the actual continuous studio capture: H.264,
+1920×1080, 259.96 seconds, no audio; zero browser errors. The recorded launch
+performs fresh 4096-shot sampling of retained p1/2026 QAOA angles: 3771 valid
+shots, (0,0,2,2), 20 complete meals, zero waste. The displayed retained bitstring
+also appeared 8 times. Training/service/QPU calls: zero. This remains one fixed
+instance/seed execution, not another independent training trial. Outputs and
+raw samples are preserved locally under ignored output/playwright/. The
+method-owner selection and final VeloxQ finding remain visible draft slots.
+Live browser checks passed for keyboard chapter navigation (including iframe
+focus), the 20-meal counter, actual sampling and hostile-Origin rejection.
+Python/JavaScript syntax checks and the static build with 138 tests pass.
+No shared model, input contract, matrix or current game-viewer source changed.
+No video upload, repository visibility change or submission was performed.
+
 ## Formulation review, proofs and quality audit — 17 October
 
 The user emphasized that method owners are actively running models and that
