@@ -469,6 +469,14 @@
     "velox_payoff": {
       "path": "output/catering-velox-payoff-v1/verification.json",
       "sha256": "dff47ca623375d8eb747b889b41a6e6d4b330cd814d258f5eed6e1147dc6cda0"
+    },
+    "cell_bundle": {
+      "path": "output/catering-complete-cell-v3/quantum-qubo.json",
+      "sha256": "79a14bbeccfe68cc85b45d641eea389a5e9852823827caeea8d9c83318407442"
+    },
+    "scale_domain": {
+      "path": "output/catering-velox-scale-v3/report.json",
+      "sha256": "ddeaeed26e7a6c8f76af4a6402d08a2c25cd881929f6cef8371fd7e9bb31a2ac"
     }
   },
   "velox": {
@@ -616,6 +624,39 @@
       }
     ],
     "final_shots": 1024,
-    "primary": "coupled Givens \u00b7 L2 \u00b7 exact CVaR0.1 \u00b7 adjoint L-BFGS-B"
+    "primary": "coupled Givens · L2 · exact CVaR0.1 · adjoint L-BFGS-B"
+  },
+  "explanation": {
+    "conflict": {
+      "indices": [
+        0,
+        2
+      ],
+      "alternative_index": 10,
+      "cooker": "C2",
+      "start": 50,
+      "end": 70,
+      "alternative_cooker": "C1"
+    },
+    "objective_span": 11141286,
+    "penalty": 11141287,
+    "full_local_program_count": 18182,
+    "scale_rows": [
+      {
+        "source_bits": 512,
+        "program_bits": 486,
+        "qubo_pairs": 37008
+      },
+      {
+        "source_bits": 1024,
+        "program_bits": 998,
+        "qubo_pairs": 156129
+      },
+      {
+        "source_bits": 2048,
+        "program_bits": 2022,
+        "qubo_pairs": 636882
+      }
+    ]
   }
 }

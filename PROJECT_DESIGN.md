@@ -52,6 +52,21 @@ planned outages and already completed outages need a different boundary model.
 Both snapshot construction and the independent checker reject incompatible
 information/outage states rather than silently interpreting them differently.
 
+## 1.1. Connection to manufacturing production scheduling
+
+This is a batch-production scheduling extension of the original shop-floor
+problem. A cooker is an alternative production machine; prep and packing are
+operations with precedence and resource requirements; cleaning is setup-like
+work; departures act as due dates. Qualified operators, calendars, outages and
+fixed started work retain their production-scheduling roles.
+
+The extension adds decisions beyond assigning start times to a fixed list of
+jobs. It chooses batch yields and allocations shared across customer orders.
+Two component streams must jointly complete an order; isolated coverage has a
+waste consequence. This changes the decision set and objective while retaining
+the scheduling structure. The mapping describes the modeling relationship;
+it does not claim industrial calibration or identical physical processes.
+
 ## 2. Implemented physical semantics
 
 Time is integer minutes on a ten-minute grid. Intervals are half-open, so work
@@ -136,6 +151,33 @@ pairwise checks cover all remaining cross-program physical interactions.
 Thus one-hot plus zero conflict pairs is equivalent to physical feasibility
 within the offered domain. This equivalence is checked exhaustively on tiny
 instances and independently against decoded records.
+
+## 3.1. What difficulty is demonstrated
+
+Local validity does not imply joint compatibility. In the frozen complete cell,
+programs x1 and x3 both occupy C2 from minute 50 to 70 (11:20–11:40 in the
+viewer): one produces Main B and the other a shared side batch. Their joint
+selection is forbidden. The displayed plan uses x11 for Main B on C1 instead.
+Resources and paired fulfillment therefore couple choices across orders.
+
+The complete cell is deliberately small: 32 batch programs plus three idle
+choices give 1,045 one-hot states, of which 59 are physically feasible. It is a
+correctness example that classical methods can check easily. Those counts are
+not a proof of computational hardness.
+
+The separate 12-customer fixture generates 18,182 locally valid batch programs.
+Its nested offered source QUBOs have 512/1,024/2,048 bits and
+37,008/156,129/636,882 quadratic pairs. These matrices retain subsets of the
+generated programs. The no-idle representation keeps 486/998/2,022 program
+variables. Source counts are in
+[the scale report](output/catering-velox-scale-v3/report.json).
+
+Computational cost includes generating programs, constructing interactions,
+searching compatible subsets and verifying the returned schedule. We measure
+representation loss separately from search loss. Neither variable count,
+feasible-state fraction nor a heuristic timeout establishes that these instances
+are classically hard. No hardness or quantum-speedup claim is needed to assess
+the correctness and quality of the implemented optimization experiment.
 
 ## 4. Quadratic objective and exact priority order
 

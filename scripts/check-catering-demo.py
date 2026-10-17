@@ -28,6 +28,24 @@ def preflight():
         for name,item in evidence['source_files'].items():
             digest=hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()
             check('Displayed evidence: '+name,digest==item['sha256'],item['path'])
+        argument=evidence['explanation']
+        bundle=json.loads((ROOT/evidence['source_files']['cell_bundle']['path']).read_text())
+        scale=json.loads((ROOT/evidence['source_files']['scale_domain']['path']).read_text())
+        witness=argument['conflict']; i,j=witness['indices']; alternate=witness['alternative_index']
+        a,b,alternative=[bundle['options'][k] for k in [i,j,alternate]]
+        ends=[p['cook_start']+bundle['instance']['menus'][p['menu']]['cooking'][str(p['yield_lots'])] for p in [a,b]]
+        check('Displayed real batch conflict',
+            [min(i,j),max(i,j)] in bundle['conflicts']
+            and a['cooker']==b['cooker']==witness['cooker']
+            and witness['start']==max(a['cook_start'],b['cook_start'])
+            and witness['end']==min(ends) and witness['start']<witness['end']
+            and alternative['menu']==a['menu'] and alternative['allocation_order']==a['allocation_order']
+            and alternative['cooker']==witness['alternative_cooker']
+            and [min(j,alternate),max(j,alternate)] not in bundle['conflicts'])
+        span=sum(abs(int(v)) for v in bundle['objective']['linear'])+sum(abs(int(t['value'])) for t in bundle['objective']['quadratic'])
+        check('Displayed penalty proof constants',argument['objective_span']==span and argument['penalty']==int(bundle['penalty'])==span+1)
+        expected_rows=[dict(source_bits=r['size']['binary_variables'],program_bits=r['size']['option_bits'],qubo_pairs=r['size']['couplers']) for r in scale['rows']]
+        check('Displayed scale-domain counts',argument['full_local_program_count']==scale['full_local_program_count'] and argument['scale_rows']==expected_rows)
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')

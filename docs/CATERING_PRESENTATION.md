@@ -39,6 +39,19 @@ choices and reports its own checked outcome. The manual intervention explains
 the objective and is labeled separately from both solver paths. The live launch samples retained QAOA angles
 locally and checks the returned schedules. Label replay and fresh execution separately.
 
+## Three arguments to make explicit
+
+| Question | On-screen evidence | Short explanation |
+|---|---|---|
+| Is this still manufacturing scheduling? | Machine/cooker, setup/cleaning and due-date/departure mapping in the opening problem frame. | It is batch-production scheduling with shared yields and coupled fulfillment. Those new decisions extend the original fixed-job model. |
+| What makes the choices interact? | The actual x1/x3 C2 conflict, followed by the retained x3/x11 plan. | Each batch can be legal alone while a combination clashes. The solver must choose compatible batches and complete both meal components. |
+| Why trust the math? | Coverage truth table, actual compiler excerpt, then the range-bound inequality. | Linear coverage products stay quadratic. Priority weights dominate lower costs; P=S+1 makes every invalid state's energy exceed every feasible state's energy. |
+
+The loss chapter changes from the objective to the proof at 60% of its duration.
+The final scale chapter distinguishes the small correctness cell from the
+18,182-program generated domain and the actual offered source matrices. State
+computational scope without presenting size as measured hardness.
+
 ## Current numbers and their sources
 
 | Claim | Source and boundary |
@@ -69,8 +82,8 @@ QAOA and VQE use the same restricted 31–35-qubit portfolios. Report per-shot
 probability, sampled optimum hits, feasibility and training work separately;
 the current campaigns have unequal budgets. VeloxQ uses nested 512/1024/2048
 source-bit pools, with redundant idle choices removed in the new representation.
-The scaling screen distinguishes source choices, actual solver width, conflict
-density and exact-sector simulation. Neither size nor a timeout proves hardness.
+The scaling screen distinguishes generated choices, offered source bits and
+pair counts, actual solver width and exact-sector simulation. Neither size nor a timeout proves hardness.
 
 ## Remaining gates
 

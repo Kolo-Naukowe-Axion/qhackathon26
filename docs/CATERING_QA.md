@@ -25,6 +25,40 @@ current evidence, not the result of experiments still running elsewhere.
 | Why 35 qubits on a laptop? | The complete cell stays in a 1045-state one-hot sector. Larger frozen portfolios reach 279936 states; the dynamic replay uses its own pool. No dense 35-qubit statevector is used. |
 | Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits gives 512/512 valid at all three tested scales. CP and SA still find better plans. |
 
+## Three questions to defend precisely
+
+**How is this part of the manufacturing challenge?**
+
+“Cookers are production machines, cleaning is setup-like work, and departures
+are due dates. We retain precedence, qualified workers, calendars and resource
+conflicts. The extension chooses shared batches and couples two component
+streams through completed orders and waste.”
+
+**How difficult is the problem you actually ran?**
+
+“The small cell is easy classically and lets us check every relevant state.
+The scheduling choices interact: x1 and x3 are each legal but clash on C2.
+The larger fixture generates 18,182 local programs; the largest offered source
+QUBO has 636,882 pairs. Those are measured sizes, not a hardness certificate.
+We compare actual returned quality with classical references.”
+
+**Can you explain the penalty guarantee without saying 'we tested it'?**
+
+“Let S be the sum of absolute nonconstant objective coefficients. The objective
+can change by at most S between any two binary strings. P=S+1. A hard violation
+adds at least P, so an invalid string costs at least one more than any feasible
+string. A feasible all-idle continuation exists after checking fixed work.
+Therefore every ground state is feasible; reaching it is a separate solver question.”
+
+This is the original compiler's sufficient global bound. The VeloxQ study uses
+a separate structure-dependent deletion bound; it preserves feasible objectives
+and optima while changing invalid-state energies.
+
+If asked about feasibility versus optimization: the checker reconstructs raw
+resource/worker intervals and material balance. It checks returned candidates;
+it does not prove a heuristic found an optimum. The tiny exact references and
+larger incumbent/bound reports provide separate optimality evidence.
+
 ## Two-minute team drill
 
 Keep one speaker, one operator and one technical backup. Use the live script

@@ -5,6 +5,7 @@
 Catering production scheduling with **QAOA, VQE and VeloxQ**, built for the
 QPoland Quantum Hackathon 2026. Choose shared batches, cookers, workers and
 phase times under deadlines, freshness limits, outages and mandatory cleaning.
+It extends manufacturing scheduling with shared batches and paired order fulfillment.
 
 [![Axion Kitchen: the larger outage-and-urgent-order scenario, with its batch schedule and meal orders](docs/assets/axion-kitchen.jpg)](https://qfactoria.com/)
 

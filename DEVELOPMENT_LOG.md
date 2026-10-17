@@ -181,3 +181,20 @@ We record measured outcomes separately from generated explanations.
 Human timed rehearsal, final recording/voiceover, playable video upload,
 authorized public-source release and actual organizer submission remain open.
 The prepared scripts and checklists are not evidence those steps have occurred.
+
+
+## 18 October — make the scheduling and correctness arguments visible
+
+The presentation now maps kitchen resources to machines, setup-like cleaning
+and due dates. A real frozen-cell conflict (x1/x3 on C2) explains why locally
+legal programs must be selected jointly; the retained plan uses x11 on C1.
+The loss chapter shows the full-bit-domain range bound and P=S+1 inequality,
+while the scale chapter separates the 1,045-state correctness cell from the
+18,182-program generated domain and the nested offered QUBOs.
+
+Presentation claims are derived from retained source files and checked by the
+local preflight, including the actual conflict, penalty constants and scale
+counts. Video/live scripts remain 4:20/2:45 and within their speaking-rate
+limits. This is an explanation/evidence pass: no compiler, objective, frozen
+model, solver results, training or service use changed. Human rehearsal and
+final recording remain separate.
