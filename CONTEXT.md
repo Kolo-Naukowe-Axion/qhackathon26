@@ -10,11 +10,11 @@ Dated work belongs in [DEVELOPMENT_LOG.md](DEVELOPMENT_LOG.md).
 One project targets the main award and integrated VeloxQ prize. Quantum methods
 remain central, with classical references on declared domains. This chat owns
 foundation/classical integration and presentation; other people own QAOA, VQE
-and VeloxQ experiments. Do not run their training or spend service/QPU allowance.
+and VeloxQ experiments. The user has now asked this chat to improve the VeloxQ track too; see docs/CATERING_VELOXQ_TUNING.md. Do not run QAOA/VQE training or QPU jobs.
 Do not message their chats without direct authorization.
 
 Keep objectives, coefficients, encoding, variable order, frozen workloads and
-result hashes unchanged while other owners run. If a necessary model change
+result hashes unchanged while other owners run. Additional solver-side conditioning uses separately hashed inputs and preserves existing runs. If a necessary model change
 would require reruns, tell the user before changing that contract.
 
 ## Current evidence

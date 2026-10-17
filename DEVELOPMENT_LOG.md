@@ -1,5 +1,30 @@
 # Development log
 
+## 2026-10-17 — proven VeloxQ conditioning and idle elimination
+
+At the user's request, investigated the weak initial cold runs and implemented
+additional solver representations without changing the shared frozen inputs.
+A deletion-loss bound proves smaller safe penalties; a second proof removes
+redundant idle bits, replacing one-hot constraints with at-most-one exclusion
+edges. Feasible schedules and their costs/optima agree exactly with the original
+model. Every program bit, including invalid returns, survives the mapping.
+The checks exhaust tiny original/reduced domains and retain source hashes.
+
+Seven additional service jobs used the authorized email-supplied key, held only
+in a mode-0600 gitignored local file. They report 36,640 quota units and zero
+charged cost. Idle elimination returned 512/512 valid rows at actual solver
+widths486/998/2022 (source widths512/1024/2048), whereas smaller penalties alone
+remained weak. Best missed meal lots are8/11/13; matching local SA and CP still
+find better schedules. Three existing jobs were recovered after download resets;
+no solver resubmission was used for recovery. Added clean storage downloads,
+explicit warm-start packet checks and an existing-job resume command.
+
+All seven raw jobs, original failures and recovered outputs are retained. The
+separate local controls are exploratory, not held-out VeloxQ performance claims.
+While running, a teammate pushed the 54-attempt prior study; preserve its ledger
+and union our seven additional attempts, rather than overwrite its evidence.
+See docs/CATERING_VELOXQ_TUNING.md for proof, results and exact commands.
+
 ## 2026-10-17 — public demo first-use flow and recovery
 
 The user requested another improvement pass. The public kitchen now holds at

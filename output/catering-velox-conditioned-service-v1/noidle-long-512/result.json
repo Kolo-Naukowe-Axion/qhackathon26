@@ -1,0 +1,145 @@
+{
+  "backend_statistics": {
+    "backend_cost_scale": 1.0,
+    "backend_usage_scale": 1.0,
+    "cost_solver_time": 0.0,
+    "pending_time": 0.603664,
+    "quota_solver_time": 1.663,
+    "running_time": 1.663,
+    "solver_cost": 0.55,
+    "solver_usage_scale": 1.0,
+    "total_cost": 0.0,
+    "total_quota_usage": 1663,
+    "usage_time": 3.060055
+  },
+  "backend_timeline": [
+    {
+      "name": "created",
+      "value": "2026-10-17T19:48:48.022541Z"
+    },
+    {
+      "name": "pending",
+      "value": 0.603664
+    },
+    {
+      "name": "running",
+      "value": 1.663
+    },
+    {
+      "name": "completed",
+      "value": "2026-10-17T19:48:51.082596Z"
+    }
+  ],
+  "budget": {
+    "allow_external_execution": true,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 8,
+    "wall_time_limit_s": 60
+  },
+  "bundle_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b",
+  "case_id": "paired-lunch-12-v1/S3",
+  "configuration": {
+    "backend_id": "a87c8e0c-c883-4d6a-8495-6cd55e95ed96",
+    "backend_name": "VeloxQH100_1",
+    "conditioning": {
+      "existing_frozen_runs_remain_valid": true,
+      "feasible_objective_unchanged": true,
+      "invalid_state_energies_unchanged": false,
+      "max_deletion_loss": "3510864",
+      "policy": "no-idle-deletion.v1",
+      "program_variable_order_unchanged": true,
+      "removed_idle_bits": 26,
+      "source_bundle_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b",
+      "source_penalty": "443079397",
+      "variable_order_unchanged": false
+    },
+    "initial_bits_sha256": null,
+    "initial_literal_energy": null,
+    "initializer": "none (cold start)",
+    "initializer_service_acceptance": "not applicable",
+    "packet_coefficient_dtype": "int32",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 20000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "solver_id": "3bce1dfa-e7af-4040-a283-67cff253cf94",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "python": "3.11.15",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": {
+    "error_type": "ConnectError",
+    "job_id": "42a0e2e1-7089-466f-bc47-20f867118333"
+  },
+  "method_id": "veloxq",
+  "method_version": "0.3.0",
+  "physical_qpu_calls": 0,
+  "raw_artifacts": {
+    "file_id": "4f703d78-eebe-4be5-82f2-4ee85e61b0b3",
+    "ising_input": {
+      "path": "output/catering-velox-conditioned-service-v1/noidle-long-512/service/ising-input.h5",
+      "sha256": "0d3b6de6f24822157769fcd849efe09763802584f8a85031bf15ab6b78d91ef4"
+    },
+    "job_id": "42a0e2e1-7089-466f-bc47-20f867118333"
+  },
+  "reference": null,
+  "representation": {
+    "couplers": 36522,
+    "float32_inexact_spin_coefficients": 461,
+    "float64_exact": true,
+    "n": 486,
+    "qubo_max_abs": 3510865,
+    "qubo_min_nonzero_abs": 757,
+    "spin_coefficients": 37008,
+    "spin_dynamic_range": 16267.077454438566,
+    "spin_l1": 464289594128,
+    "spin_max_abs_including_offset": 116005874123
+  },
+  "representation_id": "paired-course-block-486",
+  "samples": [],
+  "sampling_bundle": {
+    "bundle_id": "paired-lunch-12-v1/S3/meal-block-486/no-idle-deletion.v1",
+    "bundle_sha256": "8a5439cc6198734c76f97bc54b968b6ae2464227cde67271ef8dece6bfdbe9c1",
+    "case_id": "paired-lunch-12-v1/S3",
+    "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+    "profile_id": "paired-course-contiguous.v3",
+    "qubo_sha256": "c91865357d0cb1ec86480f6343b391a59c1381ddbe9655071f8d2718f8455760",
+    "representation_id": "paired-course-block-486/no-idle-deletion.v1",
+    "scenario_id": "S3",
+    "schema_version": "catering-qubo.v1",
+    "snapshot_sha256": "86b41d9a3e91ae648e38dac118a07490e797924c9ff06f786997c20426ea30f9",
+    "variable_order_sha256": "9d61a8e556f97d2aaf8a8c0cddaeb2c7d255820bdb79c7d797a0f26537bedc65"
+  },
+  "sampling_bundle_sha256": "8a5439cc6198734c76f97bc54b968b6ae2464227cde67271ef8dece6bfdbe9c1",
+  "schema_version": "catering-method-result.v1",
+  "status": "failed",
+  "timings": {
+    "backend_wait_s": 4.682323375251144,
+    "build_s": 0.012842124793678522,
+    "serialize_s": 0.1911670840345323,
+    "submit_s": 0.22712362464517355,
+    "total_s": 6.844397541601211,
+    "upload_s": 1.5098964171484113
+  },
+  "veloxq_calls": 1,
+  "work": {
+    "service_jobs_submitted": 1
+  }
+}

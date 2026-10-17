@@ -432,3 +432,64 @@ def test_fake_service_result_on_v3_bundle_passes_central_evaluate(tmp_path, monk
     assert evaluated[0]["valid"]
     saved = json.loads((tmp_path / "evaluation.json").read_text())
     assert saved["repair"] is False and saved["method_id"] == "veloxq"
+
+
+def test_warm_start_packet_uses_spin_and_exact_variable_order(tmp_path):
+    import h5py
+    import numpy as np
+    q=vq.load_qubo(vq.SMOKE_BUNDLE);model=vq.qubo_to_spin(q)
+    p=vq.write_packet(model,tmp_path/'warm.h5',initial_bits=[1,0],num_rep=3)
+    with h5py.File(p,'r') as f:
+        assert np.array_equal(f['Spectrum/states'][()],[[1,-1]]*3)
+        assert f['Spectrum/num_rep'][()]==3
+        assert np.array_equal(f['Spectrum/energies'][()],[vq.spin_energy(model,[1,-1])]*3)
+    result=vq.solve_qubo(vq.SMOKE_BUNDLE,{},dict(initial_bits=[1,0],num_rep=3),tmp_path/'offline')
+    assert result['status']=='not_run' and result['veloxq_calls']==0
+    assert result['configuration']['initial_literal_energy']=='-4'
+    assert result['configuration']['initializer_packet_roundtrip'] is True
+
+
+@pytest.mark.parametrize('bits', [[0], [0,2], [True,0]])
+def test_reject_bad_initializer(tmp_path,bits):
+    model=vq.qubo_to_spin(vq.load_qubo(vq.SMOKE_BUNDLE))
+    with pytest.raises(ValueError):vq.write_packet(model,tmp_path/'bad.h5',initial_bits=bits)
+
+
+def test_reject_physically_invalid_catering_warm_start(tmp_path):
+    from catering.contracts import load_bundle
+    b=load_bundle('output/catering-complete-cell-v3/quantum-qubo.json')
+    with pytest.raises(ValueError,match='independently feasible'):
+        vq.solve_qubo(b,{},dict(initial_bits=[1]*35),tmp_path/'invalid')
+
+
+def test_storage_download_uses_clean_client_and_atomic_file(tmp_path,monkeypatch):
+    import httpx
+    calls=[]
+    class Response:
+        text='"https://storage.example.test/result?signature=private"'
+        def raise_for_status(self):pass
+        def iter_bytes(self):yield b'checked';yield b'-result'
+        def __enter__(self):return self
+        def __exit__(self,*args):pass
+    class API:
+        def get(self,path):calls.append(('api',path));return Response()
+    class Storage:
+        def __init__(self,**kwargs):
+            assert 'headers' not in kwargs and 'auth' not in kwargs
+            calls.append(('clean',kwargs))
+        def __enter__(self):return self
+        def __exit__(self,*args):pass
+        def stream(self,method,url):
+            assert method=='GET' and url.startswith('https://storage.example.test/')
+            return Response()
+    monkeypatch.setattr(httpx,'Client',Storage)
+    vq.download_result(type('Job',(),dict(id='saved-job',http=API()))(),tmp_path/'result.h5')
+    assert (tmp_path/'result.h5').read_bytes()==b'checked-result'
+    assert not (tmp_path/'result.partial').exists()
+    assert calls[0]==('api','jobs/saved-job/result')
+
+
+@pytest.mark.parametrize('limit',[0,-1,float('nan'),float('inf')])
+def test_refuse_unbounded_or_invalid_wall_budget(tmp_path,limit):
+    with pytest.raises(ValueError,match='finite wall'):
+        vq.solve_qubo(vq.SMOKE_BUNDLE,dict(wall_time_limit_s=limit),{},tmp_path/'run')

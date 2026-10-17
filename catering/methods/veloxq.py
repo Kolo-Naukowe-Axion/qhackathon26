@@ -32,7 +32,7 @@ import time
 
 SCHEMA_VERSION = "catering-method-result.v1"
 METHOD_ID = "veloxq"
-METHOD_VERSION = "0.2.0"
+METHOD_VERSION = "0.3.0"
 SPIN_SCALE = 4
 # Coefficients are serialized as float64 by the SDK; above this they are inexact.
 FLOAT_EXACT_LIMIT = 2**53
@@ -162,7 +162,7 @@ def coefficient_report(q, model):
             "float32_inexact_spin_coefficients": f32_inexact, "spin_coefficients": len(spin_terms)}
 
 
-def write_packet(model, path):
+def write_packet(model, path, *, initial_bits=None, num_rep=1):
     """Serialize through the installed SDK's own HDF5 writer (no upload)."""
     from veloxq_sdk.api.problems import File
 
@@ -170,12 +170,24 @@ def write_packet(model, path):
         raise ValueError("Spin coefficients exceed float64 exact-integer range; refuse lossy serialization")
     # Python ints make the SDK store an exact integer dtype. Floats are stored as float32,
     # which rounds coefficients above 2^24 (all v3 scale bundles) before upload.
+    initial_state = None
+    if initial_bits is not None:
+        import dimod
+        import numpy as np
+        if len(initial_bits) != len(model["h"]) or any(type(b) is not int or b not in (0,1) for b in initial_bits):
+            raise ValueError("Initializer must be binary in the submitted variable order")
+        if type(num_rep) is not int or num_rep < 1:
+            raise ValueError("Initializer repetitions must be positive")
+        spins = [2*b-1 for b in initial_bits]
+        samples = np.tile(np.asarray(spins, dtype=np.int8), (num_rep,1))
+        initial_state = dimod.SampleSet.from_samples((samples,list(range(len(spins)))),
+            vartype=dimod.SPIN, energy=[spin_energy(model,spins)]*num_rep)
     h = {i: int(v) for i, v in enumerate(model["h"])}
     J = {key: int(v) for key, v in model["J"].items()}
     path.parent.mkdir(parents=True, exist_ok=True)
     with open(path, "w+b") as handle:
         # Private writer, pinned via veloxq-sdk==1.0.0 and covered by round-trip tests.
-        File._write_ising_hdf5(handle, h, J, offset=float(model["offset"]))
+        File._write_ising_hdf5(handle, h, J, offset=float(model["offset"]), init_state=initial_state)
     return path
 
 
@@ -323,6 +335,28 @@ def _wait_for_job(job, timeout, poll_interval=2.0):
         time.sleep(min(poll_interval, remaining))
 
 
+def download_result(job, path):
+    """Fetch a signed storage result with a clean client and no API auth header."""
+    if not hasattr(job,'http'):  # Injected offline test jobs.
+        job.save_result(path)
+        return
+    from urllib.parse import urlsplit
+    import httpx
+    response=job.http.get(f'jobs/{job.id}/result')
+    response.raise_for_status()
+    url=response.text.strip("'\"")
+    parsed=urlsplit(url)
+    if parsed.scheme!='https' or not parsed.hostname or parsed.username or parsed.password:
+        raise ValueError('Expected an HTTPS signed result URL')
+    temporary=Path(path).with_suffix('.partial')
+    with httpx.Client(timeout=30,follow_redirects=True) as storage:
+        with storage.stream('GET',url) as response:
+            response.raise_for_status()
+            with temporary.open('wb') as handle:
+                for chunk in response.iter_bytes():handle.write(chunk)
+    temporary.replace(path)
+
+
 def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None):
     """Contract adapter: returns a MethodResult dict and writes it to output_dir/result.json."""
     started = time.perf_counter()
@@ -340,8 +374,17 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
 
     parameters = {"num_rep": int(method_config.get("num_rep", 512)),
                   "num_steps": int(method_config.get("num_steps", 2000))}
+    if any(v < 1 for v in parameters.values()):
+        raise ValueError("Positive solver steps/repetitions required")
+    initial_bits = method_config.get("initial_bits")
+    if initial_bits is not None and bundle.get("encoding") == "paired-course-anchor-onehot.v1":
+        from catering.decode import decode
+        if not decode(bundle,initial_bits)["valid"]:
+            raise ValueError("Catering warm start must be independently feasible")
     wall_limit = float(budget.get("wall_time_limit_s", 300))
     max_jobs = int(budget.get("max_service_jobs", 0))
+    if not math.isfinite(wall_limit) or wall_limit <= 0 or max_jobs < 0:
+        raise ValueError("Positive finite wall limit and nonnegative service cap required")
     ledger_path = Path(method_config.get("ledger_path", DEFAULT_LEDGER))
     result = {
         "schema_version": SCHEMA_VERSION, "method_id": METHOD_ID, "method_version": METHOD_VERSION,
@@ -351,7 +394,10 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
         "samples": [], "representation": report,
         "configuration": {"solver": "VeloxQSolver", "parameters": parameters,
                           "backend_id": method_config.get("backend_id"), "spin_convention": "s=2x-1",
-                          "spin_scale": SPIN_SCALE, "initializer": "none (cold start)",
+                          "spin_scale": SPIN_SCALE, "initializer": "none (cold start)" if initial_bits is None else "explicit checked bits; repeated to num_rep",
+                          "initial_bits_sha256": None if initial_bits is None else canonical_sha256(initial_bits),
+                          "initial_literal_energy": None if initial_bits is None else str(qubo_energy(q,initial_bits)),
+                          "initializer_service_acceptance": "unmeasured" if initial_bits is not None else "not applicable",
                           "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
                           "retries": "disabled", "repair": "disabled"},
         "budget": {**budget, "enforced": {"wall_time_limit_s": "local polling bound only",
@@ -370,7 +416,7 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
         return result
 
     t = time.perf_counter()
-    packet = write_packet(model, output_dir / "ising-input.h5")
+    packet = write_packet(model, output_dir / "ising-input.h5", initial_bits=initial_bits, num_rep=parameters["num_rep"])
     timings["serialize_s"] = time.perf_counter() - t
     packet_hash = file_sha256(packet)
     result["raw_artifacts"]["ising_input"] = {"path": str(packet), "sha256": packet_hash}
@@ -381,6 +427,16 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
             or stored["J"] != model["J"]):
         return finish("failed", {"reason": "serialized packet is not exactly the submitted model",
                                  "packet_dtype": stored["dtype"]})
+
+    if initial_bits is not None:
+        import h5py
+        import numpy as np
+        with h5py.File(packet,"r") as handle:
+            states=handle["Spectrum/states"][()]
+            expected=np.asarray([2*b-1 for b in initial_bits],dtype=np.int8)
+            if states.shape != (parameters["num_rep"],q["n"]) or not np.all(states==expected):
+                return finish("failed", {"reason": "Serialized initializer changed bits or variable order"})
+        result["configuration"]["initializer_packet_roundtrip"] = True
 
     if not budget.get("allow_external_execution", False):
         return finish("not_run", {"reason": "external execution not allowed by budget"})
@@ -429,7 +485,7 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
         timings["backend_wait_s"] = time.perf_counter() - t
         t = time.perf_counter()
         raw_path = output_dir / "raw-result.h5"
-        job.save_result(raw_path)
+        download_result(job,raw_path)
         timings["download_s"] = time.perf_counter() - t
         result["raw_artifacts"]["raw_result"] = {"path": str(raw_path), "sha256": file_sha256(raw_path)}
         t = time.perf_counter()
@@ -441,6 +497,8 @@ def solve_qubo(bundle, budget, method_config, output_dir, *, solver_factory=None
         samples, convention = parse_samples(sampleset, q, model)
         timings["parse_s"] = time.perf_counter() - t
         result["samples"] = samples
+        if initial_bits is not None:
+            result["configuration"]["initializer_service_acceptance"] = "job completed; backend use/effect not proven"
         result["configuration"]["returned"] = convention
         result["work"]["returned_rows"] = sum(s["count"] for s in samples)
         result["work"]["distinct_samples"] = len(samples)

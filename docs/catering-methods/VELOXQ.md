@@ -277,3 +277,12 @@ Each remote attempt is recorded in the ledger before upload and counts even if
 it fails. A GPU service result is not physical quantum execution; the service
 returns only final samples, so time-to-first-feasible is not observable.
 Warm start (`init_state`) is not used.
+
+## Follow-up conditioning experiment
+
+The user asked the foundation agent to improve this track on 17 October.
+See [the proof and bounded pilot](../CATERING_VELOXQ_TUNING.md). A new, separately
+hashed penalty variant preserves feasible objectives and global optima while
+reducing P by 126–642x. Original owner receipts and inputs stay unchanged;
+local controls do not constitute a new VeloxQ result. Adapter 0.3.0 additionally
+supports a checked explicit warm-start Spectrum, offline tested.
