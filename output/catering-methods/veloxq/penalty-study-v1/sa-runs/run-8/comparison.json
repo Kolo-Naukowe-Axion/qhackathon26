@@ -1,0 +1,70 @@
+{
+  "plan": {
+    "argv": [
+      "--study",
+      "output/catering-methods/veloxq/penalty-study-v1",
+      "--output",
+      "output/catering-methods/veloxq/penalty-study-v1/sa-runs/run-8",
+      "--only",
+      "output/catering-velox-scale-v3/scale-1024-qubo.json",
+      "--variants",
+      "local-uw",
+      "--restarts",
+      "32",
+      "--sweeps",
+      "200",
+      "--seconds",
+      "3600"
+    ],
+    "budget": {
+      "wall_time_limit_s": 3600.0
+    },
+    "config": {
+      "restarts": 32,
+      "seed": 2026,
+      "sweeps": 200
+    },
+    "declared_unix": 1792261025.7645798,
+    "solver": "catering.methods.classical.solve_qubo (seeded Metropolis SA, cold random bits, no repair)",
+    "variants": [
+      "source",
+      "local",
+      "local-uw",
+      "local-m8",
+      "local-uw-m8"
+    ]
+  },
+  "rows": [
+    {
+      "reference": "/home/raf/Projects/axion/qhackathon26/output/catering-classical-scale-v3/scale-1024-reference.json",
+      "reference_status": "FEASIBLE",
+      "reference_tuple": [
+        7,
+        2,
+        11,
+        11
+      ],
+      "runs": {
+        "local-uw": {
+          "at_or_better_than_reference": 0,
+          "best_tuple": null,
+          "bundle": "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-1024-local-uw-qubo.json",
+          "bundle_sha256": "4841ad76bc32a16143183893fd8ad5a185b93e93019a90997194b6ca22fd31bb",
+          "samples": 32,
+          "status": "completed",
+          "valid": 0,
+          "valid_tuples": [],
+          "wall_s": 526.1752402239945,
+          "work": {
+            "bit_flip_proposals": 6553600,
+            "completed_restarts": 32,
+            "requested_restarts": 32,
+            "requested_sweeps": 200
+          }
+        }
+      },
+      "source": "output/catering-velox-scale-v3/scale-1024-qubo.json",
+      "source_sha256": "516a53d929f2e48b6e0e077bdca2acede26f0b8f86a1498a1a17c74143dc4f1c"
+    }
+  ]
+}

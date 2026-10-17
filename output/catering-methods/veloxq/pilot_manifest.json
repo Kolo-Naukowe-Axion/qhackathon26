@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "date": "2026-10-17",
-  "status": "phase C smoke passed (1/3 jobs used); v3 phase D cases, settings and comparison frozen; phase D steps 1-2 run (ledger total 4/4); steps 3-4 not authorized",
+  "status": "phases D-H done (ledger 54); no further jobs authorized",
   "source_commit": "2493cd49",
   "hard_caps": {
     "phase_C_connectivity_smoke": {
@@ -10,13 +10,63 @@
       "used": 1
     },
     "phase_D": {
-      "max_service_jobs_total": 4,
+      "max_service_jobs_total": 56,
+      "approved_phase_E": "2026-10-17: user allowed VeloxQ runs for the local-penalty study as needed; cap set by Claude before running to 10 jobs (ledger total 30)",
+      "approved_longer_runs": "2026-10-17 by the user: longer runs on scale-512 and the complete cell, one job each (ledger total 20)",
+      "approved_s3_quantum_retry": "2026-10-17 by the user: one manual repeat of S3/quantum after the connection failure, same settings (ledger total 18)",
+      "approved_steps_3_4": "2026-10-17 by the user: steps 3 and 4 (8 four-event scale-128/256 + 5 shared small QUBOs), same frozen settings, no retries",
       "approved": "2026-10-17 by the user: steps 1 and 2 (scale-512, then scale-1024 and scale-2048), 60 s per job, no retries",
-      "used": 3,
+      "used": 53,
+      "longer_runs_num_steps_20000": {
+        "scale-512": {
+          "job_id": "9511851d-6c80-4a3f-a926-ebe19fec238f",
+          "note": "adapter got ConnectError after job creation; result fetched later by job id, no new submission",
+          "valid_rows": "10/512",
+          "best_valid_E": "554096",
+          "best_valid_tuple": "(14,4,2,2)",
+          "quota": 1662
+        },
+        "complete-cell": {
+          "job_id": "62ce1589-1f93-466e-9bd7-2c215c006727",
+          "valid_rows": "14/512",
+          "distinct_samples": 15,
+          "best_valid_E": "68",
+          "best_valid_tuple": "(0,0,2,2)",
+          "rows_at_cp_optimum": 1,
+          "quota": 491
+        }
+      },
+      "s3_quantum_retry": {
+        "job_id": "dd40ae16-b6e4-4116-91f8-17eb565d8c94",
+        "valid_rows": "494/512",
+        "best_valid_E": "103668",
+        "best_valid_tuple": "(6,4,4,4)",
+        "rows_at_cp_optimum": 4,
+        "quota": 47
+      },
+      "steps_3_4_note": "12 of 13 completed; S3/quantum failed with ConnectError before job creation (job_id null, 0 VeloxQ calls), counted in the ledger, not retried. Per-case results in docs/catering-methods/VELOXQ.md and each run's evaluation.json",
       "results": {
-        "scale-512": {"job_id": "8e8a89bc-be97-44db-b964-3813921fc8f0", "valid_rows": "5/512", "best_valid_E": "516244", "best_valid_tuple": "(13,6,4,4)", "quota": 170},
-        "scale-1024": {"job_id": "64cf8366-1abf-40c7-84b8-ab0e679629ae", "valid_rows": "1/512", "best_valid_E": "557068", "best_valid_tuple": "(14,8,4,4)", "quota": 549},
-        "scale-2048": {"job_id": "5c6e1a25-27e1-4d51-b4d3-ce2b596fa601", "valid_rows": "0/512", "best_valid_E": null, "best_valid_tuple": null, "quota": 1930}
+        "scale-512": {
+          "job_id": "8e8a89bc-be97-44db-b964-3813921fc8f0",
+          "valid_rows": "5/512",
+          "best_valid_E": "516244",
+          "best_valid_tuple": "(13,6,4,4)",
+          "quota": 170
+        },
+        "scale-1024": {
+          "job_id": "64cf8366-1abf-40c7-84b8-ab0e679629ae",
+          "valid_rows": "1/512",
+          "best_valid_E": "557068",
+          "best_valid_tuple": "(14,8,4,4)",
+          "quota": 549
+        },
+        "scale-2048": {
+          "job_id": "5c6e1a25-27e1-4d51-b4d3-ce2b596fa601",
+          "valid_rows": "0/512",
+          "best_valid_E": null,
+          "best_valid_tuple": null,
+          "quota": 1930
+        }
       },
       "note": "--max-service-jobs is the LEDGER TOTAL including phase C.",
       "proposal": {
@@ -59,6 +109,7 @@
     "repeats": "one job per case; repeated jobs are replicates without seed control",
     "repair": "disabled",
     "tuning": "none before step 1; any later num_rep/num_steps grid must be declared here first",
+    "tuning_declared_post_results": "2026-10-17, declared before running, approved by the user after seeing steps 1-4: one job each on scale-512 and the complete cell with num_steps=20000 (10x), num_rep=512 unchanged, cold start, 60 s, no retries. Chosen after results; reported as post-hoc tuning, not a frozen setting",
     "packet": "exact integer HDF5 (int32/int64) via the SDK writer; re-read and compared exactly before upload",
     "packet_risk": "the service has only been exercised with a float32 packet (phase C); integer-packet acceptance is first confirmed by step 1"
   },
@@ -317,5 +368,142 @@
     "integration_gate": "python -m catering.run evaluate --bundle <bundle> --samples <result.json> --output <new file> before sending any result for integration (docs/CATERING_METHOD_WORKSPLIT.md)"
   },
   "offline_readiness": "output/catering-methods/veloxq/offline-readiness-v3.json (16 bundles, all not_run, exact integer packets)",
-  "token": "read from VELOX_TOKEN environment variable only; never stored in repo or artifacts"
+  "token": "read from VELOX_TOKEN environment variable only; never stored in repo or artifacts",
+  "phase_E_local_penalty": {
+    "declared": "2026-10-17, before any phase E job",
+    "bundles": "output/catering-methods/veloxq/penalty-study-v1/bundles/ (built by catering/methods/veloxq_penalty.py from the frozen sources; parent_sha256 recorded in each)",
+    "cases": [
+      "complete cell",
+      "S3 scale-256",
+      "scale-512",
+      "scale-1024",
+      "scale-2048"
+    ],
+    "variants": [
+      "local-uw",
+      "local-uw-m8"
+    ],
+    "settings": "num_rep=512, num_steps=2000, cold start, 60 s, one job per case, no retries (same as phase D steps 1-4)",
+    "comparison": "decoded (U,W,B,R) vs the phase D result on the same source bundle and the frozen CP reference; B/R are post-hoc tie-breaks for local-uw",
+    "note": "formulation changed after seeing phase D results; this is a post-hoc study, not the frozen shared representation",
+    "results": {
+      "ledger": "30/30; jobs 22, 26, 29 failed with ConnectError before job creation (no job id), not retried; job 21 failed after creation and was recovered by job id",
+      "complete-cell local-uw-m8": "34/512 valid, best (1,1,1,1)",
+      "S3 scale-256 local-uw": "9/512 valid, best (8,2,1,1)",
+      "scale-512 local-uw": "2/512 valid, best (14,3,1,1)",
+      "scale-512 local-uw-m8": "6/512 valid, best (13,5,5,5)",
+      "scale-1024 local-uw": "1/512 valid, best (14,6,4,4)",
+      "scale-1024 local-uw-m8": "0/512 valid",
+      "scale-2048 local-uw-m8": "0/512 valid",
+      "sa_comparison": "output/catering-methods/veloxq/penalty-study-v1/sa-comparison.json",
+      "conclusion": "no material improvement over phase D; U never improved"
+    }
+  },
+  "phase_F_low_conflict": {
+    "declared": "2026-10-17, before any phase F job",
+    "approval": "user asked to reduce conflicts and run on VeloxQ; cap set by Claude before running to 4 jobs (ledger total 34)",
+    "bundles": "output/catering-methods/veloxq/lowconflict-v1/lowconflict-{512,1024}-qubo.json (catering/methods/veloxq_lowconflict.py; same full local domain, unchanged compiler and global penalty)",
+    "jobs": "two replicate jobs per bundle (no seed control), num_rep=512, num_steps=2000, cold start, 60 s, no retries",
+    "comparison": "decoded (U,W,B,R) vs the bundle's own CP-SAT 30 s reference (OPTIMAL (6,1,13,13) at both widths), same SA, and phase D on the frozen pools",
+    "note": "post-hoc study: different program pools from the frozen tiers",
+    "results": {
+      "ledger": "34/34; job 31 failed with ConnectError before job creation, not retried",
+      "lowconflict-512": "conflicts 13,620 (frozen 27,801); CP 30 s OPTIMAL (6,1,13,13); VeloxQ 1/512 valid, best (14,6,4,4); SA 32x200 32/32, best (9,9,12,12)",
+      "lowconflict-1024": "conflicts 62,538 (frozen 118,165); CP 30 s OPTIMAL (6,1,13,13); VeloxQ 0/512 and 0/512 valid (two replicates); SA 32x200 32/32, best (10,9,12,12)",
+      "conclusion": "halving conflicts did not help VeloxQ; SA unchanged in quality"
+    }
+  },
+  "phase_G_parameters": {
+    "declared": "2026-10-17, before any phase G job",
+    "approval": "user allowed VeloxQ runs to try other parameters (e.g. num_rep); cap set by Claude: 8 planned jobs + at most 4 resubmissions, only for attempts that failed before a job id existed (ledger total 46)",
+    "note": "VeloxQParameters exposes only num_rep and num_steps; SDK defaults are num_rep=4096, num_steps=5000, about 20x the frozen 512x2000 budget",
+    "grid": [
+      {
+        "bundle": "frozen scale-512",
+        "num_rep": 4096,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "frozen scale-512",
+        "num_rep": 16384,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "frozen scale-512",
+        "num_rep": 65536,
+        "num_steps": 2000
+      },
+      {
+        "bundle": "complete cell",
+        "num_rep": 4096,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "complete cell",
+        "num_rep": 16384,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "frozen scale-1024",
+        "num_rep": 4096,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "frozen scale-2048",
+        "num_rep": 4096,
+        "num_steps": 5000
+      },
+      {
+        "bundle": "lowconflict-512",
+        "num_rep": 16384,
+        "num_steps": 5000
+      }
+    ],
+    "settings": "cold start, local wait 300 s, no automatic retries",
+    "comparison": "decoded (U,W,B,R) vs phase D (512x2000) on the same bundle, the SA 32x200 result and the CP reference",
+    "results": {
+      "ledger": "42; all 8 jobs completed, no resubmissions",
+      "scale-512 4096x5000": "52/4096 valid, best (12,6,5,5)",
+      "scale-512 16384x5000": "227/16384 valid, best (13,2,2,2)",
+      "scale-512 65536x2000": "588/65536 valid, best (11,7,6,6)",
+      "complete-cell 4096x5000": "103/4096 valid, best (0,0,2,2) optimum in 4 rows",
+      "complete-cell 16384x5000": "440/16384 valid, best (0,0,2,2) optimum in 8 rows",
+      "scale-1024 4096x5000": "16/4096 valid, best (14,2,1,1)",
+      "scale-2048 4096x5000": "0/4096 valid",
+      "lowconflict-512 16384x5000": "18/16384 valid, best (12,5,6,6)"
+    }
+  },
+  "phase_H_large_new_costs": {
+    "declared": "2026-10-17, before any phase H job",
+    "approval": "user allowed VeloxQ runs for the new cost functions on the largest problems; cap set by Claude: 10 jobs + at most 4 resubmissions only for attempts without a job id (ledger total 56)",
+    "bundles": [
+      "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-1024-local-uw-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-1024-local-uw-m8-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-2048-local-uw-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-2048-local-uw-m8-qubo.json",
+      "output/catering-methods/veloxq/lowconflict-v1/lowconflict-1024-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v2/lowconflict-v1-lowconflict-1024-local-uw-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v2/lowconflict-v1-lowconflict-1024-local-uw-m8-qubo.json",
+      "output/catering-methods/veloxq/lowconflict-v1-2048/lowconflict-2048-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v2/lowconflict-v1-2048-lowconflict-2048-local-uw-qubo.json",
+      "output/catering-methods/veloxq/penalty-study-v2/lowconflict-v1-2048-lowconflict-2048-local-uw-m8-qubo.json"
+    ],
+    "settings": "num_rep=4096, num_steps=5000 (SDK default), cold start, local wait 300 s, no automatic retries",
+    "baselines": "phase G at the same budget: frozen scale-1024 16/4096 (14,2,1,1); frozen scale-2048 0/4096; lowconflict-2048 CP 30 s FEASIBLE (8,5,12,12)",
+    "results": {
+      "ledger": "54: 10 completed jobs; attempts 48 and 52 failed with ConnectError before job creation and were resubmitted once each; jobs 45 and 53 failed after creation and were recovered by job id",
+      "scale-1024 local-uw": "6/4096 valid, best (13,6,5,5)",
+      "scale-1024 local-uw-m8": "6/4096 valid, best (13,4,3,3)",
+      "scale-2048 local-uw": "0/4096 valid",
+      "scale-2048 local-uw-m8": "0/4096 valid",
+      "lowconflict-1024": "3/4096 valid, best (14,3,2,2)",
+      "lowconflict-1024 local-uw": "3/4096 valid, best (13,3,3,3)",
+      "lowconflict-1024 local-uw-m8": "1/4096 valid, best (14,4,2,2)",
+      "lowconflict-2048": "0/4096 valid",
+      "lowconflict-2048 local-uw": "0/4096 valid",
+      "lowconflict-2048 local-uw-m8": "0/4096 valid",
+      "sa_lowconflict-2048": "32x200: 32/32 valid, best (10,9,11,11)",
+      "conclusion": "no cost-function or pool change gives VeloxQ a valid state at 2,048; best U at 1,024 is 13 (all-idle is 14)"
+    }
+  }
 }
