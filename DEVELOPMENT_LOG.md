@@ -1,5 +1,13 @@
 # Development log
 
+## 2026-10-17 — remove slogan-style presentation copy
+
+Replaced the “Two courses. One meal.” headline and related slogans with
+concrete scheduling descriptions across the kitchen viewer, private studio,
+chapter headings and speaker docs. Kept the game visuals. Changed display
+text only; no model, objective, encoding or frozen solver workload changed.
+The previously captured MP4 retains the older copy and needs a final re-record.
+
 ## 2026-10-17 — local recording, live studio and Q&A pack
 
 Prepared scripts/catering-showcase outside the deployed presentation root: actual

@@ -1,9 +1,9 @@
 export const CASES = {
-  CELL: {title:'Two courses. One meal.', short:'Complete small cell', event:'Main + side must reach the same departure'},
+  CELL: {title:'Two-order lunch service', short:'Complete small cell', event:'Main + side must reach the same departure'},
   S0: {title:'Lunch service', short:'Larger · normal service', event:'Six customers + the committed meal'},
-  S1: {title:'One more order.', short:'Larger · urgent order', event:'+10 complete meals revealed at 10:50'},
-  S2: {title:'A cooker goes offline.', short:'Larger · cooker outage', event:'C2 repair + mandatory post-repair clean'},
-  S3: {title:'A little kitchen chaos.', short:'Larger · both events', event:'Urgent order + cooker outage + recovery clean'},
+  S1: {title:'Urgent order', short:'Larger · urgent order', event:'+10 complete meals revealed at 10:50'},
+  S2: {title:'Cooker outage', short:'Larger · cooker outage', event:'C2 repair + mandatory post-repair clean'},
+  S3: {title:'Urgent order and cooker outage', short:'Larger · both events', event:'Urgent order + cooker outage + recovery clean'},
 };
 export const PHASES = {prepare:'Prep',cook:'Cook',pack:'Pack',clean:'Clean'};
 export const RESOURCES = ['P1','C1','C2','K1'];

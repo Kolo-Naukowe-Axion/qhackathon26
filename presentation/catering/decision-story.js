@@ -6,7 +6,7 @@ export function decisionSteps(c){
   const index=c.options.indexOf(p),actions=decodedActions(c,index);
   return [
     {title:`${programs.length} batch choices become a plan`,copy:'Each selected program sets quantity, equipment, crew and times. Idle bits leave their anchor unused.',duration:2.5},
-    {title:'Two courses make one meal',copy:'Main and side must both be packed for the same departure. An unpaired component is waste, even when it was cooked on time.',duration:3},
+    {title:'Main and side must both be ready',copy:'Main and side must both be packed for the same departure. An unpaired component is waste, even when it was cooked on time.',duration:3},
     {title:`Follow x${index+1}: Menu ${p.menu}`,copy:`${p.yield_lots*c.instance.lot_size} component portions. Prep starts ${clock(actions[0].start)} on ${actions[0].resource}, with ${actions[0].worker}.`,duration:2.8},
     {title:'Now run the saved schedule',copy:'The kitchen follows the checked operations. The clock animates a retained result; no optimizer runs during playback.',duration:2.5},
   ];

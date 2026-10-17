@@ -118,7 +118,7 @@ def export():
                                 shots=control['shots'], valid_shots=control['valid_shots'],
                                 reference_status='Observed optimum · comparison control'))
     runs.append(raw_run(bundle['instance'], bundle['snapshot'], f'{cell_path}/reference-raw.json'))
-    cases.append(dict(id='CELL', title='Two courses. One meal.',
+    cases.append(dict(id='CELL', title='Two-order lunch service',
                       instance=bundle['instance'], snapshot=bundle['snapshot'], runs=runs,
                       description='Complete small cell · all 32 legal batch programs · 35 data qubits',
                       report=read(f'{cell_path}/report.json')))

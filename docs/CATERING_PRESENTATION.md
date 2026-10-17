@@ -14,7 +14,8 @@ The active [live operator sheet](CATERING_LIVE.md),
 [timecoded narration](CATERING_VOICEOVER.md) and [Q&A desk sheet](CATERING_QA.md)
 supersede the provisional timing and launch instructions below. The silent
 rough cut and capture receipts live locally under ignored
-`output/playwright/catering-showcase-v1/recording/`. They are not uploaded.
+`output/playwright/catering-showcase-v1/recording/`. They are not uploaded. The existing MP4 predates the latest copy revision;
+re-record from the studio after final results and wording are frozen.
 
 A real fresh 4096-shot frozen-angle QAOA sample was recorded, with independent
 checking and no training, service or QPU calls. Result: (0,0,2,2), 20 complete
@@ -24,7 +25,7 @@ are visibly draft. Shared models and frozen workloads were not changed.
 
 ## The story
 
-**Title: Axion Kitchen: two courses, one scheduling decision.**
+**Title: Axion Kitchen: catering production scheduling.**
 
 Opening: “Twenty people are waiting for lunch. The mains can finish on time. Without
 one shared side batch, we deliver zero complete meals.” This is a synthetic
