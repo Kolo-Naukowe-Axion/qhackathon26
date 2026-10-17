@@ -1,0 +1,5115 @@
+{
+  "scope": "Training/development portable-tool assignment ablations",
+  "variants": {
+    "off": {
+      "mode": "off"
+    },
+    "hard-all": {
+      "mode": "hard"
+    }
+  },
+  "source_before": {
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_after": {
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_stable": true,
+  "teacher": {
+    "path": "output/stage2-search/routing-coefficients-training/training-teacher.json",
+    "sha256": "5d249009e939e4261ba908eef44d8dd9773a3093c8f9e4fe280aaeafe52dd9ad",
+    "prior_orders": 12
+  },
+  "groups": [
+    {
+      "orders": 12,
+      "seeds": [
+        100,
+        101,
+        102,
+        103,
+        104,
+        105,
+        106,
+        107,
+        108,
+        109,
+        110,
+        111,
+        112,
+        113,
+        114,
+        115
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false
+      },
+      "specialist": true,
+      "rows": [
+        {
+          "variant": "off",
+          "seed": 100,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P04": 2479,
+              "P10": 2697,
+              "P08": 2988,
+              "P02": 3351,
+              "P05": 3413,
+              "P11": 3651,
+              "P09": 4309,
+              "P03": 5010,
+              "P06": 5099,
+              "P12": 5353,
+              "U02": 5495,
+              "U01": 5669
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 8474,
+            "grid_kwh": 3102.7849833333335,
+            "energy_cost": 618.5633247333334,
+            "carbon_kg": 1223.3855671666668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 768.5633247333392,
+            "operations": 249,
+            "moves": 397,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 22,
+              "mill2": 18,
+              "weld1": 7,
+              "weld2": 1,
+              "calibration1": 16,
+              "calibration_lease": 11
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 21
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 19
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 6
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 8
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 33917,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s100-off.json.gz",
+          "trace_sha256": "0ffbb847f3041be4f02974ced8d161152d95855fcbbe0824749ab15f672c6a93",
+          "wall_seconds": 2.3224469171836972
+        },
+        {
+          "variant": "off",
+          "seed": 101,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1154,
+              "P07": 1493,
+              "P04": 2109,
+              "P10": 2275,
+              "P02": 2694,
+              "P08": 2773,
+              "P05": 3651,
+              "P11": 3831,
+              "P03": 4137,
+              "P09": 4942,
+              "P06": 5008,
+              "P12": 5115
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7455,
+            "grid_kwh": 3248.6426466666667,
+            "energy_cost": 617.9604636,
+            "carbon_kg": 1226.9303816666668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 767.9604636000073,
+            "operations": 245,
+            "moves": 406,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 21,
+              "mill2": 21,
+              "weld1": 6,
+              "weld2": 1,
+              "calibration1": 38,
+              "calibration_lease": 4
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 27
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 19
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 9
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 41059,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s101-off.json.gz",
+          "trace_sha256": "cc726ab00018765c4cfce3778ad399dbcee04bb6ce1d13ff97a04210bd0a8f68",
+          "wall_seconds": 2.0725468748714775
+        },
+        {
+          "variant": "off",
+          "seed": 102,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1646,
+              "P04": 2284,
+              "P02": 2393,
+              "P08": 2565,
+              "P05": 2929,
+              "P11": 3216,
+              "P03": 3982,
+              "P09": 4135,
+              "P06": 4185,
+              "P12": 4392
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2069,
+            "grid_kwh": 2822.8862733333335,
+            "energy_cost": 515.7351633333334,
+            "carbon_kg": 1027.5194056666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 665.7351633333396,
+            "operations": 205,
+            "moves": 329,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 15,
+              "mill2": 18,
+              "weld1": 8,
+              "weld2": 1,
+              "calibration1": 15,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 12
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 13
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 4
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 6
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 31317,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s102-off.json.gz",
+          "trace_sha256": "f10260d65a14eb4f2ba88e5f34c968102c4e252bd260d0c585bc5b9f254465a1",
+          "wall_seconds": 1.6725858750287443
+        },
+        {
+          "variant": "off",
+          "seed": 103,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1644,
+              "P02": 2482,
+              "P04": 3224,
+              "P08": 4437,
+              "P03": 4528,
+              "P11": 4657,
+              "P05": 4900,
+              "P09": 5467,
+              "P06": 5579,
+              "P12": 5652
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 13020,
+            "grid_kwh": 3128.468123333333,
+            "energy_cost": 580.9753256666667,
+            "carbon_kg": 1155.8609415,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 730.975325666682,
+            "operations": 232,
+            "moves": 385,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 18,
+              "mill2": 18,
+              "weld1": 9,
+              "weld2": 1,
+              "calibration1": 20,
+              "calibration_lease": 15
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 10
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 18
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 43846,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s103-off.json.gz",
+          "trace_sha256": "b104cfd2eb04d53061c8911724ea4352adbc7bbe0e261290d22cc647f97c063a",
+          "wall_seconds": 2.67839412484318
+        },
+        {
+          "variant": "off",
+          "seed": 104,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1132,
+              "P10": 1495,
+              "P07": 1731,
+              "P04": 2126,
+              "P02": 2781,
+              "P05": 3044,
+              "P11": 3694,
+              "P03": 3754,
+              "P08": 4152,
+              "P09": 4369,
+              "P06": 4673,
+              "P12": 4938
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4507,
+            "grid_kwh": 2924.942965,
+            "energy_cost": 545.3289718333333,
+            "carbon_kg": 1084.5735885833333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 695.3289718333313,
+            "operations": 213,
+            "moves": 328,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 19,
+              "mill2": 15,
+              "weld1": 3,
+              "weld2": 1,
+              "calibration1": 12,
+              "calibration_lease": 5
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 23
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 6
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 21
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 23864,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s104-off.json.gz",
+          "trace_sha256": "abc31be78d36b17acb999f2cbdd8bbd8fb1d1b9dfa50a0c44d6ac5c1d8db056d",
+          "wall_seconds": 1.749165958026424
+        },
+        {
+          "variant": "off",
+          "seed": 105,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1646,
+              "P04": 2284,
+              "P02": 2393,
+              "P08": 2563,
+              "P11": 3044,
+              "P05": 3702,
+              "P03": 4055,
+              "P09": 4466,
+              "P06": 5094,
+              "P12": 5371
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7226,
+            "grid_kwh": 3119.97181,
+            "energy_cost": 606.0390458,
+            "carbon_kg": 1201.1610045,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 756.039045800008,
+            "operations": 241,
+            "moves": 400,
+            "unfinished": 4,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 18,
+              "mill2": 22,
+              "weld1": 6,
+              "weld2": 1,
+              "calibration1": 30,
+              "calibration_lease": 12
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 5
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 9
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 41253,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s105-off.json.gz",
+          "trace_sha256": "7eeb76f1fb2d4bb7d0a4c40f6eb137f6ff7c51bb45d0e6901745b2874384e322",
+          "wall_seconds": 1.9754309998825192
+        },
+        {
+          "variant": "off",
+          "seed": 106,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1060,
+              "P07": 1251,
+              "P04": 1754,
+              "P10": 2241,
+              "P02": 2557,
+              "P08": 2954,
+              "P05": 3169,
+              "P11": 3552,
+              "P09": 3661,
+              "P03": 4494,
+              "P12": 5353,
+              "P06": 5494
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7436,
+            "grid_kwh": 2931.00309,
+            "energy_cost": 543.263681,
+            "carbon_kg": 1081.0113365,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 693.2636809999993,
+            "operations": 234,
+            "moves": 382,
+            "unfinished": 4,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 20,
+              "mill2": 19,
+              "weld1": 8,
+              "weld2": 1,
+              "calibration1": 12,
+              "calibration_lease": 13
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 12
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 21038,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s106-off.json.gz",
+          "trace_sha256": "6afc499f727f3613e1ae335539673049ef779a1ec0289a497b4c58b3a8e0ff33",
+          "wall_seconds": 1.9211452919989824
+        },
+        {
+          "variant": "off",
+          "seed": 107,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1731,
+              "P04": 2090,
+              "P02": 2131,
+              "P08": 2716,
+              "P05": 3214,
+              "P11": 3700,
+              "P09": 4523,
+              "P06": 4612,
+              "P03": 4977,
+              "P12": 5355
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7707,
+            "grid_kwh": 3022.137743333333,
+            "energy_cost": 599.4944631333334,
+            "carbon_kg": 1186.1488611666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 749.4944631333357,
+            "operations": 238,
+            "moves": 367,
+            "unfinished": 4,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 22,
+              "mill2": 17,
+              "weld1": 4,
+              "weld2": 1,
+              "calibration1": 14,
+              "calibration_lease": 3
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 20
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 11
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 24673,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s107-off.json.gz",
+          "trace_sha256": "05e83aff2a77b093cc8215f55c8aae2b210028010910f5b000fdad073e13a739",
+          "wall_seconds": 2.1613547918386757
+        },
+        {
+          "variant": "off",
+          "seed": 108,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1646,
+              "P04": 2284,
+              "P02": 2393,
+              "P08": 2567,
+              "P05": 2937,
+              "P11": 3216,
+              "P03": 3545,
+              "P09": 3960,
+              "P06": 4006,
+              "U02": 5112,
+              "P12": 5352,
+              "U01": 5658
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4547,
+            "grid_kwh": 3130.975986666667,
+            "energy_cost": 588.5907992,
+            "carbon_kg": 1169.7870526666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 738.5907992000155,
+            "operations": 249,
+            "moves": 391,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 18,
+              "mill2": 21,
+              "weld1": 9,
+              "weld2": 1,
+              "calibration1": 15,
+              "calibration_lease": 10
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 10
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 19
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 34597,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s108-off.json.gz",
+          "trace_sha256": "4290c620d25076400a43eab351e56a39f8ee4d0ebc48efaf396464cacae37b0f",
+          "wall_seconds": 2.049219708889723
+        },
+        {
+          "variant": "off",
+          "seed": 109,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1060,
+              "P07": 1321,
+              "P10": 1796,
+              "P04": 2476,
+              "P02": 2871,
+              "P08": 3192,
+              "P05": 3351,
+              "P11": 4176,
+              "P03": 4240,
+              "P09": 4369,
+              "P06": 4619,
+              "P12": 4696
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4163,
+            "grid_kwh": 2910.6726066666665,
+            "energy_cost": 566.8499166666667,
+            "carbon_kg": 1123.2485223333333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 716.8499166666742,
+            "operations": 214,
+            "moves": 336,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 18,
+              "mill2": 16,
+              "weld1": 3,
+              "weld2": 1,
+              "calibration1": 13,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 9
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 23090,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s109-off.json.gz",
+          "trace_sha256": "2b43527e06fc99679361165fd4c248f7dd364667ff7cf86271697d80d7400682",
+          "wall_seconds": 1.9698570840992033
+        },
+        {
+          "variant": "off",
+          "seed": 110,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1060,
+              "P07": 1441,
+              "P10": 1505,
+              "P04": 2000,
+              "P02": 2593,
+              "P08": 3479,
+              "P11": 3528,
+              "P05": 3580,
+              "P09": 4137,
+              "P03": 4227,
+              "P06": 4795,
+              "P12": 4874
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4112,
+            "grid_kwh": 2905.012155,
+            "energy_cost": 533.1258297666667,
+            "carbon_kg": 1061.7518954166667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 683.125829766662,
+            "operations": 215,
+            "moves": 331,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 30,
+              "mill2": 6,
+              "weld1": 3,
+              "weld2": 1,
+              "calibration1": 8,
+              "calibration_lease": 9
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 9
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 11
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 10
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 7531,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s110-off.json.gz",
+          "trace_sha256": "4c34184bcec6780f672acd4c226686abd03f04e1baf50c62e79faed330291d10",
+          "wall_seconds": 1.9827835001051426
+        },
+        {
+          "variant": "off",
+          "seed": 111,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1261,
+              "P07": 1351,
+              "P10": 1564,
+              "P04": 2234,
+              "P02": 2395,
+              "P08": 3059,
+              "P05": 3700,
+              "P03": 3829,
+              "P11": 3934,
+              "P09": 4028,
+              "P06": 4448,
+              "P12": 4696
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2754,
+            "grid_kwh": 2964.9530283333334,
+            "energy_cost": 554.4656600333334,
+            "carbon_kg": 1102.4587964166667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 704.4656600333359,
+            "operations": 215,
+            "moves": 325,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 20,
+              "mill2": 13,
+              "weld1": 3,
+              "weld2": 1,
+              "calibration1": 7,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 14
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 12
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 4
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 17443,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s111-off.json.gz",
+          "trace_sha256": "104c98e5e4a2e6705d1491fc49ca56a27b877cce54bdef9592b23fa7811bdc6f",
+          "wall_seconds": 1.8175101669039577
+        },
+        {
+          "variant": "off",
+          "seed": 112,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1733,
+              "P04": 2138,
+              "P02": 2548,
+              "P08": 2954,
+              "P05": 3014,
+              "P11": 3751,
+              "P03": 4131,
+              "P09": 4312,
+              "P12": 5117,
+              "U01": 5441
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7435,
+            "grid_kwh": 3049.4183199999998,
+            "energy_cost": 594.9179258666667,
+            "carbon_kg": 1178.6959026666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 744.9179258666703,
+            "operations": 244,
+            "moves": 392,
+            "unfinished": 2,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 22,
+              "mill2": 18,
+              "weld1": 5,
+              "weld2": 1,
+              "calibration1": 8,
+              "calibration_lease": 23
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 6
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 11
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 23831,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s112-off.json.gz",
+          "trace_sha256": "4886a14ed6cf611b0007cdaaa8c1e804484fa8fa62e64168135811bdb30005ba",
+          "wall_seconds": 2.1582290830556303
+        },
+        {
+          "variant": "off",
+          "seed": 113,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P10": 1729,
+              "P08": 2610,
+              "P04": 2716,
+              "P02": 3698,
+              "P05": 3753,
+              "P11": 3993,
+              "P09": 5099,
+              "P03": 5146,
+              "P06": 5416,
+              "P12": 5674
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 7786,
+            "grid_kwh": 2745.2702216666667,
+            "energy_cost": 536.7043724333333,
+            "carbon_kg": 1063.17563875,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 686.7043724333198,
+            "operations": 211,
+            "moves": 351,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 20,
+              "mill2": 13,
+              "weld1": 6,
+              "weld2": 2,
+              "calibration1": 33,
+              "calibration_lease": 2
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 25
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 17
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 4
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 24794,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s113-off.json.gz",
+          "trace_sha256": "f4af905fc7a36c50c82c40d0a396747780cc30819d400b59785a4564f16355c1",
+          "wall_seconds": 1.888815667014569
+        },
+        {
+          "variant": "off",
+          "seed": 114,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1058,
+              "P07": 1251,
+              "P04": 1776,
+              "P10": 2209,
+              "P08": 2958,
+              "P02": 3006,
+              "P05": 3171,
+              "P11": 3359,
+              "P03": 3989,
+              "P06": 4440,
+              "P09": 4450,
+              "P12": 4874
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 3557,
+            "grid_kwh": 2826.1294233333333,
+            "energy_cost": 548.814101,
+            "carbon_kg": 1087.7661198333333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 698.8141010000047,
+            "operations": 211,
+            "moves": 319,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 19,
+              "mill2": 15,
+              "weld1": 4,
+              "weld2": 1,
+              "calibration1": 6,
+              "calibration_lease": 5
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 22
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 3
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 24
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 8
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 26575,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s114-off.json.gz",
+          "trace_sha256": "0db4abcdb4aca007a066ac5298b31cf362c1fe5584cfe4d71fbab319ee4d52e4",
+          "wall_seconds": 1.9752052500844002
+        },
+        {
+          "variant": "off",
+          "seed": 115,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1060,
+              "P07": 1249,
+              "P10": 1621,
+              "P02": 2395,
+              "P04": 2988,
+              "P08": 3534,
+              "P03": 4311,
+              "P05": 4450,
+              "P09": 5281,
+              "P11": 5374,
+              "P06": 5438,
+              "P12": 5609
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 11797,
+            "grid_kwh": 3229.2342216666666,
+            "energy_cost": 609.3441991,
+            "carbon_kg": 1210.6469054166666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 759.3441991000044,
+            "operations": 241,
+            "moves": 377,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 24,
+              "mill2": 16,
+              "weld1": 3,
+              "weld2": 1,
+              "calibration1": 11,
+              "calibration_lease": 11
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 16
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 11
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 11
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 7
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 1
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 54303,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s115-off.json.gz",
+          "trace_sha256": "40a90586f52cbe5fc1166359bda2107b99328439d22d7c6f1e2aad67e01e96ba",
+          "wall_seconds": 2.5495405420660973
+        },
+        {
+          "variant": "hard-all",
+          "seed": 100,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 2020,
+              "P10": 2489,
+              "P08": 2954,
+              "P02": 3250,
+              "P04": 3558,
+              "P05": 3685,
+              "P11": 3936,
+              "P03": 4923,
+              "P09": 5089,
+              "P06": 5140,
+              "P12": 5354
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 9604,
+            "grid_kwh": 3123.4195366666668,
+            "energy_cost": 621.1306728666667,
+            "carbon_kg": 1228.7100268333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 771.1306728666677,
+            "operations": 245,
+            "moves": 312,
+            "unfinished": 4,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 34
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 25
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 22
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 20
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 38637,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 65338,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s100-hard-all.json.gz",
+          "trace_sha256": "74f7e6b92886cf3790107e574c02c29d78a7e0a99628d1d4528e3a5b4e80da44",
+          "wall_seconds": 2.4504685001447797
+        },
+        {
+          "variant": "hard-all",
+          "seed": 101,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 5,
+            "shipped_at": {
+              "P01": 1253,
+              "P07": 1615,
+              "P04": 1752,
+              "P10": 2245,
+              "P02": 2554
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 18120,
+            "grid_kwh": 2779.77905,
+            "energy_cost": 495.9248407333333,
+            "carbon_kg": 990.1290438333333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 645.924840733335,
+            "operations": 196,
+            "moves": 256,
+            "unfinished": 25,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 21
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 22
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 10
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 30941,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 40112,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s101-hard-all.json.gz",
+          "trace_sha256": "faa34745a55580bb4965e0d5e6ef5fb5b0a56651847693e28494772fdbfa0aa6",
+          "wall_seconds": 2.469093209132552
+        },
+        {
+          "variant": "hard-all",
+          "seed": 102,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P10": 1505,
+              "P07": 1765,
+              "P02": 2311,
+              "P04": 2506,
+              "P08": 2578,
+              "P11": 3561,
+              "P05": 3700,
+              "P03": 3936,
+              "P09": 4034,
+              "P06": 4373,
+              "P12": 4698
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2401,
+            "grid_kwh": 2782.34157,
+            "energy_cost": 500.5375642,
+            "carbon_kg": 998.5973485000001,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 650.5375641999913,
+            "operations": 203,
+            "moves": 262,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 25
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 23
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 17
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 19
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 31599,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 53038,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s102-hard-all.json.gz",
+          "trace_sha256": "b1b356fe54c3382ca3985f93ce6af4a693473038d46d3bae19c73852883049d9",
+          "wall_seconds": 2.3536387500353158
+        },
+        {
+          "variant": "hard-all",
+          "seed": 103,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 775,
+              "P10": 1505,
+              "P07": 1765,
+              "P02": 2311,
+              "P08": 2578,
+              "P05": 3024,
+              "P11": 3563,
+              "P09": 3657,
+              "P03": 4174,
+              "P04": 4506,
+              "P06": 4925,
+              "P12": 4991,
+              "U01": 5364,
+              "U02": 5486
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 6343,
+            "grid_kwh": 3078.2090749999998,
+            "energy_cost": 578.0105159,
+            "carbon_kg": 1148.87122675,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 728.0105159000045,
+            "operations": 241,
+            "moves": 308,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 31
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 27
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 23
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 44453,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 66347,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s103-hard-all.json.gz",
+          "trace_sha256": "80fbaac7f76a91d9409c296e231b945b3bf4f1e4fb47435734363fbeccb69a65",
+          "wall_seconds": 2.2036554580554366
+        },
+        {
+          "variant": "hard-all",
+          "seed": 104,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1089,
+              "P07": 1560,
+              "P04": 2028,
+              "P10": 2107,
+              "P02": 2309,
+              "P08": 2718,
+              "P05": 3080,
+              "P11": 3171,
+              "P09": 3546,
+              "P03": 3831,
+              "P06": 4315,
+              "P12": 4398
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1450,
+            "grid_kwh": 2868.40026,
+            "energy_cost": 535.3107188,
+            "carbon_kg": 1064.559497,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 685.3107187999984,
+            "operations": 213,
+            "moves": 271,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 27
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 25
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 18382,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 40602,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s104-hard-all.json.gz",
+          "trace_sha256": "1d0df74f127ff71bad4c9220365bd211e772afe0e1fe1c45b4b08e38dc4533b4",
+          "wall_seconds": 1.5699658340308815
+        },
+        {
+          "variant": "hard-all",
+          "seed": 105,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 775,
+              "P10": 1505,
+              "P07": 1765,
+              "P02": 2311,
+              "P04": 2506,
+              "P08": 2961,
+              "P03": 3351,
+              "P05": 3740,
+              "P09": 3934,
+              "P11": 4174,
+              "P06": 4488,
+              "P12": 4876,
+              "U01": 5124,
+              "U02": 5186
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4214,
+            "grid_kwh": 3084.44443,
+            "energy_cost": 576.9874699333334,
+            "carbon_kg": 1147.2095408333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 726.9874699333359,
+            "operations": 241,
+            "moves": 309,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 27
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 31
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 20
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 22
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 36919,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 60988,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s105-hard-all.json.gz",
+          "trace_sha256": "09b8c1b3d7f982e240c70bc6de8a6848f547b936f793c1fe28d071292f728d49",
+          "wall_seconds": 1.9872640001121908
+        },
+        {
+          "variant": "hard-all",
+          "seed": 106,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 1354,
+              "P07": 1431,
+              "P10": 1810,
+              "P04": 2301,
+              "P02": 2391,
+              "P08": 2958,
+              "P05": 3092,
+              "P11": 3696,
+              "P03": 4035,
+              "P09": 4311,
+              "P06": 4795,
+              "P12": 4878,
+              "U01": 5118,
+              "U02": 5184
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 5239,
+            "grid_kwh": 3045.9777083333333,
+            "energy_cost": 578.5798512333333,
+            "carbon_kg": 1148.8808384166666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 728.5798512333364,
+            "operations": 238,
+            "moves": 307,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 29
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 28
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 23
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 19
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 12
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 2
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 16710,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 61919,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s106-hard-all.json.gz",
+          "trace_sha256": "d315667ffe9e13fa4748bde710fda29404f459aba574c8bfdd08d8937b2cf39d",
+          "wall_seconds": 2.0646740838419646
+        },
+        {
+          "variant": "hard-all",
+          "seed": 107,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 13,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 1583,
+              "P10": 1631,
+              "P04": 2103,
+              "P02": 2723,
+              "P08": 2958,
+              "P05": 3239,
+              "P09": 3355,
+              "P11": 4493,
+              "P03": 4925,
+              "P06": 5095,
+              "P12": 5163,
+              "U01": 5602
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7471,
+            "grid_kwh": 3050.330863333333,
+            "energy_cost": 609.5875906,
+            "carbon_kg": 1205.3970558333333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 759.5875906000086,
+            "operations": 242,
+            "moves": 312,
+            "unfinished": 1,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 33
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 22
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 20
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 24549,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 71446,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s107-hard-all.json.gz",
+          "trace_sha256": "75a252eb89f33452f90f092eec070cfcaef863b4e761279554cf3332bdae9e3e",
+          "wall_seconds": 2.053839375032112
+        },
+        {
+          "variant": "hard-all",
+          "seed": 108,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 775,
+              "P10": 1505,
+              "P07": 1765,
+              "P02": 2311,
+              "P04": 2506,
+              "P08": 2578,
+              "P05": 3089,
+              "P11": 3567,
+              "P09": 3760,
+              "P03": 3833,
+              "P06": 4797,
+              "U01": 5112,
+              "U02": 5186,
+              "P12": 5354
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4762,
+            "grid_kwh": 3045.0822333333335,
+            "energy_cost": 566.6307897333334,
+            "carbon_kg": 1127.1267796666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 716.6307897333356,
+            "operations": 246,
+            "moves": 312,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 29
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 31
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 20
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 22
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 35941,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 64277,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s108-hard-all.json.gz",
+          "trace_sha256": "fa07ea0a63cc43deaaac514bbf84567c0b277679e54293a8f4152e9b5c844456",
+          "wall_seconds": 2.2548465409781784
+        },
+        {
+          "variant": "hard-all",
+          "seed": 109,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 1805,
+              "P04": 2099,
+              "P10": 2251,
+              "P02": 3175,
+              "P08": 3721,
+              "P05": 3934,
+              "P11": 3985,
+              "P03": 4226,
+              "P06": 4685,
+              "P09": 4983,
+              "P12": 5114
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 5983,
+            "grid_kwh": 2822.6289333333334,
+            "energy_cost": 532.7629344000001,
+            "carbon_kg": 1058.4708013333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 682.7629343999862,
+            "operations": 213,
+            "moves": 274,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 31
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 22
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 45049,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 59016,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s109-hard-all.json.gz",
+          "trace_sha256": "74b90c2c84faf1f6465adae835d25b20ea0455e7c93340d8de71deb4377265ea",
+          "wall_seconds": 2.001771332928911
+        },
+        {
+          "variant": "hard-all",
+          "seed": 110,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 1,
+            "shipped_at": {
+              "P01": 1361
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 26160,
+            "grid_kwh": 2321.929146666667,
+            "energy_cost": 406.3460736,
+            "carbon_kg": 812.6906066666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 556.3460736000045,
+            "operations": 133,
+            "moves": 172,
+            "unfinished": 33,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 17
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 14
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 13
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 2
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 17953,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 20873,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s110-hard-all.json.gz",
+          "trace_sha256": "f5db0aa9021727a26231c971ef26aef4c0c5152d4974973440907c2af9afc84d",
+          "wall_seconds": 2.2728761250618845
+        },
+        {
+          "variant": "hard-all",
+          "seed": 111,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 1253,
+              "P07": 1566,
+              "P10": 1625,
+              "P04": 1812,
+              "P02": 2391,
+              "P08": 2716,
+              "P05": 2929,
+              "P11": 3248,
+              "P03": 3837,
+              "P09": 4023,
+              "P06": 4203,
+              "P12": 4634
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2057,
+            "grid_kwh": 2800.497103333333,
+            "energy_cost": 528.7221788666667,
+            "carbon_kg": 1050.4197785000001,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 678.722178866668,
+            "operations": 209,
+            "moves": 267,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 24
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 27
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 18
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 18
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 30370,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 43992,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s111-hard-all.json.gz",
+          "trace_sha256": "30c4c4e8acaaeb3684aa738bd9b7388db8ac8445adc6994828b7a43b1e61224c",
+          "wall_seconds": 2.6947787078097463
+        },
+        {
+          "variant": "hard-all",
+          "seed": 112,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 1583,
+              "P10": 1631,
+              "P04": 2103,
+              "P08": 2714,
+              "P05": 3096,
+              "P02": 3169,
+              "P11": 3554,
+              "P03": 3984,
+              "P09": 4135,
+              "P06": 4714,
+              "P12": 5010,
+              "U01": 5186,
+              "U02": 5356
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 5514,
+            "grid_kwh": 3036.0132966666665,
+            "energy_cost": 616.5321512666667,
+            "carbon_kg": 1217.5679708333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 766.5321512666625,
+            "operations": 243,
+            "moves": 314,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 32
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 28
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 22
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 20
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 14092,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 60386,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s112-hard-all.json.gz",
+          "trace_sha256": "f4be1e1ac1fc955f2f1c827e4e0743e7878121fa05fc40c75cdbbb8ba79903ea",
+          "wall_seconds": 2.4479235829785466
+        },
+        {
+          "variant": "hard-all",
+          "seed": 113,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 1583,
+              "P10": 1631,
+              "P04": 2542,
+              "P02": 2771,
+              "P08": 3194,
+              "P05": 3698,
+              "P11": 3938,
+              "P03": 4795,
+              "P09": 4921,
+              "P06": 4972,
+              "P12": 5354
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 5945,
+            "grid_kwh": 2791.201375,
+            "energy_cost": 535.4916979,
+            "carbon_kg": 1062.43222175,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 685.4916978999946,
+            "operations": 210,
+            "moves": 272,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 28
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 24
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 18
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 18
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 30140,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 66263,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s113-hard-all.json.gz",
+          "trace_sha256": "fee75b2dff3766d73b5062ae08f0231aef4eed2a66a18597995d35a03a76002b",
+          "wall_seconds": 2.613280874909833
+        },
+        {
+          "variant": "hard-all",
+          "seed": 114,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P07": 1917,
+              "P04": 2274,
+              "P10": 2397,
+              "P02": 2600,
+              "P08": 3049,
+              "P05": 3573,
+              "P11": 3747,
+              "P03": 4313,
+              "P09": 4504,
+              "P06": 4613,
+              "P12": 4696
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 3775,
+            "grid_kwh": 2750.2296,
+            "energy_cost": 529.6506944,
+            "carbon_kg": 1050.508568,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 679.6506943999962,
+            "operations": 210,
+            "moves": 270,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 26
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 17760,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 51402,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s114-hard-all.json.gz",
+          "trace_sha256": "afb75bc468ad18e6f30a899e640f8e80f2933d517b8367191912d19de1490098",
+          "wall_seconds": 2.360315666999668
+        },
+        {
+          "variant": "hard-all",
+          "seed": 115,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 775,
+              "P10": 1625,
+              "P07": 1634,
+              "P04": 2101,
+              "P02": 2561,
+              "P08": 3251,
+              "P05": 4373,
+              "P11": 4428,
+              "P03": 4460,
+              "P06": 4923,
+              "P09": 5091,
+              "P12": 5428
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 9754,
+            "grid_kwh": 3111.479441666667,
+            "energy_cost": 590.4899072333334,
+            "carbon_kg": 1172.61963175,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 740.4899072333384,
+            "operations": 244,
+            "moves": 310,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "weld2": 1,
+              "calibration1": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 33
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 21
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 21
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 11
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "qa_guard_calls": 46826,
+              "threshold": 4,
+              "scope": "Algorithmic protected-skill dispatch restriction, no change to physical worker eligibility",
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 72498,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s115-hard-all.json.gz",
+          "trace_sha256": "d2faab9ab95822041605bbe59850c0d56fe723549db9f4ea483a9306f73453e6",
+          "wall_seconds": 4.185992500046268
+        }
+      ],
+      "causality": [
+        {
+          "variant": "off",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 4,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 0,
+                "right": 5,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 6,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 0,
+                "right": 7,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 8,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 0,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 0,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 0,
+                "right": 12,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 13,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 14,
+                "shared_observation_prefix": 1124
+              },
+              {
+                "left": 0,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 4,
+                "shared_observation_prefix": 669
+              },
+              {
+                "left": 1,
+                "right": 5,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 6,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 7,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 8,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 9,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 10,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 11,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 12,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 13,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 14,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 1,
+                "right": 15,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1578
+              },
+              {
+                "left": 2,
+                "right": 4,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 2,
+                "right": 5,
+                "shared_observation_prefix": 2400
+              },
+              {
+                "left": 2,
+                "right": 6,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 2,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 2,
+                "right": 8,
+                "shared_observation_prefix": 2400
+              },
+              {
+                "left": 2,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 2,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 2,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 2,
+                "right": 12,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 2,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 2,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 2,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 3,
+                "right": 4,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 3,
+                "right": 5,
+                "shared_observation_prefix": 1578
+              },
+              {
+                "left": 3,
+                "right": 6,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 3,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 3,
+                "right": 8,
+                "shared_observation_prefix": 1578
+              },
+              {
+                "left": 3,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 3,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 3,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 3,
+                "right": 12,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 3,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 3,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 3,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 4,
+                "right": 5,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 6,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 7,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 8,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 9,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 10,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 11,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 12,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 13,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 14,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 4,
+                "right": 15,
+                "shared_observation_prefix": 285
+              },
+              {
+                "left": 5,
+                "right": 6,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 5,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 5,
+                "right": 8,
+                "shared_observation_prefix": 2475
+              },
+              {
+                "left": 5,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 5,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 5,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 5,
+                "right": 12,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 5,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 5,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 5,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 6,
+                "right": 7,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 8,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 9,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 10,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 6,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 12,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 13,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 14,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 6,
+                "right": 15,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 7,
+                "right": 8,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 7,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 7,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 7,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 7,
+                "right": 12,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 7,
+                "right": 13,
+                "shared_observation_prefix": 1578
+              },
+              {
+                "left": 7,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 7,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 8,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 8,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 8,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 8,
+                "right": 12,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 8,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 8,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 8,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 10,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 9,
+                "right": 11,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 9,
+                "right": 12,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 13,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 14,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 15,
+                "shared_observation_prefix": 945
+              },
+              {
+                "left": 10,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 10,
+                "right": 12,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 10,
+                "right": 13,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 10,
+                "right": 14,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 10,
+                "right": 15,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 11,
+                "right": 12,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 11,
+                "right": 13,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 11,
+                "right": 14,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 11,
+                "right": 15,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 12,
+                "right": 13,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 12,
+                "right": 14,
+                "shared_observation_prefix": 1321
+              },
+              {
+                "left": 12,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 13,
+                "right": 14,
+                "shared_observation_prefix": 1427
+              },
+              {
+                "left": 13,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 14,
+                "right": 15,
+                "shared_observation_prefix": 720
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "hard-all",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 4,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 0,
+                "right": 5,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 0,
+                "right": 7,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 8,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 0,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 0,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 0,
+                "right": 12,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 13,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 14,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 0,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 4,
+                "shared_observation_prefix": 671
+              },
+              {
+                "left": 1,
+                "right": 5,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 1,
+                "right": 7,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 8,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 9,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 1,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 1,
+                "right": 12,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 13,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 14,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 1,
+                "right": 15,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 2018
+              },
+              {
+                "left": 2,
+                "right": 4,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 2,
+                "right": 5,
+                "shared_observation_prefix": 2385
+              },
+              {
+                "left": 2,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 2,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 2,
+                "right": 8,
+                "shared_observation_prefix": 2400
+              },
+              {
+                "left": 2,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 2,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 2,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 2,
+                "right": 12,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 2,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 2,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 2,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 3,
+                "right": 4,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 3,
+                "right": 5,
+                "shared_observation_prefix": 2018
+              },
+              {
+                "left": 3,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 3,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 3,
+                "right": 8,
+                "shared_observation_prefix": 2018
+              },
+              {
+                "left": 3,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 3,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 3,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 3,
+                "right": 12,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 3,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 3,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 3,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 4,
+                "right": 5,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 4,
+                "right": 7,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 8,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 9,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 4,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 4,
+                "right": 12,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 13,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 14,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 4,
+                "right": 15,
+                "shared_observation_prefix": 624
+              },
+              {
+                "left": 5,
+                "right": 6,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 5,
+                "right": 7,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 5,
+                "right": 8,
+                "shared_observation_prefix": 2385
+              },
+              {
+                "left": 5,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 5,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 5,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 5,
+                "right": 12,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 5,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 5,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 5,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 6,
+                "right": 7,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 8,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 9,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 10,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 6,
+                "right": 11,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 12,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 13,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 14,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 6,
+                "right": 15,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 7,
+                "right": 8,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 7,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 7,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 7,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 7,
+                "right": 12,
+                "shared_observation_prefix": 1995
+              },
+              {
+                "left": 7,
+                "right": 13,
+                "shared_observation_prefix": 1530
+              },
+              {
+                "left": 7,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 7,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 8,
+                "right": 9,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 8,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 8,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 8,
+                "right": 12,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 8,
+                "right": 13,
+                "shared_observation_prefix": 1440
+              },
+              {
+                "left": 8,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 8,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 10,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 9,
+                "right": 11,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 9,
+                "right": 12,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 13,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 14,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 9,
+                "right": 15,
+                "shared_observation_prefix": 1060
+              },
+              {
+                "left": 10,
+                "right": 11,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 10,
+                "right": 12,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 10,
+                "right": 13,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 10,
+                "right": 14,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 10,
+                "right": 15,
+                "shared_observation_prefix": 465
+              },
+              {
+                "left": 11,
+                "right": 12,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 11,
+                "right": 13,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 11,
+                "right": 14,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 11,
+                "right": 15,
+                "shared_observation_prefix": 527
+              },
+              {
+                "left": 12,
+                "right": 13,
+                "shared_observation_prefix": 1530
+              },
+              {
+                "left": 12,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 12,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 13,
+                "right": 14,
+                "shared_observation_prefix": 1156
+              },
+              {
+                "left": 13,
+                "right": 15,
+                "shared_observation_prefix": 720
+              },
+              {
+                "left": 14,
+                "right": 15,
+                "shared_observation_prefix": 720
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 72.1398440420162,
+  "valid": true
+}

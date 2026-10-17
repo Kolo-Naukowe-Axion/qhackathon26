@@ -1,0 +1,962 @@
+{
+  "schema": "stage2-frozen-selected-policy-evaluation.v1",
+  "phase": "frozen-selection",
+  "evaluation_role": "final",
+  "frozen_utc": "2026-10-17T00:32:14Z",
+  "runtime": {
+    "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+    "platform": "linux",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "torch": "2.14.1+cpu",
+      "ortools": "9.15.6755",
+      "qiskit": null,
+      "qiskit-aer": null
+    },
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "host_logical_cpus": 48,
+    "allocation": {
+      "SLURM_JOB_ID": "6117509",
+      "SLURM_CPUS_PER_TASK": "32",
+      "SLURM_CPUS_ON_NODE": "32"
+    },
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+  },
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000,
+    900001,
+    900002
+  ],
+  "methods": [
+    {
+      "id": "no-batch-sa-12",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "sa",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 64,
+        "declared_override": {
+          "selector": "sa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-qaoa-12",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "qaoa",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 64,
+        "declared_override": {
+          "selector": "qaoa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-uniform-12",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "uniform",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 64,
+        "declared_override": {
+          "selector": "uniform",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-sa-16",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "sa",
+        "policy_seed": 7,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 448,
+        "declared_override": {
+          "selector": "sa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-qaoa-16",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "qaoa",
+        "policy_seed": 7,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 448,
+        "declared_override": {
+          "selector": "qaoa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-uniform-16",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "uniform",
+        "policy_seed": 7,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 448,
+        "declared_override": {
+          "selector": "uniform",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-sa-24",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "sa",
+        "policy_seed": 7,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 1664,
+        "declared_override": {
+          "selector": "sa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-qaoa-24",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "qaoa",
+        "policy_seed": 7,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 1664,
+        "declared_override": {
+          "selector": "qaoa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    {
+      "id": "no-batch-uniform-24",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "uniform",
+        "policy_seed": 7,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 1664,
+        "declared_override": {
+          "selector": "uniform",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    }
+  ],
+  "selection_provenance": {
+    "data": "TRAIN0\u201331 and reusedVALIDATION100\u2013115; all final outcomes untouched at construction",
+    "criterion": "Lexicographic invalid,missing,cutoff deadline debt,energy+rental cost",
+    "plan": "predeclared-analysis-plan-v3.json",
+    "cost_reference": "compute-ledger.json"
+  },
+  "actor_seed_policy": "Declared actor seed overrides inherited policy_seed before callback construction; explicit fixed MPC planning seeds permitted only with one actor",
+  "selection_spec": {
+    "path": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/quantum-stochastic-selection.json",
+    "sha256": "0e2b9db31267f70cb58a43dcb72d90696b7cbf65d91d1f99925e9a9d77e9b8b2"
+  },
+  "protocol": {
+    "path": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/final-heldout-protocol.json",
+    "file_sha256": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7",
+    "payload": {
+      "schema": "stage2-stratified-final-protocol.v1",
+      "seed_role": "FINAL; no training or policy selection",
+      "selection": "First increasing seeds per exogenous leaf; solver outcomes never inspected",
+      "quality_randomness": "Keyed per-unit hashes on the same seeds; conditional pseudorandom tapes",
+      "per_leaf": 32,
+      "start_seed": 10000,
+      "candidates_examined": 545,
+      "total_tapes": 256,
+      "leaves": [
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_ok",
+            "no_rush"
+          ],
+          "probability": [
+            39,
+            200
+          ],
+          "seeds": [
+            10004,
+            10008,
+            10014,
+            10017,
+            10018,
+            10021,
+            10023,
+            10028,
+            10034,
+            10051,
+            10057,
+            10066,
+            10089,
+            10095,
+            10098,
+            10106,
+            10107,
+            10110,
+            10112,
+            10115,
+            10126,
+            10127,
+            10131,
+            10133,
+            10135,
+            10140,
+            10141,
+            10145,
+            10150,
+            10154,
+            10156,
+            10164
+          ],
+          "per_tape_weight": 0.00609375
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_ok",
+            "rush"
+          ],
+          "probability": [
+            39,
+            200
+          ],
+          "seeds": [
+            10003,
+            10013,
+            10016,
+            10022,
+            10024,
+            10039,
+            10042,
+            10043,
+            10047,
+            10055,
+            10059,
+            10067,
+            10068,
+            10070,
+            10077,
+            10078,
+            10082,
+            10092,
+            10099,
+            10100,
+            10116,
+            10118,
+            10122,
+            10129,
+            10143,
+            10147,
+            10157,
+            10163,
+            10166,
+            10168,
+            10169,
+            10170
+          ],
+          "per_tape_weight": 0.00609375
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_stress",
+            "no_rush"
+          ],
+          "probability": [
+            13,
+            100
+          ],
+          "seeds": [
+            10000,
+            10010,
+            10020,
+            10031,
+            10033,
+            10036,
+            10038,
+            10046,
+            10060,
+            10061,
+            10063,
+            10069,
+            10083,
+            10085,
+            10091,
+            10108,
+            10109,
+            10114,
+            10124,
+            10136,
+            10139,
+            10144,
+            10162,
+            10167,
+            10177,
+            10183,
+            10192,
+            10199,
+            10207,
+            10215,
+            10218,
+            10221
+          ],
+          "per_tape_weight": 0.0040625
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_stress",
+            "rush"
+          ],
+          "probability": [
+            13,
+            100
+          ],
+          "seeds": [
+            10006,
+            10029,
+            10048,
+            10052,
+            10062,
+            10073,
+            10079,
+            10080,
+            10081,
+            10086,
+            10096,
+            10103,
+            10113,
+            10142,
+            10176,
+            10179,
+            10184,
+            10188,
+            10214,
+            10217,
+            10228,
+            10231,
+            10235,
+            10243,
+            10247,
+            10249,
+            10261,
+            10266,
+            10268,
+            10270,
+            10272,
+            10274
+          ],
+          "per_tape_weight": 0.0040625
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_ok",
+            "no_rush"
+          ],
+          "probability": [
+            21,
+            200
+          ],
+          "seeds": [
+            10002,
+            10015,
+            10019,
+            10037,
+            10044,
+            10045,
+            10054,
+            10072,
+            10087,
+            10094,
+            10102,
+            10130,
+            10137,
+            10146,
+            10148,
+            10149,
+            10151,
+            10153,
+            10158,
+            10173,
+            10181,
+            10185,
+            10187,
+            10193,
+            10200,
+            10206,
+            10212,
+            10220,
+            10230,
+            10232,
+            10233,
+            10236
+          ],
+          "per_tape_weight": 0.00328125
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_ok",
+            "rush"
+          ],
+          "probability": [
+            21,
+            200
+          ],
+          "seeds": [
+            10005,
+            10007,
+            10009,
+            10011,
+            10032,
+            10035,
+            10040,
+            10041,
+            10049,
+            10053,
+            10064,
+            10065,
+            10075,
+            10084,
+            10090,
+            10093,
+            10101,
+            10104,
+            10105,
+            10111,
+            10117,
+            10119,
+            10134,
+            10160,
+            10189,
+            10190,
+            10191,
+            10194,
+            10196,
+            10209,
+            10210,
+            10224
+          ],
+          "per_tape_weight": 0.00328125
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_stress",
+            "no_rush"
+          ],
+          "probability": [
+            7,
+            100
+          ],
+          "seeds": [
+            10012,
+            10025,
+            10027,
+            10050,
+            10056,
+            10058,
+            10071,
+            10088,
+            10097,
+            10120,
+            10125,
+            10132,
+            10152,
+            10155,
+            10159,
+            10161,
+            10208,
+            10211,
+            10222,
+            10252,
+            10257,
+            10264,
+            10278,
+            10291,
+            10339,
+            10351,
+            10369,
+            10383,
+            10385,
+            10408,
+            10419,
+            10435
+          ],
+          "per_tape_weight": 0.0021875
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_stress",
+            "rush"
+          ],
+          "probability": [
+            7,
+            100
+          ],
+          "seeds": [
+            10001,
+            10026,
+            10030,
+            10074,
+            10076,
+            10121,
+            10123,
+            10128,
+            10138,
+            10165,
+            10197,
+            10205,
+            10227,
+            10253,
+            10255,
+            10267,
+            10281,
+            10286,
+            10302,
+            10304,
+            10310,
+            10321,
+            10324,
+            10348,
+            10380,
+            10411,
+            10458,
+            10487,
+            10489,
+            10517,
+            10523,
+            10544
+          ],
+          "per_tape_weight": 0.0021875
+        }
+      ],
+      "uncertainty_scope": "Eight declared exogenous leaves plus seeded endogenous quality, not unmodeled factory uncertainty",
+      "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599"
+    }
+  },
+  "artifacts": {},
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/final_eval.py": "6264f3f6b93ba5128b742b06facad97714ef09b3f244ce076bf0123848236e5e",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/recovery_mpc.py": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4",
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+    "stage2/selector_reward.py": "4af17eae69f34dd5396a08a51fa9c1c6aebd8a0ebcc357074e64dac6271fc253",
+    "stage2/adaptive_recovery.py": "7fbe58fb6131e0a2101bf7f2a0282bc8c81e3ab09a6ccf7ce0e01da8f5b9498e",
+    "stage2/adaptive_modes.py": "4a4c6b3fcd5a40020393950b064e908310b87b69752324a9def7e08d0ffd3801",
+    "stage2/completion_policy.py": "263f421243e22c5a67a846e2abe2e039337dbee0fdf61eaccaa1fc23c2920a03",
+    "stage2/bom_probe.py": "48ca779cc088765d364a3d81a25a352e118573ef63d27e145a5f1a631fbe0e75",
+    "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+    "stage2/compare_evaluations.py": "2ef6688c7331cfe7646c4d758aec690427b4e102204047ab03e32e2afa43ffe2",
+    "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+    "stage2/certify_evaluations.py": "0ebad4ec76aa0401b985489a9421e24b522a31cf44a6c4c83c7c7e552ef7dd12",
+    "stage2/primary_intervals.py": "1c7bbb503dbdec1e1c6663515bf38ff6bfc18ae9a5ff4301cf5da0fb93208022",
+    "stage2/selected_run.py": "59692c53faaa25932f5e841bd1dcb14e47793a5785bc2e4609c5c78fd582d5de"
+  },
+  "trace_policy": "first_per_leaf",
+  "statistics_scope": "Actor replicas are conditional outcomes within environment clusters, never additional factories",
+  "manifest_sha256": "66ddc473d2137d5670856e2358a37c335c17fd40bdcc936bfa8e58664511c5e9"
+}

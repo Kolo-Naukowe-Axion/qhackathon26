@@ -1,0 +1,141 @@
+{
+  "schema": "stage2-final-analysis-plan.v1",
+  "created_utc": "2026-10-17T00:11:47.239826+00:00",
+  "status": "Pre-final preparation; no final factory outcomes inspected",
+  "protocol": {
+    "path": "final-heldout-protocol.json",
+    "environments": 256,
+    "per_exogenous_leaf": 32,
+    "selection": "First seeds perleaf using exogenous hashes only; endogenousQA outcomes uninspected",
+    "file_sha256": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7",
+    "protocol_payload_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599"
+  },
+  "population": "Fixed documented factory tables; load/horizon contexts and declared exogenous/quality tapes. No claim of transfer to arbitrary factory layouts.",
+  "primary_context": {
+    "orders": 12,
+    "horizon": 5760,
+    "profile": "full"
+  },
+  "other_core_contexts": [
+    {
+      "orders": 10,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 11,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 13,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 14,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "separate_calendar_stretch": {
+    "orders": 32,
+    "horizon": 14400,
+    "profile": "full"
+  },
+  "actor_seeds": {
+    "deterministic": [
+      900000
+    ],
+    "stochastic_selectors": [
+      900000,
+      900001,
+      900002
+    ],
+    "MPC_planning_seed": 27491
+  },
+  "selection": {
+    "data": "TRAIN0\u201331 and repeatedly usedVALIDATION100\u2013115 only; original1000\u20131031 tainteddevelopment",
+    "criterion": [
+      "invalid executions",
+      "mean missing orders",
+      "mean cutoff-censored deadline debt",
+      "mean energy+rental cost"
+    ],
+    "candidates": [
+      "Guarded static factorial TRAIN top2/context plus the TRAIN-best matched learned-action domain(QA routingoff,completioncredit0,BOMoff), plus originalprior; deduplicate to atmost3 new candidates plus prior on reusedVAL.",
+      "six-action PPO2026,PPO2027,CEM2026 with original staticfallback",
+      "eighteen-action guarded PPO2026,CEM2026 with original staticfallback",
+      "confirmed causalMPC budgets below"
+    ],
+    "cheap_scope": "Select one cheap incumbent percorecontext beforefinal; retain exact source/spec/checkpoint",
+    "expensive_challengers": {
+      "12": 4,
+      "13": 2,
+      "14": 2,
+      "16": 2,
+      "24": 4
+    },
+    "mpc_scope": "Same six WIP/QA actions,1440-minute replanning,riskweight.25,all planning futures checked; workload13 challenger deliberately retained despite development regression",
+    "final_policy_freeze_target_utc": "2026-10-17T01:15:00Z",
+    "latest_utc": "2026-10-17T02:00:00Z"
+  },
+  "comparisons": {
+    "primary_quantum": [
+      "QAOA vs SA atn12 correctedno-batch objective",
+      "QAOA vs equal1024-shot uniform atn12 correctedno-batch objective"
+    ],
+    "quantum_design": "Same explicitly selected recovery/routing control weights and fixed candidate-domain construction; no completion/reward combination. All actors retained,includingclassical oversized fallbacks. Exact and sequential priority controls also run.16/24 are exploratorytransfer contexts.",
+    "classical": [
+      "Selectedcheap vs matching original strongprior",
+      "SelectedMPC vs its exact staticdecodercontrol",
+      "Selectedlearned checkpoint vs matching/static-grid control",
+      "Legacyoriginal-dispatch savedPPO/CEM/bandit/threshold/teacher controls on12/16/24"
+    ],
+    "hypotheses": "No presumed quantum or dynamiclearning advantage. Missing order is primary; all-fulfilledrate alone cannot select a policy."
+  },
+  "statistics": {
+    "weights": "True exogenous leaf probabilities divided equally among32 tapes; actors averaged within each tape",
+    "bootstrap": "2000 seeded resamples ofwholeenvironment clusters within leaves, paired acrossmethods",
+    "interval_scope": "95percentpointwise exploratory intervals; two predeclared primary quantum mean-loss contrasts additionally use97.5percent percentile intervals (Bonferroni familyof2). CVaR and otherload/method comparisons are exploratory, not multiplicity-corrected.",
+    "tails": [
+      "CVaR90 ofactor-meanenvironment loss",
+      "Joint actor/environment CVaR90"
+    ]
+  },
+  "verification": {
+    "all_executions": "Fresh immutable numericalanchor,physicalchecker,canonicalidentity supplement,terminalreserve,independentmetrics andselected/committedidentity",
+    "failure_policy": "Retain everyfailure; suppress valid-only performance for any incomplete/invalidgroup",
+    "cross_sources": "Same engine/spec/checker/blueprint andper-tapeinstance/demand; algorithmdifferences disclosed"
+  },
+  "optimality": "Only post-evaluation offlinequality/material bounds; U=L certifies primaryoptimum onfixedtape(includingtrivial0); positiveU-L only upperbounds unknownprimarygap. Deadline/cost globalgaps remainunknown.",
+  "freeze_rule": "No policy/algorithm/hyperparameter tuning after final outcomes; subsequentwork limited to audits, statistics, packaging, docs and visualizations. Any laterrepair must retain failedfrozen evidence andbe separatelydeclared, never silentlyreplacefinal.",
+  "excluded": [
+    "ODRA/VPN",
+    "VeloxQ",
+    "physicalquantum/hardwareadvantageclaims",
+    "Stage2commit/push/deploy",
+    "autoresearch"
+  ],
+  "parent_plan": {
+    "path": "predeclared-analysis-plan-v2.json",
+    "sha256": "3fccc49aa9c652441a25b956375ace925692717c38316bcc7047c1c7231ee4ee"
+  },
+  "revision_reason": "Before final outcomes: disambiguate protocol file versus embedded payload SHA; decline learned-CEM+no-batch-QAOA final selection after264 checked TRAIN integration episodes regressed. No further policy search.",
+  "selected_cheap": {
+    "12": "static-grid-12",
+    "16": "cem6-2026-16",
+    "24": "cem6-2026-24"
+  },
+  "hybrid_negative": "Actual frozen CEM6 +guarded correctedlocalQAOA integrated and tested; mean primary fulfillment worse all3 contexts; TRAINonly retained,no VAL/final adapter"
+}

@@ -1,0 +1,131 @@
+/* Opaque equipment, attached labels, clear aisles. Focus changes color, not solidity. */
+.factory-svg .factory-machine.story-muted{opacity:1;filter:saturate(.8)}
+.factory-svg .agv-sprite.story-muted{opacity:1;filter:saturate(.85)}
+.factory-svg .transport-route.story-muted{opacity:.12}
+body[data-presentation=true] .transport-route.story-muted{display:none}
+.factory-svg .machine-plinth{fill:#c9d7dc;stroke:#afc2cb;stroke-width:.7}
+.factory-svg .is-working .machine-plinth{fill:#c8ddd6;stroke:#8fb5a7}
+.factory-svg .story-related .machine-plinth{fill:#c5dfd3;stroke:#43836d;stroke-width:1.5}
+.factory-svg .machine-nameplate .machine-id-plate{fill:#e9f0f0;stroke:#9bb6c3;stroke-width:.8}
+.factory-svg .machine-nameplate .machine-id{fill:#385b6d;font-size:8.5px;font-weight:600;letter-spacing:0}
+.factory-svg .machine-caption{fill:#6f8790;font-size:8px}
+.factory-svg .is-working .machine-nameplate .machine-id-plate{fill:#d4e7de;stroke:#79a28d}
+.factory-svg .is-working .machine-nameplate .machine-id{fill:#2c6553}
+.factory-svg .is-working .machine-caption{fill:#3e6b5c}
+.factory-svg .story-muted .machine-caption{fill:#71838c}
+body[data-presentation=true] .story-muted .machine-caption{visibility:hidden}
+.factory-svg .is-held .machine-nameplate .machine-id-plate{fill:#ede5d3;stroke:#bfaa7c}
+.factory-svg .is-held .machine-caption{fill:#866d39}
+.factory-svg .is-outage .machine-nameplate .machine-id-plate{fill:#ead6cc;stroke:#ba8b76}
+.factory-svg .is-outage .machine-caption{fill:#985c47}
+.factory-svg .selection-ring{stroke-dasharray:none!important;stroke:#2d7965!important;stroke-width:2!important;filter:none}
+.factory-svg .machine-dock{fill:#b6c9d05e;stroke:#90aab7;stroke-dasharray:none;stroke-width:.6}
+.factory-svg .robot-body{fill:#416a80;stroke:#244a60;stroke-width:1}
+.factory-svg .robot-glass{fill:#a2dbd4}
+.factory-svg .robot-shadow{opacity:.16}
+.factory-svg .agv-sprite[data-present=false],.factory-svg .agv-sprite[data-clustered=true]{display:none}
+.factory-svg .robot-label{opacity:0}
+.factory-svg .agv-sprite.selected .robot-label,.factory-svg .agv-sprite:hover .robot-label,.factory-svg .agv-sprite:focus .robot-label,.factory-svg .agv-sprite[data-moving=true]:not(.story-muted) .robot-label{opacity:1}
+.factory-svg .robot-label rect{fill:#274d60;stroke:none}
+.factory-svg .robot-label text{font-size:7px;fill:#e3f0ec}
+.factory-svg .robot-cluster circle{fill:#e3efeb;stroke:#52778a;stroke-width:1}
+.factory-svg .robot-cluster text{font-size:9px;fill:#2b5061;font-weight:600}
+.factory-svg .route-underlay{stroke-width:5;stroke-opacity:.12}
+.factory-svg .route-motion{stroke:#a88036;stroke-width:1.6;stroke-dasharray:2 8}
+.factory-svg .delivery-marker>rect:first-child{fill:#cee8d8;stroke:#4f8d6f;stroke-width:1}
+.factory-svg .delivery-marker svg{fill:none;stroke:#326752;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.factory-svg .delivery-tag{fill:#cde6d5;stroke:#629177;stroke-width:.8}
+.factory-svg .delivery-marker>text{fill:#315d46;font-size:9px;font-weight:600}
+.robot-roster{display:flex;align-items:center;justify-content:flex-end;gap:6px;min-height:28px;flex-shrink:0;margin:2px 0 6px}
+.robot-roster>span{font:7px var(--mono);color:#9cb8c5;margin-right:5px}
+.robot-roster button{display:flex;align-items:center;gap:5px;padding:4px 7px;border:1px solid #7b9caa40;border-radius:3px;box-shadow:none;background:#284659;color:#c1d6dd;font:7px var(--mono)}
+.robot-roster button:hover{background:#3b5d70;border-color:#91b2bb}
+.robot-roster button strong{font-weight:500;color:#d7e7e5}
+.robot-roster i{height:4px;width:4px;display:inline-block;border-radius:50%;background:#7f9dab}
+.robot-roster [data-state=Moving] i{background:#e2c48c}
+.robot-roster [data-state=Charging] i{background:#abd8bf}
+body[data-presentation=true] .floor-legend{padding-top:7px}
+body[data-presentation=true] #tour-start{border:0;color:#c2daca}
+body[data-presentation=true] .tour-copy h2{font-size:25px;line-height:1.2;letter-spacing:-.6px}
+body[data-presentation=true] .tour-copy p{font-size:12px;line-height:1.65}
+body[data-presentation=true] .tour-actions{margin-top:12px}
+body[data-presentation=true] .tour-transport{gap:18px}
+body[data-presentation=true] .order-story{padding-top:18px}
+body[data-presentation=true] .story-components{gap:12px}
+body[data-presentation=true] .story-component small{font-size:9px;line-height:1.5}
+body[data-presentation=true] .story-pump strong{font-size:12px}
+body[data-presentation=true] .story-pump small{font-size:11px}
+body[data-presentation=true] .story-deadline{font-size:9px}
+@keyframes heat-rise{0%{transform:translateY(1px);opacity:0}40%{opacity:.7}100%{transform:translateY(-2px);opacity:0}}
+@media(max-width:780px){.robot-roster{justify-content:space-between;gap:4px;min-height:25px;margin:0 0 5px}.robot-roster>span{display:none}.robot-roster button{font-size:6px;padding:4px 6px;gap:4px}.robot-roster button span{font-size:5px}body[data-presentation=true] .tour-copy h2{font-size:20px}body[data-presentation=true] .tour-copy p{font-size:11px}}
+@media(prefers-reduced-motion:reduce){.factory-svg *{animation:none!important;transition:none!important}}
+.factory-svg .machine-nameplate .machine-id-plate{height:20px}
+.factory-svg .is-working:not(.story-muted) .machine-nameplate .machine-id-plate,.factory-svg .is-held:not(.story-muted) .machine-nameplate .machine-id-plate{height:30px}
+.factory-svg .is-idle .machine-caption{display:none}
+.factory-svg .station-docks rect{fill:#3b596a;stroke:#829ca9;stroke-width:1}
+.factory-svg .station-docks path{fill:none;stroke:#829ca9;stroke-width:1}
+.factory-svg .part-count circle{fill:#e5cd98;stroke:#a88e59;stroke-width:.5}
+.factory-svg .part-count text{fill:#6c562a;font-size:6.5px;font-weight:600}
+.presentation-status{display:none}
+body[data-presentation=true] #evidence-status{display:none}
+body[data-presentation=true] #presentation-status{display:inline;font:9px var(--mono);color:#c4ddd5;letter-spacing:.2px}
+body[data-presentation=true] .evidence-line:before{content:'LOADED RUN'}
+@media(max-width:780px){body[data-presentation=true] #presentation-status{font-size:7px}}
+body[data-presentation=true]{min-height:0}
+body[data-presentation=true] #fullscreen span{display:inline}
+body[data-presentation=true] .component-consumed small{display:none}
+body[data-presentation=true] .component-consumed .component-title>span{color:#b9ddc5}
+@media(min-width:781px) and (max-height:700px){
+ body[data-presentation=true]{--inspector:284px}
+ body[data-presentation=true] .inspector{padding:12px 15px 8px}
+ body[data-presentation=true] .tour-copy h2{font-size:20px;margin-bottom:7px}
+ body[data-presentation=true] .tour-copy p{font-size:10px;line-height:1.6}
+ body[data-presentation=true] .tour-copy>span{font-size:7px;margin-bottom:7px}
+ body[data-presentation=true] .tour-chapters{margin-top:8px}
+ body[data-presentation=true] .tour-chapters button>span{font-size:10px}
+ body[data-presentation=true] .tour-chapters small{font-size:6px}
+ body[data-presentation=true] .tour-transport button{font-size:7px}
+ body[data-presentation=true] .tour-actions{margin-top:8px}
+ body[data-presentation=true] .tour-actions button{font-size:8px;padding:6px 8px}
+ body[data-presentation=true] .order-story{padding-top:11px}
+ body[data-presentation=true] .story-deadline{font-size:8px;margin:9px 0 7px}
+ body[data-presentation=true] .story-component{padding:6px 0}
+ body[data-presentation=true] .story-component small{font-size:8px;line-height:1.4}
+ body[data-presentation=true] .component-icon svg{width:24px;height:24px}
+ body[data-presentation=true] .story-pump>svg{width:25px;height:25px}
+ body[data-presentation=true] .story-pump strong{font-size:10px}
+ body[data-presentation=true] .story-pump small{font-size:9px}
+}
+body[data-presentation=true] .tour-copy h2{margin-top:0}
+body[data-presentation=true] .story-pump>div{line-height:1.1}
+body[data-presentation=true] .story-pump strong{display:block}
+@media(min-width:781px) and (max-height:700px){
+ body[data-presentation=true] .tour-chapters{margin-bottom:3px}
+ body[data-presentation=true] .tour-chapters button{padding:0 0 3px}
+ body[data-presentation=true] .tour-chapters small{line-height:1.2;margin-top:2px}
+ body[data-presentation=true] .story-component small{display:none}
+ body[data-presentation=true] .story-pump small{margin-top:2px}
+}
+.factory-svg .robot-cluster text{font-size:7px}
+
+/* Material keeps its identity at the machine, on the robot and in the order rail. */
+.factory-svg .station-workpiece{pointer-events:none;fill:#e4c68f;stroke:#715d37;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.factory-svg .station-workpiece .workpiece-shape{filter:drop-shadow(0 1px 1px #233e5055)}
+body[data-presentation=true] .factory-machine.selected.is-working .selection-ring{display:none}
+body[data-presentation=true] .factory-machine.story-muted .working-corners{stroke:#8da9af;animation:none}
+body[data-presentation=true] .factory-machine.story-muted .machine-progress{fill:#8da9af}
+.factory-svg .is-working .station-workpiece{fill:#f3dba8;stroke:#71603a}
+.factory-svg .process-T.is-working .workpiece-shape{transform-origin:18px 18px;animation:chuck-spin 1.4s linear infinite}
+.factory-svg .process-WASH .station-workpiece{fill:#d1e8df;stroke:#537d7c}
+.factory-svg .furnace-glow{fill-opacity:.35}
+.factory-svg .workpiece-scan{stroke:#b8ffe2;stroke-width:1.4;filter:drop-shadow(0 0 2px #b8ffe2)}
+.factory-svg .cargo-part{fill:#f1d29b;stroke:#75613c;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+body[data-playing=true] .factory-svg .robot-facing{transition:transform .16s linear}
+.story-pump[data-built=false]>svg{fill:none;stroke-dasharray:2 2;opacity:.55}
+.story-pump[data-built=true]>svg{fill:#c7e3d3;stroke:#86b6a0}
+@media(prefers-reduced-motion:reduce){body[data-playing=true] .factory-svg .robot-facing{transition:none}}
+.replay-preset select{font:9px var(--mono);max-width:205px;padding:7px 8px;background:transparent;border:1px solid #85a9a180;color:inherit;border-radius:3px}
+body[data-presentation=true] .replay-preset select{color:#c7e2d8;background:#294b5e}
+body[data-replay-role=final][data-presentation=true] .evidence-line:before{content:'FINAL REPLAY'}
+@media(max-width:780px){.replay-preset select{font-size:7px;max-width:155px;padding:6px}.top-actions{gap:6px}body[data-presentation=true] .masthead{gap:8px}}
+@media(max-width:780px){.clock-time{min-width:0}.clock .primary{min-width:60px}.clock .scrub{min-width:20px}body[data-tour=true] .clock .speed{display:none}}

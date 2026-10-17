@@ -1,0 +1,47 @@
+{
+  "schema": "tiny-multi-buffer-bom-bound.v1",
+  "pumps": 2,
+  "attendance": "automatic",
+  "lower_bound_ticks": 772,
+  "components": {
+    "all_mandatory_attendance": 700,
+    "initial_prefix_without_mandatory_attendance": 54,
+    "last_pump_QA_shipping": 8,
+    "buffer_forced_walks_after_initial_prefix": 10
+  },
+  "productive_B_visits_at_least": 3,
+  "forced_worker_hall_walks_at_least": 6,
+  "accepted_unconsumed_components_at_most": 4,
+  "components_needed_for_two_assemblies": 6,
+  "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix.",
+  "guards": [
+    "All components initially RAW_A, release0",
+    "One fixed T and one fixed F",
+    "Every first T/F processing duration>=60",
+    "First T/F start attendance exactly5",
+    "Initial loaded delivery>=4",
+    "Fixed two-hall layout",
+    "Full S/QA/assembly attendance",
+    "Zero setups; deterministic recipes; no binding service or hidden events",
+    "One QA station with one blocked output",
+    "One assembly station with input capacity exactly3",
+    "Inbound destination reservations count against capacity",
+    "Full QA and ASM attendance by one worker",
+    "No initial accepted inventory or temporary warehouses",
+    "Matched three-distinct-component BOM",
+    "Declared A/B station mapping"
+  ],
+  "previous_certificate_bound_ticks": 768,
+  "deliberately_excluded": [
+    "Additional welding visits",
+    "Extra empty travel",
+    "Further blocking/join waits"
+  ],
+  "flagship_bound": false,
+  "changes_saved_cp_bound": false,
+  "instance_path": "output/stage2-search/multi-reference-pilot/n2-scale15/instance.json",
+  "instance_file_sha256": "2f907d6ccf2cd0cbad54d6e98ee851352580b45dc2b5d991b230473593701aa1",
+  "construction_source_sha256": "99d31b8a3a4f8ec18cfeff0f48372a9806f2aca5aa7d47edd3b61a5d1fad69b5",
+  "reference_guard_sha256": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+  "previous_certificate_file_sha256": "693f05085414b25c359625e2252c1bcea97aebff480a8cdf8077957566db1356"
+}

@@ -1,0 +1,169 @@
+{
+  "schema": "stage2-rank-iqm-offline.v1",
+  "variant": "sat_only",
+  "layers": 2,
+  "source_angle_seed": 2026,
+  "logical_qubits": 4,
+  "physical_proxy_qubits": 5,
+  "classical_bits": 4,
+  "proxy_backend": "IQMFakeAdonisBackend",
+  "proxy_coupling_edges": [
+    [
+      0,
+      2
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      2,
+      3
+    ],
+    [
+      2,
+      4
+    ]
+  ],
+  "proxy_native_operations": [
+    "id",
+    "delay",
+    "measure",
+    "r",
+    "cz"
+  ],
+  "native_gate_counts": {
+    "r": 48,
+    "cz": 33,
+    "measure": 4
+  },
+  "native_depth": 62,
+  "native_unmeasured_depth": 61,
+  "layout_seed": 4,
+  "routing_candidates": 8,
+  "routing_selection": "Existing compile_candidate: minimum CZ count, then depth, then transpiler seed",
+  "initial_layout": {
+    "<Qubit register=(4, \"q\"), index=0>": 2,
+    "<Qubit register=(4, \"q\"), index=1>": 0,
+    "<Qubit register=(4, \"q\"), index=2>": 4,
+    "<Qubit register=(4, \"q\"), index=3>": 3,
+    "<Qubit register=(1, \"ancilla\"), index=0>": 1
+  },
+  "final_layout": {
+    "<Qubit register=(4, \"q\"), index=3>": 2,
+    "<Qubit register=(4, \"q\"), index=0>": 0,
+    "<Qubit register=(4, \"q\"), index=1>": 4,
+    "<Qubit register=(4, \"q\"), index=2>": 3,
+    "<Qubit register=(1, \"ancilla\"), index=0>": 1
+  },
+  "classical_measurement_wiring": [
+    {
+      "classical_bit": 0,
+      "native_circuit_qubit": 2,
+      "statevector_qubit_after_measurement_removal": 0
+    },
+    {
+      "classical_bit": 1,
+      "native_circuit_qubit": 3,
+      "statevector_qubit_after_measurement_removal": 4
+    },
+    {
+      "classical_bit": 2,
+      "native_circuit_qubit": 4,
+      "statevector_qubit_after_measurement_removal": 3
+    },
+    {
+      "classical_bit": 3,
+      "native_circuit_qubit": 1,
+      "statevector_qubit_after_measurement_removal": 2
+    }
+  ],
+  "logical_probabilities": [
+    0.002335674904787801,
+    0.00599902444000886,
+    0.0038390216691159187,
+    0.0034349802898716443,
+    0.16704274503797648,
+    0.0046460500650374655,
+    0.1144835507440456,
+    0.011251666254796113,
+    0.03284749449696059,
+    0.24271315734428725,
+    0.0049924778934903186,
+    0.005437003708216819,
+    0.05867566244569606,
+    0.017121060483433075,
+    0.1417538844944198,
+    0.18342654572785522
+  ],
+  "native_marginal_probabilities": [
+    0.002335674904787761,
+    0.0059990244400088205,
+    0.003839021669115929,
+    0.003434980289871623,
+    0.16704274503797625,
+    0.004646050065037433,
+    0.11448355074404512,
+    0.011251666254796075,
+    0.03284749449696049,
+    0.24271315734428864,
+    0.004992477893490328,
+    0.005437003708216885,
+    0.05867566244569609,
+    0.017121060483433186,
+    0.14175388449442006,
+    0.18342654572785635
+  ],
+  "probability_max_error": 1.3877787807814457e-15,
+  "helper_reported_max_error": 1.3877787807814457e-15,
+  "source_experiment_probability_max_error": 3.3306690738754696e-16,
+  "preserved_ground_states": [
+    4,
+    6,
+    9,
+    14,
+    15
+  ],
+  "logical_ground_probability": 0.8494198833485844,
+  "routed_ground_probability": 0.8494198833485864,
+  "preprocessing": {
+    "complete_schedule_scores_used": 0,
+    "partial_dag_evaluations": 770,
+    "sat_queries": 90,
+    "sat_search_nodes": 172,
+    "cut_weight_lp_variables": 0,
+    "disclosure": "Exact classical structural/SAT presolve; optional cut-weight LP; not free preprocessing or quantum advantage"
+  },
+  "versions": {
+    "iqm-station-control-client": "13.0.3",
+    "numpy": "2.4.6",
+    "iqm-pulse": "14.0.3",
+    "iqm-client": "35.0.3",
+    "qiskit": "2.1.2",
+    "iqm-data-definitions": "3.1.0",
+    "iqm-exa-common": "28.0.3",
+    "qiskit-aer": "0.17.2"
+  },
+  "source_sha256": {
+    "solver/odra.py": "c99a20b1e9fbdfcde511d7c16a2d8a917675f16e0d5231a012b124df21937712",
+    "stage2/rank_iqm.py": "98f5dba5ea2eb9260a9acb134b2bff94313095e2f2bf7aca00a40eeb434bc315",
+    "stage2/rank_quantum.py": "5ac01218a24913ae616f2726563a869b178f8afbe967d14eb25bf842d4250589"
+  },
+  "retained_source": {
+    "model_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/rank-quantum-final/sat_only/source-model.json",
+    "model_sha256": "1fbf13aefc1afcc1543ed0fdcb3ad6fbcd2f1fba625ddac5aab79293dbc7c6a8",
+    "qasm_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/rank-quantum-final/sat_only/p2-seed2026/circuit.qasm",
+    "qasm_sha256": "7d1370291454e70d6f30f990d6a697ba4f24cd02988c22d32be05c41e681adf5",
+    "result_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/rank-quantum-final/sat_only/p2-seed2026/result.json",
+    "result_sha256": "a9482aef20b353db3482056173015a8007dec62d940ac2013a0e492ce0d43a3c"
+  },
+  "compilation_seconds": 0.06373024987988174,
+  "physical_quantum_executed": false,
+  "live_odra5_calibration_used": false,
+  "no_quantum_speedup_claim": true,
+  "scope": "Offline IQMFakeAdonis star-topology proxy; not a physical ODRA5 job or live calibration",
+  "native_artifacts_sha256": {
+    "native-circuit.qasm": "188e1f918dbbbb960097d7a4f26a8da41b4571bfdedb751c03d0589183e5c4ab",
+    "native-circuit.qpy": "d1d4cec39a949d4c94ec32e43981ba695726bfa2bc26252619c12cad7ecc7228"
+  }
+}

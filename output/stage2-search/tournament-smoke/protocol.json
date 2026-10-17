@@ -1,0 +1,42 @@
+{
+  "schema": "stage2-tournament.v1",
+  "tasks": [
+    {
+      "task_id": 0,
+      "policy_id": "w2-standard-lease1-priority",
+      "weights": {
+        "wip_limit": 2,
+        "mode": "standard",
+        "lease_calibration": true,
+        "selector": "priority"
+      },
+      "config": {
+        "orders": 3,
+        "seed": 0,
+        "profile": "full",
+        "horizon": 5760
+      }
+    },
+    {
+      "task_id": 1,
+      "policy_id": "w3-standard-lease1-priority",
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true,
+        "selector": "priority"
+      },
+      "config": {
+        "orders": 3,
+        "seed": 0,
+        "profile": "full",
+        "horizon": 5760
+      }
+    }
+  ],
+  "workers": 2,
+  "wall_limit_seconds": 3600,
+  "seed_role": "training unless explicitly declared otherwise in task file",
+  "source_snapshot": "/Users/iwosmura/projects/qhackathon26",
+  "tasks_sha256": "4ee04bbedd263841aa91cd44be35be6e0394e3d3334e2cad94e966045d3bd64d"
+}

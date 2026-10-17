@@ -1,0 +1,941 @@
+{
+  "schema": "stage2-maintenance-outage-guard.v1",
+  "source_hashes": {
+    "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_tasks_file": "output/stage2-search/axion-download-2348/strong-modes-6117375/protocol.json",
+  "source_tasks_sha256": "958bebf7e4606b1e29dd8bb3249d1d21a42e3105cbfe1573dbebfc36f001a237",
+  "tasks": [
+    {
+      "task_id": 404,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 412,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 420,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 428,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    }
+  ],
+  "selection": "Four previously INVALID turbo TRAIN n24seed4 cases; preserve unguarded originals,not an unbiased rate",
+  "final_tapes": 0,
+  "validation_tapes": 0,
+  "rows": [
+    {
+      "task_id": 404,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": false,
+      "valid": false,
+      "issues": [
+        {
+          "code": "machine_outage",
+          "message": "Reserved processing overlaps physical machine outage without interruption segments",
+          "tick": 722,
+          "outage_start": 720,
+          "outage_end": 1080,
+          "event_id": "O60"
+        }
+      ],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1302,
+          "P13": 1350,
+          "P19": 1429,
+          "P07": 1652,
+          "P10": 1793,
+          "P22": 1912,
+          "P02": 3557,
+          "P08": 3744,
+          "P14": 4315,
+          "P20": 4398,
+          "P04": 4700,
+          "P16": 5196
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32390,
+        "grid_kwh": 3735.9361016666667,
+        "energy_cost": 712.8633049666666,
+        "carbon_kg": 1414.9857940833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 862.863304966671,
+        "operations": 295,
+        "moves": 371,
+        "unfinished": 34,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": false,
+        "blocked_eligible_calls": 0,
+        "spans": [],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task404-guard0.json.gz",
+      "trace_sha256": "0d306a21cf76084fa9d1e347d6d6de41b882c9f10dfb10b18d914abbb79c1625",
+      "wall_seconds": 1.526673167012632,
+      "cpu_seconds": 1.516842
+    },
+    {
+      "task_id": 404,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": true,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1251,
+          "P13": 1298,
+          "P19": 1349,
+          "P07": 1733,
+          "P10": 1975,
+          "P22": 2022,
+          "P02": 3919,
+          "P08": 3995,
+          "P14": 4048,
+          "P20": 4160,
+          "P16": 4426
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32788,
+        "grid_kwh": 3469.42906,
+        "energy_cost": 635.6529441333333,
+        "carbon_kg": 1266.1235503333332,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 785.6529441333381,
+        "operations": 282,
+        "moves": 365,
+        "unfinished": 33,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": true,
+        "blocked_eligible_calls": 434,
+        "spans": [
+          {
+            "machine_id": "F2",
+            "first_tick": 646,
+            "last_tick": 719,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "unrevealed_public_support",
+                "stage": 0,
+                "outcome": "mill_outage",
+                "reveal_tick": 720,
+                "start": 720,
+                "end": 1080
+              }
+            ]
+          },
+          {
+            "machine_id": "F2",
+            "first_tick": 720,
+            "last_tick": 1079,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "observed",
+                "start": 720,
+                "end": 1080,
+                "revealed_at": 720
+              }
+            ]
+          }
+        ],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task404-guard1.json.gz",
+      "trace_sha256": "66a5ce4fdc2a38259014e381316be9dc85ce2e29776377fb1512d729d3382a46",
+      "wall_seconds": 1.4245093748904765,
+      "cpu_seconds": 1.416846
+    },
+    {
+      "task_id": 412,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": false,
+      "valid": false,
+      "issues": [
+        {
+          "code": "machine_outage",
+          "message": "Reserved processing overlaps physical machine outage without interruption segments",
+          "tick": 720,
+          "outage_start": 720,
+          "outage_end": 1080,
+          "event_id": "O60"
+        }
+      ],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1257,
+          "P13": 1304,
+          "P19": 1351,
+          "P07": 1729,
+          "P10": 1799,
+          "P22": 2037,
+          "P14": 3923,
+          "P08": 3997,
+          "P02": 4163,
+          "P20": 4233,
+          "P04": 4874,
+          "P16": 4946
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32616,
+        "grid_kwh": 3454.59949,
+        "energy_cost": 636.307057,
+        "carbon_kg": 1266.8409965,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 786.3070569999949,
+        "operations": 280,
+        "moves": 369,
+        "unfinished": 34,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": false,
+        "blocked_eligible_calls": 0,
+        "spans": [],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task412-guard0.json.gz",
+      "trace_sha256": "c1cb39f473190ed95a6c4a851eeb109babc9528f4ebd53beefcef962ba0fafc1",
+      "wall_seconds": 1.5444059579167515,
+      "cpu_seconds": 1.5379269999999998
+    },
+    {
+      "task_id": 412,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": true,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1251,
+          "P13": 1298,
+          "P19": 1349,
+          "P07": 1817,
+          "P10": 2310,
+          "P02": 3169,
+          "P22": 3351,
+          "P08": 3440,
+          "P14": 3520,
+          "P04": 4642,
+          "P20": 4947,
+          "P16": 5150,
+          "P17": 5755
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31343,
+        "grid_kwh": 3738.6472166666667,
+        "energy_cost": 728.9207174000001,
+        "carbon_kg": 1444.2673521666668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 878.9207173999919,
+        "operations": 295,
+        "moves": 370,
+        "unfinished": 31,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": true,
+        "blocked_eligible_calls": 424,
+        "spans": [
+          {
+            "machine_id": "F2",
+            "first_tick": 656,
+            "last_tick": 719,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "unrevealed_public_support",
+                "stage": 0,
+                "outcome": "mill_outage",
+                "reveal_tick": 720,
+                "start": 720,
+                "end": 1080
+              }
+            ]
+          },
+          {
+            "machine_id": "F2",
+            "first_tick": 720,
+            "last_tick": 1079,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "observed",
+                "start": 720,
+                "end": 1080,
+                "revealed_at": 720
+              }
+            ]
+          }
+        ],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task412-guard1.json.gz",
+      "trace_sha256": "7e13aef8082cbe96d1395c4fe4dde230a0b01f7bcf7cee03a4726a1ac168b567",
+      "wall_seconds": 1.4730916251428425,
+      "cpu_seconds": 1.4679450000000003
+    },
+    {
+      "task_id": 420,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": false,
+      "valid": false,
+      "issues": [
+        {
+          "code": "machine_outage",
+          "message": "Reserved processing overlaps physical machine outage without interruption segments",
+          "tick": 780,
+          "outage_start": 720,
+          "outage_end": 1080,
+          "event_id": "O65"
+        }
+      ],
+      "metrics": {
+        "orders": 24,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1302,
+          "P13": 1351,
+          "P19": 1654,
+          "P07": 1733,
+          "P04": 2602,
+          "P10": 2933,
+          "P22": 2979,
+          "P16": 3065,
+          "P02": 3833,
+          "P08": 4394,
+          "P20": 4442,
+          "P14": 4795,
+          "P09": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 30895,
+        "grid_kwh": 3803.65378,
+        "energy_cost": 716.7326489333334,
+        "carbon_kg": 1424.1756183333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 866.7326489333353,
+        "operations": 327,
+        "moves": 422,
+        "unfinished": 29,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": false,
+        "blocked_eligible_calls": 0,
+        "spans": [],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task420-guard0.json.gz",
+      "trace_sha256": "16ea788c79bf173e4544c2a9501f09e7db221294a95ab028ac6fc98cd607f7a2",
+      "wall_seconds": 1.9107377079781145,
+      "cpu_seconds": 1.9038739999999992
+    },
+    {
+      "task_id": 420,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": true,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1300,
+          "P13": 1349,
+          "P07": 1654,
+          "P19": 1735,
+          "P10": 2006,
+          "P04": 2597,
+          "P02": 3353,
+          "P08": 3575,
+          "P20": 3674,
+          "P16": 4662,
+          "P09": 5752
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33256,
+        "grid_kwh": 3526.3539849999997,
+        "energy_cost": 675.8883519666667,
+        "carbon_kg": 1341.0900849166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 825.8883519666676,
+        "operations": 287,
+        "moves": 372,
+        "unfinished": 37,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": true,
+        "blocked_eligible_calls": 412,
+        "spans": [
+          {
+            "machine_id": "F2",
+            "first_tick": 668,
+            "last_tick": 719,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "unrevealed_public_support",
+                "stage": 0,
+                "outcome": "mill_outage",
+                "reveal_tick": 720,
+                "start": 720,
+                "end": 1080
+              }
+            ]
+          },
+          {
+            "machine_id": "F2",
+            "first_tick": 720,
+            "last_tick": 1079,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "observed",
+                "start": 720,
+                "end": 1080,
+                "revealed_at": 720
+              }
+            ]
+          }
+        ],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task420-guard1.json.gz",
+      "trace_sha256": "80544e41b841724e532040edd9d4ccc70743595acdf840be1dbb28c1e813eaaa",
+      "wall_seconds": 1.8357405830174685,
+      "cpu_seconds": 1.8287669999999991
+    },
+    {
+      "task_id": 428,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": false,
+      "valid": false,
+      "issues": [
+        {
+          "code": "machine_outage",
+          "message": "Reserved processing overlaps physical machine outage without interruption segments",
+          "tick": 960,
+          "outage_start": 720,
+          "outage_end": 1080,
+          "event_id": "O78"
+        }
+      ],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1154,
+          "P13": 1300,
+          "P19": 1433,
+          "P07": 1541,
+          "P10": 2253,
+          "P02": 2877,
+          "P08": 4394,
+          "P14": 4421,
+          "P04": 4669,
+          "P16": 4878,
+          "P20": 5118,
+          "P22": 5367
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 34724,
+        "grid_kwh": 3566.76817,
+        "energy_cost": 665.2220082,
+        "carbon_kg": 1322.9826385000001,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 815.2220082000016,
+        "operations": 294,
+        "moves": 386,
+        "unfinished": 32,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": false,
+        "blocked_eligible_calls": 0,
+        "spans": [],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task428-guard0.json.gz",
+      "trace_sha256": "a39111a5626d09f78ef3508a0a96f0fbbbd523bf3b190578e3fa816356fb83e1",
+      "wall_seconds": 1.8395869580563158,
+      "cpu_seconds": 1.8324429999999996
+    },
+    {
+      "task_id": 428,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "enabled": true,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1251,
+          "P13": 1300,
+          "P19": 1349,
+          "P07": 2022,
+          "P10": 2325,
+          "P02": 3925,
+          "P08": 3999,
+          "P20": 4156,
+          "P22": 4235,
+          "P04": 4424,
+          "P14": 4476,
+          "P16": 4634,
+          "P05": 5571
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32660,
+        "grid_kwh": 3580.524205,
+        "energy_cost": 669.3978267666666,
+        "carbon_kg": 1331.0127279166668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 819.3978267666635,
+        "operations": 301,
+        "moves": 403,
+        "unfinished": 31,
+        "global_optimality_gap": null
+      },
+      "guard": {
+        "enabled": true,
+        "blocked_eligible_calls": 391,
+        "spans": [
+          {
+            "machine_id": "F2",
+            "first_tick": 689,
+            "last_tick": 719,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "unrevealed_public_support",
+                "stage": 0,
+                "outcome": "mill_outage",
+                "reveal_tick": 720,
+                "start": 720,
+                "end": 1080
+              }
+            ]
+          },
+          {
+            "machine_id": "F2",
+            "first_tick": 720,
+            "last_tick": 1079,
+            "attempted_duration": 75,
+            "reasons": [
+              {
+                "source": "observed",
+                "start": 720,
+                "end": 1080,
+                "revealed_at": 720
+              }
+            ]
+          }
+        ],
+        "scope": "Causal conservative maintenance restriction using observed outages and unrevealed public support; physical core unchanged"
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/maintenance-outage-diagnostic-final/task428-guard1.json.gz",
+      "trace_sha256": "d73d214f3239f03baf03326234abb5dd8e2270aac1c301232a0c52d3a2a06a51",
+      "wall_seconds": 1.80538725014776,
+      "cpu_seconds": 1.7986920000000008
+    }
+  ],
+  "wall_seconds": 13.364775374997407,
+  "source_stable": true
+}

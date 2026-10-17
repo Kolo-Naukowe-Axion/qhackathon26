@@ -1,0 +1,207 @@
+{
+  "exact": {
+    "schema": "metaltech-stage2-tiny-reference.v1",
+    "solver": "OR-Tools CP-SAT",
+    "solver_version": "9.15.6755",
+    "status": "OPTIMAL",
+    "optimal": true,
+    "best_bound_ticks": 576.0,
+    "objective_ticks": 576,
+    "deterministic_limit": 30.0,
+    "wall_limit_seconds": 60.0,
+    "search_workers": 1,
+    "seed": 0,
+    "build_and_solve_seconds": 1.050126832909882,
+    "solver_wall_seconds": 1.044461,
+    "solver_response": "CpSolverResponse summary:\nstatus: OPTIMAL\nobjective: 576\nbest_bound: 576\nintegers: 534\nbooleans: 1563\nconflicts: 1858\nbranches: 13325\npropagations: 288926\ninteger_propagations: 2806376\nrestarts: 18\nlp_iterations: 3820\nwalltime: 1.04446\nusertime: 1.04446\ndeterministic_time: 0.55926\ngap_integral: 0\nsolution_fingerprint: 0xdd55c1781b043da6\n",
+    "model_stats": "optimization model '': (model_fingerprint: 0x647c8896eabdb8c5)\n#Variables: 775 (#ints: 1 in objective) (706 primary variables)\n  - 652 Booleans in [0,1]\n  - 2 in [0,2480]\n  - 1 in [0,2510]\n  - 1 in [0,2525]\n  - 5 in [0,2540]\n  - 4 in [0,2555]\n  - 3 in [0,2570]\n  - 75 in [0,2600]\n  - 6 in [30,2600]\n  - 8 in [45,2600]\n  - 10 in [60,2600]\n  - 2 in [75,2600]\n  - 2 in [90,2600]\n  - 4 in [120,2600]\n#kCircuit: 2\n#kCumulative: 7 (#intervals: 18, #variable_sizes: 18)\n#kInterval: 50\n#kLinear1: 16 (#enforced: 16)\n#kLinear2: 1'028 (#enforced: 943)\n#kLinear3: 34\n#kNoOverlap: 8 (#intervals: 32, #variable_sizes: 16)",
+    "counts": {
+      "operations": 16,
+      "moves": 19,
+      "machines": 7
+    },
+    "scope": {
+      "kind": "deterministic parameterized instance",
+      "singleton_heat_batches": true,
+      "dispatch_after_source_completion": true,
+      "fixed_shortest_tree_paths": true,
+      "nonbinding": [
+        "tool life/service",
+        "machine wear/maintenance",
+        "AGV battery/charging",
+        "grid cap",
+        "stationary battery",
+        "worker shifts/breaks",
+        "quality/rework",
+        "exogenous disruptions",
+        "investment"
+      ],
+      "binding": [
+        "recipe precedence",
+        "machine processing and output blocking",
+        "finite reserved input buffers",
+        "physical loaded and empty AGV travel",
+        "one AGV",
+        "one worker attendance and hall travel",
+        "BOM join"
+      ],
+      "flagship_global_gap": null
+    },
+    "flagship_global_gap": null,
+    "validation": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "606c9c3a26d10e8911b59cb8ff5d52b59db7e1121c55c9aa6a9fa2d7cf3ae07f"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 16,
+        "moves": 19,
+        "horizon_ticks": 2600,
+        "delivered_orders": 1,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 576
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 676.0000000000244,
+        "energy_cost": 67.60000000000404,
+        "carbon_kg": 135.2000000000081,
+        "investment_cost": 0,
+        "total_cost": 67.60000000000404,
+        "terminal_soc": 40
+      }
+    }
+  },
+  "heuristic_validation": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "606c9c3a26d10e8911b59cb8ff5d52b59db7e1121c55c9aa6a9fa2d7cf3ae07f"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 16,
+      "moves": 19,
+      "horizon_ticks": 2600,
+      "delivered_orders": 1,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 616
+      },
+      "tardiness_ticks": 0,
+      "terminal_deadline_debt_ticks": 0,
+      "grid_kwh": 676.000000000023,
+      "energy_cost": 67.60000000000402,
+      "carbon_kg": 135.20000000000803,
+      "investment_cost": 0,
+      "total_cost": 67.60000000000402,
+      "terminal_soc": 40
+    }
+  },
+  "comparison": {
+    "same_canonical_instance": true,
+    "cp_status": "OPTIMAL",
+    "heuristic_makespan_ticks": 616,
+    "optimum_makespan_ticks": 576,
+    "heuristic_makespan_gap": 0.06944444444444445,
+    "flagship_global_gap": null
+  },
+  "artifacts_sha256": {
+    "instance.json": "b7acf52da99e589c5110eee11e05fbd084010226394ce95081558f135daeefd7",
+    "heuristic-trace.json": "6797c565d932b58a1c03218a9306f403a2f6b2e6840e9a6410b877343d889278",
+    "optimal-trace.json": "bc9037665f3d885c6e9f63299da8f8349c3a9b7f91993bda6d90ab445be0589a"
+  }
+}

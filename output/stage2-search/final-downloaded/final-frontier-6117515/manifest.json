@@ -1,0 +1,1620 @@
+{
+  "schema": "stage2-frozen-selected-policy-evaluation.v1",
+  "phase": "frozen-selection",
+  "evaluation_role": "final",
+  "frozen_utc": "2026-10-17T00:37:52Z",
+  "runtime": {
+    "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+    "platform": "linux",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": "1.18.1",
+      "torch": "2.14.1+cpu",
+      "ortools": "9.15.6755",
+      "qiskit": null,
+      "qiskit-aer": null
+    },
+    "machine": "x86_64",
+    "processor": "x86_64",
+    "host_logical_cpus": 48,
+    "allocation": {
+      "SLURM_JOB_ID": "6117515",
+      "SLURM_CPUS_PER_TASK": "32",
+      "SLURM_CPUS_ON_NODE": "32"
+    },
+    "threads": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1"
+    },
+    "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+  },
+  "configs": [
+    {
+      "orders": 10,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 11,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 13,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 14,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 32,
+      "horizon": 14400,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "selected-cheap-10",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 10,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 48,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 32,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 39302,
+            "summed_total_cost": 19882.159734433328,
+            "recorded_simulation_wall_seconds_sum": 82.77518331599731
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 16,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 21746,
+            "summed_total_cost": 9826.887816466704,
+            "recorded_simulation_wall_seconds_sum": 41.26124428400044
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Selected frontier policy"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      }
+    },
+    {
+      "id": "original-prior-10",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 10,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 0,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery0",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 32,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 39302,
+            "summed_total_cost": 19882.159734433328,
+            "recorded_simulation_wall_seconds_sum": 78.56133036799793
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 16,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 21746,
+            "summed_total_cost": 9826.887816466704,
+            "recorded_simulation_wall_seconds_sum": 38.94772519000162
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Original prior control"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "selected-cheap-11",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 11,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 144,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 31,
+            "summed_missing": 1,
+            "summed_cutoff_deadline_debt": 75826,
+            "summed_total_cost": 21148.276953666642,
+            "recorded_simulation_wall_seconds_sum": 91.08253544199988
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 16,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 33893,
+            "summed_total_cost": 10553.344328999978,
+            "recorded_simulation_wall_seconds_sum": 45.12627343400072
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Selected frontier policy"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      }
+    },
+    {
+      "id": "original-prior-11",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 11,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 96,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery0",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 28,
+            "summed_missing": 41,
+            "summed_cutoff_deadline_debt": 151760,
+            "summed_total_cost": 20793.68935913333,
+            "recorded_simulation_wall_seconds_sum": 87.25965284500171
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 15,
+            "summed_missing": 10,
+            "summed_cutoff_deadline_debt": 45675,
+            "summed_total_cost": 10440.934552399971,
+            "recorded_simulation_wall_seconds_sum": 42.99757636499953
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Original prior control"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": false
+      }
+    },
+    {
+      "id": "selected-cheap-13",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 13,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/strong-mpc-confirmation-tasks.json",
+        "source_tasks_sha256": "183af6f60e10838db285d6b23b4d6a800115939cbce21e50acb417850eaa1217",
+        "source_task_id": 144,
+        "source_policy_id": "TRAIN/strong-MPC/w6-QA0/scenarios0",
+        "retained_measurements": "output/stage2-search/axion-download-0001/strong-mpc-confirmation-6117307/measurements.jsonl",
+        "retained_measurements_sha256": "9bf3fec5bc22b8a8d8cfdce5e90a9ff113c64f0842b625684984d9e32794cbfe",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 30,
+            "summed_missing": 3,
+            "summed_cutoff_deadline_debt": 151657,
+            "summed_total_cost": 22835.567462100153,
+            "recorded_simulation_wall_seconds_sum": 96.87955509900348
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 16,
+            "summed_missing": 0,
+            "summed_cutoff_deadline_debt": 74196,
+            "summed_total_cost": 11250.059777666718,
+            "recorded_simulation_wall_seconds_sum": 47.916714088001754
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 2428.5685927379964,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Selected frontier policy"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      }
+    },
+    {
+      "id": "original-prior-13",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 13,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 432,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 27,
+            "summed_missing": 7,
+            "summed_cutoff_deadline_debt": 173909,
+            "summed_total_cost": 22770.238436000138,
+            "recorded_simulation_wall_seconds_sum": 117.01851647200101
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 13,
+            "summed_missing": 5,
+            "summed_cutoff_deadline_debt": 86177,
+            "summed_total_cost": 11325.103087966681,
+            "recorded_simulation_wall_seconds_sum": 58.05892257800042
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Original prior control"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      }
+    },
+    {
+      "id": "selected-cheap-14",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 14,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/strong-mpc-confirmation-tasks.json",
+        "source_tasks_sha256": "183af6f60e10838db285d6b23b4d6a800115939cbce21e50acb417850eaa1217",
+        "source_task_id": 288,
+        "source_policy_id": "TRAIN/strong-MPC/w6-QA1/scenarios0",
+        "retained_measurements": "output/stage2-search/axion-download-0001/strong-mpc-confirmation-6117307/measurements.jsonl",
+        "retained_measurements_sha256": "9bf3fec5bc22b8a8d8cfdce5e90a9ff113c64f0842b625684984d9e32794cbfe",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 25,
+            "summed_missing": 12,
+            "summed_cutoff_deadline_debt": 201790,
+            "summed_total_cost": 23886.191764400155,
+            "recorded_simulation_wall_seconds_sum": 100.60323045599216
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 12,
+            "summed_missing": 6,
+            "summed_cutoff_deadline_debt": 103054,
+            "summed_total_cost": 11803.885732866729,
+            "recorded_simulation_wall_seconds_sum": 50.056213696007035
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 2428.5685927379964,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Selected frontier policy"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [
+          "QA"
+        ],
+        "free_buffer_processes": []
+      }
+    },
+    {
+      "id": "original-prior-14",
+      "kind": "static",
+      "backend": "recovery",
+      "configs": [
+        {
+          "orders": 14,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "DEVELOPMENT-selected; TRAIN0-31 and reused VALIDATION100-115; prior design may include earlier validation-informed iteration",
+        "source_tasks": "output/stage2-search/physical-recovery-development-tasks.json",
+        "source_tasks_sha256": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+        "source_task_id": 528,
+        "source_policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "retained_measurements": "output/stage2-search/axion-download-2305/physical-recovery-6117261/measurements.jsonl",
+        "retained_measurements_sha256": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7,
+              8,
+              9,
+              10,
+              11,
+              12,
+              13,
+              14,
+              15,
+              16,
+              17,
+              18,
+              19,
+              20,
+              21,
+              22,
+              23,
+              24,
+              25,
+              26,
+              27,
+              28,
+              29,
+              30,
+              31
+            ],
+            "runs": 32,
+            "valid": 32,
+            "complete": 21,
+            "summed_missing": 22,
+            "summed_cutoff_deadline_debt": 263404,
+            "summed_total_cost": 23386.062116866768,
+            "recorded_simulation_wall_seconds_sum": 124.6757562020025
+          },
+          {
+            "role": "VALIDATION",
+            "seeds": [
+              100,
+              101,
+              102,
+              103,
+              104,
+              105,
+              106,
+              107,
+              108,
+              109,
+              110,
+              111,
+              112,
+              113,
+              114,
+              115
+            ],
+            "runs": 16,
+            "valid": 16,
+            "complete": 10,
+            "summed_missing": 10,
+            "summed_cutoff_deadline_debt": 117635,
+            "summed_total_cost": 11537.454514433379,
+            "recorded_simulation_wall_seconds_sum": 60.711263143
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 74.13245632300004,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Original prior control"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      }
+    },
+    {
+      "id": "selected-stretch-32",
+      "kind": "static",
+      "backend": "kitting",
+      "configs": [
+        {
+          "orders": 32,
+          "horizon": 14400,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "admission": true,
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Fixed prior16 policy from TRAIN horizon study0-7; no n32 VAL selection. Extended cutoff is a separate calendar stretch, not a speedup.",
+        "source_tasks": "output/stage2-search/strong-horizon-training-tasks.json",
+        "source_tasks_sha256": "e9579c5ef17b16f6c362dda9404b3f06239d633d7a83186dbe05456e51c93549",
+        "source_task_id": 560,
+        "source_policy_id": "H14400/prior16/kitting/w4-guard4-admfamily-kit1",
+        "retained_measurements": "output/stage2-search/axion-download-2305/strong-horizon-6117258/measurements.jsonl",
+        "retained_measurements_sha256": "7e51e0581b4626292396132a015584c8ee7cd5671908d2a9e3b9e83eedcd6e57",
+        "cohorts": [
+          {
+            "role": "TRAIN",
+            "seeds": [
+              0,
+              1,
+              2,
+              3,
+              4,
+              5,
+              6,
+              7
+            ],
+            "runs": 8,
+            "valid": 8,
+            "complete": 7,
+            "summed_missing": 1,
+            "summed_cutoff_deadline_debt": 926139,
+            "summed_total_cost": 11907.850973798726,
+            "recorded_simulation_wall_seconds_sum": 61.50770979399931
+          }
+        ],
+        "cost_scope": "Retained row wall time includes simulation/checking, not actual CPU. Shared campaign/prior/search costs are not isolated per selected policy; report once, do not drop or charge repeatedly.",
+        "campaign_wall_seconds": 88.16072985500023,
+        "declared_adaptations": [
+          "Final actor900000 overrides inherited policy_seed0 before callback construction",
+          "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+        ],
+        "selection_role": "Selected frontier policy",
+        "witness_report": "output/stage2-search/quality-material-primary-bound/witness-report.json",
+        "witness_report_sha256": "b591704ab1c1acdd76685d11b4b0650830b7b155018074e91d66e52ed981e855",
+        "witness_scope": "Original unguarded fixed policy:7/8 all-fulfilled, seed6 33/34 attains primary lowerbound1; guard/actor adapter explicit, not silently identified as original witness"
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true
+    }
+  ],
+  "selection_provenance": {
+    "data": "Exact extraction of previously retained DEVELOPMENT tasks; no new selection simulations or reserved factories",
+    "scope": "Frontier10/11/13/14 atH5760 and fixed prior16 stretch32/H14400 only; merge separately selected12/16/24 methods",
+    "protocol_reference": "../final-heldout-protocol.json",
+    "protocol_file_sha256": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7",
+    "notes": [
+      "n10 guard0 recovery is not documented in768-case recovery campaign; exact tested guard4 retained",
+      "n10 recovery-on/off have identical TRAIN and VAL outcomes; recovered control declared and original off control retained",
+      "n13/14 selected policies are actual scenarios0 controls; no MPC options added",
+      "n32 retains original kitting backend; enabling recovery would alter witnessed policy",
+      "n32 fixed prior is itself the selected witness control; no duplicate identical method invented"
+    ],
+    "plan": "predeclared-analysis-plan-v3.json"
+  },
+  "actor_seed_policy": "Declared actor seed overrides inherited policy_seed before callback construction; explicit fixed MPC planning seeds permitted only with one actor",
+  "selection_spec": {
+    "path": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/frontier-selection-draft.json",
+    "sha256": "80090bafe2bdd8fe37e0da4c3f1d8cab22b9d42d6a5ccd338cd1e5f9eaca58a2"
+  },
+  "protocol": {
+    "path": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/final-heldout-protocol.json",
+    "file_sha256": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7",
+    "payload": {
+      "schema": "stage2-stratified-final-protocol.v1",
+      "seed_role": "FINAL; no training or policy selection",
+      "selection": "First increasing seeds per exogenous leaf; solver outcomes never inspected",
+      "quality_randomness": "Keyed per-unit hashes on the same seeds; conditional pseudorandom tapes",
+      "per_leaf": 32,
+      "start_seed": 10000,
+      "candidates_examined": 545,
+      "total_tapes": 256,
+      "leaves": [
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_ok",
+            "no_rush"
+          ],
+          "probability": [
+            39,
+            200
+          ],
+          "seeds": [
+            10004,
+            10008,
+            10014,
+            10017,
+            10018,
+            10021,
+            10023,
+            10028,
+            10034,
+            10051,
+            10057,
+            10066,
+            10089,
+            10095,
+            10098,
+            10106,
+            10107,
+            10110,
+            10112,
+            10115,
+            10126,
+            10127,
+            10131,
+            10133,
+            10135,
+            10140,
+            10141,
+            10145,
+            10150,
+            10154,
+            10156,
+            10164
+          ],
+          "per_tape_weight": 0.00609375
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_ok",
+            "rush"
+          ],
+          "probability": [
+            39,
+            200
+          ],
+          "seeds": [
+            10003,
+            10013,
+            10016,
+            10022,
+            10024,
+            10039,
+            10042,
+            10043,
+            10047,
+            10055,
+            10059,
+            10067,
+            10068,
+            10070,
+            10077,
+            10078,
+            10082,
+            10092,
+            10099,
+            10100,
+            10116,
+            10118,
+            10122,
+            10129,
+            10143,
+            10147,
+            10157,
+            10163,
+            10166,
+            10168,
+            10169,
+            10170
+          ],
+          "per_tape_weight": 0.00609375
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_stress",
+            "no_rush"
+          ],
+          "probability": [
+            13,
+            100
+          ],
+          "seeds": [
+            10000,
+            10010,
+            10020,
+            10031,
+            10033,
+            10036,
+            10038,
+            10046,
+            10060,
+            10061,
+            10063,
+            10069,
+            10083,
+            10085,
+            10091,
+            10108,
+            10109,
+            10114,
+            10124,
+            10136,
+            10139,
+            10144,
+            10162,
+            10167,
+            10177,
+            10183,
+            10192,
+            10199,
+            10207,
+            10215,
+            10218,
+            10221
+          ],
+          "per_tape_weight": 0.0040625
+        },
+        {
+          "outcomes": [
+            "mill_ok",
+            "supply_stress",
+            "rush"
+          ],
+          "probability": [
+            13,
+            100
+          ],
+          "seeds": [
+            10006,
+            10029,
+            10048,
+            10052,
+            10062,
+            10073,
+            10079,
+            10080,
+            10081,
+            10086,
+            10096,
+            10103,
+            10113,
+            10142,
+            10176,
+            10179,
+            10184,
+            10188,
+            10214,
+            10217,
+            10228,
+            10231,
+            10235,
+            10243,
+            10247,
+            10249,
+            10261,
+            10266,
+            10268,
+            10270,
+            10272,
+            10274
+          ],
+          "per_tape_weight": 0.0040625
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_ok",
+            "no_rush"
+          ],
+          "probability": [
+            21,
+            200
+          ],
+          "seeds": [
+            10002,
+            10015,
+            10019,
+            10037,
+            10044,
+            10045,
+            10054,
+            10072,
+            10087,
+            10094,
+            10102,
+            10130,
+            10137,
+            10146,
+            10148,
+            10149,
+            10151,
+            10153,
+            10158,
+            10173,
+            10181,
+            10185,
+            10187,
+            10193,
+            10200,
+            10206,
+            10212,
+            10220,
+            10230,
+            10232,
+            10233,
+            10236
+          ],
+          "per_tape_weight": 0.00328125
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_ok",
+            "rush"
+          ],
+          "probability": [
+            21,
+            200
+          ],
+          "seeds": [
+            10005,
+            10007,
+            10009,
+            10011,
+            10032,
+            10035,
+            10040,
+            10041,
+            10049,
+            10053,
+            10064,
+            10065,
+            10075,
+            10084,
+            10090,
+            10093,
+            10101,
+            10104,
+            10105,
+            10111,
+            10117,
+            10119,
+            10134,
+            10160,
+            10189,
+            10190,
+            10191,
+            10194,
+            10196,
+            10209,
+            10210,
+            10224
+          ],
+          "per_tape_weight": 0.00328125
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_stress",
+            "no_rush"
+          ],
+          "probability": [
+            7,
+            100
+          ],
+          "seeds": [
+            10012,
+            10025,
+            10027,
+            10050,
+            10056,
+            10058,
+            10071,
+            10088,
+            10097,
+            10120,
+            10125,
+            10132,
+            10152,
+            10155,
+            10159,
+            10161,
+            10208,
+            10211,
+            10222,
+            10252,
+            10257,
+            10264,
+            10278,
+            10291,
+            10339,
+            10351,
+            10369,
+            10383,
+            10385,
+            10408,
+            10419,
+            10435
+          ],
+          "per_tape_weight": 0.0021875
+        },
+        {
+          "outcomes": [
+            "mill_outage",
+            "supply_stress",
+            "rush"
+          ],
+          "probability": [
+            7,
+            100
+          ],
+          "seeds": [
+            10001,
+            10026,
+            10030,
+            10074,
+            10076,
+            10121,
+            10123,
+            10128,
+            10138,
+            10165,
+            10197,
+            10205,
+            10227,
+            10253,
+            10255,
+            10267,
+            10281,
+            10286,
+            10302,
+            10304,
+            10310,
+            10321,
+            10324,
+            10348,
+            10380,
+            10411,
+            10458,
+            10487,
+            10489,
+            10517,
+            10523,
+            10544
+          ],
+          "per_tape_weight": 0.0021875
+        }
+      ],
+      "uncertainty_scope": "Eight declared exogenous leaves plus seeded endogenous quality, not unmodeled factory uncertainty",
+      "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599"
+    }
+  },
+  "artifacts": {},
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/final_eval.py": "6264f3f6b93ba5128b742b06facad97714ef09b3f244ce076bf0123848236e5e",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/recovery_mpc.py": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4",
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+    "stage2/selector_reward.py": "4af17eae69f34dd5396a08a51fa9c1c6aebd8a0ebcc357074e64dac6271fc253",
+    "stage2/adaptive_recovery.py": "7fbe58fb6131e0a2101bf7f2a0282bc8c81e3ab09a6ccf7ce0e01da8f5b9498e",
+    "stage2/adaptive_modes.py": "4a4c6b3fcd5a40020393950b064e908310b87b69752324a9def7e08d0ffd3801",
+    "stage2/completion_policy.py": "263f421243e22c5a67a846e2abe2e039337dbee0fdf61eaccaa1fc23c2920a03",
+    "stage2/bom_probe.py": "48ca779cc088765d364a3d81a25a352e118573ef63d27e145a5f1a631fbe0e75",
+    "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+    "stage2/compare_evaluations.py": "2ef6688c7331cfe7646c4d758aec690427b4e102204047ab03e32e2afa43ffe2",
+    "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+    "stage2/certify_evaluations.py": "0ebad4ec76aa0401b985489a9421e24b522a31cf44a6c4c83c7c7e552ef7dd12",
+    "stage2/primary_intervals.py": "1c7bbb503dbdec1e1c6663515bf38ff6bfc18ae9a5ff4301cf5da0fb93208022",
+    "stage2/selected_run.py": "59692c53faaa25932f5e841bd1dcb14e47793a5785bc2e4609c5c78fd582d5de"
+  },
+  "trace_policy": "first_per_leaf",
+  "statistics_scope": "Actor replicas are conditional outcomes within environment clusters, never additional factories",
+  "manifest_sha256": "a9cefbf992a6b9b76438fc621972433d3a1471f07d585fd3208836cbe2885e78"
+}

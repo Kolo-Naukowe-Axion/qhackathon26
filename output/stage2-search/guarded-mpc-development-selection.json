@@ -1,0 +1,276 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "guarded-MPC-12",
+      "kind": "recovery_mpc",
+      "backend": "recovery",
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "mpc": {
+        "scenarios": 4,
+        "interval": 1440,
+        "seed": 27491,
+        "physical_check_futures": true,
+        "actions": [
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 4
+          }
+        ]
+      },
+      "selection_provenance": {
+        "data": "TRAIN32+reusedVAL16 confirmed causal six-action bank; guarded integration only",
+        "original": {
+          "data": "Static priors and MPC bank chosen onTRAIN only; VALIDATION used for development selection, final untouched",
+          "question": "Confirm independent lookahead gains over strong recovery/routing controls on full pairedTRAIN and VALIDATION cohorts",
+          "future_tape": "Independent planning seed27491,2or4 common futures per action, replan1440min; all physical futures checked"
+        }
+      }
+    },
+    {
+      "id": "guarded-MPC-16",
+      "kind": "recovery_mpc",
+      "backend": "recovery",
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "mpc": {
+        "scenarios": 2,
+        "interval": 1440,
+        "seed": 27491,
+        "physical_check_futures": true,
+        "actions": [
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 4
+          }
+        ]
+      },
+      "selection_provenance": {
+        "data": "TRAIN32+reusedVAL16 confirmed causal six-action bank; guarded integration only",
+        "original": {
+          "data": "Static priors and MPC bank chosen onTRAIN only; VALIDATION used for development selection, final untouched",
+          "question": "Confirm independent lookahead gains over strong recovery/routing controls on full pairedTRAIN and VALIDATION cohorts",
+          "future_tape": "Independent planning seed27491,2or4 common futures per action, replan1440min; all physical futures checked"
+        }
+      }
+    },
+    {
+      "id": "guarded-MPC-24",
+      "kind": "recovery_mpc",
+      "backend": "recovery",
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "mpc": {
+        "scenarios": 4,
+        "interval": 1440,
+        "seed": 27491,
+        "physical_check_futures": true,
+        "actions": [
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 4
+          }
+        ]
+      },
+      "selection_provenance": {
+        "data": "TRAIN32+reusedVAL16 confirmed causal six-action bank; guarded integration only",
+        "original": {
+          "data": "Static priors and MPC bank chosen onTRAIN only; VALIDATION used for development selection, final untouched",
+          "question": "Confirm independent lookahead gains over strong recovery/routing controls on full pairedTRAIN and VALIDATION cohorts",
+          "future_tape": "Independent planning seed27491,2or4 common futures per action, replan1440min; all physical futures checked"
+        }
+      }
+    }
+  ],
+  "selection_provenance": {
+    "data": "DEVELOPMENT smoke0/100 only",
+    "question": "Ensure optional causal maintenance restriction preserves/audits actual MPC trajectories and futures"
+  },
+  "trace_policy": "all"
+}

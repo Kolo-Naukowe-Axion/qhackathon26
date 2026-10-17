@@ -1,5 +1,24 @@
 # Development log
 
+## 2026-10-17 — Stage 2 implementation and ongoing research
+
+- Implemented the full minute-resolution two-hall factory and independent
+  physical replay under `stage2/`, preserving the original Stage 1 artifacts.
+- Added matched classical and quantum-simulator dispatch experiments, learning
+  and scenario-lookahead controls, physical flow heuristics and scoped exact
+  deterministic references. Failures and restrictions are retained explicitly.
+- The separate Stage 2 viewer imports checked traces and labeled research
+  cohorts. Development selection does not imply final reliability or a global
+  factory optimum. Unfinished-order cutoff debt is separate from delivered-only
+  tardiness.
+- Actual evidence, immutable sources and resource accounting are in
+  `output/stage2-search/`; the detailed live record is
+  `docs/STAGE2_EXPERIMENT_LOG.md`. The current implementation entry point is
+  `stage2/README.md`. Earlier entries below describe the state at their time.
+- The user stopped ODRA/VPN work; bounded CPU experiments and local quantum
+  simulation continue. No VeloxQ calls, physical quantum runs or new publication
+  are claimed. Reserved final tapes have not yet been executed.
+
 ## 2026-10-16 — requirements and access
 
 - Captured the organizer's opening slides and checked the transcription. The user emphasized that both baseline solutions must be demonstrated for eligibility.
@@ -190,3 +209,49 @@ candidate build precede the commit. Both remote solver holds remain in force.
 Release candidate: isolated production build, staged gitleaks scan (no leaks) and
 whitespace checks passed. Publish the approved snapshot through the existing main
 Git integration; verify the resulting commit and deployment after the push.
+
+## 2026-10-17 — Strengthen Stage 1 and certify the compact representation
+
+User requested sustained iteration against the challenge conditions. Re-read the supplied challenge and visually checked the mandatory-method page. The previous 4/8 h schedules were already globally optimal; improvements target representation, quantum coverage and reproducible evidence. Kept ODRA5 and VeloxQ on hold.
+
+Implemented an exact pairwise-order QUBO for two/three jobs. All common-order makespans are calculated, two cyclic-state costs are set above all valid costs, and integer Boolean interpolation cancels the cubic term. A uses one bit, B three: the information minima for distinct states for all 2/6 common orders. Unlike the previous horizon-feasibility models, valid-state energy equals makespan. Full independent machine-order enumeration checks that neither official optimum is lost. The builder tabulates all permutations and already reveals their optimum; no quantum speedup, general scalable encoding or broader schedule-space equivalence is claimed.
+
+Screened eleven configurations on seeds 0–2; retained all failed/non-improving samples. One-layer B reached only ~80.58% or ~95.21% optimal samples with shared/independent mixers; p=2 independent mixers reached 100%. Confirmed seven settings on twenty fresh seeds 200–219. Selected A p=1/shared-X/one restart and B p=2/independent-X/eight restarts each returned 81,920/81,920 optimal measurements. Four restarts matched eight in this validation; eight remains a conservative training budget. Three layers offered no observed improvement over two. The same three-bit classical B QUBO also reached 10,240/10,240 optimal samples, emphasizing how easy these fixed cases are classically.
+
+Fresh seed-2026 quantum runs exported both official JSONs with 4,096/4,096 optimal shots each. Added full truth-table/reference certificates, actual source snapshots, QASM, angles, raw counts, compressed optimizer histories and reproducible search/validation commands. Strengthened the verifier to rebuild models from official inputs and check compact QASM plus ideal ground-state probability. Tests exercise all bitstrings, cyclic penalties, 40 additional duration tables, nonoptimal-but-feasible samples, full cost phases and tampering. Updated default preparation, selection, guide evidence, formula/dimension explanations, README, design and current/historical status boundaries. Full report: `docs/STAGE1_COMPACT.md`.
+
+No service call, physical QPU job, team message, commit, push or deployment. Stage 2 and wider submission deliverables remain separate work.
+
+Final verification (17 October): all 179 retained compact run bundles pass the strengthened verifier and every run returns an exact optimum. Full preparation reproduces both required quantum schedules and the 512,000-assignment legacy audit. All 26 core Python tests pass (2 optional IQM tests skipped), all 52 Node tests and the static build pass, and the local browser renders the selected quantum panels and compact formulas correctly. Automatic guide evidence regeneration matches the checked public summary exactly.
+
+## 2026-10-17 — Stage2 source freeze and untouched comparison
+
+Implemented and independently checked the complete synthetic manufacturing extension under `stage2/`, separate from the mandatory baseline outputs. The one-minute factory includes BOM joins, qualified workers/calendars, transport, finite buffers, portable tools/service/rental, wear, energy, quality/replacement and revealed disruptions. Extensive development compares static controls, actual CPU-simulated local QAOA against exact/SA/uniform, PPO, learned CEM time schedules and independently sampled MPC. Incorrect batch-reward preferences, maintenance/outage overlaps, failed packaging, policy regressions and validation reversals are retained rather than discarded.
+
+Before reserved outcomes, sealed the complete policy/source/checkpoint/protocol bundle and launched ten256-tape final cohorts. The official preselected cheap controls remain fixed even when a different frozen candidate performs better on final tapes. Paired environment-cluster statistics retain actors as nested replicas; only the two specified12-order quantum mean contrasts receive the declared family adjustment. Neither demonstrates quantum advantage. A separate quality/material relaxation gives primary-only certificates on fixed realized tapes; positive remaining gaps are bounds, not exact optimality gaps. One separately declared audit replay supplies a complete nontrivial final witness with an unavoidable final-pump loss.
+
+The current final campaign is still finishing. Detailed source/result/cost provenance and honest uncertainty are in `docs/STAGE2_EXPERIMENT_LOG.md`, `docs/STAGE2_FINAL_EVALUATION.md`, `docs/STAGE2_METHOD_SELECTION.md` and `output/stage2-search/`. A bounded TRAIN-only offline schedule-neighborhood audit investigates controller headroom without changing the selected final policies. Current software checks:378 Stage2 tests before the final freeze, additional reporting/activity corruption tests, and71 frontend tests. Actual selected-model replays and small QAOA run from a portable source package in a minimal environment; no GPU/QPU is required for those demos.
+
+Stage2 remains on its separate local publication hold. Read-only repository metadata verifies current private visibility; the public-source, video and submission obligations must not be marked complete. No Stage2 commit, push, deployment, VeloxQ or physical ODRA call was made.
+
+###17October2026,01:23UTC — complete Stage2 final evaluation
+
+All ten globally frozen final cohorts completed with23,552valid executions across74method/context groups. Complete aggregation computes all41declared paired contrasts; independent audits verify592original retained traces and every row's fresh numerical anchor. Original policies/source archives remain unchanged; historical partial reports remain. Full result/limits: `docs/STAGE2_RESULTS.md`, `output/stage2-search/final-complete-report/`. The two named n12quantum mean-missing intervals both crosszero. No advantage, post-final policy switching or complete factory secondary gap is claimed. MPC16 improves fulfillment against the selected cheap policy, whereas MPC24regresses against its selected CEM, preserving the negative result.
+
+One fixed TRAIN-only finite-neighborhood audit completed12184grid+24oracle-witness runs; auditing is separate from policy deployment/generalization. A bounded two-hour16CPU exact-reference follow-up reuses the unchanged four-pump fixture and checked1567hint; pending results do not revise its[1480,1567]interval. Final campaign allocation70.42CPUh and measured episode processCPU68.58h are separately reconciled and included in the overall research ledger. No GPUtraining, physicalQPU, publication, submission or deployment performed.
+
+
+### Stage2 technical research closeout — 2026-10-17 03:29:54 UTC
+
+All tracked research cluster jobs are finished; the requested monitoring and handoff window remains active. The immutable 03:16 ledger records 431.9967 allocated CPU-hours including failed jobs, zero recorded GPU-hours and zero physical-QPU/VeloxQ calls. Final evaluation used 70.4178 allocated CPU-hours within that total. Local setup, audits and agent inference are not a complete host-wide meter. ODRA/VPN troubleshooting remains stopped under the user hold. No autoresearch, Stage2 commit, push, deployment or submission was performed.
+
+The unchanged final benchmark has 74 groups, 23,552 valid executions and 41 contrasts. Independent audits freshly check 592 original retained traces and rebuild every row's numerical anchor. Preselected classical fulfillment is 94.9844% at 12 initial orders/96 hours and 91.0156% at 32 initial orders/240 hours, with substantial lateness in the latter. This is the tested-controller frontier; failures at 16/24 do not prove physical infeasibility. MPC improves 16 but worsens 24 against the selected CEM. Useful adaptive-RL and quantum advantage remain unestablished. Actual QAOA uses at most five total bits, including slack, in restricted local decisions with recorded classical fallback.
+
+Exact reference job 6117555 reports FEASIBLE 1541 and CP lower bound 1524 on the identical four-pump fixture: interval [1524,1541]. Raw CP/hint identity rejections for reservations before pump birth remain preserved. A separate derived witness changes only move74.start from 1382 to 1420, preserving physical actions, timings and recomputed metrics; both unchanged general checkers pass. Six mutation/scope tests and a second independent review pass. Auditing and normalization run no new factory or solver, change no frozen checker and add no final sample. Evidence: final-independent-audit/reference-2h-6117555/ and reference-2h-methodology-review/. This does not bound the rich stochastic factory's global gap.
+
+Portable v2 is 10,097,277 bytes, SHA 8a54050496537a794e17bdf73c7d47ed323798f0ae7e67e8152f6d49e3c0aaa1. Its 2,436 indexed files, 24 predeclared replays and 29 separate supplements verify in 10.84 seconds in isolated Python 3.14.6 with only NumPy 2.5.4 and pip installed. Supplemental records are hashed; their entire analyses are not rerun by this compact verifier. Portable v1 and the full 116.8 MB v2 archive remain byte-stable; the full archive independently reproduces all 41 contrasts and 592 retained replays. Read docs/STAGE2_RESULTS.md and output/stage2-search/stage2-portable-final-v2-closeout-receipt.json.
+
+The local 4187 research view shows the final frontier, TRAIN neighborhood, conditional leaves, posthoc proof and current reference interval with qualifications. Frozen final-export SHA 6a66d36b2ea032b773a2b550d8773c13a0c4ea3f1fab0ef3565894853746fd60 remains unchanged. GitHub rechecked at 03:26 UTC is still private: the public-MIT requirement is unmet; completed video, team and form receipt remain unverified. Preserve the other chat's Stage1/root presentation changes and the publication hold.
+
+
+Stage2 authorized eight-hour research window completed at 2026-10-17T04:14:35.500900+00:00. Technical evidence and local handoff are complete; all tracked research jobs are finished. See output/stage2-search/research-closeout.json and docs/STAGE2_RESULTS.md. Publication hold remains; repository private at the04:11UTC live recheck, with video/team/form receipt unverified. No further experiments or policy changes are scheduled.

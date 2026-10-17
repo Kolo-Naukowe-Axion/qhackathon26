@@ -14,6 +14,12 @@ test('guide solver summaries match the currently selected verified evidence', as
     const run = JSON.parse(await readFile(new URL(`../${source}/run.json`, import.meta.url)));
     for (const [key, value] of Object.entries(summary)) {
       if (key === 'source') continue;
+      if (key === 'optimal_samples') {
+        const samples = JSON.parse(await readFile(new URL(`../${source}/samples.json`, import.meta.url)));
+        const optimum = instance === 'instance_2x2' ? 4 : 8;
+        assert.equal(value, samples.filter(row => row.feasible && row.makespan === optimum).reduce((sum, row) => sum + row.count, 0));
+        continue;
+      }
       if (key === 'metadata') {
         for (const [setting, expected] of Object.entries(value)) assert.deepEqual(run.metadata[setting], expected);
       } else assert.deepEqual(run[key], value);

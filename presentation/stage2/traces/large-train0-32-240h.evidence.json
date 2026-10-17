@@ -1,0 +1,432 @@
+{
+  "schema": "stage2-optional-replay-evidence.v1",
+  "label": "TRAIN 0 \u00b7 32 initial + 2 urgent orders \u00b7 240h",
+  "seed_role": "TRAIN; fixed realized tape, not held-out performance",
+  "horizon_scope": "240h = 10 days; extra calendar time, not a 96-hour solution or algorithmic speedup",
+  "source_path": "output/stage2-search/quality-material-primary-bound/n32-H14400-seed0-witness.json.gz",
+  "trace_sha256": "50dd4b18c7286a0dc001032caa807acfe815534dd43eee80925d214919c0230a",
+  "trace_sha256_convention": "Original gzip-file bytes",
+  "compressed_bytes": 194373,
+  "decompressed_bytes": 3882140,
+  "instance_sha256": "c9021274e55e8da17674414b269b3a1eef46113c614a8cd748575bde8b09cdf3",
+  "certificate_path": "output/stage2-search/quality-material-primary-bound/n32-H14400-seed0-certificate.json",
+  "certificate_sha256": "7137d4572ce8ca36447f92d47518f9d9b90b2b9f2b9aceef5220dbe079fb92ed",
+  "certificate": {
+    "schema": "stage2-quality-material-necessary-bound.v1",
+    "seed": 0,
+    "instance_sha256": "c9021274e55e8da17674414b269b3a1eef46113c614a8cd748575bde8b09cdf3",
+    "source_hashes": {
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+      "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+      "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+    },
+    "horizon_ticks": 14400,
+    "observed_realized_orders": 34,
+    "realized_exogenous_leaf": [
+      "mill_ok",
+      "supply_ok",
+      "rush"
+    ],
+    "available_raw_blanks": {
+      "housing": 34,
+      "rotor": 34,
+      "flange": 34
+    },
+    "necessary_blank_demands": {
+      "P01": [
+        1,
+        1,
+        1
+      ],
+      "P02": [
+        1,
+        1,
+        1
+      ],
+      "P03": [
+        1,
+        1,
+        1
+      ],
+      "P04": [
+        1,
+        1,
+        1
+      ],
+      "P05": [
+        1,
+        1,
+        1
+      ],
+      "P06": [
+        1,
+        1,
+        1
+      ],
+      "P07": [
+        1,
+        1,
+        1
+      ],
+      "P08": [
+        1,
+        1,
+        1
+      ],
+      "P09": [
+        1,
+        1,
+        1
+      ],
+      "P10": [
+        1,
+        1,
+        1
+      ],
+      "P11": [
+        1,
+        1,
+        1
+      ],
+      "P12": [
+        1,
+        1,
+        1
+      ],
+      "P13": [
+        1,
+        1,
+        1
+      ],
+      "P14": [
+        1,
+        1,
+        1
+      ],
+      "P15": [
+        1,
+        1,
+        1
+      ],
+      "P16": [
+        1,
+        1,
+        1
+      ],
+      "P17": [
+        1,
+        1,
+        1
+      ],
+      "P18": [
+        1,
+        1,
+        1
+      ],
+      "P19": [
+        1,
+        1,
+        1
+      ],
+      "P20": [
+        1,
+        1,
+        1
+      ],
+      "P21": [
+        1,
+        1,
+        1
+      ],
+      "P22": [
+        1,
+        1,
+        1
+      ],
+      "P23": [
+        1,
+        1,
+        1
+      ],
+      "P24": [
+        1,
+        1,
+        1
+      ],
+      "P25": [
+        1,
+        1,
+        1
+      ],
+      "P26": [
+        1,
+        1,
+        1
+      ],
+      "P27": [
+        1,
+        1,
+        1
+      ],
+      "P28": [
+        1,
+        1,
+        1
+      ],
+      "P29": [
+        1,
+        1,
+        1
+      ],
+      "P30": [
+        1,
+        1,
+        1
+      ],
+      "P31": [
+        1,
+        1,
+        1
+      ],
+      "P32": [
+        1,
+        1,
+        1
+      ],
+      "U01": [
+        1,
+        1,
+        1
+      ],
+      "U02": [
+        1,
+        1,
+        1
+      ]
+    },
+    "unavoidable_quality_evidence": [],
+    "risk_floor_method": "Maximum necessary single-step minimum legal-mode risk, less1e-10 conservative rounding margin; nonnegative wear and compounded history cannot lower it",
+    "assumptions": [
+      "Audited engine action domain and fixed unit-lineage keys, including order/pump/1; no policy-selected UID redraws",
+      "Original three matched component recipes per pump; no substitutions",
+      "One repair attempt; fixed residual risk; at most one component replacement; no final pump replacement",
+      "No additional raw procurement or material creation; only declared initial stock and delivery",
+      "Source-bound offline proof: keyed future draws are not inputs to a deployed policy"
+    ],
+    "maximum_shipped_upper_bound": 34,
+    "unfulfilled_lower_bound": 0,
+    "relaxed_selected_orders": [
+      "P01",
+      "P02",
+      "P03",
+      "P04",
+      "P05",
+      "P06",
+      "P07",
+      "P08",
+      "P09",
+      "P10",
+      "P11",
+      "P12",
+      "P13",
+      "P14",
+      "P15",
+      "P16",
+      "P17",
+      "P18",
+      "P19",
+      "P20",
+      "P21",
+      "P22",
+      "P23",
+      "P24",
+      "P25",
+      "P26",
+      "P27",
+      "P28",
+      "P29",
+      "P30",
+      "P31",
+      "P32",
+      "U01",
+      "U02"
+    ],
+    "relaxed_blank_use": {
+      "housing": 34,
+      "rotor": 34,
+      "flange": 34
+    },
+    "states": 35,
+    "scope": "Necessary material/quality constraints only; selected subset is not a physical schedule",
+    "secondary_optimality_gap": null
+  },
+  "cohort_path": "output/stage2-search/quality-material-primary-bound/report.json",
+  "cohort_sha256": "86822494f72114c41191f8feeb843e9649d1ad06d8b2074db39bf0b14e88d2ac",
+  "fresh_independent_check": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 617,
+      "moves": 751,
+      "horizon_ticks": 14400,
+      "delivered_orders": 34,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 1255,
+        "P07": 1351,
+        "P13": 1508,
+        "P25": 1561,
+        "P31": 2209,
+        "P19": 2262,
+        "P04": 3256,
+        "P22": 3275,
+        "P10": 3357,
+        "P14": 4521,
+        "P02": 4641,
+        "P08": 5596,
+        "P26": 5644,
+        "P16": 5870,
+        "P28": 5938,
+        "P20": 6376,
+        "P17": 7549,
+        "P05": 7555,
+        "P29": 7675,
+        "P32": 7756,
+        "P11": 8737,
+        "P23": 9115,
+        "P09": 9418,
+        "P21": 9512,
+        "P03": 9997,
+        "P15": 10075,
+        "P27": 10179,
+        "P06": 10369,
+        "P18": 11575,
+        "P30": 11651,
+        "P12": 11659,
+        "P24": 11729,
+        "U01": 12626,
+        "U02": 12858
+      },
+      "tardiness_ticks": 130661,
+      "terminal_deadline_debt_ticks": 130661,
+      "grid_kwh": 7316.192744999784,
+      "energy_cost": 1378.4868092998595,
+      "carbon_kg": 2739.1276042501786,
+      "investment_cost": 150,
+      "total_cost": 1528.4868092998595,
+      "terminal_soc": 2400
+    }
+  },
+  "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+  "metrics": {
+    "orders": 34,
+    "shipped": 34,
+    "shipped_at": {
+      "P01": 1255,
+      "P07": 1351,
+      "P13": 1508,
+      "P25": 1561,
+      "P31": 2209,
+      "P19": 2262,
+      "P04": 3256,
+      "P22": 3275,
+      "P10": 3357,
+      "P14": 4521,
+      "P02": 4641,
+      "P08": 5596,
+      "P26": 5644,
+      "P16": 5870,
+      "P28": 5938,
+      "P20": 6376,
+      "P17": 7549,
+      "P05": 7555,
+      "P29": 7675,
+      "P32": 7756,
+      "P11": 8737,
+      "P23": 9115,
+      "P09": 9418,
+      "P21": 9512,
+      "P03": 9997,
+      "P15": 10075,
+      "P27": 10179,
+      "P06": 10369,
+      "P18": 11575,
+      "P30": 11651,
+      "P12": 11659,
+      "P24": 11729,
+      "U01": 12626,
+      "U02": 12858
+    },
+    "all_orders_fulfilled": true,
+    "total_tardiness_ticks": 130661,
+    "grid_kwh": 7316.192745,
+    "energy_cost": 1378.4868093,
+    "carbon_kg": 2739.12760425,
+    "terminal_soc": 2400,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 150,
+    "total_cost": 1528.4868092998595,
+    "operations": 617,
+    "moves": 751,
+    "unfinished": 0,
+    "global_optimality_gap": null
+  },
+  "operations": 617,
+  "moves": 751,
+  "activity_data_changed": false,
+  "secondary_optimality_gap": null,
+  "loading": "Optional 194KB gzip asset; fetched/decompressed only when explicitly selected"
+}

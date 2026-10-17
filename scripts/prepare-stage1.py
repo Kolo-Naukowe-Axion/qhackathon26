@@ -17,6 +17,7 @@ def main():
     parser.add_argument("--output", type=Path, default=ROOT / "output/stage1-ready")
     parser.add_argument("--export-final", action="store_true", help="Copy verified schedules to the required root filenames")
     parser.add_argument("--prepare-velox-packets", action="store_true", help="Explicitly prepare local SDK files, without submitting")
+    parser.add_argument("--time-indexed", action="store_true", help="Reproduce the earlier 4/39-bit time-indexed bundle instead of the compact order QUBOs")
     args = parser.parse_args()
     output = args.output.resolve()
     if output.exists() and any(output.iterdir()):
@@ -27,6 +28,17 @@ def main():
         subprocess.run([sys.executable, "-m", module, *map(str, options)], cwd=ROOT, check=True)
 
     run("unittest", "discover", "-s", "tests", "-p", "test_*.py")
+    if not args.time_indexed:
+        run("solver.audit", "--output", output / "formulation-audit.json")
+        options = ["--phase", "bundle", "--output", output / "compact"]
+        if args.export_final:
+            options.append("--export-final")
+        run("solver.compact", *options)
+        if args.prepare_velox_packets:
+            run("solver.velox", "--output", output / "velox-3x3")
+            run("solver.velox", "--encoding", "domain-wall", "--output", output / "velox-3x3-domain-wall")
+        print(f"Verified compact local bundle: {output / 'compact'}", flush=True)
+        return
     run("solver.quantum", "--output", output / "qaoa-2x2")
     run("solver.local", "--output", output / "anneal-3x3")
     if args.prepare_velox_packets:

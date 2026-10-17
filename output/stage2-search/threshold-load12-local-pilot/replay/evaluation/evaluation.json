@@ -1,0 +1,132 @@
+{
+  "schema": "stage2-threshold-evaluation.v1",
+  "seeds": [
+    100
+  ],
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "da50ae48f77512be433b042e8f6b8ecb40f7b2adc5ff35ba61bc769e3762b8a0",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/threshold.py": "f452bd46b160afcf56ed2870f8c1d9e45c47916ad3f02e7191868a5fe5f1e71c",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "params": [
+    {
+      "wip_low": 3,
+      "wip_high": 8,
+      "downstream_limit": 99,
+      "heat_limit": 99,
+      "family": 24,
+      "remaining": -4,
+      "due": 0.25,
+      "congested_mode": "standard",
+      "free_mode": "standard",
+      "late_mode": "standard",
+      "late_fraction": 0.7,
+      "lease_fraction": 0.25,
+      "grid_eco": false
+    }
+  ],
+  "selection_role": "validation_selected",
+  "rows": [
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 100,
+      "policy_id": "7ef3144a2ba3656ce1395ab810efae18108855b868569eecf6ea3ad867df4f50",
+      "params": {
+        "wip_low": 3,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 24,
+        "remaining": -4,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "standard",
+        "late_fraction": 0.7,
+        "lease_fraction": 0.25,
+        "grid_eco": false
+      },
+      "base_weights": {
+        "selector": "priority",
+        "policy_seed": 0
+      },
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 771,
+          "P07": 1817,
+          "P10": 2782,
+          "P04": 3462,
+          "P08": 3566,
+          "P02": 4375,
+          "P05": 4466,
+          "P09": 5183,
+          "P06": 5279,
+          "P11": 5378,
+          "P03": 5573
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 14620,
+        "grid_kwh": 3112.8093266666665,
+        "energy_cost": 616.0521348,
+        "carbon_kg": 1219.1387236666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 766.0521348,
+        "operations": 238,
+        "moves": 370,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "decisions": 96,
+      "action_changes": 2,
+      "reasons": {
+        "free": 68,
+        "late": 28
+      },
+      "wall_seconds": 1.0391852911561728
+    }
+  ],
+  "summaries": [
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "episodes": 1,
+      "invalid": 0,
+      "complete": 0,
+      "mean_unfulfilled": 3,
+      "mean_tardiness_ticks": 14620,
+      "empirical_cvar90_tardiness": 14620.0,
+      "risk_weight": 0.25,
+      "risk_adjusted_tardiness": 18275.0,
+      "mean_total_cost": 766.0521348,
+      "mean_action_changes": 2,
+      "simulation_cpu_seconds": 1.0391852911561728,
+      "global_optimality_gap": null
+    }
+  ],
+  "wall_seconds": 1.0618279168847948
+}

@@ -1,0 +1,138 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "legacy-warm-ppo-2026",
+      "kind": "sequential",
+      "checkpoint": "checkpoints/legacy-warm-ppo-2026.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2225/learning-v2-6116889/ppo-2026/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_learner": true,
+      "deterministic": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-warm-ppo-2027",
+      "kind": "sequential",
+      "checkpoint": "checkpoints/legacy-warm-ppo-2027.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2225/learning-v2-6116889/ppo-2027/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_learner": true,
+      "deterministic": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-warm-cem-2026",
+      "kind": "sequential",
+      "checkpoint": "checkpoints/legacy-warm-cem-2026.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2234/learning-v2-6116889/cem-2026/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_learner": true,
+      "deterministic": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-warm-bandit-2026",
+      "kind": "sequential",
+      "checkpoint": "checkpoints/legacy-warm-bandit-2026.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2234/learning-v2-6116889/bandit-2026/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_learner": true,
+      "deterministic": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-threshold-cem-2026",
+      "kind": "threshold",
+      "checkpoint": "checkpoints/legacy-threshold-cem-2026.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2225/threshold-v3-6117006/cem-2026-0/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_threshold": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-threshold-cem-2027",
+      "kind": "threshold",
+      "checkpoint": "checkpoints/legacy-threshold-cem-2027.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/axion-download-2225/threshold-v3-6117006/cem-2027-1/checkpoint.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "adapt_threshold": true,
+      "maintenance_outage_guard": true
+    },
+    {
+      "id": "legacy-routing-teacher",
+      "kind": "context_static",
+      "checkpoint": "checkpoints/legacy-routing-teacher.json",
+      "selection_provenance": {
+        "data": "Measured development TRAIN0\u201331 and reusedVALIDATION100\u2013115; ordinary1000\u20131031 also inspected, finaloutcomesuntouched",
+        "original_artifact": "output/stage2-search/routing-coefficients-training/training-teacher.json",
+        "shared_cost_reference": "compute-ledger.json",
+        "criterion": "Both warmPPO fitseeds and retained CEM/bandit/threshold controls included; no final-tape selection",
+        "source_group": "Original frozen dispatch; do not silently substitute later worker-calendar algorithm",
+        "maintenance_guard": "Explicit causal availability restriction shared by every comparator; original saved inference unchanged. Development replay before final."
+      },
+      "maintenance_outage_guard": true
+    }
+  ],
+  "selection_provenance": {
+    "data": "Pre-final development selection only; immutable artifact index carries source hashes and costs",
+    "cost_reference": "compute-ledger.json"
+  },
+  "trace_policy": "first_per_leaf"
+}

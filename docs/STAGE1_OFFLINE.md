@@ -1,5 +1,7 @@
 # Stage 1: verified local solvers
 
+> Superseded selection (17 October): the current runs use 1/3-bit order QUBOs and QAOA for both instances. See [current formulation, experiments and limits](STAGE1_COMPACT.md) and `output/stage1-selected.json`. The time-indexed results below remain retained comparison evidence.
+
 Updated 2026-10-16. Both mandatory method requirements have been exercised locally: A by QAOA on a simulator, B by classical QUBO simulated annealing. Exported makespans are 4 h and 8 h, independently verified optimal. No VeloxQ service or physical ODRA5 run is claimed.
 
 ## Reproduce
@@ -9,7 +11,7 @@ The standard-library formulation/reference export still works with `python3 -m s
 ```sh
 uv venv --python 3.11 .venv
 uv pip sync --python .venv/bin/python requirements-solver.lock.txt
-.venv/bin/python scripts/prepare-stage1.py --output output/stage1-reproduction
+.venv/bin/python scripts/prepare-stage1.py --time-indexed --output output/stage1-reproduction
 ```
 
 Choose a new output directory per run. Add `--export-final` to export verified schedules to the root `schedule_2x2.json` and `schedule_3x3.json`, and update the selection manifest at `output/stage1-selected.json`. The default command runs local solvers and the formulation audit; it does not invoke either remote adapter or prepare SDK packets. Both ODRA5 and VeloxQ are on user hold. Current evidence is in `output/stage1-local-ready/`; earlier runs remain in `output/stage1-ready/`.

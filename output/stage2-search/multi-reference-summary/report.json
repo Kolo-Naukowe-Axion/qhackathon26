@@ -1,0 +1,860 @@
+{
+  "schema": "tiny-multi-reference-evidence.v1",
+  "scope": "1\u20134 matched-BOM deterministic pumps; not stochastic flagship",
+  "role": "Same-instance development/reference experiments; zero final held-out tapes",
+  "rows": [
+    {
+      "pumps": 2,
+      "attendance": "automatic",
+      "operations": 32,
+      "moves": 38,
+      "development_heuristic": {
+        "makespan_ticks": 1238,
+        "weights": {
+          "wip_limit": 1,
+          "mode": "standard",
+          "remaining": -4
+        },
+        "trace_sha256": "080c8d22b3be0e98c4ae1e507a5c888bf93374ee32a8ca6de50404536580ce63",
+        "valid_candidates": 6,
+        "incomplete_candidates": 3,
+        "total_candidates": 6
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 885,
+          "cp_lower_bound_ticks": 700.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 15.005908000000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n2-scale15/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "OPTIMAL",
+          "incumbent_ticks": 863,
+          "cp_lower_bound_ticks": 863.0,
+          "optimal": true,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 14.525988000000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": 0.43453070683661643,
+          "trace_path": "output/stage2-search/multi-reference-600/n2/automatic/cp-trace.json"
+        }
+      ],
+      "best_checked_upper_bound_ticks": 863,
+      "best_reported_cp_lower_bound_ticks": 863.0,
+      "optimum_proven": true,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n2-automatic.json",
+          "lower_bound_ticks": 768,
+          "components": {
+            "all_mandatory_attendance": 700,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "three_forced_worker_walks_after_first_completion": 6,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Before64 no process completes: raw delivery>=4 and all first T/F durations>=60. Single T and F permit at most two starts, totaling<=10 mandatory attendance. This leaves>=54 non-attendance minutes in that prefix. After flange weld completes, its chain requires B-to-A, A-to-B, B-to-A walks, all after64 and disjoint from mandatory attendance. Last mandatory processing is full pumpQA, followed by shipping."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n2-automatic-buffer.json",
+          "lower_bound_ticks": 772,
+          "components": {
+            "all_mandatory_attendance": 700,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_walks_after_initial_prefix": 10
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        }
+      ],
+      "analytic_lower_bound_ticks": 772,
+      "analytic_certificate": {
+        "path": "output/stage2-search/multi-reference-bounds/n2-automatic-buffer.json",
+        "lower_bound_ticks": 772,
+        "components": {
+          "all_mandatory_attendance": 700,
+          "initial_prefix_without_mandatory_attendance": 54,
+          "last_pump_QA_shipping": 8,
+          "buffer_forced_walks_after_initial_prefix": 10
+        },
+        "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+      },
+      "analytic_automatic_lower_bound_ticks": 772,
+      "best_certified_lower_bound_ticks": 863.0,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.43453070683661643,
+        "upper": 0.43453070683661643,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    },
+    {
+      "pumps": 2,
+      "attendance": "full",
+      "operations": 32,
+      "moves": 38,
+      "development_heuristic": {
+        "makespan_ticks": 1991,
+        "weights": {
+          "wip_limit": 2,
+          "mode": "standard",
+          "remaining": -4
+        },
+        "trace_sha256": "8baec0e641902769710b995df1203b3524984cb93cecf9b630d6eae94327d35d",
+        "valid_candidates": 6,
+        "incomplete_candidates": 1,
+        "total_candidates": 6
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 2019,
+          "cp_lower_bound_ticks": 1950.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 15.000921000000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n2-scale15-full/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1980,
+          "cp_lower_bound_ticks": 1950.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 600.0341870000001,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-600/n2/full/cp-trace.json"
+        }
+      ],
+      "best_checked_upper_bound_ticks": 1980,
+      "best_reported_cp_lower_bound_ticks": 1950.0,
+      "optimum_proven": false,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n2-full.json",
+          "lower_bound_ticks": 1970,
+          "components": {
+            "all_mandatory_processing": 1950,
+            "first_loaded_delivery": 4,
+            "four_forced_worker_hall_walks": 8,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Single full-attendance worker makes all process and walk intervals disjoint. Initial delivery precedes every process; last required process is final pump QA, followed by shipping. Witness chain forces four hall transitions inside the processing span."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n2-full-buffer.json",
+          "lower_bound_ticks": 1974,
+          "components": {
+            "all_mandatory_processing": 1950,
+            "first_loaded_delivery": 4,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_worker_hall_walks": 12
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        }
+      ],
+      "analytic_lower_bound_ticks": 1974,
+      "analytic_certificate": {
+        "path": "output/stage2-search/multi-reference-bounds/n2-full-buffer.json",
+        "lower_bound_ticks": 1974,
+        "components": {
+          "all_mandatory_processing": 1950,
+          "first_loaded_delivery": 4,
+          "last_pump_QA_shipping": 8,
+          "buffer_forced_worker_hall_walks": 12
+        },
+        "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+      },
+      "analytic_full_attendance_lower_bound_ticks": 1974,
+      "best_certified_lower_bound_ticks": 1974,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.005555555555555536,
+        "upper": 0.008611955420466,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    },
+    {
+      "pumps": 3,
+      "attendance": "automatic",
+      "operations": 48,
+      "moves": 57,
+      "development_heuristic": {
+        "makespan_ticks": 1860,
+        "weights": {
+          "wip_limit": 1,
+          "mode": "standard",
+          "remaining": -4
+        },
+        "trace_sha256": "2f14b9deb7d242568105a60fa5458af026a1f9cd9a2b686d8942a4de50ed761e",
+        "valid_candidates": 9,
+        "incomplete_candidates": 6,
+        "total_candidates": 9
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1860,
+          "cp_lower_bound_ticks": 1050.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 15.001289000000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n3-scale15/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1371,
+          "cp_lower_bound_ticks": 1050.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 600.019762,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-600/n3/automatic/cp-trace.json"
+        },
+        {
+          "budget_seconds": 3600,
+          "status": "OPTIMAL",
+          "incumbent_ticks": 1191,
+          "cp_lower_bound_ticks": 1191.0,
+          "optimal": true,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 970.2705350000001,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": 0.5617128463476071,
+          "trace_path": "output/stage2-search/multi-reference-3600/n3/automatic/cp-trace.json"
+        }
+      ],
+      "constructive_upper_bound_ticks": 1435,
+      "best_checked_upper_bound_ticks": 1191,
+      "best_reported_cp_lower_bound_ticks": 1191.0,
+      "optimum_proven": true,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n3-automatic.json",
+          "lower_bound_ticks": 1118,
+          "components": {
+            "all_mandatory_attendance": 1050,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "three_forced_worker_walks_after_first_completion": 6,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Before64 no process completes: raw delivery>=4 and all first T/F durations>=60. Single T and F permit at most two starts, totaling<=10 mandatory attendance. This leaves>=54 non-attendance minutes in that prefix. After flange weld completes, its chain requires B-to-A, A-to-B, B-to-A walks, all after64 and disjoint from mandatory attendance. Last mandatory processing is full pumpQA, followed by shipping."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n3-automatic-buffer.json",
+          "lower_bound_ticks": 1126,
+          "components": {
+            "all_mandatory_attendance": 1050,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_walks_after_initial_prefix": 14
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        }
+      ],
+      "analytic_lower_bound_ticks": 1126,
+      "analytic_certificate": {
+        "path": "output/stage2-search/multi-reference-bounds/n3-automatic-buffer.json",
+        "lower_bound_ticks": 1126,
+        "components": {
+          "all_mandatory_attendance": 1050,
+          "initial_prefix_without_mandatory_attendance": 54,
+          "last_pump_QA_shipping": 8,
+          "buffer_forced_walks_after_initial_prefix": 14
+        },
+        "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+      },
+      "analytic_automatic_lower_bound_ticks": 1126,
+      "best_certified_lower_bound_ticks": 1191.0,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.5617128463476071,
+        "upper": 0.5617128463476071,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    },
+    {
+      "pumps": 3,
+      "attendance": "full",
+      "operations": 48,
+      "moves": 57,
+      "development_heuristic": {
+        "makespan_ticks": 2984,
+        "weights": {
+          "wip_limit": 3,
+          "mode": "standard",
+          "remaining": 0
+        },
+        "trace_sha256": "b71205b4d2672c76e83c750ec97153199ac390cc4f70d2d380b622bc7fd3ec01",
+        "valid_candidates": 9,
+        "incomplete_candidates": 3,
+        "total_candidates": 9
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 3066,
+          "cp_lower_bound_ticks": 2925.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 15.001772,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n3-scale15-full/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 3066,
+          "cp_lower_bound_ticks": 2925.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 600.024444,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-600/n3/full/cp-trace.json"
+        }
+      ],
+      "best_checked_upper_bound_ticks": 2984,
+      "best_reported_cp_lower_bound_ticks": 2925.0,
+      "optimum_proven": false,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n3-full.json",
+          "lower_bound_ticks": 2945,
+          "components": {
+            "all_mandatory_processing": 2925,
+            "first_loaded_delivery": 4,
+            "four_forced_worker_hall_walks": 8,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Single full-attendance worker makes all process and walk intervals disjoint. Initial delivery precedes every process; last required process is final pump QA, followed by shipping. Witness chain forces four hall transitions inside the processing span."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n3-full-buffer.json",
+          "lower_bound_ticks": 2953,
+          "components": {
+            "all_mandatory_processing": 2925,
+            "first_loaded_delivery": 4,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_worker_hall_walks": 16
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        }
+      ],
+      "analytic_lower_bound_ticks": 2953,
+      "analytic_certificate": {
+        "path": "output/stage2-search/multi-reference-bounds/n3-full-buffer.json",
+        "lower_bound_ticks": 2953,
+        "components": {
+          "all_mandatory_processing": 2925,
+          "first_loaded_delivery": 4,
+          "last_pump_QA_shipping": 8,
+          "buffer_forced_worker_hall_walks": 16
+        },
+        "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+      },
+      "analytic_full_attendance_lower_bound_ticks": 2953,
+      "best_certified_lower_bound_ticks": 2953,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.0,
+        "upper": 0.010497798848628559,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    },
+    {
+      "pumps": 4,
+      "attendance": "automatic",
+      "operations": 64,
+      "moves": 76,
+      "development_heuristic": {
+        "makespan_ticks": 2482,
+        "weights": {
+          "wip_limit": 1,
+          "mode": "standard",
+          "remaining": -4
+        },
+        "trace_sha256": "b4e2c5d51c04efe73c14005c7d2fa4ee0437fa7eb24cc56a9472ca226ed7382d",
+        "valid_candidates": 12,
+        "incomplete_candidates": 9,
+        "total_candidates": 12
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 2482,
+          "cp_lower_bound_ticks": 1400.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 15.001128000000001,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n4-scale15/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 2482,
+          "cp_lower_bound_ticks": 1400.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 600.013221,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-600/n4/automatic/cp-trace.json"
+        },
+        {
+          "budget_seconds": 3600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1732,
+          "cp_lower_bound_ticks": 1400.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 3311.3286630000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-3600/n4/automatic/cp-trace.json"
+        },
+        {
+          "budget_seconds": 1770,
+          "scheduler_wall_cap_seconds": 1800,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1567,
+          "cp_lower_bound_ticks": 1466.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 1770.17006022,
+          "workers": 16,
+          "source_sha256": {
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-parallel-axion/collected/result/cp-trace.json",
+          "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+          "job_id": "6117466",
+          "cost": {
+            "allocated_cpus": 16,
+            "scheduler_elapsed_seconds": 1779,
+            "allocated_cpu_hours": 7.906666666666666,
+            "slurm_total_cpu_seconds": 27754.0,
+            "slurm_CPUTimeRAW": 28464,
+            "reported_MaxRSS_by_step": {
+              "6117466": "",
+              "6117466.batch": "1747388K",
+              "6117466.extern": ""
+            },
+            "gpu_hours": 0,
+            "scheduler_requested_cap_seconds": 1800,
+            "budget_overrun_seconds": 0,
+            "scope": "Actual Slurm allocation and measured process CPU; not an apples-to-apples hardware speedup benchmark"
+          },
+          "fresh_search": true,
+          "cp_proof_resumed": false
+        },
+        {
+          "budget_seconds": 7170,
+          "scheduler_wall_cap_seconds": 7200,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 1541,
+          "cp_lower_bound_ticks": 1524.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 7170.320075787001,
+          "workers": 16,
+          "source_sha256": {
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/final-independent-audit/reference-2h-6117555/derived-normalized-witness.json",
+          "raw_cp_trace_path": "output/stage2-search/multi-reference-2h-axion/completed/multi-reference-2h-20261017T0116/result/cp-trace.json",
+          "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+          "job_id": "6117555",
+          "fresh_search": true,
+          "cp_proof_resumed": false,
+          "cost": {
+            "scheduler_elapsed_seconds": 7174.0,
+            "allocated_cpu_hours": 31.884444444444444,
+            "process_cpu_seconds": 114101.45280309001,
+            "gpu_hours": 0
+          },
+          "audit_path": "output/stage2-search/final-independent-audit/reference-2h-6117555/report.json",
+          "audit_sha256": "d0e913cbae461891b66404e831c7d868b3c3d814bce4fb75d104aba5b444f4ac",
+          "methodology_seal_sha256": "96bca6796eff427102dbdc59c14ffb1693b70e04594ecf17baebc08087a54a14",
+          "upper_witness_kind": "one-field normalized derived copy; all physical timings unchanged",
+          "raw_stock_identity_valid": false,
+          "derived_stock_identity_valid": true,
+          "dispatch_domain_scope": "CP lower bound permits earlier future reservations; derived upper witness meets birth-at-dispatch stock identity. Identical domain optima are not asserted.",
+          "date_utc": "2026-10-17",
+          "completed_closeout": true
+        }
+      ],
+      "constructive_upper_bound_ticks": 1732,
+      "best_checked_upper_bound_ticks": 1541,
+      "best_reported_cp_lower_bound_ticks": 1524.0,
+      "optimum_proven": false,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n4-automatic.json",
+          "lower_bound_ticks": 1468,
+          "components": {
+            "all_mandatory_attendance": 1400,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "three_forced_worker_walks_after_first_completion": 6,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Before64 no process completes: raw delivery>=4 and all first T/F durations>=60. Single T and F permit at most two starts, totaling<=10 mandatory attendance. This leaves>=54 non-attendance minutes in that prefix. After flange weld completes, its chain requires B-to-A, A-to-B, B-to-A walks, all after64 and disjoint from mandatory attendance. Last mandatory processing is full pumpQA, followed by shipping."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n4-automatic-buffer.json",
+          "lower_bound_ticks": 1480,
+          "components": {
+            "all_mandatory_attendance": 1400,
+            "initial_prefix_without_mandatory_attendance": 54,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_walks_after_initial_prefix": 18
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        },
+        {
+          "path": "output/reference-bound-extension/report.json",
+          "lower_bound_ticks": 1482,
+          "components": {
+            "mandatory_attendance": 1400,
+            "prefix_nonattendance": 54,
+            "selected_required_hall_walks": 20,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Let P=[0,64) minus required attendance, measure>=54. Reserved ASM capacity3 plus one QA output allow atmost4 accepted unconsumed components; no QA can complete while sole worker is inB. Each productive B excursion starts atmostone assembly, and the first must weld before any assembly, giving n+1 excursions and2(n+1) selected2-minute walks. Only the first selected outward walk can overlap P, by o<=2. If it does, arrival b<=66, while first required B work starts>=72, so G=[max(64,b),72) has measure>=o and is disjoint from P, selected walks and required attendance. Therefore union(P,selectedwalks,G) has measure>=54+4(n+1). Add350n disjoint required attendance and8 final shipping after the last full pumpQA. Extra unproductive early walks do not invalidate the union argument; no claim that all nonwalking idle alone is>=54 is needed.",
+          "proof_path": "output/reference-bound-extension/PROOF.md",
+          "proof_sha256": "a3e8f6f9ddfaa1874e4f9b94661ff8a1a1c21d0e4c975a10b5d89f2a2b884e7d",
+          "bound_source_sha256": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+          "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+          "previous_lower_bound_ticks": 1480,
+          "complete_witnesses_checked": 26,
+          "supplemental": true,
+          "scope": "Exact guarded deterministic automatic-attendance1\u20134-pump reference; no global flagship gap, no saved CP-bound modification"
+        }
+      ],
+      "supplemental_bound_extension": {
+        "path": "output/reference-bound-extension/report.json",
+        "lower_bound_ticks": 1482,
+        "components": {
+          "mandatory_attendance": 1400,
+          "prefix_nonattendance": 54,
+          "selected_required_hall_walks": 20,
+          "last_pump_QA_shipping": 8
+        },
+        "proof": "Let P=[0,64) minus required attendance, measure>=54. Reserved ASM capacity3 plus one QA output allow atmost4 accepted unconsumed components; no QA can complete while sole worker is inB. Each productive B excursion starts atmostone assembly, and the first must weld before any assembly, giving n+1 excursions and2(n+1) selected2-minute walks. Only the first selected outward walk can overlap P, by o<=2. If it does, arrival b<=66, while first required B work starts>=72, so G=[max(64,b),72) has measure>=o and is disjoint from P, selected walks and required attendance. Therefore union(P,selectedwalks,G) has measure>=54+4(n+1). Add350n disjoint required attendance and8 final shipping after the last full pumpQA. Extra unproductive early walks do not invalidate the union argument; no claim that all nonwalking idle alone is>=54 is needed.",
+        "proof_path": "output/reference-bound-extension/PROOF.md",
+        "proof_sha256": "a3e8f6f9ddfaa1874e4f9b94661ff8a1a1c21d0e4c975a10b5d89f2a2b884e7d",
+        "bound_source_sha256": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+        "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+        "previous_lower_bound_ticks": 1480,
+        "complete_witnesses_checked": 26,
+        "supplemental": true,
+        "scope": "Exact guarded deterministic automatic-attendance1\u20134-pump reference; no global flagship gap, no saved CP-bound modification"
+      },
+      "analytic_lower_bound_ticks": 1482,
+      "analytic_certificate": {
+        "path": "output/reference-bound-extension/report.json",
+        "lower_bound_ticks": 1482,
+        "components": {
+          "mandatory_attendance": 1400,
+          "prefix_nonattendance": 54,
+          "selected_required_hall_walks": 20,
+          "last_pump_QA_shipping": 8
+        },
+        "proof": "Let P=[0,64) minus required attendance, measure>=54. Reserved ASM capacity3 plus one QA output allow atmost4 accepted unconsumed components; no QA can complete while sole worker is inB. Each productive B excursion starts atmostone assembly, and the first must weld before any assembly, giving n+1 excursions and2(n+1) selected2-minute walks. Only the first selected outward walk can overlap P, by o<=2. If it does, arrival b<=66, while first required B work starts>=72, so G=[max(64,b),72) has measure>=o and is disjoint from P, selected walks and required attendance. Therefore union(P,selectedwalks,G) has measure>=54+4(n+1). Add350n disjoint required attendance and8 final shipping after the last full pumpQA. Extra unproductive early walks do not invalidate the union argument; no claim that all nonwalking idle alone is>=54 is needed.",
+        "proof_path": "output/reference-bound-extension/PROOF.md",
+        "proof_sha256": "a3e8f6f9ddfaa1874e4f9b94661ff8a1a1c21d0e4c975a10b5d89f2a2b884e7d",
+        "bound_source_sha256": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+        "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+        "previous_lower_bound_ticks": 1480,
+        "complete_witnesses_checked": 26,
+        "supplemental": true,
+        "scope": "Exact guarded deterministic automatic-attendance1\u20134-pump reference; no global flagship gap, no saved CP-bound modification"
+      },
+      "analytic_automatic_lower_bound_ticks": 1482,
+      "best_certified_lower_bound_ticks": 1524.0,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.6106424399740429,
+        "upper": 0.6286089238845145,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    },
+    {
+      "pumps": 4,
+      "attendance": "full",
+      "operations": 64,
+      "moves": 76,
+      "development_heuristic": {
+        "makespan_ticks": 3960,
+        "weights": {
+          "wip_limit": 2,
+          "mode": "standard",
+          "remaining": -4
+        },
+        "trace_sha256": "cc98fa24d81bc49d143bcf63e2a37cfde2e30bc56d9ea9f6fdabce962af541cb",
+        "valid_candidates": 12,
+        "incomplete_candidates": 6,
+        "total_candidates": 12
+      },
+      "cp_runs": [
+        {
+          "budget_seconds": 15,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 4090,
+          "cp_lower_bound_ticks": 3900.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 14.999993000000002,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-pilot/n4-scale15-full/cp-trace.json"
+        },
+        {
+          "budget_seconds": 600,
+          "status": "FEASIBLE",
+          "incumbent_ticks": 4090,
+          "cp_lower_bound_ticks": 3900.0,
+          "optimal": false,
+          "valid": true,
+          "all_orders_fulfilled": true,
+          "wall_seconds": 600.02898,
+          "workers": 1,
+          "source_sha256": {
+            "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+            "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+            "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+            "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+          },
+          "sources_stable": true,
+          "exact_heuristic_gap": null,
+          "trace_path": "output/stage2-search/multi-reference-600/n4/full/cp-trace.json"
+        }
+      ],
+      "best_checked_upper_bound_ticks": 3960,
+      "best_reported_cp_lower_bound_ticks": 3900.0,
+      "optimum_proven": false,
+      "analytic_certificates": [
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n4-full.json",
+          "lower_bound_ticks": 3920,
+          "components": {
+            "all_mandatory_processing": 3900,
+            "first_loaded_delivery": 4,
+            "four_forced_worker_hall_walks": 8,
+            "last_pump_QA_shipping": 8
+          },
+          "proof": "Single full-attendance worker makes all process and walk intervals disjoint. Initial delivery precedes every process; last required process is final pump QA, followed by shipping. Witness chain forces four hall transitions inside the processing span."
+        },
+        {
+          "path": "output/stage2-search/multi-reference-bounds/n4-full-buffer.json",
+          "lower_bound_ticks": 3932,
+          "components": {
+            "all_mandatory_processing": 3900,
+            "first_loaded_delivery": 4,
+            "last_pump_QA_shipping": 8,
+            "buffer_forced_worker_hall_walks": 20
+          },
+          "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+        }
+      ],
+      "analytic_lower_bound_ticks": 3932,
+      "analytic_certificate": {
+        "path": "output/stage2-search/multi-reference-bounds/n4-full-buffer.json",
+        "lower_bound_ticks": 3932,
+        "components": {
+          "all_mandatory_processing": 3900,
+          "first_loaded_delivery": 4,
+          "last_pump_QA_shipping": 8,
+          "buffer_forced_worker_hall_walks": 20
+        },
+        "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix."
+      },
+      "analytic_full_attendance_lower_bound_ticks": 3932,
+      "best_certified_lower_bound_ticks": 3932,
+      "heuristic_makespan_gap_interval": {
+        "lower": 0.0,
+        "upper": 0.007121057985757906,
+        "explanation": "Optimum lies between rigorous lower bound and best checked complete upper bound; this is an interval, not an exact gap"
+      }
+    }
+  ],
+  "grid_valid": 54,
+  "grid_incomplete": 28,
+  "source_sha256": {
+    "output/stage2-search/multi-reference-heuristic-grid/report.json": "0d7b520e5483d8e269c1440d3f19c6d0c63ce816308d72698a8552e13612547f",
+    "output/stage2-search/multi-reference-pilot/n2-scale15/report.json": "dbf9654dc77e7825a92c2aa239d65ee4ee7a8d66dce02360c013ed1a4f0c21e5",
+    "output/stage2-search/multi-reference-600/n2/automatic/report.json": "28981241c4bbcddafd23c5f18281e1b34ac4ebeb2d4c994661e25d7f26c91a43",
+    "output/stage2-search/multi-reference-bounds/n2-automatic.json": "693f05085414b25c359625e2252c1bcea97aebff480a8cdf8077957566db1356",
+    "output/stage2-search/multi-reference-bounds/n2-automatic-buffer.json": "bf0d91c341be4f9d3a489eca016588b45377471dcca1ad7a24500a06f42b4285",
+    "output/stage2-search/multi-reference-pilot/n2-scale15-full/report.json": "397cd96075cbd2bcb8e706071e12accf0d4a1f84d1712bca3b302865e6a9e0eb",
+    "output/stage2-search/multi-reference-600/n2/full/report.json": "fb8a6cafefc59c997ab078123af78d99c50886a02ff7b30ee473215ba46fcfbd",
+    "output/stage2-search/multi-reference-bounds/n2-full.json": "7fb861f583dbffb1686f3679b298c1e7c4d43c3293a1607948b648a900cbfc8f",
+    "output/stage2-search/multi-reference-bounds/n2-full-buffer.json": "9f1c64f66b34bbb49a66d11a3b94ea489fc0b3d4a82b777398b5a12df7f01f66",
+    "output/stage2-search/multi-reference-pilot/n3-scale15/report.json": "444057097cb43243c0e8deea82390d45f48ae70e31ab8c4c14136bdac07a3c39",
+    "output/stage2-search/multi-reference-600/n3/automatic/report.json": "eb78f6c97027ae4da9f37216078b8f9c468de2675fa0005466a9079ac5e78122",
+    "output/stage2-search/multi-reference-3600/n3/automatic/report.json": "199d570ebe9fc469f01891b11662b8e7ab4a8e286826168a673b361d7e8a4e84",
+    "output/stage2-search/multi-reference-constructive/n3/report.json": "57ec10947f9d8fad1f2d33213579d85440229528dc144809fb4228f98748f8b6",
+    "output/stage2-search/multi-reference-bounds/n3-automatic.json": "640413fc2698f3645ad4b6258a6d6370e5ae2e1cad03a9176cc20cabda6f80ba",
+    "output/stage2-search/multi-reference-bounds/n3-automatic-buffer.json": "eeca4bb2c5856a7f49e2c0765fb3102fe750bed8274faf90e6521bc5202409d4",
+    "output/stage2-search/multi-reference-pilot/n3-scale15-full/report.json": "016b9bc9a568afd004c03f8ff7ed51d057346c37fbc8799ed00539991414be59",
+    "output/stage2-search/multi-reference-600/n3/full/report.json": "57703d68e10b2948629b4b2597dbc3101b1038f138c9699a47b017d5ea5651ff",
+    "output/stage2-search/multi-reference-bounds/n3-full.json": "4aa8b45b2cf3eaaae621152283c9abeb6fd3a9af33fcb0d2e0ce26128c9d73f0",
+    "output/stage2-search/multi-reference-bounds/n3-full-buffer.json": "5c98e84df2a702a05737491b133eea4c9e5826cec7c75c352fa1ec515774eb42",
+    "output/stage2-search/multi-reference-pilot/n4-scale15/report.json": "9d46a3b664d4edd0fb6391fe3bc2dce5a0656d8ebc910ca5217f2d1c03f8a35b",
+    "output/stage2-search/multi-reference-600/n4/automatic/report.json": "a64094a7ef1cfaba24c5e763c94c56d232f084b792417277f6c2411e98fd90fc",
+    "output/stage2-search/multi-reference-3600/n4/automatic/report.json": "ac3e2077ae56699aa1bdcda399c0dd7951a8a97431a310bf9645a9e583343442",
+    "output/stage2-search/multi-reference-parallel-axion/independent-audit.json": "027eaf3bd45104c269a7b92957ba8c5179446cab24d69eb41a865ad3480e54cc",
+    "output/stage2-search/multi-reference-parallel-axion/collected/result/report.json": "cff70dae39ed943fb27b80efae691185183d267c2dc6712fcbf0b81c40aee9b8",
+    "output/stage2-search/multi-reference-parallel-axion/collected/collection-status.json": "6e3043b69db133644077826eeec4746f510da2d87208c2359d5fa53f3ecf94b2",
+    "output/stage2-search/final-independent-audit/reference-2h-6117555/report.json": "d0e913cbae461891b66404e831c7d868b3c3d814bce4fb75d104aba5b444f4ac",
+    "output/stage2-search/reference-2h-methodology-review/final-seal.json": "96bca6796eff427102dbdc59c14ffb1693b70e04594ecf17baebc08087a54a14",
+    "output/stage2-search/multi-reference-2h-axion/completed/multi-reference-2h-20261017T0116/result/report.json": "9ceba65416fbe4376e5ad84baeec144042a7fd61a9a396949deeb7310184c0cd",
+    "output/stage2-search/final-independent-audit/reference-2h-6117555/derived-normalized-witness.json": "76bc078f004a0176effc955dc7810d0ff3d49442da00e047465c45be2e11182a",
+    "output/stage2-search/multi-reference-2h-axion/completed/multi-reference-2h-20261017T0116/result/cp-trace.json": "62c623db1a7d7bfde32674ea105fa5000217657666fc5fc576ae9f1de7ce4f71",
+    "output/stage2-search/final-independent-audit/reference-2h-6117555/raw-new_cp-stock-identity.json": "94704bb4e4a2622cac1f343d2a86be7b4e38f5e436db324e4beeac05c8346a2a",
+    "output/stage2-search/final-compute-0316-summary.json": "90251f9a858b097a78a69382e6e2dbbf07c38ad7aa826841c9cfe2cfd0ec1df3",
+    "output/stage2-search/multi-reference-constructive/n4/report.json": "934a8f39e69b74c28090590666e78db45c6bdeb1778f2aee2f192339c1540e06",
+    "output/stage2-search/multi-reference-bounds/n4-automatic.json": "0e79af84a87b6d4e1082d5d02a76fe6d29e007c4b59bd2d88e044344c62d496e",
+    "output/stage2-search/multi-reference-bounds/n4-automatic-buffer.json": "2810a6ed1bfb8f0628c0d64b79f53a6cf3f3397d4c0c54b64b5becaf68edf21b",
+    "output/reference-bound-extension/report.json": "b9ea5b51ca84cfe9e59f365cb22e44f7aa9dc6028813626723f73ca48f3da3e6",
+    "output/reference-bound-extension/bound.py": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+    "output/reference-bound-extension/PROOF.md": "a3e8f6f9ddfaa1874e4f9b94661ff8a1a1c21d0e4c975a10b5d89f2a2b884e7d",
+    "output/stage2-search/multi-reference-pilot/n4-scale15-full/report.json": "4f2908a9766b8c6a41d19ec2aadaab9ef13128478c818e836bd2c5851eb39bd1",
+    "output/stage2-search/multi-reference-600/n4/full/report.json": "0c9d7e0dbcceb0a2c8d6cee5c58d292fd043e79512607932b0abb0895e0da480",
+    "output/stage2-search/multi-reference-bounds/n4-full.json": "4334e4a00bb855f1ec35e8445a6940829100f4234859c356a27462c20997baa6",
+    "output/stage2-search/multi-reference-bounds/n4-full-buffer.json": "4a2bbf8c5ba5f0fed23a280de1d15c19a22f077f5241e1cf44864d0c8d31b207"
+  },
+  "analytic_bound_proof": "docs/STAGE2_REFERENCE_MULTI.md#full-attendance-analytic-lower-bound"
+}

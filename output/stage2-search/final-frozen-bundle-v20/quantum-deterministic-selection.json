@@ -1,0 +1,314 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "no-batch-priority-12",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 64,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "no-batch-exact-12",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "exact",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 64,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "no-batch-priority-16",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 7,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 448,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "no-batch-exact-16",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "exact",
+        "policy_seed": 7,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 448,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "no-batch-priority-24",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 7,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 1664,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "no-batch-exact-24",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "exact",
+        "policy_seed": 7,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "task_id": 1664,
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json"
+      }
+    }
+  ],
+  "trace_policy": "first_per_leaf",
+  "selection_provenance": {
+    "data": "TRAIN0\u201331 and reusedVALIDATION100\u2013115; all final outcomes untouched at construction",
+    "criterion": "Lexicographic invalid,missing,cutoff deadline debt,energy+rental cost",
+    "plan": "predeclared-analysis-plan-v2.json",
+    "cost_reference": "compute-ledger.json"
+  }
+}

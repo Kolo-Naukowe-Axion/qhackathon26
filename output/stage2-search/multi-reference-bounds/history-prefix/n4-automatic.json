@@ -1,0 +1,37 @@
+{
+  "schema": "tiny-multi-automatic-bound.v1",
+  "pumps": 4,
+  "components": {
+    "all_mandatory_attendance": 1400,
+    "initial_prefix_without_mandatory_attendance": 54,
+    "three_forced_worker_walks_after_first_completion": 6,
+    "last_pump_QA_shipping": 8
+  },
+  "lower_bound_ticks": 1468,
+  "earliest_process_completion_ticks": 64,
+  "maximum_attendance_before_that_tick": 10,
+  "proof": "Before64 no process completes: raw delivery>=4 and all first T/F durations>=60. Single T and F permit at most two starts, totaling<=10 mandatory attendance. This leaves>=54 non-attendance minutes in that prefix. After flange weld completes, its chain requires B-to-A, A-to-B, B-to-A walks, all after64 and disjoint from mandatory attendance. Last mandatory processing is full pumpQA, followed by shipping.",
+  "guards": [
+    "All components initially RAW_A, release0",
+    "One fixed T and one fixed F",
+    "Every first T/F processing duration>=60",
+    "First T/F start attendance exactly5",
+    "Initial loaded delivery>=4",
+    "Fixed two-hall layout",
+    "Full S/QA/assembly attendance",
+    "Zero setups; deterministic recipes; no binding service or hidden events"
+  ],
+  "deliberately_excluded": [
+    "The first A-to-B walk, which may overlap prefix non-attendance",
+    "Per-pump join gaps",
+    "Additional walks",
+    "Empty repositioning",
+    "Buffer blocking"
+  ],
+  "flagship_bound": false,
+  "changes_saved_cp_bound": false,
+  "instance_path": "output/stage2-search/multi-reference-pilot/n4-scale15/instance.json",
+  "instance_file_sha256": "99816f6be6d0ab06225e1c3d1cb4941d28a42a8b73a6b61715f8f83d68806829",
+  "construction_source_sha256": "fcfe8a999458e2d12405dac10335522d570e3b30c4ec88956440096358f08563",
+  "reference_guard_sha256": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe"
+}

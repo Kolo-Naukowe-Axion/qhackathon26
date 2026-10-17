@@ -1,0 +1,26 @@
+{
+  "schema": "stage2-independent-boundary-probability-audit.v1",
+  "valid": true,
+  "formula": {
+    "all_zero_one_sided_95_upper": 0.018089625911569818,
+    "all_one_one_sided_95_lower": 0.9819103740884302,
+    "max_normalized_tape_weight": 0.00609375
+  },
+  "assumptions": [
+    "Independent environment clusters conditional on declared strata/fixed actor cohort",
+    "Cluster outcome in[0,1]; actors nested, not separate factories",
+    "Nonnegative normalized fixed environment weights",
+    "Pseudorandomtape uncertainty assumption explicit; no allfuture guarantee"
+  ],
+  "proof": [
+    "Pr(X_i=0)<=1-E[X_i] for bounded nonnegativeX_i",
+    "Log product <= sum(w_i/w_max)*log(1-mu_i), because each log term is nonpositive",
+    "WeightedJensen <= log(1-sum(w_i*mu_i))/w_max",
+    "Invert atalpha=.05; complement X_i for allone case"
+  ],
+  "scope": "Exploratory probability boundary only; replaces misleading degenerate bootstrap population interval; does not change frozen policies or predeclared primary quantum contrasts",
+  "source_hashes": {
+    "final_report.py": "d00a1597f8ab4dd957b3e52bd5dd131fd16e3c42aaaee7fe2de2e9e35d4cda0f",
+    "protocol": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7"
+  }
+}

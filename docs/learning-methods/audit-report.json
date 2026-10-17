@@ -1,0 +1,201 @@
+{
+  "status": "passed",
+  "seed": 20261017,
+  "scope": "finite example and implementation checks; general guarantees are proved in guide.md",
+  "checks": [
+    {
+      "name": "zero-energy iff independently feasible, including empty/singleton domains",
+      "status": "passed",
+      "models": [
+        {
+          "instance": "A",
+          "horizon": 2,
+          "encoding": "onehot",
+          "bits": 0,
+          "assignments": 1,
+          "zero_states": 0,
+          "minimum": 4
+        },
+        {
+          "instance": "A",
+          "horizon": 2,
+          "encoding": "domain-wall",
+          "bits": 0,
+          "assignments": 1,
+          "zero_states": 0,
+          "minimum": 4
+        },
+        {
+          "instance": "A",
+          "horizon": 3,
+          "encoding": "onehot",
+          "bits": 4,
+          "assignments": 16,
+          "zero_states": 0,
+          "minimum": 2
+        },
+        {
+          "instance": "A",
+          "horizon": 3,
+          "encoding": "domain-wall",
+          "bits": 0,
+          "assignments": 1,
+          "zero_states": 0,
+          "minimum": 2
+        },
+        {
+          "instance": "A",
+          "horizon": 4,
+          "encoding": "onehot",
+          "bits": 8,
+          "assignments": 256,
+          "zero_states": 1,
+          "minimum": 0
+        },
+        {
+          "instance": "A",
+          "horizon": 4,
+          "encoding": "domain-wall",
+          "bits": 4,
+          "assignments": 16,
+          "zero_states": 1,
+          "minimum": 0
+        },
+        {
+          "instance": "A",
+          "horizon": 5,
+          "encoding": "onehot",
+          "bits": 12,
+          "assignments": 4096,
+          "zero_states": 7,
+          "minimum": 0
+        },
+        {
+          "instance": "A",
+          "horizon": 5,
+          "encoding": "domain-wall",
+          "bits": 8,
+          "assignments": 256,
+          "zero_states": 7,
+          "minimum": 0
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 2,
+          "encoding": "onehot",
+          "bits": 2,
+          "assignments": 4,
+          "zero_states": 0,
+          "minimum": 2
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 2,
+          "encoding": "domain-wall",
+          "bits": 0,
+          "assignments": 1,
+          "zero_states": 0,
+          "minimum": 2
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 3,
+          "encoding": "onehot",
+          "bits": 6,
+          "assignments": 64,
+          "zero_states": 0,
+          "minimum": 1
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 3,
+          "encoding": "domain-wall",
+          "bits": 2,
+          "assignments": 4,
+          "zero_states": 0,
+          "minimum": 1
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 4,
+          "encoding": "onehot",
+          "bits": 10,
+          "assignments": 1024,
+          "zero_states": 3,
+          "minimum": 0
+        },
+        {
+          "instance": "unequal-chain",
+          "horizon": 4,
+          "encoding": "domain-wall",
+          "bits": 6,
+          "assignments": 64,
+          "zero_states": 3,
+          "minimum": 0
+        }
+      ],
+      "total_assignments": 5804
+    },
+    {
+      "name": "printed scheduling matrices and example energies",
+      "status": "passed",
+      "onehot_assignments": 256,
+      "domain_wall_assignments": 16
+    },
+    {
+      "name": "source instance optima, counts and Example B intervals",
+      "status": "passed",
+      "optima": [
+        4,
+        8
+      ],
+      "B_bits": {
+        "onehot": 39,
+        "domain_wall": 30,
+        "binary_before_auxiliaries": 21
+      }
+    },
+    {
+      "name": "generic and printed QUBO-to-Ising conversions",
+      "status": "passed",
+      "assignments": 1268
+    },
+    {
+      "name": "domain-wall strict incident-degree bound on arbitrary weighted conflicts",
+      "status": "passed",
+      "assignments": 164
+    },
+    {
+      "name": "product quadratization and constrained linearisation",
+      "status": "passed",
+      "cubic_coefficients": [
+        -9,
+        -2,
+        0,
+        3,
+        11
+      ]
+    },
+    {
+      "name": "general equality expansion and four-bit slack example",
+      "status": "passed",
+      "assignments": 636
+    },
+    {
+      "name": "one-qubit phase-to-probability identity",
+      "status": "passed",
+      "angle_pairs": 49
+    },
+    {
+      "name": "annealing one-bit delta and fixed-variable substitution",
+      "status": "passed",
+      "randomized_sizes": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ]
+    }
+  ]
+}

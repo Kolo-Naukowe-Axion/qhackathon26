@@ -1,0 +1,117 @@
+{
+  "phase": "bundle",
+  "seeds": [
+    2026
+  ],
+  "results": [
+    {
+      "config": {
+        "size": "2x2",
+        "kind": "quantum",
+        "layers": 1,
+        "mixer": "x",
+        "restarts": 1
+      },
+      "runs": [
+        {
+          "seed": 2026,
+          "feasible_rate": 1.0,
+          "optimal_rate": 1.0,
+          "optimal_samples": 4096,
+          "total_samples": 4096,
+          "makespan": 4,
+          "optimality_gap": 0,
+          "ideal_ground_probability": 0.9999999999999984,
+          "expected_energy": 4.000000000000002,
+          "wall_seconds": 0.04103733296506107,
+          "circuit_operations": {
+            "h": 1,
+            "rz": 1,
+            "rx": 1
+          },
+          "directory": "output/stage1-compact/reproduction/compact/quantum-2x2"
+        }
+      ],
+      "mean_optimal_rate": 1.0,
+      "min_optimal_rate": 1.0,
+      "mean_feasible_rate": 1.0,
+      "median_wall_seconds": 0.04103733296506107,
+      "total_samples": 4096,
+      "optimal_samples": 4096,
+      "all_runs_optimal": true
+    },
+    {
+      "config": {
+        "size": "3x3",
+        "kind": "quantum",
+        "layers": 2,
+        "mixer": "local-x",
+        "restarts": 8
+      },
+      "runs": [
+        {
+          "seed": 2026,
+          "feasible_rate": 1.0,
+          "optimal_rate": 1.0,
+          "optimal_samples": 4096,
+          "total_samples": 4096,
+          "makespan": 8,
+          "optimality_gap": 0,
+          "ideal_ground_probability": 0.9999999999999547,
+          "expected_energy": 8.000000000000044,
+          "wall_seconds": 1.336588541045785,
+          "circuit_operations": {
+            "rz": 6,
+            "rzz": 6,
+            "rx": 6,
+            "h": 3
+          },
+          "directory": "output/stage1-compact/reproduction/compact/quantum-3x3"
+        }
+      ],
+      "mean_optimal_rate": 1.0,
+      "min_optimal_rate": 1.0,
+      "mean_feasible_rate": 1.0,
+      "median_wall_seconds": 1.336588541045785,
+      "total_samples": 4096,
+      "optimal_samples": 4096,
+      "all_runs_optimal": true
+    },
+    {
+      "config": {
+        "size": "3x3",
+        "kind": "anneal",
+        "sweeps": 256,
+        "schedule": "geometric"
+      },
+      "runs": [
+        {
+          "seed": 2026,
+          "feasible_rate": 1.0,
+          "optimal_rate": 1.0,
+          "optimal_samples": 512,
+          "total_samples": 512,
+          "makespan": 8,
+          "optimality_gap": 0,
+          "ideal_ground_probability": null,
+          "expected_energy": null,
+          "wall_seconds": 0.004829332930967212,
+          "circuit_operations": null,
+          "directory": "output/stage1-compact/reproduction/compact/anneal-3x3"
+        }
+      ],
+      "mean_optimal_rate": 1.0,
+      "min_optimal_rate": 1.0,
+      "mean_feasible_rate": 1.0,
+      "median_wall_seconds": 0.004829332930967212,
+      "total_samples": 512,
+      "optimal_samples": 512,
+      "all_runs_optimal": true
+    }
+  ],
+  "scope": "Fixed official instances only; random optimizer/sampler seeds, not unseen-instance evaluation",
+  "remote_backends_on_hold": [
+    "ODRA5",
+    "VeloxQ"
+  ]
+}

@@ -1,0 +1,136 @@
+{
+  "schema": "stage2-frozen-selected-policy-evaluation.v1",
+  "phase": "frozen-selection",
+  "evaluation_role": "development",
+  "frozen_utc": "2026-10-16T22:25:51Z",
+  "configs": [
+    {
+      "orders": 2,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "hard-home-qa",
+      "kind": "static",
+      "specialist": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true,
+        "qa_guard_threshold": 2,
+        "admission_rule": "campaign"
+      },
+      "selection_provenance": {
+        "data": "Handwritten DEVELOPMENT integration, no final-policy or performance claim",
+        "training_wall_seconds": 0
+      },
+      "backend": "tooling"
+    },
+    {
+      "id": "hard-home-qa-admission",
+      "kind": "static",
+      "specialist": true,
+      "admission": true,
+      "tool_policy_by_config": [
+        {
+          "config": {
+            "orders": 2,
+            "horizon": 5760,
+            "profile": "full"
+          },
+          "tool_policy": {
+            "mode": "hard"
+          }
+        }
+      ],
+      "weights_by_config": [
+        {
+          "config": {
+            "orders": 2,
+            "horizon": 5760,
+            "profile": "full"
+          },
+          "weights": {
+            "wip_limit": 3,
+            "mode": "standard",
+            "lease_calibration": true,
+            "qa_guard_threshold": 2,
+            "admission_rule": "campaign"
+          }
+        }
+      ],
+      "selection_provenance": {
+        "data": "Handwritten DEVELOPMENT integration, no final-policy or performance claim",
+        "training_wall_seconds": 0
+      },
+      "backend": "tooling"
+    }
+  ],
+  "selection_provenance": {
+    "data": "DEVELOPMENT tapes0,1 only",
+    "training_wall_seconds": 0
+  },
+  "selection_spec": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-eval-composition-development-smoke/selection.json",
+    "sha256": "95aac89fbd79b8531b041e340864cc3e6c2497895dba7ce85b5a2b80eed147ed"
+  },
+  "protocol": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-eval-composition-development-smoke/protocol.json",
+    "file_sha256": "00cbae7eff2abc3d3cc644e36375bde46328b8f34f4005f8c8539c927912e4d6",
+    "payload": {
+      "schema": "stage2-development-protocol.v1",
+      "seed_role": "DEVELOPMENT",
+      "selection": "Explicit development smoke tapes; no final performance claim",
+      "total_tapes": 2,
+      "leaves": [
+        {
+          "outcomes": [
+            "development"
+          ],
+          "probability": [
+            1,
+            1
+          ],
+          "seeds": [
+            0,
+            1
+          ],
+          "per_tape_weight": 0.5
+        }
+      ],
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff"
+    }
+  },
+  "artifacts": {},
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/final_eval.py": "10282becf9ac9f0a240a12251567460eee702c166674f5aa8af41b7cd7e357e8",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316"
+  },
+  "trace_policy": "first_per_leaf",
+  "statistics_scope": "Actor replicas are conditional outcomes within environment clusters, never additional factories",
+  "manifest_sha256": "83cdc9badedc742c8f660de7e5d3d6e994924e96d01bd8400d0c4192ed5b6a94"
+}

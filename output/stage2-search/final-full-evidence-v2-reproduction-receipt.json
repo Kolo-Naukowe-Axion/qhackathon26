@@ -1,0 +1,64 @@
+{
+  "schema": "stage2-full-evidence-reproduction-receipt.v1",
+  "valid": true,
+  "archive": "final-full-evidence-v2.tar.gz",
+  "archive_sha256": "185fb11fe991b39e5e1494e377d14501cfb4ce986e395059741139f16152977c",
+  "descriptor_sha256": "3b74885a57f8f868ba458de00f275243cb008df4c446111340ec49e80d2464c3",
+  "tested_runtime": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "numpy": "2.5.4",
+    "third_party_runtime_dependencies": [
+      "numpy"
+    ],
+    "minimum_python": "3.12",
+    "isolated_venv": "/private/tmp/qh26-full-evidence-v1-env",
+    "system_site_packages": false,
+    "torch_scipy_ortools_required": false
+  },
+  "byte_verification": {
+    "v1_extracted_payloads": 3005,
+    "v2_streamed_payloads": 3005,
+    "v2_total_members": 3006,
+    "external_manifest_hash_checked": true,
+    "all_v2_scientific_payloads_identical_to_tested_v1": true,
+    "changed_only": [
+      "README_FINAL_EVIDENCE.md",
+      "stage2/full_evidence_archive.py"
+    ]
+  },
+  "scientific_recomputation": {
+    "valid": true,
+    "groups": 74,
+    "rows": 23552,
+    "contrasts": 41,
+    "scope": "Original numeric/statistical payloads exact; local evidence paths and aggregation elapsed time excluded",
+    "bootstrap_replicates": 2000,
+    "all_numeric_metrics_and_41_contrast_interval_payloads_exact": true,
+    "source_hashes_exact": true,
+    "recomputation_wall_seconds": 102.2524940839503,
+    "compared_omissions": [
+      "Actual local evidence paths",
+      "Top-level aggregation wall time only"
+    ],
+    "original_report_sha256": "a14957473c67b01eacaf06b75334796fc6cb55d6a5905b9bcef1c53494655ac4",
+    "recomputed_report_sha256": "6e4e376e95d55af202b42ee26cf86a87b313628cd6e9259a68289b6c9d639d5a"
+  },
+  "physical_replay": {
+    "cohort": "frontier",
+    "complete_cohort_rows": 2304,
+    "retained_traces": 72,
+    "fresh_anchored_physical_and_identity_replays": 72,
+    "wall_seconds": 19.994093666784465,
+    "receipt_sha256": "42176ed3142cbbba9664d6a0b8fca125fde17c1f6b149d0f5c51d8c6d0cf09a2"
+  },
+  "executed_commands": [
+    "python -m stage2.full_evidence_archive verify --root . --descriptor /path/to/descriptor.json",
+    "python -m stage2.final_report --index output/stage2-search/final-full-evidence-index-relative.json --output reproduced-final-report --bootstrap 2000",
+    "python -m stage2.full_evidence_archive compare-report --output reproduced-final-report",
+    "PYTHONPATH=. python output/stage2-search/final-independent-audit/audit_completed_group.py --cohort frontier --evidence output/stage2-search/final-downloaded/final-frontier-6117515 --output reproduced-frontier-audit.json"
+  ],
+  "no_factory_or_solver_runs": true,
+  "no_policy_changes": true,
+  "no_upload_commit_or_publication": true,
+  "scope": "Reproduction of existing evidence; remaining520predeclared traces can be audited with packaged audit-all command; original per-row checks and prior592audit retained; posthoc diagnostic traces remain separate"
+}

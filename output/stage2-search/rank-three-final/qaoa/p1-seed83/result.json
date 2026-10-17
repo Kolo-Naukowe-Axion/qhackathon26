@@ -1,0 +1,453 @@
+{
+  "schema": "stage2-three-bit-qaoa.v1",
+  "layers": 1,
+  "seed": 83,
+  "shots": 1024,
+  "logical_qubits": 3,
+  "optimization": {
+    "optimizer": "coordinate",
+    "objective": "exact noiseless statevector expected QUBO energy",
+    "evaluations": 157,
+    "max_evaluations": 512,
+    "restarts": 4,
+    "attempts": [
+      {
+        "restart": 0,
+        "evaluations": 27,
+        "expected_energy": 0.07602063669152082,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 1,
+        "evaluations": 25,
+        "expected_energy": 0.0760238364733543,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 2,
+        "evaluations": 35,
+        "expected_energy": 0.2241320814717502,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 3,
+        "evaluations": 34,
+        "expected_energy": 0.22305032063491403,
+        "status": "bounded_coordinate_search"
+      }
+    ],
+    "cost_scale": 2,
+    "expected_energy": 0.07602063669152082,
+    "gamma": [
+      1.6591975511965975
+    ],
+    "beta": [
+      -0.343598775598299
+    ],
+    "history_best_improvements": [
+      {
+        "evaluation": 1,
+        "expected_energy": 0.49999999999999994,
+        "angles": [
+          0.0,
+          -1.5707963267948966
+        ]
+      },
+      {
+        "evaluation": 5,
+        "expected_energy": 0.4999999999999999,
+        "angles": [
+          0.0,
+          0.5235987755982987
+        ]
+      },
+      {
+        "evaluation": 9,
+        "expected_energy": 0.19699523679041775,
+        "angles": [
+          1.0471975511965976,
+          -0.5235987755982989
+        ]
+      },
+      {
+        "evaluation": 42,
+        "expected_energy": 0.17944207644060867,
+        "angles": [
+          1.3471975511965977,
+          -0.5235987755982989
+        ]
+      },
+      {
+        "evaluation": 44,
+        "expected_energy": 0.15867425384011308,
+        "angles": [
+          1.3471975511965977,
+          -0.22359877559829888
+        ]
+      },
+      {
+        "evaluation": 46,
+        "expected_energy": 0.13610020071454493,
+        "angles": [
+          1.6471975511965977,
+          -0.22359877559829888
+        ]
+      },
+      {
+        "evaluation": 50,
+        "expected_energy": 0.13338994094351625,
+        "angles": [
+          1.7671975511965976,
+          -0.22359877559829888
+        ]
+      },
+      {
+        "evaluation": 51,
+        "expected_energy": 0.07779571618142406,
+        "angles": [
+          1.7671975511965976,
+          -0.343598775598299
+        ]
+      },
+      {
+        "evaluation": 52,
+        "expected_energy": 0.07605230561235528,
+        "angles": [
+          1.6471975511965975,
+          -0.343598775598299
+        ]
+      },
+      {
+        "evaluation": 60,
+        "expected_energy": 0.07602063669152082,
+        "angles": [
+          1.6591975511965975,
+          -0.343598775598299
+        ]
+      }
+    ],
+    "elapsed_seconds": 0.0007366661448031664
+  },
+  "circuit": {
+    "qubits": 3,
+    "layers": 1,
+    "cost_scale": 2.0,
+    "gamma": [
+      1.6591975511965975
+    ],
+    "beta": [
+      -0.343598775598299
+    ],
+    "parameter_order": "all gamma, then all beta",
+    "ising_z_fields": [
+      -0.25,
+      0.0,
+      0.25
+    ],
+    "ising_zz_couplings": [
+      {
+        "i": 0,
+        "j": 1,
+        "value": 0.25
+      },
+      {
+        "i": 0,
+        "j": 2,
+        "value": -0.5
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "value": -0.25
+      }
+    ],
+    "dropped_global_phase_constant": 0.5,
+    "logical_depth_without_measurement": 12,
+    "gate_counts": {
+      "h": 3,
+      "rz": 5,
+      "cx": 6,
+      "rx": 3
+    },
+    "logical_gate_sequence": [
+      {
+        "name": "h",
+        "qubits": [
+          0
+        ]
+      },
+      {
+        "name": "h",
+        "qubits": [
+          1
+        ]
+      },
+      {
+        "name": "h",
+        "qubits": [
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          0
+        ],
+        "angle": -0.4147993877991494
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": 0.4147993877991494
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          1
+        ],
+        "angle": 0.4147993877991494
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          1
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": -0.8295987755982988
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": -0.4147993877991494
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          0
+        ],
+        "angle": -0.687197551196598
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          1
+        ],
+        "angle": -0.687197551196598
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          2
+        ],
+        "angle": -0.687197551196598
+      }
+    ],
+    "openqasm2": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[3];\ncreg c[3];\nh q[0];\nh q[1];\nh q[2];\nrz(-0.41479938779914938) q[0];\nrz(0.41479938779914938) q[2];\ncx q[0],q[1];\nrz(0.41479938779914938) q[1];\ncx q[0],q[1];\ncx q[0],q[2];\nrz(-0.82959877559829875) q[2];\ncx q[0],q[2];\ncx q[1],q[2];\nrz(-0.41479938779914938) q[2];\ncx q[1],q[2];\nrx(-0.68719755119659798) q[0];\nrx(-0.68719755119659798) q[1];\nrx(-0.68719755119659798) q[2];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\nmeasure q[2] -> c[2];\n",
+    "circuit_sha256": "90ceaf504fe66e0c8981ad7f603e9a97f1320e50aa05268f1cf3b73934c8f9bf",
+    "backend_status": "logical_only_not_transpiled_not_submitted",
+    "bit_order": "basis index bit i is qubit/variable i; count strings read q[n-1]...q[0]"
+  },
+  "ideal_probabilities": [
+    0.21752303380003563,
+    0.0413580444067997,
+    0.15659854727220548,
+    0.00553335214579603,
+    0.02359588799312905,
+    0.21752303380003563,
+    0.1812695533097931,
+    0.15659854727220546
+  ],
+  "raw_counts": {
+    "101": 204,
+    "100": 23,
+    "110": 199,
+    "001": 35,
+    "000": 228,
+    "010": 176,
+    "011": 4,
+    "111": 155
+  },
+  "ideal_deadline_probability": 0.9295127154542753,
+  "sampled_deadline_fraction": 0.939453125,
+  "selected_sample": {
+    "state": 0,
+    "bitstring": "000",
+    "bits": [
+      0,
+      0,
+      0
+    ],
+    "expanded_order_bits": [
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1
+    ],
+    "expanded_state": 292,
+    "c": 1,
+    "energy": 0,
+    "four_bit_energy": 0,
+    "nonnegative_summands": [
+      0,
+      0
+    ],
+    "makespan": 8,
+    "schedule": [
+      {
+        "job": "Z2",
+        "machine": "T",
+        "start": 0,
+        "end": 1
+      },
+      {
+        "job": "Z2",
+        "machine": "F",
+        "start": 1,
+        "end": 3
+      },
+      {
+        "job": "Z3",
+        "machine": "T",
+        "start": 1,
+        "end": 3
+      },
+      {
+        "job": "Z1",
+        "machine": "T",
+        "start": 3,
+        "end": 5
+      },
+      {
+        "job": "Z2",
+        "machine": "S",
+        "start": 3,
+        "end": 4
+      },
+      {
+        "job": "Z3",
+        "machine": "F",
+        "start": 3,
+        "end": 5
+      },
+      {
+        "job": "Z1",
+        "machine": "F",
+        "start": 5,
+        "end": 6
+      },
+      {
+        "job": "Z3",
+        "machine": "S",
+        "start": 5,
+        "end": 6
+      },
+      {
+        "job": "Z1",
+        "machine": "S",
+        "start": 6,
+        "end": 8
+      }
+    ],
+    "official_validator_errors": [],
+    "deadline_success": true
+  },
+  "qiskit_probability_max_error": 1.1102230246251565e-16,
+  "uniform": {
+    "ideal_deadline_probability": 0.625,
+    "raw_counts": {
+      "000": 126,
+      "001": 136,
+      "010": 132,
+      "011": 111,
+      "100": 152,
+      "101": 119,
+      "110": 123,
+      "111": 125
+    },
+    "sampled_deadline_fraction": 0.6103515625,
+    "log10_no_success_probability": -436.1919818468159
+  },
+  "preprocessing": {
+    "prior_four_bit": {
+      "complete_schedule_scores_used": 0,
+      "partial_dag_evaluations": 770,
+      "sat_queries": 90,
+      "sat_search_nodes": 172,
+      "cut_weight_lp_variables": 0,
+      "disclosure": "Exact classical structural/SAT presolve; optional cut-weight LP; not free preprocessing or quantum advantage"
+    },
+    "additional_physical_cut_rechecks": 78,
+    "additional_sat_queries": 14,
+    "additional_sat_search_nodes": 14,
+    "complete_schedule_scores_used": 0,
+    "lp_variables": 0,
+    "disclosure": "Reuses certified physical/SAT preprocessing; adds independently replayed semantic implications"
+  },
+  "source_provenance": {
+    "source_model_sha256": "1fbf13aefc1afcc1543ed0fdcb3ad6fbcd2f1fba625ddac5aab79293dbc7c6a8",
+    "source_proof_sha256": "e273d79cb9aedc37a0d674d52c0e7df14a7c8fa098bba766c2750d4d9caf4f76",
+    "source_code_sha256": "33b88096debfe74b40f20cf579cdb20d0a2a0ace49810bbc4cd4a425a8e8f86b",
+    "instance_sha256": "bb2babdc50eb249b7ad522dedef5e5fdfe35d7991ddbfee5189ea71950a84d41",
+    "official_stage1_unchanged": true,
+    "physical_quantum_executed": false,
+    "structural_artifacts_sha256": {
+      "model.json": "311df34ebdbd74138012c83b03eaea8c1658d089f2b5a1c1ff4f024f9ba480cb",
+      "proof.json": "cbf737f37737f3157c2ad4f53181b63a635e6e6b407cefae664b80b3e3685e47",
+      "verification.json": "97ceedc692037a4fdbbcdffa6832f17414fadab3a567aa7b087d79903dff6665",
+      "instance.json": "53d820baee060774937e6bd1a3b9ecceda1ba85a27da44a72c8eaf2a625480fb"
+    }
+  },
+  "source_code_sha256": "33b88096debfe74b40f20cf579cdb20d0a2a0ace49810bbc4cd4a425a8e8f86b",
+  "physical_quantum_executed": false,
+  "no_quantum_speedup_claim": true
+}

@@ -71,6 +71,9 @@ function loadReplay(value) {
 
 function update() {
   const end = makespan(replay);
+  $('intro-order-note').textContent = `Last operation ends at ${f(end)} h · ${replay.provenance.kind==='illustration'?'teaching example':'loaded schedule'}`;
+  $('intro-route').textContent = `${replay.machines.map(machine=>machine.name??machine.id).join(' → ')}. Each station handles one part at a time.`;
+  document.querySelectorAll('[data-teaching-schedule]').forEach(button=>{const value=datasets.get(button.dataset.teachingSchedule);button.textContent=`3-job ${button.dataset.teachingSchedule==='slide'?'A':'B'} · ${f(makespan(value))} h`;button.setAttribute('aria-pressed',String(replay.provenance.label===value.provenance.label));});
   $('time-current').textContent = time.toFixed(1);
   $('scrubber').value = time;
   $('scrubber').style.setProperty('--progress', `${end ? time / end * 100 : 0}%`);
@@ -208,6 +211,8 @@ $('import-file').addEventListener('change', async e => {
   } catch (error) { $('file-message').classList.add('error'); $('file-message').textContent = `Could not load: ${error.message}`; }
   e.target.value = '';
 });
+
+document.querySelectorAll('[data-teaching-schedule]').forEach(button=>button.addEventListener('click',()=>{const key=button.dataset.teachingSchedule;$('schedule-select').value=key;loadReplay(datasets.get(key));playing=!matchMedia('(prefers-reduced-motion: reduce)').matches;lastFrame=null;update();}));
 
 loadReplay(slideReplay);
 function frame(now) {

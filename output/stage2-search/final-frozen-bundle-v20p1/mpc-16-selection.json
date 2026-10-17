@@ -1,0 +1,104 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "mpc-2future-16",
+      "kind": "recovery_mpc",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "mpc": {
+        "actions": [
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 4
+          }
+        ],
+        "scenarios": 2,
+        "interval": 1440,
+        "seed": 27491,
+        "physical_check_futures": true,
+        "risk_weight": 0.25
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Full TRAIN32/reusedVAL16 strong-MPC development only",
+        "task_id": 464,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "planning": "Independent27491; six actions; risk.25; everyfuture physically checked",
+        "negative_control": false,
+        "cost_reference": "compute-ledger.json"
+      }
+    }
+  ],
+  "trace_policy": "first_per_leaf",
+  "selection_provenance": {
+    "data": "TRAIN0\u201331 and reusedVALIDATION100\u2013115; all final outcomes untouched at construction",
+    "criterion": "Lexicographic invalid,missing,cutoff deadline debt,energy+rental cost",
+    "plan": "predeclared-analysis-plan-v3.json",
+    "cost_reference": "compute-ledger.json"
+  }
+}

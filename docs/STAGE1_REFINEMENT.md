@@ -1,5 +1,7 @@
 # Stage 1 local refinement — 16 October 2026
 
+> Superseded selection (17 October): the current runs use 1/3-bit order QUBOs and QAOA for both instances. See [current formulation, experiments and limits](STAGE1_COMPACT.md) and `output/stage1-selected.json`. The time-indexed results below remain retained comparison evidence.
+
 Both remote backends are on user hold. The experiments below used actual local quantum simulation or classical QUBO samples. Their workers reject socket connections. No service token was used, no sample was repaired and no reference answer supplied an initial state or optimized angle.
 
 ## Results
@@ -32,7 +34,7 @@ The quantum verifier now reconstructs the state from the saved mixer/angles and 
 ## Reproduction
 
 ```sh
-.venv/bin/python scripts/prepare-stage1.py --output output/new-stage1 --export-final
+.venv/bin/python scripts/prepare-stage1.py --time-indexed --output output/new-stage1
 .venv/bin/python -m solver.verify --run output/new-stage1/qaoa-2x2
 .venv/bin/python -m solver.verify --run output/new-stage1/anneal-3x3
 ```

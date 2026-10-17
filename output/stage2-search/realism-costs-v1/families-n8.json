@@ -1,0 +1,847 @@
+{
+  "schema": "stage2-declared-realism-costs.v1",
+  "instance_sha256": "91283a069f98d48cdcf43e9add4b5e56f7258a0e00e8f675b510740fbeb13ef9",
+  "horizon_ticks": 5760,
+  "tick_minutes": 1,
+  "known_orders": 8,
+  "potential_urgent_orders": 2,
+  "dimensions": {
+    "machines": 15,
+    "workers": 10,
+    "halls": 2,
+    "agvs": 4,
+    "nodes": 24,
+    "potential_tools": 6,
+    "families": 3
+  },
+  "quality_slots": {
+    "nominal_per_order": 16,
+    "bounded_per_order": 44,
+    "bounded_known_total": 352,
+    "bounded_including_maximum_urgent": 440,
+    "potential_known_unit_slots": 56,
+    "scope": "Activity-slot envelope, not all slots realizable together; no scenario/history copies"
+  },
+  "nominal_transport": {
+    "endpoint_pairs_per_order": 79,
+    "pairs_by_recipe": {
+      "housing": 26,
+      "rotor": 26,
+      "flange": 21,
+      "pump": 6
+    },
+    "pairs": [
+      {
+        "recipe": "housing",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "T1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "T2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T1",
+        "target": "F1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T1",
+        "target": "F2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T1",
+        "target": "F3",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T2",
+        "target": "F1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T2",
+        "target": "F2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 1,
+        "source": "T2",
+        "target": "F3",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F1",
+        "target": "WASH1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F1",
+        "target": "WASH2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F2",
+        "target": "WASH1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F2",
+        "target": "WASH2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F3",
+        "target": "WASH1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 2,
+        "source": "F3",
+        "target": "WASH2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 3,
+        "source": "WASH1",
+        "target": "H1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 3,
+        "source": "WASH1",
+        "target": "H2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 3,
+        "source": "WASH2",
+        "target": "H1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 3,
+        "source": "WASH2",
+        "target": "H2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 4,
+        "source": "H1",
+        "target": "QA1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 4,
+        "source": "H1",
+        "target": "QA2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 4,
+        "source": "H2",
+        "target": "QA1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 4,
+        "source": "H2",
+        "target": "QA2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 5,
+        "source": "QA1",
+        "target": "A1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 5,
+        "source": "QA1",
+        "target": "A2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "housing",
+        "leg": 5,
+        "source": "QA2",
+        "target": "A1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "housing",
+        "leg": 5,
+        "source": "QA2",
+        "target": "A2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "T1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "T2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 1,
+        "source": "T1",
+        "target": "H1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 1,
+        "source": "T1",
+        "target": "H2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 1,
+        "source": "T2",
+        "target": "H1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 1,
+        "source": "T2",
+        "target": "H2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H1",
+        "target": "F1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H1",
+        "target": "F2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H1",
+        "target": "F3",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H2",
+        "target": "F1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H2",
+        "target": "F2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 2,
+        "source": "H2",
+        "target": "F3",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F1",
+        "target": "WASH1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F1",
+        "target": "WASH2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F2",
+        "target": "WASH1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F2",
+        "target": "WASH2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F3",
+        "target": "WASH1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 3,
+        "source": "F3",
+        "target": "WASH2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 4,
+        "source": "WASH1",
+        "target": "QA1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 4,
+        "source": "WASH1",
+        "target": "QA2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 4,
+        "source": "WASH2",
+        "target": "QA1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 4,
+        "source": "WASH2",
+        "target": "QA2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 5,
+        "source": "QA1",
+        "target": "A1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 5,
+        "source": "QA1",
+        "target": "A2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "rotor",
+        "leg": 5,
+        "source": "QA2",
+        "target": "A1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "rotor",
+        "leg": 5,
+        "source": "QA2",
+        "target": "A2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "F1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "F2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 0,
+        "source": "RAW_A",
+        "target": "F3",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F1",
+        "target": "S1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F1",
+        "target": "S2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F2",
+        "target": "S1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F2",
+        "target": "S2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F3",
+        "target": "S1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 1,
+        "source": "F3",
+        "target": "S2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 2,
+        "source": "S1",
+        "target": "WASH1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 2,
+        "source": "S1",
+        "target": "WASH2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 2,
+        "source": "S2",
+        "target": "WASH1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 2,
+        "source": "S2",
+        "target": "WASH2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 3,
+        "source": "WASH1",
+        "target": "QA1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 3,
+        "source": "WASH1",
+        "target": "QA2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 3,
+        "source": "WASH2",
+        "target": "QA1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 3,
+        "source": "WASH2",
+        "target": "QA2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 4,
+        "source": "QA1",
+        "target": "A1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 4,
+        "source": "QA1",
+        "target": "A2",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "flange",
+        "leg": 4,
+        "source": "QA2",
+        "target": "A1",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "flange",
+        "leg": 4,
+        "source": "QA2",
+        "target": "A2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "pump",
+        "leg": 0,
+        "source": "A1",
+        "target": "QA1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "pump",
+        "leg": 0,
+        "source": "A1",
+        "target": "QA2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "pump",
+        "leg": 0,
+        "source": "A2",
+        "target": "QA1",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "pump",
+        "leg": 0,
+        "source": "A2",
+        "target": "QA2",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      },
+      {
+        "recipe": "pump",
+        "leg": 1,
+        "source": "QA1",
+        "target": "SHIP_B",
+        "loaded_ticks": 6,
+        "duration_ticks": 8
+      },
+      {
+        "recipe": "pump",
+        "leg": 1,
+        "source": "QA2",
+        "target": "SHIP_B",
+        "loaded_ticks": 2,
+        "duration_ticks": 4
+      }
+    ]
+  },
+  "variable_families": [
+    {
+      "name": "nominal_manufacturing_starts",
+      "bits": 2992024,
+      "formula": "sum over known orders,nominal recipe slots,eligible machines,certified legal modes: max(0,H-duration-release+1)",
+      "scope": "Exact size of this relaxed start-choice family; singleton member representation needs batch linking",
+      "alternative_group": "production_starts"
+    },
+    {
+      "name": "bounded_quality_production_start_envelope",
+      "bits": 8381208,
+      "formula": "same start-window sum over all normal/replacement/repair/repeat-QA slots",
+      "scope": "Includes nominal starts; not an incremental cost. Causal failure/birth gates and earliest replacement lead time omitted",
+      "alternative_group": "production_starts"
+    },
+    {
+      "name": "worker_hall_indicators",
+      "bits": 115220,
+      "formula": "workers*halls*(H+1)",
+      "scope": "One-hot physical hall indicators; zero hall flags during a walk; skill/attendance/setup assignment linking still required"
+    },
+    {
+      "name": "worker_walking_indicators",
+      "bits": 57600,
+      "formula": "workers*H",
+      "scope": "Per-tick walking occupation; direction, duration and hall-state transitions not compiled"
+    },
+    {
+      "name": "tool_node_indicators",
+      "bits": 829584,
+      "formula": "potential_tools*nodes*(H+1)",
+      "scope": "Physical-node flags for initial and possible leased tools; no node flag when carried or absent"
+    },
+    {
+      "name": "tool_carrier_or_absence_indicators",
+      "bits": 172830,
+      "formula": "potential_tools*(AGVs+1)*(H+1)",
+      "scope": "Companion one-hot carrier/absence states; pre-birth absence fixed by lease gates"
+    },
+    {
+      "name": "tool_remaining_life_counters",
+      "bits": 345660,
+      "formula": "(H+1)*sum_tools ceil(log2(life+1))",
+      "scope": "Binary counters include invalid top codes; bounds, service/reset and usage linking omitted"
+    },
+    {
+      "name": "machine_wear_counters",
+      "bits": 950565,
+      "formula": "machines*(H+1)*ceil(log2(wear_limit+1))",
+      "scope": "Wear bounds, manufacturing increments and maintenance resets require constraints"
+    },
+    {
+      "name": "machine_family_indicators",
+      "bits": 345660,
+      "formula": "machines*(families+initial_none)*(H+1)",
+      "scope": "Family state for setup calculation; setup attendance, duration and transition products uncompiled"
+    },
+    {
+      "name": "buffer_reserved_or_present_counters",
+      "bits": 207396,
+      "formula": "(H+1)*sum_machines ceil(log2(input_capacity+1))",
+      "scope": "Counts present input plus inbound reservation, excludes output; dispatch/consumption linking omitted"
+    },
+    {
+      "name": "blocked_output_indicators",
+      "bits": 86415,
+      "formula": "machines*(H+1)",
+      "scope": "Whether any output remains; unit identity/last batch pickup comes from part-state and move linking"
+    },
+    {
+      "name": "part_location_status_envelope",
+      "bits": 10323712,
+      "formula": "known_orders*(3*(replacements+1)+1)*(nodes+AGVs+unreleased+consumed+scrapped+shipped)*(H+1)",
+      "scope": "All component versions and one pump per known order; includes permanently inactive slots; ancestry and legal transitions uncompiled"
+    },
+    {
+      "name": "part_acceptance_flags",
+      "bits": 322616,
+      "formula": "potential_known_unit_slots*(H+1)",
+      "scope": "Inspection acceptance history; manufactured risk, sampled revelation and QA gating uncompiled"
+    },
+    {
+      "name": "bom_consumption_event_indicators",
+      "bits": 322560,
+      "formula": "potential_known_unit_slots*H",
+      "scope": "Deliberate per-unit consume-event envelope; pump consume choices fixed zero; matched lineage/mass-balance linking omitted"
+    },
+    {
+      "name": "raw_stock_counters",
+      "bits": 103698,
+      "formula": "(H+1)*sum_recipes ceil(log2(initial_stock+scheduled_delivery+1))",
+      "scope": "No emergency purchases in current model; realized delivery/release balance and integer bounds still required",
+      "counter_limits": {
+        "housing": 34,
+        "rotor": 34,
+        "flange": 34
+      }
+    },
+    {
+      "name": "nominal_loaded_pickup_choices",
+      "bits": 14093920,
+      "formula": "sum_known_orders sum_legal(endpoint,recipe,leg)_pairs AGVs*max(0,H-loaded_path-handling-release+1)",
+      "scope": "Loading-start choices, not dispatch starts. Empty preposition, reservation start, routes/lanes, vehicle continuity, tool/repair/scrap moves uncounted"
+    },
+    {
+      "name": "agv_node_indicators",
+      "bits": 553056,
+      "formula": "AGVs*nodes*(H+1)",
+      "scope": "Node states have zero flags while traversing; edge/arrival/traction/action linking omitted"
+    },
+    {
+      "name": "agv_soc_counters",
+      "bits": 184352,
+      "formula": "(H+1)*sum_AGVs ceil(log2(capacity+1))",
+      "scope": "Includes traction and charging SOC state; transition and saturation constraints omitted"
+    },
+    {
+      "name": "agv_charger_occupation",
+      "bits": 46080,
+      "formula": "AGVs*chargers*H",
+      "scope": "Occupation flags, not all variable charge-duration alternatives; charger capacity and travel linking omitted"
+    },
+    {
+      "name": "stationary_battery_actions",
+      "bits": 17280,
+      "formula": "battery_actions*H",
+      "scope": "One-hot idle/charge/discharge each tick; grid/solar balance, curtailment and SOC coupling not compiled"
+    },
+    {
+      "name": "stationary_battery_soc_counters",
+      "bits": 69132,
+      "formula": "(H+1)*ceil(log2(stationary_capacity+1))",
+      "scope": "Binary SOC state with lossy transitions, bounds and terminal floor requiring constraints"
+    },
+    {
+      "name": "heat_batch_family_activations",
+      "bits": 33846,
+      "formula": "families*sum_heat_machines max(0,H-shortest_heat_duration+1)",
+      "scope": "Shared same-family batch start flags; member starts already overlap manufacturing family; capacity/compatibility/max-duration/setup linking omitted"
+    },
+    {
+      "name": "machine_maintenance_starts",
+      "bits": 85290,
+      "formula": "machines*max(0,H-maintenance_duration+1)",
+      "scope": "Known fixed duration; worker, output blocking, wear reset and power linking omitted"
+    },
+    {
+      "name": "tool_service_node_starts",
+      "bits": 820944,
+      "formula": "nodes*sum_potential_tools max(0,H-service_duration+1)",
+      "scope": "Superset of tool-node service choices; location, birth, worker and life reset linking omitted"
+    },
+    {
+      "name": "rental_request_time_indicators",
+      "bits": 5760,
+      "formula": "sum_options max_count*H",
+      "scope": "Optional request slots; late requests arriving after H retained; investment-budget/at-most-count constraints uncompiled"
+    },
+    {
+      "name": "rental_arrival_indicators_derived",
+      "bits": 5281,
+      "formula": "sum_options max_count*max(0,H-lead+1)",
+      "scope": "Redundant derived in-horizon delivery states; may eliminate in favor of request variables; never add as mandatory independent decisions"
+    }
+  ],
+  "complete_global_formulation": false,
+  "additive_global_total": null,
+  "lossless_reduction_ratio": null,
+  "global_secondary_optimality_gap": null,
+  "uncounted": [
+    "global linking/reduction auxiliaries and penalty couplers",
+    "qualified attendance/setup assignment cross-products",
+    "empty AGV dispatch/preposition and reservation-start choices",
+    "repair/replacement/tool/scrap transport alternatives",
+    "quality-risk arithmetic and branch revelation gates",
+    "scenario/history copies and nonanticipativity",
+    "global exact power/solar balance encoding"
+  ],
+  "interpretation": "Exact arithmetic for stated families, many are alternative representations or relaxed envelopes; do not sum or call a complete global QUBO"
+}

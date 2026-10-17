@@ -1,0 +1,299 @@
+{
+  "valid": true,
+  "scope": "Supplementary deterministic reference interpretation,not new factory/solver/performance sample",
+  "source_sha256": "1a610da46ff97907727f06c0589fbe42621b33c22de5f5cbf50c5a0575cb4acf",
+  "input_report_sha256": "9ceba65416fbe4376e5ad84baeec144042a7fd61a9a396949deeb7310184c0cd",
+  "input_trace_sha256": "62c623db1a7d7bfde32674ea105fa5000217657666fc5fc576ae9f1de7ce4f71",
+  "canonical_instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+  "frozen_payload_sources_match": true,
+  "status": "FEASIBLE",
+  "optimal": false,
+  "cp_lower_bound": 1524,
+  "constructive_witness_upper_bound": 1541,
+  "optimum_interval": [
+    1524,
+    1541
+  ],
+  "interval_width_minutes": 17,
+  "actual_optimality_gap_unknown": true,
+  "incumbent_improvement_minutes": 26,
+  "incumbent_improvement_percent": 1.6592214422463305,
+  "heuristic2482_excess_gap_interval_percent": [
+    61.06424399740428,
+    62.86089238845145
+  ],
+  "raw_physical_check": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 64,
+      "moves": 76,
+      "horizon_ticks": 10400,
+      "delivered_orders": 4,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 784,
+        "P02": 1177,
+        "P03": 1496,
+        "P04": 1541
+      },
+      "tardiness_ticks": 0,
+      "terminal_deadline_debt_ticks": 0,
+      "grid_kwh": 2703.9999999996567,
+      "energy_cost": 270.400000000046,
+      "carbon_kg": 540.800000000092,
+      "investment_cost": 0,
+      "total_cost": 270.400000000046,
+      "terminal_soc": 40
+    }
+  },
+  "raw_stock_identity": {
+    "schema": "stage2-identity-audit.v1",
+    "valid": false,
+    "issues": [
+      {
+        "code": "unit_before_identity_birth",
+        "message": "Part referenced before its canonical birth",
+        "unit_id": "P04/pump/1",
+        "field": "part_move",
+        "record_id": "move74"
+      }
+    ],
+    "coverage": [
+      "canonical_initial_components",
+      "canonical_urgent_order_and_components",
+      "single_canonical_pump_birth_per_order",
+      "bounded_canonical_replacement",
+      "authorized_part_references",
+      "immutable_unit_attempt_qa_stream"
+    ],
+    "metrics": {
+      "initial_components": 12,
+      "urgent_orders": 0,
+      "authorized_unit_identities": 16,
+      "initial_pump_births": 4,
+      "replacement_events": 0,
+      "qa_results": 16
+    },
+    "metadata_notes": [
+      {
+        "field": "instance.quality.paired_key",
+        "declared_value": null,
+        "actual_implemented_key": "quality:{unit_id}:{attempt}",
+        "operation_id_role": "Diagnostic reference only, never a random-stream key",
+        "status": "Execution key verified independently"
+      }
+    ],
+    "provenance": {
+      "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+      "instance_anchor": "supplied_instance"
+    },
+    "limitations": [
+      "Supplement only: run anchored check.py physical replay as well.",
+      "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+    ]
+  },
+  "explicit_in_memory_witness_copy": {
+    "only_difference": [
+      "moves",
+      73,
+      "start"
+    ],
+    "old_start": 1382,
+    "new_start": 1420,
+    "source_assembly_birth": 1420,
+    "source_assembly_completion": 1480,
+    "pickup": 1480,
+    "first_loaded_leg": 1481,
+    "previous_move_end": 1381,
+    "previous_move_destination": "A1",
+    "trace_metrics_field_remains_empty_dict": true,
+    "recomputed_checker_metrics_exactly_equal": true,
+    "physical_check": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 64,
+        "moves": 76,
+        "horizon_ticks": 10400,
+        "delivered_orders": 4,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 784,
+          "P02": 1177,
+          "P03": 1496,
+          "P04": 1541
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2703.9999999996567,
+        "energy_cost": 270.400000000046,
+        "carbon_kg": 540.800000000092,
+        "investment_cost": 0,
+        "total_cost": 270.400000000046,
+        "terminal_soc": 40
+      }
+    },
+    "stock_identity": {
+      "schema": "stage2-identity-audit.v1",
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "canonical_initial_components",
+        "canonical_urgent_order_and_components",
+        "single_canonical_pump_birth_per_order",
+        "bounded_canonical_replacement",
+        "authorized_part_references",
+        "immutable_unit_attempt_qa_stream"
+      ],
+      "metrics": {
+        "initial_components": 12,
+        "urgent_orders": 0,
+        "authorized_unit_identities": 16,
+        "initial_pump_births": 4,
+        "replacement_events": 0,
+        "qa_results": 16
+      },
+      "metadata_notes": [
+        {
+          "field": "instance.quality.paired_key",
+          "declared_value": null,
+          "actual_implemented_key": "quality:{unit_id}:{attempt}",
+          "operation_id_role": "Diagnostic reference only, never a random-stream key",
+          "status": "Execution key verified independently"
+        }
+      ],
+      "provenance": {
+        "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+        "instance_anchor": "supplied_instance"
+      },
+      "limitations": [
+        "Supplement only: run anchored check.py physical replay as well.",
+        "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+      ]
+    },
+    "physical_core_checks_always_original_or_explicitly_labeled_copy": true
+  },
+  "lower_bound_scope": "Original CP allows early future-identity dispatch booking; its1524lower bound also holds for stricter birth-at-dispatch feasible subset. Normalized witness supplies1541upper for both. No identical-optima claim or global flagshipgap.",
+  "hint_scope": "Same frozen formulation with verified1567warmstart and upper cutoff; no choices fixed,no serialized CPproof resumption. Valid incumbent ensures cutoff cannot exclude an optimum.",
+  "cost": {
+    "slurm_elapsed_seconds": 7174,
+    "allocated_cpus": 16,
+    "allocated_cpu_seconds": 114784,
+    "allocated_cpu_hours": 31.884444444444444,
+    "reported_process_cpu_seconds": 114101.45280309001,
+    "process_cpu_hours": 31.694848000858336,
+    "solver_wall_seconds": 7170.320075787001,
+    "driver_wall_seconds": 7173.494605467997,
+    "scope": "Allocated/process/solverwall nested observations,not additive or normalizedspeedup"
+  },
+  "frozen_sources_modified": false,
+  "raw_evidence_modified": false,
+  "factory_runs": 0,
+  "solver_calls": 0,
+  "new_performance_samples": 0,
+  "wall_seconds": 0.19602045812644064,
+  "cpu_seconds": 0.19560299999999997
+}

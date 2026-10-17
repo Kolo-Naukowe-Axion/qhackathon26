@@ -1,0 +1,168 @@
+{
+  "schema": "stage2-independent-primary-bound-audit.v1",
+  "valid": true,
+  "role": "TRAIN6 realized-tape offline certificate audit; no final tapes",
+  "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/quality-material-primary-bound/n32-H14400-seed6-witness.json.gz",
+  "trace_file_sha256": "9e17da11a2758840e7d0c80c8e2f2f0efc59dff4445ed0acb295c0cadafe65b6",
+  "physical_checker": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": false,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 616,
+      "moves": 743,
+      "horizon_ticks": 14400,
+      "delivered_orders": 33,
+      "unfulfilled_orders": 1,
+      "delivery_ticks": {
+        "P07": 1105,
+        "P01": 1260,
+        "P13": 1307,
+        "P25": 1491,
+        "P19": 1971,
+        "P31": 2067,
+        "P10": 2592,
+        "P22": 2871,
+        "P16": 3747,
+        "P02": 4019,
+        "P04": 4231,
+        "P28": 4396,
+        "P14": 4711,
+        "P26": 5001,
+        "P08": 5668,
+        "P32": 5836,
+        "P20": 5837,
+        "P17": 6713,
+        "P29": 6816,
+        "P11": 7070,
+        "P23": 7368,
+        "P03": 8356,
+        "P09": 8455,
+        "P21": 8693,
+        "P15": 9175,
+        "P27": 9269,
+        "P06": 9591,
+        "P18": 10267,
+        "P12": 10392,
+        "P30": 10450,
+        "P24": 11354,
+        "U02": 11834,
+        "U01": 11906
+      },
+      "tardiness_ticks": 103555,
+      "terminal_deadline_debt_ticks": 114115,
+      "grid_kwh": 7335.1138566663685,
+      "energy_cost": 1248.598453933163,
+      "carbon_kg": 2503.5689935001865,
+      "investment_cost": 150,
+      "total_cost": 1398.598453933163,
+      "terminal_soc": 2400
+    }
+  },
+  "realized_leaf": [
+    "mill_ok",
+    "supply_ok",
+    "rush"
+  ],
+  "mandatory_orders": 34,
+  "available_housing_upper_bound": 34,
+  "initial_housing_draws": [
+    {
+      "numerator": 46058426680711341,
+      "denominator": 18446744073709551616,
+      "value": 0.002496832313424578
+    },
+    {
+      "numerator": 42938134083478963,
+      "denominator": 4611686018427387904,
+      "value": 0.009310723651156354
+    }
+  ],
+  "housing_minimum_math_risk": {
+    "numerator": 9826247,
+    "denominator": 200000000,
+    "value": 0.049131235
+  },
+  "weaker_single_step_floor_suffices": true,
+  "repair_residual": 0.02,
+  "rounding_margin": 1e-10,
+  "necessary_housing_blanks_for_all_orders": 35,
+  "unfulfilled_lower_bound": 1,
+  "attained_by_checked_trace": true,
+  "failed_original_qa_events": [
+    {
+      "tick": 5745,
+      "type": "qa_result",
+      "unit_id": "P05/housing/1",
+      "operation_id": "O309",
+      "passed": false,
+      "keyed_uniform": 0.002496832313424578,
+      "defect_probability": 0.0902120022489794
+    },
+    {
+      "tick": 5921,
+      "type": "qa_result",
+      "unit_id": "P05/housing/1",
+      "operation_id": "O327",
+      "passed": false,
+      "keyed_uniform": 0.009310723651156354,
+      "defect_probability": 0.02
+    }
+  ],
+  "scope": "Exact primary missing-order optimum on one realized tape only; no secondary deadline-debt/cost or all-tape policy optimum",
+  "source_hashes": {
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+  }
+}

@@ -1,0 +1,471 @@
+{
+  "schema": "stage2-cross-source-paired-evidence.v1",
+  "evaluation_role": "final",
+  "config": {
+    "orders": 12,
+    "horizon": 5760,
+    "profile": "full"
+  },
+  "left": {
+    "method_id": "no-batch-uniform-12",
+    "manifest_sha256": "66ddc473d2137d5670856e2358a37c335c17fd40bdcc936bfa8e58664511c5e9",
+    "actor_seeds": [
+      900000,
+      900001,
+      900002
+    ],
+    "method": {
+      "id": "no-batch-uniform-12",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "uniform",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 64,
+        "declared_override": {
+          "selector": "uniform",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    "freeze_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117509",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    },
+    "execution_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117509",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    }
+  },
+  "right": {
+    "method_id": "no-batch-qaoa-12",
+    "manifest_sha256": "66ddc473d2137d5670856e2358a37c335c17fd40bdcc936bfa8e58664511c5e9",
+    "actor_seeds": [
+      900000,
+      900001,
+      900002
+    ],
+    "method": {
+      "id": "no-batch-qaoa-12",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "qaoa",
+        "policy_seed": 7,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "reward_mode": "no-batch",
+      "selection_provenance": {
+        "data": "Frozen correctedreward TRAIN32 study; no final outcome tuning",
+        "task_path": "selector-reward-full-controls-training-tasks.json",
+        "controls": "Same outer control/reward/pool construction; realized later pools can differ after actions",
+        "actors": "Fresh900000/1/2, not training7/13/29; all retained",
+        "quantum": "CPU statevector simulation; classical oversizefallback measured, no hardwareadvantage claim",
+        "cost_reference": "compute-ledger.json",
+        "template_task_id": 64,
+        "declared_override": {
+          "selector": "qaoa",
+          "policy_seed": "Fresh declared actor seed overrides template seed"
+        }
+      },
+      "backend": "recovery"
+    },
+    "freeze_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117509",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    },
+    "execution_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117509",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    }
+  },
+  "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599",
+  "physical_sources": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "supplemental_verifier_sources": {
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+  },
+  "algorithm_source_differences": {},
+  "metrics": {
+    "missing": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 768,
+      "actor_replicas_right": 768,
+      "left_mean": 0.14005208333333333,
+      "right_mean": 0.15031250000000002,
+      "mean_difference": 0.01026041666666667,
+      "mean_difference_percentile_bootstrap_95": [
+        -0.03755208333333333,
+        0.05500000000000002
+      ],
+      "left_cvar90": 1.1140624999999997,
+      "right_cvar90": 1.190625,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -0.19166666666666665,
+        0.4109375000000004
+      ],
+      "left_joint_actor_environment_cvar90": 1.400520833333336,
+      "right_joint_actor_environment_cvar90": 1.5031250000000012,
+      "joint_actor_environment_cvar90_difference": 0.10260416666666505,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -0.34843749999999685,
+        0.5390624999999971
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "deadline_debt": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 768,
+      "actor_replicas_right": 768,
+      "left_mean": 4107.944114583333,
+      "right_mean": 3903.960104166667,
+      "mean_difference": -203.98401041666668,
+      "mean_difference_percentile_bootstrap_95": [
+        -398.34192708333376,
+        -8.855572916666915
+      ],
+      "left_cvar90": 9024.505208333338,
+      "right_cvar90": 8667.827604166667,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -1087.5937499999955,
+        493.97187499999745
+      ],
+      "left_joint_actor_environment_cvar90": 10093.037499999986,
+      "right_joint_actor_environment_cvar90": 10152.107291666656,
+      "joint_actor_environment_cvar90_difference": 59.069791666670426,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -996.4791666666661,
+        1084.7135416666697
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "delivered_tardiness": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 768,
+      "actor_replicas_right": 768,
+      "left_mean": 3887.0628645833335,
+      "right_mean": 3652.428854166667,
+      "mean_difference": -234.63401041666668,
+      "mean_difference_percentile_bootstrap_95": [
+        -391.36989583333343,
+        -80.00244791666682
+      ],
+      "left_cvar90": 7564.7875,
+      "right_cvar90": 7100.015625000003,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -990.9614583333341,
+        84.85885416666952
+      ],
+      "left_joint_actor_environment_cvar90": 8407.661979166658,
+      "right_joint_actor_environment_cvar90": 8130.01510416666,
+      "joint_actor_environment_cvar90_difference": -277.64687499999764,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -897.3088541666784,
+        343.29583333333994
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "total_cost": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 768,
+      "actor_replicas_right": 768,
+      "left_mean": 680.7102929837582,
+      "right_mean": 683.9002305634197,
+      "mean_difference": 3.1899375796614278,
+      "mean_difference_percentile_bootstrap_95": [
+        1.7175223862201392,
+        4.665430010637351
+      ],
+      "left_cvar90": 731.6065351079045,
+      "right_cvar90": 735.4071868511165,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -1.1472328127433684,
+        8.790860017898126
+      ],
+      "left_joint_actor_environment_cvar90": 741.6393777593623,
+      "right_joint_actor_environment_cvar90": 743.3175425800562,
+      "joint_actor_environment_cvar90_difference": 1.678164820693837,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -2.5479397535425505,
+        5.975758532515329
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "carbon_kg": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 768,
+      "actor_replicas_right": 768,
+      "left_mean": 1056.4759074692365,
+      "right_mean": 1062.141790543302,
+      "mean_difference": 5.665883074065309,
+      "mean_difference_percentile_bootstrap_95": [
+        2.8951335945650953,
+        8.4693734516527
+      ],
+      "left_cvar90": 1154.9027040218198,
+      "right_cvar90": 1161.5944347263753,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -2.674039098872072,
+        16.08386376111048
+      ],
+      "left_joint_actor_environment_cvar90": 1173.5292225994228,
+      "right_joint_actor_environment_cvar90": 1176.4756836280665,
+      "joint_actor_environment_cvar90_difference": 2.9464610286436255,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -4.985314113024742,
+        11.047979855460198
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    }
+  },
+  "execution_runtime_equal": true,
+  "freeze_execution_runtime_drift": {
+    "left": false,
+    "right": false
+  },
+  "direction": "Right minus left; negative favors right for all reported losses",
+  "cost_scope": "Training/teacher/planning and inference costs remain per-manifest provenance; no wall-time speedup metric or cross-hardware normalization",
+  "limitation": "Consistency gate over retained evaluator evidence, not new physical replay/authentication; fixed observed actor cohorts, empirical tape-cluster bootstrap; intervals are pointwise, not multiplicity-corrected; no universal policy/global-gap claim",
+  "source_evidence": {
+    "left": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/manifest.json",
+          "sha256": "7bb5e2f2fa56c09fe015157e2abc81452a6e85cc78b62faba7caebc73828a65e"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/evaluation.json",
+          "sha256": "7dba46bee4f26eeaafbd7ecf8e903cff4083a3cb830cb845d8dd88475e292762"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/rows.jsonl",
+          "sha256": "dc4eeed6ef812e2c804e772e4fa635175f0e7f57db1eab9b606fcae479668925"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    },
+    "right": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/manifest.json",
+          "sha256": "7bb5e2f2fa56c09fe015157e2abc81452a6e85cc78b62faba7caebc73828a65e"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/evaluation.json",
+          "sha256": "7dba46bee4f26eeaafbd7ecf8e903cff4083a3cb830cb845d8dd88475e292762"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-quantum-stochastic-6117509/rows.jsonl",
+          "sha256": "dc4eeed6ef812e2c804e772e4fa635175f0e7f57db1eab9b606fcae479668925"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  "predeclared_primary_missing_interval": {
+    "mean_difference": 0.01026041666666667,
+    "direction": "Right minus left; negative favors right for a loss",
+    "percentile_interval": [
+      -0.042604166666666665,
+      0.06364583333333333
+    ],
+    "individual_nominal_coverage": 0.975,
+    "family_size": 2,
+    "nominal_family_error_rate": 0.05,
+    "bootstrap_replicates": 2000,
+    "bootstrap_seed": 60819,
+    "environment_tapes": 256,
+    "actor_replicas_left": 768,
+    "actor_replicas_right": 768,
+    "scope": "Whole paired environment clusters resampled within leaves; actors remain nested. Nominal Bonferroni adjustment for the predeclared family only; bootstrap coverage is approximate."
+  }
+}

@@ -1,0 +1,662 @@
+{
+  "schema": "stage2-frozen-selected-policy-evaluation.v1",
+  "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+  "evaluation_role": "development",
+  "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff",
+  "expected_rows": 4,
+  "actual_rows": 4,
+  "rows": [
+    {
+      "method_id": "smoke",
+      "config": {
+        "orders": 1,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 0,
+      "policy_seed": 901,
+      "leaf": 0,
+      "leaf_outcomes": [
+        "development"
+      ],
+      "tape_id": "leaf-0:seed-0",
+      "tape_weight": 0.5,
+      "schema": "stage2-selected-policy-row.v1",
+      "valid": true,
+      "metrics": {
+        "orders": 3,
+        "shipped": 3,
+        "shipped_at": {
+          "P01": 603,
+          "U01": 3918,
+          "U02": 4048
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 1295.7144333333333,
+        "energy_cost": 193.40187106666667,
+        "carbon_kg": 392.867043,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 343.4018710666723,
+        "operations": 51,
+        "moves": 79,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "physical_instance_sha256": "eba5ed3c8a9aaf7597b8ca015f9e197041f29d5e949358fe2b5b682a8f0058b7",
+      "issues": [],
+      "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "checkpoint_sha256": {},
+      "selection_and_training_cost_reference": {
+        "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+        "method_id": "smoke"
+      },
+      "simulation_wall_seconds": 0.16929624998010695,
+      "checker_wall_seconds": 0.06584387505427003,
+      "adapters": [],
+      "planning_wall_seconds": 0.0,
+      "controller_decisions": 0,
+      "measured_execution": true,
+      "terminal_requirements_met": true,
+      "executed_instance_sha256": "eba5ed3c8a9aaf7597b8ca015f9e197041f29d5e949358fe2b5b682a8f0058b7",
+      "checker_metrics": {
+        "operations": 51,
+        "moves": 79,
+        "horizon_ticks": 5760,
+        "delivered_orders": 3,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 603,
+          "U01": 3918,
+          "U02": 4048
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 1295.7144333333667,
+        "energy_cost": 193.4018710666723,
+        "carbon_kg": 392.867043000008,
+        "investment_cost": 150,
+        "total_cost": 343.4018710666723,
+        "terminal_soc": 2400
+      },
+      "independently_reconstructed_outcome": {
+        "orders": 3,
+        "shipped": 3,
+        "total_tardiness_ticks": 0,
+        "all_orders_fulfilled": true,
+        "terminal_soc_satisfied": true
+      },
+      "qubo_telemetry": {
+        "calls": 47,
+        "coupled_calls": 9,
+        "qaoa_requested_calls": 47,
+        "qaoa_calls": 47,
+        "coupled_qaoa_calls": 9,
+        "uncoupled_qaoa_calls": 38,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 38,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "max_total_bits": 3,
+        "max_core_bits": 3,
+        "max_slack_bits": 0,
+        "max_couplers": 3,
+        "max_actual_simulated_quantum_bits": 3,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0,
+        "total_encoded_bit_histogram": {
+          "1": 38,
+          "2": 8,
+          "3": 1
+        },
+        "actual_simulated_quantum_bit_histogram": {
+          "1": 38,
+          "2": 8,
+          "3": 1
+        },
+        "decode_mismatch_evidence": [],
+        "time_breakdown_seconds": {
+          "result_elapsed_seconds_sum": 0.031550418585538864,
+          "result_elapsed_observed_calls": 47,
+          "qaoa_angle_optimization_elapsed_seconds_sum": 0.017053915886208415,
+          "qaoa_angle_optimization_observed_calls": 47,
+          "encoding_seconds": null,
+          "isolated_solver_seconds": null,
+          "decoding_seconds": null,
+          "scope": "Only literal result.elapsed_seconds and sampling.optimization.elapsed_seconds are recorded. Original result timing has method-dependent scope: QAOA requests, including oversize SA fallback, begin after encoding; ordinary classical select paths include encoding. Angle optimization is a nested subset, not additional time. Separate encoding/solver/decoding timings are unavailable."
+        },
+        "definitions": {
+          "qaoa_calls": "Actual quantum_algorithm_simulated=true records, not requests or classical fallbacks",
+          "coupled_calls": "Nonzero encoded QUBO couplers, including slack-variable couplings",
+          "coupled_qaoa_calls": "Intersection of actual simulated QAOA and coupled encoded QUBOs",
+          "fallback_calls": "Nonempty fallback_reason excluding explicit empty-pool no-circuit calls; can overlap actual QAOA if classical postprocessing repairs its samples",
+          "max_actual_simulated_quantum_bits": "Circuit qubits from actual simulation metadata, never size of an oversize classical fallback",
+          "repairs": "Solver-reported feasibility repair only; decode mismatches independently invalidate the row"
+        }
+      },
+      "controller_inference_wall_seconds": 0.0,
+      "controller_inference_cpu_seconds": 0.0,
+      "controller_cost_scope": "Callback cost for non-MPC policy; MPC costs recorded separately as planning_wall_seconds",
+      "wall_seconds": 0.2375768751371652,
+      "cpu_seconds": 0.23160999999999998,
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/current-dispatch/evaluation/traces/method-0-config-0-leaf-0-seed-0-actor-901.json",
+      "trace_sha256": "6643fe360ce9a4d5de6064239119e35f5e4d3648a90266a9604707e849c6ed1c"
+    },
+    {
+      "method_id": "smoke",
+      "config": {
+        "orders": 1,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 0,
+      "policy_seed": 902,
+      "leaf": 0,
+      "leaf_outcomes": [
+        "development"
+      ],
+      "tape_id": "leaf-0:seed-0",
+      "tape_weight": 0.5,
+      "schema": "stage2-selected-policy-row.v1",
+      "valid": true,
+      "metrics": {
+        "orders": 3,
+        "shipped": 3,
+        "shipped_at": {
+          "P01": 603,
+          "U02": 3918,
+          "U01": 3989
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 1295.6951233333334,
+        "energy_cost": 194.04210566666666,
+        "carbon_kg": 394.0304915,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 344.04210566667155,
+        "operations": 51,
+        "moves": 79,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "physical_instance_sha256": "eba5ed3c8a9aaf7597b8ca015f9e197041f29d5e949358fe2b5b682a8f0058b7",
+      "issues": [],
+      "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "checkpoint_sha256": {},
+      "selection_and_training_cost_reference": {
+        "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+        "method_id": "smoke"
+      },
+      "simulation_wall_seconds": 0.16672979085706174,
+      "checker_wall_seconds": 0.06249079201370478,
+      "adapters": [],
+      "planning_wall_seconds": 0.0,
+      "controller_decisions": 0,
+      "measured_execution": true,
+      "terminal_requirements_met": true,
+      "executed_instance_sha256": "eba5ed3c8a9aaf7597b8ca015f9e197041f29d5e949358fe2b5b682a8f0058b7",
+      "checker_metrics": {
+        "operations": 51,
+        "moves": 79,
+        "horizon_ticks": 5760,
+        "delivered_orders": 3,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 603,
+          "U02": 3918,
+          "U01": 3989
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 1295.695123333369,
+        "energy_cost": 194.04210566667155,
+        "carbon_kg": 394.0304915000087,
+        "investment_cost": 150,
+        "total_cost": 344.04210566667155,
+        "terminal_soc": 2400
+      },
+      "independently_reconstructed_outcome": {
+        "orders": 3,
+        "shipped": 3,
+        "total_tardiness_ticks": 0,
+        "all_orders_fulfilled": true,
+        "terminal_soc_satisfied": true
+      },
+      "qubo_telemetry": {
+        "calls": 47,
+        "coupled_calls": 8,
+        "qaoa_requested_calls": 47,
+        "qaoa_calls": 47,
+        "coupled_qaoa_calls": 8,
+        "uncoupled_qaoa_calls": 39,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 39,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "max_total_bits": 3,
+        "max_core_bits": 3,
+        "max_slack_bits": 0,
+        "max_couplers": 3,
+        "max_actual_simulated_quantum_bits": 3,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0,
+        "total_encoded_bit_histogram": {
+          "1": 39,
+          "2": 7,
+          "3": 1
+        },
+        "actual_simulated_quantum_bit_histogram": {
+          "1": 39,
+          "2": 7,
+          "3": 1
+        },
+        "decode_mismatch_evidence": [],
+        "time_breakdown_seconds": {
+          "result_elapsed_seconds_sum": 0.03399029350839555,
+          "result_elapsed_observed_calls": 47,
+          "qaoa_angle_optimization_elapsed_seconds_sum": 0.01798275439068675,
+          "qaoa_angle_optimization_observed_calls": 47,
+          "encoding_seconds": null,
+          "isolated_solver_seconds": null,
+          "decoding_seconds": null,
+          "scope": "Only literal result.elapsed_seconds and sampling.optimization.elapsed_seconds are recorded. Original result timing has method-dependent scope: QAOA requests, including oversize SA fallback, begin after encoding; ordinary classical select paths include encoding. Angle optimization is a nested subset, not additional time. Separate encoding/solver/decoding timings are unavailable."
+        },
+        "definitions": {
+          "qaoa_calls": "Actual quantum_algorithm_simulated=true records, not requests or classical fallbacks",
+          "coupled_calls": "Nonzero encoded QUBO couplers, including slack-variable couplings",
+          "coupled_qaoa_calls": "Intersection of actual simulated QAOA and coupled encoded QUBOs",
+          "fallback_calls": "Nonempty fallback_reason excluding explicit empty-pool no-circuit calls; can overlap actual QAOA if classical postprocessing repairs its samples",
+          "max_actual_simulated_quantum_bits": "Circuit qubits from actual simulation metadata, never size of an oversize classical fallback",
+          "repairs": "Solver-reported feasibility repair only; decode mismatches independently invalidate the row"
+        }
+      },
+      "controller_inference_wall_seconds": 0.0,
+      "controller_inference_cpu_seconds": 0.0,
+      "controller_cost_scope": "Callback cost for non-MPC policy; MPC costs recorded separately as planning_wall_seconds",
+      "wall_seconds": 0.23198141693137586,
+      "cpu_seconds": 0.223744,
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/current-dispatch/evaluation/traces/method-0-config-0-leaf-0-seed-0-actor-902.json",
+      "trace_sha256": "2bf63c9188525c2cd510e65a4cf198de3933bd89223006f3c045bd5e1d17ee96"
+    },
+    {
+      "method_id": "smoke",
+      "config": {
+        "orders": 1,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1,
+      "policy_seed": 901,
+      "leaf": 0,
+      "leaf_outcomes": [
+        "development"
+      ],
+      "tape_id": "leaf-0:seed-1",
+      "tape_weight": 0.5,
+      "schema": "stage2-selected-policy-row.v1",
+      "valid": true,
+      "metrics": {
+        "orders": 1,
+        "shipped": 1,
+        "shipped_at": {
+          "P01": 603
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 911.1375016666667,
+        "energy_cost": 128.60978096666668,
+        "carbon_kg": 262.82670408333337,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 278.6097809666686,
+        "operations": 16,
+        "moves": 25,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "physical_instance_sha256": "612198062987552a2daff3c5231b511449d473370010ec1c33a5483fc777a1f9",
+      "issues": [],
+      "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "checkpoint_sha256": {},
+      "selection_and_training_cost_reference": {
+        "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+        "method_id": "smoke"
+      },
+      "simulation_wall_seconds": 0.06787224998697639,
+      "checker_wall_seconds": 0.02577774995006621,
+      "adapters": [],
+      "planning_wall_seconds": 0.0,
+      "controller_decisions": 0,
+      "measured_execution": true,
+      "terminal_requirements_met": true,
+      "executed_instance_sha256": "612198062987552a2daff3c5231b511449d473370010ec1c33a5483fc777a1f9",
+      "checker_metrics": {
+        "operations": 16,
+        "moves": 25,
+        "horizon_ticks": 5760,
+        "delivered_orders": 1,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 603
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 911.1375016667314,
+        "energy_cost": 128.60978096666858,
+        "carbon_kg": 262.82670408335116,
+        "investment_cost": 150,
+        "total_cost": 278.6097809666686,
+        "terminal_soc": 2400
+      },
+      "independently_reconstructed_outcome": {
+        "orders": 1,
+        "shipped": 1,
+        "total_tardiness_ticks": 0,
+        "all_orders_fulfilled": true,
+        "terminal_soc_satisfied": true
+      },
+      "qubo_telemetry": {
+        "calls": 15,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 15,
+        "qaoa_calls": 15,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 15,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 15,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "max_total_bits": 1,
+        "max_core_bits": 1,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 1,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0,
+        "total_encoded_bit_histogram": {
+          "1": 15
+        },
+        "actual_simulated_quantum_bit_histogram": {
+          "1": 15
+        },
+        "decode_mismatch_evidence": [],
+        "time_breakdown_seconds": {
+          "result_elapsed_seconds_sum": 0.010244248202070594,
+          "result_elapsed_observed_calls": 15,
+          "qaoa_angle_optimization_elapsed_seconds_sum": 0.005148832919076085,
+          "qaoa_angle_optimization_observed_calls": 15,
+          "encoding_seconds": null,
+          "isolated_solver_seconds": null,
+          "decoding_seconds": null,
+          "scope": "Only literal result.elapsed_seconds and sampling.optimization.elapsed_seconds are recorded. Original result timing has method-dependent scope: QAOA requests, including oversize SA fallback, begin after encoding; ordinary classical select paths include encoding. Angle optimization is a nested subset, not additional time. Separate encoding/solver/decoding timings are unavailable."
+        },
+        "definitions": {
+          "qaoa_calls": "Actual quantum_algorithm_simulated=true records, not requests or classical fallbacks",
+          "coupled_calls": "Nonzero encoded QUBO couplers, including slack-variable couplings",
+          "coupled_qaoa_calls": "Intersection of actual simulated QAOA and coupled encoded QUBOs",
+          "fallback_calls": "Nonempty fallback_reason excluding explicit empty-pool no-circuit calls; can overlap actual QAOA if classical postprocessing repairs its samples",
+          "max_actual_simulated_quantum_bits": "Circuit qubits from actual simulation metadata, never size of an oversize classical fallback",
+          "repairs": "Solver-reported feasibility repair only; decode mismatches independently invalidate the row"
+        }
+      },
+      "controller_inference_wall_seconds": 0.0,
+      "controller_inference_cpu_seconds": 0.0,
+      "controller_cost_scope": "Callback cost for non-MPC policy; MPC costs recorded separately as planning_wall_seconds",
+      "wall_seconds": 0.09696629201062024,
+      "cpu_seconds": 0.09365099999999993,
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/current-dispatch/evaluation/traces/method-0-config-0-leaf-0-seed-1-actor-901.json",
+      "trace_sha256": "61d23d6909c67a579982128e6d9c9f944e7a51277f1a62ea1fc525034ed90cbc"
+    },
+    {
+      "method_id": "smoke",
+      "config": {
+        "orders": 1,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1,
+      "policy_seed": 902,
+      "leaf": 0,
+      "leaf_outcomes": [
+        "development"
+      ],
+      "tape_id": "leaf-0:seed-1",
+      "tape_weight": 0.5,
+      "schema": "stage2-selected-policy-row.v1",
+      "valid": true,
+      "metrics": {
+        "orders": 1,
+        "shipped": 1,
+        "shipped_at": {
+          "P01": 603
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 911.1375016666667,
+        "energy_cost": 128.60978096666668,
+        "carbon_kg": 262.82670408333337,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 278.6097809666686,
+        "operations": 16,
+        "moves": 25,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "physical_instance_sha256": "612198062987552a2daff3c5231b511449d473370010ec1c33a5483fc777a1f9",
+      "issues": [],
+      "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "checkpoint_sha256": {},
+      "selection_and_training_cost_reference": {
+        "manifest_sha256": "d79328a144c0db92a5476b440cc9b53cd2049b826ce98e8ea52435bbc3e8002b",
+        "method_id": "smoke"
+      },
+      "simulation_wall_seconds": 0.0692125828936696,
+      "checker_wall_seconds": 0.026724375085905194,
+      "adapters": [],
+      "planning_wall_seconds": 0.0,
+      "controller_decisions": 0,
+      "measured_execution": true,
+      "terminal_requirements_met": true,
+      "executed_instance_sha256": "612198062987552a2daff3c5231b511449d473370010ec1c33a5483fc777a1f9",
+      "checker_metrics": {
+        "operations": 16,
+        "moves": 25,
+        "horizon_ticks": 5760,
+        "delivered_orders": 1,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 603
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 911.1375016667314,
+        "energy_cost": 128.60978096666858,
+        "carbon_kg": 262.82670408335116,
+        "investment_cost": 150,
+        "total_cost": 278.6097809666686,
+        "terminal_soc": 2400
+      },
+      "independently_reconstructed_outcome": {
+        "orders": 1,
+        "shipped": 1,
+        "total_tardiness_ticks": 0,
+        "all_orders_fulfilled": true,
+        "terminal_soc_satisfied": true
+      },
+      "qubo_telemetry": {
+        "calls": 15,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 15,
+        "qaoa_calls": 15,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 15,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 15,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "max_total_bits": 1,
+        "max_core_bits": 1,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 1,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0,
+        "total_encoded_bit_histogram": {
+          "1": 15
+        },
+        "actual_simulated_quantum_bit_histogram": {
+          "1": 15
+        },
+        "decode_mismatch_evidence": [],
+        "time_breakdown_seconds": {
+          "result_elapsed_seconds_sum": 0.01044400199316442,
+          "result_elapsed_observed_calls": 15,
+          "qaoa_angle_optimization_elapsed_seconds_sum": 0.0054822496604174376,
+          "qaoa_angle_optimization_observed_calls": 15,
+          "encoding_seconds": null,
+          "isolated_solver_seconds": null,
+          "decoding_seconds": null,
+          "scope": "Only literal result.elapsed_seconds and sampling.optimization.elapsed_seconds are recorded. Original result timing has method-dependent scope: QAOA requests, including oversize SA fallback, begin after encoding; ordinary classical select paths include encoding. Angle optimization is a nested subset, not additional time. Separate encoding/solver/decoding timings are unavailable."
+        },
+        "definitions": {
+          "qaoa_calls": "Actual quantum_algorithm_simulated=true records, not requests or classical fallbacks",
+          "coupled_calls": "Nonzero encoded QUBO couplers, including slack-variable couplings",
+          "coupled_qaoa_calls": "Intersection of actual simulated QAOA and coupled encoded QUBOs",
+          "fallback_calls": "Nonempty fallback_reason excluding explicit empty-pool no-circuit calls; can overlap actual QAOA if classical postprocessing repairs its samples",
+          "max_actual_simulated_quantum_bits": "Circuit qubits from actual simulation metadata, never size of an oversize classical fallback",
+          "repairs": "Solver-reported feasibility repair only; decode mismatches independently invalidate the row"
+        }
+      },
+      "controller_inference_wall_seconds": 0.0,
+      "controller_inference_cpu_seconds": 0.0,
+      "controller_cost_scope": "Callback cost for non-MPC policy; MPC costs recorded separately as planning_wall_seconds",
+      "wall_seconds": 0.0981949579436332,
+      "cpu_seconds": 0.09492900000000004,
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/current-dispatch/evaluation/traces/method-0-config-0-leaf-0-seed-1-actor-902.json",
+      "trace_sha256": "ce74ca4a7ebdb921e9a0bf348f2d29d219952fbf310bf334dac90b81a11db9ab"
+    }
+  ],
+  "summary": [
+    {
+      "method_id": "smoke",
+      "config": {
+        "orders": 1,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 4,
+      "invalid": 0,
+      "unique_environment_tapes": 2,
+      "actor_replicas": 2,
+      "expected_rows": 4,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 0.0,
+          "actor_mean_environment_cvar90": 0.0,
+          "joint_actor_environment_cvar90": 0.0
+        },
+        "total_tardiness_ticks": {
+          "mean": 0.0,
+          "actor_mean_environment_cvar90": 0.0,
+          "joint_actor_environment_cvar90": 0.0
+        },
+        "total_cost": {
+          "mean": 311.16588466667025,
+          "actor_mean_environment_cvar90": 343.7219883666719,
+          "joint_actor_environment_cvar90": 344.04210566667155
+        },
+        "carbon_kg": {
+          "mean": 328.1377356666667,
+          "actor_mean_environment_cvar90": 393.44876725,
+          "joint_actor_environment_cvar90": 394.0304915
+        }
+      },
+      "probability_all_orders_fulfilled": 1.0
+    }
+  ],
+  "wall_seconds": 0.7261741671245545,
+  "measured_cpu_seconds": 0.643934,
+  "runtime": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "darwin",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": null,
+      "torch": "2.14.1",
+      "ortools": "9.15.6755",
+      "qiskit": null,
+      "qiskit-aer": null
+    },
+    "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+  },
+  "unmeasured_worker_failures": 0,
+  "missing_or_invalid": 0,
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/final_eval.py": "9be14d56c799f3761568ef287e83f7453cc6f8267fb57546bef045c532dde22b",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b"
+  },
+  "inference_cost_scope": "Per-row simulation wall and process CPU include causal callbacks and all MPC futures; checker wall separate",
+  "training_cost_scope": "Immutable method selection_provenance and artifact metadata in manifest; report once or explicitly amortize",
+  "statistical_scope": "Separate actor-mean environment CVaR and joint actor/environment CVaR; actors remain nested within factories"
+}

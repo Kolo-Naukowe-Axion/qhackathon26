@@ -1,0 +1,85 @@
+{
+  "schema": "stage1-run.v1",
+  "method": "QAOA p=1, x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+  "instance": "instance_2x2",
+  "timestamp": "2026-10-16T23:16:49.132243+00:00",
+  "instance_sha256": "ae9a61293664f0492f3f71a43cf329c05ebe5d6407585dadf78cffc6a08e0a87",
+  "model_sha256": "6d6b34348c175c78f608996149f6f03be7b8c5487cda793d8722c9d4fb2211dc",
+  "encoding": "pairwise-order",
+  "variables": 1,
+  "horizon": 6,
+  "total_samples": 4096,
+  "feasible_samples": 4096,
+  "feasible_rate": 1.0,
+  "accepted": true,
+  "metadata": {
+    "algorithm": "QAOA with transverse-X mixer",
+    "mixer": "x",
+    "trainable_parameters": 2,
+    "simulator": "Qiskit Aer statevector + measured shots",
+    "layers": 1,
+    "shots": 4096,
+    "seed": 219,
+    "restarts": 1,
+    "maxiter": 500,
+    "cost_scale": 1.0,
+    "optimized_parameters": [
+      1.5707965254549756,
+      -0.7853981537468253
+    ],
+    "parameter_order": "all gamma, then all beta (layer-major qubit order for local-x)",
+    "optimizer": "BFGS, mean QUBO energy",
+    "expected_energy": 4.00000000000001,
+    "ideal_feasible_probability": 1.0,
+    "ideal_ground_probability": 0.99999999999999,
+    "elapsed_wall_seconds": 0.033030291087925434,
+    "attempts": [
+      {
+        "restart": 0,
+        "expected_energy": 4.00000000000001,
+        "evaluations": 33,
+        "converged": false,
+        "message": "Desired error not necessarily achieved due to precision loss."
+      }
+    ],
+    "circuit_depth": 3,
+    "circuit_operations": {
+      "h": 1,
+      "rz": 1,
+      "rx": 1
+    },
+    "bit_order": "sample[i] is qubit i; raw Qiskit strings reversed on decoding",
+    "network_blocked_during_run": true,
+    "reference_warm_start": false,
+    "cost_construction": "All n! permutation costs; no reference optimum/horizon input"
+  },
+  "versions": {
+    "numpy": "2.4.6",
+    "scipy": "1.17.1",
+    "qiskit": "2.5.2",
+    "qiskit-aer": "0.17.2",
+    "dimod": "0.12.22",
+    "dwave-samplers": "1.8.0",
+    "veloxq-sdk": "1.0.0"
+  },
+  "runtime": {
+    "python": "3.11.15",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "machine": "arm64"
+  },
+  "source_sha256": {
+    "solver/__init__.py": "8a447e643ac186cf2390ce81a48521bec3511c7d033ccbab71dcfff37c5134c1",
+    "solver/artifacts.py": "592bf02a1b73337ff97046a0a8d56868b8704cdb88c1e8efef6a5b6456d52786",
+    "solver/audit.py": "5d0ae92e9f4bb17de8284dbb950d9eb8f1e513c69bd036e8970c4eed60523d92",
+    "solver/benchmark.py": "7161eedc87ea27be3c8881f4aa4a10f58b828a55d976f9f6b9c604c207a616b8",
+    "solver/compact.py": "e116065763d049a23655179683a979c0da8aad88b1539071873b93c00035b96d",
+    "solver/local.py": "7db8509545c956c6410c33c881e0f19a44cd25cf66e6a47f74ecd7d228fd37d2",
+    "solver/odra.py": "c99a20b1e9fbdfcde511d7c16a2d8a917675f16e0d5231a012b124df21937712",
+    "solver/quantum.py": "933e4eecf0a4f6c10d55d7b0d4c2be90afa70a5340a45a5869bd511f721e34d0",
+    "solver/refine.py": "d70affee32174a8da69b81ac86bac3485a44cabce719969f6394a1c792c2b11e",
+    "solver/sequence.py": "5ac49ff978f3eb7ad272b0792574753aa0d9ef7f32feabc3aeca2e9e4be402bb",
+    "solver/stage1.py": "3fa9fcdeb41709c8b9b4c02cd8cf7f41de67dafeac134cd60f374dc426e137a6",
+    "solver/velox.py": "7a788c71fd073ae6313667d7714ac86233a0dcffb7a9301b7bcde9432bc08cdf",
+    "solver/verify.py": "30052df2c7c681549e844761cb190945aed4c82f4c02d80b50026c1c781f8752"
+  }
+}

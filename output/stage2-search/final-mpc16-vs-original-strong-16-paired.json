@@ -1,0 +1,439 @@
+{
+  "schema": "stage2-cross-source-paired-evidence.v1",
+  "evaluation_role": "final",
+  "config": {
+    "orders": 16,
+    "horizon": 5760,
+    "profile": "full"
+  },
+  "left": {
+    "method_id": "original-strong-16",
+    "manifest_sha256": "fe1f03c35b48c56a433be1859c7d7c942f7dec3a670496e5449483eba794dd5f",
+    "actor_seeds": [
+      900000
+    ],
+    "method": {
+      "id": "original-strong-16",
+      "kind": "static",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Exact retained strong-MPC scenarios0 control",
+        "task_id": 432,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "guard": "Explicit causal maintenance restriction; six actual development guarded replay checks preserve original physical results"
+      },
+      "backend": "recovery"
+    },
+    "freeze_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117508",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    },
+    "execution_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117508",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    }
+  },
+  "right": {
+    "method_id": "mpc-2future-16",
+    "manifest_sha256": "07ea7a3b3bb24efeb83f9d6de37a3422762761b8159218d358e1a56df6e57dab",
+    "actor_seeds": [
+      900000
+    ],
+    "method": {
+      "id": "mpc-2future-16",
+      "kind": "recovery_mpc",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "mpc": {
+        "actions": [
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 4,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 6,
+            "qa_guard_threshold": 4
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 0
+          },
+          {
+            "wip_limit": 8,
+            "qa_guard_threshold": 4
+          }
+        ],
+        "scenarios": 2,
+        "interval": 1440,
+        "seed": 27491,
+        "physical_check_futures": true,
+        "risk_weight": 0.25
+      },
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Full TRAIN32/reusedVAL16 strong-MPC development only",
+        "task_id": 464,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "planning": "Independent27491; six actions; risk.25; everyfuture physically checked",
+        "negative_control": false,
+        "cost_reference": "compute-ledger.json"
+      },
+      "backend": "recovery"
+    },
+    "freeze_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117516",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    },
+    "execution_runtime": {
+      "python": "3.12.13 (main, Jun 23 2026, 15:18:55) [Clang 22.1.3 ]",
+      "platform": "linux",
+      "packages": {
+        "numpy": "2.5.4",
+        "scipy": "1.18.1",
+        "torch": "2.14.1+cpu",
+        "ortools": "9.15.6755",
+        "qiskit": null,
+        "qiskit-aer": null
+      },
+      "machine": "x86_64",
+      "processor": "x86_64",
+      "host_logical_cpus": 48,
+      "allocation": {
+        "SLURM_JOB_ID": "6117516",
+        "SLURM_CPUS_PER_TASK": "32",
+        "SLURM_CPUS_ON_NODE": "32"
+      },
+      "threads": {
+        "OMP_NUM_THREADS": "1",
+        "OPENBLAS_NUM_THREADS": "1",
+        "MKL_NUM_THREADS": "1"
+      },
+      "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+    }
+  },
+  "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599",
+  "physical_sources": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "supplemental_verifier_sources": {
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+  },
+  "algorithm_source_differences": {},
+  "metrics": {
+    "missing": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 256,
+      "actor_replicas_right": 256,
+      "left_mean": 3.45734375,
+      "right_mean": 2.30140625,
+      "mean_difference": -1.1559375,
+      "mean_difference_percentile_bootstrap_95": [
+        -1.3551562499999998,
+        -0.97953125
+      ],
+      "left_cvar90": 6.423437500000006,
+      "right_cvar90": 5.668750000000003,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -1.5281250000000064,
+        0.1546874999999952
+      ],
+      "left_joint_actor_environment_cvar90": 6.423437500000006,
+      "right_joint_actor_environment_cvar90": 5.668750000000003,
+      "joint_actor_environment_cvar90_difference": -0.7546875000000028,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -1.5281250000000064,
+        0.1546874999999952
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "deadline_debt": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 256,
+      "actor_replicas_right": 256,
+      "left_mean": 14529.535,
+      "right_mean": 12807.104843750001,
+      "mean_difference": -1722.43015625,
+      "mean_difference_percentile_bootstrap_95": [
+        -2058.19921875,
+        -1386.2107812499999
+      ],
+      "left_cvar90": 18827.829687500012,
+      "right_cvar90": 19107.10156250001,
+      "cvar90_difference_percentile_bootstrap_95": [
+        -893.9031250000116,
+        1412.3890624999876
+      ],
+      "left_joint_actor_environment_cvar90": 18827.829687500012,
+      "right_joint_actor_environment_cvar90": 19107.10156250001,
+      "joint_actor_environment_cvar90_difference": 279.27187499999854,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        -893.9031250000116,
+        1412.3890624999876
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "delivered_tardiness": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 256,
+      "actor_replicas_right": 256,
+      "left_mean": 8613.366250000001,
+      "right_mean": 9138.12359375,
+      "mean_difference": 524.75734375,
+      "mean_difference_percentile_bootstrap_95": [
+        240.51187500000015,
+        812.8035937500008
+      ],
+      "left_cvar90": 11247.667187500003,
+      "right_cvar90": 11974.523437500002,
+      "cvar90_difference_percentile_bootstrap_95": [
+        148.79218749999563,
+        1307.2953124999985
+      ],
+      "left_joint_actor_environment_cvar90": 11247.667187500003,
+      "right_joint_actor_environment_cvar90": 11974.523437500002,
+      "joint_actor_environment_cvar90_difference": 726.8562499999989,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        148.79218749999563,
+        1307.2953124999985
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "total_cost": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 256,
+      "actor_replicas_right": 256,
+      "left_mean": 766.019992596895,
+      "right_mean": 801.5979971527398,
+      "mean_difference": 35.578004555844856,
+      "mean_difference_percentile_bootstrap_95": [
+        28.594312065798476,
+        42.729258536385714
+      ],
+      "left_cvar90": 853.604178736143,
+      "right_cvar90": 874.7632752257305,
+      "cvar90_difference_percentile_bootstrap_95": [
+        8.26775931765917,
+        34.42463103818227
+      ],
+      "left_joint_actor_environment_cvar90": 853.604178736143,
+      "right_joint_actor_environment_cvar90": 874.7632752257305,
+      "joint_actor_environment_cvar90_difference": 21.159096489587455,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        8.26775931765917,
+        34.42463103818227
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    },
+    "carbon_kg": {
+      "schema": "stage2-paired-stratified-comparison.v1",
+      "direction": "right minus left; negative favors right for losses",
+      "environment_tapes": 256,
+      "actor_replicas_left": 256,
+      "actor_replicas_right": 256,
+      "left_mean": 1228.888612538486,
+      "right_mean": 1294.738639013199,
+      "mean_difference": 65.85002647471296,
+      "mean_difference_percentile_bootstrap_95": [
+        52.70883698740772,
+        79.17101927014278
+      ],
+      "left_cvar90": 1394.5398758914018,
+      "right_cvar90": 1434.4477015807215,
+      "cvar90_difference_percentile_bootstrap_95": [
+        15.342520757033526,
+        64.43497696848294
+      ],
+      "left_joint_actor_environment_cvar90": 1394.5398758914018,
+      "right_joint_actor_environment_cvar90": 1434.4477015807215,
+      "joint_actor_environment_cvar90_difference": 39.90782568931968,
+      "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+        15.342520757033526,
+        64.43497696848294
+      ],
+      "bootstrap_replicates": 2000,
+      "bootstrap_seed": 60819,
+      "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+      "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+      "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+    }
+  },
+  "execution_runtime_equal": false,
+  "freeze_execution_runtime_drift": {
+    "left": false,
+    "right": false
+  },
+  "direction": "Right minus left; negative favors right for all reported losses",
+  "cost_scope": "Training/teacher/planning and inference costs remain per-manifest provenance; no wall-time speedup metric or cross-hardware normalization",
+  "limitation": "Consistency gate over retained evaluator evidence, not new physical replay/authentication; fixed observed actor cohorts, empirical tape-cluster bootstrap; intervals are pointwise, not multiplicity-corrected; no universal policy/global-gap claim"
+}

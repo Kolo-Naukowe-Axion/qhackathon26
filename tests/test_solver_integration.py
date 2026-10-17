@@ -182,8 +182,8 @@ class SolverBoundaryTests(unittest.TestCase):
             modules = [call.args[0][2] for call in child.call_args_list]
             self.assertNotIn("solver.velox", modules)
             self.assertNotIn("solver.odra", modules)
-            manifest = json.loads((Path(tmp) / "selected-runs.json").read_text())
-            self.assertEqual(manifest["remote_backends_on_hold"], ["VeloxQ", "ODRA5"])
+            self.assertIn("solver.compact", modules)
+            self.assertIn("solver.audit", modules)
 
 
 if __name__ == "__main__":

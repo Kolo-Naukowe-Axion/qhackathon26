@@ -1,0 +1,1513 @@
+{
+  "machines": [
+    {
+      "id": "T1",
+      "hall": "A",
+      "process": "T",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "T2",
+      "hall": "A",
+      "process": "T",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "F1",
+      "hall": "A",
+      "process": "F",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "F2",
+      "hall": "A",
+      "process": "F",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "F3",
+      "hall": "B",
+      "process": "F",
+      "duration_factor": [
+        5,
+        4
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "S1",
+      "hall": "B",
+      "process": "S",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "S2",
+      "hall": "B",
+      "process": "S",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "WASH1",
+      "hall": "A",
+      "process": "WASH",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "WASH2",
+      "hall": "B",
+      "process": "WASH",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 2
+    },
+    {
+      "id": "H1",
+      "hall": "A",
+      "process": "HEAT",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 4,
+      "batch_capacity": 4
+    },
+    {
+      "id": "H2",
+      "hall": "B",
+      "process": "HEAT",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 4,
+      "batch_capacity": 4
+    },
+    {
+      "id": "QA1",
+      "hall": "A",
+      "process": "QA",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 4
+    },
+    {
+      "id": "QA2",
+      "hall": "B",
+      "process": "QA",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 4
+    },
+    {
+      "id": "A1",
+      "hall": "B",
+      "process": "ASSEMBLY",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 6
+    },
+    {
+      "id": "A2",
+      "hall": "B",
+      "process": "ASSEMBLY",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 6
+    }
+  ],
+  "workers": [
+    {
+      "id": "W01",
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "daily_shift": [
+        0,
+        480
+      ],
+      "breaks": [
+        [
+          210,
+          240
+        ],
+        [
+          390,
+          420
+        ]
+      ],
+      "initial_hall": "A"
+    },
+    {
+      "id": "W02",
+      "skills": [
+        "welding",
+        "setup"
+      ],
+      "daily_shift": [
+        0,
+        480
+      ],
+      "breaks": [
+        [
+          210,
+          240
+        ],
+        [
+          390,
+          420
+        ]
+      ],
+      "initial_hall": "B"
+    },
+    {
+      "id": "W03",
+      "skills": [
+        "qa",
+        "assembly"
+      ],
+      "daily_shift": [
+        0,
+        480
+      ],
+      "breaks": [
+        [
+          210,
+          240
+        ],
+        [
+          390,
+          420
+        ]
+      ],
+      "initial_hall": "B"
+    },
+    {
+      "id": "W04",
+      "skills": [
+        "machining",
+        "assembly",
+        "qa"
+      ],
+      "daily_shift": [
+        0,
+        480
+      ],
+      "breaks": [
+        [
+          210,
+          240
+        ],
+        [
+          390,
+          420
+        ]
+      ],
+      "initial_hall": "A"
+    },
+    {
+      "id": "W05",
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "daily_shift": [
+        480,
+        960
+      ],
+      "breaks": [
+        [
+          690,
+          720
+        ],
+        [
+          870,
+          900
+        ]
+      ],
+      "initial_hall": "A"
+    },
+    {
+      "id": "W06",
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "daily_shift": [
+        480,
+        960
+      ],
+      "breaks": [
+        [
+          690,
+          720
+        ],
+        [
+          870,
+          900
+        ]
+      ],
+      "initial_hall": "B"
+    },
+    {
+      "id": "W07",
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "daily_shift": [
+        480,
+        960
+      ],
+      "breaks": [
+        [
+          690,
+          720
+        ],
+        [
+          870,
+          900
+        ]
+      ],
+      "initial_hall": "B"
+    },
+    {
+      "id": "W08",
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "daily_shift": [
+        960,
+        1440
+      ],
+      "breaks": [
+        [
+          1170,
+          1200
+        ],
+        [
+          1350,
+          1380
+        ]
+      ],
+      "initial_hall": "A"
+    },
+    {
+      "id": "W09",
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "daily_shift": [
+        960,
+        1440
+      ],
+      "breaks": [
+        [
+          1170,
+          1200
+        ],
+        [
+          1350,
+          1380
+        ]
+      ],
+      "initial_hall": "B"
+    },
+    {
+      "id": "W10",
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "daily_shift": [
+        960,
+        1440
+      ],
+      "breaks": [
+        [
+          1170,
+          1200
+        ],
+        [
+          1350,
+          1380
+        ]
+      ],
+      "initial_hall": "B"
+    }
+  ],
+  "recipes": {
+    "housing": [
+      {
+        "process": "T",
+        "base_ticks": 60
+      },
+      {
+        "process": "F",
+        "base_ticks": 90
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 30
+      },
+      {
+        "process": "HEAT",
+        "base_ticks": 120
+      },
+      {
+        "process": "QA",
+        "base_ticks": 45
+      }
+    ],
+    "rotor": [
+      {
+        "process": "T",
+        "base_ticks": 60
+      },
+      {
+        "process": "HEAT",
+        "base_ticks": 120
+      },
+      {
+        "process": "F",
+        "base_ticks": 75
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 30
+      },
+      {
+        "process": "QA",
+        "base_ticks": 45
+      }
+    ],
+    "flange": [
+      {
+        "process": "F",
+        "base_ticks": 60
+      },
+      {
+        "process": "S",
+        "base_ticks": 60
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 30
+      },
+      {
+        "process": "QA",
+        "base_ticks": 45
+      }
+    ],
+    "pump": [
+      {
+        "process": "ASSEMBLY",
+        "base_ticks": 60
+      },
+      {
+        "process": "QA",
+        "base_ticks": 45
+      }
+    ]
+  },
+  "transport": {
+    "agv_count": 4,
+    "agv_payload_units": 1,
+    "chargers": [
+      "CHARGE_A",
+      "CHARGE_B"
+    ],
+    "agv_soc_capacity": 160,
+    "agv_soc_initial": 120,
+    "empty_soc_per_tick": 1,
+    "loaded_soc_per_tick": 2,
+    "hall_spoke_ticks": 1,
+    "bridge_half_ticks": 2,
+    "bridge_capacity": 1,
+    "destination_space_reserved_before_departure": true,
+    "finished_part_blocks_machine_until_pickup": true,
+    "load_ticks": 1,
+    "unload_ticks": 1,
+    "charge_rate": 12,
+    "charge_power_kw": 4,
+    "charger_capacity": 1,
+    "offlane_agv_capacity": 4,
+    "charge_saturates": true,
+    "soc_unit_kwh": 0.005
+  },
+  "energy": {
+    "base_load_kw": 12,
+    "normal_grid_cap_kw": 90,
+    "stationary_soc_unit_kwh": 0.016666666666666666,
+    "stationary_soc_capacity": 2400,
+    "stationary_soc_initial": 600,
+    "stationary_soc_min": 120,
+    "stationary_soc_terminal_min": 600,
+    "battery_actions": [
+      {
+        "id": "idle",
+        "charge_kw": 0,
+        "discharge_kw": 0,
+        "soc_delta": 0
+      },
+      {
+        "id": "charge",
+        "charge_kw": 10,
+        "discharge_kw": 0,
+        "soc_delta": 9
+      },
+      {
+        "id": "discharge",
+        "charge_kw": 0,
+        "discharge_kw": 9,
+        "soc_delta": -10
+      }
+    ],
+    "tariff_low": 0.12,
+    "tariff_peak": 0.34,
+    "carbon_low": 0.25,
+    "carbon_peak": 0.65,
+    "solar_peak_kw": 16,
+    "no_export": true
+  },
+  "quality": {
+    "draws_hidden_until_inspection_completion": true,
+    "paired_key": [
+      "unit_lineage",
+      "operation_id",
+      "attempt"
+    ],
+    "max_repairs_per_component_attempt": 1,
+    "max_replacements_per_original_component": 1,
+    "repair_ticks": 45,
+    "repair_power_kw": 8,
+    "repair_skill": "machining",
+    "replacement_lead_ticks": 180,
+    "final_defect_probability": 0.025,
+    "component_defect_probability": {
+      "standard": 0.06,
+      "precision": 0.02
+    },
+    "risk_model": "manufacturing_mode_history",
+    "repair_residual_probability": 0.02,
+    "wear_risk_coefficient": 0.01,
+    "manufacturing_defect_probabilities": {
+      "T": {
+        "eco": 0.01,
+        "standard": 0.025,
+        "turbo": 0.08
+      },
+      "F": {
+        "eco": 0.015,
+        "standard": 0.03,
+        "turbo": 0.1
+      },
+      "S": {
+        "standard": 0.04,
+        "careful": 0.015
+      },
+      "WASH": {
+        "standard": 0.005
+      },
+      "HEAT": {
+        "standard": 0.02
+      },
+      "ASSEMBLY": {
+        "standard": 0.025,
+        "careful": 0.01
+      }
+    }
+  },
+  "schema": "metaltech-stage2-instance.v1",
+  "name": "MetalTech physical factory",
+  "seed": 0,
+  "profile": "full",
+  "tick_minutes": 1,
+  "horizon_ticks": 5760,
+  "day_ticks": 1440,
+  "replan_ticks": 60,
+  "orders": [
+    {
+      "id": "P01",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "due_tick": 2400,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P02",
+      "family": "alloy_B",
+      "release_tick": 120,
+      "due_tick": 2760,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P03",
+      "family": "alloy_C",
+      "release_tick": 240,
+      "due_tick": 3120,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P04",
+      "family": "alloy_A",
+      "release_tick": 360,
+      "due_tick": 3480,
+      "precision_required": true,
+      "urgent": false
+    },
+    {
+      "id": "P05",
+      "family": "alloy_B",
+      "release_tick": 0,
+      "due_tick": 3840,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P06",
+      "family": "alloy_C",
+      "release_tick": 120,
+      "due_tick": 4200,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P07",
+      "family": "alloy_A",
+      "release_tick": 240,
+      "due_tick": 2400,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P08",
+      "family": "alloy_B",
+      "release_tick": 360,
+      "due_tick": 2760,
+      "precision_required": true,
+      "urgent": false
+    },
+    {
+      "id": "P09",
+      "family": "alloy_C",
+      "release_tick": 0,
+      "due_tick": 3120,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P10",
+      "family": "alloy_A",
+      "release_tick": 120,
+      "due_tick": 3480,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P11",
+      "family": "alloy_B",
+      "release_tick": 240,
+      "due_tick": 3840,
+      "precision_required": false,
+      "urgent": false
+    },
+    {
+      "id": "P12",
+      "family": "alloy_C",
+      "release_tick": 360,
+      "due_tick": 4200,
+      "precision_required": true,
+      "urgent": false
+    }
+  ],
+  "units": [
+    {
+      "id": "P01/housing/1",
+      "order_id": "P01",
+      "recipe": "housing",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P01/rotor/1",
+      "order_id": "P01",
+      "recipe": "rotor",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P01/flange/1",
+      "order_id": "P01",
+      "recipe": "flange",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P02/housing/1",
+      "order_id": "P02",
+      "recipe": "housing",
+      "family": "alloy_B",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P02/rotor/1",
+      "order_id": "P02",
+      "recipe": "rotor",
+      "family": "alloy_B",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P02/flange/1",
+      "order_id": "P02",
+      "recipe": "flange",
+      "family": "alloy_B",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P03/housing/1",
+      "order_id": "P03",
+      "recipe": "housing",
+      "family": "alloy_C",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P03/rotor/1",
+      "order_id": "P03",
+      "recipe": "rotor",
+      "family": "alloy_C",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P03/flange/1",
+      "order_id": "P03",
+      "recipe": "flange",
+      "family": "alloy_C",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P04/housing/1",
+      "order_id": "P04",
+      "recipe": "housing",
+      "family": "alloy_A",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P04/rotor/1",
+      "order_id": "P04",
+      "recipe": "rotor",
+      "family": "alloy_A",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P04/flange/1",
+      "order_id": "P04",
+      "recipe": "flange",
+      "family": "alloy_A",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P05/housing/1",
+      "order_id": "P05",
+      "recipe": "housing",
+      "family": "alloy_B",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P05/rotor/1",
+      "order_id": "P05",
+      "recipe": "rotor",
+      "family": "alloy_B",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P05/flange/1",
+      "order_id": "P05",
+      "recipe": "flange",
+      "family": "alloy_B",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P06/housing/1",
+      "order_id": "P06",
+      "recipe": "housing",
+      "family": "alloy_C",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P06/rotor/1",
+      "order_id": "P06",
+      "recipe": "rotor",
+      "family": "alloy_C",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P06/flange/1",
+      "order_id": "P06",
+      "recipe": "flange",
+      "family": "alloy_C",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P07/housing/1",
+      "order_id": "P07",
+      "recipe": "housing",
+      "family": "alloy_A",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P07/rotor/1",
+      "order_id": "P07",
+      "recipe": "rotor",
+      "family": "alloy_A",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P07/flange/1",
+      "order_id": "P07",
+      "recipe": "flange",
+      "family": "alloy_A",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P08/housing/1",
+      "order_id": "P08",
+      "recipe": "housing",
+      "family": "alloy_B",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P08/rotor/1",
+      "order_id": "P08",
+      "recipe": "rotor",
+      "family": "alloy_B",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P08/flange/1",
+      "order_id": "P08",
+      "recipe": "flange",
+      "family": "alloy_B",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P09/housing/1",
+      "order_id": "P09",
+      "recipe": "housing",
+      "family": "alloy_C",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P09/rotor/1",
+      "order_id": "P09",
+      "recipe": "rotor",
+      "family": "alloy_C",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P09/flange/1",
+      "order_id": "P09",
+      "recipe": "flange",
+      "family": "alloy_C",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P10/housing/1",
+      "order_id": "P10",
+      "recipe": "housing",
+      "family": "alloy_A",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P10/rotor/1",
+      "order_id": "P10",
+      "recipe": "rotor",
+      "family": "alloy_A",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P10/flange/1",
+      "order_id": "P10",
+      "recipe": "flange",
+      "family": "alloy_A",
+      "release_tick": 120,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P11/housing/1",
+      "order_id": "P11",
+      "recipe": "housing",
+      "family": "alloy_B",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P11/rotor/1",
+      "order_id": "P11",
+      "recipe": "rotor",
+      "family": "alloy_B",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P11/flange/1",
+      "order_id": "P11",
+      "recipe": "flange",
+      "family": "alloy_B",
+      "release_tick": 240,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P12/housing/1",
+      "order_id": "P12",
+      "recipe": "housing",
+      "family": "alloy_C",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P12/rotor/1",
+      "order_id": "P12",
+      "recipe": "rotor",
+      "family": "alloy_C",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P12/flange/1",
+      "order_id": "P12",
+      "recipe": "flange",
+      "family": "alloy_C",
+      "release_tick": 360,
+      "initial_location": "RAW_A"
+    }
+  ],
+  "modes": {
+    "T": {
+      "eco": {
+        "duration_factor": [
+          3,
+          2
+        ],
+        "power_kw": 5.8500000000000005,
+        "wear": 0.6,
+        "defect_probability": 0.025
+      },
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 9,
+        "wear": 1,
+        "defect_probability": 0.04
+      },
+      "turbo": {
+        "duration_factor": [
+          3,
+          4
+        ],
+        "power_kw": 13.5,
+        "wear": 2,
+        "defect_probability": 0.1
+      }
+    },
+    "F": {
+      "eco": {
+        "duration_factor": [
+          3,
+          2
+        ],
+        "power_kw": 7.800000000000001,
+        "wear": 0.6,
+        "defect_probability": 0.025
+      },
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 12,
+        "wear": 1,
+        "defect_probability": 0.04
+      },
+      "turbo": {
+        "duration_factor": [
+          3,
+          4
+        ],
+        "power_kw": 18.0,
+        "wear": 2,
+        "defect_probability": 0.1
+      }
+    },
+    "S": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 10,
+        "wear": 1,
+        "defect_probability": 0.04
+      },
+      "careful": {
+        "duration_factor": [
+          3,
+          2
+        ],
+        "power_kw": 8.0,
+        "wear": 1,
+        "defect_probability": 0.01
+      }
+    },
+    "WASH": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 4,
+        "wear": 1,
+        "defect_probability": 0.04
+      }
+    },
+    "HEAT": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 16,
+        "wear": 1,
+        "defect_probability": 0.04
+      }
+    },
+    "QA": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 3,
+        "wear": 1,
+        "defect_probability": 0.04
+      },
+      "precision": {
+        "duration_factor": [
+          3,
+          2
+        ],
+        "power_kw": 3.5999999999999996,
+        "wear": 1,
+        "defect_probability": 0.01
+      }
+    },
+    "ASSEMBLY": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 4,
+        "wear": 1,
+        "defect_probability": 0.04
+      },
+      "careful": {
+        "duration_factor": [
+          3,
+          2
+        ],
+        "power_kw": 3.2,
+        "wear": 1,
+        "defect_probability": 0.01
+      }
+    }
+  },
+  "setup_matrix": {
+    "alloy_A": {
+      "alloy_A": 0,
+      "alloy_B": 30,
+      "alloy_C": 45
+    },
+    "alloy_B": {
+      "alloy_A": 30,
+      "alloy_B": 0,
+      "alloy_C": 45
+    },
+    "alloy_C": {
+      "alloy_A": 45,
+      "alloy_B": 45,
+      "alloy_C": 0
+    }
+  },
+  "agvs": [
+    {
+      "id": "AGV1",
+      "initial_location": "RAW_A",
+      "initial_soc": 120,
+      "capacity": 160
+    },
+    {
+      "id": "AGV2",
+      "initial_location": "RAW_A",
+      "initial_soc": 120,
+      "capacity": 160
+    },
+    {
+      "id": "AGV3",
+      "initial_location": "RAW_A",
+      "initial_soc": 120,
+      "capacity": 160
+    },
+    {
+      "id": "AGV4",
+      "initial_location": "RAW_A",
+      "initial_soc": 120,
+      "capacity": 160
+    }
+  ],
+  "tools": [
+    {
+      "id": "mill1",
+      "kind": "mill",
+      "initial_location": "TOOL_A",
+      "life": 600,
+      "service_ticks": 60
+    },
+    {
+      "id": "mill2",
+      "kind": "mill",
+      "initial_location": "TOOL_A",
+      "life": 600,
+      "service_ticks": 60
+    },
+    {
+      "id": "weld1",
+      "kind": "weld",
+      "initial_location": "TOOL_B",
+      "life": 600,
+      "service_ticks": 60
+    },
+    {
+      "id": "weld2",
+      "kind": "weld",
+      "initial_location": "TOOL_B",
+      "life": 600,
+      "service_ticks": 60
+    },
+    {
+      "id": "calibration1",
+      "kind": "calibration",
+      "initial_location": "TOOL_B",
+      "life": 600,
+      "service_ticks": 60
+    }
+  ],
+  "process_tools": {
+    "F": "mill",
+    "S": "weld",
+    "QA": "calibration"
+  },
+  "process_skills": {
+    "T": "machining",
+    "F": "machining",
+    "S": "welding",
+    "WASH": "setup",
+    "HEAT": "setup",
+    "QA": "qa",
+    "ASSEMBLY": "assembly"
+  },
+  "certification_modes": {
+    "precision": {
+      "T": [
+        "eco",
+        "standard"
+      ],
+      "F": [
+        "eco",
+        "standard"
+      ],
+      "QA": [
+        "precision"
+      ]
+    }
+  },
+  "maintenance": {
+    "wear_limit": 1050,
+    "duration": 75,
+    "skill": "maintenance",
+    "power_kw": 2,
+    "reset_family": false
+  },
+  "worker_travel_ticks": 2,
+  "graph_edges": [
+    {
+      "a": "T1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "T2",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "F1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "F2",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "F3",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "S1",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "S2",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "WASH1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "WASH2",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "H1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "H2",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "QA1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "QA2",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "A1",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "A2",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "RAW_A",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "TOOL_A",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "TOOL_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "SHIP_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "SCRAP_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "CHARGE_A",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "CHARGE_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "HUB_A",
+      "b": "HUB_B",
+      "ticks": 4
+    }
+  ],
+  "raw_stock_units": {
+    "housing": 30,
+    "rotor": 30,
+    "flange": 30
+  },
+  "delivery": {
+    "id": "D1",
+    "normal_tick": 1800,
+    "delayed_tick": 2340,
+    "contents": {
+      "housing": 4,
+      "rotor": 4,
+      "flange": 4
+    }
+  },
+  "uncertainty_stages": [
+    {
+      "reveal_tick": 720,
+      "outcomes": [
+        {
+          "id": "mill_ok",
+          "probability": [
+            65,
+            100
+          ],
+          "events": []
+        },
+        {
+          "id": "mill_outage",
+          "probability": [
+            35,
+            100
+          ],
+          "events": [
+            {
+              "type": "machine_outage",
+              "machine": "F2",
+              "start": 720,
+              "end": 1080
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reveal_tick": 1440,
+      "outcomes": [
+        {
+          "id": "supply_ok",
+          "probability": [
+            60,
+            100
+          ],
+          "events": []
+        },
+        {
+          "id": "supply_stress",
+          "probability": [
+            40,
+            100
+          ],
+          "events": [
+            {
+              "type": "grid_derating",
+              "start": 1440,
+              "end": 2160,
+              "grid_cap_kw": 45
+            },
+            {
+              "type": "delivery_delay",
+              "delivery_id": "D1",
+              "original_tick": 1800,
+              "new_tick": 2340
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "reveal_tick": 2400,
+      "outcomes": [
+        {
+          "id": "no_rush",
+          "probability": [
+            50,
+            100
+          ],
+          "events": []
+        },
+        {
+          "id": "rush",
+          "probability": [
+            50,
+            100
+          ],
+          "events": [
+            {
+              "type": "urgent_orders",
+              "count": 2,
+              "release_tick": 2400
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "attendance": {
+    "T": {
+      "kind": "start",
+      "ticks": 5
+    },
+    "F": {
+      "kind": "start",
+      "ticks": 5
+    },
+    "S": {
+      "kind": "full",
+      "ticks": 5
+    },
+    "WASH": {
+      "kind": "start",
+      "ticks": 5
+    },
+    "HEAT": {
+      "kind": "start",
+      "ticks": 5
+    },
+    "QA": {
+      "kind": "full",
+      "ticks": 5
+    },
+    "ASSEMBLY": {
+      "kind": "full",
+      "ticks": 5
+    }
+  },
+  "time_scale": 15,
+  "lease_options": [
+    {
+      "id": "calibration-kit",
+      "cost": 150,
+      "lead_ticks": 480,
+      "max_count": 1,
+      "resource": {
+        "id": "calibration_lease",
+        "kind": "calibration",
+        "initial_location": "TOOL_B",
+        "life": 600,
+        "service_ticks": 60
+      }
+    }
+  ],
+  "investment_budget": 250,
+  "feature_status": {
+    "flexible_machines": "implemented; independently checkable in trace",
+    "processing_modes": "implemented; independently checkable in trace",
+    "family_setups": "implemented; independently checkable in trace",
+    "bom_joins": "implemented; independently checkable in trace",
+    "batch_heat": "implemented; independently checkable in trace",
+    "agv_routes": "implemented; independently checkable in trace",
+    "empty_repositioning": "implemented; independently checkable in trace",
+    "finite_buffers": "implemented; independently checkable in trace",
+    "blocking": "implemented; independently checkable in trace",
+    "battery_charging": "implemented; independently checkable in trace",
+    "worker_skills_shifts": "implemented; independently checkable in trace",
+    "portable_tools_wear": "implemented; independently checkable in trace",
+    "preventive_maintenance": "implemented; independently checkable in trace",
+    "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+    "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+    "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+    "quality_rework_scrap": "implemented; independently checkable in trace",
+    "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+    "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+    "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+  }
+}

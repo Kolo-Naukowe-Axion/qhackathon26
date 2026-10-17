@@ -1,0 +1,98 @@
+{
+  "schema": "stage2-measured-primary-gap-certificates.v1",
+  "evaluation_role": "development",
+  "method_id": "legacy-routing-teacher",
+  "config": {
+    "orders": 12,
+    "horizon": 5760,
+    "profile": "full"
+  },
+  "protocol_sha256": "7c84436dab1e3f2f92cf8b842ac4edc8449b8455be18013c1f27b9498f14365d",
+  "source_evidence": {
+    "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/axion-download-0019/legacy-preflight-v18p1-6117483",
+    "files": {
+      "manifest.json": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/axion-download-0019/legacy-preflight-v18p1-6117483/manifest.json",
+        "sha256": "52da2bbf41020264483928791e99ea1e4803ead3b0ddc9d5513dad3641113853"
+      },
+      "evaluation.json": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/axion-download-0019/legacy-preflight-v18p1-6117483/evaluation.json",
+        "sha256": "4a97b5fdfabdd1d374ad4239c8a8b4e21a0a8e8a0821c6d42a254a1bcbc66183"
+      },
+      "rows.jsonl": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/axion-download-0019/legacy-preflight-v18p1-6117483/rows.jsonl",
+        "sha256": "3bcaacfefb4a955a1ec7fe9214b4db92656ab304d367a11fa86d291eae03ae03"
+      }
+    },
+    "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+  },
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+    "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+    "stage2/certify_evaluations.py": "958c4f6520139ab2de3c6b82a112d5b794a2529a7c2eabd3ba5bc42df5e40ae1"
+  },
+  "environment_tapes": 2,
+  "rows": [
+    {
+      "seed": 0,
+      "tape_weight": 0.5,
+      "physical_instance_sha256": "ee979dce3fd9bb99f5362d5a85e3e708e57b8e8aa480f7789519cf8c76f26c54",
+      "demand": 14,
+      "necessary_missing_lower_bound": 0,
+      "certificate_path": "seed0-necessary-bound.json",
+      "certificate_sha256": "0d968c131a12cccb5f4ebf75f61cf6f779e4ca03804d73f946a522c974324fe5",
+      "actors": [
+        {
+          "actor_seed": 900000,
+          "checked_missing": 0,
+          "lower_bound": 0,
+          "unknown_primary_gap_interval": [
+            0,
+            0
+          ],
+          "primary_optimum_attained": true
+        }
+      ],
+      "mean_missing": 0.0,
+      "mean_primary_gap_upper_bound": 0.0,
+      "primary_attained_fraction": 1.0
+    },
+    {
+      "seed": 100,
+      "tape_weight": 0.5,
+      "physical_instance_sha256": "0cdc5019955b942117eb5ab2c7ddbb5984c982d4fcf97840896636ada4080923",
+      "demand": 14,
+      "necessary_missing_lower_bound": 0,
+      "certificate_path": "seed100-necessary-bound.json",
+      "certificate_sha256": "638c32cd5aa63fa95675b831e3a46b4e65c08ddf4337b8904141f48604b93e78",
+      "actors": [
+        {
+          "actor_seed": 900000,
+          "checked_missing": 0,
+          "lower_bound": 0,
+          "unknown_primary_gap_interval": [
+            0,
+            0
+          ],
+          "primary_optimum_attained": true
+        }
+      ],
+      "mean_missing": 0.0,
+      "mean_primary_gap_upper_bound": 0.0,
+      "primary_attained_fraction": 1.0
+    }
+  ],
+  "weighted_mean_checked_missing": 0.0,
+  "weighted_mean_necessary_missing_lower_bound": 0.0,
+  "weighted_mean_primary_gap_upper_bound": 0.0,
+  "weighted_primary_optimum_attainment": 1.0,
+  "weighted_probability_nonzero_necessary_missing": 0.0,
+  "actor_mean_environment_cvar90_primary_gap_upper_bound": 0.0,
+  "scope": "Fixed realized tapes; material/quality relaxation ignores scheduling constraints. Positive U-L is only an upper bound on the unknown primary gap. Zero U=L certifies primary optimum, including trivial all-fulfilled witnesses.",
+  "causal_scope": "Offline post-evaluation use of hidden keyed draws only; no policy changes, training labels or future-tape access during dispatch",
+  "secondary_optimality_gap": null
+}

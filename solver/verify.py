@@ -12,22 +12,29 @@ def verify_quantum_evidence(directory, model, records, metadata):
     """Reconstruct the optimized quantum state and reconcile actual shot counts."""
     import numpy as np
     from qiskit.quantum_info import Statevector
-    from .quantum import qaoa_circuit
+    from .quantum import feasible_mask, qaoa_circuit
     from .stage1 import energy
     circuit, parameters, scale = qaoa_circuit(model, metadata["layers"], metadata.get("mixer", "x"))
     angles = metadata["optimized_parameters"]
     if len(angles) != len(parameters) or not np.isfinite(angles).all():
         raise ValueError("Invalid saved quantum parameters")
     bound = circuit.assign_parameters(dict(zip(parameters, angles)))
+    if model.get("encoding") == "pairwise-order":
+        from qiskit import qasm3
+        if (directory / "circuit.qasm").read_text() != qasm3.dumps(bound):
+            raise ValueError("Saved QASM differs from the reconstructed quantum circuit")
     probabilities = Statevector.from_instruction(bound).probabilities()
     n = len(model["variables"])
     costs = np.array([energy(model, [(state >> i) & 1 for i in range(n)]) for state in range(1 << n)])
     if not np.isclose(float(probabilities @ costs), metadata["expected_energy"], atol=1e-9, rtol=0):
         raise ValueError("Saved expected energy differs from the reconstructed quantum circuit")
-    if not np.isclose(float(probabilities[costs == 0].sum()), metadata["ideal_feasible_probability"], atol=1e-9, rtol=0):
+    if not np.isclose(float(probabilities[feasible_mask(model, costs)].sum()), metadata["ideal_feasible_probability"], atol=1e-9, rtol=0):
         raise ValueError("Saved ideal probability differs from the reconstructed quantum circuit")
     if metadata["cost_scale"] != scale:
         raise ValueError("Saved quantum cost scale differs from the model")
+    if "ideal_ground_probability" in metadata and not np.isclose(
+            float(probabilities[costs == costs.min()].sum()), metadata["ideal_ground_probability"], atol=1e-9, rtol=0):
+        raise ValueError("Saved optimal probability differs from the reconstructed quantum circuit")
     raw = json.loads((directory / "raw-counts.json").read_text())
     counts = {}
     for text, count in raw.items():
@@ -54,6 +61,18 @@ def verify_run(directory):
     instance = json.loads((ROOT / "instances" / f"{name}.json").read_text())
     if report["model_sha256"] != digest(model) or report["instance_sha256"] != digest(instance):
         raise ValueError("Model or instance hash mismatch")
+    from .stage1 import build_qubo
+    if model["encoding"] == "pairwise-order":
+        from .sequence import build_sequence_qubo
+        canonical = build_sequence_qubo(instance)
+    else:
+        canonical = build_qubo(instance, model["horizon"], model["encoding"])
+    if model != canonical:
+        raise ValueError("Saved model differs from the formulation rebuilt from the official input")
+    for key, value in (("encoding", model["encoding"]), ("variables", len(model["variables"])),
+                       ("horizon", model["horizon"])):
+        if report[key] != value:
+            raise ValueError(f"Saved report {key} differs from the model")
     recomputed = assess_samples(instance, model, records)
     if recomputed != records:
         raise ValueError("Stored sample diagnostics differ from recomputed checks")

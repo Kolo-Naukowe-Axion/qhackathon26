@@ -1,5 +1,7 @@
 # Stage 1 readiness — 16 October 2026
 
+> Superseded selection (17 October): the current runs use 1/3-bit order QUBOs and QAOA for both instances. See [current formulation, experiments and limits](STAGE1_COMPACT.md) and `output/stage1-selected.json`. The time-indexed results below remain retained comparison evidence.
+
 Both mandatory computational method requirements have been exercised locally. This does not claim a completed submission, VeloxQ integration, or physical ODRA5 execution.
 
 **Current user instruction: use neither ODRA5 nor VeloxQ; continue locally.**

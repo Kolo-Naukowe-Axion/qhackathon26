@@ -1,0 +1,102 @@
+{
+  "schema": "stage2-rank-iqm-offline-experiment.v1",
+  "runs": [
+    {
+      "variant": "sat_only",
+      "layers": 1,
+      "logical_qubits": 4,
+      "physical_proxy_qubits": 5,
+      "native_gate_counts": {
+        "r": 29,
+        "cz": 16,
+        "measure": 4
+      },
+      "native_depth": 32,
+      "native_unmeasured_depth": 31,
+      "layout_seed": 1,
+      "probability_max_error": 7.771561172376096e-16,
+      "logical_ground_probability": 0.6607238829802632,
+      "routed_ground_probability": 0.6607238829802635,
+      "compilation_seconds": 0.0549321670550853
+    },
+    {
+      "variant": "sat_only",
+      "layers": 2,
+      "logical_qubits": 4,
+      "physical_proxy_qubits": 5,
+      "native_gate_counts": {
+        "r": 48,
+        "cz": 33,
+        "measure": 4
+      },
+      "native_depth": 62,
+      "native_unmeasured_depth": 61,
+      "layout_seed": 4,
+      "probability_max_error": 1.3877787807814457e-15,
+      "logical_ground_probability": 0.8494198833485844,
+      "routed_ground_probability": 0.8494198833485864,
+      "compilation_seconds": 0.06373024987988174
+    },
+    {
+      "variant": "sparse_optional_lp",
+      "layers": 1,
+      "logical_qubits": 4,
+      "physical_proxy_qubits": 5,
+      "native_gate_counts": {
+        "r": 22,
+        "cz": 13,
+        "measure": 4
+      },
+      "native_depth": 26,
+      "native_unmeasured_depth": 25,
+      "layout_seed": 0,
+      "probability_max_error": 3.0531133177191805e-16,
+      "logical_ground_probability": 0.6999701206202601,
+      "routed_ground_probability": 0.6999701206202598,
+      "compilation_seconds": 0.0462757081259042
+    },
+    {
+      "variant": "sparse_optional_lp",
+      "layers": 2,
+      "logical_qubits": 4,
+      "physical_proxy_qubits": 5,
+      "native_gate_counts": {
+        "r": 40,
+        "cz": 27,
+        "measure": 4
+      },
+      "native_depth": 51,
+      "native_unmeasured_depth": 50,
+      "layout_seed": 0,
+      "probability_max_error": 9.992007221626409e-16,
+      "logical_ground_probability": 0.9084491348093906,
+      "routed_ground_probability": 0.908449134809392,
+      "compilation_seconds": 0.06167387496680021
+    }
+  ],
+  "versions": {
+    "iqm-station-control-client": "13.0.3",
+    "numpy": "2.4.6",
+    "iqm-pulse": "14.0.3",
+    "iqm-client": "35.0.3",
+    "qiskit": "2.1.2",
+    "iqm-data-definitions": "3.1.0",
+    "iqm-exa-common": "28.0.3",
+    "qiskit-aer": "0.17.2"
+  },
+  "source_sha256": {
+    "solver/odra.py": "c99a20b1e9fbdfcde511d7c16a2d8a917675f16e0d5231a012b124df21937712",
+    "stage2/rank_iqm.py": "98f5dba5ea2eb9260a9acb134b2bff94313095e2f2bf7aca00a40eeb434bc315",
+    "stage2/rank_quantum.py": "5ac01218a24913ae616f2726563a869b178f8afbe967d14eb25bf842d4250589"
+  },
+  "physical_quantum_executed": false,
+  "live_odra5_calibration_used": false,
+  "no_quantum_speedup_claim": true,
+  "limitations": [
+    "IQMFakeAdonis supplies a local five-qubit star proxy, not current ODRA5 connectivity or calibration.",
+    "Native depth and CZ counts are proxy compilation costs; device execution and noise tolerance remain untested.",
+    "Angles use fixed source seed2026; p2 probabilities are this example, not averages across optimization seeds.",
+    "Exact classical structural/SAT preprocessing and simulator angle optimization remain necessary costs.",
+    "No remote job was submitted or sampled."
+  ]
+}

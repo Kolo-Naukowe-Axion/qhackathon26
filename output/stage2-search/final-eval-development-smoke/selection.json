@@ -1,0 +1,65 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 2,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "trace_policy": "first_per_leaf",
+  "selection_provenance": {
+    "data": "DEVELOPMENT seeds0,1 only",
+    "training_wall_seconds": 0
+  },
+  "methods": [
+    {
+      "id": "baseline",
+      "kind": "static",
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true
+      },
+      "selection_provenance": {
+        "data": "Handwritten development smoke; not a selected final policy",
+        "training_wall_seconds": 0
+      }
+    },
+    {
+      "id": "advanced",
+      "kind": "advanced",
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true
+      },
+      "selection_provenance": {
+        "data": "Handwritten development smoke; not a selected final policy",
+        "training_wall_seconds": 0
+      }
+    },
+    {
+      "id": "safe-energy",
+      "kind": "static",
+      "backend": "energy",
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true
+      },
+      "energy_policy": {
+        "strategy": "solar-tariff",
+        "objective": "cost",
+        "reserve": "terminal"
+      },
+      "selection_provenance": {
+        "data": "Handwritten development smoke; not a selected final policy",
+        "training_wall_seconds": 0
+      }
+    }
+  ]
+}

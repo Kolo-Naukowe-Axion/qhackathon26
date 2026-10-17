@@ -1,0 +1,39 @@
+{
+  "schema": "tiny-multi-buffer-bom-bound.v1",
+  "pumps": 3,
+  "attendance": "full",
+  "lower_bound_ticks": 2953,
+  "components": {
+    "all_mandatory_processing": 2925,
+    "first_loaded_delivery": 4,
+    "last_pump_QA_shipping": 8,
+    "buffer_forced_worker_hall_walks": 16
+  },
+  "productive_B_visits_at_least": 4,
+  "forced_worker_hall_walks_at_least": 8,
+  "accepted_unconsumed_components_at_most": 4,
+  "components_needed_for_two_assemblies": 6,
+  "proof": "Before a productive hallB visit, at most three accepted components occupy/reserve ASM input and one occupies QA output. Inbound moves reserve destination capacity. QA fully attends the sole worker in A, so no additional acceptance occurs during that B visit. Two assembly starts require six distinct accepted components, exceeding four; hence at most one assembly starts per B visit. The first productive B visit must weld before any flange can return A for wash/QA, so it cannot assemble a pump. Thus n+1 B visits, each returning A before final QA. Under automatic prefix assumptions, only the first outward walk may overlap the initial prefix.",
+  "guards": [
+    "One QA station with one blocked output",
+    "One assembly station with input capacity exactly3",
+    "Inbound destination reservations count against capacity",
+    "Full QA and ASM attendance by one worker",
+    "No initial accepted inventory or temporary warehouses",
+    "Matched three-distinct-component BOM",
+    "Declared A/B station mapping"
+  ],
+  "previous_certificate_bound_ticks": 2945,
+  "deliberately_excluded": [
+    "Additional welding visits",
+    "Extra empty travel",
+    "Further blocking/join waits"
+  ],
+  "flagship_bound": false,
+  "changes_saved_cp_bound": false,
+  "instance_path": "output/stage2-search/multi-reference-pilot/n3-scale15-full/instance.json",
+  "instance_file_sha256": "73155a7f2f11a7c221faf5f7cb5c0865043342b53fe2d483bd11287e0b8e7371",
+  "construction_source_sha256": "99d31b8a3a4f8ec18cfeff0f48372a9806f2aca5aa7d47edd3b61a5d1fad69b5",
+  "reference_guard_sha256": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+  "previous_certificate_file_sha256": "4aa8b45b2cf3eaaae621152283c9abeb6fd3a9af33fcb0d2e0ce26128c9d73f0"
+}

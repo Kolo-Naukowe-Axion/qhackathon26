@@ -1,0 +1,97 @@
+{
+  "schema": "stage2-adaptive-evidence.v1",
+  "status": "sealed_without_replay",
+  "original_directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/adaptive-recovery-ppo-smoke",
+  "execution_complete_attested": true,
+  "selected_policies": [
+    {
+      "context_id": 0,
+      "policy_sha256": "062f48f7e3bd820a19a1bb504b3036ce6da3c54f095dadbbfde7d6098590f0f9",
+      "path": "policies/context0-062f48f7e3bd820a19a1bb504b3036ce6da3c54f095dadbbfde7d6098590f0f9.json",
+      "kind": "static"
+    }
+  ],
+  "source_hashes": {
+    "stage2/adaptive_recovery.py": "7fbe58fb6131e0a2101bf7f2a0282bc8c81e3ab09a6ccf7ce0e01da8f5b9498e",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "overlay_sha256": "a1cc3c0c6b3691f9b4e86b3cd78a25d495aeba20d11ad962850c3bb3538064ee",
+  "runtime": {
+    "scope": "Post-fit seal/replay process; not a reconstruction of original training runtime",
+    "hostname": "macbook-pro.home",
+    "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+    "machine": "arm64",
+    "python": "3.14.6",
+    "executable": "/Users/iwosmura/projects/qhackathon26/.venv-stage2/bin/python",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.14.1",
+      "scipy": null
+    },
+    "logical_cpu_count": 15,
+    "cpu_affinity": null,
+    "allocation": {
+      "SLURM_JOB_ID": null,
+      "SLURM_ARRAY_JOB_ID": null,
+      "SLURM_ARRAY_TASK_ID": null,
+      "SLURM_JOB_PARTITION": null,
+      "SLURM_CPUS_PER_TASK": null,
+      "SLURM_CPUS_ON_NODE": null,
+      "SLURM_JOB_NUM_NODES": null
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": null,
+      "OPENBLAS_NUM_THREADS": null,
+      "MKL_NUM_THREADS": null,
+      "VECLIB_MAXIMUM_THREADS": null,
+      "NUMEXPR_NUM_THREADS": null,
+      "CUDA_VISIBLE_DEVICES": null
+    }
+  },
+  "training_runtime_evidence": null,
+  "original_costs": {
+    "fit_rollouts": 72,
+    "validation_rollouts": 48,
+    "total_rollouts": 120,
+    "summed_rollout_cpu_seconds": 22.98993100000001,
+    "summed_rollout_wall_seconds": 23.190217294497415,
+    "fit_rollout_cpu_seconds": 13.942800000000005,
+    "validation_rollout_cpu_seconds": 9.047131000000004,
+    "original_actual_wall_seconds": 13.319889083039016,
+    "requested_wall_seconds": 60.0,
+    "scope": "Worker rollout CPU/wall, including source guards/checking; learner, orchestration and prior costs are not isolated. v12 summary simulation_cpu_seconds is ignored."
+  },
+  "replay_workers": 0,
+  "replay_count": 0,
+  "replay_rollout_cpu_seconds": 0,
+  "replay_rollout_wall_seconds_sum": 0,
+  "collection_wall_seconds": 0.017097458010539412,
+  "collection_parent_cpu_seconds": 0.011520000000000002,
+  "comparisons": [],
+  "final_tapes": 0,
+  "prior_provenance": "Strong priors are conservatively DEVELOPMENT-selected, including earlier validation-informed iteration; adaptive fit uses TRAIN only and selection uses reused VAL.",
+  "disclosures": [
+    "v12 rejected challenger network blobs and original trajectories/full traces were not archived. This seal does not reconstruct the full exploration path.",
+    "Only selected-policy VAL replay is independently retained here; reused validation is model selection, not untouched performance evidence.",
+    "CEM preliminary top-seven filtering averages returns over unequal observed TRAIN subsets; finalists and static incumbent are reranked on common TRAIN0..7 before VAL.",
+    "Actual wall budget is soft; initialization and complete batches/rerank/validation may overrun the requested duration.",
+    "Undiscounted shaping telescopes to a bounded scalar training surrogate. Validation key is lexicographic; action changes are descriptive, not a schedule-stability penalty.",
+    "Worker simulation CPU excludes unisolated learner/orchestration/prior work; current runtime describes this evidence collection, not retrospectively the fit.",
+    "Hashes ensure consistency, not trusted authorship or authenticity. Read-only files may still be replaced by their owner; verify the seal after transfer."
+  ]
+}

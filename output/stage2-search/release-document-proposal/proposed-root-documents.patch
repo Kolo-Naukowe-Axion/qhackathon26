@@ -1,0 +1,30 @@
+--- a/PROJECT_DESIGN.md
++++ b/PROJECT_DESIGN.md
+@@ -1,12 +1,14 @@
+ # Project design — current implementation and next solver boundary
+ 
+-Status: presentation environment and both locally verified Stage 1 runs, 2026-10-16. VeloxQ remote and ODRA5 physical execution remain pending.
++Status: implemented presentation environment and selected local Stage 1 QAOA simulator results, verified against the saved selection on 2026-10-17. No VeloxQ service or physical ODRA5 execution is claimed; both remain on user hold.
+ 
+ ## Official optimization problem
+ 
+ Each job visits the common machine route, with the fixed processing durations in `instances/`. Each operation runs once, machine processing intervals do not overlap, and a predecessor completes before a successor starts. Minimize the latest completion time. Baseline outputs use nonnegative integer hours and `end = start + duration`.
+ 
+-Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator. Instance B requires its QUBO to be solved using a QUBO solver; our plan uses VeloxQ. The implemented fixed-horizon time-indexed QUBO, exact weights, window bounds, feasibility argument, and classical reference algorithm are documented in [STAGE1_OFFLINE.md](docs/STAGE1_OFFLINE.md). Both required methods have now run locally; the refined settings and validation are recorded in docs/STAGE1_REFINEMENT.md. Both remote backends are on user hold.
++Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator; Instance B permits any QUBO solver. The selected outputs use Qiskit Aer QAOA simulation for both: A uses one bit and one layer at makespan 4 h; B uses three bits and two layers at makespan 8 h. The root schedules match the selected runs in `output/stage1-selected.json`.
++
++The selected `solver/sequence.py` QUBOs preserve all two earliest-start common job orders for A and all six for B, and compute every permutation cost classically before quantum execution. They exclude arbitrary idle time and independent machine orders; no scalable compilation or quantum advantage is claimed. B's three-bit minimum is scoped to distinct representation of all six common orders. This is separate from the three-bit H8 deadline-feasibility reduction retaining five machine orders, including a non-permutation order. See [STAGE1_COMPACT.md](docs/STAGE1_COMPACT.md) for the selected formulation and [the claim register](docs/STAGE2_CLAIM_REGISTER.md) for the distinct deadline reduction. Earlier time-indexed/domain-wall formulations and refinement runs remain documented in [STAGE1_OFFLINE.md](docs/STAGE1_OFFLINE.md) and [STAGE1_REFINEMENT.md](docs/STAGE1_REFINEMENT.md); they are retained comparison evidence.
+ 
+ ## Implemented display model
+ 
+--- a/README.md
++++ b/README.md
+@@ -76,7 +76,7 @@
+ - `instances/`: the two official input datasets transcribed from §14.
+ - `STAGE1_PLAN.md`: baseline method and evidence plan.
+ - `DEVELOPMENT_LOG.md`: dated development record, including decisions and rejected approaches.
+-- `PROJECT_DESIGN.md`: current display model and planned solver interface.
++- `PROJECT_DESIGN.md`: implemented display model, selected compact-QUBO/QAOA baseline pipeline, historical formulation comparisons and scoped Stage 2 architecture.
+ - `docs/PRESENTATION_DESIGN.md`: visual and interaction direction.
+ - `docs/VELOXQ_IDEAS.md`: proposed VeloxQ formulation and experiment directions.
+ - `literature/`: curated papers and guides — `STAGE2_LITERATURE.md` (Stage 2 extension), `BASELINE_METHODS_REVIEW.md` (baseline formulation, encodings, QAOA variants, penalties, VeloxQ), `reading_list.csv`, local PDFs where openly available.

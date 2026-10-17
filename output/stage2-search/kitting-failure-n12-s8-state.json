@@ -1,0 +1,286 @@
+{
+  "metrics": {
+    "orders": 12,
+    "shipped": 2,
+    "shipped_at": {
+      "P01": 1011,
+      "P07": 1126
+    },
+    "all_orders_fulfilled": false,
+    "total_tardiness_ticks": 22800,
+    "grid_kwh": 2280.49141,
+    "energy_cost": 430.75797646666666,
+    "carbon_kg": 855.7574111666667,
+    "terminal_soc": 2400,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 150,
+    "total_cost": 580.7579764666691,
+    "operations": 132,
+    "moves": 178,
+    "unfinished": 30,
+    "global_optimality_gap": null
+  },
+  "lastop": {
+    "id": "O131",
+    "unit_ids": [
+      "P09/flange/1"
+    ],
+    "unit_id": "P09/flange/1",
+    "order_id": "P09",
+    "process": "S",
+    "machine_id": "S2",
+    "start": 2642,
+    "end": 2747,
+    "mode": "standard",
+    "worker_ids": [
+      "W09",
+      "W08"
+    ],
+    "worker_intervals": [
+      {
+        "worker_id": "W08",
+        "start": 2642,
+        "end": 2687,
+        "role": "setup",
+        "skills": [
+          "setup"
+        ]
+      },
+      {
+        "worker_id": "W09",
+        "start": 2687,
+        "end": 2747,
+        "role": "process",
+        "skills": [
+          "welding"
+        ]
+      }
+    ],
+    "worker_roles": {
+      "W08": [
+        "setup"
+      ],
+      "W09": [
+        "welding"
+      ]
+    },
+    "tool_ids": [
+      "weld2"
+    ],
+    "parent_unit_ids": [],
+    "setup_ticks": 45,
+    "processing_ticks": 60,
+    "power_kw": 10,
+    "family": "alloy_C",
+    "kind": "process",
+    "recipe_step": 1,
+    "recipe_steps": {
+      "P09/flange/1": 1
+    },
+    "attempt": 0,
+    "is_rework": false,
+    "repair_step": null,
+    "wear_before": 240,
+    "worker_calendar_aware": true
+  },
+  "admitted": [
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P08",
+    "P09",
+    "P10",
+    "P11"
+  ],
+  "assignments": {
+    "P10": "A2",
+    "P04": "A1",
+    "P02": "A1",
+    "P08": "A2"
+  },
+  "buffers": {
+    "QA1": [
+      {
+        "id": "P02/flange/1",
+        "accepted": false,
+        "step": 3,
+        "rework": []
+      },
+      {
+        "id": "P04/housing/1",
+        "accepted": false,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P05/flange/1",
+        "accepted": true,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P08/rotor/1",
+        "accepted": false,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P11/housing/1",
+        "accepted": false,
+        "step": 4,
+        "rework": []
+      }
+    ],
+    "QA2": [
+      {
+        "id": "P05/housing/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P05/rotor/1",
+        "accepted": false,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P10/housing/1",
+        "accepted": false,
+        "step": 5,
+        "rework": [
+          {
+            "process": "QA",
+            "base_ticks": 45
+          }
+        ]
+      },
+      {
+        "id": "P11/rotor/1",
+        "accepted": false,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P11/flange/1",
+        "accepted": false,
+        "step": 3,
+        "rework": []
+      }
+    ],
+    "A1": [
+      {
+        "id": "P02/housing/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P02/rotor/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P04/rotor/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P04/flange/1",
+        "accepted": true,
+        "step": 4,
+        "rework": []
+      }
+    ],
+    "A2": [
+      {
+        "id": "P08/housing/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P08/flange/1",
+        "accepted": true,
+        "step": 4,
+        "rework": []
+      },
+      {
+        "id": "P10/rotor/1",
+        "accepted": true,
+        "step": 5,
+        "rework": []
+      },
+      {
+        "id": "P10/flange/1",
+        "accepted": true,
+        "step": 4,
+        "rework": []
+      }
+    ]
+  },
+  "outputs": {
+    "WASH1": [
+      "P03/flange/1"
+    ],
+    "WASH2": [
+      "P03/rotor/1"
+    ],
+    "H1": [
+      "P03/housing/1",
+      "P09/housing/1"
+    ],
+    "QA1": [
+      "P05/flange/1"
+    ],
+    "QA2": [
+      "P05/housing/1"
+    ]
+  },
+  "virtual": {
+    "enabled": true,
+    "deferred_order_ticks": 4158,
+    "history": [
+      {
+        "tick": 465,
+        "order_id": "P01",
+        "station": "A1",
+        "places": 3
+      },
+      {
+        "tick": 577,
+        "order_id": "P10",
+        "station": "A2",
+        "places": 3
+      },
+      {
+        "tick": 817,
+        "order_id": "P07",
+        "station": "A1",
+        "places": 3
+      },
+      {
+        "tick": 1075,
+        "order_id": "P04",
+        "station": "A1",
+        "places": 3
+      },
+      {
+        "tick": 1485,
+        "order_id": "P02",
+        "station": "A1",
+        "places": 3
+      },
+      {
+        "tick": 1551,
+        "order_id": "P08",
+        "station": "A2",
+        "places": 3
+      }
+    ],
+    "scope": "Whole-kit admission restriction; original physical buffers and BOM"
+  }
+}

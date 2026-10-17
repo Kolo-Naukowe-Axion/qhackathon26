@@ -1,0 +1,981 @@
+{
+  "schema": "stage2-rank-structural-sensitivity.v1",
+  "protocol": {
+    "seed": 2026,
+    "random_matrices": 8,
+    "durations": [
+      1,
+      4
+    ],
+    "random_deadlines": "max(job workload, machine workload) + {0,1,3}",
+    "official_deadlines": [
+      7,
+      8,
+      9,
+      10,
+      12
+    ],
+    "construction_complete_schedule_scores": 0,
+    "verification_complete_order_bitstrings_per_case": 512,
+    "LP": false,
+    "scope": "Only three jobs, three machines, fixed common route; duration/deadline sensitivity, not job-count scaling"
+  },
+  "source_sha256": "a4f8736a2c744d64817556b9e22762fb1869ecddfe52f0ecf80c76102e9f8f91",
+  "cases": [
+    {
+      "index": 0,
+      "family": "official",
+      "horizon": 7,
+      "durations": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 451,
+      "verified_full_states": null,
+      "optimal_makespan": 8,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.026368584018200636
+    },
+    {
+      "index": 1,
+      "family": "official",
+      "horizon": 8,
+      "durations": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": false,
+      "reduced_bits": 4,
+      "forced_constants": {},
+      "exact_quadratic": true,
+      "partial_dag_evaluations": 770,
+      "verified_full_states": 512,
+      "optimal_makespan": 8,
+      "deadline_good_states": 5,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.04485191614367068
+    },
+    {
+      "index": 2,
+      "family": "official",
+      "horizon": 9,
+      "durations": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 8,
+      "deadline_good_states": 21,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.021255875006318092
+    },
+    {
+      "index": 3,
+      "family": "official",
+      "horizon": 10,
+      "durations": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 8,
+      "deadline_good_states": 54,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.014363500056788325
+    },
+    {
+      "index": 4,
+      "family": "official",
+      "horizon": 12,
+      "durations": [
+        [
+          2,
+          1,
+          2
+        ],
+        [
+          1,
+          2,
+          1
+        ],
+        [
+          2,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 8,
+      "deadline_good_states": 158,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.015601542079821229
+    },
+    {
+      "index": 5,
+      "family": "random-0",
+      "horizon": 10,
+      "durations": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          4,
+          4
+        ],
+        [
+          4,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 134,
+      "verified_full_states": null,
+      "optimal_makespan": 12,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.01763550005853176
+    },
+    {
+      "index": 6,
+      "family": "random-0",
+      "horizon": 11,
+      "durations": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          4,
+          4
+        ],
+        [
+          4,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 339,
+      "verified_full_states": null,
+      "optimal_makespan": 12,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.02234708284959197
+    },
+    {
+      "index": 7,
+      "family": "random-0",
+      "horizon": 13,
+      "durations": [
+        [
+          1,
+          3,
+          1
+        ],
+        [
+          2,
+          4,
+          4
+        ],
+        [
+          4,
+          2,
+          1
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 12,
+      "deadline_good_states": 9,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.0140839999075979
+    },
+    {
+      "index": 8,
+      "family": "random-1",
+      "horizon": 9,
+      "durations": [
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          4,
+          3,
+          2
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 102,
+      "verified_full_states": null,
+      "optimal_makespan": 11,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.017176915891468525
+    },
+    {
+      "index": 9,
+      "family": "random-1",
+      "horizon": 10,
+      "durations": [
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          4,
+          3,
+          2
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 311,
+      "verified_full_states": null,
+      "optimal_makespan": 11,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.02185554103925824
+    },
+    {
+      "index": 10,
+      "family": "random-1",
+      "horizon": 12,
+      "durations": [
+        [
+          1,
+          1,
+          3
+        ],
+        [
+          1,
+          4,
+          1
+        ],
+        [
+          4,
+          3,
+          2
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 11,
+      "deadline_good_states": 9,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.01772150001488626
+    },
+    {
+      "index": 11,
+      "family": "random-2",
+      "horizon": 10,
+      "durations": [
+        [
+          4,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          1
+        ],
+        [
+          3,
+          1,
+          3
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 32,
+      "verified_full_states": null,
+      "optimal_makespan": 15,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.015424625016748905
+    },
+    {
+      "index": 12,
+      "family": "random-2",
+      "horizon": 11,
+      "durations": [
+        [
+          4,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          1
+        ],
+        [
+          3,
+          1,
+          3
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 132,
+      "verified_full_states": null,
+      "optimal_makespan": 15,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.0188596670050174
+    },
+    {
+      "index": 13,
+      "family": "random-2",
+      "horizon": 13,
+      "durations": [
+        [
+          4,
+          3,
+          3
+        ],
+        [
+          3,
+          4,
+          1
+        ],
+        [
+          3,
+          1,
+          3
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 447,
+      "verified_full_states": null,
+      "optimal_makespan": 15,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.028862667037174106
+    },
+    {
+      "index": 14,
+      "family": "random-3",
+      "horizon": 11,
+      "durations": [
+        [
+          3,
+          4,
+          2
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          3,
+          4,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 43,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.017919792095199227
+    },
+    {
+      "index": 15,
+      "family": "random-3",
+      "horizon": 12,
+      "durations": [
+        [
+          3,
+          4,
+          2
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          3,
+          4,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 103,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.018911125138401985
+    },
+    {
+      "index": 16,
+      "family": "random-3",
+      "horizon": 14,
+      "durations": [
+        [
+          3,
+          4,
+          2
+        ],
+        [
+          3,
+          1,
+          3
+        ],
+        [
+          3,
+          4,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 428,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.027420000173151493
+    },
+    {
+      "index": 17,
+      "family": "random-4",
+      "horizon": 12,
+      "durations": [
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 38,
+      "verified_full_states": null,
+      "optimal_makespan": 17,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.014986500144004822
+    },
+    {
+      "index": 18,
+      "family": "random-4",
+      "horizon": 13,
+      "durations": [
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 224,
+      "verified_full_states": null,
+      "optimal_makespan": 17,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.020695416955277324
+    },
+    {
+      "index": 19,
+      "family": "random-4",
+      "horizon": 15,
+      "durations": [
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          1,
+          4,
+          4
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 434,
+      "verified_full_states": null,
+      "optimal_makespan": 17,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.02869154210202396
+    },
+    {
+      "index": 20,
+      "family": "random-5",
+      "horizon": 10,
+      "durations": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          2
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 146,
+      "verified_full_states": null,
+      "optimal_makespan": 13,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.017618750222027302
+    },
+    {
+      "index": 21,
+      "family": "random-5",
+      "horizon": 11,
+      "durations": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          2
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 333,
+      "verified_full_states": null,
+      "optimal_makespan": 13,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.02279633400030434
+    },
+    {
+      "index": 22,
+      "family": "random-5",
+      "horizon": 13,
+      "durations": [
+        [
+          4,
+          1,
+          2
+        ],
+        [
+          2,
+          1,
+          1
+        ],
+        [
+          4,
+          4,
+          2
+        ]
+      ],
+      "accepted_by_compiler": false,
+      "exception": "AssertionError",
+      "meaning": "Construction or its exact validation rejected this case; no valid QUBO is claimed",
+      "optimal_makespan": 13,
+      "deadline_good_states": 2,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.017942666076123714
+    },
+    {
+      "index": 23,
+      "family": "random-6",
+      "horizon": 12,
+      "durations": [
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 64,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.01746599981561303
+    },
+    {
+      "index": 24,
+      "family": "random-6",
+      "horizon": 13,
+      "durations": [
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 83,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.01767187495715916
+    },
+    {
+      "index": 25,
+      "family": "random-6",
+      "horizon": 15,
+      "durations": [
+        [
+          4,
+          2,
+          1
+        ],
+        [
+          4,
+          4,
+          3
+        ],
+        [
+          4,
+          3,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 499,
+      "verified_full_states": null,
+      "optimal_makespan": 16,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.029712499817833304
+    },
+    {
+      "index": 26,
+      "family": "random-7",
+      "horizon": 10,
+      "durations": [
+        [
+          4,
+          4,
+          2
+        ],
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 59,
+      "verified_full_states": null,
+      "optimal_makespan": 13,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.016505417181178927
+    },
+    {
+      "index": 27,
+      "family": "random-7",
+      "horizon": 11,
+      "durations": [
+        [
+          4,
+          4,
+          2
+        ],
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": true,
+      "reduced_bits": null,
+      "forced_constants": null,
+      "exact_quadratic": false,
+      "partial_dag_evaluations": 163,
+      "verified_full_states": null,
+      "optimal_makespan": 13,
+      "deadline_good_states": 0,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.019009040901437402
+    },
+    {
+      "index": 28,
+      "family": "random-7",
+      "horizon": 13,
+      "durations": [
+        [
+          4,
+          4,
+          2
+        ],
+        [
+          3,
+          3,
+          1
+        ],
+        [
+          1,
+          2,
+          4
+        ]
+      ],
+      "accepted_by_compiler": true,
+      "formula_unsatisfiable": false,
+      "reduced_bits": 0,
+      "forced_constants": {
+        "0": 1,
+        "1": 0,
+        "2": 0,
+        "3": 1,
+        "4": 0,
+        "5": 0,
+        "6": 1,
+        "7": 0,
+        "8": 0
+      },
+      "exact_quadratic": true,
+      "partial_dag_evaluations": 440,
+      "verified_full_states": 512,
+      "optimal_makespan": 13,
+      "deadline_good_states": 1,
+      "independent_verification_states": 512,
+      "elapsed_seconds": 0.02630225010216236
+    }
+  ],
+  "summary": {
+    "cases": 29,
+    "accepted": 23,
+    "rejected": 6,
+    "feasible_cases": 8,
+    "accepted_feasible_at_most_five_bits": 2
+  },
+  "limitations": [
+    "A rejection is failure of this restricted compiler, not proof that no alternative QUBO exists.",
+    "A feasible candidate has exact exhaustive verification on this tiny domain; that verification is classical work.",
+    "No physical QPU execution, scalability guarantee, quantum advantage or universal four-bit claim."
+  ]
+}

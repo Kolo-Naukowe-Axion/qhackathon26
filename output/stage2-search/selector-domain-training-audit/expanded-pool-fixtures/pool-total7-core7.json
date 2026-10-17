@@ -1,0 +1,606 @@
+{
+  "candidates": [
+    {
+      "id": "C0",
+      "reward": 298.2456140350877,
+      "resources": {
+        "power@2880": 300
+      }
+    },
+    {
+      "id": "C1",
+      "reward": 252.6315789473684,
+      "resources": {
+        "power@2880": 360
+      }
+    },
+    {
+      "id": "C2",
+      "reward": 221.05263157894737,
+      "resources": {
+        "power@2880": 300
+      }
+    },
+    {
+      "id": "C3",
+      "reward": 221.05263157894737,
+      "resources": {
+        "power@2880": 300
+      }
+    },
+    {
+      "id": "C4",
+      "reward": 214.03508771929825,
+      "resources": {
+        "power@2880": 400
+      }
+    },
+    {
+      "id": "C5",
+      "reward": 200.0,
+      "resources": {
+        "power@2880": 300
+      }
+    },
+    {
+      "id": "C6",
+      "reward": 200.0,
+      "resources": {
+        "power@2880": 300
+      }
+    }
+  ],
+  "conflicts": [
+    [
+      "C1",
+      "C2"
+    ],
+    [
+      "C0",
+      "C3"
+    ],
+    [
+      "C0",
+      "C4"
+    ],
+    [
+      "C0",
+      "C5"
+    ],
+    [
+      "C3",
+      "C5"
+    ],
+    [
+      "C4",
+      "C5"
+    ],
+    [
+      "C0",
+      "C6"
+    ],
+    [
+      "C3",
+      "C6"
+    ],
+    [
+      "C4",
+      "C6"
+    ],
+    [
+      "C5",
+      "C6"
+    ]
+  ],
+  "capacities": {
+    "power@2880": 7000
+  },
+  "offered_operations": [
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P07/rotor/1"
+      ],
+      "unit_id": "P07/rotor/1",
+      "order_id": "P07",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 2880,
+      "end": 2955,
+      "mode": "standard",
+      "worker_ids": [
+        "W04",
+        "W02"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W02",
+          "start": 2880,
+          "end": 2910,
+          "role": "setup",
+          "skills": [
+            "setup"
+          ]
+        },
+        {
+          "worker_id": "W04",
+          "start": 2910,
+          "end": 2955,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W02": [
+          "setup"
+        ],
+        "W04": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 30,
+      "processing_ticks": 45,
+      "power_kw": 3,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 5,
+      "recipe_steps": {
+        "P07/rotor/1": 5
+      },
+      "attempt": 1,
+      "is_rework": true,
+      "repair_step": 1,
+      "wear_before": 474,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W04",
+        "setup": "W02"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P08/rotor/1"
+      ],
+      "unit_id": "P08/rotor/1",
+      "order_id": "P08",
+      "process": "QA",
+      "machine_id": "QA2",
+      "start": 2880,
+      "end": 2948,
+      "mode": "precision",
+      "worker_ids": [
+        "W03"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W03",
+          "start": 2880,
+          "end": 2948,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W03": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration_lease"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 68,
+      "power_kw": 3.5999999999999996,
+      "family": "alloy_B",
+      "kind": "process",
+      "recipe_step": 4,
+      "recipe_steps": {
+        "P08/rotor/1": 4
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 879,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W03",
+        "setup": "W03"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P11/rotor/1"
+      ],
+      "unit_id": "P11/rotor/1",
+      "order_id": "P11",
+      "process": "QA",
+      "machine_id": "QA2",
+      "start": 2880,
+      "end": 2925,
+      "mode": "standard",
+      "worker_ids": [
+        "W03"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W03",
+          "start": 2880,
+          "end": 2925,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W03": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration_lease"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 45,
+      "power_kw": 3,
+      "family": "alloy_B",
+      "kind": "process",
+      "recipe_step": 4,
+      "recipe_steps": {
+        "P11/rotor/1": 4
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 879,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W03",
+        "setup": "W03"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P11/flange/1"
+      ],
+      "unit_id": "P11/flange/1",
+      "order_id": "P11",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 2880,
+      "end": 2925,
+      "mode": "standard",
+      "worker_ids": [
+        "W04"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W04",
+          "start": 2880,
+          "end": 2925,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W04": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 45,
+      "power_kw": 3,
+      "family": "alloy_B",
+      "kind": "process",
+      "recipe_step": 3,
+      "recipe_steps": {
+        "P11/flange/1": 3
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 474,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W04",
+        "setup": "W04"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P03/housing/1"
+      ],
+      "unit_id": "P03/housing/1",
+      "order_id": "P03",
+      "process": "WASH",
+      "machine_id": "WASH1",
+      "start": 2880,
+      "end": 2910,
+      "mode": "standard",
+      "worker_ids": [
+        "W02"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W02",
+          "start": 2880,
+          "end": 2885,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W02": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 30,
+      "power_kw": 4,
+      "family": "alloy_C",
+      "kind": "process",
+      "recipe_step": 2,
+      "recipe_steps": {
+        "P03/housing/1": 2
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 420,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W02",
+        "setup": "W02"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P03/flange/1"
+      ],
+      "unit_id": "P03/flange/1",
+      "order_id": "P03",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 2880,
+      "end": 2970,
+      "mode": "standard",
+      "worker_ids": [
+        "W04",
+        "W02"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W02",
+          "start": 2880,
+          "end": 2925,
+          "role": "setup",
+          "skills": [
+            "setup"
+          ]
+        },
+        {
+          "worker_id": "W04",
+          "start": 2925,
+          "end": 2970,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W02": [
+          "setup"
+        ],
+        "W04": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 45,
+      "processing_ticks": 45,
+      "power_kw": 3,
+      "family": "alloy_C",
+      "kind": "process",
+      "recipe_step": 3,
+      "recipe_steps": {
+        "P03/flange/1": 3
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 474,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W04",
+        "setup": "W02"
+      }
+    },
+    {
+      "id": "O148",
+      "unit_ids": [
+        "P09/housing/1"
+      ],
+      "unit_id": "P09/housing/1",
+      "order_id": "P09",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 2880,
+      "end": 2970,
+      "mode": "standard",
+      "worker_ids": [
+        "W04",
+        "W02"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W02",
+          "start": 2880,
+          "end": 2925,
+          "role": "setup",
+          "skills": [
+            "setup"
+          ]
+        },
+        {
+          "worker_id": "W04",
+          "start": 2925,
+          "end": 2970,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W02": [
+          "setup"
+        ],
+        "W04": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 45,
+      "processing_ticks": 45,
+      "power_kw": 3,
+      "family": "alloy_C",
+      "kind": "process",
+      "recipe_step": 4,
+      "recipe_steps": {
+        "P09/housing/1": 4
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 474,
+      "worker_calendar_aware": true,
+      "_crew_assignment": {
+        "primary": "W04",
+        "setup": "W02"
+      }
+    }
+  ],
+  "provenance": {
+    "role": "TRAIN retained actual expanded dispatch pool; no hardware/advantage claim",
+    "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/selector-domain-training-audit/trace-task4.json.gz",
+    "trace_sha256": "884dca4bd7c97da21716396aa7e93f264e3a3fc7622712ff730af3f64c04266b",
+    "seed": 0,
+    "tick": 2880,
+    "source_hashes": {
+      "stage2/selector_domain.py": "11e116b51fc6b959d76af181fcefe4a446c08633cd5a3d3c615c685497af5bc8",
+      "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+      "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+      "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+      "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+      "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+      "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+      "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+      "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+      "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+      "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+      "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+      "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+    }
+  },
+  "reference": {
+    "selected": [
+      "C1",
+      "C3",
+      "C4"
+    ],
+    "reward": 687.719298245614,
+    "feasible": true,
+    "method": "exact",
+    "proven_optimal_within_pool": true,
+    "qubo": {
+      "core_variables": 7,
+      "slack_variables": 0,
+      "variables": 7,
+      "couplers": 10,
+      "penalty": 1608.017543859649,
+      "capacity_encoding": {
+        "power@2880": "redundant_upper_bound_removed"
+      },
+      "resource_integer_gcd_scales": {
+        "power@2880": 20
+      },
+      "coefficient_abs_min": 200.0,
+      "coefficient_abs_max": 1608.017543859649,
+      "convention": "upper_triangular_once",
+      "domain": "fixed_candidate_pool"
+    },
+    "raw": {
+      "bits": [
+        0,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0
+      ],
+      "energy": -687.719298245614,
+      "selected": [
+        "C1",
+        "C3",
+        "C4"
+      ],
+      "feasible": true
+    },
+    "repaired": false,
+    "reference": {
+      "indices": [
+        1,
+        3,
+        4
+      ],
+      "selected": [
+        "C1",
+        "C3",
+        "C4"
+      ],
+      "reward": 687.719298245614,
+      "proven_optimal_within_pool": true,
+      "feasible_selections": 21,
+      "selections_examined": 128
+    },
+    "elapsed_seconds": 0.00014549982734024525
+  },
+  "total_bits": 7,
+  "core_bits": 7
+}

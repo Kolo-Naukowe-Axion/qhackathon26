@@ -41,7 +41,10 @@ def assess_samples(instance, model, records):
                 errors.append("outside horizon")
         except ValueError as exc:
             schedule, makespan, errors = [], None, [str(exc)]
-        if recomputed != 0:
+        if model.get("objective") == "makespan":
+            if not errors and recomputed != makespan:
+                errors.append("QUBO energy differs from makespan")
+        elif recomputed != 0:
             errors.append("nonzero QUBO energy")
         assessed.append(dict(bits=bits, count=count, energy=recomputed,
                              feasible=not errors, makespan=makespan, errors=errors))

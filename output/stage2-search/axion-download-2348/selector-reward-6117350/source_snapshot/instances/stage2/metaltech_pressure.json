@@ -1,0 +1,132 @@
+{
+  "schema": "metaltech-stage2-blueprint.v1",
+  "status": "proposed synthetic design; not an executable simulator instance",
+  "name": "MetalTech under pressure",
+  "tick_minutes": 15,
+  "horizon_ticks": 384,
+  "replan_interval_ticks": 4,
+  "commitment_ticks": 4,
+  "snapshot_policy": "derive from independently checked burn-in trace; not generated yet",
+  "machines": [
+    {"id": "T1", "hall": "A", "process": "T", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "T2", "hall": "A", "process": "T", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "F1", "hall": "A", "process": "F", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "F2", "hall": "A", "process": "F", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "F3", "hall": "B", "process": "F", "duration_factor": [5, 4], "input_capacity": 2},
+    {"id": "S1", "hall": "B", "process": "S", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "S2", "hall": "B", "process": "S", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "WASH1", "hall": "A", "process": "WASH", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "WASH2", "hall": "B", "process": "WASH", "duration_factor": [1, 1], "input_capacity": 2},
+    {"id": "H1", "hall": "A", "process": "HEAT", "duration_factor": [1, 1], "input_capacity": 4, "batch_capacity": 4},
+    {"id": "H2", "hall": "B", "process": "HEAT", "duration_factor": [1, 1], "input_capacity": 4, "batch_capacity": 4},
+    {"id": "QA1", "hall": "A", "process": "QA", "duration_factor": [1, 1], "input_capacity": 4},
+    {"id": "QA2", "hall": "B", "process": "QA", "duration_factor": [1, 1], "input_capacity": 4},
+    {"id": "A1", "hall": "B", "process": "ASSEMBLY", "duration_factor": [1, 1], "input_capacity": 6},
+    {"id": "A2", "hall": "B", "process": "ASSEMBLY", "duration_factor": [1, 1], "input_capacity": 6}
+  ],
+  "mode_duration_factors": {
+    "T": {"eco": [3, 2], "standard": [1, 1], "turbo": [3, 4]},
+    "F": {"eco": [3, 2], "standard": [1, 1], "turbo": [3, 4]},
+    "S": {"standard": [1, 1], "careful": [3, 2]},
+    "WASH": {"standard": [1, 1]},
+    "HEAT": {"standard": [1, 1]},
+    "QA": {"standard": [1, 1], "precision": [3, 2]},
+    "ASSEMBLY": {"standard": [1, 1], "careful": [3, 2]}
+  },
+  "recipes": {
+    "housing": [
+      {"process": "T", "base_ticks": 4}, {"process": "F", "base_ticks": 6},
+      {"process": "WASH", "base_ticks": 2}, {"process": "HEAT", "base_ticks": 8},
+      {"process": "QA", "base_ticks": 3}
+    ],
+    "rotor": [
+      {"process": "T", "base_ticks": 4}, {"process": "HEAT", "base_ticks": 8},
+      {"process": "F", "base_ticks": 5}, {"process": "WASH", "base_ticks": 2},
+      {"process": "QA", "base_ticks": 3}
+    ],
+    "flange": [
+      {"process": "F", "base_ticks": 4}, {"process": "S", "base_ticks": 4},
+      {"process": "WASH", "base_ticks": 2}, {"process": "QA", "base_ticks": 3}
+    ],
+    "pump": [
+      {"process": "ASSEMBLY", "base_ticks": 4}, {"process": "QA", "base_ticks": 3}
+    ]
+  },
+  "bill_of_materials": {"pump": {"housing": 1, "rotor": 1, "flange": 1}},
+  "orders": {
+    "known_count": 24,
+    "prefix": "P",
+    "families": ["alloy_A", "alloy_B", "alloy_C"],
+    "release_cycle_ticks": [0, 8, 16, 24],
+    "due_cycle_ticks": [160, 184, 208, 232, 256, 280],
+    "precision_every_nth_order": 4,
+    "urgent_count_if_revealed": 2,
+    "urgent_due_tick": 288
+  },
+  "workers": [
+    {"id": "W01", "skills": ["setup", "machining", "maintenance"], "daily_shift": [0, 32]},
+    {"id": "W02", "skills": ["welding", "setup"], "daily_shift": [0, 32]},
+    {"id": "W03", "skills": ["qa", "assembly"], "daily_shift": [0, 32]},
+    {"id": "W04", "skills": ["machining", "assembly", "qa"], "daily_shift": [0, 32]},
+    {"id": "W05", "skills": ["setup", "machining", "maintenance"], "daily_shift": [32, 64]},
+    {"id": "W06", "skills": ["welding", "assembly"], "daily_shift": [32, 64]},
+    {"id": "W07", "skills": ["qa", "assembly", "setup"], "daily_shift": [32, 64]},
+    {"id": "W08", "skills": ["setup", "machining", "maintenance"], "daily_shift": [64, 96]},
+    {"id": "W09", "skills": ["welding", "assembly"], "daily_shift": [64, 96]},
+    {"id": "W10", "skills": ["qa", "assembly", "setup"], "daily_shift": [64, 96]}
+  ],
+  "shared_tools": {"milling_kit": 2, "weld_fixture": 2, "calibration_kit": 1},
+  "raw_stock_units": {"housing_blank": 30, "rotor_blank": 30, "flange_blank": 30},
+  "transport": {
+    "agv_count": 4, "agv_payload_units": 1, "chargers": ["CHARGE_A", "CHARGE_B"],
+    "agv_soc_capacity": 160, "agv_soc_initial": 120,
+    "empty_soc_per_tick": 1, "loaded_soc_per_tick": 2,
+    "hall_spoke_ticks": 1, "bridge_half_ticks": 2,
+    "bridge_capacity": 1,
+    "destination_space_reserved_before_departure": true,
+    "finished_part_blocks_machine_until_pickup": true
+  },
+  "energy": {
+    "base_load_kw": 12, "normal_grid_cap_kw": 90,
+    "stationary_soc_unit_kwh": 0.25, "stationary_soc_capacity": 160,
+    "stationary_soc_initial": 40, "stationary_soc_min": 8, "stationary_soc_terminal_min": 40,
+    "battery_actions": [
+      {"id": "idle", "charge_kw": 0, "discharge_kw": 0, "soc_delta": 0},
+      {"id": "charge", "charge_kw": 10, "discharge_kw": 0, "soc_delta": 9},
+      {"id": "discharge", "charge_kw": 0, "discharge_kw": 9, "soc_delta": -10}
+    ]
+  },
+  "uncertainty_stages": [
+    {"reveal_tick": 48, "outcomes": [
+      {"id": "mill_ok", "probability": [65, 100], "events": []},
+      {"id": "mill_outage", "probability": [35, 100], "events": [{"type": "machine_outage", "machine": "F2", "start": 48, "end": 72}]}
+    ]},
+    {"reveal_tick": 96, "outcomes": [
+      {"id": "supply_ok", "probability": [60, 100], "events": []},
+      {"id": "supply_stress", "probability": [40, 100], "events": [
+        {"type": "grid_derating", "start": 96, "end": 144, "grid_cap_kw": 45},
+        {"type": "delivery_delay", "delivery_id": "D1", "original_tick": 120, "new_tick": 156}
+      ]}
+    ]},
+    {"reveal_tick": 160, "outcomes": [
+      {"id": "no_rush", "probability": [50, 100], "events": []},
+      {"id": "rush", "probability": [50, 100], "events": [{"type": "urgent_orders", "count": 2, "release_tick": 160}]}
+    ]}
+  ],
+  "quality": {"draws_hidden_until_inspection_completion": true, "paired_key": ["unit_lineage", "operation_id", "attempt"], "max_repairs_per_component_attempt": 1, "max_replacements_per_original_component": 1},
+  "enabled_design_mechanisms": [
+    "flexible_machines", "processing_modes", "family_setups", "bom_joins", "batch_heat",
+    "agv_routes", "empty_repositioning", "finite_buffers", "blocking", "battery_charging",
+    "worker_skills_shifts", "portable_tools_wear", "preventive_maintenance",
+    "grid_solar_stationary_battery", "cost_carbon_budget", "procurement_lead_times",
+    "quality_rework_scrap", "nonanticipative_recourse", "rolling_wip", "capacity_lease"
+  ],
+  "not_yet_tabulated": [
+    "machine_mode_power_quality_and_certification", "family_setup_matrix", "worker_breaks_and_travel",
+    "tool_life_service_and_transfer", "batch_compatibility", "agv_load_unload_charge",
+    "transport_graph_and_holding_capacities",
+    "tariff_solar_carbon_profiles", "material_delivery_D1_contents", "maintenance_and_interruption_tables",
+    "bounded_rework_and_replacement_recipes", "lease_and_procurement_actions", "objective_coefficients",
+    "reachable_initial_wip_snapshot"
+  ]
+}

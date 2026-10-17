@@ -1,0 +1,7250 @@
+{
+  "schema": "metaltech-stage2-trace.v1",
+  "run_id": "seed-0",
+  "tick_minutes": 1,
+  "horizon_ticks": 360,
+  "instance": {
+    "schema": "metaltech-stage2-instance.v1",
+    "name": "Exact deterministic 1-pump matched-BOM reference",
+    "profile": "tiny-multi-reference",
+    "seed": 0,
+    "tick_minutes": 1,
+    "horizon_ticks": 360,
+    "day_ticks": 361,
+    "replan_ticks": 60,
+    "time_scale": 1,
+    "orders": [
+      {
+        "id": "P01",
+        "family": "alloy_A",
+        "release_tick": 0,
+        "due_tick": 360,
+        "precision_required": false,
+        "urgent": false
+      }
+    ],
+    "units": [
+      {
+        "id": "P01/housing/1",
+        "order_id": "P01",
+        "recipe": "housing",
+        "family": "alloy_A",
+        "release_tick": 0,
+        "initial_location": "RAW_A"
+      },
+      {
+        "id": "P01/rotor/1",
+        "order_id": "P01",
+        "recipe": "rotor",
+        "family": "alloy_A",
+        "release_tick": 0,
+        "initial_location": "RAW_A"
+      },
+      {
+        "id": "P01/flange/1",
+        "order_id": "P01",
+        "recipe": "flange",
+        "family": "alloy_A",
+        "release_tick": 0,
+        "initial_location": "RAW_A"
+      }
+    ],
+    "recipes": {
+      "housing": [
+        {
+          "process": "T",
+          "base_ticks": 4
+        },
+        {
+          "process": "F",
+          "base_ticks": 6
+        },
+        {
+          "process": "WASH",
+          "base_ticks": 2
+        },
+        {
+          "process": "HEAT",
+          "base_ticks": 8
+        },
+        {
+          "process": "QA",
+          "base_ticks": 3
+        }
+      ],
+      "rotor": [
+        {
+          "process": "T",
+          "base_ticks": 4
+        },
+        {
+          "process": "HEAT",
+          "base_ticks": 8
+        },
+        {
+          "process": "F",
+          "base_ticks": 5
+        },
+        {
+          "process": "WASH",
+          "base_ticks": 2
+        },
+        {
+          "process": "QA",
+          "base_ticks": 3
+        }
+      ],
+      "flange": [
+        {
+          "process": "F",
+          "base_ticks": 4
+        },
+        {
+          "process": "S",
+          "base_ticks": 4
+        },
+        {
+          "process": "WASH",
+          "base_ticks": 2
+        },
+        {
+          "process": "QA",
+          "base_ticks": 3
+        }
+      ],
+      "pump": [
+        {
+          "process": "ASSEMBLY",
+          "base_ticks": 4
+        },
+        {
+          "process": "QA",
+          "base_ticks": 3
+        }
+      ]
+    },
+    "machines": [
+      {
+        "id": "T1",
+        "process": "T",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "F1",
+        "process": "F",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "S1",
+        "process": "S",
+        "hall": "B",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "WASH1",
+        "process": "WASH",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "H1",
+        "process": "HEAT",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1,
+        "batch_capacity": 1
+      },
+      {
+        "id": "QA1",
+        "process": "QA",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "A1",
+        "process": "ASSEMBLY",
+        "hall": "B",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 3
+      }
+    ],
+    "modes": {
+      "T": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 9,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "F": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 12,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "S": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 10,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "WASH": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 4,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "HEAT": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 16,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "QA": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 3,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      },
+      "ASSEMBLY": {
+        "standard": {
+          "duration_factor": [
+            1,
+            1
+          ],
+          "power_kw": 4,
+          "wear": 1,
+          "defect_probability": 0
+        }
+      }
+    },
+    "setup_matrix": {
+      "alloy_A": {
+        "alloy_A": 0
+      }
+    },
+    "process_skills": {
+      "T": "machining",
+      "F": "machining",
+      "S": "welding",
+      "WASH": "setup",
+      "HEAT": "setup",
+      "QA": "qa",
+      "ASSEMBLY": "assembly"
+    },
+    "workers": [
+      {
+        "id": "W1",
+        "skills": [
+          "assembly",
+          "machining",
+          "maintenance",
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "daily_shift": [
+          0,
+          361
+        ],
+        "breaks": [],
+        "initial_hall": "A"
+      }
+    ],
+    "worker_travel_ticks": 2,
+    "attendance": {
+      "T": {
+        "kind": "start",
+        "ticks": 1
+      },
+      "F": {
+        "kind": "start",
+        "ticks": 1
+      },
+      "S": {
+        "kind": "full",
+        "ticks": 1
+      },
+      "WASH": {
+        "kind": "start",
+        "ticks": 1
+      },
+      "HEAT": {
+        "kind": "start",
+        "ticks": 1
+      },
+      "QA": {
+        "kind": "full",
+        "ticks": 1
+      },
+      "ASSEMBLY": {
+        "kind": "full",
+        "ticks": 1
+      }
+    },
+    "tools": [
+      {
+        "id": "mill1",
+        "kind": "mill",
+        "initial_location": "F1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      },
+      {
+        "id": "weld1",
+        "kind": "weld",
+        "initial_location": "S1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      },
+      {
+        "id": "calibration1",
+        "kind": "calibration",
+        "initial_location": "QA1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      }
+    ],
+    "process_tools": {
+      "F": "mill",
+      "S": "weld",
+      "QA": "calibration"
+    },
+    "maintenance": {
+      "wear_limit": 1000000,
+      "duration": 1,
+      "skill": "maintenance",
+      "power_kw": 2,
+      "reset_family": false
+    },
+    "agvs": [
+      {
+        "id": "AGV1",
+        "initial_location": "RAW_A",
+        "initial_soc": 1000000,
+        "capacity": 1000000
+      }
+    ],
+    "graph_edges": [
+      {
+        "a": "T1",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "F1",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "S1",
+        "b": "HUB_B",
+        "ticks": 1
+      },
+      {
+        "a": "WASH1",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "H1",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "QA1",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "A1",
+        "b": "HUB_B",
+        "ticks": 1
+      },
+      {
+        "a": "RAW_A",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "SHIP_B",
+        "b": "HUB_B",
+        "ticks": 1
+      },
+      {
+        "a": "CHARGE_A",
+        "b": "HUB_A",
+        "ticks": 1
+      },
+      {
+        "a": "CHARGE_B",
+        "b": "HUB_B",
+        "ticks": 1
+      },
+      {
+        "a": "SCRAP_B",
+        "b": "HUB_B",
+        "ticks": 1
+      },
+      {
+        "a": "HUB_A",
+        "b": "HUB_B",
+        "ticks": 4
+      }
+    ],
+    "transport": {
+      "agv_count": 1,
+      "agv_payload_units": 1,
+      "chargers": [
+        "CHARGE_A",
+        "CHARGE_B"
+      ],
+      "load_ticks": 1,
+      "unload_ticks": 1,
+      "empty_soc_per_tick": 1,
+      "loaded_soc_per_tick": 2,
+      "charge_rate": 12,
+      "charge_power_kw": 4,
+      "charger_capacity": 1,
+      "offlane_agv_capacity": 4,
+      "charge_saturates": true,
+      "soc_unit_kwh": 0.005,
+      "part_routing": "next_required_station_or_accepted_bom_join_or_accepted_shipping_or_scrap"
+    },
+    "energy": {
+      "base_load_kw": 12,
+      "normal_grid_cap_kw": 1000,
+      "stationary_soc_unit_kwh": 0.016666666666666666,
+      "stationary_soc_capacity": 40,
+      "stationary_soc_initial": 40,
+      "stationary_soc_min": 8,
+      "stationary_soc_terminal_min": 40,
+      "battery_actions": [
+        {
+          "id": "idle",
+          "charge_kw": 0,
+          "discharge_kw": 0,
+          "soc_delta": 0
+        },
+        {
+          "id": "charge",
+          "charge_kw": 10,
+          "discharge_kw": 0,
+          "soc_delta": 9
+        },
+        {
+          "id": "discharge",
+          "charge_kw": 0,
+          "discharge_kw": 9,
+          "soc_delta": -10
+        }
+      ],
+      "tariff_low": 0.1,
+      "tariff_peak": 0.1,
+      "carbon_low": 0.2,
+      "carbon_peak": 0.2,
+      "solar_peak_kw": 0,
+      "no_export": true
+    },
+    "quality": {
+      "risk_model": "manufacturing_mode_history",
+      "manufacturing_defect_probabilities": {
+        "T": {
+          "standard": 0
+        },
+        "F": {
+          "standard": 0
+        },
+        "S": {
+          "standard": 0
+        },
+        "WASH": {
+          "standard": 0
+        },
+        "HEAT": {
+          "standard": 0
+        },
+        "QA": {
+          "standard": 0
+        },
+        "ASSEMBLY": {
+          "standard": 0
+        }
+      },
+      "wear_risk_coefficient": 0,
+      "repair_residual_probability": 0,
+      "repair_ticks": 3,
+      "repair_skill": "machining",
+      "repair_power_kw": 8,
+      "replacement_lead_ticks": 12,
+      "max_repairs_per_component_attempt": 1,
+      "max_replacements_per_original_component": 1,
+      "final_defect_probability": 0,
+      "component_defect_probability": {
+        "standard": 0
+      }
+    },
+    "raw_stock_units": {
+      "housing": 1,
+      "rotor": 1,
+      "flange": 1
+    },
+    "delivery": {
+      "id": "D1",
+      "normal_tick": 361,
+      "delayed_tick": 362,
+      "contents": {}
+    },
+    "uncertainty_stages": [],
+    "lease_options": [],
+    "investment_budget": 0,
+    "certification_modes": {},
+    "feature_status": {},
+    "reference_scope": {
+      "kind": "deterministic parameterized instance",
+      "singleton_heat_batches": true,
+      "dispatch_after_source_completion": false,
+      "fixed_shortest_tree_paths": true,
+      "early_empty_preposition": true,
+      "nonbinding": [
+        "tool life/service",
+        "machine wear/maintenance",
+        "AGV battery/charging",
+        "grid cap",
+        "stationary battery",
+        "worker shifts/breaks",
+        "quality/rework",
+        "exogenous disruptions",
+        "investment"
+      ],
+      "binding": [
+        "recipe precedence",
+        "machine processing and output blocking",
+        "finite reserved input buffers",
+        "physical loaded and empty AGV travel",
+        "one AGV",
+        "one worker attendance and hall travel",
+        "BOM join"
+      ],
+      "flagship_global_gap": null,
+      "pumps": 1,
+      "matched_order_bom": true,
+      "continuous_worker_calendar": true,
+      "standalone_empty_agv_actions": false,
+      "empty_repositioning": "Shortest tree path inside each mandatory part-transfer dispatch; early preposition may wait for source completion",
+      "objective": "All orders fulfilled, constant minimum energy cost, then last physical shipment",
+      "label_symmetry": "Identical orders may be relabeled; first housing starts ordered without loss"
+    }
+  },
+  "resources": {
+    "machines": [
+      {
+        "id": "T1",
+        "process": "T",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "F1",
+        "process": "F",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "S1",
+        "process": "S",
+        "hall": "B",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "WASH1",
+        "process": "WASH",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "H1",
+        "process": "HEAT",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1,
+        "batch_capacity": 1
+      },
+      {
+        "id": "QA1",
+        "process": "QA",
+        "hall": "A",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 1
+      },
+      {
+        "id": "A1",
+        "process": "ASSEMBLY",
+        "hall": "B",
+        "duration_factor": [
+          1,
+          1
+        ],
+        "input_capacity": 3
+      }
+    ],
+    "workers": [
+      {
+        "id": "W1",
+        "skills": [
+          "assembly",
+          "machining",
+          "maintenance",
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "daily_shift": [
+          0,
+          361
+        ],
+        "breaks": [],
+        "initial_hall": "A"
+      }
+    ],
+    "tools": [
+      {
+        "id": "mill1",
+        "kind": "mill",
+        "initial_location": "F1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      },
+      {
+        "id": "weld1",
+        "kind": "weld",
+        "initial_location": "S1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      },
+      {
+        "id": "calibration1",
+        "kind": "calibration",
+        "initial_location": "QA1",
+        "life": 1000000,
+        "service_ticks": 1,
+        "portable": false
+      }
+    ],
+    "agvs": [
+      {
+        "id": "AGV1",
+        "initial_location": "RAW_A",
+        "initial_soc": 1000000,
+        "capacity": 1000000
+      }
+    ]
+  },
+  "provenance": {
+    "kind": "measured",
+    "solver": "causal-dispatch",
+    "instance": "Exact deterministic 1-pump matched-BOM reference",
+    "generated_at": "2026-10-16T22:16:27Z",
+    "code_revision": "working-tree"
+  },
+  "operations": [
+    {
+      "id": "O0",
+      "unit_ids": [
+        "P01/housing/1"
+      ],
+      "unit_id": "P01/housing/1",
+      "order_id": "P01",
+      "process": "T",
+      "machine_id": "T1",
+      "start": 4,
+      "end": 8,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 4,
+          "end": 5,
+          "role": "process",
+          "skills": [
+            "machining"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "machining"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 4,
+      "power_kw": 9,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 0,
+      "recipe_steps": {
+        "P01/housing/1": 0
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O1",
+      "unit_ids": [
+        "P01/flange/1"
+      ],
+      "unit_id": "P01/flange/1",
+      "order_id": "P01",
+      "process": "F",
+      "machine_id": "F1",
+      "start": 10,
+      "end": 14,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 10,
+          "end": 11,
+          "role": "process",
+          "skills": [
+            "machining"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "machining"
+        ]
+      },
+      "tool_ids": [
+        "mill1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 4,
+      "power_kw": 12,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 0,
+      "recipe_steps": {
+        "P01/flange/1": 0
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O2",
+      "unit_ids": [
+        "P01/rotor/1"
+      ],
+      "unit_id": "P01/rotor/1",
+      "order_id": "P01",
+      "process": "T",
+      "machine_id": "T1",
+      "start": 17,
+      "end": 21,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 17,
+          "end": 18,
+          "role": "process",
+          "skills": [
+            "machining"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "machining"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 4,
+      "power_kw": 9,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 0,
+      "recipe_steps": {
+        "P01/rotor/1": 0
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 4
+    },
+    {
+      "id": "O3",
+      "unit_ids": [
+        "P01/housing/1"
+      ],
+      "unit_id": "P01/housing/1",
+      "order_id": "P01",
+      "process": "F",
+      "machine_id": "F1",
+      "start": 21,
+      "end": 27,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 21,
+          "end": 22,
+          "role": "process",
+          "skills": [
+            "machining"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "machining"
+        ]
+      },
+      "tool_ids": [
+        "mill1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 6,
+      "power_kw": 12,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 1,
+      "recipe_steps": {
+        "P01/housing/1": 1
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 4
+    },
+    {
+      "id": "O4",
+      "unit_ids": [
+        "P01/flange/1"
+      ],
+      "unit_id": "P01/flange/1",
+      "order_id": "P01",
+      "process": "S",
+      "machine_id": "S1",
+      "start": 30,
+      "end": 34,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 30,
+          "end": 34,
+          "role": "process",
+          "skills": [
+            "welding"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "welding"
+        ]
+      },
+      "tool_ids": [
+        "weld1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 4,
+      "power_kw": 10,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 1,
+      "recipe_steps": {
+        "P01/flange/1": 1
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O5",
+      "unit_ids": [
+        "P01/rotor/1"
+      ],
+      "unit_id": "P01/rotor/1",
+      "order_id": "P01",
+      "process": "HEAT",
+      "machine_id": "H1",
+      "start": 40,
+      "end": 48,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 40,
+          "end": 41,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 8,
+      "power_kw": 16,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 1,
+      "recipe_steps": {
+        "P01/rotor/1": 1
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O6",
+      "unit_ids": [
+        "P01/housing/1"
+      ],
+      "unit_id": "P01/housing/1",
+      "order_id": "P01",
+      "process": "WASH",
+      "machine_id": "WASH1",
+      "start": 44,
+      "end": 46,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 44,
+          "end": 45,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 2,
+      "power_kw": 4,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 2,
+      "recipe_steps": {
+        "P01/housing/1": 2
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O7",
+      "unit_ids": [
+        "P01/rotor/1"
+      ],
+      "unit_id": "P01/rotor/1",
+      "order_id": "P01",
+      "process": "F",
+      "machine_id": "F1",
+      "start": 65,
+      "end": 70,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 65,
+          "end": 66,
+          "role": "process",
+          "skills": [
+            "machining"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "machining"
+        ]
+      },
+      "tool_ids": [
+        "mill1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 5,
+      "power_kw": 12,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 2,
+      "recipe_steps": {
+        "P01/rotor/1": 2
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 10
+    },
+    {
+      "id": "O8",
+      "unit_ids": [
+        "P01/flange/1"
+      ],
+      "unit_id": "P01/flange/1",
+      "order_id": "P01",
+      "process": "WASH",
+      "machine_id": "WASH1",
+      "start": 67,
+      "end": 69,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 67,
+          "end": 68,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 2,
+      "power_kw": 4,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 2,
+      "recipe_steps": {
+        "P01/flange/1": 2
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 2
+    },
+    {
+      "id": "O9",
+      "unit_ids": [
+        "P01/housing/1"
+      ],
+      "unit_id": "P01/housing/1",
+      "order_id": "P01",
+      "process": "HEAT",
+      "machine_id": "H1",
+      "start": 71,
+      "end": 79,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 71,
+          "end": 72,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 8,
+      "power_kw": 16,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 3,
+      "recipe_steps": {
+        "P01/housing/1": 3
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 8
+    },
+    {
+      "id": "O10",
+      "unit_ids": [
+        "P01/rotor/1"
+      ],
+      "unit_id": "P01/rotor/1",
+      "order_id": "P01",
+      "process": "WASH",
+      "machine_id": "WASH1",
+      "start": 78,
+      "end": 80,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 78,
+          "end": 79,
+          "role": "process",
+          "skills": [
+            "setup"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "setup"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 2,
+      "power_kw": 4,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 3,
+      "recipe_steps": {
+        "P01/rotor/1": 3
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 4
+    },
+    {
+      "id": "O11",
+      "unit_ids": [
+        "P01/flange/1"
+      ],
+      "unit_id": "P01/flange/1",
+      "order_id": "P01",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 81,
+      "end": 84,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 81,
+          "end": 84,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 3,
+      "power_kw": 3,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 3,
+      "recipe_steps": {
+        "P01/flange/1": 3
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O12",
+      "unit_ids": [
+        "P01/housing/1"
+      ],
+      "unit_id": "P01/housing/1",
+      "order_id": "P01",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 89,
+      "end": 92,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 89,
+          "end": 92,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 3,
+      "power_kw": 3,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 4,
+      "recipe_steps": {
+        "P01/housing/1": 4
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 3
+    },
+    {
+      "id": "O13",
+      "unit_ids": [
+        "P01/rotor/1"
+      ],
+      "unit_id": "P01/rotor/1",
+      "order_id": "P01",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 120,
+      "end": 123,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 120,
+          "end": 123,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 3,
+      "power_kw": 3,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 4,
+      "recipe_steps": {
+        "P01/rotor/1": 4
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 6
+    },
+    {
+      "id": "O14",
+      "unit_ids": [
+        "P01/pump/1"
+      ],
+      "unit_id": "P01/pump/1",
+      "order_id": "P01",
+      "process": "ASSEMBLY",
+      "machine_id": "A1",
+      "start": 133,
+      "end": 137,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 133,
+          "end": 137,
+          "role": "process",
+          "skills": [
+            "assembly"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "assembly"
+        ]
+      },
+      "tool_ids": [],
+      "parent_unit_ids": [
+        "P01/housing/1",
+        "P01/rotor/1",
+        "P01/flange/1"
+      ],
+      "setup_ticks": 0,
+      "processing_ticks": 4,
+      "power_kw": 4,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 0,
+      "recipe_steps": {
+        "P01/pump/1": 0
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 0
+    },
+    {
+      "id": "O15",
+      "unit_ids": [
+        "P01/pump/1"
+      ],
+      "unit_id": "P01/pump/1",
+      "order_id": "P01",
+      "process": "QA",
+      "machine_id": "QA1",
+      "start": 147,
+      "end": 150,
+      "mode": "standard",
+      "worker_ids": [
+        "W1"
+      ],
+      "worker_intervals": [
+        {
+          "worker_id": "W1",
+          "start": 147,
+          "end": 150,
+          "role": "process",
+          "skills": [
+            "qa"
+          ]
+        }
+      ],
+      "worker_roles": {
+        "W1": [
+          "qa"
+        ]
+      },
+      "tool_ids": [
+        "calibration1"
+      ],
+      "parent_unit_ids": [],
+      "setup_ticks": 0,
+      "processing_ticks": 3,
+      "power_kw": 3,
+      "family": "alloy_A",
+      "kind": "process",
+      "recipe_step": 1,
+      "recipe_steps": {
+        "P01/pump/1": 1
+      },
+      "attempt": 0,
+      "is_rework": false,
+      "repair_step": null,
+      "wear_before": 9
+    }
+  ],
+  "moves": [
+    {
+      "id": "M0",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 0,
+      "pickup_tick": 0,
+      "drop_tick": 4,
+      "end": 4,
+      "from": "RAW_A",
+      "to": "T1",
+      "legs": [
+        {
+          "from": "RAW_A",
+          "to": "HUB_A",
+          "start": 1,
+          "end": 2,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "T1",
+          "start": 2,
+          "end": 3,
+          "loaded": true
+        }
+      ],
+      "soc_before": 1000000,
+      "soc_after": 999996,
+      "kind": "transport"
+    },
+    {
+      "id": "M1",
+      "unit_id": "P01/flange/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 4,
+      "pickup_tick": 6,
+      "drop_tick": 10,
+      "end": 10,
+      "from": "RAW_A",
+      "to": "F1",
+      "legs": [
+        {
+          "from": "T1",
+          "to": "HUB_A",
+          "start": 4,
+          "end": 5,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "RAW_A",
+          "start": 5,
+          "end": 6,
+          "loaded": false
+        },
+        {
+          "from": "RAW_A",
+          "to": "HUB_A",
+          "start": 7,
+          "end": 8,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "F1",
+          "start": 8,
+          "end": 9,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999996,
+      "soc_after": 999990,
+      "kind": "transport"
+    },
+    {
+      "id": "M2",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 10,
+      "pickup_tick": 12,
+      "drop_tick": 16,
+      "end": 16,
+      "from": "RAW_A",
+      "to": "T1",
+      "legs": [
+        {
+          "from": "F1",
+          "to": "HUB_A",
+          "start": 10,
+          "end": 11,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "RAW_A",
+          "start": 11,
+          "end": 12,
+          "loaded": false
+        },
+        {
+          "from": "RAW_A",
+          "to": "HUB_A",
+          "start": 13,
+          "end": 14,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "T1",
+          "start": 14,
+          "end": 15,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999990,
+      "soc_after": 999984,
+      "kind": "transport"
+    },
+    {
+      "id": "M3",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 16,
+      "pickup_tick": 16,
+      "drop_tick": 20,
+      "end": 20,
+      "from": "T1",
+      "to": "F1",
+      "legs": [
+        {
+          "from": "T1",
+          "to": "HUB_A",
+          "start": 17,
+          "end": 18,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "F1",
+          "start": 18,
+          "end": 19,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999984,
+      "soc_after": 999980,
+      "kind": "transport"
+    },
+    {
+      "id": "M4",
+      "unit_id": "P01/flange/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 20,
+      "pickup_tick": 20,
+      "drop_tick": 28,
+      "end": 28,
+      "from": "F1",
+      "to": "S1",
+      "legs": [
+        {
+          "from": "F1",
+          "to": "HUB_A",
+          "start": 21,
+          "end": 22,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 22,
+          "end": 26,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "S1",
+          "start": 26,
+          "end": 27,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999980,
+      "soc_after": 999968,
+      "kind": "transport"
+    },
+    {
+      "id": "M5",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 28,
+      "pickup_tick": 34,
+      "drop_tick": 38,
+      "end": 38,
+      "from": "T1",
+      "to": "H1",
+      "legs": [
+        {
+          "from": "S1",
+          "to": "HUB_B",
+          "start": 28,
+          "end": 29,
+          "loaded": false
+        },
+        {
+          "from": "HUB_B",
+          "to": "HUB_A",
+          "start": 29,
+          "end": 33,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "T1",
+          "start": 33,
+          "end": 34,
+          "loaded": false
+        },
+        {
+          "from": "T1",
+          "to": "HUB_A",
+          "start": 35,
+          "end": 36,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "H1",
+          "start": 36,
+          "end": 37,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999968,
+      "soc_after": 999958,
+      "kind": "transport"
+    },
+    {
+      "id": "M6",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 38,
+      "pickup_tick": 40,
+      "drop_tick": 44,
+      "end": 44,
+      "from": "F1",
+      "to": "WASH1",
+      "legs": [
+        {
+          "from": "H1",
+          "to": "HUB_A",
+          "start": 38,
+          "end": 39,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "F1",
+          "start": 39,
+          "end": 40,
+          "loaded": false
+        },
+        {
+          "from": "F1",
+          "to": "HUB_A",
+          "start": 41,
+          "end": 42,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "WASH1",
+          "start": 42,
+          "end": 43,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999958,
+      "soc_after": 999952,
+      "kind": "transport"
+    },
+    {
+      "id": "M7",
+      "unit_id": "P01/flange/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 45,
+      "pickup_tick": 51,
+      "drop_tick": 59,
+      "end": 59,
+      "from": "S1",
+      "to": "WASH1",
+      "legs": [
+        {
+          "from": "WASH1",
+          "to": "HUB_A",
+          "start": 45,
+          "end": 46,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 46,
+          "end": 50,
+          "loaded": false
+        },
+        {
+          "from": "HUB_B",
+          "to": "S1",
+          "start": 50,
+          "end": 51,
+          "loaded": false
+        },
+        {
+          "from": "S1",
+          "to": "HUB_B",
+          "start": 52,
+          "end": 53,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "HUB_A",
+          "start": 53,
+          "end": 57,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "WASH1",
+          "start": 57,
+          "end": 58,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999952,
+      "soc_after": 999934,
+      "kind": "transport"
+    },
+    {
+      "id": "M8",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 59,
+      "pickup_tick": 61,
+      "drop_tick": 65,
+      "end": 65,
+      "from": "H1",
+      "to": "F1",
+      "legs": [
+        {
+          "from": "WASH1",
+          "to": "HUB_A",
+          "start": 59,
+          "end": 60,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "H1",
+          "start": 60,
+          "end": 61,
+          "loaded": false
+        },
+        {
+          "from": "H1",
+          "to": "HUB_A",
+          "start": 62,
+          "end": 63,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "F1",
+          "start": 63,
+          "end": 64,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999934,
+      "soc_after": 999928,
+      "kind": "transport"
+    },
+    {
+      "id": "M9",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 65,
+      "pickup_tick": 67,
+      "drop_tick": 71,
+      "end": 71,
+      "from": "WASH1",
+      "to": "H1",
+      "legs": [
+        {
+          "from": "F1",
+          "to": "HUB_A",
+          "start": 65,
+          "end": 66,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "WASH1",
+          "start": 66,
+          "end": 67,
+          "loaded": false
+        },
+        {
+          "from": "WASH1",
+          "to": "HUB_A",
+          "start": 68,
+          "end": 69,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "H1",
+          "start": 69,
+          "end": 70,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999928,
+      "soc_after": 999922,
+      "kind": "transport"
+    },
+    {
+      "id": "M10",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 71,
+      "pickup_tick": 73,
+      "drop_tick": 77,
+      "end": 77,
+      "from": "F1",
+      "to": "WASH1",
+      "legs": [
+        {
+          "from": "H1",
+          "to": "HUB_A",
+          "start": 71,
+          "end": 72,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "F1",
+          "start": 72,
+          "end": 73,
+          "loaded": false
+        },
+        {
+          "from": "F1",
+          "to": "HUB_A",
+          "start": 74,
+          "end": 75,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "WASH1",
+          "start": 75,
+          "end": 76,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999922,
+      "soc_after": 999916,
+      "kind": "transport"
+    },
+    {
+      "id": "M11",
+      "unit_id": "P01/flange/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 77,
+      "pickup_tick": 77,
+      "drop_tick": 81,
+      "end": 81,
+      "from": "WASH1",
+      "to": "QA1",
+      "legs": [
+        {
+          "from": "WASH1",
+          "to": "HUB_A",
+          "start": 78,
+          "end": 79,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "QA1",
+          "start": 79,
+          "end": 80,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999916,
+      "soc_after": 999912,
+      "kind": "transport"
+    },
+    {
+      "id": "M12",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 82,
+      "pickup_tick": 84,
+      "drop_tick": 88,
+      "end": 88,
+      "from": "H1",
+      "to": "QA1",
+      "legs": [
+        {
+          "from": "QA1",
+          "to": "HUB_A",
+          "start": 82,
+          "end": 83,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "H1",
+          "start": 83,
+          "end": 84,
+          "loaded": false
+        },
+        {
+          "from": "H1",
+          "to": "HUB_A",
+          "start": 85,
+          "end": 86,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "QA1",
+          "start": 86,
+          "end": 87,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999912,
+      "soc_after": 999906,
+      "kind": "transport"
+    },
+    {
+      "id": "M13",
+      "unit_id": "P01/flange/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 88,
+      "pickup_tick": 88,
+      "drop_tick": 96,
+      "end": 96,
+      "from": "QA1",
+      "to": "A1",
+      "legs": [
+        {
+          "from": "QA1",
+          "to": "HUB_A",
+          "start": 89,
+          "end": 90,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 90,
+          "end": 94,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "A1",
+          "start": 94,
+          "end": 95,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999906,
+      "soc_after": 999894,
+      "kind": "transport"
+    },
+    {
+      "id": "M14",
+      "unit_id": "P01/housing/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 96,
+      "pickup_tick": 102,
+      "drop_tick": 110,
+      "end": 110,
+      "from": "QA1",
+      "to": "A1",
+      "legs": [
+        {
+          "from": "A1",
+          "to": "HUB_B",
+          "start": 96,
+          "end": 97,
+          "loaded": false
+        },
+        {
+          "from": "HUB_B",
+          "to": "HUB_A",
+          "start": 97,
+          "end": 101,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "QA1",
+          "start": 101,
+          "end": 102,
+          "loaded": false
+        },
+        {
+          "from": "QA1",
+          "to": "HUB_A",
+          "start": 103,
+          "end": 104,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 104,
+          "end": 108,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "A1",
+          "start": 108,
+          "end": 109,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999894,
+      "soc_after": 999876,
+      "kind": "transport"
+    },
+    {
+      "id": "M15",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 110,
+      "pickup_tick": 116,
+      "drop_tick": 120,
+      "end": 120,
+      "from": "WASH1",
+      "to": "QA1",
+      "legs": [
+        {
+          "from": "A1",
+          "to": "HUB_B",
+          "start": 110,
+          "end": 111,
+          "loaded": false
+        },
+        {
+          "from": "HUB_B",
+          "to": "HUB_A",
+          "start": 111,
+          "end": 115,
+          "loaded": false
+        },
+        {
+          "from": "HUB_A",
+          "to": "WASH1",
+          "start": 115,
+          "end": 116,
+          "loaded": false
+        },
+        {
+          "from": "WASH1",
+          "to": "HUB_A",
+          "start": 117,
+          "end": 118,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "QA1",
+          "start": 118,
+          "end": 119,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999876,
+      "soc_after": 999866,
+      "kind": "transport"
+    },
+    {
+      "id": "M16",
+      "unit_id": "P01/rotor/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 123,
+      "pickup_tick": 123,
+      "drop_tick": 131,
+      "end": 131,
+      "from": "QA1",
+      "to": "A1",
+      "legs": [
+        {
+          "from": "QA1",
+          "to": "HUB_A",
+          "start": 124,
+          "end": 125,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 125,
+          "end": 129,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "A1",
+          "start": 129,
+          "end": 130,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999866,
+      "soc_after": 999854,
+      "kind": "transport"
+    },
+    {
+      "id": "M17",
+      "unit_id": "P01/pump/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 137,
+      "pickup_tick": 137,
+      "drop_tick": 145,
+      "end": 145,
+      "from": "A1",
+      "to": "QA1",
+      "legs": [
+        {
+          "from": "A1",
+          "to": "HUB_B",
+          "start": 138,
+          "end": 139,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "HUB_A",
+          "start": 139,
+          "end": 143,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "QA1",
+          "start": 143,
+          "end": 144,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999854,
+      "soc_after": 999842,
+      "kind": "transport"
+    },
+    {
+      "id": "M18",
+      "unit_id": "P01/pump/1",
+      "entity_type": "part",
+      "agv_id": "AGV1",
+      "start": 150,
+      "pickup_tick": 150,
+      "drop_tick": 158,
+      "end": 158,
+      "from": "QA1",
+      "to": "SHIP_B",
+      "legs": [
+        {
+          "from": "QA1",
+          "to": "HUB_A",
+          "start": 151,
+          "end": 152,
+          "loaded": true
+        },
+        {
+          "from": "HUB_A",
+          "to": "HUB_B",
+          "start": 152,
+          "end": 156,
+          "loaded": true
+        },
+        {
+          "from": "HUB_B",
+          "to": "SHIP_B",
+          "start": 156,
+          "end": 157,
+          "loaded": true
+        }
+      ],
+      "soc_before": 999842,
+      "soc_after": 999830,
+      "kind": "transport"
+    }
+  ],
+  "worker_moves": [
+    {
+      "worker_id": "W1",
+      "start": 28,
+      "end": 30,
+      "from_hall": "A",
+      "to_hall": "B"
+    },
+    {
+      "worker_id": "W1",
+      "start": 38,
+      "end": 40,
+      "from_hall": "B",
+      "to_hall": "A"
+    },
+    {
+      "worker_id": "W1",
+      "start": 131,
+      "end": 133,
+      "from_hall": "A",
+      "to_hall": "B"
+    },
+    {
+      "worker_id": "W1",
+      "start": 145,
+      "end": 147,
+      "from_hall": "B",
+      "to_hall": "A"
+    }
+  ],
+  "events": [
+    {
+      "tick": 0,
+      "type": "release",
+      "unit_id": "P01/housing/1",
+      "recipe": "housing"
+    },
+    {
+      "tick": 0,
+      "type": "release",
+      "unit_id": "P01/rotor/1",
+      "recipe": "rotor"
+    },
+    {
+      "tick": 0,
+      "type": "release",
+      "unit_id": "P01/flange/1",
+      "recipe": "flange"
+    },
+    {
+      "tick": 8,
+      "type": "process_complete",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O0"
+    },
+    {
+      "tick": 14,
+      "type": "process_complete",
+      "unit_id": "P01/flange/1",
+      "operation_id": "O1"
+    },
+    {
+      "tick": 21,
+      "type": "process_complete",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O2"
+    },
+    {
+      "tick": 27,
+      "type": "process_complete",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O3"
+    },
+    {
+      "tick": 34,
+      "type": "process_complete",
+      "unit_id": "P01/flange/1",
+      "operation_id": "O4"
+    },
+    {
+      "tick": 46,
+      "type": "process_complete",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O6"
+    },
+    {
+      "tick": 48,
+      "type": "process_complete",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O5"
+    },
+    {
+      "tick": 69,
+      "type": "process_complete",
+      "unit_id": "P01/flange/1",
+      "operation_id": "O8"
+    },
+    {
+      "tick": 70,
+      "type": "process_complete",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O7"
+    },
+    {
+      "tick": 79,
+      "type": "process_complete",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O9"
+    },
+    {
+      "tick": 80,
+      "type": "process_complete",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O10"
+    },
+    {
+      "tick": 84,
+      "type": "process_complete",
+      "unit_id": "P01/flange/1",
+      "operation_id": "O11"
+    },
+    {
+      "tick": 84,
+      "type": "qa_result",
+      "unit_id": "P01/flange/1",
+      "operation_id": "O11",
+      "passed": true,
+      "keyed_uniform": 0.6693045276358295,
+      "defect_probability": 0.0
+    },
+    {
+      "tick": 92,
+      "type": "process_complete",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O12"
+    },
+    {
+      "tick": 92,
+      "type": "qa_result",
+      "unit_id": "P01/housing/1",
+      "operation_id": "O12",
+      "passed": true,
+      "keyed_uniform": 0.5906582441933944,
+      "defect_probability": 0.0
+    },
+    {
+      "tick": 123,
+      "type": "process_complete",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O13"
+    },
+    {
+      "tick": 123,
+      "type": "qa_result",
+      "unit_id": "P01/rotor/1",
+      "operation_id": "O13",
+      "passed": true,
+      "keyed_uniform": 0.2664846057522101,
+      "defect_probability": 0.0
+    },
+    {
+      "tick": 133,
+      "type": "consume",
+      "unit_id": "P01/housing/1",
+      "parent_operation": "O14",
+      "order_id": "P01"
+    },
+    {
+      "tick": 133,
+      "type": "consume",
+      "unit_id": "P01/rotor/1",
+      "parent_operation": "O14",
+      "order_id": "P01"
+    },
+    {
+      "tick": 133,
+      "type": "consume",
+      "unit_id": "P01/flange/1",
+      "parent_operation": "O14",
+      "order_id": "P01"
+    },
+    {
+      "tick": 137,
+      "type": "process_complete",
+      "unit_id": "P01/pump/1",
+      "operation_id": "O14"
+    },
+    {
+      "tick": 150,
+      "type": "process_complete",
+      "unit_id": "P01/pump/1",
+      "operation_id": "O15"
+    },
+    {
+      "tick": 150,
+      "type": "qa_result",
+      "unit_id": "P01/pump/1",
+      "operation_id": "O15",
+      "passed": true,
+      "keyed_uniform": 0.9120081225255988,
+      "defect_probability": 0.0
+    },
+    {
+      "tick": 158,
+      "type": "ship",
+      "unit_id": "P01/pump/1",
+      "order_id": "P01"
+    }
+  ],
+  "energy": [
+    {
+      "tick": 0,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 1,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 2,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 3,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 4,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 5,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 6,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 7,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 8,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 9,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 10,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 11,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 12,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 13,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 14,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 15,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 16,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 17,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 18,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 19,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 20,
+      "load_kw": 21,
+      "grid_kw": 21,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 21,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 22,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 23,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 24,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 25,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 26,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 27,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 28,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 29,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 30,
+      "load_kw": 22,
+      "grid_kw": 22,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 31,
+      "load_kw": 22,
+      "grid_kw": 22,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 32,
+      "load_kw": 22,
+      "grid_kw": 22,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 33,
+      "load_kw": 22,
+      "grid_kw": 22,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 34,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 35,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 36,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 37,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 38,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 39,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 40,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 41,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 42,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 43,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 44,
+      "load_kw": 32,
+      "grid_kw": 32,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 45,
+      "load_kw": 32,
+      "grid_kw": 32,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 46,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 47,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 48,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 49,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 50,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 51,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 52,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 53,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 54,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 55,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 56,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 57,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 58,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 59,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 60,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 61,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 62,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 63,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 64,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 65,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 66,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 67,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 68,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 69,
+      "load_kw": 24,
+      "grid_kw": 24,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 70,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 71,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 72,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 73,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 74,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 75,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 76,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 77,
+      "load_kw": 28,
+      "grid_kw": 28,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 78,
+      "load_kw": 32,
+      "grid_kw": 32,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 79,
+      "load_kw": 16,
+      "grid_kw": 16,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 80,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 81,
+      "load_kw": 15,
+      "grid_kw": 15,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 82,
+      "load_kw": 15,
+      "grid_kw": 15,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 83,
+      "load_kw": 15,
+      "grid_kw": 15,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 84,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 85,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 86,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 87,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 88,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 89,
+      "load_kw": 15,
+      "grid_kw": 15,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 90,
+      "load_kw": 15,
+      "grid_kw": 15,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 91,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 92,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 93,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 94,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 95,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 96,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 97,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 98,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 99,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 100,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 101,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 102,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 103,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 104,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 105,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 106,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 107,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 108,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 109,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 110,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 111,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 112,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 113,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 114,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 115,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 116,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 117,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 118,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 119,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 120,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 121,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 122,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 123,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 124,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 125,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 126,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 127,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 128,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 129,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 130,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 131,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 132,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 133,
+      "load_kw": 16,
+      "grid_kw": 16.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 134,
+      "load_kw": 16,
+      "grid_kw": 16.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 135,
+      "load_kw": 16,
+      "grid_kw": 16.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 136,
+      "load_kw": 16,
+      "grid_kw": 16.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 137,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 138,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 139,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 140,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 141,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 142,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 143,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 144,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 145,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 146,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 147,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 148,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 149,
+      "load_kw": 15,
+      "grid_kw": 15.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 150,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 151,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 152,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 153,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 154,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 155,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 156,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 157,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 158,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 159,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 160,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 161,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 162,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 163,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 164,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 165,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 166,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 167,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 168,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 169,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 170,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 171,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 172,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 173,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 174,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 175,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 176,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 177,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 178,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 179,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 180,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 181,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 182,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 183,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 184,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 185,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 186,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 187,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 188,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 189,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 190,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 191,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 192,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 193,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 194,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 195,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 196,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 197,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 198,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 199,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 200,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 201,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 202,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 203,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 204,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 205,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 206,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 207,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 208,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 209,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 210,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 211,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 212,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 213,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 214,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 215,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 216,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 217,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 218,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 219,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 220,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 221,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 222,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 223,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 224,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 225,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 226,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 227,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 228,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 229,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 230,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 231,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 232,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 233,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 234,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 235,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 236,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 237,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 238,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 239,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 240,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 241,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 242,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 243,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 244,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 245,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 246,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 247,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 248,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 249,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 250,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 251,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 252,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 253,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 254,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 255,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 256,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 257,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 258,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 259,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 260,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 261,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 262,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 263,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 264,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 265,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 266,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 267,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 268,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 269,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 270,
+      "load_kw": 12,
+      "grid_kw": 12.0,
+      "cap_kw": 1000,
+      "solar_kw": 0.0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 271,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 272,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 273,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 274,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 275,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 276,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 277,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 278,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 279,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 280,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 281,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 282,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 283,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 284,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 285,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 286,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 287,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 288,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 289,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 290,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 291,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 292,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 293,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 294,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 295,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 296,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 297,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 298,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 299,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 300,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 301,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 302,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 303,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 304,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 305,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 306,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 307,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 308,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 309,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 310,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 311,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 312,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 313,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 314,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 315,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 316,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 317,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 318,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 319,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 320,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 321,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 322,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 323,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 324,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 325,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 326,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 327,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 328,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 329,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 330,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 331,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 332,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 333,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 334,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 335,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 336,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 337,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 338,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 339,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 340,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 341,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 342,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 343,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 344,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 345,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 346,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 347,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 348,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 349,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 350,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 351,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 352,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 353,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 354,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 355,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 356,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 357,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 358,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    },
+    {
+      "tick": 359,
+      "load_kw": 12,
+      "grid_kw": 12,
+      "cap_kw": 1000,
+      "solar_kw": 0,
+      "curtailed_kw": 0,
+      "soc_before": 40,
+      "soc": 40,
+      "battery_action": "idle",
+      "tariff": 0.1,
+      "carbon_intensity": 0.2
+    }
+  ],
+  "decisions": [],
+  "qubo_decisions": [],
+  "audit": {
+    "realized_stages": []
+  },
+  "metrics": {
+    "orders": 1,
+    "shipped": 1,
+    "shipped_at": {
+      "P01": 158
+    },
+    "all_orders_fulfilled": true,
+    "total_tardiness_ticks": 0,
+    "grid_kwh": 82.4,
+    "energy_cost": 8.240000000000002,
+    "carbon_kg": 16.480000000000004,
+    "terminal_soc": 40,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 0,
+    "total_cost": 8.239999999999915,
+    "operations": 16,
+    "moves": 19,
+    "unfinished": 0,
+    "global_optimality_gap": null
+  },
+  "validation": {
+    "status": "unchecked",
+    "description": "Run independent checker before treating this as feasible"
+  }
+}

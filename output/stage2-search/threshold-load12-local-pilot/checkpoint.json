@@ -1,0 +1,1363 @@
+{
+  "schema": "stage2-threshold-policy.v1",
+  "method": "cem",
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "params": [
+    {
+      "wip_low": 3,
+      "wip_high": 8,
+      "downstream_limit": 99,
+      "heat_limit": 99,
+      "family": 24,
+      "remaining": -4,
+      "due": 0.25,
+      "congested_mode": "standard",
+      "free_mode": "standard",
+      "late_mode": "standard",
+      "late_fraction": 0.7,
+      "lease_fraction": 0.25,
+      "grid_eco": false
+    }
+  ],
+  "selected_validation": [
+    {
+      "episodes": 16,
+      "invalid": 0,
+      "complete": 6,
+      "mean_unfulfilled": 1.6875,
+      "mean_tardiness_ticks": 10051,
+      "empirical_cvar90_tardiness": 14268.625000000002,
+      "risk_weight": 0.25,
+      "risk_adjusted_tardiness": 13618.15625,
+      "mean_total_cost": 736.0381771687502,
+      "mean_action_changes": 2.375,
+      "simulation_cpu_seconds": 19.710825002752244,
+      "global_optimality_gap": null
+    }
+  ],
+  "training_incumbent_params": [
+    {
+      "wip_low": 3,
+      "wip_high": 8,
+      "downstream_limit": 99,
+      "heat_limit": 99,
+      "family": 24,
+      "remaining": -4,
+      "due": 0.25,
+      "congested_mode": "standard",
+      "free_mode": "standard",
+      "late_mode": "standard",
+      "late_fraction": 0.7,
+      "lease_fraction": 0.25,
+      "grid_eco": false
+    }
+  ],
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "da50ae48f77512be433b042e8f6b8ecb40f7b2adc5ff35ba61bc769e3762b8a0",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/threshold.py": "f452bd46b160afcf56ed2870f8c1d9e45c47916ad3f02e7191868a5fe5f1e71c",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "base_weights": {
+    "selector": "priority",
+    "policy_seed": 0
+  },
+  "policy_selection_role": "validation_selected",
+  "train_seeds": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31
+  ],
+  "validation_seeds": [
+    100,
+    101,
+    102,
+    103,
+    104,
+    105,
+    106,
+    107,
+    108,
+    109,
+    110,
+    111,
+    112,
+    113,
+    114,
+    115
+  ],
+  "teacher": {
+    "path": "output/stage2-search/axion-results/learning-v1-6116807/static/checkpoint.json",
+    "sha256": "40ab64b5d5d5debdfb40847771ba0fde6e500f3b89d9856f5c075718737d035c",
+    "external_fit_wall_seconds": 489.74458757300044,
+    "external_fit_episodes": 6144
+  },
+  "actual_fit_wall_seconds": 63.18415987491608,
+  "requested_fit_seconds": 60.0,
+  "actual_simulations": 308,
+  "cache_hits": 60,
+  "simulation_cpu_seconds": 345.0058450817596,
+  "risk_weight": 0.25,
+  "curves": [
+    {
+      "generation": 0,
+      "context": 0,
+      "training_tapes": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 1,
+        "mean_unfulfilled": 1.5,
+        "mean_tardiness_ticks": 8591.5,
+        "empirical_cvar90_tardiness": 11337.999999999998,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 11426.0,
+        "mean_total_cost": 747.0094972750082,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 4.048742623999715,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 8,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 24.0,
+        "remaining": -4.0,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "standard",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "42251e0a32ec81aa17b7813dff49679158ce4f40b8c05f54214acf4b12231a19",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 8591.5,
+            "empirical_cvar90_tardiness": 11337.999999999998,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11426.0,
+            "mean_total_cost": 747.0094972750082,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.048742623999715,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "c294216b2ed07a418a98e396f6ef0aa985c1f491b470da845d822c181ddb9a37",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.25,
+            "mean_tardiness_ticks": 9363.75,
+            "empirical_cvar90_tardiness": 14231.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 12921.5,
+            "mean_total_cost": 668.669683158329,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 2.1973592492286116,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "0641b40ec18d3ea2d0c13ec6a2a2d39b2999c658ba6cd76258fb7c111e7b4442",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.25,
+            "mean_tardiness_ticks": 11803.25,
+            "empirical_cvar90_tardiness": 13403.000000000002,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 15154.0,
+            "mean_total_cost": 770.7255996750018,
+            "mean_action_changes": 2,
+            "simulation_cpu_seconds": 4.156163666630164,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "4196c7dfe6feec0d10a99eb82d2683f78b37841a737b574b08c4c6f9a7ac38ea",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.5,
+            "mean_tardiness_ticks": 10427.75,
+            "empirical_cvar90_tardiness": 11997.999999999998,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 13427.25,
+            "mean_total_cost": 706.044844808331,
+            "mean_action_changes": 17.25,
+            "simulation_cpu_seconds": 2.551865083165467,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "f34d63d47e29dabc5d49e1fe925ff912b7f3db03f81901428db3fca5268c8d29",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.5,
+            "mean_tardiness_ticks": 12432,
+            "empirical_cvar90_tardiness": 18355.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 17020.75,
+            "mean_total_cost": 748.167119141669,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.0544890011660755,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8368b97ed79b8435150bdf284ed05e601639d49cee35dd8cb87981d56edb9932",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.75,
+            "mean_tardiness_ticks": 15416.75,
+            "empirical_cvar90_tardiness": 19486.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 20288.25,
+            "mean_total_cost": 732.9747094749978,
+            "mean_action_changes": 3,
+            "simulation_cpu_seconds": 4.233501832932234,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "2aeafd2700e95416032a070e3b6ed088fdfec3d6fdcdd6d1ae31aee2ff2e8f72",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 7,
+            "mean_tardiness_ticks": 17413.25,
+            "empirical_cvar90_tardiness": 25680.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 23833.25,
+            "mean_total_cost": 676.8435809000018,
+            "mean_action_changes": 2.5,
+            "simulation_cpu_seconds": 3.6301825421396643,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8b69dac082fd0b1b32c68845b5795ffbdb032941c0a8e6d7dc71d22caa97fd98",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 7,
+            "mean_tardiness_ticks": 20437.5,
+            "empirical_cvar90_tardiness": 29040.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 27697.5,
+            "mean_total_cost": 731.7861239250012,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 4.847723667277023,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "elapsed_seconds": 10.7734375,
+      "actual_simulations": 52,
+      "cache_hits": 4,
+      "simulation_cpu_seconds": 54.049791873199865
+    },
+    {
+      "generation": 1,
+      "context": 0,
+      "training_tapes": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 0,
+        "mean_unfulfilled": 2,
+        "mean_tardiness_ticks": 9223.25,
+        "empirical_cvar90_tardiness": 10417.0,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 11827.5,
+        "mean_total_cost": 752.3568056666695,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 4.161140082869679,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 8,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 24.0,
+        "remaining": -4.0,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "standard",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "42251e0a32ec81aa17b7813dff49679158ce4f40b8c05f54214acf4b12231a19",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 2,
+            "mean_tardiness_ticks": 9223.25,
+            "empirical_cvar90_tardiness": 10417.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11827.5,
+            "mean_total_cost": 752.3568056666695,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.161140082869679,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8829c601ce1a0a0064e843080bdee362fa9425cfe125c229b6a75c35d0dee139",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.25,
+            "mean_tardiness_ticks": 14477,
+            "empirical_cvar90_tardiness": 16488.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 18599.0,
+            "mean_total_cost": 778.8701291250014,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 3.4038960828911513,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "9e6c840827359f0b916dc42192668503aa3c22050622047ba4834ed8aefa853a",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.5,
+            "mean_tardiness_ticks": 12084.5,
+            "empirical_cvar90_tardiness": 14328.000000000002,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 15666.5,
+            "mean_total_cost": 734.9227767916695,
+            "mean_action_changes": 10.5,
+            "simulation_cpu_seconds": 3.785613082582131,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "7966f02b4328c72b08fc536b7895d5de8685671e3a48b9e845555804d5bd7a3f",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.5,
+            "mean_tardiness_ticks": 14281,
+            "empirical_cvar90_tardiness": 18664.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 18947.0,
+            "mean_total_cost": 747.5512169916683,
+            "mean_action_changes": 2.75,
+            "simulation_cpu_seconds": 4.549764998955652,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "9e7cd48ddc74f1b5e455b4a147d42fc8c8551662383368d5e63b09ae45d988f9",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.75,
+            "mean_tardiness_ticks": 14363.75,
+            "empirical_cvar90_tardiness": 17926.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 18845.25,
+            "mean_total_cost": 591.2640387583372,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.811181083088741,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "f22ef9117d2c078480332f24f2db0106d0e448436cc710104295e937309319d2",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 5.25,
+            "mean_tardiness_ticks": 16413,
+            "empirical_cvar90_tardiness": 22800.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 22113.0,
+            "mean_total_cost": 747.5673630916706,
+            "mean_action_changes": 5.25,
+            "simulation_cpu_seconds": 4.510128584923223,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "a29e01955fc7285fe9542da101e3e7053e7bb249fa2f8a7d777f20686c0761f0",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 5.5,
+            "mean_tardiness_ticks": 16648.75,
+            "empirical_cvar90_tardiness": 19879.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 21618.5,
+            "mean_total_cost": 753.9910824833333,
+            "mean_action_changes": 2,
+            "simulation_cpu_seconds": 5.351167499786243,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "a47d4cf6ce5d6588d95506c0fb5bc72ef84b224cb7aee414b2e8f33cc8fab7c8",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 9.75,
+            "mean_tardiness_ticks": 22653.75,
+            "empirical_cvar90_tardiness": 26160.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 29193.75,
+            "mean_total_cost": 655.4374617333351,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 4.41952050011605,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "checkpoint_selection": {
+        "candidate": {
+          "wip_low": 8,
+          "wip_high": 8,
+          "downstream_limit": 99,
+          "heat_limit": 99,
+          "family": 24.0,
+          "remaining": -4.0,
+          "due": 0.25,
+          "congested_mode": "standard",
+          "free_mode": "standard",
+          "late_mode": "standard",
+          "late_fraction": 1.1,
+          "lease_fraction": 0.0,
+          "grid_eco": false
+        },
+        "validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 2.5,
+          "mean_tardiness_ticks": 10203.9375,
+          "empirical_cvar90_tardiness": 19786.125,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 15150.46875,
+          "mean_total_cost": 723.2687829375028,
+          "mean_action_changes": 0,
+          "simulation_cpu_seconds": 19.168624123791233,
+          "global_optimality_gap": null
+        },
+        "selected_validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 2.5,
+          "mean_tardiness_ticks": 10203.9375,
+          "empirical_cvar90_tardiness": 19786.125,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 15150.46875,
+          "mean_total_cost": 723.2687829375028,
+          "mean_action_changes": 0,
+          "simulation_cpu_seconds": 19.168624123791233,
+          "global_optimality_gap": null
+        }
+      },
+      "elapsed_seconds": 17.82817408302799,
+      "actual_simulations": 92,
+      "cache_hits": 44,
+      "simulation_cpu_seconds": 93.17008157889359
+    },
+    {
+      "generation": 2,
+      "context": 0,
+      "training_tapes": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 1,
+        "mean_unfulfilled": 1.5,
+        "mean_tardiness_ticks": 7580.5,
+        "empirical_cvar90_tardiness": 10213.0,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 10133.75,
+        "mean_total_cost": 722.0803830083362,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 4.381355500547215,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 3,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 48,
+        "remaining": -4,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "standard",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "d798fab790c8c81df81efae5774f096b30f0748b981c85eb3329361151b26cdd",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 7580.5,
+            "empirical_cvar90_tardiness": 10213.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 10133.75,
+            "mean_total_cost": 722.0803830083362,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.381355500547215,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "42251e0a32ec81aa17b7813dff49679158ce4f40b8c05f54214acf4b12231a19",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 8336.25,
+            "empirical_cvar90_tardiness": 10121.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 10866.5,
+            "mean_total_cost": 733.2772551333358,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.170545126311481,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "ee5690b115ab8b95dd3dee809955bf2d4594c3755ec696d71bcc3ff1635391a3",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 8336.25,
+            "empirical_cvar90_tardiness": 10121.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 10866.5,
+            "mean_total_cost": 733.2772551333358,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.288528123870492,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "b60551950340525e63f5f774fb79cd4b2804da51d12ef81aef0689188aadf47d",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3,
+            "mean_tardiness_ticks": 10006.75,
+            "empirical_cvar90_tardiness": 12202.999999999998,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 13057.5,
+            "mean_total_cost": 662.9976925583302,
+            "mean_action_changes": 2,
+            "simulation_cpu_seconds": 2.16363662481308,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "bb439ab7fe767413d3f1f480972490fe886cfc790946c1a691acc0ccd277bb76",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.25,
+            "mean_tardiness_ticks": 11598.5,
+            "empirical_cvar90_tardiness": 14222.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 15154.0,
+            "mean_total_cost": 720.6207860333379,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 4.832668667891994,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "282cdd4f9bd3978344f754f72a9ee54d200fd00a293f9280f17fabc79b3bd9de",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.25,
+            "mean_tardiness_ticks": 12895,
+            "empirical_cvar90_tardiness": 14404.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 16496.0,
+            "mean_total_cost": 771.385958408331,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 3.726465040817857,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "eda92c6f3c462ef3386fc720851f6a91343164a22e3aaeadc8ab9a057713c5bc",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.5,
+            "mean_tardiness_ticks": 13348.5,
+            "empirical_cvar90_tardiness": 17859.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 17813.25,
+            "mean_total_cost": 732.0204649666691,
+            "mean_action_changes": 3.5,
+            "simulation_cpu_seconds": 4.485882084118202,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "77ed78de1db9ddb9fca1dec922bfee3855ef8e9706c6131869590c12a76016a5",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.75,
+            "mean_tardiness_ticks": 15191.25,
+            "empirical_cvar90_tardiness": 17862.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 19656.75,
+            "mean_total_cost": 767.1011763833383,
+            "mean_action_changes": 7,
+            "simulation_cpu_seconds": 5.579792374977842,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "elapsed_seconds": 23.572963749989867,
+      "actual_simulations": 124,
+      "cache_hits": 44,
+      "simulation_cpu_seconds": 126.79895512224175
+    },
+    {
+      "generation": 3,
+      "context": 0,
+      "training_tapes": [
+        12,
+        13,
+        14,
+        15
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 2,
+        "mean_unfulfilled": 1.5,
+        "mean_tardiness_ticks": 9000.5,
+        "empirical_cvar90_tardiness": 11762.999999999998,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 11941.25,
+        "mean_total_cost": 751.5695480833383,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 4.610338666010648,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 8,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 48,
+        "remaining": -4,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "eco",
+        "late_mode": "standard",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "31bfbe6016c85b2abc4d661a04f90e8055c5012a6f79589ecd12176f0ece17f1",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 9000.5,
+            "empirical_cvar90_tardiness": 11762.999999999998,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11941.25,
+            "mean_total_cost": 751.5695480833383,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.610338666010648,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "42251e0a32ec81aa17b7813dff49679158ce4f40b8c05f54214acf4b12231a19",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 1.75,
+            "mean_tardiness_ticks": 9271.25,
+            "empirical_cvar90_tardiness": 16392.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 13369.25,
+            "mean_total_cost": 736.6763610333411,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.7292355839163065,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "d60175f3ea57ec4307d7f81dbd6b1e769ef04f2503dea44bf6783e8fdd07f6ba",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 2.5,
+            "mean_tardiness_ticks": 8518.5,
+            "empirical_cvar90_tardiness": 13646.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11930.0,
+            "mean_total_cost": 734.2520814833348,
+            "mean_action_changes": 1.75,
+            "simulation_cpu_seconds": 3.869182958267629,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "06190cd5f11c6aa787801c965dac7d40c1f63889125829d2a5d4fa43e194ab07",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 3,
+            "mean_tardiness_ticks": 10155,
+            "empirical_cvar90_tardiness": 17328.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 14487.0,
+            "mean_total_cost": 731.7581423333353,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.764087624847889,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "9847d1da5df2e368cf320a1a1e57717300f58b3dc2452884a92560ba4b88d825",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4,
+            "mean_tardiness_ticks": 14775.5,
+            "empirical_cvar90_tardiness": 20648.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 19937.5,
+            "mean_total_cost": 771.3018186583377,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 5.135447416920215,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8306f1c7a2197927a0ba745d8a75c39ee11ca6a34888a82695b63a200722f7cc",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.25,
+            "mean_tardiness_ticks": 14231.5,
+            "empirical_cvar90_tardiness": 20897.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 19455.75,
+            "mean_total_cost": 753.1850360083336,
+            "mean_action_changes": 1,
+            "simulation_cpu_seconds": 4.038381542079151,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8d817207b75efdf2fbf0c93f3c394e8ec53d3ccadfd807e8fd76ee2b7a048812",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4.25,
+            "mean_tardiness_ticks": 15127.25,
+            "empirical_cvar90_tardiness": 20535.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 20261.0,
+            "mean_total_cost": 768.4081696166746,
+            "mean_action_changes": 0.5,
+            "simulation_cpu_seconds": 5.2543503746856,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "4d2f3843ff87cef996c3c6b8017b08be5037b3239fc2fe223e7c8188697d47bd",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 7,
+            "mean_tardiness_ticks": 19146,
+            "empirical_cvar90_tardiness": 32400.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 27246.0,
+            "mean_total_cost": 718.517574791669,
+            "mean_action_changes": 1.5,
+            "simulation_cpu_seconds": 5.278824208071455,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "checkpoint_selection": {
+        "candidate": {
+          "wip_low": 3,
+          "wip_high": 8,
+          "downstream_limit": 99,
+          "heat_limit": 99,
+          "family": 24,
+          "remaining": -4,
+          "due": 0.25,
+          "congested_mode": "standard",
+          "free_mode": "standard",
+          "late_mode": "turbo",
+          "late_fraction": 1.1,
+          "lease_fraction": 0.0,
+          "grid_eco": false
+        },
+        "validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 2.5,
+          "mean_tardiness_ticks": 10203.9375,
+          "empirical_cvar90_tardiness": 19786.125,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 15150.46875,
+          "mean_total_cost": 723.2687829375028,
+          "mean_action_changes": 0,
+          "simulation_cpu_seconds": 17.485831709112972,
+          "global_optimality_gap": null
+        },
+        "selected_validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 2.5,
+          "mean_tardiness_ticks": 10203.9375,
+          "empirical_cvar90_tardiness": 19786.125,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 15150.46875,
+          "mean_total_cost": 723.2687829375028,
+          "mean_action_changes": 0,
+          "simulation_cpu_seconds": 19.168624123791233,
+          "global_optimality_gap": null
+        }
+      },
+      "elapsed_seconds": 38.787617415888235,
+      "actual_simulations": 196,
+      "cache_hits": 52,
+      "simulation_cpu_seconds": 210.10432707937434
+    },
+    {
+      "generation": 4,
+      "context": 0,
+      "training_tapes": [
+        16,
+        17,
+        18,
+        19
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 4,
+        "mean_unfulfilled": 0,
+        "mean_tardiness_ticks": 5496.75,
+        "empirical_cvar90_tardiness": 6631.0,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 7154.5,
+        "mean_total_cost": 708.887517291668,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 4.313611459219828,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 8,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 48,
+        "remaining": -4,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "standard",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "51ae1c220c1248e3455dd3dfb32ad7a7bed090081a7d39b26cc3f34f71a1b91e",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 4,
+            "mean_unfulfilled": 0,
+            "mean_tardiness_ticks": 5496.75,
+            "empirical_cvar90_tardiness": 6631.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 7154.5,
+            "mean_total_cost": 708.887517291668,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.313611459219828,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "ee5690b115ab8b95dd3dee809955bf2d4594c3755ec696d71bcc3ff1635391a3",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 4,
+            "mean_unfulfilled": 0,
+            "mean_tardiness_ticks": 6223.25,
+            "empirical_cvar90_tardiness": 7718.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 8152.75,
+            "mean_total_cost": 703.9550085999964,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.141037916764617,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "7ef3144a2ba3656ce1395ab810efae18108855b868569eecf6ea3ad867df4f50",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 0.75,
+            "mean_tardiness_ticks": 8705,
+            "empirical_cvar90_tardiness": 10885.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11426.25,
+            "mean_total_cost": 714.0667408833277,
+            "mean_action_changes": 2.5,
+            "simulation_cpu_seconds": 4.702078748960048,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "ad388746476b92b1e63e4194a95b4e50b03f06e86cb544745802c362f584b091",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 1,
+            "mean_tardiness_ticks": 7800.75,
+            "empirical_cvar90_tardiness": 12195.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 10849.5,
+            "mean_total_cost": 713.3821705333299,
+            "mean_action_changes": 2,
+            "simulation_cpu_seconds": 4.577560459030792,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "3f36e6aa299dfedd14d9ae16ee7ee5de1d3aed25fa3bd87ba1d314e9df7bee1d",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 1.25,
+            "mean_tardiness_ticks": 8161,
+            "empirical_cvar90_tardiness": 13636.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11570.0,
+            "mean_total_cost": 706.1656997250012,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.5158502091653645,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "52553cc4e87477ee7b3e0a0123aa7c7a8516d131bc7d1b67b524ec8ad51814f4",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 2.5,
+            "mean_tardiness_ticks": 8789.5,
+            "empirical_cvar90_tardiness": 9851.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 11252.25,
+            "mean_total_cost": 750.1068437166628,
+            "mean_action_changes": 11.25,
+            "simulation_cpu_seconds": 3.7272491657640785,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "d60532e8713a35491ab60640f9ee3362f879025d1c194f46de3f26ab452cff4e",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 2.75,
+            "mean_tardiness_ticks": 12076.75,
+            "empirical_cvar90_tardiness": 16551.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 16214.5,
+            "mean_total_cost": 747.8118228083335,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 3.8366226237267256,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "2c662038ec4a409d5a2013b24effd7b21af05414cc4c721ba2cfc2acb9c27bb1",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.75,
+            "mean_tardiness_ticks": 14336.75,
+            "empirical_cvar90_tardiness": 16457.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 18451.0,
+            "mean_total_cost": 540.3098807083285,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 4.559939458966255,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "elapsed_seconds": 44.902945457957685,
+      "actual_simulations": 228,
+      "cache_hits": 52,
+      "simulation_cpu_seconds": 244.47827712097205
+    },
+    {
+      "generation": 5,
+      "context": 0,
+      "training_tapes": [
+        20,
+        21,
+        22,
+        23
+      ],
+      "best_paired_training": {
+        "episodes": 4,
+        "invalid": 0,
+        "complete": 2,
+        "mean_unfulfilled": 1.5,
+        "mean_tardiness_ticks": 10643,
+        "empirical_cvar90_tardiness": 14126.0,
+        "risk_weight": 0.25,
+        "risk_adjusted_tardiness": 14174.5,
+        "mean_total_cost": 735.88893474167,
+        "mean_action_changes": 0,
+        "simulation_cpu_seconds": 5.289938208879903,
+        "global_optimality_gap": null
+      },
+      "best_params": {
+        "wip_low": 8,
+        "wip_high": 8,
+        "downstream_limit": 99,
+        "heat_limit": 99,
+        "family": 48,
+        "remaining": -4,
+        "due": 0.25,
+        "congested_mode": "standard",
+        "free_mode": "standard",
+        "late_mode": "turbo",
+        "late_fraction": 1.1,
+        "lease_fraction": 0.0,
+        "grid_eco": false
+      },
+      "candidate_paired_summaries": [
+        {
+          "policy_id": "98a375c013ef0ac7858a6105aa2cc2b2dfc6af308f562645497e56919c16328e",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 2,
+            "mean_unfulfilled": 1.5,
+            "mean_tardiness_ticks": 10643,
+            "empirical_cvar90_tardiness": 14126.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 14174.5,
+            "mean_total_cost": 735.88893474167,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.289938208879903,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "ee5690b115ab8b95dd3dee809955bf2d4594c3755ec696d71bcc3ff1635391a3",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 2,
+            "mean_tardiness_ticks": 10110,
+            "empirical_cvar90_tardiness": 11441.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 12970.25,
+            "mean_total_cost": 742.9677157833358,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.083531874930486,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "a6c71e7a64f3c99169d2f7eae8235a275470dd0852f0a4a9525c22858bfeec07",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 2,
+            "mean_tardiness_ticks": 10110,
+            "empirical_cvar90_tardiness": 11441.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 12970.25,
+            "mean_total_cost": 742.9677157833358,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.401722708949819,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "d137bda14b92de443476a8351d3508c3afcdfb0222f2911ee039f6622f6c70a2",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 1,
+            "mean_unfulfilled": 2,
+            "mean_tardiness_ticks": 11133.25,
+            "empirical_cvar90_tardiness": 14126.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 14664.75,
+            "mean_total_cost": 734.7206455250018,
+            "mean_action_changes": 0.5,
+            "simulation_cpu_seconds": 5.02664841664955,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "a0e0b4d84096ab446dd696da163a33f08511a84f421e33bc521a8a68eb810262",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 2.75,
+            "mean_tardiness_ticks": 10916,
+            "empirical_cvar90_tardiness": 13480.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 14286.0,
+            "mean_total_cost": 727.4372494083362,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.348788540577516,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "8beba1378ea0c7a402710e7ba6be78f00f665eb49a0e1f4ec03670b6c52ebb25",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.25,
+            "mean_tardiness_ticks": 10787.75,
+            "empirical_cvar90_tardiness": 13412.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 14140.75,
+            "mean_total_cost": 690.1651984166656,
+            "mean_action_changes": 0.5,
+            "simulation_cpu_seconds": 3.066685707308352,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "fae708ab1c50b7d200ad0fde97220bae5e948fa5424c074246b81fe3c1d16a71",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 3.5,
+            "mean_tardiness_ticks": 12090.75,
+            "empirical_cvar90_tardiness": 15080.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 15860.75,
+            "mean_total_cost": 771.4654564666737,
+            "mean_action_changes": 0,
+            "simulation_cpu_seconds": 5.630042209057137,
+            "global_optimality_gap": null
+          }
+        },
+        {
+          "policy_id": "ae534a5f1ec68b814dc06dcfa32276ee2b49987c45827c97672651c11fa90c45",
+          "summary": {
+            "episodes": 4,
+            "invalid": 0,
+            "complete": 0,
+            "mean_unfulfilled": 4,
+            "mean_tardiness_ticks": 14994.75,
+            "empirical_cvar90_tardiness": 16557.0,
+            "risk_weight": 0.25,
+            "risk_adjusted_tardiness": 19134.0,
+            "mean_total_cost": 762.5061719583325,
+            "mean_action_changes": 0.5,
+            "simulation_cpu_seconds": 5.9150334992446005,
+            "global_optimality_gap": null
+          }
+        }
+      ],
+      "checkpoint_selection": {
+        "candidate": {
+          "wip_low": 3,
+          "wip_high": 8,
+          "downstream_limit": 99,
+          "heat_limit": 99,
+          "family": 24,
+          "remaining": -4,
+          "due": 0.25,
+          "congested_mode": "standard",
+          "free_mode": "standard",
+          "late_mode": "standard",
+          "late_fraction": 0.7,
+          "lease_fraction": 0.25,
+          "grid_eco": false
+        },
+        "validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 1.6875,
+          "mean_tardiness_ticks": 10051,
+          "empirical_cvar90_tardiness": 14268.625000000002,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 13618.15625,
+          "mean_total_cost": 736.0381771687502,
+          "mean_action_changes": 2.375,
+          "simulation_cpu_seconds": 19.710825002752244,
+          "global_optimality_gap": null
+        },
+        "selected_validation": {
+          "episodes": 16,
+          "invalid": 0,
+          "complete": 6,
+          "mean_unfulfilled": 1.6875,
+          "mean_tardiness_ticks": 10051,
+          "empirical_cvar90_tardiness": 14268.625000000002,
+          "risk_weight": 0.25,
+          "risk_adjusted_tardiness": 13618.15625,
+          "mean_total_cost": 736.0381771687502,
+          "mean_action_changes": 2.375,
+          "simulation_cpu_seconds": 19.710825002752244,
+          "global_optimality_gap": null
+        }
+      },
+      "elapsed_seconds": 63.184151290915906,
+      "actual_simulations": 308,
+      "cache_hits": 60,
+      "simulation_cpu_seconds": 345.0058450817596
+    }
+  ]
+}

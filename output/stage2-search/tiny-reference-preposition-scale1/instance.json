@@ -1,0 +1,582 @@
+{
+  "schema": "metaltech-stage2-instance.v1",
+  "name": "Exact deterministic one-pump reference",
+  "profile": "tiny-reference",
+  "seed": 0,
+  "tick_minutes": 1,
+  "horizon_ticks": 360,
+  "day_ticks": 1440,
+  "replan_ticks": 60,
+  "time_scale": 1,
+  "orders": [
+    {
+      "id": "P01",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "due_tick": 360,
+      "precision_required": false,
+      "urgent": false
+    }
+  ],
+  "units": [
+    {
+      "id": "P01/housing/1",
+      "order_id": "P01",
+      "recipe": "housing",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P01/rotor/1",
+      "order_id": "P01",
+      "recipe": "rotor",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    },
+    {
+      "id": "P01/flange/1",
+      "order_id": "P01",
+      "recipe": "flange",
+      "family": "alloy_A",
+      "release_tick": 0,
+      "initial_location": "RAW_A"
+    }
+  ],
+  "recipes": {
+    "housing": [
+      {
+        "process": "T",
+        "base_ticks": 4
+      },
+      {
+        "process": "F",
+        "base_ticks": 6
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 2
+      },
+      {
+        "process": "HEAT",
+        "base_ticks": 8
+      },
+      {
+        "process": "QA",
+        "base_ticks": 3
+      }
+    ],
+    "rotor": [
+      {
+        "process": "T",
+        "base_ticks": 4
+      },
+      {
+        "process": "HEAT",
+        "base_ticks": 8
+      },
+      {
+        "process": "F",
+        "base_ticks": 5
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 2
+      },
+      {
+        "process": "QA",
+        "base_ticks": 3
+      }
+    ],
+    "flange": [
+      {
+        "process": "F",
+        "base_ticks": 4
+      },
+      {
+        "process": "S",
+        "base_ticks": 4
+      },
+      {
+        "process": "WASH",
+        "base_ticks": 2
+      },
+      {
+        "process": "QA",
+        "base_ticks": 3
+      }
+    ],
+    "pump": [
+      {
+        "process": "ASSEMBLY",
+        "base_ticks": 4
+      },
+      {
+        "process": "QA",
+        "base_ticks": 3
+      }
+    ]
+  },
+  "machines": [
+    {
+      "id": "T1",
+      "process": "T",
+      "hall": "A",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1
+    },
+    {
+      "id": "F1",
+      "process": "F",
+      "hall": "A",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1
+    },
+    {
+      "id": "S1",
+      "process": "S",
+      "hall": "B",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1
+    },
+    {
+      "id": "WASH1",
+      "process": "WASH",
+      "hall": "A",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1
+    },
+    {
+      "id": "H1",
+      "process": "HEAT",
+      "hall": "A",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1,
+      "batch_capacity": 1
+    },
+    {
+      "id": "QA1",
+      "process": "QA",
+      "hall": "A",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 1
+    },
+    {
+      "id": "A1",
+      "process": "ASSEMBLY",
+      "hall": "B",
+      "duration_factor": [
+        1,
+        1
+      ],
+      "input_capacity": 3
+    }
+  ],
+  "modes": {
+    "T": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 9,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "F": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 12,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "S": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 10,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "WASH": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 4,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "HEAT": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 16,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "QA": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 3,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    },
+    "ASSEMBLY": {
+      "standard": {
+        "duration_factor": [
+          1,
+          1
+        ],
+        "power_kw": 4,
+        "wear": 1,
+        "defect_probability": 0
+      }
+    }
+  },
+  "setup_matrix": {
+    "alloy_A": {
+      "alloy_A": 0
+    }
+  },
+  "process_skills": {
+    "T": "machining",
+    "F": "machining",
+    "S": "welding",
+    "WASH": "setup",
+    "HEAT": "setup",
+    "QA": "qa",
+    "ASSEMBLY": "assembly"
+  },
+  "workers": [
+    {
+      "id": "W1",
+      "skills": [
+        "assembly",
+        "machining",
+        "maintenance",
+        "qa",
+        "setup",
+        "welding"
+      ],
+      "daily_shift": [
+        0,
+        1440
+      ],
+      "breaks": [],
+      "initial_hall": "A"
+    }
+  ],
+  "worker_travel_ticks": 2,
+  "attendance": {
+    "T": {
+      "kind": "start",
+      "ticks": 1
+    },
+    "F": {
+      "kind": "start",
+      "ticks": 1
+    },
+    "S": {
+      "kind": "full",
+      "ticks": 1
+    },
+    "WASH": {
+      "kind": "start",
+      "ticks": 1
+    },
+    "HEAT": {
+      "kind": "start",
+      "ticks": 1
+    },
+    "QA": {
+      "kind": "full",
+      "ticks": 1
+    },
+    "ASSEMBLY": {
+      "kind": "full",
+      "ticks": 1
+    }
+  },
+  "tools": [
+    {
+      "id": "mill1",
+      "kind": "mill",
+      "initial_location": "F1",
+      "life": 1000000,
+      "service_ticks": 1
+    },
+    {
+      "id": "weld1",
+      "kind": "weld",
+      "initial_location": "S1",
+      "life": 1000000,
+      "service_ticks": 1
+    },
+    {
+      "id": "calibration1",
+      "kind": "calibration",
+      "initial_location": "QA1",
+      "life": 1000000,
+      "service_ticks": 1
+    }
+  ],
+  "process_tools": {
+    "F": "mill",
+    "S": "weld",
+    "QA": "calibration"
+  },
+  "maintenance": {
+    "wear_limit": 1000000,
+    "duration": 1,
+    "skill": "maintenance",
+    "power_kw": 2,
+    "reset_family": false
+  },
+  "agvs": [
+    {
+      "id": "AGV1",
+      "initial_location": "RAW_A",
+      "initial_soc": 1000000,
+      "capacity": 1000000
+    }
+  ],
+  "graph_edges": [
+    {
+      "a": "T1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "F1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "S1",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "WASH1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "H1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "QA1",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "A1",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "RAW_A",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "SHIP_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "CHARGE_A",
+      "b": "HUB_A",
+      "ticks": 1
+    },
+    {
+      "a": "CHARGE_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "SCRAP_B",
+      "b": "HUB_B",
+      "ticks": 1
+    },
+    {
+      "a": "HUB_A",
+      "b": "HUB_B",
+      "ticks": 4
+    }
+  ],
+  "transport": {
+    "agv_count": 1,
+    "agv_payload_units": 1,
+    "chargers": [
+      "CHARGE_A",
+      "CHARGE_B"
+    ],
+    "load_ticks": 1,
+    "unload_ticks": 1,
+    "empty_soc_per_tick": 1,
+    "loaded_soc_per_tick": 2,
+    "charge_rate": 12,
+    "charge_power_kw": 4,
+    "charger_capacity": 1,
+    "offlane_agv_capacity": 4,
+    "charge_saturates": true,
+    "soc_unit_kwh": 0.005
+  },
+  "energy": {
+    "base_load_kw": 12,
+    "normal_grid_cap_kw": 1000,
+    "stationary_soc_unit_kwh": 0.016666666666666666,
+    "stationary_soc_capacity": 40,
+    "stationary_soc_initial": 40,
+    "stationary_soc_min": 8,
+    "stationary_soc_terminal_min": 40,
+    "battery_actions": [
+      {
+        "id": "idle",
+        "charge_kw": 0,
+        "discharge_kw": 0,
+        "soc_delta": 0
+      },
+      {
+        "id": "charge",
+        "charge_kw": 10,
+        "discharge_kw": 0,
+        "soc_delta": 9
+      },
+      {
+        "id": "discharge",
+        "charge_kw": 0,
+        "discharge_kw": 9,
+        "soc_delta": -10
+      }
+    ],
+    "tariff_low": 0.1,
+    "tariff_peak": 0.1,
+    "carbon_low": 0.2,
+    "carbon_peak": 0.2,
+    "solar_peak_kw": 0,
+    "no_export": true
+  },
+  "quality": {
+    "risk_model": "manufacturing_mode_history",
+    "manufacturing_defect_probabilities": {
+      "T": {
+        "standard": 0
+      },
+      "F": {
+        "standard": 0
+      },
+      "S": {
+        "standard": 0
+      },
+      "WASH": {
+        "standard": 0
+      },
+      "HEAT": {
+        "standard": 0
+      },
+      "QA": {
+        "standard": 0
+      },
+      "ASSEMBLY": {
+        "standard": 0
+      }
+    },
+    "wear_risk_coefficient": 0,
+    "repair_residual_probability": 0,
+    "repair_ticks": 3,
+    "repair_skill": "machining",
+    "repair_power_kw": 8,
+    "replacement_lead_ticks": 12,
+    "max_repairs_per_component_attempt": 1,
+    "max_replacements_per_original_component": 1,
+    "final_defect_probability": 0,
+    "component_defect_probability": {
+      "standard": 0
+    }
+  },
+  "raw_stock_units": {
+    "housing": 1,
+    "rotor": 1,
+    "flange": 1
+  },
+  "delivery": {
+    "id": "D1",
+    "normal_tick": 361,
+    "delayed_tick": 362,
+    "contents": {}
+  },
+  "uncertainty_stages": [],
+  "lease_options": [],
+  "investment_budget": 0,
+  "certification_modes": {},
+  "feature_status": {},
+  "reference_scope": {
+    "kind": "deterministic parameterized instance",
+    "singleton_heat_batches": true,
+    "dispatch_after_source_completion": false,
+    "fixed_shortest_tree_paths": true,
+    "early_empty_preposition": true,
+    "nonbinding": [
+      "tool life/service",
+      "machine wear/maintenance",
+      "AGV battery/charging",
+      "grid cap",
+      "stationary battery",
+      "worker shifts/breaks",
+      "quality/rework",
+      "exogenous disruptions",
+      "investment"
+    ],
+    "binding": [
+      "recipe precedence",
+      "machine processing and output blocking",
+      "finite reserved input buffers",
+      "physical loaded and empty AGV travel",
+      "one AGV",
+      "one worker attendance and hall travel",
+      "BOM join"
+    ],
+    "flagship_global_gap": null
+  }
+}

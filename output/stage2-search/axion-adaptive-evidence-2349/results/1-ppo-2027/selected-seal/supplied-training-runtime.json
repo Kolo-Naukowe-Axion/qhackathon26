@@ -1,0 +1,81 @@
+{
+  "scope": "Original fit scheduler accounting; Python/package metadata below belong to post-fit collection",
+  "command": [
+    "sacct",
+    "-X",
+    "-j",
+    "6117339_1",
+    "--parsable2",
+    "--noheader",
+    "--format=JobID,State,ExitCode,ElapsedRaw,AllocCPUS,TotalCPU,CPUTimeRAW,Partition,Account,QOS,NodeList,Start,End"
+  ],
+  "raw": "6117339_1|COMPLETED|0:0|1207|32|00:00:00|38624|bem2-cpu-short|hpc-iwowoj-1781179048|hpc-iwowoj-1781179048|r22c01b11|2026-10-17T01:30:21|2026-10-17T01:50:28\n",
+  "completed_job_id": "6117339_1",
+  "successful_completion_verified": true,
+  "collector_runtime": {
+    "scope": "Post-fit seal/replay process; not a reconstruction of original training runtime",
+    "hostname": "r22c01b11.bem2.kdm.wcss.pl",
+    "platform": "Linux-4.18.0-553.164.1.el8_10.x86_64-x86_64-with-glibc2.28",
+    "machine": "x86_64",
+    "python": "3.12.13",
+    "executable": "/home/iwosmu/qh26-stage2-20261016/.venv/bin/python",
+    "packages": {
+      "numpy": "2.5.4",
+      "torch": "2.14.1+cpu",
+      "scipy": "1.18.1"
+    },
+    "logical_cpu_count": 48,
+    "cpu_affinity": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39
+    ],
+    "allocation": {
+      "SLURM_JOB_ID": "6117455",
+      "SLURM_ARRAY_JOB_ID": "6117453",
+      "SLURM_ARRAY_TASK_ID": "1",
+      "SLURM_JOB_PARTITION": "bem2-cpu-short",
+      "SLURM_CPUS_PER_TASK": "32",
+      "SLURM_CPUS_ON_NODE": "32",
+      "SLURM_JOB_NUM_NODES": "1"
+    },
+    "thread_environment": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": null,
+      "NUMEXPR_NUM_THREADS": null,
+      "CUDA_VISIBLE_DEVICES": null
+    }
+  },
+  "driver_sha256": "a660c2f741b78279b0196177d7717ad43c634de9474a3751a552331892f4e982"
+}

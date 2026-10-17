@@ -23,6 +23,10 @@ for (const [size, template, optimum] of [
     assert.equal(replay.provenance.kind, 'solver');
     assert.equal(report.accepted, true);
     assert.equal(report.method, official.method);
-    if (size === '2x2') assert.match(official.method, /QAOA/);
+    assert.match(official.method, /QAOA/);
+    const model = JSON.parse(await readFile(new URL(`../${directory}/model.json`, import.meta.url), 'utf8'));
+    assert.equal(model.encoding, 'pairwise-order');
+    assert.equal(model.variables.length, size === '2x2' ? 1 : 3);
+    assert.equal(model.objective, 'makespan');
   });
 }

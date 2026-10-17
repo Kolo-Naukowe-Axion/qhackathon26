@@ -1,0 +1,143 @@
+{
+  "schema": "stage2-quality-material-necessary-bound.v1",
+  "seed": 10116,
+  "instance_sha256": "2c5aeae57939100bdfb8dd5693d30ba186f97d821ab2ca368a04fcf6308af01c",
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "horizon_ticks": 5760,
+  "observed_realized_orders": 16,
+  "realized_exogenous_leaf": [
+    "mill_ok",
+    "supply_ok",
+    "rush"
+  ],
+  "available_raw_blanks": {
+    "housing": 34,
+    "rotor": 34,
+    "flange": 34
+  },
+  "necessary_blank_demands": {
+    "P01": [
+      1,
+      1,
+      1
+    ],
+    "P02": [
+      1,
+      1,
+      1
+    ],
+    "P03": [
+      1,
+      1,
+      1
+    ],
+    "P04": [
+      1,
+      1,
+      1
+    ],
+    "P05": [
+      1,
+      1,
+      1
+    ],
+    "P06": [
+      1,
+      1,
+      1
+    ],
+    "P07": [
+      1,
+      1,
+      1
+    ],
+    "P08": [
+      1,
+      1,
+      1
+    ],
+    "P09": [
+      1,
+      1,
+      1
+    ],
+    "P10": [
+      1,
+      1,
+      1
+    ],
+    "P11": [
+      1,
+      1,
+      1
+    ],
+    "P12": [
+      1,
+      1,
+      1
+    ],
+    "P13": [
+      1,
+      1,
+      1
+    ],
+    "P14": [
+      1,
+      1,
+      1
+    ],
+    "U01": [
+      1,
+      1,
+      1
+    ],
+    "U02": [
+      1,
+      1,
+      1
+    ]
+  },
+  "unavoidable_quality_evidence": [],
+  "risk_floor_method": "Maximum necessary single-step minimum legal-mode risk, less1e-10 conservative rounding margin; nonnegative wear and compounded history cannot lower it",
+  "assumptions": [
+    "Audited engine action domain and fixed unit-lineage keys, including order/pump/1; no policy-selected UID redraws",
+    "Original three matched component recipes per pump; no substitutions",
+    "One repair attempt; fixed residual risk; at most one component replacement; no final pump replacement",
+    "No additional raw procurement or material creation; only declared initial stock and delivery",
+    "Source-bound offline proof: keyed future draws are not inputs to a deployed policy"
+  ],
+  "maximum_shipped_upper_bound": 16,
+  "unfulfilled_lower_bound": 0,
+  "relaxed_selected_orders": [
+    "P01",
+    "P02",
+    "P03",
+    "P04",
+    "P05",
+    "P06",
+    "P07",
+    "P08",
+    "P09",
+    "P10",
+    "P11",
+    "P12",
+    "P13",
+    "P14",
+    "U01",
+    "U02"
+  ],
+  "relaxed_blank_use": {
+    "housing": 16,
+    "rotor": 16,
+    "flange": 16
+  },
+  "states": 17,
+  "scope": "Necessary material/quality constraints only; selected subset is not a physical schedule",
+  "secondary_optimality_gap": null
+}

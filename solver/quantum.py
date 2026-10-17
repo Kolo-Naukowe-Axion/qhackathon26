@@ -13,7 +13,20 @@ from qiskit_aer import AerSimulator
 from scipy.optimize import minimize
 
 from .artifacts import save_run, write_json
-from .stage1 import ROOT, build_qubo, energy, to_dimod
+from .stage1 import ROOT, build_qubo, decode, energy, to_dimod
+
+
+def feasible_mask(model, costs):
+    if model.get("objective") != "makespan":
+        return costs == 0
+    valid = []
+    for state in range(len(costs)):
+        try:
+            decode(model, [(state >> i) & 1 for i in range(len(model["variables"]))])
+            valid.append(True)
+        except ValueError:
+            valid.append(False)
+    return np.array(valid)
 
 
 def qaoa_circuit(model, layers, mixer="x"):
@@ -86,7 +99,8 @@ def run_qaoa(model, *, layers=3, restarts=16, maxiter=500, shots=4096, seed=2026
                     layers=layers, shots=shots, seed=seed, restarts=restarts, maxiter=maxiter,
                     cost_scale=scale, optimized_parameters=[float(x) for x in best.x],
                     parameter_order="all gamma, then all beta (layer-major qubit order for local-x)", optimizer=f"{optimizer}, mean QUBO energy",
-                    expected_energy=float(ideal @ costs), ideal_feasible_probability=float(ideal[costs == 0].sum()),
+                    expected_energy=float(ideal @ costs), ideal_feasible_probability=float(ideal[feasible_mask(model, costs)].sum()),
+                    ideal_ground_probability=float(ideal[costs == costs.min()].sum()),
                     elapsed_wall_seconds=time.perf_counter() - started, attempts=attempts,
                     circuit_depth=bound.depth(), circuit_operations=dict(bound.count_ops()),
                     bit_order="sample[i] is qubit i; raw Qiskit strings reversed on decoding")

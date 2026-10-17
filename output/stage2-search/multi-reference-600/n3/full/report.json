@@ -1,0 +1,273 @@
+{
+  "exact": {
+    "schema": "metaltech-stage2-multi-reference.v1",
+    "solver": "OR-Tools CP-SAT",
+    "solver_version": "9.15.6755",
+    "status": "FEASIBLE",
+    "optimal": false,
+    "objective_ticks": 3066,
+    "best_bound_ticks": 2925.0,
+    "deterministic_limit": 600.0,
+    "wall_limit_seconds": 600.0,
+    "search_workers": 1,
+    "seed": 0,
+    "build_and_solve_seconds": 600.3275486249477,
+    "solver_wall_seconds": 600.024444,
+    "solver_response": "CpSolverResponse summary:\nstatus: FEASIBLE\nobjective: 3066\nbest_bound: 2925\nintegers: 5547\nbooleans: 114793\nconflicts: 316227\nbranches: 741441\npropagations: 1676816392\ninteger_propagations: 208611344\nrestarts: 442\nlp_iterations: 736016\nwalltime: 600.024\nusertime: 600.024\ndeterministic_time: 259.164\ngap_integral: 0\nsolution_fingerprint: 0x632ec104355cdc5a\n",
+    "model_stats": "optimization model '': (model_fingerprint: 0x4928b3b545e66f5c)\n#Variables: 6'028 (#ints: 1 in objective) (5'820 primary variables)\n  - 5'658 Booleans in [0,1]\n  - 6 in [0,7680]\n  - 3 in [0,7710]\n  - 3 in [0,7725]\n  - 15 in [0,7740]\n  - 12 in [0,7755]\n  - 9 in [0,7770]\n  - 226 in [0,7800]\n  - 18 in [30,7800]\n  - 24 in [45,7800]\n  - 30 in [60,7800]\n  - 6 in [75,7800]\n  - 6 in [90,7800]\n  - 12 in [120,7800]\n#kCircuit: 2\n#kCumulative: 7 (#intervals: 54, #variable_sizes: 54)\n#kInterval: 150\n#kLinMax: 1 (#expressions: 3)\n#kLinear1: 98 (#enforced: 48)\n#kLinear2: 8'954 (#enforced: 8'697)\n#kLinear3: 102\n#kNoOverlap: 8 (#intervals: 96, #variable_sizes: 48)",
+    "counts": {
+      "pumps": 3,
+      "operations": 48,
+      "moves": 57,
+      "machines": 7,
+      "agv_arc_bits": 3306,
+      "worker_arc_bits": 2352
+    },
+    "scope": {
+      "kind": "deterministic parameterized instance",
+      "singleton_heat_batches": true,
+      "dispatch_after_source_completion": false,
+      "fixed_shortest_tree_paths": true,
+      "early_empty_preposition": true,
+      "nonbinding": [
+        "tool life/service",
+        "machine wear/maintenance",
+        "AGV battery/charging",
+        "grid cap",
+        "stationary battery",
+        "worker shifts/breaks",
+        "quality/rework",
+        "exogenous disruptions",
+        "investment"
+      ],
+      "binding": [
+        "recipe precedence",
+        "machine processing and output blocking",
+        "finite reserved input buffers",
+        "physical loaded and empty AGV travel",
+        "one AGV",
+        "one worker attendance and hall travel",
+        "BOM join"
+      ],
+      "flagship_global_gap": null,
+      "pumps": 3,
+      "matched_order_bom": true,
+      "continuous_worker_calendar": true,
+      "standalone_empty_agv_actions": false,
+      "empty_repositioning": "Shortest tree path inside each mandatory part-transfer dispatch; early preposition may wait for source completion",
+      "objective": "All orders fulfilled, constant minimum energy cost, then last physical shipment",
+      "label_symmetry": "Identical orders may be relabeled; first housing starts ordered without loss"
+    },
+    "resource_bounds": {
+      "worker_attendance_ticks": 2925,
+      "machine_processing_ticks": {
+        "T1": 360,
+        "F1": 675,
+        "WASH1": 270,
+        "H1": 720,
+        "QA1": 540,
+        "S1": 180,
+        "A1": 180
+      },
+      "loaded_transport_and_handling_ticks": 312,
+      "makespan_lower_bound_ticks": 2925,
+      "scope": "Necessary reusable-resource work bounds only; no added empty travel, worker walks, blocking or initial/join gaps"
+    },
+    "incumbent": {
+      "used": true,
+      "makespan": 3066,
+      "scope": "Validated upper bound and warm-start hints; no choices fixed",
+      "complete_operation_move_arc_hint": true
+    },
+    "model_infeasibility_proven": false,
+    "global_infeasibility_proven": false,
+    "flagship_global_gap": null,
+    "optimality_scope": "Declared matched-BOM deterministic direct-transfer domain; all fulfillment and constant minimum cost precede last-shipment makespan",
+    "validation": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 48,
+        "moves": 57,
+        "horizon_ticks": 7800,
+        "delivered_orders": 3,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 1018,
+          "P02": 2042,
+          "P03": 3066
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2028.0000000002183,
+        "energy_cost": 202.8000000000369,
+        "carbon_kg": 405.6000000000738,
+        "investment_cost": 0,
+        "total_cost": 202.8000000000369,
+        "terminal_soc": 40
+      }
+    }
+  },
+  "heuristic_validation": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 48,
+      "moves": 57,
+      "horizon_ticks": 7800,
+      "delivered_orders": 3,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 1018,
+        "P02": 2042,
+        "P03": 3066
+      },
+      "tardiness_ticks": 0,
+      "terminal_deadline_debt_ticks": 0,
+      "grid_kwh": 2028.0000000002183,
+      "energy_cost": 202.8000000000369,
+      "carbon_kg": 405.6000000000738,
+      "investment_cost": 0,
+      "total_cost": 202.8000000000369,
+      "terminal_soc": 40
+    }
+  },
+  "comparison": {
+    "heuristic_policy": {
+      "wip_limit": 1,
+      "mode": "standard"
+    },
+    "heuristic_makespan_ticks": 3066,
+    "same_earlier_objective_tiers": true,
+    "cp_status": "FEASIBLE",
+    "optimum_makespan_ticks": null,
+    "heuristic_makespan_gap": null,
+    "proved_lower_bound_ticks": 2925.0,
+    "flagship_global_gap": null
+  },
+  "hint": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/multi-reference-pilot/n3-scale15-full/heuristic-trace.json",
+    "sha256": "add0815ed70dcc9d0d41d04c62124a5c53c0121d70c1a12b2936809031d12909",
+    "makespan": 3066,
+    "declaration": "Fresh solve with validated upper bound and complete warm-start hints; no CP proof state resumed"
+  },
+  "artifacts_sha256": {
+    "heuristic-trace.json": "add0815ed70dcc9d0d41d04c62124a5c53c0121d70c1a12b2936809031d12909",
+    "cp-trace.json": "e8712e9a679f6c7d54bb333b23b651be91849ea7d43665a715ffa75eec4806dc",
+    "cp-schedule.json": "1eddde90347856f55c6bcd7e0f4b5babd25449209b1afed093d3a02e1a48b0ed"
+  },
+  "provenance": {
+    "source_sha256": {
+      "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+      "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+    },
+    "sources_stable_during_run": true,
+    "prior_report_sha256": "016b9bc9a568afd004c03f8ff7ed51d057346c37fbc8799ed00539991414be59",
+    "fresh_search": true,
+    "resumed_cp_proof": false
+  }
+}

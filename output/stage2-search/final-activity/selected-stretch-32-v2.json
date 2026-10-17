@@ -1,0 +1,2305 @@
+{
+  "schema": "stage2-retained-final-activity.v1",
+  "method_id": "selected-stretch-32",
+  "config": {
+    "orders": 32,
+    "horizon": 14400,
+    "profile": "full"
+  },
+  "context": {
+    "evaluation_rows_in_context": 256,
+    "invalid_evaluation_rows_in_context": 0,
+    "full_protocol_tapes": 256,
+    "declared_actor_replicas": 1,
+    "selected_retained_environment_tapes": 8
+  },
+  "selection_complete_and_verified": true,
+  "records": [
+    {
+      "leaf": 0,
+      "seed": 10004,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-0-seed-10004-actor-900000.json",
+        "file_sha256": "14de2712f6fdb072b4e26cdee3e28a7c1470bf234a9cbe64a7b4f342c2d418ed",
+        "json_payload_sha256": "14de2712f6fdb072b4e26cdee3e28a7c1470bf234a9cbe64a7b4f342c2d418ed",
+        "row_recorded_sha256": "14de2712f6fdb072b4e26cdee3e28a7c1470bf234a9cbe64a7b4f342c2d418ed"
+      },
+      "physical_instance_sha256": "65b487232121f5797f4da6d40f16d4b0192b3588a1713463ae2acebdf9cc479f",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 0,
+          "authorized_unit_identities": 128,
+          "initial_pump_births": 32,
+          "replacement_events": 0,
+          "qa_results": 134
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 514,
+          "production_operations_completed": 514,
+          "production_units_completed": 524,
+          "setup_operations": 44,
+          "setup_minutes": 1650,
+          "rework_operations_started": 12,
+          "qa_inspections_completed": 134,
+          "qa_failures": 6,
+          "repair_events": 6,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 28,
+          "machine_maintenance_completed": 28,
+          "tool_services_started": 29,
+          "tool_services_completed": 29,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 626,
+          "agv_transport_arrivals": 626,
+          "agv_part_arrivals": 620,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 74,
+          "agv_charge_sessions_ended_by_cutoff": 74,
+          "agv_charge_minutes": 525,
+          "bridge_crossings": 348,
+          "loaded_bridge_crossings": 209,
+          "empty_bridge_crossings": 139,
+          "bridge_occupied_minutes": 1392,
+          "worker_walks": 259,
+          "worker_walk_minutes": 518,
+          "worker_attendance_minutes": 17722,
+          "initial_bom_assembly_starts": 32,
+          "assembly_parent_consumption_events": 96,
+          "heat_multiunit_batches": 9,
+          "realized_urgent_orders": 0,
+          "realized_outage_events": 0,
+          "realized_delivery_delay_events": 0,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 96,
+          "process_complete": 524,
+          "qa_result": 134,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "consume": 96,
+          "repair": 6,
+          "ship": 32,
+          "tool_service_complete": 29,
+          "delivery": 1,
+          "maintenance_complete": 28
+        },
+        "processing_modes": {
+          "standard": 480,
+          "precision": 34
+        },
+        "process_counts": {
+          "T": 70,
+          "F": 96,
+          "HEAT": 54,
+          "S": 32,
+          "WASH": 96,
+          "QA": 134,
+          "ASSEMBLY": 32
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 6825.13289,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 41.187756666666665,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 0,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 2,
+          "rotor": 2,
+          "flange": 2
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_ok"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_ok"
+            },
+            {
+              "tick": 2400,
+              "outcome": "no_rush"
+            }
+          ],
+          "outages": [],
+          "delivery_delays": [],
+          "urgent_order_ids": [],
+          "outage_machine_minutes": 0
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 1,
+      "seed": 10003,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-1-seed-10003-actor-900000.json",
+        "file_sha256": "d5195da979494c2d8e585283e4199b724ae39e419caf42bf89acbf80fba33111",
+        "json_payload_sha256": "d5195da979494c2d8e585283e4199b724ae39e419caf42bf89acbf80fba33111",
+        "row_recorded_sha256": "d5195da979494c2d8e585283e4199b724ae39e419caf42bf89acbf80fba33111"
+      },
+      "physical_instance_sha256": "99423c16317154983e12bd20fe5c3d428791b4df4cb02eeb8a6de350eda8952a",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 2,
+          "authorized_unit_identities": 136,
+          "initial_pump_births": 34,
+          "replacement_events": 0,
+          "qa_results": 150
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 565,
+          "production_operations_completed": 565,
+          "production_units_completed": 572,
+          "setup_operations": 44,
+          "setup_minutes": 1590,
+          "rework_operations_started": 28,
+          "qa_inspections_completed": 150,
+          "qa_failures": 14,
+          "repair_events": 14,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 31,
+          "machine_maintenance_completed": 31,
+          "tool_services_started": 31,
+          "tool_services_completed": 31,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 680,
+          "agv_transport_arrivals": 680,
+          "agv_part_arrivals": 674,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 80,
+          "agv_charge_sessions_ended_by_cutoff": 80,
+          "agv_charge_minutes": 572,
+          "bridge_crossings": 362,
+          "loaded_bridge_crossings": 231,
+          "empty_bridge_crossings": 131,
+          "bridge_occupied_minutes": 1448,
+          "worker_walks": 274,
+          "worker_walk_minutes": 548,
+          "worker_attendance_minutes": 19346,
+          "initial_bom_assembly_starts": 34,
+          "assembly_parent_consumption_events": 102,
+          "heat_multiunit_batches": 7,
+          "realized_urgent_orders": 2,
+          "realized_outage_events": 0,
+          "realized_delivery_delay_events": 0,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 102,
+          "process_complete": 572,
+          "qa_result": 150,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "consume": 102,
+          "repair": 14,
+          "ship": 34,
+          "tool_service_complete": 31,
+          "delivery": 1,
+          "maintenance_complete": 31,
+          "urgent_order": 2,
+          "new_unit": 6
+        },
+        "processing_modes": {
+          "standard": 523,
+          "precision": 42
+        },
+        "process_counts": {
+          "T": 81,
+          "F": 102,
+          "HEAT": 61,
+          "S": 34,
+          "WASH": 102,
+          "QA": 150,
+          "ASSEMBLY": 35
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 7311.928676666666,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 35.96021,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 0,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_ok"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_ok"
+            },
+            {
+              "tick": 2400,
+              "outcome": "rush"
+            }
+          ],
+          "outages": [],
+          "delivery_delays": [],
+          "urgent_order_ids": [
+            "U01",
+            "U02"
+          ],
+          "outage_machine_minutes": 0
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 2,
+      "seed": 10000,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-2-seed-10000-actor-900000.json",
+        "file_sha256": "550f605c2f4b8ba40b45327a91e58c0ff52b83a3c7a2dfd531c2ab4cb5dc1217",
+        "json_payload_sha256": "550f605c2f4b8ba40b45327a91e58c0ff52b83a3c7a2dfd531c2ab4cb5dc1217",
+        "row_recorded_sha256": "550f605c2f4b8ba40b45327a91e58c0ff52b83a3c7a2dfd531c2ab4cb5dc1217"
+      },
+      "physical_instance_sha256": "4290b806680a24664dd8abfde91b8b1a9b622e3092332849afe54d4d39a1bbb6",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 0,
+          "authorized_unit_identities": 128,
+          "initial_pump_births": 32,
+          "replacement_events": 0,
+          "qa_results": 136
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 520,
+          "production_operations_completed": 520,
+          "production_units_completed": 528,
+          "setup_operations": 40,
+          "setup_minutes": 1500,
+          "rework_operations_started": 16,
+          "qa_inspections_completed": 136,
+          "qa_failures": 8,
+          "repair_events": 8,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 30,
+          "machine_maintenance_completed": 30,
+          "tool_services_started": 29,
+          "tool_services_completed": 29,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 630,
+          "agv_transport_arrivals": 630,
+          "agv_part_arrivals": 624,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 70,
+          "agv_charge_sessions_ended_by_cutoff": 70,
+          "agv_charge_minutes": 501,
+          "bridge_crossings": 316,
+          "loaded_bridge_crossings": 195,
+          "empty_bridge_crossings": 121,
+          "bridge_occupied_minutes": 1264,
+          "worker_walks": 240,
+          "worker_walk_minutes": 480,
+          "worker_attendance_minutes": 18021,
+          "initial_bom_assembly_starts": 32,
+          "assembly_parent_consumption_events": 96,
+          "heat_multiunit_batches": 7,
+          "realized_urgent_orders": 0,
+          "realized_outage_events": 0,
+          "realized_delivery_delay_events": 1,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 96,
+          "process_complete": 528,
+          "qa_result": 136,
+          "lease_delivery": 1,
+          "repair": 8,
+          "consume": 96,
+          "reveal": 3,
+          "ship": 32,
+          "tool_service_complete": 29,
+          "grid_derating": 1,
+          "delivery_delay": 1,
+          "maintenance_complete": 30,
+          "delivery": 1
+        },
+        "processing_modes": {
+          "standard": 483,
+          "precision": 37
+        },
+        "process_counts": {
+          "T": 69,
+          "F": 96,
+          "HEAT": 56,
+          "S": 32,
+          "WASH": 96,
+          "QA": 136,
+          "ASSEMBLY": 35
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 6888.343031666666,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 34.157898333333335,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 720,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 2,
+          "rotor": 2,
+          "flange": 2
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_ok"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_stress"
+            },
+            {
+              "tick": 2400,
+              "outcome": "no_rush"
+            }
+          ],
+          "outages": [],
+          "delivery_delays": [
+            {
+              "tick": 1440,
+              "type": "delivery_delay",
+              "delivery_id": "D1",
+              "original_tick": 1800,
+              "new_tick": 2340
+            }
+          ],
+          "urgent_order_ids": [],
+          "outage_machine_minutes": 0
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 3,
+      "seed": 10006,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-3-seed-10006-actor-900000.json",
+        "file_sha256": "d88935672d862e99d6ad0159557ea9ae08ef866b42aa0563ccd5f140dd8965ab",
+        "json_payload_sha256": "d88935672d862e99d6ad0159557ea9ae08ef866b42aa0563ccd5f140dd8965ab",
+        "row_recorded_sha256": "d88935672d862e99d6ad0159557ea9ae08ef866b42aa0563ccd5f140dd8965ab"
+      },
+      "physical_instance_sha256": "1e7c2d9775cab8f6711c146751e0d12d87171388f055b6adcb51cd3b4deebc8c",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 2,
+          "authorized_unit_identities": 136,
+          "initial_pump_births": 34,
+          "replacement_events": 0,
+          "qa_results": 144
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 552,
+          "production_operations_completed": 552,
+          "production_units_completed": 560,
+          "setup_operations": 35,
+          "setup_minutes": 1320,
+          "rework_operations_started": 16,
+          "qa_inspections_completed": 144,
+          "qa_failures": 8,
+          "repair_events": 8,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 31,
+          "machine_maintenance_completed": 31,
+          "tool_services_started": 30,
+          "tool_services_completed": 30,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 668,
+          "agv_transport_arrivals": 668,
+          "agv_part_arrivals": 662,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 75,
+          "agv_charge_sessions_ended_by_cutoff": 75,
+          "agv_charge_minutes": 534,
+          "bridge_crossings": 332,
+          "loaded_bridge_crossings": 213,
+          "empty_bridge_crossings": 119,
+          "bridge_occupied_minutes": 1328,
+          "worker_walks": 258,
+          "worker_walk_minutes": 516,
+          "worker_attendance_minutes": 18688,
+          "initial_bom_assembly_starts": 34,
+          "assembly_parent_consumption_events": 102,
+          "heat_multiunit_batches": 8,
+          "realized_urgent_orders": 2,
+          "realized_outage_events": 0,
+          "realized_delivery_delay_events": 1,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 102,
+          "process_complete": 560,
+          "qa_result": 144,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "consume": 102,
+          "ship": 34,
+          "tool_service_complete": 30,
+          "grid_derating": 1,
+          "delivery_delay": 1,
+          "repair": 8,
+          "maintenance_complete": 31,
+          "delivery": 1,
+          "urgent_order": 2,
+          "new_unit": 6
+        },
+        "processing_modes": {
+          "standard": 511,
+          "precision": 41
+        },
+        "process_counts": {
+          "T": 75,
+          "F": 102,
+          "HEAT": 60,
+          "S": 34,
+          "WASH": 102,
+          "QA": 144,
+          "ASSEMBLY": 35
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 7205.201976666666,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 34.09684333333333,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 720,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_ok"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_stress"
+            },
+            {
+              "tick": 2400,
+              "outcome": "rush"
+            }
+          ],
+          "outages": [],
+          "delivery_delays": [
+            {
+              "tick": 1440,
+              "type": "delivery_delay",
+              "delivery_id": "D1",
+              "original_tick": 1800,
+              "new_tick": 2340
+            }
+          ],
+          "urgent_order_ids": [
+            "U01",
+            "U02"
+          ],
+          "outage_machine_minutes": 0
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 4,
+      "seed": 10002,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-4-seed-10002-actor-900000.json",
+        "file_sha256": "2ec74322b4509c6a16deac669275099343652a950a61a32c35da7ff4ad5912ca",
+        "json_payload_sha256": "2ec74322b4509c6a16deac669275099343652a950a61a32c35da7ff4ad5912ca",
+        "row_recorded_sha256": "2ec74322b4509c6a16deac669275099343652a950a61a32c35da7ff4ad5912ca"
+      },
+      "physical_instance_sha256": "4f22edc7118d52af9907f8b50231b7dc2fcc1d73f53019780800961f19f8fcc5",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 0,
+          "authorized_unit_identities": 128,
+          "initial_pump_births": 32,
+          "replacement_events": 0,
+          "qa_results": 136
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 522,
+          "production_operations_completed": 522,
+          "production_units_completed": 528,
+          "setup_operations": 44,
+          "setup_minutes": 1620,
+          "rework_operations_started": 16,
+          "qa_inspections_completed": 136,
+          "qa_failures": 8,
+          "repair_events": 8,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 27,
+          "machine_maintenance_completed": 27,
+          "tool_services_started": 29,
+          "tool_services_completed": 29,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 630,
+          "agv_transport_arrivals": 630,
+          "agv_part_arrivals": 624,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 75,
+          "agv_charge_sessions_ended_by_cutoff": 75,
+          "agv_charge_minutes": 535,
+          "bridge_crossings": 348,
+          "loaded_bridge_crossings": 217,
+          "empty_bridge_crossings": 131,
+          "bridge_occupied_minutes": 1392,
+          "worker_walks": 255,
+          "worker_walk_minutes": 510,
+          "worker_attendance_minutes": 17823,
+          "initial_bom_assembly_starts": 32,
+          "assembly_parent_consumption_events": 96,
+          "heat_multiunit_batches": 4,
+          "realized_urgent_orders": 0,
+          "realized_outage_events": 1,
+          "realized_delivery_delay_events": 0,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 96,
+          "process_complete": 528,
+          "qa_result": 136,
+          "repair": 8,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "outage": 1,
+          "consume": 96,
+          "ship": 32,
+          "tool_service_complete": 29,
+          "delivery": 1,
+          "maintenance_complete": 27
+        },
+        "processing_modes": {
+          "standard": 486,
+          "precision": 36
+        },
+        "process_counts": {
+          "T": 71,
+          "F": 96,
+          "HEAT": 58,
+          "S": 32,
+          "WASH": 96,
+          "QA": 136,
+          "ASSEMBLY": 33
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 6976.2973600000005,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 39.77556,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 0,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 2,
+          "rotor": 2,
+          "flange": 2
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_outage"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_ok"
+            },
+            {
+              "tick": 2400,
+              "outcome": "no_rush"
+            }
+          ],
+          "outages": [
+            {
+              "tick": 720,
+              "type": "outage",
+              "machine": "F2",
+              "start": 720,
+              "end": 1080
+            }
+          ],
+          "delivery_delays": [],
+          "urgent_order_ids": [],
+          "outage_machine_minutes": 360
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 5,
+      "seed": 10005,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-5-seed-10005-actor-900000.json",
+        "file_sha256": "ab6c3fcf3f3acfe7887799add913393ac8f14ba8c363898003a47644a08c5022",
+        "json_payload_sha256": "ab6c3fcf3f3acfe7887799add913393ac8f14ba8c363898003a47644a08c5022",
+        "row_recorded_sha256": "ab6c3fcf3f3acfe7887799add913393ac8f14ba8c363898003a47644a08c5022"
+      },
+      "physical_instance_sha256": "628af4af9b7ce0e615630636c27d71ebefe4babbc886aed92c009bd7116d4b5b",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 2,
+          "authorized_unit_identities": 136,
+          "initial_pump_births": 34,
+          "replacement_events": 0,
+          "qa_results": 149
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 566,
+          "production_operations_completed": 566,
+          "production_units_completed": 570,
+          "setup_operations": 41,
+          "setup_minutes": 1500,
+          "rework_operations_started": 26,
+          "qa_inspections_completed": 149,
+          "qa_failures": 13,
+          "repair_events": 13,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 31,
+          "machine_maintenance_completed": 31,
+          "tool_services_started": 31,
+          "tool_services_completed": 31,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 678,
+          "agv_transport_arrivals": 678,
+          "agv_part_arrivals": 672,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 79,
+          "agv_charge_sessions_ended_by_cutoff": 79,
+          "agv_charge_minutes": 561,
+          "bridge_crossings": 358,
+          "loaded_bridge_crossings": 235,
+          "empty_bridge_crossings": 123,
+          "bridge_occupied_minutes": 1432,
+          "worker_walks": 281,
+          "worker_walk_minutes": 562,
+          "worker_attendance_minutes": 19439,
+          "initial_bom_assembly_starts": 34,
+          "assembly_parent_consumption_events": 102,
+          "heat_multiunit_batches": 4,
+          "realized_urgent_orders": 2,
+          "realized_outage_events": 1,
+          "realized_delivery_delay_events": 0,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 102,
+          "process_complete": 570,
+          "qa_result": 149,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "outage": 1,
+          "consume": 102,
+          "ship": 34,
+          "tool_service_complete": 31,
+          "delivery": 1,
+          "maintenance_complete": 31,
+          "repair": 13,
+          "urgent_order": 2,
+          "new_unit": 6
+        },
+        "processing_modes": {
+          "standard": 518,
+          "precision": 48
+        },
+        "process_counts": {
+          "T": 78,
+          "F": 102,
+          "HEAT": 64,
+          "S": 34,
+          "WASH": 102,
+          "QA": 149,
+          "ASSEMBLY": 37
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 7392.064668333333,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 34.649535,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 0,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_outage"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_ok"
+            },
+            {
+              "tick": 2400,
+              "outcome": "rush"
+            }
+          ],
+          "outages": [
+            {
+              "tick": 720,
+              "type": "outage",
+              "machine": "F2",
+              "start": 720,
+              "end": 1080
+            }
+          ],
+          "delivery_delays": [],
+          "urgent_order_ids": [
+            "U01",
+            "U02"
+          ],
+          "outage_machine_minutes": 360
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 6,
+      "seed": 10012,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-6-seed-10012-actor-900000.json",
+        "file_sha256": "10bb963c1c4d86ad682b4979592c2be56ed3dc8d5717474e5383494d287af4be",
+        "json_payload_sha256": "10bb963c1c4d86ad682b4979592c2be56ed3dc8d5717474e5383494d287af4be",
+        "row_recorded_sha256": "10bb963c1c4d86ad682b4979592c2be56ed3dc8d5717474e5383494d287af4be"
+      },
+      "physical_instance_sha256": "25f886a3ab48210c1fa59532bd0d5161ce783fef6608c7e9986a50ab5c1326ce",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 0,
+          "authorized_unit_identities": 128,
+          "initial_pump_births": 32,
+          "replacement_events": 0,
+          "qa_results": 139
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 526,
+          "production_operations_completed": 526,
+          "production_units_completed": 534,
+          "setup_operations": 50,
+          "setup_minutes": 1800,
+          "rework_operations_started": 22,
+          "qa_inspections_completed": 139,
+          "qa_failures": 11,
+          "repair_events": 11,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 27,
+          "machine_maintenance_completed": 27,
+          "tool_services_started": 30,
+          "tool_services_completed": 30,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 636,
+          "agv_transport_arrivals": 636,
+          "agv_part_arrivals": 630,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 73,
+          "agv_charge_sessions_ended_by_cutoff": 73,
+          "agv_charge_minutes": 515,
+          "bridge_crossings": 320,
+          "loaded_bridge_crossings": 209,
+          "empty_bridge_crossings": 111,
+          "bridge_occupied_minutes": 1280,
+          "worker_walks": 233,
+          "worker_walk_minutes": 466,
+          "worker_attendance_minutes": 18163,
+          "initial_bom_assembly_starts": 32,
+          "assembly_parent_consumption_events": 96,
+          "heat_multiunit_batches": 6,
+          "realized_urgent_orders": 0,
+          "realized_outage_events": 1,
+          "realized_delivery_delay_events": 1,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 96,
+          "process_complete": 534,
+          "qa_result": 139,
+          "lease_delivery": 1,
+          "repair": 11,
+          "reveal": 3,
+          "outage": 1,
+          "consume": 96,
+          "ship": 32,
+          "tool_service_complete": 30,
+          "grid_derating": 1,
+          "delivery_delay": 1,
+          "maintenance_complete": 27,
+          "delivery": 1
+        },
+        "processing_modes": {
+          "standard": 490,
+          "precision": 36
+        },
+        "process_counts": {
+          "T": 75,
+          "F": 96,
+          "HEAT": 56,
+          "S": 32,
+          "WASH": 96,
+          "QA": 139,
+          "ASSEMBLY": 32
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 6941.325606666666,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 37.28714,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 720,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 2,
+          "rotor": 2,
+          "flange": 2
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_outage"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_stress"
+            },
+            {
+              "tick": 2400,
+              "outcome": "no_rush"
+            }
+          ],
+          "outages": [
+            {
+              "tick": 720,
+              "type": "outage",
+              "machine": "F2",
+              "start": 720,
+              "end": 1080
+            }
+          ],
+          "delivery_delays": [
+            {
+              "tick": 1440,
+              "type": "delivery_delay",
+              "delivery_id": "D1",
+              "original_tick": 1800,
+              "new_tick": 2340
+            }
+          ],
+          "urgent_order_ids": [],
+          "outage_machine_minutes": 360
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    },
+    {
+      "leaf": 7,
+      "seed": 10001,
+      "policy_seed": 900000,
+      "eligible_checked_activity": true,
+      "source_trace": {
+        "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/traces/method-8-config-4-leaf-7-seed-10001-actor-900000.json",
+        "file_sha256": "a7281195ba6b76bd465aa6fa9d8b13731498282447801a0046b94305db40dd1d",
+        "json_payload_sha256": "a7281195ba6b76bd465aa6fa9d8b13731498282447801a0046b94305db40dd1d",
+        "row_recorded_sha256": "a7281195ba6b76bd465aa6fa9d8b13731498282447801a0046b94305db40dd1d"
+      },
+      "physical_instance_sha256": "c1677290e46ce9cd504b7383b5b9042c69a08b3d66aa4bb998a4a39c4da8b3dd",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "identity_audit": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": true,
+        "issues": [],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 96,
+          "urgent_orders": 2,
+          "authorized_unit_identities": 136,
+          "initial_pump_births": 34,
+          "replacement_events": 0,
+          "qa_results": 142
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": [
+              "unit_lineage",
+              "operation_id",
+              "attempt"
+            ],
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Legacy descriptive metadata includes operation_id; execution/TRACE_CONTRACT use unit+attempt"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "activity": {
+        "horizon_ticks": 14400,
+        "tick_minutes": 1,
+        "physical_horizon_hours": 240.0,
+        "counts": {
+          "production_operations_started": 548,
+          "production_operations_completed": 548,
+          "production_units_completed": 556,
+          "setup_operations": 44,
+          "setup_minutes": 1560,
+          "rework_operations_started": 12,
+          "qa_inspections_completed": 142,
+          "qa_failures": 6,
+          "repair_events": 6,
+          "scrap_events": 0,
+          "replacement_events": 0,
+          "replacement_units_actually_released": 0,
+          "machine_maintenance_started": 30,
+          "machine_maintenance_completed": 30,
+          "tool_services_started": 30,
+          "tool_services_completed": 30,
+          "rental_requests": 1,
+          "rental_tools_actually_delivered": 1,
+          "rental_tools_actually_used": 1,
+          "agv_transport_commitments": 664,
+          "agv_transport_arrivals": 664,
+          "agv_part_arrivals": 658,
+          "agv_tool_arrivals": 6,
+          "agv_charge_sessions_committed": 76,
+          "agv_charge_sessions_ended_by_cutoff": 76,
+          "agv_charge_minutes": 542,
+          "bridge_crossings": 340,
+          "loaded_bridge_crossings": 213,
+          "empty_bridge_crossings": 127,
+          "bridge_occupied_minutes": 1360,
+          "worker_walks": 236,
+          "worker_walk_minutes": 472,
+          "worker_attendance_minutes": 18753,
+          "initial_bom_assembly_starts": 34,
+          "assembly_parent_consumption_events": 102,
+          "heat_multiunit_batches": 7,
+          "realized_urgent_orders": 2,
+          "realized_outage_events": 1,
+          "realized_delivery_delay_events": 1,
+          "actual_stock_deliveries": 1
+        },
+        "event_counts": {
+          "lease_request": 1,
+          "release": 102,
+          "process_complete": 556,
+          "qa_result": 142,
+          "lease_delivery": 1,
+          "reveal": 3,
+          "outage": 1,
+          "consume": 102,
+          "repair": 6,
+          "ship": 34,
+          "tool_service_complete": 30,
+          "grid_derating": 1,
+          "delivery_delay": 1,
+          "maintenance_complete": 30,
+          "delivery": 1,
+          "urgent_order": 2,
+          "new_unit": 6
+        },
+        "processing_modes": {
+          "standard": 507,
+          "precision": 41
+        },
+        "process_counts": {
+          "T": 73,
+          "F": 102,
+          "HEAT": 60,
+          "S": 34,
+          "WASH": 102,
+          "QA": 142,
+          "ASSEMBLY": 35
+        },
+        "production_machine_ids": [
+          "A1",
+          "A2",
+          "F1",
+          "F2",
+          "H1",
+          "H2",
+          "QA1",
+          "QA2",
+          "S1",
+          "S2",
+          "T1",
+          "T2",
+          "WASH1",
+          "WASH2"
+        ],
+        "unused_production_machine_ids": [
+          "F3"
+        ],
+        "worker_ids_with_attendance": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ],
+        "tool_ids_used": [
+          "calibration1",
+          "calibration_lease",
+          "mill1",
+          "mill2",
+          "weld1",
+          "weld2"
+        ],
+        "rental_deliveries": [
+          {
+            "option_id": "calibration-kit",
+            "tool_id": "calibration_lease",
+            "actual_birth_tick": 480,
+            "used_after_birth": true,
+            "first_use_tick": 529,
+            "completed_agv_tool_transports_after_birth": 1
+          }
+        ],
+        "energy": {
+          "action_ticks": {
+            "charge": 200,
+            "idle": 14200
+          },
+          "charge_minutes": 200,
+          "discharge_minutes": 0,
+          "ac_battery_charge_kwh": 33.3333333333334,
+          "ac_battery_discharge_kwh": 0.0,
+          "grid_import_kwh": 7179.810415,
+          "negative_grid_export_kwh": 0.0,
+          "curtailed_solar_kwh": 21.371948333333332,
+          "no_export_declared": true,
+          "no_export_balance_soc_contact_checks_passed": true,
+          "contact_check_issues": [],
+          "grid_cap_contact_minutes": 38,
+          "min_grid_headroom_kw": 0,
+          "derated_grid_minutes": 720,
+          "stationary_min_soc": 600,
+          "terminal_soc": 2400,
+          "terminal_reserve_met": true,
+          "interpretation": "Action-table AC flows; nonnegative grid is import only. Curtailment is not export. Balance/SOC checks are a small metadata consistency supplement,not a repeated full physical check. Contact does not prove causal binding."
+        },
+        "minimum_observed_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "terminal_raw_stock": {
+          "housing": 0,
+          "rotor": 0,
+          "flange": 0
+        },
+        "raw_stock_zero_observed": true,
+        "omitted_activity_reconstructions": "No new input-buffer/output-blocking replay is claimed here. Repacking can transfer a unit again before consumption; simple next-process occupancy counting would overcount such intervals.",
+        "shocks": {
+          "realized_stages": [
+            {
+              "tick": 720,
+              "outcome": "mill_outage"
+            },
+            {
+              "tick": 1440,
+              "outcome": "supply_stress"
+            },
+            {
+              "tick": 2400,
+              "outcome": "rush"
+            }
+          ],
+          "outages": [
+            {
+              "tick": 720,
+              "type": "outage",
+              "machine": "F2",
+              "start": 720,
+              "end": 1080
+            }
+          ],
+          "delivery_delays": [
+            {
+              "tick": 1440,
+              "type": "delivery_delay",
+              "delivery_id": "D1",
+              "original_tick": 1800,
+              "new_tick": 2340
+            }
+          ],
+          "urgent_order_ids": [
+            "U01",
+            "U02"
+          ],
+          "outage_machine_minutes": 360
+        },
+        "implemented_feature_flags": {
+          "flexible_machines": "implemented; independently checkable in trace",
+          "processing_modes": "implemented; independently checkable in trace",
+          "family_setups": "implemented; independently checkable in trace",
+          "bom_joins": "implemented; independently checkable in trace",
+          "batch_heat": "implemented; independently checkable in trace",
+          "agv_routes": "implemented; independently checkable in trace",
+          "empty_repositioning": "implemented; independently checkable in trace",
+          "finite_buffers": "implemented; independently checkable in trace",
+          "blocking": "implemented; independently checkable in trace",
+          "battery_charging": "implemented; independently checkable in trace",
+          "worker_skills_shifts": "implemented; independently checkable in trace",
+          "portable_tools_wear": "implemented; independently checkable in trace",
+          "preventive_maintenance": "implemented; independently checkable in trace",
+          "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+          "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+          "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+          "quality_rework_scrap": "implemented; independently checkable in trace",
+          "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+          "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+          "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+        },
+        "interpretation": "Observed events/intervals only. Arrivals/completions at H count: the engine processes that boundary before stopping. Durations clip to[0,H),electrical rows to0..H-1. Feature flags are metadata,not activity; contact is not proof of causal binding."
+      }
+    }
+  ],
+  "retained_subset_count_sums": {
+    "production_operations_started": 4313,
+    "production_operations_completed": 4313,
+    "production_units_completed": 4372,
+    "setup_operations": 342,
+    "setup_minutes": 12540,
+    "rework_operations_started": 148,
+    "qa_inspections_completed": 1130,
+    "qa_failures": 74,
+    "repair_events": 74,
+    "scrap_events": 0,
+    "replacement_events": 0,
+    "replacement_units_actually_released": 0,
+    "machine_maintenance_started": 235,
+    "machine_maintenance_completed": 235,
+    "tool_services_started": 239,
+    "tool_services_completed": 239,
+    "rental_requests": 8,
+    "rental_tools_actually_delivered": 8,
+    "rental_tools_actually_used": 8,
+    "agv_transport_commitments": 5212,
+    "agv_transport_arrivals": 5212,
+    "agv_part_arrivals": 5164,
+    "agv_tool_arrivals": 48,
+    "agv_charge_sessions_committed": 602,
+    "agv_charge_sessions_ended_by_cutoff": 602,
+    "agv_charge_minutes": 4285,
+    "bridge_crossings": 2724,
+    "loaded_bridge_crossings": 1722,
+    "empty_bridge_crossings": 1002,
+    "bridge_occupied_minutes": 10896,
+    "worker_walks": 2036,
+    "worker_walk_minutes": 4072,
+    "worker_attendance_minutes": 147955,
+    "initial_bom_assembly_starts": 264,
+    "assembly_parent_consumption_events": 792,
+    "heat_multiunit_batches": 52,
+    "realized_urgent_orders": 8,
+    "realized_outage_events": 4,
+    "realized_delivery_delay_events": 4,
+    "actual_stock_deliveries": 8
+  },
+  "retained_trace_counts_with_positive_activity": {
+    "production_operations_started": 8,
+    "production_operations_completed": 8,
+    "production_units_completed": 8,
+    "setup_operations": 8,
+    "setup_minutes": 8,
+    "rework_operations_started": 8,
+    "qa_inspections_completed": 8,
+    "qa_failures": 8,
+    "repair_events": 8,
+    "scrap_events": 0,
+    "replacement_events": 0,
+    "replacement_units_actually_released": 0,
+    "machine_maintenance_started": 8,
+    "machine_maintenance_completed": 8,
+    "tool_services_started": 8,
+    "tool_services_completed": 8,
+    "rental_requests": 8,
+    "rental_tools_actually_delivered": 8,
+    "rental_tools_actually_used": 8,
+    "agv_transport_commitments": 8,
+    "agv_transport_arrivals": 8,
+    "agv_part_arrivals": 8,
+    "agv_tool_arrivals": 8,
+    "agv_charge_sessions_committed": 8,
+    "agv_charge_sessions_ended_by_cutoff": 8,
+    "agv_charge_minutes": 8,
+    "bridge_crossings": 8,
+    "loaded_bridge_crossings": 8,
+    "empty_bridge_crossings": 8,
+    "bridge_occupied_minutes": 8,
+    "worker_walks": 8,
+    "worker_walk_minutes": 8,
+    "worker_attendance_minutes": 8,
+    "initial_bom_assembly_starts": 8,
+    "assembly_parent_consumption_events": 8,
+    "heat_multiunit_batches": 8,
+    "realized_urgent_orders": 4,
+    "realized_outage_events": 4,
+    "realized_delivery_delay_events": 4,
+    "actual_stock_deliveries": 8
+  },
+  "aggregate_scope": "Sums across only8 predeclared first-seed/first-actor retained executions,one per leaf; not a probability-weighted estimate or activity rate across all256 environments. Actors are not additional environments.",
+  "binding_claims": "None: activity and grid/stock contact do not establish marginal capacity value or causal bottlenecks.",
+  "provenance": {
+    "evaluation_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/evaluation.json",
+    "evaluation_file_sha256": "9d807ed7068795a347fbf2053ce12683a19a947576a6f34e8c8585af98ac5c7c",
+    "manifest_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-frontier-6117515/manifest.json",
+    "manifest_file_sha256": "e903ba934dc80cda496028170fd09fea3e65021981eb7017093e0edcda349ac0",
+    "manifest_sha256": "a9cefbf992a6b9b76438fc621972433d3a1471f07d585fd3208836cbe2885e78",
+    "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599",
+    "frozen_evaluation_source_hashes": {
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+      "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+      "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+      "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+      "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+      "stage2/final_eval.py": "6264f3f6b93ba5128b742b06facad97714ef09b3f244ce076bf0123848236e5e",
+      "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+      "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+      "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+      "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+      "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+      "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+      "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+      "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+      "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+      "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+      "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+      "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+      "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+      "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+      "stage2/recovery_mpc.py": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4",
+      "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+      "stage2/selector_reward.py": "4af17eae69f34dd5396a08a51fa9c1c6aebd8a0ebcc357074e64dac6271fc253",
+      "stage2/adaptive_recovery.py": "7fbe58fb6131e0a2101bf7f2a0282bc8c81e3ab09a6ccf7ce0e01da8f5b9498e",
+      "stage2/adaptive_modes.py": "4a4c6b3fcd5a40020393950b064e908310b87b69752324a9def7e08d0ffd3801",
+      "stage2/completion_policy.py": "263f421243e22c5a67a846e2abe2e039337dbee0fdf61eaccaa1fc23c2920a03",
+      "stage2/bom_probe.py": "48ca779cc088765d364a3d81a25a352e118573ef63d27e145a5f1a631fbe0e75",
+      "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+      "stage2/compare_evaluations.py": "2ef6688c7331cfe7646c4d758aec690427b4e102204047ab03e32e2afa43ffe2",
+      "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+      "stage2/certify_evaluations.py": "0ebad4ec76aa0401b985489a9421e24b522a31cf44a6c4c83c7c7e552ef7dd12",
+      "stage2/primary_intervals.py": "1c7bbb503dbdec1e1c6663515bf38ff6bfc18ae9a5ff4301cf5da0fb93208022",
+      "stage2/selected_run.py": "59692c53faaa25932f5e841bd1dcb14e47793a5785bc2e4609c5c78fd582d5de"
+    },
+    "analysis_source_sha256": "ae401dacf2da0537e5b28e344ed10df7aeb1b1fcfb8165b15c7f6891dc967c25",
+    "verification": "Sealed evaluation/row/trace links checked; original physical/identity checker statuses consumed,not recomputed; no simulator/controller/checker execution",
+    "analysis_source_snapshot": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-activity/selected-stretch-32-v2.analysis-source.py"
+  }
+}

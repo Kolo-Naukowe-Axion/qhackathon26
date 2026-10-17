@@ -1,0 +1,127 @@
+{
+  "scope": "Read-only synchronization after concurrent Stage1 compact refinement; no Stage1 artifacts modified",
+  "rows": [
+    {
+      "instance": "2x2",
+      "issues": [],
+      "makespan": 4,
+      "reference": {
+        "method": "Exact classical machine-order enumeration (reference only)",
+        "makespan": 4,
+        "schedule": [
+          {
+            "job": "Z2",
+            "machine": "T",
+            "start": 0,
+            "end": 1
+          },
+          {
+            "job": "Z1",
+            "machine": "T",
+            "start": 1,
+            "end": 3
+          },
+          {
+            "job": "Z2",
+            "machine": "F",
+            "start": 1,
+            "end": 3
+          },
+          {
+            "job": "Z1",
+            "machine": "F",
+            "start": 3,
+            "end": 4
+          }
+        ],
+        "order_combinations": 4
+      },
+      "run_method": "QAOA p=1, x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+      "variables": 1,
+      "samples": 4096,
+      "feasible_samples": 4096,
+      "sources": {
+        "instances/instance_2x2.json": "15a96febcadb2211fd63cfd913f5b4025ede5596a655ce30e70cbfde6d4ec981",
+        "schedule_2x2.json": "f7b8c396b62107d9a3aa0810ddaf9c80e9bc1edd9e1e328fc7b29396e770644f",
+        "output/stage1-compact-ready/quantum-2x2/run.json": "29288d45b39c95fac033ddd5492f8bd7e01b32eee8b5f92fdd1a0b70b0b9d154",
+        "solver/stage1.py": "3fa9fcdeb41709c8b9b4c02cd8cf7f41de67dafeac134cd60f374dc426e137a6"
+      }
+    },
+    {
+      "instance": "3x3",
+      "issues": [],
+      "makespan": 8,
+      "reference": {
+        "method": "Exact classical machine-order enumeration (reference only)",
+        "makespan": 8,
+        "schedule": [
+          {
+            "job": "Z1",
+            "machine": "T",
+            "start": 0,
+            "end": 2
+          },
+          {
+            "job": "Z1",
+            "machine": "F",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "job": "Z2",
+            "machine": "T",
+            "start": 2,
+            "end": 3
+          },
+          {
+            "job": "Z1",
+            "machine": "S",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "job": "Z2",
+            "machine": "F",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "job": "Z3",
+            "machine": "T",
+            "start": 3,
+            "end": 5
+          },
+          {
+            "job": "Z2",
+            "machine": "S",
+            "start": 5,
+            "end": 6
+          },
+          {
+            "job": "Z3",
+            "machine": "F",
+            "start": 5,
+            "end": 7
+          },
+          {
+            "job": "Z3",
+            "machine": "S",
+            "start": 7,
+            "end": 8
+          }
+        ],
+        "order_combinations": 216
+      },
+      "run_method": "QAOA p=2, local-x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+      "variables": 3,
+      "samples": 4096,
+      "feasible_samples": 4096,
+      "sources": {
+        "instances/instance_3x3.json": "83ee0e64869970133a4780426113258152c507b47659f8d866868fcb6cf63fe0",
+        "schedule_3x3.json": "df58c3cd9f5b291778afc9282ea0d8601fef28b778a4ec90280a8658255120a4",
+        "output/stage1-compact-ready/quantum-3x3/run.json": "0906ad8587c07fe251354f2855f778e0b66e31219256f8de6ed66b7cec661575",
+        "solver/stage1.py": "3fa9fcdeb41709c8b9b4c02cd8cf7f41de67dafeac134cd60f374dc426e137a6"
+      }
+    }
+  ]
+}

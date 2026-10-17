@@ -1,0 +1,140 @@
+{
+  "schema": "axion-replay.v1",
+  "unit": "hours",
+  "provenance": {
+    "kind": "solver",
+    "method": "Classical pairwise-order QUBO simulated annealing (dwave-samplers)",
+    "label": "Verified instance_3x3 solver run",
+    "description": "Actual returned sample; evidence model SHA256 2401115222d880f96d7e41e1a4b813be8fb71a50f7828f72d35747ebe81e5045",
+    "source": "output/stage1-compact/screen/candidate-08/seed-0",
+    "jobId": null,
+    "timestamp": "2026-10-16T23:16:37.463728+00:00"
+  },
+  "machines": [
+    {
+      "id": "T",
+      "name": "T"
+    },
+    {
+      "id": "F",
+      "name": "F"
+    },
+    {
+      "id": "S",
+      "name": "S"
+    }
+  ],
+  "jobs": [
+    {
+      "id": "Z1",
+      "operations": [
+        {
+          "machine": "T",
+          "duration": 2
+        },
+        {
+          "machine": "F",
+          "duration": 1
+        },
+        {
+          "machine": "S",
+          "duration": 2
+        }
+      ],
+      "color": "#648da3"
+    },
+    {
+      "id": "Z2",
+      "operations": [
+        {
+          "machine": "T",
+          "duration": 1
+        },
+        {
+          "machine": "F",
+          "duration": 2
+        },
+        {
+          "machine": "S",
+          "duration": 1
+        }
+      ],
+      "color": "#ba8560"
+    },
+    {
+      "id": "Z3",
+      "operations": [
+        {
+          "machine": "T",
+          "duration": 2
+        },
+        {
+          "machine": "F",
+          "duration": 2
+        },
+        {
+          "machine": "S",
+          "duration": 1
+        }
+      ],
+      "color": "#95a66b"
+    }
+  ],
+  "schedule": [
+    {
+      "job": "Z3",
+      "machine": "T",
+      "start": 0,
+      "end": 2
+    },
+    {
+      "job": "Z3",
+      "machine": "F",
+      "start": 2,
+      "end": 4
+    },
+    {
+      "job": "Z3",
+      "machine": "S",
+      "start": 4,
+      "end": 5
+    },
+    {
+      "job": "Z1",
+      "machine": "T",
+      "start": 2,
+      "end": 4
+    },
+    {
+      "job": "Z1",
+      "machine": "F",
+      "start": 4,
+      "end": 5
+    },
+    {
+      "job": "Z1",
+      "machine": "S",
+      "start": 5,
+      "end": 7
+    },
+    {
+      "job": "Z2",
+      "machine": "T",
+      "start": 4,
+      "end": 5
+    },
+    {
+      "job": "Z2",
+      "machine": "F",
+      "start": 5,
+      "end": 7
+    },
+    {
+      "job": "Z2",
+      "machine": "S",
+      "start": 7,
+      "end": 8
+    }
+  ],
+  "declaredMakespan": 8
+}

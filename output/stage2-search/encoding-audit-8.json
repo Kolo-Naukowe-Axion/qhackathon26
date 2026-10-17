@@ -1,0 +1,94 @@
+{
+  "schema": "stage2-encoding-cost-audit.v1",
+  "instance_sha256": "91283a069f98d48cdcf43e9add4b5e56f7258a0e00e8f675b510740fbeb13ef9",
+  "known_initial_orders": 8,
+  "nominal_known_operations": 128,
+  "horizon_ticks": 5760,
+  "tick_minutes": 1,
+  "naive_known_nominal_start_bits": 2992024,
+  "naive_start_bits_by_process": {
+    "T": 486688,
+    "F": 1090312,
+    "WASH": 266448,
+    "HEAT": 174752,
+    "QA": 621440,
+    "S": 176192,
+    "ASSEMBLY": 176192
+  },
+  "naive_scope": "One bit per nominal known operation/eligible machine/legal mode/integer start; all other variable families excluded",
+  "naive_is_complete_formulation": false,
+  "mechanisms": [
+    {
+      "name": "machine/mode/certification",
+      "naive": "Machine-mode-start alternatives counted below; operation one-hot and machine-time conflicts required",
+      "local": "Candidates are prevalidated against current machine, wear, mode and certification; at most one bit per offered start"
+    },
+    {
+      "name": "qualified worker calendars",
+      "naive": "Additional crew/attendance assignment variables and time-indexed capacity or pair conflicts; not counted",
+      "local": "Classical availability filtering and explicit shared attendance interval conflicts; zero auxiliary bits for pair conflicts"
+    },
+    {
+      "name": "portable tools and service",
+      "naive": "Location, movement, remaining life and service decisions across time; not counted",
+      "local": "Current tool identity/life/location frozen at boundary; shared tools generate pair conflicts; relocation/service scheduled classically"
+    },
+    {
+      "name": "finite buffers and blocked outputs",
+      "naive": "Inventory/reservation occupancy and pickup release across time; not counted",
+      "local": "Destination reservations and blocking replayed classically; local candidates inherit fixed boundary feasibility"
+    },
+    {
+      "name": "AGV lanes/traction/chargers",
+      "naive": "Vehicle, departure, route/edge-time, payload and charge variables; not counted",
+      "local": "Classical transport planner and checker, outside current start-selection QUBO; no claimed global quantum compression"
+    },
+    {
+      "name": "BOM assembly and batch identity",
+      "naive": "Matching/consumption and batch membership/activation variables; not counted",
+      "local": "Classical BOM matching and homogeneous ready batches; QUBO does not choose all alternative assembly plans"
+    },
+    {
+      "name": "power capacity",
+      "naive": "Time-indexed capacity rows plus slack/other inequality encoding",
+      "local": "Residual integer-centikW capacity rows; exact GCD scaling, redundant row removal, pair-only capacity-one rows, otherwise bounded binary slack"
+    },
+    {
+      "name": "battery/energy/carbon",
+      "naive": "SOC/action balances and objective coefficients across time; not counted",
+      "local": "Classical causal battery actions; grid feasibility checked on full trace; energy cost/carbon reported separately"
+    },
+    {
+      "name": "uncertainty/quality/rework",
+      "naive": "Contingent activity slots/scenario copies plus nonanticipativity constraints; not counted",
+      "local": "Causal simulation, keyed quality and revealed shocks; local boundary contains only observed state; future not encoded"
+    },
+    {
+      "name": "priced tool rental",
+      "naive": "Investment/arrival/location/availability variables; not counted",
+      "local": "High-level causal policy controls request; hard investment budget and lead time independently replayed"
+    }
+  ],
+  "reduction_scope": "Conditional dispatch candidate-pool decomposition; not a lossless global factory encoding",
+  "global_lexicographic_optimality_gap": null,
+  "price_of_restriction": "Global loss unknown; compare same-model classical incumbents and scoped exact tiny references",
+  "measured_local": {
+    "decisions": 148,
+    "max_total_bits": 11,
+    "max_core_bits": 5,
+    "max_auxiliary_bits": 6,
+    "max_couplers": 55,
+    "genuine_qaoa_simulated_calls": 146,
+    "classical_fallback_calls": 2,
+    "max_simulated_quantum_total_bits": 5,
+    "decode_mismatches": 0,
+    "note": "These maxima describe local problems actually offered; they exclude classical scheduling/transport/controller work"
+  },
+  "fulfillment_primary_certificate": {
+    "unfulfilled": 0,
+    "nonnegative_global_lower_bound": 0,
+    "independently_checked_valid": true,
+    "primary_optimal_on_this_realization": true,
+    "scope": "Zero missing orders proves primary fulfillment optimality for this realized trace only; secondary cost/tardiness and policy-wide optimality remain unproved"
+  }
+}

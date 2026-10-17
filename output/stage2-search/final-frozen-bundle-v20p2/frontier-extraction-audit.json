@@ -1,0 +1,1369 @@
+{
+  "schema": "stage2-frontier-extraction-audit.v1",
+  "draft": "output/stage2-search/final-preparation/frontier-selection-draft.json",
+  "draft_sha256": "a53e1183b29e9eed787002bd48ac0bdd2fabbf2f977afe724ce6966ba6a2f59b",
+  "source_files": {
+    "output/stage2-search/physical-recovery-development-tasks.json": "d722aff3af2e178cc26f5919fb02b910e6fb9b72b8d3330309d9864a26c70791",
+    "output/stage2-search/strong-mpc-confirmation-tasks.json": "183af6f60e10838db285d6b23b4d6a800115939cbce21e50acb417850eaa1217",
+    "output/stage2-search/strong-horizon-training-tasks.json": "e9579c5ef17b16f6c362dda9404b3f06239d633d7a83186dbe05456e51c93549"
+  },
+  "source_campaigns": {
+    "recovery": {
+      "summary.json": "0aa6ff6f9555d0a44eb4b6f661d66a56e6fff1406572d0b6d1de1c905ad88524",
+      "measurements.jsonl": "3cf4386a576deb30e0bff997707aac9978790c9310f6a75735a9883adcddddc6",
+      "protocol.json": "e72ea01d60907927db514c181828a43be1aa66f619d544faaf4b5f6a97d68045"
+    },
+    "mpc": {
+      "summary.json": "8e7aad9076e5fc6221b473a93c67b7db83fc0e46df5c403978780318608d323d",
+      "measurements.jsonl": "9bf3fec5bc22b8a8d8cfdce5e90a9ff113c64f0842b625684984d9e32794cbfe",
+      "protocol.json": "0ecf8a7698adbf1d9980c248de48611ebca250619e396a0be6effae797f0a188"
+    },
+    "horizon": {
+      "summary.json": "a10579bee261777e9eb78e7491bc5e5757f64ddb478293d3e1bc4b54ad44325f",
+      "measurements.jsonl": "7e51e0581b4626292396132a015584c8ee7cd5671908d2a9e3b9e83eedcd6e57",
+      "protocol.json": "36472f33fe8fddf570e1a23a2bde2c050aca842ea3bb18c0cd44e3e473b0f9e1"
+    }
+  },
+  "rows": [
+    {
+      "method_id": "selected-cheap-10",
+      "source_task": {
+        "task_id": 48,
+        "policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "config": {
+          "orders": 10,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "ad57fa0f7beab962c88e67f763bda04e67c14b031adf3d3344ff739a0f790e07",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 32,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 39302,
+          "summed_total_cost": 19882.159734433328,
+          "recorded_simulation_wall_seconds_sum": 82.77518331599731
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 16,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 21746,
+          "summed_total_cost": 9826.887816466704,
+          "recorded_simulation_wall_seconds_sum": 41.26124428400044
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "original-prior-10",
+      "source_task": {
+        "task_id": 0,
+        "policy_id": "TRAIN/family-guard4-kit/recovery0",
+        "config": {
+          "orders": 10,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": false
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "9b7a31c25c016dc4cb1593d155f57a05a3ab2825212345cac0a16ec712251748",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 32,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 39302,
+          "summed_total_cost": 19882.159734433328,
+          "recorded_simulation_wall_seconds_sum": 78.56133036799793
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 16,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 21746,
+          "summed_total_cost": 9826.887816466704,
+          "recorded_simulation_wall_seconds_sum": 38.94772519000162
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "selected-cheap-11",
+      "source_task": {
+        "task_id": 144,
+        "policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "config": {
+          "orders": 11,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "133bc2ef8fed494809bedcd27f32f6e340e4e0a88bd8e81e1162dad10f4da5cc",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 31,
+          "summed_missing": 1,
+          "summed_cutoff_deadline_debt": 75826,
+          "summed_total_cost": 21148.276953666642,
+          "recorded_simulation_wall_seconds_sum": 91.08253544199988
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 16,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 33893,
+          "summed_total_cost": 10553.344328999978,
+          "recorded_simulation_wall_seconds_sum": 45.12627343400072
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "original-prior-11",
+      "source_task": {
+        "task_id": 96,
+        "policy_id": "TRAIN/family-guard4-kit/recovery0",
+        "config": {
+          "orders": 11,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": false
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "ba79553923b8bdca46486211429627ccd09744db11a7b63815a9c629bb167e8f",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 28,
+          "summed_missing": 41,
+          "summed_cutoff_deadline_debt": 151760,
+          "summed_total_cost": 20793.68935913333,
+          "recorded_simulation_wall_seconds_sum": 87.25965284500171
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 15,
+          "summed_missing": 10,
+          "summed_cutoff_deadline_debt": 45675,
+          "summed_total_cost": 10440.934552399971,
+          "recorded_simulation_wall_seconds_sum": 42.99757636499953
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "selected-cheap-13",
+      "source_task": {
+        "task_id": 144,
+        "policy_id": "TRAIN/strong-MPC/w6-QA0/scenarios0",
+        "config": {
+          "orders": 13,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 6,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery_routing",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          },
+          "routing_policy": {
+            "eta_processes": [],
+            "free_buffer_processes": []
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Static priors and MPC bank chosen onTRAIN only; VALIDATION used for development selection, final untouched",
+          "question": "Confirm independent lookahead gains over strong recovery/routing controls on full pairedTRAIN and VALIDATION cohorts",
+          "future_tape": "Independent planning seed27491,2or4 common futures per action, replan1440min; all physical futures checked"
+        }
+      },
+      "source_task_canonical_sha256": "b3af638546fc89fcbabc3acf63bd6e8af0735f412152dbd281f8c402584f3c1a",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 30,
+          "summed_missing": 3,
+          "summed_cutoff_deadline_debt": 151657,
+          "summed_total_cost": 22835.567462100153,
+          "recorded_simulation_wall_seconds_sum": 96.87955509900348
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 16,
+          "summed_missing": 0,
+          "summed_cutoff_deadline_debt": 74196,
+          "summed_total_cost": 11250.059777666718,
+          "recorded_simulation_wall_seconds_sum": 47.916714088001754
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "original-prior-13",
+      "source_task": {
+        "task_id": 432,
+        "policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "config": {
+          "orders": 13,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "25b03954a88da9d85d1c33e89152aae14bd145ddab0e167eab87c13d499e7035",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 27,
+          "summed_missing": 7,
+          "summed_cutoff_deadline_debt": 173909,
+          "summed_total_cost": 22770.238436000138,
+          "recorded_simulation_wall_seconds_sum": 117.01851647200101
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 13,
+          "summed_missing": 5,
+          "summed_cutoff_deadline_debt": 86177,
+          "summed_total_cost": 11325.103087966681,
+          "recorded_simulation_wall_seconds_sum": 58.05892257800042
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "selected-cheap-14",
+      "source_task": {
+        "task_id": 288,
+        "policy_id": "TRAIN/strong-MPC/w6-QA1/scenarios0",
+        "config": {
+          "orders": 14,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 6,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery_routing",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          },
+          "routing_policy": {
+            "eta_processes": [
+              "QA"
+            ],
+            "free_buffer_processes": []
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Static priors and MPC bank chosen onTRAIN only; VALIDATION used for development selection, final untouched",
+          "question": "Confirm independent lookahead gains over strong recovery/routing controls on full pairedTRAIN and VALIDATION cohorts",
+          "future_tape": "Independent planning seed27491,2or4 common futures per action, replan1440min; all physical futures checked"
+        }
+      },
+      "source_task_canonical_sha256": "afee144c8ddee54d44b51537f808e21231b5467aeb4d78c13ce0c23ced3b3062",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 25,
+          "summed_missing": 12,
+          "summed_cutoff_deadline_debt": 201790,
+          "summed_total_cost": 23886.191764400155,
+          "recorded_simulation_wall_seconds_sum": 100.60323045599216
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 12,
+          "summed_missing": 6,
+          "summed_cutoff_deadline_debt": 103054,
+          "summed_total_cost": 11803.885732866729,
+          "recorded_simulation_wall_seconds_sum": 50.056213696007035
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "original-prior-14",
+      "source_task": {
+        "task_id": 528,
+        "policy_id": "TRAIN/family-guard4-kit/recovery1",
+        "config": {
+          "orders": 14,
+          "horizon": 5760,
+          "profile": "full",
+          "seed": 0
+        },
+        "weights": {
+          "wip_limit": 8,
+          "mode": "standard",
+          "due": 0.25,
+          "remaining": -4.0,
+          "family": 24.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 0,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "recovery",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "kit_reservation": true,
+          "admission": true,
+          "recovery_policy": {
+            "enabled": true
+          }
+        },
+        "seed_role": "TRAIN",
+        "selection": {
+          "data": "Prior TRAIN only; diagnosed failure tapes guided heuristic design; VALIDATION is development selection, not final"
+        }
+      },
+      "source_task_canonical_sha256": "9cdd6964d49d99c1d1ee214dcf07be65f5fea1ee3b02408e168dec9d6fd14402",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "runs": 32,
+          "valid": 32,
+          "complete": 21,
+          "summed_missing": 22,
+          "summed_cutoff_deadline_debt": 263404,
+          "summed_total_cost": 23386.062116866768,
+          "recorded_simulation_wall_seconds_sum": 124.6757562020025
+        },
+        {
+          "role": "VALIDATION",
+          "seeds": [
+            100,
+            101,
+            102,
+            103,
+            104,
+            105,
+            106,
+            107,
+            108,
+            109,
+            110,
+            111,
+            112,
+            113,
+            114,
+            115
+          ],
+          "runs": 16,
+          "valid": 16,
+          "complete": 10,
+          "summed_missing": 10,
+          "summed_cutoff_deadline_debt": 117635,
+          "summed_total_cost": 11537.454514433379,
+          "recorded_simulation_wall_seconds_sum": 60.711263143
+        }
+      ],
+      "construction_valid": true
+    },
+    {
+      "method_id": "selected-stretch-32",
+      "source_task": {
+        "task_id": 560,
+        "policy_id": "H14400/prior16/kitting/w4-guard4-admfamily-kit1",
+        "config": {
+          "orders": 32,
+          "seed": 0,
+          "horizon": 14400,
+          "profile": "full"
+        },
+        "weights": {
+          "wip_limit": 4,
+          "mode": "standard",
+          "due": 1.0,
+          "remaining": -4.0,
+          "family": 0.0,
+          "setup": 10,
+          "lease_calibration": true,
+          "selector": "priority",
+          "policy_seed": 0,
+          "tool_distance": 1,
+          "qa_guard_threshold": 4,
+          "worker_calendar": true,
+          "preposition": false,
+          "admission_rule": "family"
+        },
+        "solver_variant": "kitting",
+        "solver_options": {
+          "tool_policy": {
+            "mode": "hard"
+          },
+          "specialist": true,
+          "kit_reservation": true,
+          "admission": true
+        },
+        "selection": {
+          "source": "output/stage2-search/axion-download-2241/refinement-6117231",
+          "seed_role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            16,
+            17,
+            18,
+            19,
+            20,
+            21,
+            22,
+            23,
+            24,
+            25,
+            26,
+            27,
+            28,
+            29,
+            30,
+            31
+          ],
+          "rank": [
+            0,
+            3.4375,
+            18904.875,
+            782.8032946468743
+          ],
+          "horizon_scope": "Same physical resources and initial due dates; extended cutoff is not an algorithmic speedup"
+        },
+        "seed_role": "TRAIN"
+      },
+      "source_task_canonical_sha256": "55cf963fcebce0477b6bbd14ad478f66d6aba3a2b1f578dfe861d4bdc679f3cd",
+      "weights_exactly_copied": true,
+      "options_exactly_copied_except_explicit_adaptations": [
+        "Final actor900000 overrides inherited policy_seed0 before callback construction",
+        "Explicit causal maintenance_outage_guard=True final adapter; original campaign had no such adapter"
+      ],
+      "cohorts": [
+        {
+          "role": "TRAIN",
+          "seeds": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "runs": 8,
+          "valid": 8,
+          "complete": 7,
+          "summed_missing": 1,
+          "summed_cutoff_deadline_debt": 926139,
+          "summed_total_cost": 11907.850973798726,
+          "recorded_simulation_wall_seconds_sum": 61.50770979399931
+        }
+      ],
+      "construction_valid": true
+    }
+  ],
+  "methods": 9,
+  "final_factories_executed": 0,
+  "protocol_unchanged_sha256": "8093da40bc73c3e54ccf3ef77acccf75b24104c8c2a76de94a94be10193d93c7",
+  "scope": "Task/measurement identity and pure controller/factory construction; guarded runtime performance separately retained",
+  "root_new_spec_preflight_independently_verified": [
+    {
+      "reference": {
+        "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-deterministic-development-preflight-results",
+        "files": {
+          "manifest.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-deterministic-development-preflight-results/manifest.json",
+            "sha256": "708f7319b22aa11abdcfc7cbddcf95d70daba2dd80b51c66fae5919a7926c121"
+          },
+          "evaluation.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-deterministic-development-preflight-results/evaluation.json",
+            "sha256": "a5b90b52c2b281ed2a5af34659fe064560671e0d6f22db6d360ae4ec09eb5648"
+          },
+          "rows.jsonl": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-deterministic-development-preflight-results/rows.jsonl",
+            "sha256": "b3932faf0799d4f8f04a34e795f63c91721f463f9481cc9ba801ee76b5017851"
+          }
+        },
+        "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+      },
+      "rows": 12,
+      "valid": 12,
+      "methods": 6,
+      "actors": [
+        900000
+      ],
+      "physical_sources": {
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    },
+    {
+      "reference": {
+        "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/strong-cheap-development-preflight-results",
+        "files": {
+          "manifest.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/strong-cheap-development-preflight-results/manifest.json",
+            "sha256": "22bda5fc918146002aab445ff96aa74252ff83b4ed88b857b9af4361795c5e75"
+          },
+          "evaluation.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/strong-cheap-development-preflight-results/evaluation.json",
+            "sha256": "13d7616b1beebfc9287b2cc91c9716b66d95a15caffd58d6559c80bf9273a3d3"
+          },
+          "rows.jsonl": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/strong-cheap-development-preflight-results/rows.jsonl",
+            "sha256": "2339a04c9cd38b28ea831b2e09732c0974280095edb109c55a456326eaa71a80"
+          }
+        },
+        "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+      },
+      "rows": 48,
+      "valid": 48,
+      "methods": 24,
+      "actors": [
+        900000
+      ],
+      "physical_sources": {
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    },
+    {
+      "reference": {
+        "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-stochastic-development-preflight-results",
+        "files": {
+          "manifest.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-stochastic-development-preflight-results/manifest.json",
+            "sha256": "7cfccf16308603461302deaca8af690bf91c0021655e24a2d7b760e768e32ecd"
+          },
+          "evaluation.json": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-stochastic-development-preflight-results/evaluation.json",
+            "sha256": "31619fdd0e38a288dab1d9c3aa8891879146a80b4c98f3ac21f538f64d7ddc35"
+          },
+          "rows.jsonl": {
+            "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-preparation/quantum-stochastic-development-preflight-results/rows.jsonl",
+            "sha256": "41291e6b405f9817d48810ed012d44bd2fd64e4acc9939491cea3c2b290df02b"
+          }
+        },
+        "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+      },
+      "rows": 54,
+      "valid": 54,
+      "methods": 9,
+      "actors": [
+        900000,
+        900001,
+        900002
+      ],
+      "physical_sources": {
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    }
+  ],
+  "root_final_specs_audit": {
+    "quantum": [
+      {
+        "path": "output/stage2-search/final-preparation/quantum-deterministic-selection.json",
+        "sha256": "36b2fb882587ea6902e7a213abbc5737aa625acdad7ba69d03d23df252e13443",
+        "actors": [
+          900000
+        ],
+        "methods": 6
+      },
+      {
+        "path": "output/stage2-search/final-preparation/quantum-stochastic-selection.json",
+        "sha256": "750005c90fbeb00abe5a9f19b9c150fc59fec80bcf016e2800301877db8a1c1e",
+        "actors": [
+          900000,
+          900001,
+          900002
+        ],
+        "methods": 9
+      }
+    ],
+    "all_five_per_context_quantum_controls_identical_except_selector": true,
+    "quantum_sampling_reference": "Frozenquantum.py select_qaoa default1024shots; uniformdefault1024shots; original5totalbitprofile inclslack, oversizeSAfallback retained",
+    "mpc": [
+      {
+        "path": "output/stage2-search/final-preparation/mpc-12-selection.json",
+        "sha256": "4056eeac0e0986d0ab9838badc3d58eebc6a3995a64ca23858f008a1a0431ed0",
+        "source_task_id": 64,
+        "source_policy_id": "TRAIN/strong-MPC/w8-QA0/scenarios4",
+        "scenarios": 4,
+        "exact_task_weights_and_options": true,
+        "additional_explicit_options": {
+          "maintenance_outage_guard": true,
+          "risk_weight": 0.25
+        },
+        "risk_default_source": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4"
+      },
+      {
+        "path": "output/stage2-search/final-preparation/mpc-13-selection.json",
+        "sha256": "8746d350d0de9386e8db134ac71d96c33cd133220ee30dc69ba4a2d1e1423988",
+        "source_task_id": 176,
+        "source_policy_id": "TRAIN/strong-MPC/w6-QA0/scenarios2",
+        "scenarios": 2,
+        "exact_task_weights_and_options": true,
+        "additional_explicit_options": {
+          "maintenance_outage_guard": true,
+          "risk_weight": 0.25
+        },
+        "risk_default_source": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4"
+      },
+      {
+        "path": "output/stage2-search/final-preparation/mpc-14-selection.json",
+        "sha256": "844864d4d5fab0fa1fd5ac4f0f3c5a4c9d21740f99f2250c61604501012081fe",
+        "source_task_id": 320,
+        "source_policy_id": "TRAIN/strong-MPC/w6-QA1/scenarios2",
+        "scenarios": 2,
+        "exact_task_weights_and_options": true,
+        "additional_explicit_options": {
+          "maintenance_outage_guard": true,
+          "risk_weight": 0.25
+        },
+        "risk_default_source": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4"
+      },
+      {
+        "path": "output/stage2-search/final-preparation/mpc-16-selection.json",
+        "sha256": "956a59134b8214eb27205c51eba0174305f5cfb4cb69bf30da439e2b0775b1e6",
+        "source_task_id": 464,
+        "source_policy_id": "TRAIN/strong-MPC/w4-QA0/scenarios2",
+        "scenarios": 2,
+        "exact_task_weights_and_options": true,
+        "additional_explicit_options": {
+          "maintenance_outage_guard": true,
+          "risk_weight": 0.25
+        },
+        "risk_default_source": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4"
+      },
+      {
+        "path": "output/stage2-search/final-preparation/mpc-24-selection.json",
+        "sha256": "1c53792c7848dbac7a4b59def0c319cc483b463441fc67dcdc15a3d0d009b26a",
+        "source_task_id": 640,
+        "source_policy_id": "TRAIN/strong-MPC/w4-QA0/scenarios4",
+        "scenarios": 4,
+        "exact_task_weights_and_options": true,
+        "additional_explicit_options": {
+          "maintenance_outage_guard": true,
+          "risk_weight": 0.25
+        },
+        "risk_default_source": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4"
+      }
+    ],
+    "strong_cheap_methods": 24,
+    "all_adaptive_per_context_shapes_sources_options_pass": true,
+    "spec_file_sha256": {
+      "quantum-deterministic-selection.json": "36b2fb882587ea6902e7a213abbc5737aa625acdad7ba69d03d23df252e13443",
+      "quantum-stochastic-selection.json": "750005c90fbeb00abe5a9f19b9c150fc59fec80bcf016e2800301877db8a1c1e",
+      "mpc-12-selection.json": "4056eeac0e0986d0ab9838badc3d58eebc6a3995a64ca23858f008a1a0431ed0",
+      "mpc-13-selection.json": "8746d350d0de9386e8db134ac71d96c33cd133220ee30dc69ba4a2d1e1423988",
+      "mpc-14-selection.json": "844864d4d5fab0fa1fd5ac4f0f3c5a4c9d21740f99f2250c61604501012081fe",
+      "mpc-16-selection.json": "956a59134b8214eb27205c51eba0174305f5cfb4cb69bf30da439e2b0775b1e6",
+      "mpc-24-selection.json": "1c53792c7848dbac7a4b59def0c319cc483b463441fc67dcdc15a3d0d009b26a",
+      "strong-cheap-selection.json": "597d029fb4173bcecfa80de4b55ea56b6c73c0f21c4c2086b682e493291d0edc"
+    },
+    "caveats": [
+      "Quantum source task IDs sometimes identify outer-controller templates from another selector; require explicit selector-override provenance",
+      "compute-ledger.json referenced but absent at audit time; cost packaging pending",
+      "Finite preflight supports integration, not reserved performance or quantum/dynamic advantage"
+    ],
+    "final_outcomes_inspected": false
+  }
+}

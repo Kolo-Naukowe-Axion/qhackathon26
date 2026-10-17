@@ -1,0 +1,31 @@
+{
+  "schema": "tiny-multi-full-attendance-bound.v1",
+  "pumps": 4,
+  "components": {
+    "all_mandatory_processing": 3900,
+    "first_loaded_delivery": 4,
+    "four_forced_worker_hall_walks": 8,
+    "last_pump_QA_shipping": 8
+  },
+  "lower_bound_ticks": 3920,
+  "forced_hall_subsequence": [
+    "A:first raw operation",
+    "B:flange weld",
+    "A:flange wash/QA",
+    "B:matching assembly",
+    "A:final pump QA"
+  ],
+  "proof": "Single full-attendance worker makes all process and walk intervals disjoint. Initial delivery precedes every process; last required process is final pump QA, followed by shipping. Witness chain forces four hall transitions inside the processing span.",
+  "deliberately_excluded": [
+    "Per-pump join gaps",
+    "Additional walks",
+    "Empty repositioning",
+    "Buffer blocking"
+  ],
+  "flagship_bound": false,
+  "changes_saved_cp_bound": false,
+  "instance_path": "output/stage2-search/multi-reference-pilot/n4-scale15-full/instance.json",
+  "instance_file_sha256": "280d1a6909949d69c53206b4030fdd5981919335af246e48bb4b1dff107392b7",
+  "construction_source_sha256": "fcfe8a999458e2d12405dac10335522d570e3b30c4ec88956440096358f08563",
+  "reference_guard_sha256": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe"
+}

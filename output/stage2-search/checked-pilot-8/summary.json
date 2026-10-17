@@ -1,0 +1,143 @@
+{
+  "metrics": {
+    "orders": 10,
+    "shipped": 10,
+    "shipped_at": {
+      "P01": 1090,
+      "P07": 1435,
+      "P02": 1525,
+      "P08": 2054,
+      "P03": 2929,
+      "P04": 4053,
+      "P05": 4222,
+      "P06": 4678,
+      "U01": 5182,
+      "U02": 5490
+    },
+    "all_orders_fulfilled": true,
+    "total_tardiness_ticks": 3465,
+    "grid_kwh": 2669.022108333333,
+    "energy_cost": 453.34094723333334,
+    "carbon_kg": 909.1796984166667,
+    "terminal_soc": 2400,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 150,
+    "total_cost": 603.3409472333298,
+    "operations": 177,
+    "moves": 252,
+    "unfinished": 0,
+    "global_optimality_gap": null
+  },
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "606c9c3a26d10e8911b59cb8ff5d52b59db7e1121c55c9aa6a9fa2d7cf3ae07f"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 177,
+      "moves": 252,
+      "horizon_ticks": 5760,
+      "delivered_orders": 10,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 1090,
+        "P07": 1435,
+        "P02": 1525,
+        "P08": 2054,
+        "P03": 2929,
+        "P04": 4053,
+        "P05": 4222,
+        "P06": 4678,
+        "U01": 5182,
+        "U02": 5490
+      },
+      "tardiness_ticks": 3465,
+      "terminal_deadline_debt_ticks": 3465,
+      "grid_kwh": 2669.0221083333186,
+      "energy_cost": 453.34094723332976,
+      "carbon_kg": 909.179698416661,
+      "investment_cost": 150,
+      "total_cost": 603.3409472333298,
+      "terminal_soc": 2400
+    }
+  },
+  "provenance": {
+    "kind": "measured",
+    "solver": "causal-dispatch",
+    "instance": "MetalTech physical factory",
+    "generated_at": "2026-10-16T20:39:50Z",
+    "code_revision": "working-tree",
+    "source_sha256": {
+      "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+      "stage2/bounds.py": "c4a5e5a93d3bd2d2214e43de790040366d8a1ee82e83554eecb02f83bdcf8536",
+      "stage2/check.py": "606c9c3a26d10e8911b59cb8ff5d52b59db7e1121c55c9aa6a9fa2d7cf3ae07f",
+      "stage2/dispatch.py": "da50ae48f77512be433b042e8f6b8ecb40f7b2adc5ff35ba61bc769e3762b8a0",
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+      "stage2/learning.py": "ecaacbeb6952049ee88fc45200f217ebe64905ecbf056e0a90da4f37e6f78f37",
+      "stage2/qubo.py": "b511823e877c44fe8ad90ad2e16f729e945bf3cb2507b48207fd0cd8fd86bab5",
+      "stage2/run.py": "6bfb3f4b045e97b710b1d7774254cba297b58a9103e82668f389e67111dbf069",
+      "stage2/spec.py": "ff2bf971f1ed08f43251a4d91b214508a1b561a9454833c4872be540772349c0"
+    },
+    "parameters": {
+      "orders": 8,
+      "horizon": null,
+      "seed": 0,
+      "profile": "full"
+    },
+    "weights": {
+      "wip_limit": 3,
+      "mode": "standard",
+      "selector": "priority",
+      "lease_calibration": true
+    },
+    "instance_sha256": "b2782845c10915bde6fb1ecb3817962077ec8bd2ebcb073908ccb5e42b38275e",
+    "wall_seconds": 0.3943053751718253
+  }
+}

@@ -1,0 +1,83 @@
+{
+  "schema": "rank-nonlinear-deadline-qubo.v1",
+  "encoding": "structural-nonlinear-semantic-rank",
+  "instance_sha256": "bb2babdc50eb249b7ad522dedef5e5fdfe35d7991ddbfee5189ea71950a84d41",
+  "horizon": 8,
+  "variables": [
+    {
+      "index": 0,
+      "name": "a",
+      "original_order_bit": 0
+    },
+    {
+      "index": 1,
+      "name": "b",
+      "original_order_bit": 1
+    },
+    {
+      "index": 2,
+      "name": "d",
+      "original_order_bit": 6
+    }
+  ],
+  "offset": 0,
+  "linear": [
+    1,
+    0,
+    1
+  ],
+  "quadratic": [
+    [
+      0,
+      1,
+      1
+    ],
+    [
+      0,
+      2,
+      -2
+    ],
+    [
+      1,
+      2,
+      -1
+    ]
+  ],
+  "decoder": {
+    "semantic_bit_order": [
+      "a",
+      "b",
+      "d"
+    ],
+    "derived_c": "1-a+a*b",
+    "full_order_bit_expressions": [
+      "a",
+      "b",
+      "c",
+      "a",
+      "b",
+      "c",
+      "d",
+      "b",
+      "c"
+    ],
+    "kind": "nonlinear Boolean semantic relation; not a schedule lookup table"
+  },
+  "construction": {
+    "prior_four_bit": {
+      "complete_schedule_scores_used": 0,
+      "partial_dag_evaluations": 770,
+      "sat_queries": 90,
+      "sat_search_nodes": 172,
+      "cut_weight_lp_variables": 0,
+      "disclosure": "Exact classical structural/SAT presolve; optional cut-weight LP; not free preprocessing or quantum advantage"
+    },
+    "additional_physical_cut_rechecks": 78,
+    "additional_sat_queries": 14,
+    "additional_sat_search_nodes": 14,
+    "complete_schedule_scores_used": 0,
+    "lp_variables": 0,
+    "disclosure": "Reuses certified physical/SAT preprocessing; adds independently replayed semantic implications"
+  },
+  "zero_set_scope": "All H8 feasible full machine orders via deterministic nonlinear decoder; positive energies need not equal E4"
+}

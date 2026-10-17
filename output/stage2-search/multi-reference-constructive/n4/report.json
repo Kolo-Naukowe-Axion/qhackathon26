@@ -1,0 +1,113 @@
+{
+  "pumps": 4,
+  "upper_bound_ticks": 1732,
+  "validation": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 64,
+      "moves": 76,
+      "horizon_ticks": 10400,
+      "delivered_orders": 4,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 600,
+        "P02": 863,
+        "P03": 1469,
+        "P04": 1732
+      },
+      "tardiness_ticks": 0,
+      "terminal_deadline_debt_ticks": 0,
+      "grid_kwh": 2703.999999999652,
+      "energy_cost": 270.4000000000473,
+      "carbon_kg": 540.8000000000947,
+      "investment_cost": 0,
+      "total_cost": 270.4000000000473,
+      "terminal_soc": 40
+    }
+  },
+  "source_blocks": [
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/automatic/cp-trace.json",
+      "sha256": "4e7df748d534b52a89e53ff35514b9981c85a6fd822822847cb5c96026245326",
+      "orders": {
+        "P01": "P01",
+        "P02": "P02"
+      },
+      "shift_ticks": 0,
+      "block_makespan_ticks": 863,
+      "preceding_empty_reposition_ticks": 0
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/automatic/cp-trace.json",
+      "sha256": "4e7df748d534b52a89e53ff35514b9981c85a6fd822822847cb5c96026245326",
+      "orders": {
+        "P01": "P03",
+        "P02": "P04"
+      },
+      "shift_ticks": 869,
+      "block_makespan_ticks": 863,
+      "preceding_empty_reposition_ticks": 6
+    }
+  ],
+  "full_instance_optimality_claim": false,
+  "cp_proof_state_resumed": false,
+  "trace_sha256": "90b46b529fa5a43c8cae8f548dbdbb471a03f6f8eb955e5ee7e3108856534791",
+  "schedule_sha256": "d2e4587316aed9a3e1fa2cd61f6a634838c246088f3ba4b0244ccb22a7338bb2",
+  "sources_sha256": {
+    "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+    "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+  }
+}

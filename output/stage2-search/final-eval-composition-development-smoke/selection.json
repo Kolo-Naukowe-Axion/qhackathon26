@@ -1,0 +1,77 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 2,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "trace_policy": "first_per_leaf",
+  "selection_provenance": {
+    "data": "DEVELOPMENT tapes0,1 only",
+    "training_wall_seconds": 0
+  },
+  "methods": [
+    {
+      "id": "hard-home-qa",
+      "kind": "tooling",
+      "specialist": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "lease_calibration": true,
+        "qa_guard_threshold": 2,
+        "admission_rule": "campaign"
+      },
+      "selection_provenance": {
+        "data": "Handwritten DEVELOPMENT integration, no final-policy or performance claim",
+        "training_wall_seconds": 0
+      }
+    },
+    {
+      "id": "hard-home-qa-admission",
+      "kind": "tooling",
+      "specialist": true,
+      "admission": true,
+      "tool_policy_by_config": [
+        {
+          "config": {
+            "orders": 2,
+            "horizon": 5760,
+            "profile": "full"
+          },
+          "tool_policy": {
+            "mode": "hard"
+          }
+        }
+      ],
+      "weights_by_config": [
+        {
+          "config": {
+            "orders": 2,
+            "horizon": 5760,
+            "profile": "full"
+          },
+          "weights": {
+            "wip_limit": 3,
+            "mode": "standard",
+            "lease_calibration": true,
+            "qa_guard_threshold": 2,
+            "admission_rule": "campaign"
+          }
+        }
+      ],
+      "selection_provenance": {
+        "data": "Handwritten DEVELOPMENT integration, no final-policy or performance claim",
+        "training_wall_seconds": 0
+      }
+    }
+  ]
+}

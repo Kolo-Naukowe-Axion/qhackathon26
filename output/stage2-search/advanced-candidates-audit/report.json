@@ -1,0 +1,2791 @@
+{
+  "scope": "All seeds are development/training evidence; no held-out claims",
+  "configs": [
+    {
+      "orders": 24,
+      "wip_limit": 2,
+      "lease_calibration": true,
+      "mode": "standard",
+      "selector": "priority"
+    },
+    {
+      "orders": 24,
+      "wip_limit": 4,
+      "lease_calibration": true,
+      "mode": "turbo",
+      "selector": "priority"
+    },
+    {
+      "orders": 12,
+      "wip_limit": 3,
+      "lease_calibration": false,
+      "mode": "eco",
+      "selector": "greedy"
+    }
+  ],
+  "variants": {
+    "baseline": {
+      "worker_calendar": false,
+      "preposition": false
+    },
+    "advanced": {},
+    "free": {
+      "routing_free_buffers": true
+    },
+    "eta": {
+      "routing_free_buffers": true,
+      "routing_estimate_finish": true
+    },
+    "join": {
+      "routing_free_buffers": true,
+      "bom_priority": "join"
+    },
+    "critical": {
+      "routing_free_buffers": true,
+      "bom_priority": "critical"
+    },
+    "slack": {
+      "routing_free_buffers": true,
+      "bom_priority": "slack"
+    }
+  },
+  "seeds": [
+    20,
+    21,
+    22,
+    23
+  ],
+  "source_before": {
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5"
+  },
+  "source_after": {
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5"
+  },
+  "wall_seconds": 45.39099883311428,
+  "groups": [
+    {
+      "config": 0,
+      "variant": "advanced",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "advanced",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 37099,
+          "cost": 637.9340554,
+          "wall_seconds": 0.6136792090255767,
+          "trace_file": "c0-advanced-s20.json.gz",
+          "trace_sha256": "7b65f8ae0824a1b82205b556f3d261d993edf6412a0d968e1cfebdc562ea5d43"
+        },
+        {
+          "config": 0,
+          "variant": "advanced",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 36656,
+          "cost": 674.3007179333408,
+          "wall_seconds": 0.6210726250428706,
+          "trace_file": "c0-advanced-s21.json.gz",
+          "trace_sha256": "051b78030d2b01bc3f1271d082b5941895bb2a1ec890b0f3b66c34cc307d7960"
+        },
+        {
+          "config": 0,
+          "variant": "advanced",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 39214,
+          "cost": 582.8383516666727,
+          "wall_seconds": 0.6184503750409931,
+          "trace_file": "c0-advanced-s22.json.gz",
+          "trace_sha256": "75c0afb22bf5bbecb3939f3eb177a9a019bca9598069075f5e68ec4f3e6d24d9"
+        },
+        {
+          "config": 0,
+          "variant": "advanced",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 24,
+          "tardiness": 34360,
+          "cost": 656.8741339000023,
+          "wall_seconds": 0.59126454195939,
+          "trace_file": "c0-advanced-s23.json.gz",
+          "trace_sha256": "07c08437549f20a5cd696025367a230520b4eb03f8f023aecabfa41411383480"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "baseline",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "baseline",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 34363,
+          "cost": 690.4981604000061,
+          "wall_seconds": 0.5855825420003384,
+          "trace_file": "c0-baseline-s20.json.gz",
+          "trace_sha256": "88519e3c8827e6c43ac1ae96bae8f13d2841e3a5db59dc8a7d60ba44060aa0eb"
+        },
+        {
+          "config": 0,
+          "variant": "baseline",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 39016,
+          "cost": 594.7135295333344,
+          "wall_seconds": 0.5875741250347346,
+          "trace_file": "c0-baseline-s21.json.gz",
+          "trace_sha256": "5bf394fd5b33221cd2e53343710866e9e073616b96434520782ed8e78de0e2ad"
+        },
+        {
+          "config": 0,
+          "variant": "baseline",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 36346,
+          "cost": 707.0104524666762,
+          "wall_seconds": 0.5908446251414716,
+          "trace_file": "c0-baseline-s22.json.gz",
+          "trace_sha256": "5aa90358a9f5db042fe40e045a5dfbde245b0fdfbf9fef122548be852a2e1029"
+        },
+        {
+          "config": 0,
+          "variant": "baseline",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 24,
+          "tardiness": 34548,
+          "cost": 652.5792616666662,
+          "wall_seconds": 0.5674384580925107,
+          "trace_file": "c0-baseline-s23.json.gz",
+          "trace_sha256": "a68e5fd1c9b605b9162ef4c3bd5ac3c66164feda61409e726908e66a859ffb13"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "critical",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "critical",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35683,
+          "cost": 688.6345469666627,
+          "wall_seconds": 3.9459415830206126,
+          "trace_file": "c0-critical-s20.json.gz",
+          "trace_sha256": "164ad867e494af8530f17d0dcf3be2b5df082bb19fce4dec0523e780c7163698"
+        },
+        {
+          "config": 0,
+          "variant": "critical",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 38557,
+          "cost": 568.4624394333403,
+          "wall_seconds": 4.3105599579866976,
+          "trace_file": "c0-critical-s21.json.gz",
+          "trace_sha256": "667c10839b64a088ead3646affeba223552be3fbd5556714492a7b72b2c4e338"
+        },
+        {
+          "config": 0,
+          "variant": "critical",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 36673,
+          "cost": 682.3967534000063,
+          "wall_seconds": 3.8757487919647247,
+          "trace_file": "c0-critical-s22.json.gz",
+          "trace_sha256": "c305e947bd396519e3cb0760bf0af4562c3daeefc914d60982f90c714d3a65d8"
+        },
+        {
+          "config": 0,
+          "variant": "critical",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 24,
+          "tardiness": 37017,
+          "cost": 618.4941746999993,
+          "wall_seconds": 4.061116791795939,
+          "trace_file": "c0-critical-s23.json.gz",
+          "trace_sha256": "d7c6410caadb26d564e0acf40a2ffe3f2f1f066a9ee97bbac81e99ecd188b482"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 385
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 385
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "eta",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "eta",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35844,
+          "cost": 680.5626939333293,
+          "wall_seconds": 0.6310443750116974,
+          "trace_file": "c0-eta-s20.json.gz",
+          "trace_sha256": "072c5b951faab331202fae7e63d9c13e1e3a82e4e428846009b51817aba6d3d0"
+        },
+        {
+          "config": 0,
+          "variant": "eta",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 37190,
+          "cost": 674.8611275666678,
+          "wall_seconds": 0.6457377912010998,
+          "trace_file": "c0-eta-s21.json.gz",
+          "trace_sha256": "7a6c70696645a23677fb56976563d39a1fcd644863ad8f4a6b95b367603f623b"
+        },
+        {
+          "config": 0,
+          "variant": "eta",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35888,
+          "cost": 672.8028924666664,
+          "wall_seconds": 0.6451066669542342,
+          "trace_file": "c0-eta-s22.json.gz",
+          "trace_sha256": "2d3d7cab41de177b855f0f43e309f8ffd96c0b57e4ed7c0190e08c5f0739b4f0"
+        },
+        {
+          "config": 0,
+          "variant": "eta",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 32924,
+          "cost": 725.1834681999958,
+          "wall_seconds": 0.631850500125438,
+          "trace_file": "c0-eta-s23.json.gz",
+          "trace_sha256": "cec40612a71acce91875bec1159816fadd36ad4c8b5364627f85bce3b919e47e"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "free",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "free",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 37099,
+          "cost": 637.9113887333331,
+          "wall_seconds": 0.6232688329182565,
+          "trace_file": "c0-free-s20.json.gz",
+          "trace_sha256": "57e20cc93742e0643ed19023b95b88681d245fdc8bdbbc037b15b869bf19c4ca"
+        },
+        {
+          "config": 0,
+          "variant": "free",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 36656,
+          "cost": 674.3007179333408,
+          "wall_seconds": 0.6316951669286937,
+          "trace_file": "c0-free-s21.json.gz",
+          "trace_sha256": "9eb30da6e220d53d8cffac1a9619b15d0d411ac5f01c5f141027f2859f16bf1e"
+        },
+        {
+          "config": 0,
+          "variant": "free",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35468,
+          "cost": 687.4572261333376,
+          "wall_seconds": 0.6327777078840882,
+          "trace_file": "c0-free-s22.json.gz",
+          "trace_sha256": "83933969e5c2d49022edee1582eced181ea4b49ce515ef011513fdf52b4bc8a0"
+        },
+        {
+          "config": 0,
+          "variant": "free",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 24,
+          "tardiness": 34205,
+          "cost": 667.7728700000048,
+          "wall_seconds": 0.5995514171663672,
+          "trace_file": "c0-free-s23.json.gz",
+          "trace_sha256": "ac3f91bc444b23b0709751d5fbe8a2a4b53dc3148824a2674b9d5749f2080d08"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "join",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "join",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 37684,
+          "cost": 605.4985151000108,
+          "wall_seconds": 4.149370458908379,
+          "trace_file": "c0-join-s20.json.gz",
+          "trace_sha256": "8fe111d90baf4dd3ebc5b69d4336c882e93a49134b20267a44e8fb3fa76e1a1a"
+        },
+        {
+          "config": 0,
+          "variant": "join",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 39388,
+          "cost": 623.7693627000031,
+          "wall_seconds": 4.395537541015074,
+          "trace_file": "c0-join-s21.json.gz",
+          "trace_sha256": "f4aae419d35e9799ec97674d62a032f2aecc61afc9ec15afb1f909756b6980db"
+        },
+        {
+          "config": 0,
+          "variant": "join",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 26,
+          "tardiness": 39513,
+          "cost": 700.8960316999948,
+          "wall_seconds": 4.01088741584681,
+          "trace_file": "c0-join-s22.json.gz",
+          "trace_sha256": "9cdf05afe285ff81178d502ab5505241031fa37fcfba4b3d54ae56b5ee6e324a"
+        },
+        {
+          "config": 0,
+          "variant": "join",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 24,
+          "tardiness": 35841,
+          "cost": 591.3321741999985,
+          "wall_seconds": 4.110386749962345,
+          "trace_file": "c0-join-s23.json.gz",
+          "trace_sha256": "f238e7987afa0fd60e706b8bdc1c1dc166c264c39d48a4113d048abb8634fdcc"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 465
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 0,
+      "variant": "slack",
+      "rows": [
+        {
+          "config": 0,
+          "variant": "slack",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 36240,
+          "cost": 694.6982751666727,
+          "wall_seconds": 3.9019383750855923,
+          "trace_file": "c0-slack-s20.json.gz",
+          "trace_sha256": "ae40343f8e84dff3a45a82c725deafe3b0077f8e242b3d183699cebe00eaabef"
+        },
+        {
+          "config": 0,
+          "variant": "slack",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 37290,
+          "cost": 666.1660029000003,
+          "wall_seconds": 4.265018875012174,
+          "trace_file": "c0-slack-s21.json.gz",
+          "trace_sha256": "a0edf92802445504913904d0dcc77ffcb533112320c6847ec72b84569dd3b4ac"
+        },
+        {
+          "config": 0,
+          "variant": "slack",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 36560,
+          "cost": 683.886086733341,
+          "wall_seconds": 3.874801040859893,
+          "trace_file": "c0-slack-s22.json.gz",
+          "trace_sha256": "7eea1b84a55cf4196edc00a8da7457c63f9edfd5a9871f35fdd0c52b4cf7f324"
+        },
+        {
+          "config": 0,
+          "variant": "slack",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 2,
+            "lease_calibration": true,
+            "mode": "standard",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 24,
+          "tardiness": 36638,
+          "cost": 589.8470700333291,
+          "wall_seconds": 3.9731374999973923,
+          "trace_file": "c0-slack-s23.json.gz",
+          "trace_sha256": "d47fbef609859539429b35b8fd7b595728ceb57e41d28846d13664ce3e0706aa"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 385
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 385
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "advanced",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "advanced",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 33575,
+          "cost": 859.3392917666763,
+          "wall_seconds": 1.1548780838493258,
+          "trace_file": "c1-advanced-s20.json.gz",
+          "trace_sha256": "704e0b2d35e2807d905dbebb4f85f90db88b062065a171d5bd0742cd7d56edee"
+        },
+        {
+          "config": 1,
+          "variant": "advanced",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 34158,
+          "cost": 851.6414442999906,
+          "wall_seconds": 1.0292809589300305,
+          "trace_file": "c1-advanced-s21.json.gz",
+          "trace_sha256": "981ecc3001f827d9cf3185e1aef623d6a12b8528af44fbcd79aaafe25af5a4ce"
+        },
+        {
+          "config": 1,
+          "variant": "advanced",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35593,
+          "cost": 777.1974784666551,
+          "wall_seconds": 1.0232142501045018,
+          "trace_file": "c1-advanced-s22.json.gz",
+          "trace_sha256": "9523d21aaa4d2f41ced9b93c156e980774cddd34abc3926a7d87a3af1fe5c9cf"
+        },
+        {
+          "config": 1,
+          "variant": "advanced",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 32465,
+          "cost": 748.0733663999939,
+          "wall_seconds": 0.9316344170365483,
+          "trace_file": "c1-advanced-s23.json.gz",
+          "trace_sha256": "1bab464f22af10e0c05a73ba0c59e0ab53ce0db162ee16fadd4c1cc94fe834e9"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 665
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 571
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 571
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "baseline",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "baseline",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 35207,
+          "cost": 770.1536368333299,
+          "wall_seconds": 0.8541742078959942,
+          "trace_file": "c1-baseline-s20.json.gz",
+          "trace_sha256": "6d3f6e7dba3c60bd47a467ad1a05098ca9d8e13b5c875b5de8e7a5ad13fb1959"
+        },
+        {
+          "config": 1,
+          "variant": "baseline",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 37867,
+          "cost": 701.0970080333317,
+          "wall_seconds": 0.920977917034179,
+          "trace_file": "c1-baseline-s21.json.gz",
+          "trace_sha256": "e960923d5abd1b50756811106643cee7da99fd4246e9fd318d001be85a6ed03b"
+        },
+        {
+          "config": 1,
+          "variant": "baseline",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 33534,
+          "cost": 832.3300620333316,
+          "wall_seconds": 0.9134924998506904,
+          "trace_file": "c1-baseline-s22.json.gz",
+          "trace_sha256": "17cfdba0d24f7b132d621ce35e59561bed574d3a5112ae10d04539a994c38d5f"
+        },
+        {
+          "config": 1,
+          "variant": "baseline",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 24,
+          "tardiness": 36860,
+          "cost": 687.107676966664,
+          "wall_seconds": 0.8623744999058545,
+          "trace_file": "c1-baseline-s23.json.gz",
+          "trace_sha256": "55581410f9e956ec033cceb84825d7e124a972d6db92d4167aa3ab108c25e3c7"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 584
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 584
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "critical",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "critical",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35221,
+          "cost": 779.5805703000011,
+          "wall_seconds": 5.015901749953628,
+          "trace_file": "c1-critical-s20.json.gz",
+          "trace_sha256": "e01841f2acfae11cb0d433dd1b55ad28463f9685142125d2b655d7366b81d75e"
+        },
+        {
+          "config": 1,
+          "variant": "critical",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 26,
+          "tardiness": 40282,
+          "cost": 648.6186136000002,
+          "wall_seconds": 4.971244291868061,
+          "trace_file": "c1-critical-s21.json.gz",
+          "trace_sha256": "7a391c2008802a7e3dd15a404c0f0352bc562830d184c07d5ed717d914edc2b6"
+        },
+        {
+          "config": 1,
+          "variant": "critical",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 38978,
+          "cost": 677.2829282333333,
+          "wall_seconds": 4.882676417008042,
+          "trace_file": "c1-critical-s22.json.gz",
+          "trace_sha256": "941bc8d83df0bf0ae8e2040cab30c2f311638bc402fe8233b3825c4a246167ea"
+        },
+        {
+          "config": 1,
+          "variant": "critical",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 34322,
+          "cost": 726.0976706999961,
+          "wall_seconds": 4.5290304170921445,
+          "trace_file": "c1-critical-s23.json.gz",
+          "trace_sha256": "d5d7b2f0b4bfb48457c92964b332388aa4c2af9d09ad46c603ef63ddc4a88537"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 530
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 624
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 530
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "eta",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "eta",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 34585,
+          "cost": 821.5774312666662,
+          "wall_seconds": 0.9275777090806514,
+          "trace_file": "c1-eta-s20.json.gz",
+          "trace_sha256": "ddb451ccabe9a39a6c7efaeeb950f1019384d2182069e49cc1186196272505db"
+        },
+        {
+          "config": 1,
+          "variant": "eta",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 33955,
+          "cost": 876.5169531999958,
+          "wall_seconds": 0.986231709131971,
+          "trace_file": "c1-eta-s21.json.gz",
+          "trace_sha256": "9b269a55a4660832315d6b75af15a3f224645d015710e1ca05c092e4382c976b"
+        },
+        {
+          "config": 1,
+          "variant": "eta",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 35321,
+          "cost": 808.9584508999974,
+          "wall_seconds": 0.991523957811296,
+          "trace_file": "c1-eta-s22.json.gz",
+          "trace_sha256": "ff862131fcdfddffd44d1bb81f41656eabb257751a24155163478689c468180e"
+        },
+        {
+          "config": 1,
+          "variant": "eta",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 31226,
+          "cost": 813.9318315999974,
+          "wall_seconds": 1.0067559578455985,
+          "trace_file": "c1-eta-s23.json.gz",
+          "trace_sha256": "bd7ae02a5732a71fac41f592b241d5e9ef808d4108f2fe610c7c35f45c663904"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 601
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 601
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "free",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "free",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 32938,
+          "cost": 815.7796286000006,
+          "wall_seconds": 0.9458245411515236,
+          "trace_file": "c1-free-s20.json.gz",
+          "trace_sha256": "c35aa1a97f9d23b41a4fefd92f87996db9f126d54f14533a187e3c3d61931343"
+        },
+        {
+          "config": 1,
+          "variant": "free",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 37510,
+          "cost": 731.3313294666646,
+          "wall_seconds": 0.8627352919429541,
+          "trace_file": "c1-free-s21.json.gz",
+          "trace_sha256": "ab85dc1378fb5eaf4fcf8ed20ce7255dba6090fcc582b58c3e1a8bbc4a66ffb6"
+        },
+        {
+          "config": 1,
+          "variant": "free",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 26,
+          "tardiness": 39726,
+          "cost": 680.2475627333297,
+          "wall_seconds": 0.88626958290115,
+          "trace_file": "c1-free-s22.json.gz",
+          "trace_sha256": "50587ef93b4cc4a73a7bf507c687055867e19bf2d79404d405fa4228bbae786a"
+        },
+        {
+          "config": 1,
+          "variant": "free",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 32392,
+          "cost": 847.0467720333335,
+          "wall_seconds": 0.9463578329887241,
+          "trace_file": "c1-free-s23.json.gz",
+          "trace_sha256": "1781b5f45f42e8b86dac323b24bc9df383aee6a29f2a9fc9d4ce972560d705b4"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 665
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 571
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 571
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "join",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "join",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 26,
+          "tardiness": 37013,
+          "cost": 754.342541066666,
+          "wall_seconds": 4.988303042016923,
+          "trace_file": "c1-join-s20.json.gz",
+          "trace_sha256": "dafbe447b2868bae8a066dfcc65d80e934f46e09b8e6a7b8f35f917e44fd7fc7"
+        },
+        {
+          "config": 1,
+          "variant": "join",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 36574,
+          "cost": 798.820170866669,
+          "wall_seconds": 4.872456917073578,
+          "trace_file": "c1-join-s21.json.gz",
+          "trace_sha256": "1a482620a746e711071aada1494e488f38e6b6204324e584d4f021af168c0c29"
+        },
+        {
+          "config": 1,
+          "variant": "join",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 32986,
+          "cost": 804.4353874333368,
+          "wall_seconds": 4.793256041128188,
+          "trace_file": "c1-join-s22.json.gz",
+          "trace_sha256": "b87f91a8dfc72dd37a3912cf6a2d172e65ac58c5a6b0f18f480e2cd323d8d789"
+        },
+        {
+          "config": 1,
+          "variant": "join",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 11,
+          "orders": 24,
+          "tardiness": 35131,
+          "cost": 688.0158655666729,
+          "wall_seconds": 4.441099958028644,
+          "trace_file": "c1-join-s23.json.gz",
+          "trace_sha256": "e3a4cb1e92e96fe6df027b467ec9650d8b3efddc9747af62b9e3778e05a570c1"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 532
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 628
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 532
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 1,
+      "variant": "slack",
+      "rows": [
+        {
+          "config": 1,
+          "variant": "slack",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 36347,
+          "cost": 799.9630009000018,
+          "wall_seconds": 5.0202558329328895,
+          "trace_file": "c1-slack-s20.json.gz",
+          "trace_sha256": "ae66e4915a1e70b98b7b5915c412ae00a0108aa07f39612e3767ab0994db7fef"
+        },
+        {
+          "config": 1,
+          "variant": "slack",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 26,
+          "tardiness": 40907,
+          "cost": 647.4309440666701,
+          "wall_seconds": 5.089658958138898,
+          "trace_file": "c1-slack-s21.json.gz",
+          "trace_sha256": "8aa58a0d1eb3dda0dad7208a7d70110408495146510e679e4f19d7882ef255e3"
+        },
+        {
+          "config": 1,
+          "variant": "slack",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 26,
+          "tardiness": 34373,
+          "cost": 854.7734730666652,
+          "wall_seconds": 4.861893167020753,
+          "trace_file": "c1-slack-s22.json.gz",
+          "trace_sha256": "1b91d9846ceabc78b20c800ba9d587cbedbbaba0581b595274cc32ccf6cb3c18"
+        },
+        {
+          "config": 1,
+          "variant": "slack",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 4,
+            "lease_calibration": true,
+            "mode": "turbo",
+            "selector": "priority",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 12,
+          "orders": 24,
+          "tardiness": 34982,
+          "cost": 723.4042209333327,
+          "wall_seconds": 4.506106332875788,
+          "trace_file": "c1-slack-s23.json.gz",
+          "trace_sha256": "4f7dc7e2b9951e66834cf12643f8055381a989c0f26494b21c0c23f7500b816d"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 541
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 635
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 541
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "advanced",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "advanced",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 13209,
+          "cost": 551.3997775666677,
+          "wall_seconds": 0.6081034590024501,
+          "trace_file": "c2-advanced-s20.json.gz",
+          "trace_sha256": "6bd07dfc99b41906a5dba509da63115bdf74271ccbc361a54673779cc1f320df"
+        },
+        {
+          "config": 2,
+          "variant": "advanced",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 12546,
+          "cost": 557.8492943333313,
+          "wall_seconds": 0.6490203749854118,
+          "trace_file": "c2-advanced-s21.json.gz",
+          "trace_sha256": "6b83bc54e21dd6340af7c56a2b305c074bd1bee7a750301ad03ebee01a24f1bc"
+        },
+        {
+          "config": 2,
+          "variant": "advanced",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 11594,
+          "cost": 582.4048950666672,
+          "wall_seconds": 0.6179551661480218,
+          "trace_file": "c2-advanced-s22.json.gz",
+          "trace_sha256": "f47b3c77d86bf457379f485dd0e7f5420ce352b90c93192e9a7d0abb785e6b82"
+        },
+        {
+          "config": 2,
+          "variant": "advanced",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 12,
+          "tardiness": 11518,
+          "cost": 525.8508505666671,
+          "wall_seconds": 0.5644417919684201,
+          "trace_file": "c2-advanced-s23.json.gz",
+          "trace_sha256": "d94207046c52a057a137a0ca9afc8523855009af8df885df4f98a3630a0cea97"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "baseline",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "baseline",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 11382,
+          "cost": 537.5674593333277,
+          "wall_seconds": 0.6018433338031173,
+          "trace_file": "c2-baseline-s20.json.gz",
+          "trace_sha256": "4259773d2f74a4508d36575fdc8b55a175d4eb17f08f04c6ee252c79857edea6"
+        },
+        {
+          "config": 2,
+          "variant": "baseline",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 14,
+          "tardiness": 13973,
+          "cost": 504.02918909999454,
+          "wall_seconds": 0.574049707967788,
+          "trace_file": "c2-baseline-s21.json.gz",
+          "trace_sha256": "fee15a79ce1c5877604a14d9606eb9d0c17cfd480f35074d94626e8fb94f8f22"
+        },
+        {
+          "config": 2,
+          "variant": "baseline",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 13301,
+          "cost": 508.9760024666626,
+          "wall_seconds": 0.5961414161138237,
+          "trace_file": "c2-baseline-s22.json.gz",
+          "trace_sha256": "056a2fc0cd2ad5ce7bd2aeccb18e1c64f153e552dcea6c31cd76c13c84c5d450"
+        },
+        {
+          "config": 2,
+          "variant": "baseline",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "worker_calendar": false,
+            "preposition": false
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 12,
+          "tardiness": 10635,
+          "cost": 506.47103543333685,
+          "wall_seconds": 0.585702707991004,
+          "trace_file": "c2-baseline-s23.json.gz",
+          "trace_sha256": "1d7d51fc432134e7228bcbb98f74a0d0539edd70d088cbb107d696bcee8d0209"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "critical",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "critical",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 14,
+          "tardiness": 14332,
+          "cost": 513.2781138000016,
+          "wall_seconds": 2.0672157499939203,
+          "trace_file": "c2-critical-s20.json.gz",
+          "trace_sha256": "c58afab8b5ee8ca47c6ac3d422057b37c0c29320f26b287903934b41cd94c11f"
+        },
+        {
+          "config": 2,
+          "variant": "critical",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 9902,
+          "cost": 599.2138011333361,
+          "wall_seconds": 1.9110091251786798,
+          "trace_file": "c2-critical-s21.json.gz",
+          "trace_sha256": "09c0aa6fe3bc0cd4e97e1a8d9ed4e1a31de261d5272b367c92b9613b3f796904"
+        },
+        {
+          "config": 2,
+          "variant": "critical",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 10473,
+          "cost": 554.2426156999977,
+          "wall_seconds": 1.9238609159365296,
+          "trace_file": "c2-critical-s22.json.gz",
+          "trace_sha256": "8b46b9f54c970698bd071c7083224a67455b56716fdcb7f9c0151987bdaa3c47"
+        },
+        {
+          "config": 2,
+          "variant": "critical",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "critical"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 7,
+          "orders": 12,
+          "tardiness": 12839,
+          "cost": 479.08588696666146,
+          "wall_seconds": 1.8663686660584062,
+          "trace_file": "c2-critical-s23.json.gz",
+          "trace_sha256": "5aab1617c642fac1314b94f8ed642b4381db63b7fe534b8929e90351212bde8e"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "eta",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "eta",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 11409,
+          "cost": 596.4245356000026,
+          "wall_seconds": 0.6280072089284658,
+          "trace_file": "c2-eta-s20.json.gz",
+          "trace_sha256": "439747cb89af91d1b7ada253018b746cda116d5cfd06ce168f3517cf780eaa4a"
+        },
+        {
+          "config": 2,
+          "variant": "eta",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 14,
+          "tardiness": 11690,
+          "cost": 552.2365105000003,
+          "wall_seconds": 0.6218235418200493,
+          "trace_file": "c2-eta-s21.json.gz",
+          "trace_sha256": "8f37e03d307a165206677b88dc92aefeac7d4ce513c4c6169dc10de218e4d841"
+        },
+        {
+          "config": 2,
+          "variant": "eta",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 12134,
+          "cost": 533.4930859666704,
+          "wall_seconds": 0.6086385000962764,
+          "trace_file": "c2-eta-s22.json.gz",
+          "trace_sha256": "06330c2b618a84afaea1640538ca25fa6c92e8180c39291e43aecdeb41a08cd9"
+        },
+        {
+          "config": 2,
+          "variant": "eta",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "routing_estimate_finish": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 12,
+          "tardiness": 10915,
+          "cost": 547.41924096666,
+          "wall_seconds": 0.5784278330393136,
+          "trace_file": "c2-eta-s23.json.gz",
+          "trace_sha256": "b508c6af0ba2dd74c0ccf4521a3614e42278e705199a28eeb48c6bc42297e2e2"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 720
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "free",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "free",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 13209,
+          "cost": 551.3997775666677,
+          "wall_seconds": 0.6452822501305491,
+          "trace_file": "c2-free-s20.json.gz",
+          "trace_sha256": "a5313738c2467e1b3e13402b466cd15e22f4fff60ea5fbad906504b5056bad55"
+        },
+        {
+          "config": 2,
+          "variant": "free",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 12546,
+          "cost": 557.8492943333313,
+          "wall_seconds": 0.6394668330904096,
+          "trace_file": "c2-free-s21.json.gz",
+          "trace_sha256": "d0ff27799397d6392c6c89772bfaf2bdff045ec83c20db5fc15f7cb6d20e1adc"
+        },
+        {
+          "config": 2,
+          "variant": "free",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 11594,
+          "cost": 582.4048950666672,
+          "wall_seconds": 0.632592166075483,
+          "trace_file": "c2-free-s22.json.gz",
+          "trace_sha256": "087fb5da84b97c4aea5171a0c8d9c734254144948d4a48e1c67abebd3b7ae212"
+        },
+        {
+          "config": 2,
+          "variant": "free",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 8,
+          "orders": 12,
+          "tardiness": 11516,
+          "cost": 525.7738485,
+          "wall_seconds": 0.5684919168706983,
+          "trace_file": "c2-free-s23.json.gz",
+          "trace_sha256": "701e7399fbeda81f8a515620800a1bdf09fc22808dd97dd31be77e721c555fc5"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "join",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "join",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 12590,
+          "cost": 520.641542133338,
+          "wall_seconds": 2.1663940839935094,
+          "trace_file": "c2-join-s20.json.gz",
+          "trace_sha256": "acc1f029e44551aa1731c2ca9223671a126c6ff431674173594adb093e483d9d"
+        },
+        {
+          "config": 2,
+          "variant": "join",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 12019,
+          "cost": 494.14908356666416,
+          "wall_seconds": 2.1623945829924196,
+          "trace_file": "c2-join-s21.json.gz",
+          "trace_sha256": "c0fc0241213eeb2dd9d1b62a9e7104fb172465f31f7eb5159622518f9ffec64b"
+        },
+        {
+          "config": 2,
+          "variant": "join",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 9406,
+          "cost": 561.4347935666657,
+          "wall_seconds": 2.073993124999106,
+          "trace_file": "c2-join-s22.json.gz",
+          "trace_sha256": "222e02ba3123a4fd9f96d5867be080664e8868325b4c0ecbf96a45ced2e4d133"
+        },
+        {
+          "config": 2,
+          "variant": "join",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "join"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 7,
+          "orders": 12,
+          "tardiness": 13136,
+          "cost": 469.10155289999454,
+          "wall_seconds": 2.032893583877012,
+          "trace_file": "c2-join-s23.json.gz",
+          "trace_sha256": "f8dc3700488db89ee084d881b70da01be065f6a4028b3cfdbd9e20c5d6ea1db7"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    },
+    {
+      "config": 2,
+      "variant": "slack",
+      "rows": [
+        {
+          "config": 2,
+          "variant": "slack",
+          "seed": 20,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 12680,
+          "cost": 563.8421037666576,
+          "wall_seconds": 1.990975792054087,
+          "trace_file": "c2-slack-s20.json.gz",
+          "trace_sha256": "189542370894865c806fdf64bdd9dfbc28a2449201d3ef6b3491bbddc1581807"
+        },
+        {
+          "config": 2,
+          "variant": "slack",
+          "seed": 21,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 9,
+          "orders": 14,
+          "tardiness": 13888,
+          "cost": 509.58956599999794,
+          "wall_seconds": 1.9771731670480222,
+          "trace_file": "c2-slack-s21.json.gz",
+          "trace_sha256": "ddfaaebd240f9506ae079a5f5973ff0f7cd1a1d39c6c7c5c2ca775846616ed1c"
+        },
+        {
+          "config": 2,
+          "variant": "slack",
+          "seed": 22,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 10,
+          "orders": 14,
+          "tardiness": 11865,
+          "cost": 532.1851663333265,
+          "wall_seconds": 1.9423940419219434,
+          "trace_file": "c2-slack-s22.json.gz",
+          "trace_sha256": "fd23331ce194a9e2cffcaf328460affb6eeabe4e08fe11169f663eec5abc3a52"
+        },
+        {
+          "config": 2,
+          "variant": "slack",
+          "seed": 23,
+          "weights": {
+            "wip_limit": 3,
+            "lease_calibration": false,
+            "mode": "eco",
+            "selector": "greedy",
+            "routing_free_buffers": true,
+            "bom_priority": "slack"
+          },
+          "valid": true,
+          "issues": [],
+          "shipped": 6,
+          "orders": 12,
+          "tardiness": 13947,
+          "cost": 434.074780266669,
+          "wall_seconds": 1.8162734999787062,
+          "trace_file": "c2-slack-s23.json.gz",
+          "trace_sha256": "830f6512a7f9c761f35455236aa4b48c4dc62dec946c5a5be61057403a1eccf9"
+        }
+      ],
+      "causality": {
+        "valid": true,
+        "issues": [],
+        "pairs": [
+          {
+            "left": 0,
+            "right": 1,
+            "shared_observation_prefix": 1440
+          },
+          {
+            "left": 0,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 0,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 1,
+            "right": 2,
+            "shared_observation_prefix": 285
+          },
+          {
+            "left": 1,
+            "right": 3,
+            "shared_observation_prefix": 636
+          },
+          {
+            "left": 2,
+            "right": 3,
+            "shared_observation_prefix": 285
+          }
+        ],
+        "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+      }
+    }
+  ],
+  "source_stable": true
+}

@@ -1,0 +1,91 @@
+{
+  "valid": true,
+  "as_of_utc": "2026-10-17T02:03:42.683828+00:00",
+  "source_sha256": "c02a0b6395e926b68c8f1e40068c95cbe904720b4cf7730b63296bf2e5ff2e14",
+  "documents": {
+    "RESULTS": {
+      "sha256": "b7b6c11532be125d6f71dcd626d53c3800f1410271521bbdaf4ea99433a5fd14",
+      "all_local_link_targets_exist": true
+    },
+    "JUDGES_EXPLANATION": {
+      "sha256": "251a01ca9f0e2e5bc668afe710473e69897578ec2a1cb2d52db53c1e9673a4c8",
+      "all_local_link_targets_exist": true
+    },
+    "LIVE_SCRIPT": {
+      "sha256": "503c7f81899407786a171fce650a3c143cbcfb32b89a69ebadacb692bf653aa4",
+      "all_local_link_targets_exist": true
+    },
+    "CONTROL_LAYERS": {
+      "sha256": "2c2d47dd6e041a8b2ea53d244d1fe973546a99196c4f5ff51e464b6773a29d9e",
+      "all_local_link_targets_exist": true
+    }
+  },
+  "input_seals": {
+    "final-independent-audit/complete-audit-seal.json": "06d25123025b7ed6c8eee7b7182f92368f1910a044d8b35dcd2321f9d268d352",
+    "final-complete-report/report.json": "a14957473c67b01eacaf06b75334796fc6cb55d6a5905b9bcef1c53494655ac4",
+    "final-complete-report/all-groups.json": "f5a3b1e623e8164f44918ac236c8b013c1e5308569f89ebe6a9828337546b75f",
+    "final-primary-certificates/selected-stretch-32/report.json": "77c16e7dc7d318142e48fc8b1825cefbfa6211a785a39c5b976a95a7b5baeb31",
+    "final-compute-0127-summary.json": "a52099521f1353909061881e9752592c1cbd1a4036bb49ce7ce01ef95468499a",
+    "final-full-evidence-v2-all-trace-audits-receipt.json": "e997d9358ac4dc2eab75ee43d7909f2ae210b0d3e663f1fac1ca0086e4eb37dd"
+  },
+  "frozen40_source_files_unchanged": true,
+  "coverage": {
+    "original_execution_checks": 23552,
+    "independent_fresh_numeric_anchors": 23552,
+    "independent_retained_physical_replays": 592,
+    "unretained_rows_not_freshly_replayed": 22960,
+    "groups": 74,
+    "clean_NumPy_only_portability_replays": 592
+  },
+  "primary_certificate_scope": {
+    "weighted_attainment": 0.934375,
+    "raw_attained_tapes": 239,
+    "raw_tapes": 256,
+    "raw_fraction": 0.93359375,
+    "primary_only": true,
+    "secondary_gap_unknown": true,
+    "deterministic_keyed_tape_proof_requires_no_independence": true,
+    "ideal_uniform_quality_ceiling_requires_explicit_independence": true
+  },
+  "quantum": {
+    "qaoa_calls": 452338,
+    "coupled_qaoa_calls": 174965,
+    "trivial_1bit_qaoa_calls": 272854,
+    "fallback_calls": 40455
+  },
+  "uniform_fallback_calls": 39872,
+  "quantum_advantage_demonstrated": false,
+  "quantum_timing_scope": "CPU simulation,not physical hardware latency/noise/shotcost orcrosshostspeedup",
+  "proof_reference_interval": [
+    1482,
+    1567
+  ],
+  "proof_reference_scope": "Guarded arithmetic makespan reference only; solverlower1466 and stochasticfactoryglobalgapunchanged;6117555pending",
+  "preview": {
+    "default_port": 4173,
+    "observed_listening_port": 4187,
+    "listener": "COMMAND   PID     USER   FD   TYPE             DEVICE SIZE/OFF NODE NAME\nnode    43436 iwosmura   12u  IPv4 0x612102cf3ac4de25      0t0  TCP 127.0.0.1:4187 (LISTEN)\n",
+    "explicit_command": "PORT=4187 npm run dev when port is free;otherwise use runningpreview/printedURL"
+  },
+  "spoken_words": 334,
+  "spoken_minutes_at_120_wpm": 2.783333333333333,
+  "documentation_fixes_by_reviewer": [
+    "Judges/live clarify originalperrow23552 versus592retainedfreshreplays",
+    "Judges/live separate deterministic realized-draw proof from idealindependent-uniform probabilityassumption",
+    "Judges/live clarifydefault4173/active4187 and explicitPORT command",
+    "Live guides concurrentvisualdemonstration within334spokenwords\u22482m47"
+  ],
+  "results_edits_proposed_to_owner_only": [
+    "Change93.44%of tapes toprobability-weighted attainment93.44% (239/256raw)",
+    "Scope40,455fallbackcalls explicitlytoQAOAarms;uniform has39,872separatefallbacks",
+    "AddPORT=4187/printedURL note beforelocal4187links;default4173"
+  ],
+  "control_layers_material_errors_found": false,
+  "local_link_defects_found": false,
+  "no_changes_to_results_or_control_layers_by_reviewer": true,
+  "factory_runs": 0,
+  "solver_calls": 0,
+  "external_jobs": 0,
+  "policy_changes": 0,
+  "reproduction": "PYTHONPATH=. .venv-stage2/bin/python output/stage2-search/closeout-consistency-methodology-0200/review.py; asserts current snapshot and current4187listener so it is a datedlive-check, not a timeless offline artifact"
+}

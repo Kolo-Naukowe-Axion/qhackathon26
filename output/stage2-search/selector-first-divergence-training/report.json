@@ -1,0 +1,350 @@
+{
+  "protocol": {
+    "role": "TRAIN causal one-tick priority-action substitution, exact elsewhere; no global oracle/advantage claim",
+    "source_report": "output/stage2-search/selector-domain-deduplicated-training/report.json",
+    "source_hashes": {
+      "stage2/selector_domain.py": "9d2c4564b4ed5808121932183ed1a92a8a4de30f40e7d1701eeea421c377f5f4",
+      "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+      "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+      "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+      "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+      "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+      "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+      "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+      "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+      "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+      "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+      "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+      "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+    },
+    "forced_tick": 420,
+    "forced_selected": [
+      "C0",
+      "C1",
+      "C2"
+    ],
+    "seeds": [
+      0,
+      1,
+      2,
+      4
+    ]
+  },
+  "rows": [
+    {
+      "seed": 0,
+      "baseline_metrics": {
+        "orders": 14,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 957,
+          "P04": 2472,
+          "P10": 2523,
+          "P02": 2600,
+          "P08": 3723,
+          "P05": 3839,
+          "P07": 3925,
+          "P11": 4011,
+          "P03": 4311,
+          "P09": 4913,
+          "P06": 5173,
+          "P12": 5352,
+          "U01": 5492
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 10380,
+        "grid_kwh": 3054.5086133333334,
+        "energy_cost": 547.8071589333333,
+        "carbon_kg": 1093.2019266666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 697.8071589333363,
+        "operations": 243,
+        "moves": 314,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "forced_metrics": {
+        "orders": 14,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1060,
+          "P07": 1433,
+          "P04": 2274,
+          "P10": 2719,
+          "P02": 2965,
+          "P08": 3016,
+          "P03": 4216,
+          "P05": 4487,
+          "P11": 4489,
+          "P09": 4919,
+          "P06": 5097,
+          "P12": 5163,
+          "U01": 5604
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9236,
+        "grid_kwh": 2995.359608333333,
+        "energy_cost": 533.6306305666667,
+        "carbon_kg": 1065.54440675,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 683.6306305666699,
+        "operations": 242,
+        "moves": 310,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "valid": true,
+      "issues": [],
+      "override": {
+        "hits": 1,
+        "forced_selected": [
+          "C0",
+          "C1",
+          "C2"
+        ],
+        "reconstructed_pool_sha256": "82b4d8fdf78883117f78545df63655b12ec5cc753b006c2c4c1bbdc090b5bf1e"
+      },
+      "prefix_equal": true,
+      "trace_path": "output/stage2-search/selector-first-divergence-training/seed0.json.gz",
+      "trace_sha256": "194aa1e5eb343fa6723cfeb55a31d173f05def46f7ab19ff0154d0122df8e3b3",
+      "wall_seconds": 1.5640022919978946
+    },
+    {
+      "seed": 1,
+      "baseline_metrics": {
+        "orders": 12,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 957,
+          "P10": 2213,
+          "P04": 2472,
+          "P07": 2523,
+          "P02": 2600,
+          "P08": 3721,
+          "P05": 3842,
+          "P03": 3891,
+          "P09": 3985,
+          "P11": 4176,
+          "P06": 4441,
+          "P12": 4874
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 3973,
+        "grid_kwh": 2773.395053333333,
+        "energy_cost": 486.82354853333334,
+        "carbon_kg": 973.3781126666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 636.8235485333328,
+        "operations": 206,
+        "moves": 268,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "forced_metrics": {
+        "orders": 12,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1060,
+          "P07": 1251,
+          "P02": 2116,
+          "P04": 2240,
+          "P10": 2395,
+          "P08": 2722,
+          "P05": 2935,
+          "P11": 3694,
+          "P03": 3745,
+          "P09": 3833,
+          "P06": 4141,
+          "P12": 4392
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 1530,
+        "grid_kwh": 2775.41061,
+        "energy_cost": 496.14677113333335,
+        "carbon_kg": 990.3935578333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 646.1467711333353,
+        "operations": 206,
+        "moves": 266,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "valid": true,
+      "issues": [],
+      "override": {
+        "hits": 1,
+        "forced_selected": [
+          "C0",
+          "C1",
+          "C2"
+        ],
+        "reconstructed_pool_sha256": "82b4d8fdf78883117f78545df63655b12ec5cc753b006c2c4c1bbdc090b5bf1e"
+      },
+      "prefix_equal": true,
+      "trace_path": "output/stage2-search/selector-first-divergence-training/seed1.json.gz",
+      "trace_sha256": "3fc11019861d351bddca2a40994ac96333d890234e5f80047747463b9f42ec74",
+      "wall_seconds": 1.1892769578844309
+    },
+    {
+      "seed": 2,
+      "baseline_metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 957,
+          "P10": 3925,
+          "P07": 3998,
+          "P02": 4231,
+          "P05": 4619,
+          "P04": 4908,
+          "P08": 5167,
+          "P03": 5380,
+          "P09": 5423,
+          "P11": 5616
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 20467,
+        "grid_kwh": 2979.8297533333334,
+        "energy_cost": 518.6448132,
+        "carbon_kg": 1037.8033343333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 668.6448132000007,
+        "operations": 218,
+        "moves": 290,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "forced_metrics": {
+        "orders": 14,
+        "shipped": 14,
+        "shipped_at": {
+          "P01": 1060,
+          "P07": 1251,
+          "P02": 2043,
+          "P04": 2262,
+          "P08": 2478,
+          "P10": 2725,
+          "P05": 2931,
+          "P11": 3559,
+          "P03": 3694,
+          "P09": 3745,
+          "P06": 4205,
+          "U01": 4698,
+          "P12": 4876,
+          "U02": 5002
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2940,
+        "grid_kwh": 2974.2415366666664,
+        "energy_cost": 522.8864862,
+        "carbon_kg": 1045.3376601666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 672.8864862000037,
+        "operations": 238,
+        "moves": 308,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "valid": true,
+      "issues": [],
+      "override": {
+        "hits": 1,
+        "forced_selected": [
+          "C0",
+          "C1",
+          "C2"
+        ],
+        "reconstructed_pool_sha256": "82b4d8fdf78883117f78545df63655b12ec5cc753b006c2c4c1bbdc090b5bf1e"
+      },
+      "prefix_equal": true,
+      "trace_path": "output/stage2-search/selector-first-divergence-training/seed2.json.gz",
+      "trace_sha256": "bc16c907eca208d5d55beb1352edd1f81b1f4559f8cdfcf82a45ca8702b652c6",
+      "wall_seconds": 1.426816541934386
+    },
+    {
+      "seed": 4,
+      "baseline_metrics": {
+        "orders": 12,
+        "shipped": 2,
+        "shipped_at": {
+          "P01": 953,
+          "P10": 3561
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 23961,
+        "grid_kwh": 2276.9226066666665,
+        "energy_cost": 433.69305,
+        "carbon_kg": 860.9803556666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 583.6930499999964,
+        "operations": 141,
+        "moves": 199,
+        "unfinished": 28,
+        "global_optimality_gap": null
+      },
+      "forced_metrics": {
+        "orders": 12,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1133,
+          "P07": 1285,
+          "P04": 2264,
+          "P10": 2485,
+          "P02": 2721,
+          "P08": 2952,
+          "P05": 3509,
+          "P11": 4030,
+          "P03": 4180,
+          "P09": 4221,
+          "P06": 4506,
+          "P12": 4872
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 3521,
+        "grid_kwh": 2689.535885,
+        "energy_cost": 490.30603130000003,
+        "carbon_kg": 977.04165325,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 640.3060312999974,
+        "operations": 207,
+        "moves": 268,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "valid": true,
+      "issues": [],
+      "override": {
+        "hits": 1,
+        "forced_selected": [
+          "C0",
+          "C1",
+          "C2"
+        ],
+        "reconstructed_pool_sha256": "82b4d8fdf78883117f78545df63655b12ec5cc753b006c2c4c1bbdc090b5bf1e"
+      },
+      "prefix_equal": true,
+      "trace_path": "output/stage2-search/selector-first-divergence-training/seed4.json.gz",
+      "trace_sha256": "ff1441e2f927f23d7f7ba3582cf9fada2148009026c50d95344ea7110db3e7f4",
+      "wall_seconds": 1.3030639998614788
+    }
+  ]
+}

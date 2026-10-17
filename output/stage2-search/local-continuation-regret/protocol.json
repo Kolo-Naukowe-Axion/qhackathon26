@@ -1,0 +1,149 @@
+{
+  "schema": "stage2-offline-local-continuation-regret.v1",
+  "source_hashes": {
+    "stage2/local_regret.py": "f2e4c3284718c7e4976b56e6bdc33f26b5e0d81e3b760af8ad923a2637d9253f",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "teacher": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/routing-coefficients-training/training-teacher.json",
+    "sha256": "5d249009e939e4261ba908eef44d8dd9773a3093c8f9e4fe280aaeafe52dd9ad",
+    "metadata": {
+      "schema": "metaltech-sequential-policy.v1",
+      "method": "TRAIN-only-routing-coefficient-grid",
+      "configs": [
+        {
+          "orders": 8,
+          "horizon": 5760,
+          "profile": "full"
+        },
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        },
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        },
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "policy_selection_role": "training_only_last_update",
+      "source_hashes": {
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/dispatch.py": "da50ae48f77512be433b042e8f6b8ecb40f7b2adc5ff35ba61bc769e3762b8a0",
+        "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+        "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+        "stage2/sequential.py": "cec355b18f7610854d08236e936b2927edb422b71a519442de1d632994dfd1c5",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      },
+      "train_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31
+      ],
+      "routing_selection_seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7
+      ],
+      "fit_episodes": 6784,
+      "actual_wall_seconds": 588.2770926980406,
+      "base_teacher": {
+        "path": "output/stage2-search/axion-results/learning-v1-6116807/static/checkpoint.json",
+        "sha256": "40ab64b5d5d5debdfb40847771ba0fde6e500f3b89d9856f5c075718737d035c",
+        "episodes": 6144,
+        "wall_seconds": 489.74458757300044,
+        "host": "Axion WCSS,32CPUworkers"
+      },
+      "routing_grid": {
+        "protocol": "protocol.json",
+        "measurements": "measurements.jsonl",
+        "episodes": 640,
+        "wall_seconds": 98.53250512504019,
+        "host": "local,6CPUworkers"
+      },
+      "cost_note": "Reported wall times sum sequential heterogeneous-host stages; no speed comparison implied. Reuse/amortize both stages for all methods.",
+      "selection_note": "Policies chosen from recorded TRAIN0-7 routing scores; base static policy was trained on0-31. No validation or final test selection."
+    }
+  },
+  "backend": "ToolingFactory hard homes; no kitting, no QA guard; exact selector at every other tick",
+  "configs": [
+    {
+      "orders": 8,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "seeds": [
+    0,
+    1,
+    2
+  ],
+  "selection": "First two chronological coupled boundaries per trace with2\u20134core and\u22645totalbits",
+  "max_boundaries": 12,
+  "max_counterfactual_runs": 192,
+  "oracle": "Offline realized-future continuation oracle among one-tick feasible core subsets; not causal deployment or global optimum",
+  "prefix_scope": "Physical commitments/observations strictly before target tick; full target pool also hashed",
+  "objective": [
+    "unfulfilled_count",
+    "total_tardiness_ticks",
+    "total_cost"
+  ],
+  "validation_tapes": 0,
+  "final_tapes": 0
+}

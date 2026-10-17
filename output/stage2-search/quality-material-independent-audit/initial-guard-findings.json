@@ -1,0 +1,60 @@
+{
+  "schema": "stage2-independent-quality-material-audit.v1",
+  "audited_source_sha256": "2fe669ee009a8c9d83b2144a4a3f979cc719d5170ab80dc33f36fa92e96f01bc",
+  "frozen_spec_sha256": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+  "instance_sha256": "dfea106c6f1cc9f73e39ed5110e28ccb1c8fa4ff40299e3adc9cf2ae281e99ec",
+  "seed": 6,
+  "orders": 34,
+  "horizon_ticks": 14400,
+  "realized_leaf": [
+    "mill_ok",
+    "supply_ok",
+    "rush"
+  ],
+  "available_housing_blanks": 34,
+  "unavoidable_scrap": {
+    "unit_id": "P05/housing/1",
+    "first_draw_fraction": [
+      46058426680711341,
+      18446744073709551616
+    ],
+    "repair_draw_fraction": [
+      42938134083478963,
+      4611686018427387904
+    ],
+    "first_draw": 0.002496832313424578,
+    "repair_draw": 0.009310723651156354,
+    "mandatory_heat_minimum_risk": 0.02
+  },
+  "necessary_housing_blanks_for_all_orders": 35,
+  "unfulfilled_lower_bound": 1,
+  "conclusion": "Arithmetic bound independently confirmed on frozen flagship instance; no witness or secondary optimum inferred",
+  "adversarial_guard_checks": [
+    {
+      "case": "additional_repairs",
+      "rejected": false,
+      "emitted_missing_lower_bound": 1
+    },
+    {
+      "case": "additional_replacements",
+      "rejected": false,
+      "emitted_missing_lower_bound": 1
+    },
+    {
+      "case": "preprocessed_nonraw_units",
+      "rejected": false,
+      "emitted_missing_lower_bound": 1
+    },
+    {
+      "case": "intermediate_quality_reset",
+      "rejected": false,
+      "emitted_missing_lower_bound": 1
+    },
+    {
+      "case": "unbounded_wear_probability",
+      "rejected": false,
+      "emitted_missing_lower_bound": 1
+    }
+  ],
+  "all_adversarial_assumption_changes_rejected": false
+}

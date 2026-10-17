@@ -1,0 +1,521 @@
+{
+  "schema": "tiny-automatic-prefix-walk-bound-witness-audit.v1",
+  "valid": true,
+  "certificate": {
+    "schema": "tiny-automatic-prefix-walk-union-bound.v1",
+    "pumps": 4,
+    "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+    "lower_bound_ticks": 1482,
+    "previous_buffer_bound_ticks": 1480,
+    "improvement_ticks": 2,
+    "components": {
+      "mandatory_attendance": 1400,
+      "prefix_nonattendance": 54,
+      "selected_required_hall_walks": 20,
+      "last_pump_QA_shipping": 8
+    },
+    "first_possible_process_completion": 64,
+    "maximum_mandatory_attendance_before64": 10,
+    "first_possible_mandatory_B_start": 72,
+    "productive_B_visits_at_least": 5,
+    "selected_walks_at_least": 10,
+    "source_hashes": {
+      "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+      "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+      "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f"
+    },
+    "proof": "Let P=[0,64) minus required attendance, measure>=54. Reserved ASM capacity3 plus one QA output allow atmost4 accepted unconsumed components; no QA can complete while sole worker is inB. Each productive B excursion starts atmostone assembly, and the first must weld before any assembly, giving n+1 excursions and2(n+1) selected2-minute walks. Only the first selected outward walk can overlap P, by o<=2. If it does, arrival b<=66, while first required B work starts>=72, so G=[max(64,b),72) has measure>=o and is disjoint from P, selected walks and required attendance. Therefore union(P,selectedwalks,G) has measure>=54+4(n+1). Add350n disjoint required attendance and8 final shipping after the last full pumpQA. Extra unproductive early walks do not invalidate the union argument; no claim that all nonwalking idle alone is>=54 is needed.",
+    "proof_scope": "Exact guarded deterministic automatic-attendance1\u20134-pump reference; no global flagship gap, no saved CP-bound modification",
+    "deliberately_excluded": [
+      "Per-pump join or transport gaps that can overlap other attendance",
+      "Additional productive/unproductive walks",
+      "Extra empty AGV travel",
+      "Any secondary cost optimum"
+    ],
+    "source_sha256": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+    "factory_simulations": 0,
+    "cp_solver_calls": 0
+  },
+  "complete_witnesses_checked": 26,
+  "witnesses": [
+    {
+      "path": "output/stage2-search/multi-reference-2h-axion/payload/hint-trace.json",
+      "file_sha256": "29e39634c0fcb366d441fa315839f175179c2fd3668eea04bd6a1d52ea46c267",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1567,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-3600/n3/automatic/cp-trace.json",
+      "file_sha256": "1517be2089bfe54025308b9c329dd3b2fa4897259481b01ca462c8006b226c2c",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1191,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-3600/n3/automatic/heuristic-trace.json",
+      "file_sha256": "ad3d3f436e10046987caf05119b0771fdec430f24c5226a3c8a36dac3a674328",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1860,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-3600/n4/automatic/cp-trace.json",
+      "file_sha256": "655a73cf1f2a6baad00c583f210fae628815d93e69cd3734280dfb8cb023664b",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1732,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-3600/n4/automatic/heuristic-trace.json",
+      "file_sha256": "8fdfc3852c7e4b8afb78291d00c815cc2c5ae3cc89d7369cdffac6b1c0f27cd0",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 2482,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/automatic/cp-trace.json",
+      "file_sha256": "4e7df748d534b52a89e53ff35514b9981c85a6fd822822847cb5c96026245326",
+      "instance_sha256": "8027ca0501c0c56e6a39f2332c64bdb8538196ec01c671a0a5a241b474a7d3db",
+      "pumps": 2,
+      "makespan_ticks": 863,
+      "guarded_lower_bound_ticks": 774,
+      "productive_B_excursions": 4,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/automatic/heuristic-trace.json",
+      "file_sha256": "f6b28eb7e60f76144a302c4c1db11fff0dce6ef717ee7cf53e45ac3ce8120a57",
+      "instance_sha256": "8027ca0501c0c56e6a39f2332c64bdb8538196ec01c671a0a5a241b474a7d3db",
+      "pumps": 2,
+      "makespan_ticks": 1238,
+      "guarded_lower_bound_ticks": 774,
+      "productive_B_excursions": 4,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n3/automatic/cp-trace.json",
+      "file_sha256": "ed22d44ae34f13fa03076ff131f4ddbde439ef5d00b59b726e3f4d6fd25e9f91",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1371,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 189,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n3/automatic/heuristic-trace.json",
+      "file_sha256": "ad3d3f436e10046987caf05119b0771fdec430f24c5226a3c8a36dac3a674328",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1860,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n4/automatic/cp-trace.json",
+      "file_sha256": "e1c942b924b0a7fa1567d393ba8cda1b3e1bfdd18d7803df74f8af95e6ca550b",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 2482,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n4/automatic/heuristic-trace.json",
+      "file_sha256": "8fdfc3852c7e4b8afb78291d00c815cc2c5ae3cc89d7369cdffac6b1c0f27cd0",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 2482,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-constructive/n3/trace.json",
+      "file_sha256": "655f50a3ea34526f565592c622fe7f1fcfd5fa6143a1920f77088718ac896cce",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1435,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-constructive/n4/trace.json",
+      "file_sha256": "90b46b529fa5a43c8cae8f548dbdbb471a03f6f8eb955e5ee7e3108856534791",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1732,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-parallel-axion/collected/hint-trace.json",
+      "file_sha256": "655a73cf1f2a6baad00c583f210fae628815d93e69cd3734280dfb8cb023664b",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1732,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-parallel-axion/collected/result/cp-trace.json",
+      "file_sha256": "29e39634c0fcb366d441fa315839f175179c2fd3668eea04bd6a1d52ea46c267",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1567,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-parallel-axion/payload/hint-trace.json",
+      "file_sha256": "655a73cf1f2a6baad00c583f210fae628815d93e69cd3734280dfb8cb023664b",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 1732,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 81,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n2-scale15/cp-trace.json",
+      "file_sha256": "55496c21986d8ef331d1686fe0a376eaae6a5cfca329ac261d848e7dc85ba666",
+      "instance_sha256": "8027ca0501c0c56e6a39f2332c64bdb8538196ec01c671a0a5a241b474a7d3db",
+      "pumps": 2,
+      "makespan_ticks": 885,
+      "guarded_lower_bound_ticks": 774,
+      "productive_B_excursions": 4,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 172,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n2-scale15/heuristic-trace.json",
+      "file_sha256": "f6b28eb7e60f76144a302c4c1db11fff0dce6ef717ee7cf53e45ac3ce8120a57",
+      "instance_sha256": "8027ca0501c0c56e6a39f2332c64bdb8538196ec01c671a0a5a241b474a7d3db",
+      "pumps": 2,
+      "makespan_ticks": 1238,
+      "guarded_lower_bound_ticks": 774,
+      "productive_B_excursions": 4,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n3-scale15/cp-trace.json",
+      "file_sha256": "342e830fcfca77b2494cbac6d7ad917b8fd394720359d2a1a04b2097d4666773",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1860,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n3-scale15/heuristic-trace.json",
+      "file_sha256": "ad3d3f436e10046987caf05119b0771fdec430f24c5226a3c8a36dac3a674328",
+      "instance_sha256": "953a9d3abfc3760198553ade844106046e7e7b16ba2bd60af627858b6cdb0308",
+      "pumps": 3,
+      "makespan_ticks": 1860,
+      "guarded_lower_bound_ticks": 1128,
+      "productive_B_excursions": 6,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n4-scale15/cp-trace.json",
+      "file_sha256": "e1c942b924b0a7fa1567d393ba8cda1b3e1bfdd18d7803df74f8af95e6ca550b",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 2482,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n4-scale15/heuristic-trace.json",
+      "file_sha256": "8fdfc3852c7e4b8afb78291d00c815cc2c5ae3cc89d7369cdffac6b1c0f27cd0",
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "pumps": 4,
+      "makespan_ticks": 2482,
+      "guarded_lower_bound_ticks": 1482,
+      "productive_B_excursions": 8,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/automatic/heuristic-trace.json",
+      "file_sha256": "993739294a0cb5316d9597336590a26e48088c055b84548e2e4c845d716cad79",
+      "instance_sha256": "9608af16f878d5c7b085f87f70bd9430fe3e5a1d52ad4c718332859d90374d9e",
+      "pumps": 1,
+      "makespan_ticks": 616,
+      "guarded_lower_bound_ticks": 420,
+      "productive_B_excursions": 2,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/automatic/optimal-trace.json",
+      "file_sha256": "082b76e9626c1952887e7943ae39f56255c4465bcebacaf30409fffc9820b66b",
+      "instance_sha256": "9608af16f878d5c7b085f87f70bd9430fe3e5a1d52ad4c718332859d90374d9e",
+      "pumps": 1,
+      "makespan_ticks": 566,
+      "guarded_lower_bound_ticks": 420,
+      "productive_B_excursions": 2,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 135,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/dispatch-restricted/heuristic-trace.json",
+      "file_sha256": "74e708c13dbca9228306969e381fb22d5d01d8aae271a69d2bf88a25c25ac1e6",
+      "instance_sha256": "c28ac22d00d6261afc184bfdc5cd325dae7c21c3704f49198edbed44c38f506b",
+      "pumps": 1,
+      "makespan_ticks": 616,
+      "guarded_lower_bound_ticks": 420,
+      "productive_B_excursions": 2,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 80,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/dispatch-restricted/optimal-trace.json",
+      "file_sha256": "f01c920d39ffaa4a206545b091db77c4e706fea4e23c3cd4fe8a3b572f54ea7e",
+      "instance_sha256": "c28ac22d00d6261afc184bfdc5cd325dae7c21c3704f49198edbed44c38f506b",
+      "pumps": 1,
+      "makespan_ticks": 576,
+      "guarded_lower_bound_ticks": 420,
+      "productive_B_excursions": 2,
+      "prefix_attendance_ticks": 10,
+      "first_B_start": 138,
+      "first_outward_prefix_overlap": 0,
+      "independently_checked": true
+    }
+  ],
+  "minimum_checked_makespan_by_pumps": {
+    "4": 1567,
+    "3": 1191,
+    "2": 863,
+    "1": 566
+  },
+  "excluded_incomplete_traces": [],
+  "excluded_out_of_scope": [
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n2/full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n3/full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n3/full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n4/full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-600/n4/full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n1-scale1/cp-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n1-scale1/heuristic-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n1-scale1-hint/cp-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n1-scale1-hint/heuristic-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n2-scale15-full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n2-scale15-full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n3-scale15-full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n3-scale15-full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n4-scale15-full/cp-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/multi-reference-pilot/n4-scale15-full/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/compressed/heuristic-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/compressed/optimal-trace.json",
+      "reason": "Outside union-bound scope: exact scale15 mandatory routes"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/full-attendance/heuristic-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-final/full-attendance/optimal-trace.json",
+      "reason": "Outside union-bound scope: five-minute automatic start attendance"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-full-attendance-scale15/heuristic-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-full-attendance-scale15/optimal-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-preposition-scale1/heuristic-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-preposition-scale1/optimal-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-preposition-scale15/heuristic-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-preposition-scale15/optimal-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-scale1/heuristic-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-scale1/optimal-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-scale15/heuristic-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    },
+    {
+      "path": "output/stage2-search/tiny-reference-scale15/optimal-trace.json",
+      "reason": "Outside exact tiny scope: arbitrary temporary WIP warehousing"
+    }
+  ],
+  "invalid_in_scope_traces": [],
+  "source_hashes": {
+    "bound_py": "89da8a32e52a7c8b096de8062891fc8aeafe0ac1f63e44212fc24247b335dd6f",
+    "audit_py": "8d94d5792fb66e8868770404f3804cf80b68173e2458650fe264c5fd15c6f20d",
+    "test_py": "e435146f70ecde27da3002f6b1d7408c919c1a8f04a8f4d4648033f5bbf40020"
+  },
+  "old_certificate_sha256": "2810a6ed1bfb8f0628c0d64b79f53a6cf3f3397d4c0c54b64b5becaf68edf21b",
+  "factory_simulations": 0,
+  "solver_calls": 0,
+  "wall_seconds": 1.7322460829745978,
+  "scope": "Every locally retained regular-JSON reference trace matching exact automatic-scale15 guards is inspected; complete valid witnesses for1\u20134 pumps all exceed bound. Full-attendance/compressed/changed-buffer instances are explicitly out of scope; incomplete valid traces do not supply upper bounds. Saved1480certificate, CPsources and CPbounds remain unchanged."
+}

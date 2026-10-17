@@ -20,6 +20,29 @@ personal project's Vercel dashboard.
 
 ## Run the presentation environment
 
+The Stage 2 factory opens the frozen `static-grid-12` final replay: first
+predeclared tape10004/actor900000, 12/12 shipped within its96-hour cutoff.
+The header also selects the `selected-stretch-32` final replay, 32/32 shipped
+over240 hours. These individual traces illustrate the policies; the final
+probability-weighted results and limitations remain in
+[Stage2 results](docs/STAGE2_RESULTS.md). Both controllers are classical.
+
+All source, tests and research evidence are retained on `main`, except three
+files above GitHub's100MiB blob limit, preserved as release assets with exact
+sizes and SHA-256 digests in
+[the artifact index](output/stage2-search/REMOTE_ARTIFACTS.json).
+To restore those optional full archives and the oversized development report:
+
+```sh
+gh release download stage2-final-2026-10-17 --repo Kolo-Naukowe-Axion/qhackathon26 --dir /tmp/qfactoria-release-assets
+python3 scripts/restore-large-evidence.py --downloads /tmp/qfactoria-release-assets
+```
+
+The smaller10.1MB portable bundle, site assets and ordinary build/test inputs
+are included directly in the repository. The hosted viewer contains only
+`presentation/`; local Python environments and bulk research files are not
+published as website assets.
+
 Requires Node.js 20 or newer. No package installation or API key is needed for the viewer.
 
 ```sh
@@ -37,7 +60,7 @@ Open [the local factory replay](http://127.0.0.1:4173). The server listens only 
 - **Import JSON:** load either the official baseline output format or an `axion-replay.v1` file. Imported metadata is self-reported. Data is processed locally in the browser.
 - **Export replay:** download the display wrapper with its source labels; this is separate from the required solver-generated baseline schedule files.
 
-The built-in 2×2 and 3×3 schedules are **illustrations copied from the organizer documents**. The 9-hour comparison is a hand-authored illustration. Actual verified solver schedules now exist separately as `schedule_2x2.json` (QAOA simulator, 4 h) and `schedule_3x3.json` (classical QUBO annealing, 8 h). Import `output/stage1-local-ready/qaoa-2x2/replay.json` or `output/stage1-local-ready/anneal-3x3/replay.json` to show the selected real runs; `output/stage1-selected.json` records the selection. No VeloxQ or physical ODRA5 execution is claimed; both are on user hold.
+The built-in 2×2 and 3×3 schedules are **illustrations copied from the organizer documents**. The 9-hour comparison is a hand-authored illustration. Actual verified solver schedules now exist separately as `schedule_2x2.json` (QAOA simulator, 4 h) and `schedule_3x3.json` (QAOA simulator, 8 h). Import `output/stage1-compact-ready/quantum-2x2/replay.json` or `output/stage1-compact-ready/quantum-3x3/replay.json` to show the selected real runs; `output/stage1-selected.json` records the selection. No VeloxQ or physical ODRA5 execution is claimed; both are on user hold.
 
 ## Checks
 
@@ -56,7 +79,7 @@ uv pip sync --python .venv/bin/python requirements-solver.lock.txt
 .venv/bin/python scripts/prepare-stage1.py --output output/stage1-reproduction
 ```
 
-The complete command executes QAOA and local annealing, verifies both results and audits the formulation, without invoking either remote adapter. Choose a fresh output directory. Add `--export-final` to update the root schedules and current selection. Eighteen local settings were compared; see [refinement results](docs/STAGE1_REFINEMENT.md) and [formulation and evidence](docs/STAGE1_OFFLINE.md).
+The complete command runs the solver tests, original formulation audit, compact QAOA for both instances and a matched classical annealer, without invoking either remote adapter. Choose a fresh output directory. Add `--export-final` to update both root schedules, selection and guide evidence. A uses 1 qubit / 1 layer; B uses 3 qubits / 2 layers. Twenty fresh seeds returned 81,920/81,920 optimal measurements per instance, at exact makespans 4/8 h. See [current formulation, experiments and limitations](docs/STAGE1_COMPACT.md). The compact cost construction evaluates all 2/6 common orders classically; no quantum speedup or scalable compilation is claimed. Use `--time-indexed` to reproduce the earlier 4/39-bit methods and [earlier refinement](docs/STAGE1_REFINEMENT.md).
 
 ```sh
 npm run check
@@ -84,30 +107,42 @@ dependencies are required.
 
 - `docs/STAGE2_ENVIRONMENT.md`: ambitious Stage 2 factory proposal, physical/information rules, solver boundaries and evaluation plan.
 - `docs/STAGE2_IDEATION.md`: eight design/critique iterations and alternatives considered.
-- `instances/stage2/metaltech_pressure.json`: proposed synthetic flagship parameters; incomplete simulator tables are explicitly listed.
+- `instances/stage2/metaltech_pressure.json`: synthetic factory design parameters, expanded into complete numerical tables by `stage2/spec.py`.
+- `stage2/README.md`: executable Stage 2 factory, controllers, checker, exact references, quantum experiments and current evidence boundaries.
 - `presentation/`: browser-native ES modules, original SVG art, and CSS; no frontend framework or external CDN dependency.
 
-## Stage 2 design exploration
+## Stage 2 implementation and research
 
-Stage 2 design exploration: the working proposal is a two-hall pump factory with
+The implemented Stage 2 domain is a two-hall pump factory with
 24 known orders, 72 component lots, 384 nominal manufacturing operations,
 15 machines, 4 AGVs, 10 workers, assembly joins, batches, shared tooling,
 energy constraints, quality rework and causal disruption recovery. The full
-model is the intended target; small instances serve correctness checks.
+model remains the pressure benchmark; smaller workloads retain its physical
+rules. The minute-resolution engine and independent physical checker are in
+`stage2/`. Checked experiment records, negative results, source snapshots and
+allocation costs are retained under `output/stage2-search/`.
+
+See [`stage2/README.md`](stage2/README.md) for execution and solver scope,
+[`docs/STAGE2_EXPERIMENT_LOG.md`](docs/STAGE2_EXPERIMENT_LOG.md) for measured
+development results, and [`docs/STAGE2_FINAL_EVALUATION.md`](docs/STAGE2_FINAL_EVALUATION.md)
+for the reserved final protocol. The separate local Stage 2 viewer is at
+`/stage2/`; its sources distinguish illustrations, checked examples and cohorts.
+
+The earlier structural blueprint remains available for design history:
 
 ```sh
 python3 scripts/stage2_blueprint.py --output output/stage2-design
 ```
 
-This writes `expanded-design.json` and `audit.json`, checking the nominal recipe
+This legacy script writes `expanded-design.json` and `audit.json`, checking the nominal recipe
 DAG, eligible machine/mode durations, order dates, probability mass and selected
 resource bounds. It does **not** simulate, schedule, prove feasibility or solve a
-QUBO. Missing tables and initial-state work are explicit. The browser environment
-still displays Stage 1. Codex assisted with this proposal, critique and blueprint.
+QUBO. The executable simulator, controller experiments and trace checker are
+separate artifacts. No physical ODRA run or full-factory quantum speedup is claimed.
 
 ## AI use
 
-OpenAI Codex assisted with extracting/checking requirements, planning, the presentation environment, original SVG illustration, baseline QUBO/domain-wall formulations, quantum/local solver code, SDK adapters, experiments, tests and documentation. The team supplied objectives, references, corrections and direction. Actual solver executions, parameters and samples are retained under `output/stage1-local-ready/` and the earlier `output/stage1-ready/` archive; neither VeloxQ nor physical ODRA5 success is claimed. Team members must review the code, understand the formulation and validation, and explain it during the live defense.
+OpenAI Codex assisted with extracting/checking requirements, planning, the presentation environment, original SVG illustration, baseline QUBO/domain-wall formulations, quantum/local solver code, the exact compact sequence-QUBO construction, SDK adapters, experiments, tests and documentation. The team supplied objectives, references, corrections and direction. Actual solver executions, parameters and samples are retained under `output/stage1-compact-ready/`, the experiment archive `output/stage1-compact/`, and the earlier `output/stage1-local-ready/` / `output/stage1-ready/` archives; Stage 2 implementation and research evidence are under `stage2/` and `output/stage2-search/`. Neither VeloxQ nor physical ODRA5 success is claimed. Team members must review the code, understand the formulation and validation, and explain it during the live defense.
 
 Project source is MIT-licensed. The supplied organizer PDFs are reference material from the organizers and are not relicensed by this project.
 

@@ -1,0 +1,5207 @@
+{
+  "scope": "Training/development portable-tool assignment ablations",
+  "variants": {
+    "off": {
+      "mode": "off"
+    },
+    "soft-mill": {
+      "mode": "soft",
+      "kinds": [
+        "mill"
+      ]
+    },
+    "hard-mill": {
+      "mode": "hard",
+      "kinds": [
+        "mill"
+      ]
+    },
+    "soft-all": {
+      "mode": "soft"
+    },
+    "hard-all": {
+      "mode": "hard"
+    }
+  },
+  "source_before": {
+    "stage2/tooling.py": "257011206073c4b0e6146c2b45bc5080b5b65d4f472051c286c3dfb9db3f4e83",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_after": {
+    "stage2/tooling.py": "257011206073c4b0e6146c2b45bc5080b5b65d4f472051c286c3dfb9db3f4e83",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_stable": true,
+  "groups": [
+    {
+      "orders": 8,
+      "seeds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "lease_calibration": true,
+        "selector": "priority",
+        "qa_guard_threshold": 0
+      },
+      "specialist": false,
+      "rows": [
+        {
+          "variant": "off",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1526,
+              "P08": 1820,
+              "P02": 1839,
+              "P03": 2736,
+              "P05": 3485,
+              "P04": 3959,
+              "P06": 4369,
+              "U01": 4632,
+              "U02": 5112
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1752,
+            "grid_kwh": 2680.0233866666667,
+            "energy_cost": 518.3667818666667,
+            "carbon_kg": 1027.7585293333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 668.3667818666719,
+            "operations": 178,
+            "moves": 253,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 4,
+              "mill2": 5,
+              "weld1": 2,
+              "calibration1": 9,
+              "weld2": 1,
+              "calibration_lease": 6
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 12
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 6
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 4
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s0-off.json.gz",
+          "trace_sha256": "8292fbecd9dfc5f3252bd0723395ce4dca590ea50079c2ca2b0704c0b7c70ee0",
+          "wall_seconds": 0.8350233749952167
+        },
+        {
+          "variant": "off",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 8,
+            "shipped": 8,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1105,
+              "P08": 2103,
+              "P02": 2254,
+              "P03": 3252,
+              "P04": 3436,
+              "P06": 4040,
+              "P05": 4178
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 470,
+            "grid_kwh": 2340.2972616666666,
+            "energy_cost": 426.43656603333335,
+            "carbon_kg": 849.80321475,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 576.4365660333328,
+            "operations": 138,
+            "moves": 210,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 5,
+              "mill2": 5,
+              "weld1": 2,
+              "calibration1": 12,
+              "weld2": 1,
+              "calibration_lease": 7
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 6
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 3
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 4
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 3
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 3
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s1-off.json.gz",
+          "trace_sha256": "f75c466fb529af864ea834d5c17e2ef1a5d765da6056148f074a34ee2784fd66",
+          "wall_seconds": 0.7606920830439776
+        },
+        {
+          "variant": "off",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 9,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1109,
+              "P02": 1652,
+              "P08": 1998,
+              "P03": 2615,
+              "P04": 3942,
+              "P05": 4004,
+              "P06": 5091,
+              "U01": 5450
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 4087,
+            "grid_kwh": 2688.299196666667,
+            "energy_cost": 495.67669060000003,
+            "carbon_kg": 986.7671391666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 645.6766905999916,
+            "operations": 174,
+            "moves": 270,
+            "unfinished": 1,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 7,
+              "mill2": 6,
+              "weld1": 2,
+              "calibration1": 29,
+              "weld2": 1,
+              "calibration_lease": 2
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 25
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s2-off.json.gz",
+          "trace_sha256": "360b1251785f796860539cedc46c3ba6bee2945ccd3b72768cc8512228350226",
+          "wall_seconds": 0.9776810419280082
+        },
+        {
+          "variant": "off",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 9,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1109,
+              "P02": 1652,
+              "P08": 1998,
+              "P03": 3265,
+              "P04": 4201,
+              "P05": 4313,
+              "P06": 5271,
+              "U01": 5592
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 5122,
+            "grid_kwh": 2669.44623,
+            "energy_cost": 517.8182819333333,
+            "carbon_kg": 1026.4247108333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 667.8182819333376,
+            "operations": 173,
+            "moves": 263,
+            "unfinished": 1,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 6,
+              "mill2": 5,
+              "weld1": 2,
+              "calibration1": 25,
+              "weld2": 1,
+              "calibration_lease": 2
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 10
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s3-off.json.gz",
+          "trace_sha256": "fe4314f6c570cf7f2c09ffa7d5d5b6c7020a94461675bd45c836399801f7b5ca",
+          "wall_seconds": 0.9021797918248922
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1528,
+              "P08": 1826,
+              "P02": 2127,
+              "P03": 2400,
+              "P04": 2958,
+              "P05": 3032,
+              "P06": 4220,
+              "U01": 4464,
+              "U02": 4698
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 542,
+            "grid_kwh": 2670.582878333333,
+            "energy_cost": 505.6405423666667,
+            "carbon_kg": 1004.3195322500001,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 655.6405423666647,
+            "operations": 177,
+            "moves": 254,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 3,
+              "weld1": 2,
+              "calibration1": 9,
+              "weld2": 1,
+              "calibration_lease": 10
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 12
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 5
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 13
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 13
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 12598,
+                "foreign_home_uses": 2,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s0-soft-mill.json.gz",
+          "trace_sha256": "4dac7119e76ace8ceace1e9e2f0a00e96b6259f9f34f60510f0379ed6074bb0c",
+          "wall_seconds": 0.8586834999732673
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 8,
+            "shipped": 8,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P02": 2313,
+              "P08": 2603,
+              "P04": 3720,
+              "P03": 3938,
+              "P05": 4898,
+              "P06": 4960
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2876,
+            "grid_kwh": 2362.7373533333334,
+            "energy_cost": 421.05173053333334,
+            "carbon_kg": 840.7266076666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 571.0517305333207,
+            "operations": 138,
+            "moves": 216,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 3,
+              "weld1": 2,
+              "calibration1": 25,
+              "weld2": 1,
+              "calibration_lease": 2
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 12
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 20
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 12
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 3
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 6621,
+                "foreign_home_uses": 2,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s1-soft-mill.json.gz",
+          "trace_sha256": "2a5a5383eadf92f2bfa587245d55079b878e32b2a790ba0eb3bd868457bbb779",
+          "wall_seconds": 0.7459010828752071
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P02": 2498,
+              "P08": 2956,
+              "P03": 3046,
+              "P05": 3247,
+              "P04": 3922,
+              "P06": 4371,
+              "U01": 4944,
+              "U02": 5118
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 2231,
+            "grid_kwh": 2671.491245,
+            "energy_cost": 505.7968537,
+            "carbon_kg": 1004.63263725,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 655.7968537000045,
+            "operations": 171,
+            "moves": 252,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 4,
+              "weld1": 2,
+              "calibration1": 12,
+              "weld2": 1,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 12
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 8398,
+                "foreign_home_uses": 3,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s2-soft-mill.json.gz",
+          "trace_sha256": "a391516dadb31d37bd5851c29006a499d35242e17ffde0a7b285412f6c7ac821",
+          "wall_seconds": 0.7628552501555532
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P02": 2498,
+              "P08": 2956,
+              "P03": 3357,
+              "P04": 3483,
+              "P05": 3831,
+              "P06": 4500,
+              "U01": 4884,
+              "U02": 4946
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1926,
+            "grid_kwh": 2708.8332816666666,
+            "energy_cost": 484.48554616666667,
+            "carbon_kg": 967.0729610833333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 634.4855461666675,
+            "operations": 174,
+            "moves": 248,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 5,
+              "mill2": 3,
+              "weld1": 2,
+              "calibration1": 10,
+              "weld2": 1,
+              "calibration_lease": 6
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 18
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 14
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 12
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 9886,
+                "foreign_home_uses": 4,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s3-soft-mill.json.gz",
+          "trace_sha256": "fcf245423872c6812ae5529d4392fb5b63ecdc628c9334082c4566a3b93efe60",
+          "wall_seconds": 0.7916430421173573
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1761,
+              "P02": 2020,
+              "P08": 2116,
+              "P03": 2581,
+              "P04": 3471,
+              "P05": 3755,
+              "P06": 4442,
+              "U01": 4634,
+              "U02": 5014
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1250,
+            "grid_kwh": 2700.7242283333335,
+            "energy_cost": 536.6786013666667,
+            "carbon_kg": 1061.71140975,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 686.6786013666739,
+            "operations": 178,
+            "moves": 239,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 4,
+              "weld2": 2,
+              "calibration_lease": 4
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 19
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 18
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 12
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 15525,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s0-hard-mill.json.gz",
+          "trace_sha256": "08e6e2cf4fec019b73050059bb30ad591cfdeca9f7779f41458c9f3c29a5ca5b",
+          "wall_seconds": 0.8127864999696612
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 8,
+            "shipped": 8,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1163,
+              "P02": 1825,
+              "P08": 2041,
+              "P03": 2734,
+              "P05": 3550,
+              "P04": 3727,
+              "P06": 4174
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 247,
+            "grid_kwh": 2341.7581466666666,
+            "energy_cost": 437.1691336,
+            "carbon_kg": 869.3634566666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 587.1691336000036,
+            "operations": 137,
+            "moves": 202,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 9,
+              "weld2": 2,
+              "calibration_lease": 7
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 6
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 14
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 9
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 4
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 12
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 12
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 7701,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s1-hard-mill.json.gz",
+          "trace_sha256": "f81a8ae7b54f9f75e23847328756247696a2e8f173b554da44f480b996c15b6b",
+          "wall_seconds": 0.641334000043571
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1251,
+              "P02": 1652,
+              "P08": 2039,
+              "P03": 2736,
+              "P05": 3441,
+              "P04": 3723,
+              "P06": 4315,
+              "U01": 4634,
+              "U02": 4874
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1226,
+            "grid_kwh": 2688.46113,
+            "energy_cost": 519.3766146,
+            "carbon_kg": 1029.8630625,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 669.3766145999992,
+            "operations": 175,
+            "moves": 244,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 6,
+              "weld2": 2,
+              "calibration_lease": 10
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 11
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 6
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 17
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 13
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 7845,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s2-hard-mill.json.gz",
+          "trace_sha256": "c7a1a47f43462ea5eb200d59b5ff161e11a7574784b9b26e3e6e6c3875ec83ab",
+          "wall_seconds": 0.8042784170247614
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1251,
+              "P02": 1652,
+              "P08": 2041,
+              "P03": 2734,
+              "P04": 3470,
+              "P05": 3681,
+              "P06": 4429,
+              "U01": 4500,
+              "U02": 4872
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 961,
+            "grid_kwh": 2684.5103933333335,
+            "energy_cost": 502.05916413333335,
+            "carbon_kg": 998.2510836666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 652.0591641333317,
+            "operations": 176,
+            "moves": 247,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 6,
+              "weld2": 2,
+              "calibration_lease": 12
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 5
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 14
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 15
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 7098,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s3-hard-mill.json.gz",
+          "trace_sha256": "94c2e8a907b307a13670ce42ab1ea1d4e68b6147597989ac0fecc3cb58c06c2f",
+          "wall_seconds": 0.7970318750012666
+        },
+        {
+          "variant": "soft-all",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1491,
+              "P08": 2111,
+              "P02": 2260,
+              "P03": 2500,
+              "P04": 3224,
+              "P05": 3936,
+              "P06": 4315,
+              "U01": 4634,
+              "U02": 4874
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1079,
+            "grid_kwh": 2695.6320533333333,
+            "energy_cost": 512.1427952,
+            "carbon_kg": 1016.9388293333334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 662.1427952000034,
+            "operations": 178,
+            "moves": 238,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 4,
+              "mill2": 6,
+              "weld1": 1,
+              "calibration1": 2,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 21
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 12
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 2
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 3
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 57466,
+                "foreign_home_uses": 15,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s0-soft-all.json.gz",
+          "trace_sha256": "af8bcbfbd22dae511e753b53187e0cbcac0c71effa49b74fc6d23b6d99938858",
+          "wall_seconds": 0.9838328331243247
+        },
+        {
+          "variant": "soft-all",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 8,
+            "shipped": 8,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1498,
+              "P02": 1776,
+              "P08": 1994,
+              "P03": 2613,
+              "P04": 3487,
+              "P05": 3526,
+              "P06": 3955
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 7,
+            "grid_kwh": 2353.268521666667,
+            "energy_cost": 449.8386611,
+            "carbon_kg": 892.7652004166666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 599.8386611000054,
+            "operations": 137,
+            "moves": 191,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 5,
+              "weld1": 1,
+              "calibration1": 2,
+              "weld2": 1,
+              "calibration_lease": 3
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 9
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 11
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 40289,
+                "foreign_home_uses": 11,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s1-soft-all.json.gz",
+          "trace_sha256": "9cad826003e384f6e0d67e1a49414a1cc0667664d1d7839d9090317cf27b97e7",
+          "wall_seconds": 0.7572923749685287
+        },
+        {
+          "variant": "soft-all",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1433,
+              "P02": 1595,
+              "P08": 2099,
+              "P03": 2211,
+              "P05": 3351,
+              "P04": 3468,
+              "P06": 4031,
+              "U01": 4471,
+              "U02": 4632
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 463,
+            "grid_kwh": 2708.279365,
+            "energy_cost": 525.0111478333333,
+            "carbon_kg": 1040.7382485833334,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 675.0111478333332,
+            "operations": 175,
+            "moves": 237,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 5,
+              "weld1": 1,
+              "calibration1": 4,
+              "weld2": 1,
+              "calibration_lease": 5
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 18
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 12
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 4
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 54878,
+                "foreign_home_uses": 13,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s2-soft-all.json.gz",
+          "trace_sha256": "af7bef7dd27704360331d4401a1094b246cbe92b916a5e4a4c6e8c639b547717",
+          "wall_seconds": 0.930459416937083
+        },
+        {
+          "variant": "soft-all",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1433,
+              "P02": 1595,
+              "P08": 2049,
+              "P03": 3089,
+              "P04": 3706,
+              "P05": 3936,
+              "P06": 4036,
+              "U01": 4642,
+              "U02": 4698
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 1022,
+            "grid_kwh": 2702.6098,
+            "energy_cost": 526.1268290666667,
+            "carbon_kg": 1042.5863646666667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 676.1268290666716,
+            "operations": 174,
+            "moves": 239,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 5,
+              "weld1": 1,
+              "calibration1": 4,
+              "weld2": 1,
+              "calibration_lease": 5
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 11
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 51042,
+                "foreign_home_uses": 13,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s3-soft-all.json.gz",
+          "trace_sha256": "cc3135343d3fb724b9b28d85a7f8a73e8a8f5b6b6ba454add1f7b9cbeab99ecb",
+          "wall_seconds": 0.9140402500052005
+        },
+        {
+          "variant": "hard-all",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1279,
+              "P02": 1913,
+              "P08": 1998,
+              "P03": 2397,
+              "P04": 3224,
+              "P05": 3275,
+              "P06": 3963,
+              "U01": 4464,
+              "U02": 4872
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 696,
+            "grid_kwh": 2680.6284616666667,
+            "energy_cost": 488.5373740333333,
+            "carbon_kg": 973.5424947500001,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 638.5373740333342,
+            "operations": 178,
+            "moves": 228,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 23
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 17
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 13
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 54186,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s0-hard-all.json.gz",
+          "trace_sha256": "5934d9a657a124d8bf795ecb1aaf67b4a4e1c51f6bbf1fe73c858ecbd0c4774f",
+          "wall_seconds": 0.9526518748607486
+        },
+        {
+          "variant": "hard-all",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 8,
+            "shipped": 8,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1585,
+              "P08": 1763,
+              "P03": 2613,
+              "P04": 3468,
+              "P05": 3509,
+              "P06": 4309
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 109,
+            "grid_kwh": 2307.194935,
+            "energy_cost": 427.4431083,
+            "carbon_kg": 850.58003575,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 577.4431082999971,
+            "operations": 137,
+            "moves": 180,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 15
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 18
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 13
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 11
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 45537,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s1-hard-all.json.gz",
+          "trace_sha256": "197fa3a35f4156ab2f246132464068ecdae8a4eb56ae774fa25e5115f129daca",
+          "wall_seconds": 0.8140062501188368
+        },
+        {
+          "variant": "hard-all",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1585,
+              "P08": 1756,
+              "P03": 2215,
+              "P05": 3074,
+              "P04": 3438,
+              "P06": 3831,
+              "U01": 4402,
+              "U02": 4458
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 220,
+            "grid_kwh": 2649.3139833333335,
+            "energy_cost": 485.19738473333337,
+            "carbon_kg": 966.4734171666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 635.197384733337,
+            "operations": 175,
+            "moves": 224,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 21
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 15
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 43531,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s2-hard-all.json.gz",
+          "trace_sha256": "25969a9c68a051c297847f49858a483bf46a8752af272081f579cee7519b763b",
+          "wall_seconds": 0.876489375019446
+        },
+        {
+          "variant": "hard-all",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 10,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1585,
+              "P08": 1756,
+              "P03": 2611,
+              "P04": 3048,
+              "P05": 3553,
+              "P06": 4006,
+              "U01": 4466,
+              "U02": 4696
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 522,
+            "grid_kwh": 2621.9461266666667,
+            "energy_cost": 470.1451801333333,
+            "carbon_kg": 938.2349770000001,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 620.145180133332,
+            "operations": 173,
+            "moves": 223,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 18
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 23
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 14
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 16
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 3
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 48828,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n8-s3-hard-all.json.gz",
+          "trace_sha256": "3c63d27be529f57b234a24793333d23604079814ecda0513c0b84b8244d4b844",
+          "wall_seconds": 0.916951916879043
+        }
+      ],
+      "causality": [
+        {
+          "variant": "off",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 2250
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "soft-mill",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 2057
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "hard-mill",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1102
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1102
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1802
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "soft-all",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1091
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1091
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1817
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "hard-all",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 2010
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        }
+      ]
+    },
+    {
+      "orders": 12,
+      "seeds": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "lease_calibration": true,
+        "selector": "priority",
+        "qa_guard_threshold": 0
+      },
+      "specialist": false,
+      "rows": [
+        {
+          "variant": "off",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1526,
+              "P08": 1820,
+              "P02": 1836,
+              "P03": 2560,
+              "P09": 2613,
+              "P04": 3678,
+              "P10": 4165,
+              "P05": 4311,
+              "P11": 4373,
+              "P06": 5273
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7400,
+            "grid_kwh": 3324.28529,
+            "energy_cost": 624.7728956666667,
+            "carbon_kg": 1241.7234331666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 774.772895666673,
+            "operations": 237,
+            "moves": 349,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 16,
+              "mill2": 6,
+              "weld1": 2,
+              "calibration1": 14,
+              "weld2": 1,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 20
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 3
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 11
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 6
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 9
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s0-off.json.gz",
+          "trace_sha256": "eff1a7c32611f4770f96608ad171528d3792f6ba69f249342741026f16d703ec",
+          "wall_seconds": 1.1633578329347074
+        },
+        {
+          "variant": "off",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1105,
+              "P08": 2279,
+              "P02": 2500,
+              "P03": 3040,
+              "P09": 3355,
+              "P04": 4505,
+              "P10": 4677,
+              "P05": 4802,
+              "P11": 5095
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7794,
+            "grid_kwh": 3034.908855,
+            "energy_cost": 598.3630411,
+            "carbon_kg": 1184.49808375,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 748.3630411,
+            "operations": 200,
+            "moves": 311,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 10,
+              "mill2": 9,
+              "weld1": 2,
+              "calibration1": 18,
+              "weld2": 1,
+              "calibration_lease": 11
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 12
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 20
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s1-off.json.gz",
+          "trace_sha256": "7130b6b16e36898c3eca9d10c20355f523687b8d66d86026d9e8b999cee22e1b",
+          "wall_seconds": 1.0824495828710496
+        },
+        {
+          "variant": "off",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1109,
+              "P02": 1733,
+              "P08": 1752,
+              "P03": 2391,
+              "P09": 2695,
+              "P04": 3435,
+              "P10": 3491,
+              "P05": 4223,
+              "P11": 4317,
+              "P06": 5420
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 6531,
+            "grid_kwh": 3333.4950383333335,
+            "energy_cost": 632.2213434333333,
+            "carbon_kg": 1255.5591029166667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 782.2213434333481,
+            "operations": 237,
+            "moves": 351,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 15,
+              "mill2": 10,
+              "weld1": 2,
+              "calibration1": 20,
+              "weld2": 1,
+              "calibration_lease": 2
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 10
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 31
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 13
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 8
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 4
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 9
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s2-off.json.gz",
+          "trace_sha256": "37e2f2be5bd88450e45d74d19bb7a4db4a9c1fc2e7659c3b7b848f7204fbd4df",
+          "wall_seconds": 1.1343270000070333
+        },
+        {
+          "variant": "off",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1109,
+              "P02": 1733,
+              "P08": 1752,
+              "P03": 2562,
+              "P09": 2613,
+              "P10": 3752,
+              "P04": 3944,
+              "P05": 4792,
+              "P11": 5097
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 8945,
+            "grid_kwh": 3400.8149283333332,
+            "energy_cost": 657.9165727,
+            "carbon_kg": 1304.4196980833333,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 807.9165727000042,
+            "operations": 235,
+            "moves": 344,
+            "unfinished": 12,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 8,
+              "mill2": 6,
+              "weld1": 2,
+              "calibration1": 24,
+              "weld2": 1,
+              "calibration_lease": 3
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 28
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 6
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 14
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "off",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 0,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s3-off.json.gz",
+          "trace_sha256": "79d4ba186f4bb8dadf448b12ec232852ba273f06bd323dce769006f63d5cbc32",
+          "wall_seconds": 1.1360350421164185
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1528,
+              "P08": 1828,
+              "P02": 1915,
+              "P03": 2558,
+              "P09": 2609,
+              "P04": 3435,
+              "P10": 3657,
+              "P05": 4425,
+              "P11": 4656,
+              "P06": 5012,
+              "P12": 5594
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 6664,
+            "grid_kwh": 3401.3170433333335,
+            "energy_cost": 657.9853584666666,
+            "carbon_kg": 1304.5607395,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 807.9853584666697,
+            "operations": 242,
+            "moves": 339,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 4,
+              "mill2": 6,
+              "weld1": 2,
+              "calibration1": 14,
+              "weld2": 1,
+              "calibration_lease": 7
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 19
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 14
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 3
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 17
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 7
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 8
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 14944,
+                "foreign_home_uses": 10,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s0-soft-mill.json.gz",
+          "trace_sha256": "d399b124384ed9a2f047e7f68fe485d81c6b3591fed87b7a3f26288bee4f32be",
+          "wall_seconds": 1.1446087921503931
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P02": 2087,
+              "P08": 2283,
+              "P03": 2933,
+              "P09": 3460,
+              "P04": 4223,
+              "P10": 4405,
+              "P11": 5018,
+              "P05": 5378
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7844,
+            "grid_kwh": 2995.42169,
+            "energy_cost": 570.2714716666667,
+            "carbon_kg": 1132.1660931666668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 720.2714716666653,
+            "operations": 200,
+            "moves": 308,
+            "unfinished": 6,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 5,
+              "weld1": 2,
+              "calibration1": 29,
+              "weld2": 1,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 23
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 4
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 3
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 20
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 13
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 5
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 7338,
+                "foreign_home_uses": 3,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s1-soft-mill.json.gz",
+          "trace_sha256": "9d4a779f7a0279338721acd958ef9416dd677c4dc901d4b6de85a53e07a016a4",
+          "wall_seconds": 0.9464016249403358
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P08": 2233,
+              "P02": 2500,
+              "P03": 3040,
+              "P09": 3056,
+              "P04": 4182,
+              "P10": 4313,
+              "P05": 4705,
+              "P11": 4797,
+              "P06": 5645
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 9242,
+            "grid_kwh": 3346.366065,
+            "energy_cost": 648.6813591666667,
+            "carbon_kg": 1285.8959369166666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 798.6813591666732,
+            "operations": 233,
+            "moves": 326,
+            "unfinished": 9,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 7,
+              "weld1": 2,
+              "calibration1": 11,
+              "weld2": 1,
+              "calibration_lease": 7
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 5
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 24
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 16
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 3
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 20
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 18
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 16290,
+                "foreign_home_uses": 4,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s2-soft-mill.json.gz",
+          "trace_sha256": "69b5b659325655e0766cce40310d2c128a3e993a40dde9559565c328590a737b",
+          "wall_seconds": 1.0857805837877095
+        },
+        {
+          "variant": "soft-mill",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 10,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1135,
+              "P08": 2233,
+              "P02": 2500,
+              "P03": 3353,
+              "P09": 3571,
+              "P04": 4400,
+              "P10": 4448,
+              "P05": 4950,
+              "P11": 5097
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 10939,
+            "grid_kwh": 3296.8545933333335,
+            "energy_cost": 629.5975921333334,
+            "carbon_kg": 1249.6228136666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 779.5975921333295,
+            "operations": 227,
+            "moves": 326,
+            "unfinished": 12,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 3,
+              "mill2": 9,
+              "weld1": 2,
+              "calibration1": 11,
+              "weld2": 1,
+              "calibration_lease": 9
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 8
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 19
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 10
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 21
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 16
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 1
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 6
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 11208,
+                "foreign_home_uses": 5,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s3-soft-mill.json.gz",
+          "trace_sha256": "5ba5aafd8a1c80e4306951d4f0210206db2e05dd9fc8266b1f1617610b66bdcd",
+          "wall_seconds": 1.100505125010386
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1761,
+              "P02": 2020,
+              "P08": 2120,
+              "P03": 2736,
+              "P09": 2875,
+              "P04": 3547,
+              "P10": 4048,
+              "P11": 4967,
+              "P05": 5140,
+              "P06": 5489
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 8791,
+            "grid_kwh": 3336.85071,
+            "energy_cost": 650.6557384666667,
+            "carbon_kg": 1289.1829561666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 800.6557384666692,
+            "operations": 236,
+            "moves": 328,
+            "unfinished": 9,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 6,
+              "calibration1": 12,
+              "weld2": 2,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 11
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 21
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 9
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 9
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 23
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 19
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 3
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 10
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 12990,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s0-hard-mill.json.gz",
+          "trace_sha256": "6251f4e4cfc74bc46b2d5cd3b2838c621b881cfbba7283157537f0e341eb2863",
+          "wall_seconds": 1.058165165828541
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1163,
+              "P02": 2063,
+              "P08": 2234,
+              "P03": 2287,
+              "P09": 2498,
+              "P04": 3434,
+              "P10": 3525,
+              "P05": 4312,
+              "P11": 4531,
+              "P06": 5271,
+              "P12": 5641
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 3720,
+            "grid_kwh": 3036.442805,
+            "energy_cost": 551.4767841,
+            "carbon_kg": 1099.29915125,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 701.4767841000075,
+            "operations": 211,
+            "moves": 296,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 13,
+              "weld2": 2,
+              "calibration_lease": 8
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 6
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 28
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 3
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 3
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 16269,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s1-hard-mill.json.gz",
+          "trace_sha256": "78181aa4113345bc27bf909bfe042db999d9d3e81a811abd540181dccf9754d9",
+          "wall_seconds": 0.9466305419337004
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1251,
+              "P02": 1634,
+              "P08": 2041,
+              "P03": 2262,
+              "P09": 2389,
+              "P04": 3678,
+              "P10": 3837,
+              "P11": 4373,
+              "P05": 4474,
+              "P06": 5173
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7135,
+            "grid_kwh": 3335.0247783333334,
+            "energy_cost": 606.9090550333333,
+            "carbon_kg": 1209.5854339166667,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 756.9090550333353,
+            "operations": 238,
+            "moves": 342,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 5,
+              "calibration1": 18,
+              "weld2": 2,
+              "calibration_lease": 13
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 9
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 25
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 13
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 5
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 21
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 21
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 3
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 10
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 14295,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s2-hard-mill.json.gz",
+          "trace_sha256": "ffe2be294354fd448cde62c50dfb7b6e7b7a6cec7754921891010bea8d32cda9",
+          "wall_seconds": 1.0500596249476075
+        },
+        {
+          "variant": "hard-mill",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 618,
+              "P07": 1251,
+              "P02": 1634,
+              "P08": 2041,
+              "P03": 2562,
+              "P09": 2613,
+              "P04": 3550,
+              "P10": 3655,
+              "P05": 4715,
+              "P11": 5140,
+              "P06": 5618
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 8278,
+            "grid_kwh": 3306.045845,
+            "energy_cost": 662.3360843666667,
+            "carbon_kg": 1309.4397939166668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 812.3360843666624,
+            "operations": 236,
+            "moves": 335,
+            "unfinished": 9,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 4,
+              "calibration1": 12,
+              "weld2": 2,
+              "calibration_lease": 14
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 14
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 15
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 11
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 10
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 25
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 17
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S2",
+                "count": 11
+              },
+              {
+                "tool": "weld2",
+                "machine": "S1",
+                "count": 1
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 13368,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s3-hard-mill.json.gz",
+          "trace_sha256": "aee2928f51b85bba14d258f287d12e5b290831659f40f70cdf12a686cd1af5fd",
+          "wall_seconds": 1.0932469579856843
+        },
+        {
+          "variant": "soft-all",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1491,
+              "P08": 1996,
+              "P02": 2090,
+              "P09": 2496,
+              "P03": 2591,
+              "P04": 3674,
+              "P10": 3893,
+              "P05": 4418,
+              "P11": 4510,
+              "P06": 5579
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7674,
+            "grid_kwh": 3352.196231666667,
+            "energy_cost": 613.4212825,
+            "carbon_kg": 1221.9722119166668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 763.4212825000019,
+            "operations": 238,
+            "moves": 322,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 6,
+              "mill2": 9,
+              "weld1": 1,
+              "calibration1": 4,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 18
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 8
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 15
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 1
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 16
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 84665,
+                "foreign_home_uses": 19,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s0-soft-all.json.gz",
+          "trace_sha256": "6fb1d25701f9b7f16ad34b1b0cda9b070d36a8f69a25a2d153995b07653d9147",
+          "wall_seconds": 1.3986324998550117
+        },
+        {
+          "variant": "soft-all",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1498,
+              "P02": 2016,
+              "P08": 2291,
+              "P03": 2939,
+              "P09": 2984,
+              "P04": 3541,
+              "P10": 3655,
+              "P05": 4373,
+              "P11": 4433,
+              "P06": 5471
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 4193,
+            "grid_kwh": 3089.308183333333,
+            "energy_cost": 548.2789460666667,
+            "carbon_kg": 1095.1669805,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 698.2789460666671,
+            "operations": 209,
+            "moves": 287,
+            "unfinished": 1,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 8,
+              "mill2": 8,
+              "weld1": 1,
+              "calibration1": 2,
+              "weld2": 1,
+              "calibration_lease": 5
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 16
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 2
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 23
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 13
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 4
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 15
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 58467,
+                "foreign_home_uses": 17,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s1-soft-all.json.gz",
+          "trace_sha256": "8a8d7697d36144781556580548f5dda6652e1b140f984eb811d2a961f83c1a2e",
+          "wall_seconds": 1.1274502500891685
+        },
+        {
+          "variant": "soft-all",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 14,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1433,
+              "P02": 1593,
+              "P08": 2084,
+              "P09": 2264,
+              "P03": 2734,
+              "P10": 3353,
+              "P04": 3517,
+              "P05": 4013,
+              "P11": 4311,
+              "P06": 4974,
+              "P12": 5112,
+              "U01": 5604,
+              "U02": 5666
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 4997,
+            "grid_kwh": 3426.5237533333334,
+            "energy_cost": 660.7058398666667,
+            "carbon_kg": 1310.309101,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 810.7058398666759,
+            "operations": 247,
+            "moves": 331,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 7,
+              "mill2": 8,
+              "weld1": 1,
+              "calibration1": 2,
+              "weld2": 1,
+              "calibration_lease": 3
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 25
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 25
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 16
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 3
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 14
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 3
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 62590,
+                "foreign_home_uses": 20,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s2-soft-all.json.gz",
+          "trace_sha256": "58e308040b42d2621f550c970fd529ac35614cd0c26fc853d8ef570419b457dd",
+          "wall_seconds": 1.2181912078522146
+        },
+        {
+          "variant": "soft-all",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 595,
+              "P07": 1433,
+              "P02": 1593,
+              "P08": 2039,
+              "P03": 2608,
+              "P09": 2695,
+              "P04": 3515,
+              "P10": 3679,
+              "P05": 4313,
+              "P11": 4611,
+              "P06": 5573
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7291,
+            "grid_kwh": 3418.254815,
+            "energy_cost": 649.9509341666667,
+            "carbon_kg": 1290.4916244166666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 799.9509341666737,
+            "operations": 239,
+            "moves": 321,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 6,
+              "mill2": 9,
+              "weld1": 1,
+              "calibration1": 2,
+              "weld2": 1,
+              "calibration_lease": 3
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 21
+              },
+              {
+                "tool": "calibration1",
+                "machine": "QA2",
+                "count": 7
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA1",
+                "count": 1
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 22
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 14
+              },
+              {
+                "tool": "mill1",
+                "machine": "F2",
+                "count": 1
+              },
+              {
+                "tool": "mill1",
+                "machine": "F3",
+                "count": 2
+              },
+              {
+                "tool": "mill2",
+                "machine": "F1",
+                "count": 5
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 12
+              },
+              {
+                "tool": "mill2",
+                "machine": "F3",
+                "count": 8
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 7
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "soft",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 73436,
+                "foreign_home_uses": 24,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s3-soft-all.json.gz",
+          "trace_sha256": "a99df77783d6e000f72112e0ea4cfab1b7d3bdb4dc3041a9ca1dc223c9fd2095",
+          "wall_seconds": 1.4144077918026596
+        },
+        {
+          "variant": "hard-all",
+          "seed": 0,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1279,
+              "P02": 1823,
+              "P08": 1996,
+              "P03": 2877,
+              "P09": 3220,
+              "P04": 3526,
+              "P10": 3835,
+              "P05": 4465,
+              "P11": 4789,
+              "P06": 5477
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7792,
+            "grid_kwh": 3296.343621666667,
+            "energy_cost": 623.8299951,
+            "carbon_kg": 1239.1200154166668,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 773.8299950999929,
+            "operations": 236,
+            "moves": 303,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 23
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 28
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 23
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 19
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 86164,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s0-hard-all.json.gz",
+          "trace_sha256": "a887296779a5d053f30937a4423412dd92d1ad483e9e51aabfb792ef4ecf45aa",
+          "wall_seconds": 1.3022861669305712
+        },
+        {
+          "variant": "hard-all",
+          "seed": 1,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 12,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1583,
+              "P08": 1758,
+              "P03": 2561,
+              "P09": 2614,
+              "P04": 3436,
+              "P10": 3522,
+              "P05": 4317,
+              "P11": 4383,
+              "P06": 4997,
+              "P12": 5477
+            },
+            "all_orders_fulfilled": true,
+            "total_tardiness_ticks": 3136,
+            "grid_kwh": 3025.9811,
+            "energy_cost": 566.8068044,
+            "carbon_kg": 1126.839043,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 716.8068043999925,
+            "operations": 211,
+            "moves": 269,
+            "unfinished": 0,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 24
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 20
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 16
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 7
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 62674,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s1-hard-all.json.gz",
+          "trace_sha256": "854a1f93300135dfcc4fd5879e5fe4c953acab5d32d1f26ba251847bbc25e997",
+          "wall_seconds": 1.1166158330161124
+        },
+        {
+          "variant": "hard-all",
+          "seed": 2,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 12,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1585,
+              "P08": 1758,
+              "P03": 2393,
+              "P09": 2604,
+              "P10": 3351,
+              "P04": 3708,
+              "P05": 3998,
+              "P06": 4789,
+              "P11": 5013,
+              "P12": 5471
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 6299,
+            "grid_kwh": 3316.2271633333335,
+            "energy_cost": 626.1434659333333,
+            "carbon_kg": 1243.9589841666666,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 776.143465933336,
+            "operations": 240,
+            "moves": 305,
+            "unfinished": 4,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 24
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 29
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 22
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 20
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 8
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 6
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 67343,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s2-hard-all.json.gz",
+          "trace_sha256": "4ee2c695750236b789b97d6967fc6401f90d4968e28a69fcb240e5574c9319ad",
+          "wall_seconds": 1.2073825001716614
+        },
+        {
+          "variant": "hard-all",
+          "seed": 3,
+          "valid": true,
+          "issues": [],
+          "terminal": true,
+          "metrics": {
+            "orders": 14,
+            "shipped": 11,
+            "shipped_at": {
+              "P01": 867,
+              "P07": 1092,
+              "P02": 1585,
+              "P08": 1758,
+              "P03": 2560,
+              "P09": 2613,
+              "P04": 3704,
+              "P10": 3755,
+              "P05": 4431,
+              "P11": 4522,
+              "P06": 5573
+            },
+            "all_orders_fulfilled": false,
+            "total_tardiness_ticks": 7585,
+            "grid_kwh": 3321.0032733333333,
+            "energy_cost": 591.4460766666667,
+            "carbon_kg": 1181.024789,
+            "terminal_soc": 2400,
+            "terminal_soc_satisfied": true,
+            "investment_cost": 150,
+            "total_cost": 741.4460766666651,
+            "operations": 236,
+            "moves": 303,
+            "unfinished": 7,
+            "global_optimality_gap": null
+          },
+          "tool_metrics": {
+            "relocations": {
+              "mill1": 1,
+              "mill2": 1,
+              "weld1": 1,
+              "calibration1": 1,
+              "weld2": 1,
+              "calibration_lease": 1
+            },
+            "uses": [
+              {
+                "tool": "calibration1",
+                "machine": "QA1",
+                "count": 25
+              },
+              {
+                "tool": "calibration_lease",
+                "machine": "QA2",
+                "count": 26
+              },
+              {
+                "tool": "mill1",
+                "machine": "F1",
+                "count": 19
+              },
+              {
+                "tool": "mill2",
+                "machine": "F2",
+                "count": 23
+              },
+              {
+                "tool": "weld1",
+                "machine": "S1",
+                "count": 9
+              },
+              {
+                "tool": "weld2",
+                "machine": "S2",
+                "count": 5
+              }
+            ],
+            "algorithm_audit": {
+              "tool_assignment": {
+                "policy": {
+                  "mode": "hard",
+                  "kinds": [
+                    "mill",
+                    "weld",
+                    "calibration"
+                  ],
+                  "routing": false,
+                  "home_penalty": 12.0
+                },
+                "tool_view_filters": 80698,
+                "foreign_home_uses": 0,
+                "scope": "Algorithm-only homes; tools stay physically portable"
+              }
+            }
+          },
+          "trace_file": "n12-s3-hard-all.json.gz",
+          "trace_sha256": "2a4a21a5f0dbaaea447951af57854de3e824b229827386569a646314c00eeaad",
+          "wall_seconds": 1.3399869170971215
+        }
+      ],
+      "causality": [
+        {
+          "variant": "off",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1816
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "soft-mill",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 2056
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "hard-mill",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 847
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1102
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1102
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1612
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "soft-all",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 851
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1091
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1091
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1827
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        },
+        {
+          "variant": "hard-all",
+          "verification": {
+            "valid": true,
+            "issues": [],
+            "pairs": [
+              {
+                "left": 0,
+                "right": 1,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 0,
+                "right": 2,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 0,
+                "right": 3,
+                "shared_observation_prefix": 947
+              },
+              {
+                "left": 1,
+                "right": 2,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 1,
+                "right": 3,
+                "shared_observation_prefix": 1035
+              },
+              {
+                "left": 2,
+                "right": 3,
+                "shared_observation_prefix": 1770
+              }
+            ],
+            "scope": "Empirical paired-prefix test only; does not prove nonanticipativity over all histories"
+          }
+        }
+      ]
+    }
+  ],
+  "wall_seconds": 23.481928083114326,
+  "valid": true
+}

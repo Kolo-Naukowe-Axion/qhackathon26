@@ -1,40 +1,58 @@
-// Public summary of the selected, verified local runs. Refresh when selection changes.
+// Selected verified local runs; generated from output/stage1-selected.json and retained samples.
 export const selectedEvidence = {
   "instance_2x2": {
-    "method": "QAOA p=3, local-x mixer (Qiskit Aer statevector simulator)",
-    "timestamp": "2026-10-16T18:17:23.495231+00:00",
-    "encoding": "domain-wall",
-    "variables": 4,
+    "method": "QAOA p=1, x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+    "timestamp": "2026-10-16T23:17:45.153699+00:00",
+    "encoding": "pairwise-order",
+    "variables": 1,
     "total_samples": 4096,
     "feasible_samples": 4096,
     "feasible_rate": 1.0,
-    "source": "output/stage1-local-ready/qaoa-2x2",
+    "source": "output/stage1-compact-ready/quantum-2x2",
     "metadata": {
-      "mixer": "local-x",
-      "trainable_parameters": 15,
-      "layers": 3,
+      "mixer": "x",
+      "trainable_parameters": 2,
+      "layers": 1,
       "shots": 4096,
       "seed": 2026,
-      "restarts": 16,
+      "restarts": 1,
       "maxiter": 500,
-      "elapsed_wall_seconds": 6.578799542039633
-    }
+      "elapsed_wall_seconds": 0.03224712493829429,
+      "ideal_ground_probability": 0.9999999999999984,
+      "circuit_operations": {
+        "h": 1,
+        "rz": 1,
+        "rx": 1
+      }
+    },
+    "optimal_samples": 4096
   },
   "instance_3x3": {
-    "method": "Classical QUBO simulated annealing (dwave-samplers)",
-    "timestamp": "2026-10-16T18:17:25.863137+00:00",
-    "encoding": "onehot",
-    "variables": 39,
-    "total_samples": 512,
-    "feasible_samples": 511,
-    "feasible_rate": 0.998046875,
-    "source": "output/stage1-local-ready/anneal-3x3",
+    "method": "QAOA p=2, local-x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+    "timestamp": "2026-10-16T23:17:46.536544+00:00",
+    "encoding": "pairwise-order",
+    "variables": 3,
+    "total_samples": 4096,
+    "feasible_samples": 4096,
+    "feasible_rate": 1.0,
+    "source": "output/stage1-compact-ready/quantum-3x3",
     "metadata": {
-      "reads": 512,
-      "sweeps": 32000,
+      "mixer": "local-x",
+      "trainable_parameters": 8,
+      "layers": 2,
+      "shots": 4096,
       "seed": 2026,
-      "elapsed_wall_seconds": 2.121553333941847,
-      "beta_schedule_type": "linear"
-    }
+      "restarts": 8,
+      "maxiter": 500,
+      "elapsed_wall_seconds": 1.3105563749559224,
+      "ideal_ground_probability": 0.9999999999999547,
+      "circuit_operations": {
+        "rz": 6,
+        "rzz": 6,
+        "rx": 6,
+        "h": 3
+      }
+    },
+    "optimal_samples": 4096
   }
 };

@@ -1,0 +1,72 @@
+{
+  "schema": "stage1-qubo.v1",
+  "encoding": "pairwise-order",
+  "objective": "makespan",
+  "variables": [
+    {
+      "before": "Z1",
+      "after": "Z2"
+    }
+  ],
+  "linear": [
+    1
+  ],
+  "offset": 4,
+  "quadratic": [],
+  "horizon": 6,
+  "instance": {
+    "problem": "erp_scheduling",
+    "jobs": [
+      {
+        "id": "Z1",
+        "operations": [
+          {
+            "machine": "T",
+            "duration": 2
+          },
+          {
+            "machine": "F",
+            "duration": 1
+          }
+        ]
+      },
+      {
+        "id": "Z2",
+        "operations": [
+          {
+            "machine": "T",
+            "duration": 1
+          },
+          {
+            "machine": "F",
+            "duration": 2
+          }
+        ]
+      }
+    ]
+  },
+  "order_costs": [
+    {
+      "order": [
+        "Z1",
+        "Z2"
+      ],
+      "bits": [
+        1
+      ],
+      "makespan": 5
+    },
+    {
+      "order": [
+        "Z2",
+        "Z1"
+      ],
+      "bits": [
+        0
+      ],
+      "makespan": 4
+    }
+  ],
+  "scope": "All earliest-start common job permutations; not all feasible timed schedules",
+  "provenance": "offline exhaustive n! cost construction; no reference answer or service execution"
+}

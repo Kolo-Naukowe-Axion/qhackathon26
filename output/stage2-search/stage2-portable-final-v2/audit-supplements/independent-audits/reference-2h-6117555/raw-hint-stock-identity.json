@@ -1,0 +1,46 @@
+{
+  "schema": "stage2-identity-audit.v1",
+  "valid": false,
+  "issues": [
+    {
+      "code": "unit_before_identity_birth",
+      "message": "Part referenced before its canonical birth",
+      "unit_id": "P03/pump/1",
+      "field": "part_move",
+      "record_id": "move55"
+    }
+  ],
+  "coverage": [
+    "canonical_initial_components",
+    "canonical_urgent_order_and_components",
+    "single_canonical_pump_birth_per_order",
+    "bounded_canonical_replacement",
+    "authorized_part_references",
+    "immutable_unit_attempt_qa_stream"
+  ],
+  "metrics": {
+    "initial_components": 12,
+    "urgent_orders": 0,
+    "authorized_unit_identities": 16,
+    "initial_pump_births": 4,
+    "replacement_events": 0,
+    "qa_results": 16
+  },
+  "metadata_notes": [
+    {
+      "field": "instance.quality.paired_key",
+      "declared_value": null,
+      "actual_implemented_key": "quality:{unit_id}:{attempt}",
+      "operation_id_role": "Diagnostic reference only, never a random-stream key",
+      "status": "Execution key verified independently"
+    }
+  ],
+  "provenance": {
+    "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+    "instance_anchor": "supplied_instance"
+  },
+  "limitations": [
+    "Supplement only: run anchored check.py physical replay as well.",
+    "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+  ]
+}

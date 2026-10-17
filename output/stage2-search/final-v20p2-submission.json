@@ -1,0 +1,88 @@
+{
+  "schema": "stage2-final-submission.v1",
+  "submitted_utc": "2026-10-17T00:32:12.672033+00:00",
+  "global_freeze_index_sha256": "496e56ca28b89a94a2bc86a3dcabd22bcfe8ed09b6f82355a497ac959473f44f",
+  "jobs": {
+    "strong-cheap": {
+      "job_id": "6117508",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/strong-cheap.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "quantum-stochastic": {
+      "job_id": "6117509",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/quantum-stochastic.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "legacy": {
+      "job_id": "6117510",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/legacy.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "mpc-12": {
+      "job_id": "6117511",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/mpc-12.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "mpc-13": {
+      "job_id": "6117512",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/mpc-13.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "mpc-14": {
+      "job_id": "6117513",
+      "dependency": null,
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/mpc-14.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "quantum-deterministic": {
+      "job_id": "6117514",
+      "dependency": "quantum-stochastic",
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/quantum-deterministic.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "frontier": {
+      "job_id": "6117515",
+      "dependency": "legacy",
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/frontier.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "mpc-16": {
+      "job_id": "6117516",
+      "dependency": "mpc-12",
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/mpc-16.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    },
+    "mpc-24": {
+      "job_id": "6117517",
+      "dependency": "mpc-13",
+      "script": "/home/iwosmu/qh26-stage2-20261016/final-preparation-v20p2/launch/mpc-24.sbatch",
+      "gpus": 0,
+      "cpus": 32,
+      "time_limit_seconds": 4800
+    }
+  },
+  "allocation": "At most six simultaneous32CPU jobs(192cores),0GPU; fiveMPCcontexts limited tothreeconcurrent via dependency chains. All256 tapes unchanged perjob; no protocolsharding."
+}

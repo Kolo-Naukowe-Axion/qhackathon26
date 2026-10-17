@@ -177,6 +177,9 @@ def energy(model, sample):
 
 def decode(model, sample):
     bits = checked_bits(model, sample)
+    if model.get("encoding") == "pairwise-order":
+        from .sequence import decode_sequence
+        return decode_sequence(model, bits)
     variables = model["variables"]
     if model.get("encoding") == "domain-wall":
         bits = [expr["constant"] + sum(q * bits[i] for i, q in expr["terms"])
@@ -192,6 +195,10 @@ def decode(model, sample):
 def encode_schedule(model, schedule):
     """Encode a feasible schedule for round-trip tests or explicit warm starts."""
     selected = {(s["job"], s["machine"]): s["start"] for s in schedule}
+    if model.get("encoding") == "pairwise-order":
+        first_machine = model["instance"]["jobs"][0]["operations"][0]["machine"]
+        return [int(selected[(v["before"], first_machine)] < selected[(v["after"], first_machine)])
+                for v in model["variables"]]
     if model.get("encoding") == "domain-wall":
         return [int(selected[(v["job"], v["machine"])] > v["after_start"]) for v in model["variables"]]
     return [int(selected.get((v["job"], v["machine"])) == v["start"]) for v in model["variables"]]

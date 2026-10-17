@@ -1,0 +1,2627 @@
+[
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2026",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 2.90265625,
+          "actor_mean_environment_cvar90": 5.079687500000001,
+          "joint_actor_environment_cvar90": 5.079687500000001
+        },
+        "total_tardiness_ticks": {
+          "mean": 9242.02546875,
+          "actor_mean_environment_cvar90": 13844.109375000002,
+          "joint_actor_environment_cvar90": 13844.109375000002
+        },
+        "total_cost": {
+          "mean": 753.9084815319986,
+          "actor_mean_environment_cvar90": 811.59999849203,
+          "joint_actor_environment_cvar90": 811.59999849203
+        },
+        "carbon_kg": {
+          "mean": 1197.5819802866667,
+          "actor_mean_environment_cvar90": 1307.8283722303388,
+          "joint_actor_environment_cvar90": 1307.8283722303388
+        }
+      },
+      "probability_all_orders_fulfilled": 0.03796875
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.6371311141889253,
+          "literal_sum_all_executions": 416.9249472120032
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.6153897257570313,
+          "literal_sum_all_executions": 411.859645195
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.227360021195121,
+          "literal_sum_all_executions": 312.79992676399115
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.37604084828452733,
+          "literal_sum_all_executions": 96.54682298899661
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.008133174501635025,
+          "literal_sum_all_executions": 2.060412753014134
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.008077251509687562,
+          "literal_sum_all_executions": 2.0487960590000234
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2026",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 5.5321875,
+          "actor_mean_environment_cvar90": 9.3515625,
+          "joint_actor_environment_cvar90": 9.3515625
+        },
+        "total_tardiness_ticks": {
+          "mean": 15696.09921875,
+          "actor_mean_environment_cvar90": 22282.65312500001,
+          "joint_actor_environment_cvar90": 22282.65312500001
+        },
+        "total_cost": {
+          "mean": 775.8028610875222,
+          "actor_mean_environment_cvar90": 856.5198561214617,
+          "joint_actor_environment_cvar90": 856.5198561214617
+        },
+        "carbon_kg": {
+          "mean": 1243.6644131088021,
+          "actor_mean_environment_cvar90": 1399.2143966205733,
+          "joint_actor_environment_cvar90": 1399.2143966205733
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.8862560128262238,
+          "literal_sum_all_executions": 480.8343768839932
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.8688325744179688,
+          "literal_sum_all_executions": 476.078354888
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.4238667050848435,
+          "literal_sum_all_executions": 363.11187460899964
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.43824481094092343,
+          "literal_sum_all_executions": 111.33449776099769
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007999188009640577,
+          "literal_sum_all_executions": 2.049076814991622
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.00797538437578069,
+          "literal_sum_all_executions": 2.0429938349999013
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2026",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 13.19078125,
+          "actor_mean_environment_cvar90": 15.243749999999999,
+          "joint_actor_environment_cvar90": 15.243749999999999
+        },
+        "total_tardiness_ticks": {
+          "mean": 33351.68671875,
+          "actor_mean_environment_cvar90": 37898.781250000015,
+          "joint_actor_environment_cvar90": 37898.781250000015
+        },
+        "total_cost": {
+          "mean": 756.6299259260093,
+          "actor_mean_environment_cvar90": 817.7192820241663,
+          "joint_actor_environment_cvar90": 817.7192820241663
+        },
+        "carbon_kg": {
+          "mean": 1204.766143774297,
+          "actor_mean_environment_cvar90": 1322.1817190657553,
+          "joint_actor_environment_cvar90": 1322.1817190657553
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.009978082714681,
+          "literal_sum_all_executions": 514.1876961349976
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.9977801925939065,
+          "literal_sum_all_executions": 511.045236542
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.5205191623206007,
+          "literal_sum_all_executions": 389.36276139699567
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.46891845297500817,
+          "literal_sum_all_executions": 119.55582300000333
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007993161259960644,
+          "literal_sum_all_executions": 2.0451893030435713
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.007971789611406474,
+          "literal_sum_all_executions": 2.0395042460001456
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2027",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 2.6165625,
+          "actor_mean_environment_cvar90": 4.525,
+          "joint_actor_environment_cvar90": 4.525
+        },
+        "total_tardiness_ticks": {
+          "mean": 7954.22546875,
+          "actor_mean_environment_cvar90": 12018.826562500004,
+          "joint_actor_environment_cvar90": 12018.826562500004
+        },
+        "total_cost": {
+          "mean": 731.7649998805049,
+          "actor_mean_environment_cvar90": 789.3735608726563,
+          "joint_actor_environment_cvar90": 789.3735608726563
+        },
+        "carbon_kg": {
+          "mean": 1155.0978656936588,
+          "actor_mean_environment_cvar90": 1265.576934235938,
+          "joint_actor_environment_cvar90": 1265.576934235938
+        }
+      },
+      "probability_all_orders_fulfilled": 0.054375
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.5384545724682803,
+          "literal_sum_all_executions": 391.50626383599865
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.521322083432656,
+          "literal_sum_all_executions": 387.33714814899986
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.1440517339462515,
+          "literal_sum_all_executions": 290.80936531199904
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.3698614084710778,
+          "literal_sum_all_executions": 94.54149967999547
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007943258601586437,
+          "literal_sum_all_executions": 2.0335005420056405
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.00791569762281265,
+          "literal_sum_all_executions": 2.0265466279999274
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2027",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 5.3328125,
+          "actor_mean_environment_cvar90": 8.5984375,
+          "joint_actor_environment_cvar90": 8.5984375
+        },
+        "total_tardiness_ticks": {
+          "mean": 15232.8646875,
+          "actor_mean_environment_cvar90": 20611.003125000007,
+          "joint_actor_environment_cvar90": 20611.003125000007
+        },
+        "total_cost": {
+          "mean": 787.2471814521101,
+          "actor_mean_environment_cvar90": 856.4499557564083,
+          "joint_actor_environment_cvar90": 856.4499557564083
+        },
+        "carbon_kg": {
+          "mean": 1264.0953086047527,
+          "actor_mean_environment_cvar90": 1397.298897828255,
+          "joint_actor_environment_cvar90": 1397.298897828255
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.6880011788579696,
+          "literal_sum_all_executions": 431.709715504001
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.6741557576490627,
+          "literal_sum_all_executions": 428.12497186199994
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.2337305368073344,
+          "literal_sum_all_executions": 316.0377269099963
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.43260220030968427,
+          "literal_sum_all_executions": 110.07419660999949
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.00815724342377088,
+          "literal_sum_all_executions": 2.086631133987339
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.008000164015625505,
+          "literal_sum_all_executions": 2.047669879000395
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-ppo-2027",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 13.32375,
+          "actor_mean_environment_cvar90": 15.590625,
+          "joint_actor_environment_cvar90": 15.590625
+        },
+        "total_tardiness_ticks": {
+          "mean": 33903.949375000004,
+          "actor_mean_environment_cvar90": 37986.82812500001,
+          "joint_actor_environment_cvar90": 37986.82812500001
+        },
+        "total_cost": {
+          "mean": 726.631910922481,
+          "actor_mean_environment_cvar90": 827.2417022810923,
+          "joint_actor_environment_cvar90": 827.2417022810923
+        },
+        "carbon_kg": {
+          "mean": 1147.792022494961,
+          "actor_mean_environment_cvar90": 1340.7863956319013,
+          "joint_actor_environment_cvar90": 1340.7863956319013
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.060709452023283,
+          "literal_sum_all_executions": 528.3618887210018
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.046264425234843,
+          "literal_sum_all_executions": 524.4794237009999
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.5870743434073376,
+          "literal_sum_all_executions": 407.21730157599995
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4514033557803168,
+          "literal_sum_all_executions": 115.36775618800311
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.008067724186663768,
+          "literal_sum_all_executions": 2.0663770170140197
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.008046286016872057,
+          "literal_sum_all_executions": 2.061070018999416
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-cem-2026",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 2.5475,
+          "actor_mean_environment_cvar90": 4.715625,
+          "joint_actor_environment_cvar90": 4.715625
+        },
+        "total_tardiness_ticks": {
+          "mean": 8077.109375,
+          "actor_mean_environment_cvar90": 12578.012500000004,
+          "joint_actor_environment_cvar90": 12578.012500000004
+        },
+        "total_cost": {
+          "mean": 726.0714582523057,
+          "actor_mean_environment_cvar90": 766.0150883829708,
+          "joint_actor_environment_cvar90": 766.0150883829708
+        },
+        "carbon_kg": {
+          "mean": 1145.0628465967059,
+          "actor_mean_environment_cvar90": 1221.3461398066413,
+          "joint_actor_environment_cvar90": 1221.3461398066413
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0528125
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.6026962369081195,
+          "literal_sum_all_executions": 407.0254877209986
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.590670042867656,
+          "literal_sum_all_executions": 404.13166586499995
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.2266843114967312,
+          "literal_sum_all_executions": 310.83205585400265
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.36057880763340877,
+          "literal_sum_all_executions": 92.28344660399307
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0026745680875438892,
+          "literal_sum_all_executions": 0.6844938129725051
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0026354735026572506,
+          "literal_sum_all_executions": 0.674506857000452
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-cem-2026",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 4.63625,
+          "actor_mean_environment_cvar90": 7.6203125000000025,
+          "joint_actor_environment_cvar90": 7.6203125000000025
+        },
+        "total_tardiness_ticks": {
+          "mean": 14093.32671875,
+          "actor_mean_environment_cvar90": 19242.71406250001,
+          "joint_actor_environment_cvar90": 19242.71406250001
+        },
+        "total_cost": {
+          "mean": 792.8962289496317,
+          "actor_mean_environment_cvar90": 846.4019861558878,
+          "joint_actor_environment_cvar90": 846.4019861558878
+        },
+        "carbon_kg": {
+          "mean": 1275.311704159909,
+          "actor_mean_environment_cvar90": 1378.0594697101567,
+          "joint_actor_environment_cvar90": 1378.0594697101567
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.0380123789733124,
+          "literal_sum_all_executions": 520.6672178340059
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.023879385318125,
+          "literal_sum_all_executions": 516.888214083
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.5700372960390594,
+          "literal_sum_all_executions": 401.3322480240008
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.45066187363889887,
+          "literal_sum_all_executions": 114.76116261699872
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0027036748657921095,
+          "literal_sum_all_executions": 0.6921357599603652
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0026591498287439276,
+          "literal_sum_all_executions": 0.6807833969986774
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-cem-2026",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 12.18671875,
+          "actor_mean_environment_cvar90": 14.9625,
+          "joint_actor_environment_cvar90": 14.9625
+        },
+        "total_tardiness_ticks": {
+          "mean": 32897.176562500004,
+          "actor_mean_environment_cvar90": 38711.45625000002,
+          "joint_actor_environment_cvar90": 38711.45625000002
+        },
+        "total_cost": {
+          "mean": 727.9819968303422,
+          "actor_mean_environment_cvar90": 788.8657105458324,
+          "joint_actor_environment_cvar90": 788.8657105458324
+        },
+        "carbon_kg": {
+          "mean": 1150.9381506915886,
+          "actor_mean_environment_cvar90": 1268.988847280078,
+          "joint_actor_environment_cvar90": 1268.988847280078
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.253922405634532,
+          "literal_sum_all_executions": 578.2142016740004
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.2390040467728127,
+          "literal_sum_all_executions": 574.2215670930001
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.7649941196245325,
+          "literal_sum_all_executions": 453.33426499600137
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4717905967034037,
+          "literal_sum_all_executions": 120.39078085799201
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0027242849391152647,
+          "literal_sum_all_executions": 0.6976131069868643
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0026807120412503417,
+          "literal_sum_all_executions": 0.6863390219999985
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-bandit-2026",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 2.4421875,
+          "actor_mean_environment_cvar90": 4.5406249999999995,
+          "joint_actor_environment_cvar90": 4.5406249999999995
+        },
+        "total_tardiness_ticks": {
+          "mean": 7582.62875,
+          "actor_mean_environment_cvar90": 11668.384375000003,
+          "joint_actor_environment_cvar90": 11668.384375000003
+        },
+        "total_cost": {
+          "mean": 749.8330520912053,
+          "actor_mean_environment_cvar90": 810.9210064244824,
+          "joint_actor_environment_cvar90": 810.9210064244824
+        },
+        "carbon_kg": {
+          "mean": 1192.1069442601433,
+          "actor_mean_environment_cvar90": 1308.57112653724,
+          "joint_actor_environment_cvar90": 1308.57112653724
+        }
+      },
+      "probability_all_orders_fulfilled": 0.07953125
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.5350344386376495,
+          "literal_sum_all_executions": 392.53166951199955
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.5246755822750007,
+          "literal_sum_all_executions": 389.8759249620002
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.1379842367954587,
+          "literal_sum_all_executions": 291.155269467999
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.37636742008922386,
+          "literal_sum_all_executions": 96.08119177000208
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007296104572910025,
+          "literal_sum_all_executions": 1.867346452036145
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.007264308381712708,
+          "literal_sum_all_executions": 1.8590506969978549
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-bandit-2026",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 5.57984375,
+          "actor_mean_environment_cvar90": 8.749999999999998,
+          "joint_actor_environment_cvar90": 8.749999999999998
+        },
+        "total_tardiness_ticks": {
+          "mean": 15814.53984375,
+          "actor_mean_environment_cvar90": 20786.56250000001,
+          "joint_actor_environment_cvar90": 20786.56250000001
+        },
+        "total_cost": {
+          "mean": 792.5441604418227,
+          "actor_mean_environment_cvar90": 872.9277093703728,
+          "joint_actor_environment_cvar90": 872.9277093703728
+        },
+        "carbon_kg": {
+          "mean": 1274.7173433265755,
+          "actor_mean_environment_cvar90": 1428.4930838662763,
+          "joint_actor_environment_cvar90": 1428.4930838662763
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.686918271508912,
+          "literal_sum_all_executions": 429.84718395900154
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.675834744937188,
+          "literal_sum_all_executions": 426.98487160800005
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.2325272049159235,
+          "literal_sum_all_executions": 314.3657331189961
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4335159287231234,
+          "literal_sum_all_executions": 110.13529749099871
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007351298383340179,
+          "literal_sum_all_executions": 1.8809203190166954
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.007317566538113591,
+          "literal_sum_all_executions": 1.8722468709974862
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-warm-bandit-2026",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 13.19078125,
+          "actor_mean_environment_cvar90": 15.243749999999999,
+          "joint_actor_environment_cvar90": 15.243749999999999
+        },
+        "total_tardiness_ticks": {
+          "mean": 33351.68671875,
+          "actor_mean_environment_cvar90": 37898.781250000015,
+          "joint_actor_environment_cvar90": 37898.781250000015
+        },
+        "total_cost": {
+          "mean": 756.6299259260093,
+          "actor_mean_environment_cvar90": 817.7192820241663,
+          "joint_actor_environment_cvar90": 817.7192820241663
+        },
+        "carbon_kg": {
+          "mean": 1204.766143774297,
+          "actor_mean_environment_cvar90": 1322.1817190657553,
+          "joint_actor_environment_cvar90": 1322.1817190657553
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.004989600883297,
+          "literal_sum_all_executions": 512.8966472250017
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.9926753157406252,
+          "literal_sum_all_executions": 509.765022208
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.5163559235776631,
+          "literal_sum_all_executions": 388.2810879070021
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4674824862439079,
+          "literal_sum_all_executions": 119.19138567699883
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.007393769064592206,
+          "literal_sum_all_executions": 1.8919351189824738
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.007358435720467803,
+          "literal_sum_all_executions": 1.882872997999499
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2026",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 1.0189062500000001,
+          "actor_mean_environment_cvar90": 3.857812500000001,
+          "joint_actor_environment_cvar90": 3.857812500000001
+        },
+        "total_tardiness_ticks": {
+          "mean": 6576.188125000001,
+          "actor_mean_environment_cvar90": 11647.9796875,
+          "joint_actor_environment_cvar90": 11647.9796875
+        },
+        "total_cost": {
+          "mean": 722.9383386935846,
+          "actor_mean_environment_cvar90": 785.9089236990136,
+          "joint_actor_environment_cvar90": 785.9089236990136
+        },
+        "carbon_kg": {
+          "mean": 1138.47495314,
+          "actor_mean_environment_cvar90": 1259.5806079376305,
+          "joint_actor_environment_cvar90": 1259.5806079376305
+        }
+      },
+      "probability_all_orders_fulfilled": 0.58078125
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.12823957345984,
+          "literal_sum_all_executions": 555.5104430889996
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.115944296199376,
+          "literal_sum_all_executions": 552.3377691050002
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.6848148027170415,
+          "literal_sum_all_executions": 442.1068526400031
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4091082461386102,
+          "literal_sum_all_executions": 104.65074332200311
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008517514160322293,
+          "literal_sum_all_executions": 0.2183263179504138
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0008139113643739071,
+          "literal_sum_all_executions": 0.20855186799980174
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2026",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 5.195625,
+          "actor_mean_environment_cvar90": 8.1625,
+          "joint_actor_environment_cvar90": 8.1625
+        },
+        "total_tardiness_ticks": {
+          "mean": 15027.510781250001,
+          "actor_mean_environment_cvar90": 19489.68125,
+          "joint_actor_environment_cvar90": 19489.68125
+        },
+        "total_cost": {
+          "mean": 832.276848699939,
+          "actor_mean_environment_cvar90": 900.7138868472414,
+          "joint_actor_environment_cvar90": 900.7138868472414
+        },
+        "carbon_kg": {
+          "mean": 1353.814850113698,
+          "actor_mean_environment_cvar90": 1485.4735497227866,
+          "joint_actor_environment_cvar90": 1485.4735497227866
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.1316202286685857,
+          "literal_sum_all_executions": 552.4556664360002
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.1191756521920317,
+          "literal_sum_all_executions": 549.1965143300002
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.632400174473302,
+          "literal_sum_all_executions": 424.49315388300465
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4649269399874883,
+          "literal_sum_all_executions": 119.14517143299645
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008369240657967936,
+          "literal_sum_all_executions": 0.214374517966462
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.000797053802980412,
+          "literal_sum_all_executions": 0.20410001600268401
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2026",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 12.8240625,
+          "actor_mean_environment_cvar90": 15.228125000000002,
+          "joint_actor_environment_cvar90": 15.228125000000002
+        },
+        "total_tardiness_ticks": {
+          "mean": 31181.412343750002,
+          "actor_mean_environment_cvar90": 37258.69843750001,
+          "joint_actor_environment_cvar90": 37258.69843750001
+        },
+        "total_cost": {
+          "mean": 766.151923420208,
+          "actor_mean_environment_cvar90": 837.8287201890121,
+          "joint_actor_environment_cvar90": 837.8287201890121
+        },
+        "carbon_kg": {
+          "mean": 1225.742458303646,
+          "actor_mean_environment_cvar90": 1364.0359685917972,
+          "joint_actor_environment_cvar90": 1364.0359685917972
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.9521460137132822,
+          "literal_sum_all_executions": 499.67468166600065
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.9390773288382819,
+          "literal_sum_all_executions": 496.4360636190001
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.4249506917942225,
+          "literal_sum_all_executions": 365.18359221700166
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.49142767159750245,
+          "literal_sum_all_executions": 125.44242891000022
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008599117460182271,
+          "literal_sum_all_executions": 0.2201345999960722
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0008199184790708136,
+          "literal_sum_all_executions": 0.20986974300203087
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2027",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 1.1453125,
+          "actor_mean_environment_cvar90": 4.4140625,
+          "joint_actor_environment_cvar90": 4.4140625
+        },
+        "total_tardiness_ticks": {
+          "mean": 7256.958125,
+          "actor_mean_environment_cvar90": 12778.184375000004,
+          "joint_actor_environment_cvar90": 12778.184375000004
+        },
+        "total_cost": {
+          "mean": 722.8602898673143,
+          "actor_mean_environment_cvar90": 780.1558150800573,
+          "joint_actor_environment_cvar90": 780.1558150800573
+        },
+        "carbon_kg": {
+          "mean": 1137.9048715343229,
+          "actor_mean_environment_cvar90": 1248.7212141483078,
+          "joint_actor_environment_cvar90": 1248.7212141483078
+        }
+      },
+      "probability_all_orders_fulfilled": 0.5660937500000001
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.308075334148434,
+          "literal_sum_all_executions": 597.2869418459982
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.2916528010548443,
+          "literal_sum_all_executions": 592.5805837270001
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.8629393818422053,
+          "literal_sum_all_executions": 483.34601646600595
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.40953501189469144,
+          "literal_sum_all_executions": 104.69484055200064
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008547854538387867,
+          "literal_sum_all_executions": 0.21908718405165928
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0008158981343814764,
+          "literal_sum_all_executions": 0.20909695700103725
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2027",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 4.96125,
+          "actor_mean_environment_cvar90": 8.1140625,
+          "joint_actor_environment_cvar90": 8.1140625
+        },
+        "total_tardiness_ticks": {
+          "mean": 14554.15046875,
+          "actor_mean_environment_cvar90": 19736.309375,
+          "joint_actor_environment_cvar90": 19736.309375
+        },
+        "total_cost": {
+          "mean": 820.9277043484719,
+          "actor_mean_environment_cvar90": 885.2982710898985,
+          "joint_actor_environment_cvar90": 885.2982710898985
+        },
+        "carbon_kg": {
+          "mean": 1331.2162887738803,
+          "actor_mean_environment_cvar90": 1454.6456800930994,
+          "joint_actor_environment_cvar90": 1454.6456800930994
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.0934992456479575,
+          "literal_sum_all_executions": 537.0896949009993
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.0816498664054706,
+          "literal_sum_all_executions": 534.0495183660005
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.5930273591290809,
+          "literal_sum_all_executions": 409.28182330100435
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4664893870556027,
+          "literal_sum_all_executions": 119.10217954899463
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008618566474393675,
+          "literal_sum_all_executions": 0.22052695798493005
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0008211927264090635,
+          "literal_sum_all_executions": 0.21013659300007248
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-threshold-cem-2027",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 12.80015625,
+          "actor_mean_environment_cvar90": 14.514062500000001,
+          "joint_actor_environment_cvar90": 14.514062500000001
+        },
+        "total_tardiness_ticks": {
+          "mean": 31032.39,
+          "actor_mean_environment_cvar90": 37122.23281250002,
+          "joint_actor_environment_cvar90": 37122.23281250002
+        },
+        "total_cost": {
+          "mean": 762.526662712781,
+          "actor_mean_environment_cvar90": 829.8716426248452,
+          "joint_actor_environment_cvar90": 829.8716426248452
+        },
+        "carbon_kg": {
+          "mean": 1218.979660888099,
+          "actor_mean_environment_cvar90": 1347.5159697614586,
+          "joint_actor_environment_cvar90": 1347.5159697614586
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.952317318909521,
+          "literal_sum_all_executions": 499.7970874309972
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.9407778591526565,
+          "literal_sum_all_executions": 496.8572552149999
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.4263369722920503,
+          "literal_sum_all_executions": 365.40570170300407
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.4915952975773228,
+          "literal_sum_all_executions": 125.60400748499615
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0008603935411934316,
+          "literal_sum_all_executions": 0.22028857098621302
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0008202662653112025,
+          "literal_sum_all_executions": 0.20993025000001353
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-routing-teacher",
+    "config": {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-routing-teacher",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 1.2684375,
+          "actor_mean_environment_cvar90": 4.464062500000001,
+          "joint_actor_environment_cvar90": 4.464062500000001
+        },
+        "total_tardiness_ticks": {
+          "mean": 7600.974218750001,
+          "actor_mean_environment_cvar90": 13041.245312500003,
+          "joint_actor_environment_cvar90": 13041.245312500003
+        },
+        "total_cost": {
+          "mean": 725.8323507022147,
+          "actor_mean_environment_cvar90": 779.4555141343789,
+          "joint_actor_environment_cvar90": 779.4555141343789
+        },
+        "carbon_kg": {
+          "mean": 1143.274335743815,
+          "actor_mean_environment_cvar90": 1247.1197289975262,
+          "joint_actor_environment_cvar90": 1247.1197289975262
+        }
+      },
+      "probability_all_orders_fulfilled": 0.52765625
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.310715825883614,
+          "literal_sum_all_executions": 599.216890249003
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.298406641343127,
+          "literal_sum_all_executions": 596.0277929260005
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.8918830146526686,
+          "literal_sum_all_executions": 492.17443897600333
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.40693060101560785,
+          "literal_sum_all_executions": 103.99411787499548
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-routing-teacher",
+    "config": {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-routing-teacher",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 5.44109375,
+          "actor_mean_environment_cvar90": 9.315624999999999,
+          "joint_actor_environment_cvar90": 9.315624999999999
+        },
+        "total_tardiness_ticks": {
+          "mean": 15449.62859375,
+          "actor_mean_environment_cvar90": 22032.748437500006,
+          "joint_actor_environment_cvar90": 22032.748437500006
+        },
+        "total_cost": {
+          "mean": 836.2376168794681,
+          "actor_mean_environment_cvar90": 904.1686986400546,
+          "joint_actor_environment_cvar90": 904.1686986400546
+        },
+        "carbon_kg": {
+          "mean": 1360.9127221611068,
+          "actor_mean_environment_cvar90": 1493.7341056752607,
+          "joint_actor_environment_cvar90": 1493.7341056752607
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 2.4218021348055907,
+          "literal_sum_all_executions": 617.3550678479905
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 2.4080012597951552,
+          "literal_sum_all_executions": 613.7937535389998
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.9418664728149835,
+          "literal_sum_all_executions": 494.0137528059968
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.46783247758263474,
+          "literal_sum_all_executions": 120.23712274399213
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  },
+  {
+    "cohort": "legacy",
+    "method_id": "legacy-routing-teacher",
+    "config": {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    "summary": {
+      "method_id": "legacy-routing-teacher",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "rows": 256,
+      "invalid": 0,
+      "unique_environment_tapes": 256,
+      "actor_replicas": 1,
+      "expected_rows": 256,
+      "metrics": {
+        "unfulfilled": {
+          "mean": 13.20609375,
+          "actor_mean_environment_cvar90": 15.353124999999995,
+          "joint_actor_environment_cvar90": 15.353124999999995
+        },
+        "total_tardiness_ticks": {
+          "mean": 32580.71984375,
+          "actor_mean_environment_cvar90": 38708.298437500016,
+          "joint_actor_environment_cvar90": 38708.298437500016
+        },
+        "total_cost": {
+          "mean": 754.1665614597892,
+          "actor_mean_environment_cvar90": 835.4252150902059,
+          "joint_actor_environment_cvar90": 835.4252150902059
+        },
+        "carbon_kg": {
+          "mean": 1201.4088751317709,
+          "actor_mean_environment_cvar90": 1354.1707925682297,
+          "joint_actor_environment_cvar90": 1354.1707925682297
+        }
+      },
+      "probability_all_orders_fulfilled": 0.0
+    },
+    "cost": {
+      "timings": {
+        "wall_seconds": {
+          "weighted_actor_mean_environment": 1.9122286375894042,
+          "literal_sum_all_executions": 487.6372328840034
+        },
+        "cpu_seconds": {
+          "weighted_actor_mean_environment": 1.9016535681582813,
+          "literal_sum_all_executions": 484.9510621909999
+        },
+        "simulation_wall_seconds": {
+          "weighted_actor_mean_environment": 1.4293851363279853,
+          "literal_sum_all_executions": 364.5403123540036
+        },
+        "checker_wall_seconds": {
+          "weighted_actor_mean_environment": 0.47053534529627017,
+          "literal_sum_all_executions": 119.94902366400402
+        },
+        "planning_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_wall_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        },
+        "controller_inference_cpu_seconds": {
+          "weighted_actor_mean_environment": 0.0,
+          "literal_sum_all_executions": 0.0
+        }
+      },
+      "qubo_literal_execution_totals": {
+        "calls": 0,
+        "coupled_calls": 0,
+        "qaoa_requested_calls": 0,
+        "qaoa_calls": 0,
+        "coupled_qaoa_calls": 0,
+        "uncoupled_qaoa_calls": 0,
+        "qaoa_calls_unknown_coupling": 0,
+        "trivial_1bit_qaoa_calls": 0,
+        "fallback_calls": 0,
+        "classical_fallback_calls": 0,
+        "oversize_classical_fallback_calls": 0,
+        "qaoa_oversize_classical_fallback_calls": 0,
+        "empty_pool_calls": 0,
+        "repairs": 0,
+        "decode_mismatches": 0,
+        "physical_quantum_calls": 0,
+        "simulated_over_5bit_calls": 0,
+        "missing_size_metadata_calls": 0,
+        "simulated_calls_missing_circuit_size": 0
+      },
+      "qubo_maxima": {
+        "max_total_bits": 0,
+        "max_core_bits": 0,
+        "max_slack_bits": 0,
+        "max_couplers": 0,
+        "max_actual_simulated_quantum_bits": 0
+      },
+      "scope": "Literal completed rollout costs plus probability-weighted actor means. Planning and local optimization are nested inside simulation; do not sum them twice. Allocated cluster time and training costs remain in the compute ledger. Cross-host runtime is not a speedup claim."
+    },
+    "manifest_sha256": "f2087b1d503d985ef7f204e7fc05282f48e6f0dba5262e79f86ed881e6723608",
+    "source_evidence": {
+      "directory": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510",
+      "files": {
+        "manifest.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/manifest.json",
+          "sha256": "93beb260718cf33e8dfa790591cea0f6e0a9d20b62c427b42983cb275c3861f3"
+        },
+        "evaluation.json": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/evaluation.json",
+          "sha256": "b1549f1dbf01099865a35a54d4d6a01f1d5fb20649188588dab89021cd23ba4b"
+        },
+        "rows.jsonl": {
+          "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510/rows.jsonl",
+          "sha256": "fd44252186eabdcf20012ff3ba81bc28470a8927f9c9fa2b64c9a5530b5ff36c"
+        }
+      },
+      "remote_paths_scope": "Stored absolute checkpoint/selection/trace paths are opaque provenance; remote files are not opened"
+    }
+  }
+]

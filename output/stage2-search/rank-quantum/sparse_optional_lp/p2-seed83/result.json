@@ -1,0 +1,2788 @@
+{
+  "schema": "stage2-rank-qaoa-candidate.v1",
+  "model_encoding": "pair-order-structural-presolved",
+  "logical_qubits": 4,
+  "layers": 2,
+  "seed": 83,
+  "shots": 1024,
+  "simulation_backend": "Qiskit Aer statevector + measurement shots",
+  "quantum_algorithm_simulated": true,
+  "physical_quantum_executed": false,
+  "circuit": {
+    "qubits": 4,
+    "layers": 2,
+    "cost_scale": 2.0,
+    "gamma": [
+      -0.38815149743334054,
+      1.7456145545504813
+    ],
+    "beta": [
+      0.4654374468974032,
+      -0.31394843532600714
+    ],
+    "parameter_order": "all gamma, then all beta",
+    "ising_z_fields": [
+      0.0,
+      -0.25,
+      0.5,
+      0.25
+    ],
+    "ising_zz_couplings": [
+      {
+        "i": 0,
+        "j": 2,
+        "value": 0.25
+      },
+      {
+        "i": 0,
+        "j": 3,
+        "value": -0.25
+      },
+      {
+        "i": 1,
+        "j": 2,
+        "value": -0.5
+      },
+      {
+        "i": 1,
+        "j": 3,
+        "value": -0.25
+      },
+      {
+        "i": 2,
+        "j": 3,
+        "value": 0.25
+      }
+    ],
+    "dropped_global_phase_constant": 1.0,
+    "logical_depth_without_measurement": 29,
+    "gate_counts": {
+      "h": 4,
+      "rz": 16,
+      "cx": 20,
+      "rx": 8
+    },
+    "logical_gate_sequence": [
+      {
+        "name": "h",
+        "qubits": [
+          0
+        ]
+      },
+      {
+        "name": "h",
+        "qubits": [
+          1
+        ]
+      },
+      {
+        "name": "h",
+        "qubits": [
+          2
+        ]
+      },
+      {
+        "name": "h",
+        "qubits": [
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          1
+        ],
+        "angle": 0.09703787435833514
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": -0.19407574871667027
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": -0.09703787435833514
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": -0.09703787435833514
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": 0.09703787435833514
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          3
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": 0.19407574871667027
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": 0.09703787435833514
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          3
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": -0.09703787435833514
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          0
+        ],
+        "angle": 0.9308748937948064
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          1
+        ],
+        "angle": 0.9308748937948064
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          2
+        ],
+        "angle": 0.9308748937948064
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          3
+        ],
+        "angle": 0.9308748937948064
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          1
+        ],
+        "angle": -0.43640363863762033
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": 0.8728072772752407
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": 0.43640363863762033
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": 0.43640363863762033
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          2
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": -0.43640363863762033
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          0,
+          3
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          2
+        ],
+        "angle": -0.8728072772752407
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          2
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": -0.43640363863762033
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          1,
+          3
+        ]
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "rz",
+        "qubits": [
+          3
+        ],
+        "angle": 0.43640363863762033
+      },
+      {
+        "name": "cx",
+        "qubits": [
+          2,
+          3
+        ]
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          0
+        ],
+        "angle": -0.6278968706520143
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          1
+        ],
+        "angle": -0.6278968706520143
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          2
+        ],
+        "angle": -0.6278968706520143
+      },
+      {
+        "name": "rx",
+        "qubits": [
+          3
+        ],
+        "angle": -0.6278968706520143
+      }
+    ],
+    "openqasm2": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[4];\ncreg c[4];\nh q[0];\nh q[1];\nh q[2];\nh q[3];\nrz(0.097037874358335136) q[1];\nrz(-0.19407574871667027) q[2];\nrz(-0.097037874358335136) q[3];\ncx q[0],q[2];\nrz(-0.097037874358335136) q[2];\ncx q[0],q[2];\ncx q[0],q[3];\nrz(0.097037874358335136) q[3];\ncx q[0],q[3];\ncx q[1],q[2];\nrz(0.19407574871667027) q[2];\ncx q[1],q[2];\ncx q[1],q[3];\nrz(0.097037874358335136) q[3];\ncx q[1],q[3];\ncx q[2],q[3];\nrz(-0.097037874358335136) q[3];\ncx q[2],q[3];\nrx(0.93087489379480637) q[0];\nrx(0.93087489379480637) q[1];\nrx(0.93087489379480637) q[2];\nrx(0.93087489379480637) q[3];\nrz(-0.43640363863762033) q[1];\nrz(0.87280727727524066) q[2];\nrz(0.43640363863762033) q[3];\ncx q[0],q[2];\nrz(0.43640363863762033) q[2];\ncx q[0],q[2];\ncx q[0],q[3];\nrz(-0.43640363863762033) q[3];\ncx q[0],q[3];\ncx q[1],q[2];\nrz(-0.87280727727524066) q[2];\ncx q[1],q[2];\ncx q[1],q[3];\nrz(-0.43640363863762033) q[3];\ncx q[1],q[3];\ncx q[2],q[3];\nrz(0.43640363863762033) q[3];\ncx q[2],q[3];\nrx(-0.62789687065201427) q[0];\nrx(-0.62789687065201427) q[1];\nrx(-0.62789687065201427) q[2];\nrx(-0.62789687065201427) q[3];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\nmeasure q[2] -> c[2];\nmeasure q[3] -> c[3];\n",
+    "circuit_sha256": "6720e51e83c447d531894bec5a5c95a56ca7d8d3a01d6b958102b0ef804183d6",
+    "backend_status": "logical_only_not_transpiled_not_submitted",
+    "bit_order": "basis index bit i is qubit/variable i; count strings read q[n-1]...q[0]",
+    "qiskit_unmeasured_depth": 29,
+    "qiskit_unmeasured_gate_counts": {
+      "cx": 20,
+      "rz": 16,
+      "rx": 8,
+      "h": 4
+    },
+    "aer_compiled_depth": 30,
+    "aer_compiled_gate_counts": {
+      "cx": 20,
+      "rz": 16,
+      "rx": 8,
+      "h": 4,
+      "measure": 4
+    }
+  },
+  "optimization": {
+    "optimizer": "coordinate",
+    "objective": "exact noiseless statevector expected QUBO energy",
+    "evaluations": 258,
+    "max_evaluations": 512,
+    "restarts": 4,
+    "attempts": [
+      {
+        "restart": 0,
+        "evaluations": 60,
+        "expected_energy": 0.2787563676918752,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 1,
+        "evaluations": 61,
+        "expected_energy": 0.3193299103708342,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 2,
+        "evaluations": 52,
+        "expected_energy": 0.28298469765664797,
+        "status": "bounded_coordinate_search"
+      },
+      {
+        "restart": 3,
+        "evaluations": 51,
+        "expected_energy": 0.5718812028894689,
+        "status": "bounded_coordinate_search"
+      }
+    ],
+    "cost_scale": 2,
+    "expected_energy": 0.2787563676918752,
+    "gamma": [
+      -0.38815149743334054,
+      1.7456145545504813
+    ],
+    "beta": [
+      0.4654374468974032,
+      -0.31394843532600714
+    ],
+    "history_best_improvements": [
+      {
+        "evaluation": 1,
+        "expected_energy": 0.425404764685142,
+        "angles": [
+          -0.024151497433340552,
+          2.2416145545504813,
+          -1.2921552066923898,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 37,
+        "expected_energy": 0.3357697568081298,
+        "angles": [
+          -0.024151497433340552,
+          1.5416145545504814,
+          -1.2921552066923898,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 38,
+        "expected_energy": 0.3357279209251303,
+        "angles": [
+          -0.024151497433340552,
+          1.5416145545504814,
+          1.1494374468974033,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 46,
+        "expected_energy": 0.3306990926424171,
+        "angles": [
+          -0.024151497433340552,
+          1.5416145545504814,
+          0.44943744689740317,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 49,
+        "expected_energy": 0.3120502678735143,
+        "angles": [
+          -0.32415149743334054,
+          1.5416145545504814,
+          0.44943744689740317,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 51,
+        "expected_energy": 0.30654140789955703,
+        "angles": [
+          -0.32415149743334054,
+          1.8416145545504814,
+          0.44943744689740317,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 61,
+        "expected_energy": 0.30488000320441305,
+        "angles": [
+          -0.32415149743334054,
+          1.7216145545504813,
+          0.44943744689740317,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 74,
+        "expected_energy": 0.3047483116241347,
+        "angles": [
+          -0.32415149743334054,
+          1.7216145545504813,
+          0.4894374468974032,
+          -0.3819484353260072
+        ]
+      },
+      {
+        "evaluation": 76,
+        "expected_energy": 0.28901218645526777,
+        "angles": [
+          -0.32415149743334054,
+          1.7216145545504813,
+          0.4894374468974032,
+          -0.34194843532600716
+        ]
+      },
+      {
+        "evaluation": 77,
+        "expected_energy": 0.28591871417171216,
+        "angles": [
+          -0.3641514974333405,
+          1.7216145545504813,
+          0.4894374468974032,
+          -0.34194843532600716
+        ]
+      },
+      {
+        "evaluation": 83,
+        "expected_energy": 0.28293343979873375,
+        "angles": [
+          -0.3641514974333405,
+          1.7216145545504813,
+          0.4894374468974032,
+          -0.3019484353260071
+        ]
+      },
+      {
+        "evaluation": 84,
+        "expected_energy": 0.28120914242796863,
+        "angles": [
+          -0.37615149743334053,
+          1.7216145545504813,
+          0.4894374468974032,
+          -0.3019484353260071
+        ]
+      },
+      {
+        "evaluation": 86,
+        "expected_energy": 0.2811775009550813,
+        "angles": [
+          -0.37615149743334053,
+          1.7336145545504813,
+          0.4894374468974032,
+          -0.3019484353260071
+        ]
+      },
+      {
+        "evaluation": 87,
+        "expected_energy": 0.28081036460393544,
+        "angles": [
+          -0.37615149743334053,
+          1.7336145545504813,
+          0.4774374468974032,
+          -0.3019484353260071
+        ]
+      },
+      {
+        "evaluation": 88,
+        "expected_energy": 0.28036500722482466,
+        "angles": [
+          -0.37615149743334053,
+          1.7336145545504813,
+          0.4774374468974032,
+          -0.31394843532600714
+        ]
+      },
+      {
+        "evaluation": 89,
+        "expected_energy": 0.27902044253454256,
+        "angles": [
+          -0.38815149743334054,
+          1.7336145545504813,
+          0.4774374468974032,
+          -0.31394843532600714
+        ]
+      },
+      {
+        "evaluation": 91,
+        "expected_energy": 0.27894559505893785,
+        "angles": [
+          -0.38815149743334054,
+          1.7456145545504813,
+          0.4774374468974032,
+          -0.31394843532600714
+        ]
+      },
+      {
+        "evaluation": 92,
+        "expected_energy": 0.2787563676918752,
+        "angles": [
+          -0.38815149743334054,
+          1.7456145545504813,
+          0.4654374468974032,
+          -0.31394843532600714
+        ]
+      }
+    ],
+    "elapsed_seconds": 0.003507832996547222
+  },
+  "independent_qiskit_crosscheck": {
+    "maximum_probability_error": 1.1102230246251565e-16,
+    "tolerance": 1e-12,
+    "passed": true
+  },
+  "exact_basis_audit": [
+    {
+      "state": 0,
+      "bitstring": "0000",
+      "bits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 1,
+      "bitstring": "0001",
+      "bits": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 10,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 8,
+          "end": 10
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 2,
+      "bitstring": "0010",
+      "bits": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "energy": 3,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 3,
+      "bitstring": "0011",
+      "bits": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "energy": 3,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 4,
+      "bitstring": "0100",
+      "bits": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 6,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 5,
+      "bitstring": "0101",
+      "bits": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 6,
+      "bitstring": "0110",
+      "bits": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 7,
+      "bitstring": "0111",
+      "bits": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 8,
+      "bitstring": "1000",
+      "bits": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 10,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 9,
+          "end": 10
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 9,
+      "bitstring": "1001",
+      "bits": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 10,
+      "bitstring": "1010",
+      "bits": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "energy": 2,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 11,
+      "bitstring": "1011",
+      "bits": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 12,
+      "bitstring": "1100",
+      "bits": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 13,
+      "bitstring": "1101",
+      "bits": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "state": 14,
+      "bitstring": "1110",
+      "bits": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "state": 15,
+      "bitstring": "1111",
+      "bits": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    }
+  ],
+  "raw_counts": {
+    "0010": 19,
+    "0011": 9,
+    "0001": 28,
+    "1011": 20,
+    "0000": 40,
+    "0101": 38,
+    "1001": 195,
+    "1111": 157,
+    "1101": 24,
+    "0110": 113,
+    "0100": 166,
+    "1100": 17,
+    "1000": 39,
+    "1110": 136,
+    "0111": 23
+  },
+  "samples": [
+    {
+      "count": 40,
+      "state": 0,
+      "bitstring": "0000",
+      "bits": [
+        0,
+        0,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 7,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 28,
+      "state": 1,
+      "bitstring": "0001",
+      "bits": [
+        1,
+        0,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 10,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 8,
+          "end": 10
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 19,
+      "state": 2,
+      "bitstring": "0010",
+      "bits": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "energy": 3,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "count": 9,
+      "state": 3,
+      "bitstring": "0011",
+      "bits": [
+        1,
+        1,
+        0,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        0,
+        1,
+        0
+      ],
+      "energy": 3,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "count": 166,
+      "state": 4,
+      "bitstring": "0100",
+      "bits": [
+        0,
+        0,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 6,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 38,
+      "state": 5,
+      "bitstring": "0101",
+      "bits": [
+        1,
+        0,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        0,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "count": 113,
+      "state": 6,
+      "bitstring": "0110",
+      "bits": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 23,
+      "state": 7,
+      "bitstring": "0111",
+      "bits": [
+        1,
+        1,
+        1,
+        0
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        1,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 39,
+      "state": 8,
+      "bitstring": "1000",
+      "bits": [
+        0,
+        0,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 10,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 7,
+          "end": 9
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 9,
+          "end": 10
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 195,
+      "state": 9,
+      "bitstring": "1001",
+      "bits": [
+        1,
+        0,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 20,
+      "state": 11,
+      "bitstring": "1011",
+      "bits": [
+        1,
+        1,
+        0,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0
+      ],
+      "energy": 1,
+      "physical_schedule_valid": true,
+      "deadline_success": false,
+      "makespan": 9,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 6,
+          "end": 8
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 8,
+          "end": 9
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 17,
+      "state": 12,
+      "bitstring": "1100",
+      "bits": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "count": 24,
+      "state": 13,
+      "bitstring": "1101",
+      "bits": [
+        1,
+        0,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        0,
+        1
+      ],
+      "energy": 1,
+      "physical_schedule_valid": false,
+      "deadline_success": false,
+      "makespan": null,
+      "schedule": null,
+      "official_validator_errors": null
+    },
+    {
+      "count": 136,
+      "state": 14,
+      "bitstring": "1110",
+      "bits": [
+        0,
+        1,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        0,
+        1,
+        1,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 3,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 4,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 6,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    },
+    {
+      "count": 157,
+      "state": 15,
+      "bitstring": "1111",
+      "bits": [
+        1,
+        1,
+        1,
+        1
+      ],
+      "expanded_order_bits": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "energy": 0,
+      "physical_schedule_valid": true,
+      "deadline_success": true,
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 2,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 3,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 5,
+          "end": 6
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ],
+      "official_validator_errors": []
+    }
+  ],
+  "ideal_basis_probabilities": [
+    0.03715144123719923,
+    0.03605601893258449,
+    0.015033140102430825,
+    0.006169956076930537,
+    0.16349510578823165,
+    0.03229891496630471,
+    0.10997700467535793,
+    0.013562368298480577,
+    0.04050469665557709,
+    0.20768661878439562,
+    0.00035902140959723856,
+    0.018580716774409683,
+    0.01728529264767614,
+    0.018989586822364724,
+    0.12439206426441599,
+    0.15845805256404372
+  ],
+  "ideal_deadline_ground_probability": 0.7640088460764449,
+  "ideal_physical_schedule_probability": 0.909864087974696,
+  "sampled_deadline_success_fraction": 0.7490234375,
+  "sampled_makespan_histogram": {
+    "9": 83,
+    "10": 67,
+    "cyclic_order": 107,
+    "8": 767
+  },
+  "selected_sample": {
+    "count": 195,
+    "state": 9,
+    "bitstring": "1001",
+    "bits": [
+      1,
+      0,
+      0,
+      1
+    ],
+    "expanded_order_bits": [
+      1,
+      0,
+      0,
+      1,
+      0,
+      0,
+      1,
+      0,
+      0
+    ],
+    "energy": 0,
+    "physical_schedule_valid": true,
+    "deadline_success": true,
+    "makespan": 8,
+    "schedule": [
+      {
+        "job": "Z3",
+        "machine": "T",
+        "start": 0,
+        "end": 2
+      },
+      {
+        "job": "Z1",
+        "machine": "T",
+        "start": 2,
+        "end": 4
+      },
+      {
+        "job": "Z3",
+        "machine": "F",
+        "start": 2,
+        "end": 4
+      },
+      {
+        "job": "Z1",
+        "machine": "F",
+        "start": 4,
+        "end": 5
+      },
+      {
+        "job": "Z2",
+        "machine": "T",
+        "start": 4,
+        "end": 5
+      },
+      {
+        "job": "Z3",
+        "machine": "S",
+        "start": 4,
+        "end": 5
+      },
+      {
+        "job": "Z1",
+        "machine": "S",
+        "start": 5,
+        "end": 7
+      },
+      {
+        "job": "Z2",
+        "machine": "F",
+        "start": 5,
+        "end": 7
+      },
+      {
+        "job": "Z2",
+        "machine": "S",
+        "start": 7,
+        "end": 8
+      }
+    ],
+    "official_validator_errors": [],
+    "selection_rule": "minimum observed QUBO energy; ties by count then basis index"
+  },
+  "uniform_reference": {
+    "ideal_deadline_ground_probability": 0.3125,
+    "probability_at_least_one_ground_in_equal_shots": 1.0,
+    "raw_counts": {
+      "0000": 64,
+      "0001": 62,
+      "0010": 61,
+      "0011": 75,
+      "0100": 65,
+      "0101": 67,
+      "0110": 56,
+      "0111": 55,
+      "1000": 74,
+      "1001": 78,
+      "1010": 46,
+      "1011": 73,
+      "1100": 65,
+      "1101": 58,
+      "1110": 68,
+      "1111": 57
+    },
+    "sampled_ground_fraction": 0.31640625,
+    "selected_basis_state": 9,
+    "selected_energy": 0,
+    "selected_makespan": 8
+  },
+  "preprocessing": {
+    "complete_schedule_scores_used": 0,
+    "partial_dag_evaluations": 770,
+    "sat_queries": 90,
+    "sat_search_nodes": 172,
+    "cut_weight_lp_variables": 12,
+    "disclosure": "Exact classical presolve and cut-weight LP; not free preprocessing or quantum advantage"
+  },
+  "elapsed_seconds": 0.027003125054761767,
+  "limitations": [
+    "This is classical simulation of a genuine QAOA gate circuit; no physical ODRA5 execution occurred.",
+    "Exact classical structural/SAT preprocessing is required and disclosed; it can itself find satisfying assignments.",
+    "All sixteen basis energies are classically evaluated for simulation and validation.",
+    "Equal-shot uniform sampling also almost certainly finds a ground state at1024 shots; best observed makespan is not speedup evidence.",
+    "Qubit-count fit does not certify native hardware connectivity, routed depth, calibration or noise tolerance."
+  ],
+  "provenance": {
+    "created_at": "2026-10-16T21:14:47Z",
+    "source_sha256": "787b3ccf965c8b80999d94cc1b116a8a6be5b225ba23b3772bfc57b0e83b6248",
+    "instance_sha256": "bb2babdc50eb249b7ad522dedef5e5fdfe35d7991ddbfee5189ea71950a84d41",
+    "qiskit_version": "2.5.2",
+    "qiskit_aer_version": "0.17.2",
+    "instance_reference_enumeration_seconds": 0.002276750048622489,
+    "disclosure": "Isolated research candidate; no official Stage1 selected artifact or QPU job changed",
+    "source_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/rank-probe/structural-final/structural-four-bit-model.json",
+    "certificate_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/rank-probe/structural-final/report.json",
+    "certificate_sha256": "9c04d2c905d9d1da1cb77b347cc1930141763ce379c61e70c1ee4a236eeb75e9"
+  }
+}

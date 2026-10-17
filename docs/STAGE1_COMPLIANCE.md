@@ -1,5 +1,7 @@
 # Stage 1 formal compliance audit — 16 October 2026
 
+> Superseded selection (17 October): the current runs use 1/3-bit order QUBOs and QAOA for both instances. See [current formulation, experiments and limits](STAGE1_COMPACT.md) and `output/stage1-selected.json`. The time-indexed results below remain retained comparison evidence.
+
 Verdict: the current local implementation satisfies the technical Stage 1 baseline in the supplied challenge specification. It is ready to be treated as an implemented and verified baseline. Organizer acceptance and submission completion have not been established.
 
 Authority: `Quantum_Hackathon_2026_ERP_Challenge.pdf`, sections 2, 4.1–4.3, 6, 12 and 14; cross-checked against the opening deck's Stage 1 and deliverable slides. The exact Stage 1 wording on PDF page 2 and JSON contract on page 7 were also checked visually.

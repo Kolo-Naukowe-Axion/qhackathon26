@@ -1,0 +1,2129 @@
+{
+  "schema": "metaltech-stage2-capacity-bounds.v1",
+  "instance_sha256": "5cee8ac6e97c391924895a71d1df8bd404fb84051377fe1a0557c8ac431dd885",
+  "profile": "full",
+  "orders": 24,
+  "horizon_ticks": 5760,
+  "tick_minutes": 1,
+  "scope": "All nominal orders fulfilled with fixed initial capacity; no leases, shocks, rework, urgent arrivals or initial WIP",
+  "transport": {
+    "agvs": 4,
+    "available_agv_ticks": 23040,
+    "mandatory_part_moves": 456,
+    "minimum_loaded_travel_ticks": 1200,
+    "minimum_transport_agv_ticks": 2112,
+    "handling_ticks_per_move": 2,
+    "initial_soc_granted_free": 480,
+    "minimum_loaded_traction_soc": 2400,
+    "minimum_recharge_agv_ticks": 160,
+    "minimum_agv_ticks_with_recharge": 2272,
+    "minimum_horizon_ticks_transport_only": 528,
+    "minimum_horizon_ticks_with_recharge": 568,
+    "minimum_interhall_loaded_crossings": 72,
+    "bridges": [
+      {
+        "edge": [
+          "HUB_A",
+          "HUB_B"
+        ],
+        "minimum_loaded_crossings": 72,
+        "minimum_occupied_ticks": 288,
+        "available_ticks": 5760
+      }
+    ],
+    "per_order_transport_minima": [
+      {
+        "order_id": "P01",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P01/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P01/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P01/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P01/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P02",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P02/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P02/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P02/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P02/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P03",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P03/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P03/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P03/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P03/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P04",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P04/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P04/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P04/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P04/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P05",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P05/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P05/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P05/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P05/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P06",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P06/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P06/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P06/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P06/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P07",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P07/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P07/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P07/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P07/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P08",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P08/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P08/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P08/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P08/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P09",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P09/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P09/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P09/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P09/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P10",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P10/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P10/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P10/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P10/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P11",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P11/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P11/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P11/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P11/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P12",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P12/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P12/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P12/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P12/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P13",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P13/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P13/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P13/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P13/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P14",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P14/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P14/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P14/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P14/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P15",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P15/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P15/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P15/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P15/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P16",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P16/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P16/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P16/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P16/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P17",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P17/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P17/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P17/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P17/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P18",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P18/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P18/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P18/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P18/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P19",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P19/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P19/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P19/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P19/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P20",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P20/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P20/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P20/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P20/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P21",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P21/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P21/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P21/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P21/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P22",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P22/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P22/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P22/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P22/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P23",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P23/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P23/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P23/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P23/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      },
+      {
+        "order_id": "P24",
+        "minimum": 88,
+        "assembly_machine": "A1",
+        "relaxed_witness_paths": [
+          {
+            "unit_id": "P24/flange/1",
+            "cost": 24,
+            "route": [
+              "RAW_A",
+              "F1",
+              "S1",
+              "WASH2",
+              "QA2",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P24/housing/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "F1",
+              "WASH1",
+              "H1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P24/rotor/1",
+            "cost": 28,
+            "route": [
+              "RAW_A",
+              "T1",
+              "H1",
+              "F1",
+              "WASH1",
+              "QA1",
+              "A1"
+            ]
+          },
+          {
+            "unit_id": "P24/pump",
+            "cost": 8,
+            "route": [
+              "A1",
+              "QA2",
+              "SHIP_B"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  "labor": {
+    "assumption": "Declared per-process attendance table; ideal batching; zero setups and worker travel",
+    "process_operations": {
+      "ASSEMBLY": 24,
+      "F": 72,
+      "HEAT": 48,
+      "QA": 96,
+      "S": 24,
+      "T": 48,
+      "WASH": 72
+    },
+    "processing_ticks": {
+      "ASSEMBLY": 1440,
+      "F": 4410,
+      "HEAT": 1440,
+      "QA": 4872,
+      "S": 1440,
+      "T": 2340,
+      "WASH": 2160
+    },
+    "machine_capacity_bounds": [
+      {
+        "process": "ASSEMBLY",
+        "minimum_processing_ticks": 1440,
+        "available_machine_ticks": 11520
+      },
+      {
+        "process": "F",
+        "minimum_processing_ticks": 4410,
+        "available_machine_ticks": 17280
+      },
+      {
+        "process": "HEAT",
+        "minimum_processing_ticks": 1440,
+        "available_machine_ticks": 11520
+      },
+      {
+        "process": "QA",
+        "minimum_processing_ticks": 4872,
+        "available_machine_ticks": 11520
+      },
+      {
+        "process": "S",
+        "minimum_processing_ticks": 1440,
+        "available_machine_ticks": 11520
+      },
+      {
+        "process": "T",
+        "minimum_processing_ticks": 2340,
+        "available_machine_ticks": 11520
+      },
+      {
+        "process": "WASH",
+        "minimum_processing_ticks": 2160,
+        "available_machine_ticks": 11520
+      }
+    ],
+    "declared_attendance_ticks": {
+      "ASSEMBLY": 1440,
+      "F": 360,
+      "HEAT": 60,
+      "QA": 4872,
+      "S": 1440,
+      "T": 240,
+      "WASH": 360
+    },
+    "fully_attended_counterfactual_worker_ticks": 18102,
+    "fully_attended_counterfactual_deficit_ticks": 1302,
+    "total_processing_worker_ticks": 8772,
+    "skill_processing_ticks": {
+      "assembly": 1440,
+      "machining": 600,
+      "qa": 4872,
+      "setup": 420,
+      "welding": 1440
+    },
+    "worker_available_ticks": {
+      "W01": 1680,
+      "W02": 1680,
+      "W03": 1680,
+      "W04": 1680,
+      "W05": 1680,
+      "W06": 1680,
+      "W07": 1680,
+      "W08": 1680,
+      "W09": 1680,
+      "W10": 1680
+    },
+    "total_available_worker_ticks": 16800,
+    "processing_deficit_ticks": 0,
+    "minimum_tool_service_worker_ticks": 900,
+    "total_worker_ticks_including_necessary_tool_service": 9672,
+    "skill_cuts": [
+      {
+        "skills": [
+          "assembly"
+        ],
+        "required_ticks": 1440,
+        "available_ticks": 10080,
+        "deficit_ticks": 0,
+        "workers": [
+          "W03",
+          "W04",
+          "W06",
+          "W07",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining"
+        ],
+        "required_ticks": 600,
+        "available_ticks": 6720,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W04",
+          "W05",
+          "W08"
+        ]
+      },
+      {
+        "skills": [
+          "qa"
+        ],
+        "required_ticks": 4872,
+        "available_ticks": 6720,
+        "deficit_ticks": 0,
+        "workers": [
+          "W03",
+          "W04",
+          "W07",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "setup"
+        ],
+        "required_ticks": 420,
+        "available_ticks": 10080,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W05",
+          "W07",
+          "W08",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "welding"
+        ],
+        "required_ticks": 1440,
+        "available_ticks": 5040,
+        "deficit_ticks": 0,
+        "workers": [
+          "W02",
+          "W06",
+          "W09"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining"
+        ],
+        "required_ticks": 2040,
+        "available_ticks": 15120,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "qa"
+        ],
+        "required_ticks": 6312,
+        "available_ticks": 10080,
+        "deficit_ticks": 0,
+        "workers": [
+          "W03",
+          "W04",
+          "W06",
+          "W07",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "setup"
+        ],
+        "required_ticks": 1860,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "welding"
+        ],
+        "required_ticks": 2880,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W02",
+          "W03",
+          "W04",
+          "W06",
+          "W07",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "qa"
+        ],
+        "required_ticks": 5472,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W03",
+          "W04",
+          "W05",
+          "W07",
+          "W08",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "setup"
+        ],
+        "required_ticks": 1020,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W04",
+          "W05",
+          "W07",
+          "W08",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "welding"
+        ],
+        "required_ticks": 2040,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W04",
+          "W05",
+          "W06",
+          "W08",
+          "W09"
+        ]
+      },
+      {
+        "skills": [
+          "qa",
+          "setup"
+        ],
+        "required_ticks": 5292,
+        "available_ticks": 13440,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W07",
+          "W08",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "qa",
+          "welding"
+        ],
+        "required_ticks": 6312,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W02",
+          "W03",
+          "W04",
+          "W06",
+          "W07",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 1860,
+        "available_ticks": 13440,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "qa"
+        ],
+        "required_ticks": 6912,
+        "available_ticks": 15120,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "setup"
+        ],
+        "required_ticks": 2460,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "welding"
+        ],
+        "required_ticks": 3480,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "qa",
+          "setup"
+        ],
+        "required_ticks": 6732,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "qa",
+          "welding"
+        ],
+        "required_ticks": 7752,
+        "available_ticks": 11760,
+        "deficit_ticks": 0,
+        "workers": [
+          "W02",
+          "W03",
+          "W04",
+          "W06",
+          "W07",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 3300,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "qa",
+          "setup"
+        ],
+        "required_ticks": 5892,
+        "available_ticks": 13440,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W07",
+          "W08",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "qa",
+          "welding"
+        ],
+        "required_ticks": 6912,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 2460,
+        "available_ticks": 15120,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 6732,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "qa",
+          "setup"
+        ],
+        "required_ticks": 7332,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "qa",
+          "welding"
+        ],
+        "required_ticks": 8352,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 3900,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 8172,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "machining",
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 7332,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      },
+      {
+        "skills": [
+          "assembly",
+          "machining",
+          "qa",
+          "setup",
+          "welding"
+        ],
+        "required_ticks": 8772,
+        "available_ticks": 16800,
+        "deficit_ticks": 0,
+        "workers": [
+          "W01",
+          "W02",
+          "W03",
+          "W04",
+          "W05",
+          "W06",
+          "W07",
+          "W08",
+          "W09",
+          "W10"
+        ]
+      }
+    ],
+    "violated_skill_cuts": [],
+    "tools": [
+      {
+        "kind": "calibration",
+        "count": 1,
+        "minimum_processing_ticks": 4872,
+        "minimum_services": 8,
+        "minimum_service_ticks": 480,
+        "minimum_total_tool_ticks": 5352,
+        "available_tool_ticks": 5760,
+        "full_attendance_calendar_applies": true,
+        "processing_or_service_skills": [
+          "qa",
+          "setup"
+        ],
+        "available_tool_ticks_with_required_worker": 5040,
+        "minimum_forced_idle_tool_ticks": 720,
+        "effective_capacity_ticks": 5040,
+        "deficit_ticks": 312
+      },
+      {
+        "kind": "mill",
+        "count": 2,
+        "minimum_processing_ticks": 4410,
+        "minimum_services": 6,
+        "minimum_service_ticks": 360,
+        "minimum_total_tool_ticks": 4770,
+        "available_tool_ticks": 11520,
+        "full_attendance_calendar_applies": false,
+        "processing_or_service_skills": [
+          "machining",
+          "setup"
+        ],
+        "available_tool_ticks_with_required_worker": 11520,
+        "minimum_forced_idle_tool_ticks": 0,
+        "effective_capacity_ticks": 11520,
+        "deficit_ticks": 0
+      },
+      {
+        "kind": "weld",
+        "count": 2,
+        "minimum_processing_ticks": 1440,
+        "minimum_services": 1,
+        "minimum_service_ticks": 60,
+        "minimum_total_tool_ticks": 1500,
+        "available_tool_ticks": 11520,
+        "full_attendance_calendar_applies": true,
+        "processing_or_service_skills": [
+          "setup",
+          "welding"
+        ],
+        "available_tool_ticks_with_required_worker": 10080,
+        "minimum_forced_idle_tool_ticks": 1440,
+        "effective_capacity_ticks": 10080,
+        "deficit_ticks": 0
+      }
+    ]
+  },
+  "raw_stock": {
+    "flange": {
+      "required": 24,
+      "initial": 30,
+      "initial_shortfall": 0
+    },
+    "housing": {
+      "required": 24,
+      "initial": 30,
+      "initial_shortfall": 0
+    },
+    "rotor": {
+      "required": 24,
+      "initial": 30,
+      "initial_shortfall": 0
+    }
+  },
+  "nominal_completion_impossible_with_initial_capacity": true,
+  "lease_options_present": true,
+  "full_model_infeasibility_proven": false,
+  "infeasibility_certificates": [
+    "Mandatory processing plus service exceeds calibration tool/eligible-worker calendar capacity"
+  ],
+  "limitations": [
+    "Passing these necessary conditions never proves schedule feasibility.",
+    "The labor certificate applies to the supplied attendance table; a separate full-attendance counterfactual is reported.",
+    "All explicitly certified modes and eligible machines are allowed; controller preferences are not additional restrictions.",
+    "Transport excludes empty repositioning, tool moves, charging travel, congestion and waiting.",
+    "Tool service bounds grant full initial tool life and ignore maintenance.",
+    "Reusable machine/tool capacity is fixed to the supplied instance; extra capacity purchases require a revised certificate.",
+    "Raw-stock shortfall alone is not an infeasibility certificate when procurement is permitted.",
+    "Relaxed witness routes minimize the stated resource objective, and are not feasible schedules."
+  ]
+}

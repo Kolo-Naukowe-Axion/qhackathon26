@@ -1,0 +1,418 @@
+{
+  "schema": "stage2-observed-activity-audit.v2",
+  "scope": "Checked realization only; activity, saturation or utilization does not prove causal bottlenecks",
+  "valid": true,
+  "terminal": true,
+  "horizon_ticks": 5760,
+  "tick_minutes": 1,
+  "metrics": {
+    "orders": 14,
+    "shipped": 13,
+    "shipped_at": {
+      "P01": 775,
+      "P07": 1838,
+      "P10": 2140,
+      "P04": 2238,
+      "P08": 3196,
+      "P02": 3216,
+      "P05": 3751,
+      "P03": 4178,
+      "P11": 4658,
+      "P09": 4671,
+      "P06": 4791,
+      "P12": 4923,
+      "U01": 5594
+    },
+    "all_orders_fulfilled": false,
+    "total_tardiness_ticks": 8347,
+    "grid_kwh": 3112.7916616666666,
+    "energy_cost": 608.5045287,
+    "carbon_kg": 1205.4152414166667,
+    "terminal_soc": 2400,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 150,
+    "total_cost": 758.5045287000175,
+    "operations": 243,
+    "moves": 312,
+    "unfinished": 1,
+    "global_optimality_gap": null
+  },
+  "independently_checked_metrics": {
+    "operations": 243,
+    "moves": 312,
+    "horizon_ticks": 5760,
+    "delivered_orders": 13,
+    "unfulfilled_orders": 1,
+    "delivery_ticks": {
+      "P01": 775,
+      "P07": 1838,
+      "P10": 2140,
+      "P04": 2238,
+      "P08": 3196,
+      "P02": 3216,
+      "P05": 3751,
+      "P03": 4178,
+      "P11": 4658,
+      "P09": 4671,
+      "P06": 4791,
+      "P12": 4923,
+      "U01": 5594
+    },
+    "tardiness_ticks": 6907,
+    "terminal_deadline_debt_ticks": 8347,
+    "grid_kwh": 3112.7916616667085,
+    "energy_cost": 608.5045287000175,
+    "carbon_kg": 1205.4152414166804,
+    "investment_cost": 150,
+    "total_cost": 758.5045287000175,
+    "terminal_soc": 2400
+  },
+  "checker_coverage": [
+    "half_open_resource_capacity",
+    "machine_eligibility",
+    "mode_domain",
+    "worker_skills",
+    "worker_shift_breaks_travel",
+    "tool_assignment",
+    "batch_capacity",
+    "agv_path_continuity",
+    "agv_traction_soc",
+    "single_lane_conflicts",
+    "charger_capacity",
+    "part_and_tool_location_replay",
+    "machine_output_blocking",
+    "buffer_reservations",
+    "bom_genealogy",
+    "recipe_precedence_duration",
+    "setups_wear_service",
+    "qa_reveal_boundaries",
+    "physical_shipping",
+    "urgent_release_lineage",
+    "grid_solar_balance",
+    "stationary_battery_loss_bounds",
+    "energy_cost_carbon",
+    "bounded_quality_rework_replacement",
+    "finite_raw_stock_release",
+    "machine_outage_exclusion",
+    "transport_handling_boundaries",
+    "resource_lease_budget_leadtime_birth",
+    "material_delivery_realized_arrival",
+    "precision_mode_certification",
+    "manufacturing_mode_wear_quality_history",
+    "exogenous_keyed_scenario_tape",
+    "bounded_component_birth",
+    "next_required_part_destination",
+    "mounted_tool_mobility"
+  ],
+  "checker_unsupported": [
+    "policy_nonanticipativity_proof",
+    "optional_emergency_procurement",
+    "leased_machine_footprint_power",
+    "reachable_burn_in",
+    "committed_rolling_replanning",
+    "interruption_resume_semantics"
+  ],
+  "checker_provenance": {
+    "checker": "independent-replay.v1",
+    "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+  },
+  "buffer_activity": {
+    "T1": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 1396
+    },
+    "T2": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 864
+    },
+    "F1": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 1215
+    },
+    "F2": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 1145
+    },
+    "F3": {
+      "capacity": 2,
+      "max_reserved_or_present": 0,
+      "full_ticks": 0
+    },
+    "S1": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 86
+    },
+    "S2": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 43
+    },
+    "WASH1": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 1094
+    },
+    "WASH2": {
+      "capacity": 2,
+      "max_reserved_or_present": 2,
+      "full_ticks": 681
+    },
+    "H1": {
+      "capacity": 4,
+      "max_reserved_or_present": 4,
+      "full_ticks": 173
+    },
+    "H2": {
+      "capacity": 4,
+      "max_reserved_or_present": 3,
+      "full_ticks": 0
+    },
+    "QA1": {
+      "capacity": 4,
+      "max_reserved_or_present": 4,
+      "full_ticks": 2256
+    },
+    "QA2": {
+      "capacity": 4,
+      "max_reserved_or_present": 4,
+      "full_ticks": 2174
+    },
+    "A1": {
+      "capacity": 6,
+      "max_reserved_or_present": 5,
+      "full_ticks": 0
+    },
+    "A2": {
+      "capacity": 6,
+      "max_reserved_or_present": 4,
+      "full_ticks": 0
+    }
+  },
+  "buffer_activity_scope": "Inbound reservation starts at dispatch; ends at processing consumption; output excluded",
+  "physical_machines": 15,
+  "production_machines_used": 14,
+  "unused_production_machines": [
+    "F3"
+  ],
+  "machine_activity": {
+    "T1": {
+      "production_ticks": 930,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 451,
+      "output_blocking_overlap_ticks": 0
+    },
+    "T2": {
+      "production_ticks": 1275,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 158,
+      "output_blocking_overlap_ticks": 0
+    },
+    "F1": {
+      "production_ticks": 1845,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 32,
+      "output_blocking_overlap_ticks": 0
+    },
+    "F2": {
+      "production_ticks": 1800,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 67,
+      "output_blocking_overlap_ticks": 0
+    },
+    "F3": {
+      "production_ticks": 0,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 0,
+      "output_blocking_overlap_ticks": 0
+    },
+    "S1": {
+      "production_ticks": 735,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 86,
+      "output_blocking_overlap_ticks": 0
+    },
+    "S2": {
+      "production_ticks": 180,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 4,
+      "output_blocking_overlap_ticks": 0
+    },
+    "WASH1": {
+      "production_ticks": 915,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 1322,
+      "output_blocking_overlap_ticks": 0
+    },
+    "WASH2": {
+      "production_ticks": 795,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 1624,
+      "output_blocking_overlap_ticks": 0
+    },
+    "H1": {
+      "production_ticks": 1485,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 1624,
+      "output_blocking_overlap_ticks": 0
+    },
+    "H2": {
+      "production_ticks": 1440,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 632,
+      "output_blocking_overlap_ticks": 0
+    },
+    "QA1": {
+      "production_ticks": 1887,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 172,
+      "output_blocking_overlap_ticks": 0
+    },
+    "QA2": {
+      "production_ticks": 1858,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 26,
+      "output_blocking_overlap_ticks": 0
+    },
+    "A1": {
+      "production_ticks": 555,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 328,
+      "output_blocking_overlap_ticks": 0
+    },
+    "A2": {
+      "production_ticks": 480,
+      "production_ticks_definition": "operation occupation, including setup",
+      "output_blocked_ticks": 669,
+      "output_blocking_overlap_ticks": 0
+    }
+  },
+  "production_operations": 225,
+  "completed_production_operations": 225,
+  "rework_operations": 8,
+  "setup_operations": 63,
+  "setup_ticks": 2475,
+  "homogeneous_multiunit_batches": 5,
+  "processing_modes": {
+    "standard": 205,
+    "precision": 20
+  },
+  "bom_joins": 14,
+  "precision_operations": 20,
+  "tool_services": 11,
+  "machine_maintenance": 7,
+  "worker_attendance_ticks": {
+    "W01": 925,
+    "W02": 1000,
+    "W03": 796,
+    "W04": 809,
+    "W05": 1115,
+    "W06": 480,
+    "W07": 1265,
+    "W08": 960,
+    "W09": 420,
+    "W10": 1415
+  },
+  "worker_walk_ticks": {
+    "W01": 20,
+    "W02": 24,
+    "W03": 4,
+    "W04": 52,
+    "W05": 28,
+    "W06": 0,
+    "W07": 68,
+    "W08": 32,
+    "W09": 0,
+    "W10": 36
+  },
+  "worker_occupied_ticks": {
+    "W01": 945,
+    "W02": 1024,
+    "W03": 800,
+    "W04": 861,
+    "W05": 1143,
+    "W06": 480,
+    "W07": 1333,
+    "W08": 992,
+    "W09": 420,
+    "W10": 1451
+  },
+  "worker_walks": 132,
+  "loaded_moves": 278,
+  "loaded_moves_definition": "all transport commitments, including part and tool transports",
+  "part_moves": 272,
+  "tool_moves": 6,
+  "agv_charge_sessions": 34,
+  "agv_charge_ticks": 243,
+  "empty_travel_ticks": 654,
+  "loaded_travel_ticks": 1000,
+  "event_counts": {
+    "lease_request": 1,
+    "release": 42,
+    "process_complete": 231,
+    "qa_result": 59,
+    "lease_delivery": 1,
+    "consume": 42,
+    "reveal": 3,
+    "ship": 13,
+    "tool_service_complete": 11,
+    "repair": 4,
+    "delivery": 1,
+    "maintenance_complete": 7,
+    "urgent_order": 2,
+    "new_unit": 6
+  },
+  "qa_failures": 4,
+  "minimum_observed_raw_stock": {
+    "housing": 18,
+    "rotor": 18,
+    "flange": 18
+  },
+  "terminal_raw_stock": {
+    "housing": 20,
+    "rotor": 20,
+    "flange": 20
+  },
+  "raw_stock_exhaustion_observed": false,
+  "raw_stock_scope": "Inventory states only; trace does not record denied release attempts or prove marginal stock value",
+  "battery_discharge_ticks": 0,
+  "battery_charge_ticks": 200,
+  "solar_generation_ticks": 2876,
+  "min_grid_headroom_kw": 0,
+  "derated_grid_ticks": 0,
+  "max_local_total_bits": 0,
+  "local_calls": 0,
+  "simulated_qaoa_calls": 0,
+  "enabled_mechanisms": {
+    "flexible_machines": "implemented; independently checkable in trace",
+    "processing_modes": "implemented; independently checkable in trace",
+    "family_setups": "implemented; independently checkable in trace",
+    "bom_joins": "implemented; independently checkable in trace",
+    "batch_heat": "implemented; independently checkable in trace",
+    "agv_routes": "implemented; independently checkable in trace",
+    "empty_repositioning": "implemented; independently checkable in trace",
+    "finite_buffers": "implemented; independently checkable in trace",
+    "blocking": "implemented; independently checkable in trace",
+    "battery_charging": "implemented; independently checkable in trace",
+    "worker_skills_shifts": "implemented; independently checkable in trace",
+    "portable_tools_wear": "implemented; independently checkable in trace",
+    "preventive_maintenance": "implemented; independently checkable in trace",
+    "grid_solar_stationary_battery": "implemented; independently checkable in trace",
+    "cost_carbon_budget": "energy cost/carbon objectives and hard investment budget; operating/carbon caps not implemented",
+    "procurement_lead_times": "scheduled stock delivery, delayed delivery, bounded replacement and tool rental; emergency buying not implemented",
+    "quality_rework_scrap": "implemented; independently checkable in trace",
+    "nonanticipative_recourse": "causal revealed-state controller; robust start guards; empirical prefix audit, no general proof",
+    "rolling_wip": "hourly dispatch policy updates; active reservations retained; initial burn-in snapshot not yet implemented",
+    "capacity_lease": "one portable calibration kit with price, lead time, delivery location and budget; machine leasing not implemented"
+  },
+  "source_trace": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/tooling-routing-train32/n12-s0-hard-all.json.gz",
+    "file_sha256": "ab5707a4c7779a7196c934b37f48d86033ffa8816ce3879b46261b72d8b20147",
+    "json_sha256": "83b9a73e7ef266b3f355e25ff67ca48f2521f32fc3d0b1e195fd000dcebb6d69"
+  },
+  "activity_audit_sha256": "38d9a020db1d728f9a27d1837833b7934b733c134178fb87bb61d928a449e6e2"
+}

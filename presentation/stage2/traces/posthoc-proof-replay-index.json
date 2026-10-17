@@ -1,0 +1,126 @@
+{
+  "schema": "stage2-posthoc-proof-replay-view.v1",
+  "posthoc_audit_only": true,
+  "excluded_from_estimates": true,
+  "predeclared_first_tape": false,
+  "seed": 10020,
+  "actor": 900000,
+  "config": {
+    "orders": 32,
+    "horizon": 14400,
+    "profile": "full"
+  },
+  "viewer_path": "./traces/posthoc-proof-10020-32-14400.json.gz",
+  "trace_sha256": "49d9b4be8f9416bfbde8549c29337960a270962b1f3ce9c12211d6e19b4ce6be",
+  "source_trace_sha256": "c61063ea285a0c22feefa45ca4781a6b614d3cb58b684f1183a1c5ef8f34816c",
+  "declaration_viewer_path": "./traces/posthoc-proof-10020-32-14400.declaration.json",
+  "certificate_viewer_path": "./traces/posthoc-proof-10020-32-14400.certificate.json",
+  "report_viewer_path": "./traces/posthoc-proof-10020-32-14400.audit-report.json",
+  "fresh_check_valid": true,
+  "identity_valid": true,
+  "orders": 32,
+  "shipped": 31,
+  "necessary_missing_lower_bound": 1,
+  "checked_missing_upper_bound": 1,
+  "secondary_optimality_gap": null,
+  "quality_evidence": {
+    "order_id": "P32",
+    "recipe": "pump",
+    "unit_id": "P32/pump/1",
+    "first_draw": 0.007699527690856382,
+    "repair_draw": 0.005437478718679857,
+    "first_risk_floor": 0.0099999999,
+    "repair_risk_floor": 0.0199999999,
+    "necessary_scrap": true
+  },
+  "sources": {
+    "report": {
+      "path": "output/stage2-search/final-independent-audit/nontrivial-proof-seed10020/report.json",
+      "sha256": "45b9a467455788ca971244adb32132621f0fa5860105ec4251fb0aa888d5c990"
+    },
+    "declaration": {
+      "path": "output/stage2-search/final-independent-audit/nontrivial-proof-seed10020/declaration.json",
+      "sha256": "3756cdb7bf9fb56f410d471f75dd0b09ef9c4861759d19790aa3917979466b3d"
+    },
+    "necessary_bound": {
+      "path": "output/stage2-search/final-independent-audit/nontrivial-proof-seed10020/independently-reconstructed-necessary-bound.json",
+      "sha256": "e8d4b6f888b7d0c62f58d0e0905c880510b87534c0d1341ca8a04cab22e96266"
+    },
+    "original_row": {
+      "path": "output/stage2-search/final-independent-audit/nontrivial-proof-seed10020/original-row.json",
+      "sha256": "758c2080afba726a3295d3534fd3f590cd0ca6e4d016fdbb5ce1195f6d5275f9"
+    },
+    "retained_declaration": {
+      "path": "presentation/stage2/traces/posthoc-proof-10020-32-14400.declaration.json",
+      "sha256": "3756cdb7bf9fb56f410d471f75dd0b09ef9c4861759d19790aa3917979466b3d"
+    },
+    "retained_certificate": {
+      "path": "presentation/stage2/traces/posthoc-proof-10020-32-14400.certificate.json",
+      "sha256": "e8d4b6f888b7d0c62f58d0e0905c880510b87534c0d1341ca8a04cab22e96266"
+    },
+    "retained_report": {
+      "path": "presentation/stage2/traces/posthoc-proof-10020-32-14400.audit-report.json",
+      "sha256": "45b9a467455788ca971244adb32132621f0fa5860105ec4251fb0aa888d5c990"
+    },
+    "sidecar": {
+      "path": "presentation/stage2/traces/posthoc-proof-10020-32-14400.evidence.json",
+      "sha256": "e22b328c743653773d80dfd9661a51c83b78124e66b68760b1bc80f5a3c1a6a8"
+    },
+    "exporter": {
+      "path": "presentation/stage2/build-proof-replay.py",
+      "sha256": "ccfad73e22b054495a64c8620ba8b7780df7b4af6f06fc5b38182e6f0048e55b"
+    }
+  },
+  "metrics": {
+    "orders": 32,
+    "shipped": 31,
+    "shipped_at": {
+      "P07": 1105,
+      "P01": 1260,
+      "P13": 1307,
+      "P25": 1491,
+      "P31": 2045,
+      "P19": 2217,
+      "P10": 2931,
+      "P22": 3349,
+      "P04": 3999,
+      "P16": 4210,
+      "P28": 4524,
+      "P02": 4995,
+      "P14": 5271,
+      "P26": 5476,
+      "P20": 5907,
+      "P08": 6148,
+      "P05": 7109,
+      "P17": 7191,
+      "P29": 7374,
+      "P11": 7797,
+      "P23": 8744,
+      "P09": 8802,
+      "P21": 8929,
+      "P15": 9895,
+      "P03": 10073,
+      "P27": 10276,
+      "P06": 10615,
+      "P18": 10675,
+      "P30": 11640,
+      "P12": 11733,
+      "P24": 11832
+    },
+    "all_orders_fulfilled": false,
+    "total_tardiness_ticks": 114815,
+    "grid_kwh": 6937.442791666666,
+    "energy_cost": 1277.2206251666667,
+    "carbon_kg": 2542.9561345833336,
+    "terminal_soc": 2400,
+    "terminal_soc_satisfied": true,
+    "investment_cost": 150,
+    "total_cost": 1427.2206251665045,
+    "operations": 580,
+    "moves": 698,
+    "unfinished": 1,
+    "global_optimality_gap": null
+  },
+  "scope": "Posthoc audit-only proof illustration, excluded from original256-tape estimates and original predeclared retained-trace counts; no tuning or new policy selection",
+  "source_path": "output/stage2-search/final-independent-audit/nontrivial-proof-seed10020/audit-only-witness.json"
+}

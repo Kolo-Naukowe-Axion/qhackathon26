@@ -1,0 +1,1267 @@
+{
+  "schema": "stage2-objective-mechanism-evidence.v1",
+  "selection_role": "Retrospective selected TRAIN failure cohort; no unbiased performance or held-out claim",
+  "example": {
+    "tick": 420,
+    "original_selected": [
+      "C1",
+      "C2",
+      "C7"
+    ],
+    "forced_selected": [
+      "C0",
+      "C1",
+      "C2"
+    ],
+    "candidates": [
+      {
+        "candidate_id": "C0",
+        "reward": 298.1132075471698,
+        "operation": {
+          "id": "O27",
+          "unit_ids": [
+            "P07/rotor/1"
+          ],
+          "unit_id": "P07/rotor/1",
+          "order_id": "P07",
+          "process": "HEAT",
+          "machine_id": "H2",
+          "start": 420,
+          "end": 540,
+          "mode": "standard",
+          "worker_ids": [
+            "W02"
+          ],
+          "worker_intervals": [
+            {
+              "worker_id": "W02",
+              "start": 420,
+              "end": 425,
+              "role": "process",
+              "skills": [
+                "setup"
+              ]
+            }
+          ],
+          "worker_roles": {
+            "W02": [
+              "setup"
+            ]
+          },
+          "tool_ids": [],
+          "parent_unit_ids": [],
+          "setup_ticks": 0,
+          "processing_ticks": 120,
+          "power_kw": 16,
+          "family": "alloy_A",
+          "kind": "process",
+          "recipe_step": 1,
+          "recipe_steps": {
+            "P07/rotor/1": 1
+          },
+          "attempt": 0,
+          "is_rework": false,
+          "repair_step": null,
+          "wear_before": 120,
+          "worker_calendar_aware": true
+        }
+      },
+      {
+        "candidate_id": "C7",
+        "reward": 307.54716981132077,
+        "operation": {
+          "id": "O27",
+          "unit_ids": [
+            "P05/rotor/1",
+            "P05/housing/1"
+          ],
+          "unit_id": "P05/rotor/1",
+          "order_id": "P05",
+          "process": "HEAT",
+          "machine_id": "H2",
+          "start": 420,
+          "end": 570,
+          "mode": "standard",
+          "worker_ids": [
+            "W02"
+          ],
+          "worker_intervals": [
+            {
+              "worker_id": "W02",
+              "start": 420,
+              "end": 455,
+              "role": "combined",
+              "skills": [
+                "setup",
+                "setup"
+              ]
+            }
+          ],
+          "worker_roles": {
+            "W02": [
+              "setup"
+            ]
+          },
+          "tool_ids": [],
+          "parent_unit_ids": [],
+          "setup_ticks": 30,
+          "processing_ticks": 120,
+          "power_kw": 16,
+          "family": "alloy_B",
+          "kind": "process",
+          "recipe_step": 1,
+          "recipe_steps": {
+            "P05/rotor/1": 1,
+            "P05/housing/1": 3
+          },
+          "attempt": 0,
+          "is_rework": false,
+          "repair_step": null,
+          "wear_before": 120,
+          "worker_calendar_aware": true
+        }
+      }
+    ],
+    "conflicts": [
+      [
+        "C2",
+        "C3"
+      ],
+      [
+        "C2",
+        "C4"
+      ],
+      [
+        "C3",
+        "C4"
+      ],
+      [
+        "C2",
+        "C5"
+      ],
+      [
+        "C3",
+        "C5"
+      ],
+      [
+        "C4",
+        "C5"
+      ],
+      [
+        "C2",
+        "C6"
+      ],
+      [
+        "C3",
+        "C6"
+      ],
+      [
+        "C4",
+        "C6"
+      ],
+      [
+        "C5",
+        "C6"
+      ],
+      [
+        "C0",
+        "C7"
+      ],
+      [
+        "C0",
+        "C8"
+      ],
+      [
+        "C7",
+        "C8"
+      ]
+    ],
+    "capacities": {
+      "power@420": 4200
+    },
+    "source_trace": "output/stage2-search/selector-domain-deduplicated-training/trace-task4.json.gz",
+    "source_sha256": "1646e89fd9afebcc8a6d8643c1e3ea5f35f18f3929edc824732432b81df33bd7"
+  },
+  "forks": [
+    {
+      "seed": 0,
+      "orders": 14,
+      "before_shipped": 13,
+      "after_shipped": 13,
+      "before_cutoff_debt": 10380,
+      "after_cutoff_debt": 9236,
+      "prefix_equal": true,
+      "override_tick": 420,
+      "overrides": 1,
+      "fresh_checks": [
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": false,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 243,
+            "moves": 314,
+            "horizon_ticks": 5760,
+            "delivered_orders": 13,
+            "unfulfilled_orders": 1,
+            "delivery_ticks": {
+              "P01": 957,
+              "P04": 2472,
+              "P10": 2523,
+              "P02": 2600,
+              "P08": 3723,
+              "P05": 3839,
+              "P07": 3925,
+              "P11": 4011,
+              "P03": 4311,
+              "P09": 4913,
+              "P06": 5173,
+              "P12": 5352,
+              "U01": 5492
+            },
+            "tardiness_ticks": 8940,
+            "terminal_deadline_debt_ticks": 10380,
+            "grid_kwh": 3054.5086133334116,
+            "energy_cost": 547.8071589333363,
+            "carbon_kg": 1093.2019266666682,
+            "investment_cost": 150,
+            "total_cost": 697.8071589333363,
+            "terminal_soc": 2400
+          }
+        },
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": false,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 242,
+            "moves": 310,
+            "horizon_ticks": 5760,
+            "delivered_orders": 13,
+            "unfulfilled_orders": 1,
+            "delivery_ticks": {
+              "P01": 1060,
+              "P07": 1433,
+              "P04": 2274,
+              "P10": 2719,
+              "P02": 2965,
+              "P08": 3016,
+              "P03": 4216,
+              "P05": 4487,
+              "P11": 4489,
+              "P09": 4919,
+              "P06": 5097,
+              "P12": 5163,
+              "U01": 5604
+            },
+            "tardiness_ticks": 7796,
+            "terminal_deadline_debt_ticks": 9236,
+            "grid_kwh": 2995.3596083333664,
+            "energy_cost": 533.6306305666699,
+            "carbon_kg": 1065.5444067500096,
+            "investment_cost": 150,
+            "total_cost": 683.6306305666699,
+            "terminal_soc": 2400
+          }
+        }
+      ],
+      "baseline_trace_path": "output/stage2-search/selector-domain-deduplicated-training/trace-task4.json.gz",
+      "baseline_trace_sha256": "1646e89fd9afebcc8a6d8643c1e3ea5f35f18f3929edc824732432b81df33bd7",
+      "forced_trace_path": "output/stage2-search/selector-first-divergence-training/seed0.json.gz",
+      "forced_trace_sha256": "03aae033bdf60fc6ecaf64a3983aced48e69717745dd83501c5af39db58b7f6a"
+    },
+    {
+      "seed": 1,
+      "orders": 12,
+      "before_shipped": 12,
+      "after_shipped": 12,
+      "before_cutoff_debt": 3973,
+      "after_cutoff_debt": 1530,
+      "prefix_equal": true,
+      "override_tick": 420,
+      "overrides": 1,
+      "fresh_checks": [
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": true,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 206,
+            "moves": 268,
+            "horizon_ticks": 5760,
+            "delivered_orders": 12,
+            "unfulfilled_orders": 0,
+            "delivery_ticks": {
+              "P01": 957,
+              "P10": 2213,
+              "P04": 2472,
+              "P07": 2523,
+              "P02": 2600,
+              "P08": 3721,
+              "P05": 3842,
+              "P03": 3891,
+              "P09": 3985,
+              "P11": 4176,
+              "P06": 4441,
+              "P12": 4874
+            },
+            "tardiness_ticks": 3973,
+            "terminal_deadline_debt_ticks": 3973,
+            "grid_kwh": 2773.395053333288,
+            "energy_cost": 486.8235485333328,
+            "carbon_kg": 973.3781126666462,
+            "investment_cost": 150,
+            "total_cost": 636.8235485333328,
+            "terminal_soc": 2400
+          }
+        },
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": true,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 206,
+            "moves": 266,
+            "horizon_ticks": 5760,
+            "delivered_orders": 12,
+            "unfulfilled_orders": 0,
+            "delivery_ticks": {
+              "P01": 1060,
+              "P07": 1251,
+              "P02": 2116,
+              "P04": 2240,
+              "P10": 2395,
+              "P08": 2722,
+              "P05": 2935,
+              "P11": 3694,
+              "P03": 3745,
+              "P09": 3833,
+              "P06": 4141,
+              "P12": 4392
+            },
+            "tardiness_ticks": 1530,
+            "terminal_deadline_debt_ticks": 1530,
+            "grid_kwh": 2775.410609999912,
+            "energy_cost": 496.1467711333352,
+            "carbon_kg": 990.3935578333189,
+            "investment_cost": 150,
+            "total_cost": 646.1467711333353,
+            "terminal_soc": 2400
+          }
+        }
+      ],
+      "baseline_trace_path": "output/stage2-search/selector-domain-deduplicated-training/trace-task5.json.gz",
+      "baseline_trace_sha256": "3aff24e7084227e7683d1d3ebac78803410875a4997e02efae6111379ac03fac",
+      "forced_trace_path": "output/stage2-search/selector-first-divergence-training/seed1.json.gz",
+      "forced_trace_sha256": "c422f19ab0168bf8419cc7a7e5d468f003e39c6e40be3d8320670b21265922cd"
+    },
+    {
+      "seed": 2,
+      "orders": 14,
+      "before_shipped": 10,
+      "after_shipped": 14,
+      "before_cutoff_debt": 20467,
+      "after_cutoff_debt": 2940,
+      "prefix_equal": true,
+      "override_tick": 420,
+      "overrides": 1,
+      "fresh_checks": [
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": false,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 218,
+            "moves": 290,
+            "horizon_ticks": 5760,
+            "delivered_orders": 10,
+            "unfulfilled_orders": 4,
+            "delivery_ticks": {
+              "P01": 957,
+              "P10": 3925,
+              "P07": 3998,
+              "P02": 4231,
+              "P05": 4619,
+              "P04": 4908,
+              "P08": 5167,
+              "P03": 5380,
+              "P09": 5423,
+              "P11": 5616
+            },
+            "tardiness_ticks": 14467,
+            "terminal_deadline_debt_ticks": 20467,
+            "grid_kwh": 2979.829753333377,
+            "energy_cost": 518.6448132000007,
+            "carbon_kg": 1037.8033343333186,
+            "investment_cost": 150,
+            "total_cost": 668.6448132000007,
+            "terminal_soc": 2400
+          }
+        },
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": true,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 238,
+            "moves": 308,
+            "horizon_ticks": 5760,
+            "delivered_orders": 14,
+            "unfulfilled_orders": 0,
+            "delivery_ticks": {
+              "P01": 1060,
+              "P07": 1251,
+              "P02": 2043,
+              "P04": 2262,
+              "P08": 2478,
+              "P10": 2725,
+              "P05": 2931,
+              "P11": 3559,
+              "P03": 3694,
+              "P09": 3745,
+              "P06": 4205,
+              "U01": 4698,
+              "P12": 4876,
+              "U02": 5002
+            },
+            "tardiness_ticks": 2940,
+            "terminal_deadline_debt_ticks": 2940,
+            "grid_kwh": 2974.2415366666633,
+            "energy_cost": 522.8864862000037,
+            "carbon_kg": 1045.337660166661,
+            "investment_cost": 150,
+            "total_cost": 672.8864862000037,
+            "terminal_soc": 2400
+          }
+        }
+      ],
+      "baseline_trace_path": "output/stage2-search/selector-domain-deduplicated-training/trace-task6.json.gz",
+      "baseline_trace_sha256": "641bef003a07f031d60516162982182b55604c9892dab5ddefbd771b5981834e",
+      "forced_trace_path": "output/stage2-search/selector-first-divergence-training/seed2.json.gz",
+      "forced_trace_sha256": "604126b5dedccbb4197b75e102b2335d6e0b00ef28a9ab38304a2ffbbad97698"
+    },
+    {
+      "seed": 4,
+      "orders": 12,
+      "before_shipped": 2,
+      "after_shipped": 12,
+      "before_cutoff_debt": 23961,
+      "after_cutoff_debt": 3521,
+      "prefix_equal": true,
+      "override_tick": 420,
+      "overrides": 1,
+      "fresh_checks": [
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": false,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 141,
+            "moves": 199,
+            "horizon_ticks": 5760,
+            "delivered_orders": 2,
+            "unfulfilled_orders": 10,
+            "delivery_ticks": {
+              "P01": 953,
+              "P10": 3561
+            },
+            "tardiness_ticks": 81,
+            "terminal_deadline_debt_ticks": 23961,
+            "grid_kwh": 2276.922606666575,
+            "energy_cost": 433.69304999999645,
+            "carbon_kg": 860.980355666601,
+            "investment_cost": 150,
+            "total_cost": 583.6930499999964,
+            "terminal_soc": 2400
+          }
+        },
+        {
+          "valid": true,
+          "issues": [],
+          "coverage": [
+            "half_open_resource_capacity",
+            "machine_eligibility",
+            "mode_domain",
+            "worker_skills",
+            "worker_shift_breaks_travel",
+            "tool_assignment",
+            "batch_capacity",
+            "agv_path_continuity",
+            "agv_traction_soc",
+            "single_lane_conflicts",
+            "charger_capacity",
+            "part_and_tool_location_replay",
+            "machine_output_blocking",
+            "buffer_reservations",
+            "bom_genealogy",
+            "recipe_precedence_duration",
+            "setups_wear_service",
+            "qa_reveal_boundaries",
+            "physical_shipping",
+            "urgent_release_lineage",
+            "grid_solar_balance",
+            "stationary_battery_loss_bounds",
+            "energy_cost_carbon",
+            "bounded_quality_rework_replacement",
+            "finite_raw_stock_release",
+            "machine_outage_exclusion",
+            "transport_handling_boundaries",
+            "resource_lease_budget_leadtime_birth",
+            "material_delivery_realized_arrival",
+            "precision_mode_certification",
+            "manufacturing_mode_wear_quality_history",
+            "exogenous_keyed_scenario_tape",
+            "bounded_component_birth",
+            "next_required_part_destination",
+            "mounted_tool_mobility"
+          ],
+          "provenance": {
+            "checker": "independent-replay.v1",
+            "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+          },
+          "unsupported": [
+            "policy_nonanticipativity_proof",
+            "optional_emergency_procurement",
+            "leased_machine_footprint_power",
+            "reachable_burn_in",
+            "committed_rolling_replanning",
+            "interruption_resume_semantics"
+          ],
+          "all_orders_fulfilled": true,
+          "terminal_requirements_met": true,
+          "metrics": {
+            "operations": 207,
+            "moves": 268,
+            "horizon_ticks": 5760,
+            "delivered_orders": 12,
+            "unfulfilled_orders": 0,
+            "delivery_ticks": {
+              "P01": 1133,
+              "P07": 1285,
+              "P04": 2264,
+              "P10": 2485,
+              "P02": 2721,
+              "P08": 2952,
+              "P05": 3509,
+              "P11": 4030,
+              "P03": 4180,
+              "P09": 4221,
+              "P06": 4506,
+              "P12": 4872
+            },
+            "tardiness_ticks": 3521,
+            "terminal_deadline_debt_ticks": 3521,
+            "grid_kwh": 2689.5358849999275,
+            "energy_cost": 490.3060312999974,
+            "carbon_kg": 977.0416532499876,
+            "investment_cost": 150,
+            "total_cost": 640.3060312999974,
+            "terminal_soc": 2400
+          }
+        }
+      ],
+      "baseline_trace_path": "output/stage2-search/selector-domain-deduplicated-training/trace-task7.json.gz",
+      "baseline_trace_sha256": "bc90eba53d4a9234013fe0a2e094895bfa1a28658d7ff58e7b210853e69badfb",
+      "forced_trace_path": "output/stage2-search/selector-first-divergence-training/seed4.json.gz",
+      "forced_trace_sha256": "6dbf9a421221017cde0dba64be91e87ee8d1b905f967e2cdb19d3b4f1310ab00"
+    }
+  ],
+  "targeted_summary": [
+    {
+      "orders": 12,
+      "policy_id": "exact-no-batch",
+      "runs": 12,
+      "invalid": 0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        15,
+        23,
+        25,
+        26
+      ],
+      "shipped": 158,
+      "required": 160,
+      "complete": 11,
+      "total_tardiness": 47946
+    },
+    {
+      "orders": 12,
+      "policy_id": "exact-original",
+      "runs": 12,
+      "invalid": 0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        15,
+        23,
+        25,
+        26
+      ],
+      "shipped": 102,
+      "required": 160,
+      "complete": 1,
+      "total_tardiness": 219653
+    },
+    {
+      "orders": 12,
+      "policy_id": "exact-priority-lex",
+      "runs": 12,
+      "invalid": 0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        15,
+        23,
+        25,
+        26
+      ],
+      "shipped": 158,
+      "required": 160,
+      "complete": 11,
+      "total_tardiness": 44440
+    },
+    {
+      "orders": 12,
+      "policy_id": "priority-original",
+      "runs": 12,
+      "invalid": 0,
+      "seeds": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        15,
+        23,
+        25,
+        26
+      ],
+      "shipped": 158,
+      "required": 160,
+      "complete": 11,
+      "total_tardiness": 44875
+    }
+  ],
+  "ablation": [
+    {
+      "policy_id": "exact-original",
+      "selected": [
+        "C1",
+        "C2",
+        "C7"
+      ],
+      "candidate_rewards": {
+        "C0": 298.1132075471698,
+        "C1": 275.47169811320754,
+        "C2": 271.6981132075472,
+        "C3": 264.1509433962264,
+        "C4": 241.50943396226415,
+        "C5": 233.96226415094338,
+        "C6": 215.0943396226415,
+        "C7": 307.54716981132077,
+        "C8": 200.0
+      },
+      "conflicts": [
+        [
+          "C2",
+          "C3"
+        ],
+        [
+          "C2",
+          "C4"
+        ],
+        [
+          "C3",
+          "C4"
+        ],
+        [
+          "C2",
+          "C5"
+        ],
+        [
+          "C3",
+          "C5"
+        ],
+        [
+          "C4",
+          "C5"
+        ],
+        [
+          "C2",
+          "C6"
+        ],
+        [
+          "C3",
+          "C6"
+        ],
+        [
+          "C4",
+          "C6"
+        ],
+        [
+          "C5",
+          "C6"
+        ],
+        [
+          "C0",
+          "C7"
+        ],
+        [
+          "C0",
+          "C8"
+        ],
+        [
+          "C7",
+          "C8"
+        ]
+      ],
+      "capacities": {
+        "power@420": 4200
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/selector-reward-targeted-training/trace-task12.json.gz"
+    },
+    {
+      "policy_id": "exact-no-batch",
+      "selected": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "candidate_rewards": {
+        "C0": 298.1132075471698,
+        "C1": 275.47169811320754,
+        "C2": 271.6981132075472,
+        "C3": 264.1509433962264,
+        "C4": 241.50943396226415,
+        "C5": 233.96226415094338,
+        "C6": 215.0943396226415,
+        "C7": 207.54716981132074,
+        "C8": 200.0
+      },
+      "conflicts": [
+        [
+          "C2",
+          "C3"
+        ],
+        [
+          "C2",
+          "C4"
+        ],
+        [
+          "C3",
+          "C4"
+        ],
+        [
+          "C2",
+          "C5"
+        ],
+        [
+          "C3",
+          "C5"
+        ],
+        [
+          "C4",
+          "C5"
+        ],
+        [
+          "C2",
+          "C6"
+        ],
+        [
+          "C3",
+          "C6"
+        ],
+        [
+          "C4",
+          "C6"
+        ],
+        [
+          "C5",
+          "C6"
+        ],
+        [
+          "C0",
+          "C7"
+        ],
+        [
+          "C0",
+          "C8"
+        ],
+        [
+          "C7",
+          "C8"
+        ]
+      ],
+      "capacities": {
+        "power@420": 4200
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/selector-reward-targeted-training/trace-task24.json.gz"
+    },
+    {
+      "policy_id": "exact-priority-lex",
+      "selected": [
+        "C0",
+        "C1",
+        "C2"
+      ],
+      "candidate_rewards": {
+        "C0": 256,
+        "C1": 128,
+        "C2": 64,
+        "C3": 32,
+        "C4": 16,
+        "C5": 8,
+        "C6": 4,
+        "C7": 2,
+        "C8": 1
+      },
+      "conflicts": [
+        [
+          "C2",
+          "C3"
+        ],
+        [
+          "C2",
+          "C4"
+        ],
+        [
+          "C3",
+          "C4"
+        ],
+        [
+          "C2",
+          "C5"
+        ],
+        [
+          "C3",
+          "C5"
+        ],
+        [
+          "C4",
+          "C5"
+        ],
+        [
+          "C2",
+          "C6"
+        ],
+        [
+          "C3",
+          "C6"
+        ],
+        [
+          "C4",
+          "C6"
+        ],
+        [
+          "C5",
+          "C6"
+        ],
+        [
+          "C0",
+          "C7"
+        ],
+        [
+          "C0",
+          "C8"
+        ],
+        [
+          "C7",
+          "C8"
+        ]
+      ],
+      "capacities": {
+        "power@420": 4200
+      },
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/selector-reward-targeted-training/trace-task36.json.gz"
+    }
+  ],
+  "physical_prefix_fields": [
+    "operations",
+    "moves",
+    "worker_moves",
+    "events",
+    "energy"
+  ],
+  "all_forced_commit_sets_match": true,
+  "final_tapes_used": 0,
+  "trace_sha256_convention": "gzip-file bytes; original report hash of decompressed JSON separately verified",
+  "source_hashes": {
+    "output/stage2-search/selector-first-divergence-training/mechanism-summary.json": "761b2547ad805c62082814b05674dfdccf5a8f237b6f11dda0e3d126e77aab9b",
+    "output/stage2-search/selector-reward-targeted-training/tick420-ablation.json": "06c2e90868a252c2c592d84b870b82d1501b439a80dcede611382594fea8cf97",
+    "output/stage2-search/selector-reward-targeted-training/report.json": "9d0b214108076f58668b36c1d9eb51b4acdcc9a7a2863cd7d04af9d85c8f9d2c",
+    "output/stage2-search/selector-first-divergence-training/source_snapshot/stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+  },
+  "interpretation": "Exact optimization of a local surrogate is not global factory optimization; one-tick forced forks are offline diagnostics, not a future-aware deployable controller"
+}

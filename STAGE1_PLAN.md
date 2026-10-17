@@ -1,8 +1,10 @@
 # Stage 1 plan — solve, verify, explain
 
-Status: both mandatory baseline methods have run locally, 2026-10-16. A was solved by a genuine four-qubit QAOA simulator circuit (4 h); B by classical QUBO simulated annealing (8 h). Both exported schedules pass independent checks and match exact optima. **User hold: do not use ODRA5 or VeloxQ for now; iterate locally.**
+Status: updated 17 October 2026. Both official instances are now solved optimally by QAOA on a local simulator: A uses a 1-bit order QUBO (p=1), B a 3-bit order QUBO (p=2). Actual seed-2026 samples give 4/8 h, with 4,096/4,096 optimal shots each. Twenty fresh seeds give 81,920/81,920 optimal shots for each instance. **Do not use ODRA5 or VeloxQ; continue locally.**
 
-Current selected evidence is in `output/stage1-selected.json`, pointing to `output/stage1-local-ready/`; required root schedule JSONs are exported. Reproduce with `.venv/bin/python scripts/prepare-stage1.py --output output/new-stage1`. The refined p=3 quantum circuit passed all 40,960 validation measurements; the classical solver passed 5,110/5,120. See [refinement evidence](docs/STAGE1_REFINEMENT.md) and [implementation details](docs/STAGE1_OFFLINE.md). Service behavior remains unverified.
+Current evidence: `output/stage1-selected.json` → `output/stage1-compact-ready/`. Read [the current formulation and limits](docs/STAGE1_COMPACT.md). The construction tabulates all common orders classically, supports only two/three jobs, and is not a speedup or scalable encoding claim. Earlier time-indexed work below remains a comparison and historical plan.
+
+Reproduce with `.venv/bin/python scripts/prepare-stage1.py --output output/new-stage1`. Add `--time-indexed` for the earlier 4/39-bit methods. Required root JSONs and guide metadata now identify the compact measured quantum runs.
 
 ## Proposed approach
 

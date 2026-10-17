@@ -1,0 +1,26 @@
+{
+  "schema": "stage2-independent-stock-envelope-audit.v1",
+  "valid": true,
+  "analysis_source_sha256": "c664db8ad0ab40711fe73abba9c3d5881fa07d351c2a14e8cf265bb5321de3ee",
+  "report_sha256": "d55b94f9ee8e9fa1fa59e725f3d41e5acbb5be608ac2aa8df4b4d48fa341576d",
+  "numerical_source_hashes": {
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "factory_simulations": 0,
+  "checked_initial_orders": [
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36
+  ],
+  "independent_formula": "E lower bound=(max(0,n-34)+max(0,n+2-34))/2; all-success upper bound=(1[n<=34]+1[n+2<=34])/2",
+  "semantic_basis": "Stock is decremented on release; initial canonical objects and replacement births are demand identities, not free material. Delivery adds four blanks per recipe to initial30; calibration lease adds no blanks. Matched BOM consumes each component once.",
+  "scope": "Necessary material conservation only, no timing/quality feasibility or policy optimality claim; no QA independence assumption"
+}

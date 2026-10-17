@@ -1,0 +1,6896 @@
+{
+  "schema": "metaltech-sequential-evaluation.v1",
+  "method": "ppo",
+  "seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004,
+    1005,
+    1006,
+    1007,
+    1008,
+    1009,
+    1010,
+    1011,
+    1012,
+    1013,
+    1014,
+    1015,
+    1016,
+    1017,
+    1018,
+    1019,
+    1020,
+    1021,
+    1022,
+    1023,
+    1024,
+    1025,
+    1026,
+    1027,
+    1028,
+    1029,
+    1030,
+    1031
+  ],
+  "policy_seed": 900000,
+  "actor_seeds": [
+    900000
+  ],
+  "deterministic_network_argmax": true,
+  "unique_environment_tapes": 128,
+  "inference_rule": "argmax",
+  "configs": [
+    {
+      "orders": 8,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "summary": {
+    "episodes": 128,
+    "valid": 128,
+    "complete": 26,
+    "mean_unfulfilled": 5.2578125,
+    "mean_reward": -5.289318434251113,
+    "mean_tardiness_ticks": 14792.828125,
+    "empirical_worst_decile_mean_tardiness": 34845.92307692308,
+    "mean_total_cost": 730.1833116091144,
+    "simulation_cpu_seconds": 209.03876325800593,
+    "mean_action_changes": 18.8046875,
+    "global_optimality_gap": null
+  },
+  "rows": [
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1000,
+      "policy_seed": 900000,
+      "reward": -0.013418367393724866,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 2029,
+          "P08": 2474,
+          "P03": 3009,
+          "P04": 3674,
+          "P05": 4311,
+          "P06": 4797,
+          "U02": 4987,
+          "U01": 5118
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2727,
+        "grid_kwh": 2684.932965,
+        "energy_cost": 502.7880385,
+        "carbon_kg": 999.58975525,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 652.7880385000005,
+        "operations": 182,
+        "moves": 283,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.305519492001622,
+      "decisions": 96,
+      "action_changes": 38,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 76,
+        "11": 19,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1001,
+      "policy_seed": 900000,
+      "reward": -0.0046008602988972655,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1171,
+          "P07": 1433,
+          "P02": 1841,
+          "P08": 2024,
+          "P03": 2734,
+          "P04": 3466,
+          "P06": 3951,
+          "P05": 4036
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 196,
+        "grid_kwh": 2331.0267533333335,
+        "energy_cost": 450.04245986666666,
+        "carbon_kg": 892.428051,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 600.0424598666673,
+        "operations": 139,
+        "moves": 219,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0090526419990056,
+      "decisions": 96,
+      "action_changes": 46,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 72,
+        "11": 23,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1002,
+      "policy_seed": 900000,
+      "reward": -0.013769041584215993,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1172,
+          "P02": 1729,
+          "P07": 1805,
+          "P08": 2282,
+          "P03": 3169,
+          "P04": 4396,
+          "P05": 4472,
+          "P06": 4921
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2318,
+        "grid_kwh": 2374.765356666667,
+        "energy_cost": 439.38991833333336,
+        "carbon_kg": 874.4514765,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 589.3899183333226,
+        "operations": 146,
+        "moves": 225,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.1303901190003671,
+      "decisions": 96,
+      "action_changes": 52,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 69,
+        "11": 26,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1003,
+      "policy_seed": 900000,
+      "reward": -1.0224373601836594,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 2103,
+          "P02": 2241,
+          "P08": 3086,
+          "P03": 3698,
+          "P04": 3961,
+          "P05": 4485,
+          "P06": 4923,
+          "U01": 5426
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 5299,
+        "grid_kwh": 2735.5416816666666,
+        "energy_cost": 527.3048688333333,
+        "carbon_kg": 1045.77608775,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 677.304868833334,
+        "operations": 181,
+        "moves": 268,
+        "unfinished": 3,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4269386380001379,
+      "decisions": 96,
+      "action_changes": 40,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 75,
+        "11": 19,
+        "45": 1,
+        "9": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1004,
+      "policy_seed": 900000,
+      "reward": -0.0037054426942508883,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1763,
+          "P02": 2001,
+          "P08": 2536,
+          "P03": 2587,
+          "P05": 3355,
+          "P04": 3466,
+          "P06": 3998
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 2352.9224816666665,
+        "energy_cost": 438.6740741666667,
+        "carbon_kg": 872.4549410833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 588.674074166667,
+        "operations": 138,
+        "moves": 209,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 0.9760693820026063,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 73,
+        "11": 22,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1005,
+      "policy_seed": 900000,
+      "reward": -0.006755993319489931,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1255,
+          "P07": 1577,
+          "P02": 2500,
+          "P08": 2959,
+          "P03": 3077,
+          "P04": 3479,
+          "P05": 3938,
+          "P06": 4609
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 706,
+        "grid_kwh": 2342.5784633333333,
+        "energy_cost": 435.22750793333336,
+        "carbon_kg": 865.8593291666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 585.2275079333242,
+        "operations": 142,
+        "moves": 212,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0547152489998552,
+      "decisions": 96,
+      "action_changes": 42,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 74,
+        "11": 21,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1006,
+      "policy_seed": 900000,
+      "reward": -0.0136951571842226,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1255,
+          "P07": 1577,
+          "P02": 2500,
+          "P08": 2956,
+          "P04": 3192,
+          "P03": 3456,
+          "P05": 3745,
+          "P06": 4789,
+          "U01": 5116,
+          "U02": 5188
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2785,
+        "grid_kwh": 2659.1211616666665,
+        "energy_cost": 523.6452920333334,
+        "carbon_kg": 1036.6907497500001,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 673.6452920333273,
+        "operations": 175,
+        "moves": 265,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.282216662002611,
+      "decisions": 96,
+      "action_changes": 38,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 76,
+        "11": 19,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1007,
+      "policy_seed": 900000,
+      "reward": -0.014777212751988587,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 2017,
+          "P08": 2098,
+          "P03": 3696,
+          "P04": 4046,
+          "P05": 4480,
+          "P06": 4958
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2540,
+        "grid_kwh": 2351.5028183333334,
+        "energy_cost": 450.74458863333336,
+        "carbon_kg": 894.3561599166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 600.7445886333228,
+        "operations": 143,
+        "moves": 230,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.139804260998062,
+      "decisions": 96,
+      "action_changes": 52,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 69,
+        "11": 26,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1008,
+      "policy_seed": 900000,
+      "reward": -2.0219364038486853,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 1827,
+          "P08": 2037,
+          "P03": 3063,
+          "P04": 3678,
+          "P05": 4660,
+          "P06": 5454
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 5152,
+        "grid_kwh": 2684.538605,
+        "energy_cost": 529.9706227666667,
+        "carbon_kg": 1049.0000879166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 679.9706227666645,
+        "operations": 172,
+        "moves": 272,
+        "unfinished": 4,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4119059320000815,
+      "decisions": 96,
+      "action_changes": 40,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 75,
+        "11": 18,
+        "45": 1,
+        "9": 2
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1009,
+      "policy_seed": 900000,
+      "reward": -2.024002641061141,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1156,
+          "P02": 2001,
+          "P08": 2478,
+          "P03": 3048,
+          "P07": 3218,
+          "P05": 3972,
+          "P04": 4184,
+          "P06": 5416
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 5750,
+        "grid_kwh": 2792.4953766666667,
+        "energy_cost": 527.1103918,
+        "carbon_kg": 1047.2346561666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 677.1103918000023,
+        "operations": 185,
+        "moves": 268,
+        "unfinished": 5,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.3468431930014049,
+      "decisions": 96,
+      "action_changes": 36,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 78,
+        "11": 18
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1010,
+      "policy_seed": 900000,
+      "reward": -1.0154362000853931,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 1827,
+          "P08": 2037,
+          "P03": 3063,
+          "P04": 3678,
+          "P05": 4040,
+          "P06": 4615,
+          "U01": 5355
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 3288,
+        "grid_kwh": 2668.932475,
+        "energy_cost": 522.1103385666667,
+        "carbon_kg": 1034.2121034166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 672.1103385666679,
+        "operations": 173,
+        "moves": 273,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.305153583001811,
+      "decisions": 96,
+      "action_changes": 42,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 74,
+        "11": 21,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1011,
+      "policy_seed": 900000,
+      "reward": -0.004703386148565799,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1255,
+          "P07": 1577,
+          "P02": 2397,
+          "P08": 2718,
+          "P05": 3265,
+          "P03": 3357,
+          "P04": 3483,
+          "P06": 3963
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 240,
+        "grid_kwh": 2331.2239133333333,
+        "energy_cost": 427.7149609333333,
+        "carbon_kg": 851.8388716666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 577.7149609333305,
+        "operations": 143,
+        "moves": 214,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0313481410012173,
+      "decisions": 96,
+      "action_changes": 46,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 72,
+        "11": 23,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1012,
+      "policy_seed": 900000,
+      "reward": -2.0287953215436256,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1763,
+          "P02": 2562,
+          "P08": 3237,
+          "P03": 4038,
+          "P04": 4439,
+          "P05": 4791,
+          "P06": 5174
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7159,
+        "grid_kwh": 2730.5182466666665,
+        "energy_cost": 499.53423426666666,
+        "carbon_kg": 995.1241883333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 649.5342342666692,
+        "operations": 181,
+        "moves": 279,
+        "unfinished": 2,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.360298335999687,
+      "decisions": 96,
+      "action_changes": 26,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "11": 13,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1013,
+      "policy_seed": 900000,
+      "reward": -0.013043568603710486,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1575,
+          "P08": 2238,
+          "P02": 2286,
+          "P03": 3220,
+          "P04": 3944,
+          "P05": 3995,
+          "P06": 4535,
+          "U01": 5015,
+          "U02": 5176
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2605,
+        "grid_kwh": 2693.6418433333333,
+        "energy_cost": 516.2305904666666,
+        "carbon_kg": 1024.3078595,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 666.2305904666647,
+        "operations": 180,
+        "moves": 278,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.3283857819988043,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "11": 15,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1014,
+      "policy_seed": 900000,
+      "reward": -0.013736699248013837,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1159,
+          "P07": 1431,
+          "P02": 1802,
+          "P08": 2517,
+          "P03": 3460,
+          "P04": 3554,
+          "P05": 3938,
+          "P06": 4795,
+          "U01": 5116,
+          "U02": 5188
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2771,
+        "grid_kwh": 2754.989486666667,
+        "energy_cost": 549.2848558666667,
+        "carbon_kg": 1086.3584943333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 699.2848558666727,
+        "operations": 186,
+        "moves": 265,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.3350121449984726,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 73,
+        "11": 22,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1015,
+      "policy_seed": 900000,
+      "reward": -0.004229326981710124,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1159,
+          "P07": 1431,
+          "P02": 2262,
+          "P08": 2504,
+          "P03": 2976,
+          "P04": 3198,
+          "P05": 3683,
+          "P06": 4315
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 115,
+        "grid_kwh": 2384.935826666667,
+        "energy_cost": 444.9459448,
+        "carbon_kg": 884.8769486666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 594.9459447999968,
+        "operations": 140,
+        "moves": 214,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0369052060013928,
+      "decisions": 96,
+      "action_changes": 46,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 72,
+        "11": 23,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1016,
+      "policy_seed": 900000,
+      "reward": -0.007135253430803724,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1797,
+          "P08": 2040,
+          "P02": 2126,
+          "P03": 3456,
+          "P04": 3539,
+          "P06": 4131,
+          "P05": 4235
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 790,
+        "grid_kwh": 2328.95159,
+        "energy_cost": 438.92430433333334,
+        "carbon_kg": 872.1471948333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 588.9243043333345,
+        "operations": 135,
+        "moves": 222,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0911948590000975,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 73,
+        "11": 22,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1017,
+      "policy_seed": 900000,
+      "reward": -0.01577607664813048,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1765,
+          "P08": 2476,
+          "P02": 2697,
+          "P03": 3694,
+          "P04": 4197,
+          "P05": 4660,
+          "P06": 4898
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2809,
+        "grid_kwh": 2371.0573033333335,
+        "energy_cost": 408.6609135333333,
+        "carbon_kg": 818.4625751666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 558.6609135333346,
+        "operations": 139,
+        "moves": 220,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.1566721619965392,
+      "decisions": 96,
+      "action_changes": 48,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 71,
+        "11": 24,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1018,
+      "policy_seed": 900000,
+      "reward": -0.01260533806013238,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1493,
+          "P07": 1549,
+          "P02": 1830,
+          "P08": 2091,
+          "P03": 3557,
+          "P04": 3957,
+          "P05": 4508,
+          "P06": 4675
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2057,
+        "grid_kwh": 2317.437588333333,
+        "energy_cost": 431.62447710000004,
+        "carbon_kg": 858.5084270833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 581.6244770999999,
+        "operations": 143,
+        "moves": 214,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0363836389988137,
+      "decisions": 96,
+      "action_changes": 52,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 70,
+        "11": 26
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1019,
+      "policy_seed": 900000,
+      "reward": -0.023676509185871754,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1586,
+          "P07": 2093,
+          "P08": 2237,
+          "P02": 2483,
+          "P03": 3696,
+          "P04": 3959,
+          "P05": 4898,
+          "P06": 5134,
+          "U01": 5598,
+          "U02": 5664
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 5669,
+        "grid_kwh": 2685.6620166666667,
+        "energy_cost": 514.5807827333333,
+        "carbon_kg": 1021.0543055,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 664.5807827333362,
+        "operations": 178,
+        "moves": 281,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4169400739992852,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "11": 13,
+        "45": 1,
+        "9": 2
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1020,
+      "policy_seed": 900000,
+      "reward": -0.0037122966005608453,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1253,
+          "P07": 1433,
+          "P02": 2241,
+          "P03": 2395,
+          "P08": 2714,
+          "P04": 3464,
+          "P05": 3679,
+          "P06": 4129
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 2351.00601,
+        "energy_cost": 440.4058071333333,
+        "carbon_kg": 875.5425678333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 590.4058071333283,
+        "operations": 145,
+        "moves": 222,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0207966400012083,
+      "decisions": 96,
+      "action_changes": 42,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 74,
+        "11": 21,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1021,
+      "policy_seed": 900000,
+      "reward": -0.019092618727792117,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1795,
+          "P02": 2014,
+          "P08": 2504,
+          "P03": 3224,
+          "P04": 3569,
+          "P06": 4793,
+          "P05": 5140,
+          "U01": 5407,
+          "U02": 5469
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 4322,
+        "grid_kwh": 2764.0485966666665,
+        "energy_cost": 540.8098199333333,
+        "carbon_kg": 1071.2375825,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 690.8098199333322,
+        "operations": 182,
+        "moves": 281,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.318568268998206,
+      "decisions": 96,
+      "action_changes": 38,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 76,
+        "11": 19,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1022,
+      "policy_seed": 900000,
+      "reward": -0.010037603396160806,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1795,
+          "P02": 2014,
+          "P08": 2504,
+          "P03": 2929,
+          "P04": 3963,
+          "P05": 4046,
+          "P06": 4960
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 1449,
+        "grid_kwh": 2425.7407633333332,
+        "energy_cost": 449.6265566,
+        "carbon_kg": 894.6854908333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 599.6265565999979,
+        "operations": 145,
+        "moves": 227,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0583370799977274,
+      "decisions": 96,
+      "action_changes": 48,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 71,
+        "11": 24,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1023,
+      "policy_seed": 900000,
+      "reward": -0.006569193624163446,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1282,
+          "P07": 1338,
+          "P02": 1773,
+          "P08": 2234,
+          "P03": 3080,
+          "P04": 3559,
+          "P05": 4233,
+          "P06": 4373
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 645,
+        "grid_kwh": 2347.2032566666667,
+        "energy_cost": 455.06287100000003,
+        "carbon_kg": 902.0707781666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 605.062870999998,
+        "operations": 142,
+        "moves": 213,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.057287756997539,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 74,
+        "11": 22
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1024,
+      "policy_seed": 900000,
+      "reward": -2.0240680624855893,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 1827,
+          "P08": 2037,
+          "P03": 3216,
+          "P04": 4392,
+          "P05": 4495,
+          "P06": 5418
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 5761,
+        "grid_kwh": 2725.9600633333334,
+        "energy_cost": 534.8036519333333,
+        "carbon_kg": 1059.1053691666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 684.8036519333413,
+        "operations": 182,
+        "moves": 282,
+        "unfinished": 2,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.3880001500001526,
+      "decisions": 96,
+      "action_changes": 38,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 76,
+        "11": 19,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1025,
+      "policy_seed": 900000,
+      "reward": -0.01264698665153235,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1575,
+          "P08": 2238,
+          "P02": 2596,
+          "P04": 3481,
+          "P03": 3698,
+          "P06": 3967,
+          "P05": 4176,
+          "U01": 4872,
+          "U02": 5352
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 2499,
+        "grid_kwh": 2689.6609016666666,
+        "energy_cost": 508.34820363333336,
+        "carbon_kg": 1009.84958075,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 658.3482036333357,
+        "operations": 182,
+        "moves": 274,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.2609427620009228,
+      "decisions": 96,
+      "action_changes": 28,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 81,
+        "11": 14,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1026,
+      "policy_seed": 900000,
+      "reward": -0.003707946865462129,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 1827,
+          "P08": 2236,
+          "P03": 2875,
+          "P04": 3466,
+          "P05": 3685,
+          "P06": 4131
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 2337.4840766666666,
+        "energy_cost": 439.3063498,
+        "carbon_kg": 873.1133111666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 589.306349799995,
+        "operations": 141,
+        "moves": 219,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0651344799989602,
+      "decisions": 96,
+      "action_changes": 46,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 72,
+        "11": 23,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1027,
+      "policy_seed": 900000,
+      "reward": -2.0272244699312356,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 2017,
+          "P08": 2098,
+          "P03": 3456,
+          "P04": 3959,
+          "P05": 5456,
+          "P06": 5575
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 6686,
+        "grid_kwh": 2653.1356766666668,
+        "energy_cost": 519.2239604666667,
+        "carbon_kg": 1028.4615178333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 669.2239604666594,
+        "operations": 173,
+        "moves": 277,
+        "unfinished": 7,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.3690533879998839,
+      "decisions": 96,
+      "action_changes": 40,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 75,
+        "11": 14,
+        "45": 1,
+        "9": 6
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1028,
+      "policy_seed": 900000,
+      "reward": -0.007135253430803724,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1797,
+          "P08": 2040,
+          "P02": 2126,
+          "P03": 3456,
+          "P04": 3539,
+          "P06": 4131,
+          "P05": 4235
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 790,
+        "grid_kwh": 2328.95159,
+        "energy_cost": 438.92430433333334,
+        "carbon_kg": 872.1471948333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 588.9243043333345,
+        "operations": 135,
+        "moves": 222,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0771780320028483,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 73,
+        "11": 22,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1029,
+      "policy_seed": 900000,
+      "reward": -0.0046008602988972655,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1171,
+          "P07": 1433,
+          "P02": 1841,
+          "P08": 2024,
+          "P03": 2734,
+          "P04": 3466,
+          "P06": 3951,
+          "P05": 4036
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 196,
+        "grid_kwh": 2331.0267533333335,
+        "energy_cost": 450.04245986666666,
+        "carbon_kg": 892.428051,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 600.0424598666673,
+        "operations": 139,
+        "moves": 219,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0003923250005755,
+      "decisions": 96,
+      "action_changes": 46,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 72,
+        "11": 23,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1030,
+      "policy_seed": 900000,
+      "reward": -0.004117419638527203,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1578,
+          "P02": 1917,
+          "P08": 2519,
+          "P03": 2693,
+          "P04": 3566,
+          "P05": 3655,
+          "P06": 4135
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 86,
+        "grid_kwh": 2360.9485466666665,
+        "energy_cost": 448.5052696,
+        "carbon_kg": 890.5852166666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 598.5052695999973,
+        "operations": 137,
+        "moves": 210,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.014538833998813,
+      "decisions": 96,
+      "action_changes": 58,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 66,
+        "11": 29,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1031,
+      "policy_seed": 900000,
+      "reward": -0.0037585992872209563,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 8,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1168,
+          "P07": 1763,
+          "P02": 1999,
+          "P08": 2566,
+          "P03": 2939,
+          "P04": 3483,
+          "P05": 3653,
+          "P06": 3968
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 3,
+        "grid_kwh": 2373.8031,
+        "energy_cost": 448.8688844,
+        "carbon_kg": 891.655343,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 598.8688843999969,
+        "operations": 143,
+        "moves": 215,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.0367749210017791,
+      "decisions": 96,
+      "action_changes": 44,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 73,
+        "11": 22,
+        "45": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1000,
+      "policy_seed": 900000,
+      "reward": -5.037550472195977,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1731,
+          "P03": 2509,
+          "P09": 3218,
+          "P08": 3704,
+          "P04": 4665,
+          "P10": 4943,
+          "P05": 5637
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13407,
+        "grid_kwh": 3024.788361666667,
+        "energy_cost": 604.0733400333334,
+        "carbon_kg": 1194.55842975,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 754.0733400333309,
+        "operations": 198,
+        "moves": 300,
+        "unfinished": 13,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.49449172399909,
+      "decisions": 96,
+      "action_changes": 8,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 91,
+        "27": 2,
+        "9": 3
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1001,
+      "policy_seed": 900000,
+      "reward": -1.0160993248747079,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1289,
+          "P07": 1433,
+          "P02": 1909,
+          "P08": 1998,
+          "P03": 2593,
+          "P09": 2695,
+          "P04": 3537,
+          "P10": 3649,
+          "P05": 4233,
+          "P11": 4377,
+          "P06": 5620
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 4136,
+        "grid_kwh": 2998.57344,
+        "energy_cost": 554.0804,
+        "carbon_kg": 1102.828064,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 704.0804,
+        "operations": 208,
+        "moves": 305,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.460386364000442,
+      "decisions": 96,
+      "action_changes": 14,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 88,
+        "27": 2,
+        "11": 6
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1002,
+      "policy_seed": 900000,
+      "reward": -2.0262922416989944,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1285,
+          "P02": 2247,
+          "P07": 2494,
+          "P08": 2744,
+          "P03": 2985,
+          "P09": 3247,
+          "P10": 4373,
+          "P04": 4664,
+          "P05": 4883,
+          "P11": 4988
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7609,
+        "grid_kwh": 3079.61256,
+        "energy_cost": 596.8650341333333,
+        "carbon_kg": 1183.1968253333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 746.8650341333276,
+        "operations": 206,
+        "moves": 315,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4873661800011178,
+      "decisions": 96,
+      "action_changes": 26,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "27": 2,
+        "9": 10,
+        "11": 2
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1003,
+      "policy_seed": 900000,
+      "reward": -4.032289597716452,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1100,
+          "P07": 1578,
+          "P02": 1832,
+          "P08": 3001,
+          "P03": 3094,
+          "P09": 3575,
+          "P10": 4311,
+          "P04": 4398,
+          "P05": 4980,
+          "P11": 5479
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 11224,
+        "grid_kwh": 3302.055635,
+        "energy_cost": 652.5475463,
+        "carbon_kg": 1291.51549075,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 802.5475462999985,
+        "operations": 226,
+        "moves": 326,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7072705270002189,
+      "decisions": 96,
+      "action_changes": 21,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 84,
+        "27": 2,
+        "9": 10
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1004,
+      "policy_seed": 900000,
+      "reward": -3.0262129743913446,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2054,
+          "P08": 2757,
+          "P09": 3169,
+          "P03": 3217,
+          "P10": 3833,
+          "P04": 4402,
+          "P05": 4996
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7617,
+        "grid_kwh": 2999.98777,
+        "energy_cost": 566.1618722000001,
+        "carbon_kg": 1124.8393785,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 716.1618721999964,
+        "operations": 201,
+        "moves": 304,
+        "unfinished": 7,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4868762980004249,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "9": 14
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1005,
+      "policy_seed": 900000,
+      "reward": -2.0260186282927877,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P07": 1431,
+          "P01": 1761,
+          "P02": 2001,
+          "P08": 2086,
+          "P03": 3456,
+          "P09": 3508,
+          "P10": 3835,
+          "P04": 4430,
+          "P05": 4960,
+          "P11": 5093
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7522,
+        "grid_kwh": 3015.8516116666665,
+        "energy_cost": 590.2145117,
+        "carbon_kg": 1169.0762089166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 740.2145116999966,
+        "operations": 207,
+        "moves": 297,
+        "unfinished": 4,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5781857450019743,
+      "decisions": 96,
+      "action_changes": 33,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 78,
+        "27": 2,
+        "11": 5,
+        "9": 11
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1006,
+      "policy_seed": 900000,
+      "reward": -3.0257402913501714,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 11,
+        "shipped_at": {
+          "P07": 1431,
+          "P01": 1761,
+          "P02": 2001,
+          "P08": 2086,
+          "P03": 3214,
+          "P09": 3262,
+          "P10": 3657,
+          "P04": 3922,
+          "P05": 4481,
+          "P11": 5095,
+          "P06": 5575
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 8566,
+        "grid_kwh": 3377.066603333333,
+        "energy_cost": 666.6134755333334,
+        "carbon_kg": 1319.4766201666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 816.6134755333289,
+        "operations": 236,
+        "moves": 339,
+        "unfinished": 7,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6944188119996397,
+      "decisions": 96,
+      "action_changes": 29,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "11": 1,
+        "9": 13
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1007,
+      "policy_seed": 900000,
+      "reward": -1.016792314934053,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1731,
+          "P03": 2211,
+          "P08": 2564,
+          "P09": 2740,
+          "P04": 3530,
+          "P10": 3573,
+          "P05": 4465,
+          "P11": 4513,
+          "P06": 5569
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 4370,
+        "grid_kwh": 3096.5099883333332,
+        "energy_cost": 558.7120931000001,
+        "carbon_kg": 1114.3654870833334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 708.7120931000051,
+        "operations": 214,
+        "moves": 312,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4625224229966989,
+      "decisions": 96,
+      "action_changes": 18,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 86,
+        "27": 2,
+        "11": 8
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1008,
+      "policy_seed": 900000,
+      "reward": -3.0216940911603123,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1639,
+          "P08": 2277,
+          "P03": 2550,
+          "P09": 3057,
+          "P10": 3349,
+          "P04": 3559,
+          "P05": 4134,
+          "P11": 4441,
+          "P06": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 6965,
+        "grid_kwh": 3374.013953333333,
+        "energy_cost": 642.0458412,
+        "carbon_kg": 1274.7110643333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 792.0458412000007,
+        "operations": 236,
+        "moves": 346,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6252709429973038,
+      "decisions": 96,
+      "action_changes": 40,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 75,
+        "27": 2,
+        "9": 19
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1009,
+      "policy_seed": 900000,
+      "reward": -4.038260193049838,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1636,
+          "P02": 1807,
+          "P08": 2277,
+          "P09": 3217,
+          "P03": 3460,
+          "P07": 3698,
+          "P04": 4487,
+          "P10": 5185,
+          "P05": 5284,
+          "P11": 5575
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13626,
+        "grid_kwh": 3268.849735,
+        "energy_cost": 656.8643403,
+        "carbon_kg": 1298.30765575,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 806.8643403000028,
+        "operations": 222,
+        "moves": 344,
+        "unfinished": 13,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6061776980022842,
+      "decisions": 96,
+      "action_changes": 22,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "27": 3,
+        "11": 1,
+        "9": 10
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1010,
+      "policy_seed": 900000,
+      "reward": -4.027511230599584,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1639,
+          "P03": 2389,
+          "P08": 2519,
+          "P09": 2873,
+          "P04": 4007,
+          "P10": 4163,
+          "P05": 4849,
+          "P11": 4954
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9333,
+        "grid_kwh": 3314.4027316666666,
+        "energy_cost": 624.2794258333333,
+        "carbon_kg": 1240.51177025,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 774.2794258333341,
+        "operations": 228,
+        "moves": 353,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6124964470000123,
+      "decisions": 96,
+      "action_changes": 25,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "27": 2,
+        "9": 12
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1011,
+      "policy_seed": 900000,
+      "reward": -0.019882602072147773,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 12,
+        "shipped_at": {
+          "P07": 1431,
+          "P01": 1759,
+          "P02": 2003,
+          "P08": 2525,
+          "P03": 2781,
+          "P10": 3353,
+          "P09": 3649,
+          "P04": 3959,
+          "P05": 4490,
+          "P11": 4791,
+          "P06": 5573,
+          "P12": 5656
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 5438,
+        "grid_kwh": 3105.779595,
+        "energy_cost": 558.7148260333333,
+        "carbon_kg": 1114.6653980833335,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 708.7148260333354,
+        "operations": 216,
+        "moves": 299,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5057586449984228,
+      "decisions": 96,
+      "action_changes": 17,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 86,
+        "27": 2,
+        "11": 7,
+        "9": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1012,
+      "policy_seed": 900000,
+      "reward": -4.0354135284059,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2089,
+          "P08": 3237,
+          "P03": 3458,
+          "P09": 3511,
+          "P10": 4643,
+          "P04": 4878,
+          "P11": 5153,
+          "P05": 5275
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12515,
+        "grid_kwh": 3149.012095,
+        "energy_cost": 627.5698093666667,
+        "carbon_kg": 1241.2318564166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 777.5698093666648,
+        "operations": 215,
+        "moves": 333,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6281429520022357,
+      "decisions": 96,
+      "action_changes": 17,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 86,
+        "27": 2,
+        "9": 8
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1013,
+      "policy_seed": 900000,
+      "reward": -4.03549609327366,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1311,
+          "P07": 1431,
+          "P02": 2313,
+          "P08": 2472,
+          "P03": 3038,
+          "P09": 3084,
+          "P04": 4902,
+          "P10": 5091,
+          "P05": 5599,
+          "P11": 5673
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12625,
+        "grid_kwh": 2987.834935,
+        "energy_cost": 569.4211749666666,
+        "carbon_kg": 1130.3787024166668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 719.421174966667,
+        "operations": 198,
+        "moves": 324,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6393183959989983,
+      "decisions": 96,
+      "action_changes": 6,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 92,
+        "27": 2,
+        "9": 2
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1014,
+      "policy_seed": 900000,
+      "reward": -4.030165398358682,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1289,
+          "P02": 1642,
+          "P07": 2001,
+          "P03": 2929,
+          "P08": 3466,
+          "P09": 3574,
+          "P10": 3835,
+          "P04": 4224,
+          "P11": 4791,
+          "P05": 4993
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 10363,
+        "grid_kwh": 3361.3976566666665,
+        "energy_cost": 656.1996336666667,
+        "carbon_kg": 1300.0438048333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 806.1996336666731,
+        "operations": 235,
+        "moves": 328,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6708954280002217,
+      "decisions": 96,
+      "action_changes": 24,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 83,
+        "27": 2,
+        "9": 11
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1015,
+      "policy_seed": 900000,
+      "reward": -4.038312437152698,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 8,
+        "shipped_at": {
+          "P01": 1286,
+          "P07": 1765,
+          "P02": 2005,
+          "P08": 2775,
+          "P09": 3934,
+          "P03": 4131,
+          "P04": 4878,
+          "P10": 5121
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 11839,
+        "grid_kwh": 2926.762423333333,
+        "energy_cost": 532.3889876666667,
+        "carbon_kg": 1061.1042365,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 682.3889876666728,
+        "operations": 190,
+        "moves": 291,
+        "unfinished": 10,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4834586930010119,
+      "decisions": 96,
+      "action_changes": 28,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 81,
+        "27": 2,
+        "9": 13
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1016,
+      "policy_seed": 900000,
+      "reward": -2.027444210095773,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2049,
+          "P08": 2765,
+          "P03": 2935,
+          "P09": 3460,
+          "P04": 4498,
+          "P05": 4667,
+          "P10": 4851,
+          "P11": 5154
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7995,
+        "grid_kwh": 2981.529965,
+        "energy_cost": 607.6328185,
+        "carbon_kg": 1199.65380525,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 757.6328184999926,
+        "operations": 206,
+        "moves": 308,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4357712019991595,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "9": 13,
+        "11": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1017,
+      "policy_seed": 900000,
+      "reward": -1.022279502104874,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1639,
+          "P08": 2277,
+          "P03": 2550,
+          "P09": 3464,
+          "P10": 4053,
+          "P04": 4186,
+          "P05": 4663,
+          "P11": 4793,
+          "P06": 5493
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 6252,
+        "grid_kwh": 3075.3863,
+        "energy_cost": 570.9406390666667,
+        "carbon_kg": 1135.9270896666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 720.9406390666638,
+        "operations": 208,
+        "moves": 314,
+        "unfinished": 3,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.4344873190020735,
+      "decisions": 96,
+      "action_changes": 26,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "27": 2,
+        "9": 7,
+        "11": 5
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1018,
+      "policy_seed": 900000,
+      "reward": -2.0324101262560457,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P07": 1438,
+          "P02": 1789,
+          "P01": 2000,
+          "P08": 2767,
+          "P03": 2871,
+          "P09": 3694,
+          "P10": 4881,
+          "P04": 4994,
+          "P05": 5365,
+          "P11": 5451
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9752,
+        "grid_kwh": 2962.5872716666668,
+        "energy_cost": 571.9213027666667,
+        "carbon_kg": 1134.1210545833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 721.9213027666649,
+        "operations": 198,
+        "moves": 314,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5032371939996665,
+      "decisions": 96,
+      "action_changes": 32,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 77,
+        "27": 3,
+        "11": 1,
+        "9": 15
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1019,
+      "policy_seed": 900000,
+      "reward": -4.028658044948546,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P07": 1251,
+          "P01": 1590,
+          "P02": 2077,
+          "P08": 2759,
+          "P03": 2939,
+          "P09": 3458,
+          "P10": 3722,
+          "P04": 4040,
+          "P05": 4718,
+          "P11": 5618
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9796,
+        "grid_kwh": 3280.9036683333334,
+        "energy_cost": 623.8076109666666,
+        "carbon_kg": 1238.58804575,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 773.8076109666576,
+        "operations": 225,
+        "moves": 338,
+        "unfinished": 10,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.588360013000056,
+      "decisions": 96,
+      "action_changes": 25,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 82,
+        "27": 2,
+        "9": 12
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1020,
+      "policy_seed": 900000,
+      "reward": -2.028845966504691,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1251,
+          "P07": 1433,
+          "P02": 2136,
+          "P08": 2759,
+          "P03": 2978,
+          "P09": 3169,
+          "P04": 4517,
+          "P10": 4958,
+          "P05": 5095,
+          "P11": 5363
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 8462,
+        "grid_kwh": 3075.54804,
+        "energy_cost": 623.3680973333334,
+        "carbon_kg": 1231.2548873333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 773.3680973333392,
+        "operations": 209,
+        "moves": 296,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5231809180004348,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "9": 13,
+        "11": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1021,
+      "policy_seed": 900000,
+      "reward": -4.031197929435274,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2049,
+          "P08": 2759,
+          "P09": 3698,
+          "P10": 3831,
+          "P04": 3995,
+          "P03": 4042,
+          "P05": 4986,
+          "P11": 5157
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 10829,
+        "grid_kwh": 3212.049376666667,
+        "energy_cost": 616.8751518,
+        "carbon_kg": 1223.7927561666668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 766.8751518000058,
+        "operations": 223,
+        "moves": 342,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5685573139999178,
+      "decisions": 96,
+      "action_changes": 19,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 85,
+        "27": 2,
+        "9": 9
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1022,
+      "policy_seed": 900000,
+      "reward": -2.026864303296131,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2049,
+          "P08": 2759,
+          "P09": 3272,
+          "P03": 3355,
+          "P04": 4469,
+          "P05": 4530,
+          "P11": 4881,
+          "P10": 5005
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7752,
+        "grid_kwh": 3021.51715,
+        "energy_cost": 646.5409280666667,
+        "carbon_kg": 1271.6681421666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 796.5409280666609,
+        "operations": 206,
+        "moves": 298,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.445341811999242,
+      "decisions": 96,
+      "action_changes": 34,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 78,
+        "27": 2,
+        "9": 15,
+        "11": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1023,
+      "policy_seed": 900000,
+      "reward": -1.0258408696894492,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1793,
+          "P02": 1835,
+          "P07": 1909,
+          "P08": 1998,
+          "P03": 2869,
+          "P09": 3484,
+          "P04": 4154,
+          "P10": 4481,
+          "P05": 4705,
+          "P11": 5273,
+          "P06": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7448,
+        "grid_kwh": 3052.3531566666666,
+        "energy_cost": 601.296237,
+        "carbon_kg": 1190.3862131666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 751.2962370000031,
+        "operations": 213,
+        "moves": 328,
+        "unfinished": 3,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5757334340014495,
+      "decisions": 96,
+      "action_changes": 29,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 79,
+        "27": 3,
+        "11": 3,
+        "9": 11
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1024,
+      "policy_seed": 900000,
+      "reward": -4.026737786706797,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1639,
+          "P08": 2277,
+          "P03": 2869,
+          "P09": 3518,
+          "P10": 4019,
+          "P04": 4158,
+          "P05": 4375,
+          "P11": 4673
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 8983,
+        "grid_kwh": 3413.1881516666667,
+        "energy_cost": 654.5723353,
+        "carbon_kg": 1298.7329599166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 804.5723352999962,
+        "operations": 241,
+        "moves": 352,
+        "unfinished": 10,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6168437489977805,
+      "decisions": 96,
+      "action_changes": 30,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "9": 14
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1025,
+      "policy_seed": 900000,
+      "reward": -5.034861206586502,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1311,
+          "P07": 1431,
+          "P08": 2483,
+          "P02": 2582,
+          "P03": 3349,
+          "P09": 3413,
+          "P04": 4633,
+          "P10": 4691,
+          "P05": 5329
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12295,
+        "grid_kwh": 3158.349583333333,
+        "energy_cost": 625.4594220666667,
+        "carbon_kg": 1237.6918905,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 775.4594220666559,
+        "operations": 213,
+        "moves": 326,
+        "unfinished": 15,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.63363523299995,
+      "decisions": 96,
+      "action_changes": 15,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 87,
+        "27": 2,
+        "9": 7
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1026,
+      "policy_seed": 900000,
+      "reward": -1.022952569533797,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1639,
+          "P08": 2761,
+          "P03": 3036,
+          "P09": 3355,
+          "P04": 4026,
+          "P10": 4129,
+          "P11": 4703,
+          "P05": 4919,
+          "P06": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 6484,
+        "grid_kwh": 3082.13406,
+        "energy_cost": 571.4653441333334,
+        "carbon_kg": 1137.0958003333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 721.4653441333294,
+        "operations": 215,
+        "moves": 302,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.489925238001888,
+      "decisions": 96,
+      "action_changes": 28,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 81,
+        "27": 2,
+        "9": 9,
+        "11": 4
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1027,
+      "policy_seed": 900000,
+      "reward": -4.027924016938543,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 14,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1321,
+          "P07": 1491,
+          "P02": 1731,
+          "P03": 2500,
+          "P09": 2929,
+          "P08": 2958,
+          "P10": 3662,
+          "P04": 3916,
+          "P11": 4611,
+          "P05": 5753
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9500,
+        "grid_kwh": 3300.2280066666667,
+        "energy_cost": 623.8387526666667,
+        "carbon_kg": 1239.2595323333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 773.8387526666648,
+        "operations": 226,
+        "moves": 319,
+        "unfinished": 11,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.62313242700111,
+      "decisions": 96,
+      "action_changes": 28,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 81,
+        "27": 2,
+        "9": 13
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1028,
+      "policy_seed": 900000,
+      "reward": -3.0303516371067265,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2049,
+          "P08": 2765,
+          "P03": 2935,
+          "P09": 3460,
+          "P04": 4393,
+          "P10": 4881,
+          "P05": 5156
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 9015,
+        "grid_kwh": 2960.1671499999998,
+        "energy_cost": 594.1559280666667,
+        "carbon_kg": 1174.4706421666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 744.1559280666652,
+        "operations": 203,
+        "moves": 306,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5083282650011824,
+      "decisions": 96,
+      "action_changes": 32,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 79,
+        "27": 2,
+        "9": 15
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1029,
+      "policy_seed": 900000,
+      "reward": -1.0160993248747079,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1289,
+          "P07": 1433,
+          "P02": 1909,
+          "P08": 1998,
+          "P03": 2593,
+          "P09": 2695,
+          "P04": 3537,
+          "P10": 3649,
+          "P05": 4233,
+          "P11": 4377,
+          "P06": 5620
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 4136,
+        "grid_kwh": 2998.57344,
+        "energy_cost": 554.0804,
+        "carbon_kg": 1102.828064,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 704.0804,
+        "operations": 208,
+        "moves": 305,
+        "unfinished": 1,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.475055828999757,
+      "decisions": 96,
+      "action_changes": 14,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 88,
+        "27": 2,
+        "11": 6
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1030,
+      "policy_seed": 900000,
+      "reward": -2.024772331866701,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1100,
+          "P07": 1729,
+          "P02": 1791,
+          "P08": 2472,
+          "P03": 2991,
+          "P09": 3694,
+          "P04": 3918,
+          "P10": 4010,
+          "P05": 4795,
+          "P11": 5376
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 7153,
+        "grid_kwh": 3002.49592,
+        "energy_cost": 537.7619765333334,
+        "carbon_kg": 1073.2830093333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 687.7619765333283,
+        "operations": 206,
+        "moves": 305,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.5502160149990232,
+      "decisions": 96,
+      "action_changes": 22,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 84,
+        "27": 2,
+        "9": 9,
+        "11": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1031,
+      "policy_seed": 900000,
+      "reward": -2.0345217716183415,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 12,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 1164,
+          "P07": 1311,
+          "P02": 2059,
+          "P08": 2718,
+          "P03": 3534,
+          "P09": 3700,
+          "P10": 4697,
+          "P04": 5118,
+          "P05": 5410,
+          "P11": 5755
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 10454,
+        "grid_kwh": 2993.043798333333,
+        "energy_cost": 596.0932551666667,
+        "carbon_kg": 1179.03913025,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 746.0932551666582,
+        "operations": 203,
+        "moves": 301,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.568216288000258,
+      "decisions": 96,
+      "action_changes": 29,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "20": 80,
+        "27": 2,
+        "9": 14
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1000,
+      "policy_seed": 900000,
+      "reward": -5.033735756386638,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1261,
+          "P07": 1534,
+          "P02": 2108,
+          "P14": 2211,
+          "P08": 2480,
+          "P03": 3351,
+          "P15": 3548,
+          "P09": 3651,
+          "P10": 4701,
+          "P16": 4910,
+          "P04": 4988,
+          "P05": 5671
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15100,
+        "grid_kwh": 3517.890785,
+        "energy_cost": 704.4858973,
+        "carbon_kg": 1392.81633825,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 854.4858973000056,
+        "operations": 261,
+        "moves": 376,
+        "unfinished": 15,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.867468848999124,
+      "decisions": 96,
+      "action_changes": 3,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 73
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1001,
+      "policy_seed": 900000,
+      "reward": -2.0310852411436167,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 14,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1596,
+          "P02": 2217,
+          "P14": 2393,
+          "P08": 2478,
+          "P03": 3351,
+          "P09": 3649,
+          "P15": 3745,
+          "P10": 4714,
+          "P04": 4872,
+          "P16": 4946,
+          "P05": 5601,
+          "P11": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12269,
+        "grid_kwh": 3402.844541666667,
+        "energy_cost": 654.9913079,
+        "carbon_kg": 1299.1656134166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 804.9913079000054,
+        "operations": 254,
+        "moves": 362,
+        "unfinished": 6,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8934600680004223,
+      "decisions": 96,
+      "action_changes": 21,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 63,
+        "6": 1,
+        "9": 9
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1002,
+      "policy_seed": 900000,
+      "reward": -3.0308556178711545,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1429,
+          "P02": 1915,
+          "P08": 2517,
+          "P14": 2569,
+          "P03": 3224,
+          "P15": 3462,
+          "P09": 3564,
+          "P10": 4795,
+          "P04": 4904,
+          "P16": 5189,
+          "P05": 5620
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12158,
+        "grid_kwh": 3440.9727966666665,
+        "energy_cost": 658.6679812666666,
+        "carbon_kg": 1307.0636458333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 808.6679812666822,
+        "operations": 252,
+        "moves": 377,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.78953029600234,
+      "decisions": 96,
+      "action_changes": 18,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 69,
+        "9": 9
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1003,
+      "policy_seed": 900000,
+      "reward": -7.036295121033945,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P02": 1915,
+          "P07": 2080,
+          "P14": 2129,
+          "P08": 2716,
+          "P03": 3353,
+          "P09": 3745,
+          "P15": 3833,
+          "P10": 4789,
+          "P04": 4948
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 16468,
+        "grid_kwh": 3493.32084,
+        "energy_cost": 677.5340493333333,
+        "carbon_kg": 1343.0312073333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 827.5340493333309,
+        "operations": 252,
+        "moves": 356,
+        "unfinished": 19,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9463849780004239,
+      "decisions": 96,
+      "action_changes": 3,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 20,
+        "20": 76
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1004,
+      "policy_seed": 900000,
+      "reward": -4.031963820218193,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1761,
+          "P02": 2110,
+          "P14": 2389,
+          "P08": 2474,
+          "P03": 3219,
+          "P09": 3572,
+          "P15": 3655,
+          "P10": 4514,
+          "P04": 4940,
+          "P16": 5630
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12690,
+        "grid_kwh": 3539.4568433333334,
+        "energy_cost": 643.6440238,
+        "carbon_kg": 1282.8809428333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 793.644023800003,
+        "operations": 260,
+        "moves": 376,
+        "unfinished": 10,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.85172292399875,
+      "decisions": 96,
+      "action_changes": 17,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 70,
+        "9": 8
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1005,
+      "policy_seed": 900000,
+      "reward": -3.031848047677436,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1071,
+          "P13": 1157,
+          "P07": 1765,
+          "P02": 2140,
+          "P14": 2498,
+          "P08": 2966,
+          "P03": 3353,
+          "P15": 3533,
+          "P09": 3649,
+          "P10": 4619,
+          "P16": 4979,
+          "P04": 5112,
+          "P05": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12602,
+        "grid_kwh": 3479.175603333333,
+        "energy_cost": 668.1677355333334,
+        "carbon_kg": 1325.5514701666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 818.1677355333416,
+        "operations": 258,
+        "moves": 366,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.833380992997263,
+      "decisions": 96,
+      "action_changes": 17,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 19,
+        "20": 69,
+        "9": 8
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1006,
+      "policy_seed": 900000,
+      "reward": -6.033779854746696,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1088,
+          "P13": 1176,
+          "P07": 1431,
+          "P02": 2031,
+          "P08": 2103,
+          "P14": 2213,
+          "P03": 3042,
+          "P09": 3169,
+          "P15": 3456,
+          "P04": 4962,
+          "P16": 5154,
+          "P10": 5271
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15172,
+        "grid_kwh": 3404.0644516666666,
+        "energy_cost": 672.4494773,
+        "carbon_kg": 1330.9465549166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 822.4494773000099,
+        "operations": 249,
+        "moves": 381,
+        "unfinished": 16,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9671381299995119,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 20,
+        "20": 76
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1007,
+      "policy_seed": 900000,
+      "reward": -6.038252552385564,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1765,
+          "P02": 2215,
+          "P08": 2291,
+          "P14": 2391,
+          "P09": 3695,
+          "P03": 3757,
+          "P15": 4131,
+          "P10": 5454
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15717,
+        "grid_kwh": 3084.8817766666666,
+        "energy_cost": 557.7901011333333,
+        "carbon_kg": 1112.3191495,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 707.7901011333302,
+        "operations": 227,
+        "moves": 368,
+        "unfinished": 14,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6937522789994546,
+      "decisions": 96,
+      "action_changes": 4,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 72,
+        "6": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1008,
+      "policy_seed": 900000,
+      "reward": -6.03500257304223,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1017,
+          "P13": 1435,
+          "P07": 1495,
+          "P02": 2125,
+          "P14": 2393,
+          "P08": 2484,
+          "P09": 2875,
+          "P03": 3040,
+          "P15": 4051,
+          "P04": 4991,
+          "P10": 5093,
+          "P16": 5424
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15839,
+        "grid_kwh": 3409.5963283333335,
+        "energy_cost": 651.4598487000001,
+        "carbon_kg": 1292.9596080833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 801.4598487000007,
+        "operations": 246,
+        "moves": 371,
+        "unfinished": 18,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9982240760000423,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 20,
+        "20": 76
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1009,
+      "policy_seed": 900000,
+      "reward": -7.043656192692547,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 11,
+        "shipped_at": {
+          "P13": 1181,
+          "P01": 1585,
+          "P02": 2101,
+          "P14": 2586,
+          "P07": 3458,
+          "P08": 3558,
+          "P03": 3837,
+          "P09": 3940,
+          "P15": 3987,
+          "P04": 5354,
+          "P10": 5601
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 20375,
+        "grid_kwh": 3281.233258333333,
+        "energy_cost": 620.7157382333334,
+        "carbon_kg": 1232.9769459166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 770.7157382333394,
+        "operations": 247,
+        "moves": 376,
+        "unfinished": 20,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9418628929997794,
+      "decisions": 96,
+      "action_changes": 3,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 28,
+        "20": 68
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1010,
+      "policy_seed": 900000,
+      "reward": -7.038020180954666,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1731,
+          "P02": 1735,
+          "P08": 2475,
+          "P14": 2576,
+          "P03": 3717,
+          "P09": 3996,
+          "P15": 4048,
+          "P10": 4424,
+          "P04": 5594
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 17579,
+        "grid_kwh": 3242.826846666667,
+        "energy_cost": 547.8138916,
+        "carbon_kg": 1099.2061116666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 697.8138916000012,
+        "operations": 236,
+        "moves": 362,
+        "unfinished": 19,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7138001259991142,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 16,
+        "20": 80
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1011,
+      "policy_seed": 900000,
+      "reward": -7.043532397477671,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 9,
+        "shipped_at": {
+          "P01": 1071,
+          "P13": 1157,
+          "P07": 1765,
+          "P02": 2230,
+          "P14": 2325,
+          "P08": 3237,
+          "P03": 4134,
+          "P15": 4190,
+          "P09": 4894
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 18135,
+        "grid_kwh": 3067.6082,
+        "energy_cost": 567.3068184,
+        "carbon_kg": 1129.072658,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 717.3068184000108,
+        "operations": 217,
+        "moves": 318,
+        "unfinished": 19,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6780765260009503,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 19,
+        "20": 77
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1012,
+      "policy_seed": 900000,
+      "reward": -7.040480655521601,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1596,
+          "P02": 2394,
+          "P14": 2581,
+          "P08": 3237,
+          "P15": 3532,
+          "P03": 3999,
+          "P09": 4052,
+          "P04": 5382,
+          "P10": 5573
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 18815,
+        "grid_kwh": 3074.3700533333335,
+        "energy_cost": 570.0715152,
+        "carbon_kg": 1134.3145293333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 720.071515199998,
+        "operations": 238,
+        "moves": 344,
+        "unfinished": 19,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8318054549999943,
+      "decisions": 96,
+      "action_changes": 4,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 72,
+        "6": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1013,
+      "policy_seed": 900000,
+      "reward": -5.034655035622963,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1791,
+          "P08": 2236,
+          "P14": 2281,
+          "P02": 2391,
+          "P03": 3353,
+          "P09": 3417,
+          "P15": 3694,
+          "P04": 4704,
+          "P10": 4885,
+          "P16": 5459,
+          "P05": 5757
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15549,
+        "grid_kwh": 3637.830053333333,
+        "energy_cost": 722.9477152000001,
+        "carbon_kg": 1430.1995293333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 872.9477152000084,
+        "operations": 267,
+        "moves": 374,
+        "unfinished": 15,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.868171383997833,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 78
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1014,
+      "policy_seed": 900000,
+      "reward": -6.03348460078083,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P02": 1658,
+          "P14": 1838,
+          "P07": 2395,
+          "P08": 2566,
+          "P03": 3088,
+          "P09": 3237,
+          "P15": 3540,
+          "P10": 4532,
+          "P04": 4951,
+          "P16": 5624
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15044,
+        "grid_kwh": 3481.201345,
+        "energy_cost": 656.5342877,
+        "carbon_kg": 1304.46420225,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 806.5342876999993,
+        "operations": 251,
+        "moves": 374,
+        "unfinished": 18,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8359514359981404,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 16,
+        "20": 80
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1015,
+      "policy_seed": 900000,
+      "reward": -4.032335334922629,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1120,
+          "P07": 1729,
+          "P02": 2617,
+          "P08": 2956,
+          "P14": 3004,
+          "P03": 3357,
+          "P09": 3649,
+          "P15": 3702,
+          "P10": 4529,
+          "P04": 4878,
+          "P16": 5116
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12831,
+        "grid_kwh": 3453.7085349999998,
+        "energy_cost": 664.9751989666667,
+        "carbon_kg": 1318.9365424166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 814.9751989666626,
+        "operations": 253,
+        "moves": 384,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9602526460002991,
+      "decisions": 96,
+      "action_changes": 21,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 63,
+        "6": 1,
+        "9": 9
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1016,
+      "policy_seed": 900000,
+      "reward": -4.034344903741575,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1596,
+          "P02": 2314,
+          "P08": 2478,
+          "P14": 2978,
+          "P03": 3355,
+          "P09": 3649,
+          "P15": 3702,
+          "P04": 4917,
+          "P16": 5353,
+          "P10": 5439
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13793,
+        "grid_kwh": 3205.5673266666668,
+        "energy_cost": 639.6060548,
+        "carbon_kg": 1264.9154236666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 789.6060547999972,
+        "operations": 238,
+        "moves": 358,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8458670979998715,
+      "decisions": 96,
+      "action_changes": 12,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 68,
+        "6": 1,
+        "9": 4
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1017,
+      "policy_seed": 900000,
+      "reward": -4.0366295704920585,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1731,
+          "P02": 1735,
+          "P08": 2482,
+          "P14": 2599,
+          "P09": 3357,
+          "P03": 3891,
+          "P15": 4033,
+          "P04": 5114,
+          "P16": 5630,
+          "P10": 5753
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 14938,
+        "grid_kwh": 3239.849085,
+        "energy_cost": 577.7231859666666,
+        "carbon_kg": 1153.4918999166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 727.7231859666704,
+        "operations": 233,
+        "moves": 356,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6995425620007154,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 16,
+        "20": 80
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1018,
+      "policy_seed": 900000,
+      "reward": -4.034479034248037,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1259,
+          "P01": 1435,
+          "P07": 1729,
+          "P02": 2391,
+          "P08": 2716,
+          "P14": 2765,
+          "P03": 3355,
+          "P09": 3571,
+          "P15": 3700,
+          "P10": 5007,
+          "P04": 5384,
+          "P16": 5669
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13851,
+        "grid_kwh": 3329.4333816666667,
+        "energy_cost": 642.2561801666667,
+        "carbon_kg": 1273.6750260833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 792.2561801666685,
+        "operations": 250,
+        "moves": 378,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8277158400014741,
+      "decisions": 96,
+      "action_changes": 13,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 28,
+        "20": 62,
+        "6": 1,
+        "9": 5
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1019,
+      "policy_seed": 900000,
+      "reward": -5.034617293648113,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 1009,
+          "P13": 1097,
+          "P07": 2040,
+          "P08": 2234,
+          "P14": 2297,
+          "P02": 2395,
+          "P09": 3094,
+          "P03": 3525,
+          "P15": 3651,
+          "P04": 4950,
+          "P10": 5123,
+          "P16": 5193,
+          "P05": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15593,
+        "grid_kwh": 3505.21901,
+        "energy_cost": 680.8996271333333,
+        "carbon_kg": 1349.5290178333335,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 830.8996271333443,
+        "operations": 255,
+        "moves": 375,
+        "unfinished": 15,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8181696460014791,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 17,
+        "20": 79
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1020,
+      "policy_seed": 900000,
+      "reward": -5.035928457443415,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 1017,
+          "P13": 1296,
+          "P07": 1527,
+          "P14": 2213,
+          "P02": 2391,
+          "P08": 2956,
+          "P03": 3349,
+          "P09": 3478,
+          "P15": 3649,
+          "P16": 5358,
+          "P04": 5611
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 14561,
+        "grid_kwh": 3269.6197233333332,
+        "energy_cost": 613.3776696666666,
+        "carbon_kg": 1219.2654815,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 763.377669666676,
+        "operations": 235,
+        "moves": 358,
+        "unfinished": 13,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.833207734998723,
+      "decisions": 96,
+      "action_changes": 5,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 26,
+        "20": 69,
+        "9": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1021,
+      "policy_seed": 900000,
+      "reward": -6.03354034264521,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1761,
+          "P02": 2110,
+          "P08": 2234,
+          "P14": 2303,
+          "P09": 3171,
+          "P03": 3353,
+          "P15": 3465,
+          "P04": 4703,
+          "P10": 4986,
+          "P16": 5356
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 15074,
+        "grid_kwh": 3463.1594283333334,
+        "energy_cost": 655.8399027,
+        "carbon_kg": 1302.6276230833334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 805.839902699992,
+        "operations": 254,
+        "moves": 376,
+        "unfinished": 18,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8875509920035256,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 78
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1022,
+      "policy_seed": 900000,
+      "reward": -3.031426602205282,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1255,
+          "P07": 1763,
+          "P02": 2128,
+          "P08": 2476,
+          "P14": 2736,
+          "P03": 3353,
+          "P15": 3503,
+          "P09": 3551,
+          "P04": 5004,
+          "P10": 5097,
+          "P16": 5169,
+          "P05": 5368
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12445,
+        "grid_kwh": 3387.459768333333,
+        "energy_cost": 641.8654183,
+        "carbon_kg": 1274.8108440833334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 791.8654183,
+        "operations": 251,
+        "moves": 359,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7265223120011797,
+      "decisions": 96,
+      "action_changes": 18,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 69,
+        "9": 9
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1023,
+      "policy_seed": 900000,
+      "reward": -4.033883135353726,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1429,
+          "P01": 1489,
+          "P07": 1537,
+          "P02": 2113,
+          "P08": 2234,
+          "P14": 2393,
+          "P09": 3351,
+          "P03": 3460,
+          "P15": 3657,
+          "P10": 5108,
+          "P04": 5382,
+          "P16": 5461
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13579,
+        "grid_kwh": 3303.48479,
+        "energy_cost": 640.4523923333334,
+        "carbon_kg": 1269.5697748333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 790.4523923333392,
+        "operations": 245,
+        "moves": 382,
+        "unfinished": 12,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7932254250008555,
+      "decisions": 96,
+      "action_changes": 14,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 29,
+        "20": 61,
+        "6": 1,
+        "9": 5
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1024,
+      "policy_seed": 900000,
+      "reward": -8.042448383915175,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1731,
+          "P02": 1735,
+          "P08": 2474,
+          "P14": 3214,
+          "P03": 3934,
+          "P15": 4131,
+          "P09": 4179,
+          "P10": 5607
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 19865,
+        "grid_kwh": 3112.8008866666664,
+        "energy_cost": 553.1578652000001,
+        "carbon_kg": 1104.7852376666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 703.157865199994,
+        "operations": 225,
+        "moves": 349,
+        "unfinished": 22,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.6995147870002256,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 16,
+        "20": 80
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1025,
+      "policy_seed": 900000,
+      "reward": -6.03551149690828,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1791,
+          "P08": 2236,
+          "P14": 2281,
+          "P02": 2578,
+          "P03": 3351,
+          "P09": 3651,
+          "P15": 3702,
+          "P04": 4874,
+          "P10": 4957,
+          "P16": 5463
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 16038,
+        "grid_kwh": 3488.7716833333334,
+        "energy_cost": 692.9772027333333,
+        "carbon_kg": 1370.9649221666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 842.977202733337,
+        "operations": 261,
+        "moves": 372,
+        "unfinished": 16,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8881776849993912,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 78
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1026,
+      "policy_seed": 900000,
+      "reward": -6.039880431671666,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1731,
+          "P02": 1735,
+          "P14": 2587,
+          "P08": 2773,
+          "P09": 3999,
+          "P03": 4187,
+          "P15": 4243,
+          "P04": 5360
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 16482,
+        "grid_kwh": 3223.0622016666666,
+        "energy_cost": 548.4279789666666,
+        "carbon_kg": 1099.6937590833334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 698.4279789666714,
+        "operations": 232,
+        "moves": 359,
+        "unfinished": 18,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7258607600015239,
+      "decisions": 96,
+      "action_changes": 1,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 16,
+        "20": 80
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1027,
+      "policy_seed": 900000,
+      "reward": -7.037836846338999,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 18,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1073,
+          "P07": 1765,
+          "P02": 2215,
+          "P08": 2291,
+          "P14": 2391,
+          "P03": 3370,
+          "P15": 3576,
+          "P09": 3833,
+          "P04": 5356,
+          "P10": 5477
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 17412,
+        "grid_kwh": 3117.6647216666665,
+        "energy_cost": 588.7927691,
+        "carbon_kg": 1169.7307304166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 738.7927691000098,
+        "operations": 233,
+        "moves": 370,
+        "unfinished": 21,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.7775235799999791,
+      "decisions": 96,
+      "action_changes": 4,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 72,
+        "6": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1028,
+      "policy_seed": 900000,
+      "reward": -3.032416595334293,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1596,
+          "P02": 2314,
+          "P08": 2478,
+          "P14": 2978,
+          "P03": 3355,
+          "P09": 3649,
+          "P15": 3702,
+          "P04": 4703,
+          "P10": 4954,
+          "P16": 5118,
+          "P05": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12850,
+        "grid_kwh": 3398.370053333333,
+        "energy_cost": 678.2573818666667,
+        "carbon_kg": 1341.325196,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 828.2573818666666,
+        "operations": 251,
+        "moves": 365,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8483369040004618,
+      "decisions": 96,
+      "action_changes": 19,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 64,
+        "6": 1,
+        "9": 8
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1029,
+      "policy_seed": 900000,
+      "reward": -3.031798421615768,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1596,
+          "P02": 2217,
+          "P14": 2393,
+          "P08": 2478,
+          "P03": 3351,
+          "P09": 3649,
+          "P15": 3745,
+          "P10": 4714,
+          "P04": 4874,
+          "P16": 5114,
+          "P05": 5751
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 12598,
+        "grid_kwh": 3433.864015,
+        "energy_cost": 654.7322621666667,
+        "carbon_kg": 1299.6816044166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 804.7322621666748,
+        "operations": 257,
+        "moves": 358,
+        "unfinished": 7,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.884053917001438,
+      "decisions": 96,
+      "action_changes": 16,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 23,
+        "20": 66,
+        "6": 1,
+        "9": 6
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1030,
+      "policy_seed": 900000,
+      "reward": -3.0269701895059877,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 13,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P02": 1913,
+          "P07": 2211,
+          "P08": 2312,
+          "P14": 2395,
+          "P03": 3175,
+          "P15": 3413,
+          "P09": 3649,
+          "P10": 4440,
+          "P04": 4468,
+          "P16": 4634,
+          "P05": 5188
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 10367,
+        "grid_kwh": 3406.3308933333333,
+        "energy_cost": 659.0902008,
+        "carbon_kg": 1306.7290753333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 809.0902008000097,
+        "operations": 260,
+        "moves": 385,
+        "unfinished": 9,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.850850315997377,
+      "decisions": 96,
+      "action_changes": 25,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 25,
+        "20": 59,
+        "6": 1,
+        "9": 11
+      }
+    },
+    {
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1031,
+      "policy_seed": 900000,
+      "reward": -5.0340445462207395,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 16,
+        "shipped": 11,
+        "shipped_at": {
+          "P01": 871,
+          "P13": 1069,
+          "P07": 1761,
+          "P02": 2108,
+          "P14": 2455,
+          "P08": 2720,
+          "P03": 3281,
+          "P09": 3411,
+          "P15": 3653,
+          "P10": 5091,
+          "P16": 5354
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 13710,
+        "grid_kwh": 3361.558935,
+        "energy_cost": 601.9093349666666,
+        "carbon_kg": 1201.3393024166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 751.9093349666629,
+        "operations": 245,
+        "moves": 379,
+        "unfinished": 13,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.804476663000969,
+      "decisions": 96,
+      "action_changes": 7,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "27": 18,
+        "20": 75,
+        "9": 3
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1000,
+      "policy_seed": 900000,
+      "reward": -14.04957635494698,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 675,
+          "P07": 1122,
+          "P13": 1433,
+          "P19": 1499,
+          "P02": 1825,
+          "P14": 2543,
+          "P20": 3192,
+          "P08": 3678,
+          "P03": 4656,
+          "P09": 4708,
+          "P15": 4802,
+          "P21": 4858
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33814,
+        "grid_kwh": 3163.9961216666666,
+        "energy_cost": 641.7195784333334,
+        "carbon_kg": 1267.43547375,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 791.719578433328,
+        "operations": 240,
+        "moves": 359,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.0589589640003396,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1001,
+      "policy_seed": 900000,
+      "reward": -12.052201864775451,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P14": 3094,
+          "P02": 3245,
+          "P08": 3263,
+          "P20": 3438,
+          "P03": 5089,
+          "P09": 5142,
+          "P15": 5183,
+          "P21": 5271
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33245,
+        "grid_kwh": 3018.2993366666665,
+        "energy_cost": 546.1667382,
+        "carbon_kg": 1089.0672301666666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 696.1667381999972,
+        "operations": 226,
+        "moves": 330,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9234181360006914,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1002,
+      "policy_seed": 900000,
+      "reward": -12.047590672102267,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P19": 1251,
+          "P07": 1497,
+          "P02": 2763,
+          "P14": 2877,
+          "P08": 2952,
+          "P20": 3023,
+          "P03": 4524,
+          "P15": 4613,
+          "P09": 4675,
+          "P21": 4951
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 29898,
+        "grid_kwh": 3337.84184,
+        "energy_cost": 615.3695893333334,
+        "carbon_kg": 1225.0578573333332,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 765.369589333333,
+        "operations": 261,
+        "moves": 375,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8920181579997006,
+      "decisions": 96,
+      "action_changes": 4,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 93,
+        "20": 3
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1003,
+      "policy_seed": 900000,
+      "reward": -14.053781018167816,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P19": 1251,
+          "P07": 1509,
+          "P02": 3011,
+          "P20": 3200,
+          "P14": 3253,
+          "P08": 3434,
+          "P03": 5092,
+          "P21": 5579,
+          "P09": 5628,
+          "P15": 5675
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 37272,
+        "grid_kwh": 2957.1873333333333,
+        "energy_cost": 518.1616570666666,
+        "carbon_kg": 1036.204428,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 668.1616570666645,
+        "operations": 230,
+        "moves": 360,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8918858830002137,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1004,
+      "policy_seed": 900000,
+      "reward": -12.048525304640192,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P14": 2776,
+          "P02": 2871,
+          "P20": 2954,
+          "P08": 3194,
+          "P03": 4617,
+          "P09": 4655,
+          "P15": 4857,
+          "P21": 5093
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 30537,
+        "grid_kwh": 3339.6465766666665,
+        "energy_cost": 618.5395998,
+        "carbon_kg": 1230.8789361666668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 768.5395997999975,
+        "operations": 263,
+        "moves": 386,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9230918289977126,
+      "decisions": 96,
+      "action_changes": 4,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 91,
+        "20": 5
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1005,
+      "policy_seed": 900000,
+      "reward": -12.048351520317576,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1315,
+          "P13": 1433,
+          "P07": 1491,
+          "P19": 1495,
+          "P02": 2879,
+          "P14": 3001,
+          "P20": 3194,
+          "P08": 3204,
+          "P03": 4523,
+          "P09": 4622,
+          "P15": 4672,
+          "P21": 4703
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 30318,
+        "grid_kwh": 3341.06231,
+        "energy_cost": 664.4450824666667,
+        "carbon_kg": 1314.3884961666668,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 814.4450824666645,
+        "operations": 254,
+        "moves": 380,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.990156070998637,
+      "decisions": 96,
+      "action_changes": 2,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 95,
+        "20": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1006,
+      "policy_seed": 900000,
+      "reward": -14.048247790541478,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1064,
+          "P07": 1353,
+          "P19": 1433,
+          "P13": 1505,
+          "P02": 2873,
+          "P14": 2935,
+          "P08": 2952,
+          "P20": 3194,
+          "P09": 4484,
+          "P03": 4539,
+          "P15": 4673,
+          "P21": 4789
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32839,
+        "grid_kwh": 3346.2948499999998,
+        "energy_cost": 633.2586127333334,
+        "carbon_kg": 1257.8523138333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 783.2586127333325,
+        "operations": 256,
+        "moves": 381,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.073148832998413,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1007,
+      "policy_seed": 900000,
+      "reward": -12.053162164085627,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 3051,
+          "P08": 3192,
+          "P14": 3247,
+          "P20": 3912,
+          "P03": 4965,
+          "P15": 5094,
+          "P09": 5271,
+          "P21": 5571
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33823,
+        "grid_kwh": 3028.3502233333334,
+        "energy_cost": 582.6295063333333,
+        "carbon_kg": 1155.6829731666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 732.629506333335,
+        "operations": 233,
+        "moves": 346,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9084967669987236,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1008,
+      "policy_seed": 900000,
+      "reward": -14.051681033391032,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 682,
+          "P07": 1105,
+          "P19": 1253,
+          "P13": 1596,
+          "P02": 3025,
+          "P20": 3442,
+          "P08": 3549,
+          "P14": 3651,
+          "P09": 4658,
+          "P03": 4851,
+          "P15": 4917,
+          "P21": 4970
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 35463,
+        "grid_kwh": 3120.9537833333334,
+        "energy_cost": 610.9533167333334,
+        "carbon_kg": 1210.1272871666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 760.9533167333367,
+        "operations": 237,
+        "moves": 363,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.0623993699991843,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1009,
+      "policy_seed": 900000,
+      "reward": -14.053406751960452,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1060,
+          "P19": 1160,
+          "P01": 1330,
+          "P07": 2489,
+          "P02": 2528,
+          "P14": 2575,
+          "P08": 3570,
+          "P20": 3676,
+          "P09": 5272,
+          "P15": 5426,
+          "P03": 5482,
+          "P21": 5575
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 37010,
+        "grid_kwh": 3044.912695,
+        "energy_cost": 511.4066800333333,
+        "carbon_kg": 1026.7139130833334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 661.4066800333293,
+        "operations": 229,
+        "moves": 348,
+        "unfinished": 43,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9680830279976362,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1010,
+      "policy_seed": 900000,
+      "reward": -14.048152687948871,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 2873,
+          "P08": 2952,
+          "P20": 3023,
+          "P14": 3074,
+          "P03": 4373,
+          "P15": 4609,
+          "P09": 4657,
+          "P21": 4791
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32752,
+        "grid_kwh": 3445.228036666667,
+        "energy_cost": 639.9884295333334,
+        "carbon_kg": 1273.2362185,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 789.9884295333306,
+        "operations": 267,
+        "moves": 382,
+        "unfinished": 40,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9958412410014716,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1011,
+      "policy_seed": 900000,
+      "reward": -12.049823695826245,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1255,
+          "P13": 1304,
+          "P07": 1351,
+          "P19": 1553,
+          "P14": 3010,
+          "P02": 3071,
+          "P08": 3258,
+          "P20": 3280,
+          "P03": 4668,
+          "P15": 4793,
+          "P21": 4903,
+          "P09": 4954
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31457,
+        "grid_kwh": 3218.2669433333335,
+        "energy_cost": 608.3931911333333,
+        "carbon_kg": 1208.5688411666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 758.3931911333339,
+        "operations": 247,
+        "moves": 370,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9797316279982624,
+      "decisions": 96,
+      "action_changes": 2,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 95,
+        "20": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1012,
+      "policy_seed": 900000,
+      "reward": -14.050547214999243,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P14": 3000,
+          "P08": 3099,
+          "P02": 3173,
+          "P20": 3258,
+          "P21": 4791,
+          "P09": 4902,
+          "P15": 4951,
+          "P03": 4998
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 34572,
+        "grid_kwh": 3163.812228333333,
+        "energy_cost": 628.5186547000001,
+        "carbon_kg": 1243.4279430833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 778.5186546999989,
+        "operations": 245,
+        "moves": 352,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.041889584001183,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1013,
+      "policy_seed": 900000,
+      "reward": -14.048819458137693,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P08": 2799,
+          "P14": 2879,
+          "P02": 3048,
+          "P20": 3192,
+          "P15": 4658,
+          "P09": 4680,
+          "P03": 4799,
+          "P21": 5007
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33462,
+        "grid_kwh": 3100.197131666667,
+        "energy_cost": 554.1459885,
+        "carbon_kg": 1106.1807969166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 704.1459885000066,
+        "operations": 244,
+        "moves": 366,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.0689702960007708,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1014,
+      "policy_seed": 900000,
+      "reward": -14.053250049858002,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P19": 1251,
+          "P07": 1505,
+          "P02": 3171,
+          "P14": 3173,
+          "P08": 3680,
+          "P20": 3750,
+          "P03": 4965,
+          "P09": 5138,
+          "P15": 5189,
+          "P21": 5271
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 36737,
+        "grid_kwh": 2937.1273,
+        "energy_cost": 570.8402457333334,
+        "carbon_kg": 1131.3454063333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 720.8402457333259,
+        "operations": 228,
+        "moves": 339,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.001877827999124,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1015,
+      "policy_seed": 900000,
+      "reward": -12.054528641891514,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 672,
+          "P19": 1249,
+          "P07": 1343,
+          "P13": 1616,
+          "P02": 2076,
+          "P08": 3196,
+          "P14": 3248,
+          "P20": 4201,
+          "P09": 5338,
+          "P03": 5400,
+          "P15": 5495,
+          "P21": 5672
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 34830,
+        "grid_kwh": 2918.72914,
+        "energy_cost": 555.907338,
+        "carbon_kg": 1103.609269,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 705.9073380000028,
+        "operations": 222,
+        "moves": 345,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8622346880001714,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1016,
+      "policy_seed": 900000,
+      "reward": -12.050129594427624,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P14": 2998,
+          "P02": 3046,
+          "P08": 3198,
+          "P20": 3270,
+          "P09": 4478,
+          "P03": 4960,
+          "P15": 5005,
+          "P21": 5097
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31572,
+        "grid_kwh": 3257.57519,
+        "energy_cost": 652.617395,
+        "carbon_kg": 1290.2272015,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 802.6173950000018,
+        "operations": 247,
+        "moves": 359,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9753243700033636,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1017,
+      "policy_seed": 900000,
+      "reward": -12.047388858508674,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 2873,
+          "P14": 2935,
+          "P08": 2952,
+          "P20": 3023,
+          "P03": 4465,
+          "P09": 4615,
+          "P15": 4662,
+          "P21": 4679
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 29724,
+        "grid_kwh": 3405.71137,
+        "energy_cost": 631.0664295333333,
+        "carbon_kg": 1255.7570518333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 781.0664295333324,
+        "operations": 258,
+        "moves": 369,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9221114460015087,
+      "decisions": 96,
+      "action_changes": 2,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 95,
+        "20": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1018,
+      "policy_seed": 900000,
+      "reward": -12.050374386371768,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1070,
+          "P07": 1113,
+          "P19": 1160,
+          "P01": 1497,
+          "P02": 3012,
+          "P08": 3082,
+          "P14": 3230,
+          "P20": 3436,
+          "P03": 4799,
+          "P09": 4853,
+          "P15": 4902,
+          "P21": 4953
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31787,
+        "grid_kwh": 3147.236365,
+        "energy_cost": 631.3403945,
+        "carbon_kg": 1248.03096525,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 781.3403944999989,
+        "operations": 237,
+        "moves": 348,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9298964699992212,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1019,
+      "policy_seed": 900000,
+      "reward": -14.04925595875443,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1160,
+          "P07": 1257,
+          "P01": 1304,
+          "P19": 1351,
+          "P08": 2786,
+          "P14": 2877,
+          "P20": 3194,
+          "P02": 3269,
+          "P03": 4658,
+          "P09": 4670,
+          "P15": 4855,
+          "P21": 4953
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33662,
+        "grid_kwh": 3218.5376966666668,
+        "energy_cost": 604.8061139333333,
+        "carbon_kg": 1202.0554975,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 754.8061139333281,
+        "operations": 244,
+        "moves": 347,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9684487960003025,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1020,
+      "policy_seed": 900000,
+      "reward": -12.051224426490336,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 674,
+          "P07": 1115,
+          "P19": 1251,
+          "P13": 1495,
+          "P02": 2399,
+          "P14": 2929,
+          "P20": 3000,
+          "P08": 3912,
+          "P03": 4862,
+          "P09": 5006,
+          "P15": 5089,
+          "P21": 5395
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32473,
+        "grid_kwh": 3109.079208333333,
+        "energy_cost": 587.2611612333334,
+        "carbon_kg": 1166.6728134166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 737.261161233331,
+        "operations": 239,
+        "moves": 357,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9577761710024788,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1021,
+      "policy_seed": 900000,
+      "reward": -14.048623125788342,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 2873,
+          "P14": 2935,
+          "P08": 2952,
+          "P20": 3023,
+          "P09": 4619,
+          "P03": 4662,
+          "P21": 4795,
+          "P15": 4903
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33162,
+        "grid_kwh": 3330.9147033333334,
+        "energy_cost": 615.6198962,
+        "carbon_kg": 1225.2925518333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 765.619896199997,
+        "operations": 254,
+        "moves": 366,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9701706999985618,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1022,
+      "policy_seed": 900000,
+      "reward": -12.049767405471796,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P07": 1251,
+          "P19": 1303,
+          "P13": 1350,
+          "P02": 2874,
+          "P08": 3067,
+          "P14": 3175,
+          "P20": 3256,
+          "P03": 4797,
+          "P09": 4855,
+          "P15": 4898,
+          "P21": 4949
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31391,
+        "grid_kwh": 3218.512311666667,
+        "energy_cost": 620.5964163666666,
+        "carbon_kg": 1230.7643305833333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 770.5964163666603,
+        "operations": 240,
+        "moves": 360,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8892829950018495,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1023,
+      "policy_seed": 900000,
+      "reward": -12.05081580706607,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P13": 1060,
+          "P19": 1158,
+          "P01": 1433,
+          "P07": 1551,
+          "P02": 3050,
+          "P14": 3171,
+          "P08": 3268,
+          "P20": 3434,
+          "P03": 4791,
+          "P15": 4857,
+          "P09": 4951,
+          "P21": 5004
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 32046,
+        "grid_kwh": 3234.0844933333333,
+        "energy_cost": 652.7632248,
+        "carbon_kg": 1289.7449153333334,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 802.7632247999962,
+        "operations": 247,
+        "moves": 361,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.988939015998767,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1024,
+      "policy_seed": 900000,
+      "reward": -14.048694514845115,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P02": 2763,
+          "P08": 2952,
+          "P14": 3009,
+          "P20": 3196,
+          "P15": 4478,
+          "P03": 4675,
+          "P21": 4789,
+          "P09": 4965
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33227,
+        "grid_kwh": 3381.476328333333,
+        "energy_cost": 610.8269820333334,
+        "carbon_kg": 1218.1869414166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 760.8269820333277,
+        "operations": 263,
+        "moves": 377,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.0022868439991726,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1025,
+      "policy_seed": 900000,
+      "reward": -14.049405664491525,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P14": 2896,
+          "P08": 2990,
+          "P20": 3060,
+          "P02": 3413,
+          "P09": 4619,
+          "P15": 4658,
+          "P03": 4795,
+          "P21": 4899
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33730,
+        "grid_kwh": 3308.64143,
+        "energy_cost": 623.1309166,
+        "carbon_kg": 1238.2402575,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 773.1309165999965,
+        "operations": 255,
+        "moves": 367,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.048402642001747,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1026,
+      "policy_seed": 900000,
+      "reward": -12.048287014734086,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1253,
+          "P19": 1497,
+          "P02": 2763,
+          "P14": 2877,
+          "P20": 3023,
+          "P08": 3198,
+          "P03": 4522,
+          "P21": 4716,
+          "P15": 4795,
+          "P09": 4961
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 30375,
+        "grid_kwh": 3375.302565,
+        "energy_cost": 617.3159691666667,
+        "carbon_kg": 1229.7886619166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 767.3159691666642,
+        "operations": 262,
+        "moves": 377,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9377473379972798,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1027,
+      "policy_seed": 900000,
+      "reward": -14.051636409754986,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 26,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 3051,
+          "P08": 3192,
+          "P14": 3247,
+          "P20": 3436,
+          "P03": 4530,
+          "P15": 4913,
+          "P21": 5275,
+          "P09": 5333
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 35377,
+        "grid_kwh": 3210.5213416666666,
+        "energy_cost": 633.0030199,
+        "carbon_kg": 1253.0675334166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 783.0030199000013,
+        "operations": 248,
+        "moves": 363,
+        "unfinished": 42,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9550337140026386,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1028,
+      "policy_seed": 900000,
+      "reward": -12.050443749256713,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 3174,
+          "P14": 3232,
+          "P08": 3244,
+          "P20": 3674,
+          "P03": 4517,
+          "P09": 4609,
+          "P15": 4859,
+          "P21": 4947
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31776,
+        "grid_kwh": 3278.410531666667,
+        "energy_cost": 658.8177445,
+        "carbon_kg": 1302.1635069166666,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 808.817744499999,
+        "operations": 254,
+        "moves": 369,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.9007628489998751,
+      "decisions": 96,
+      "action_changes": 2,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 95,
+        "20": 1
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1029,
+      "policy_seed": 900000,
+      "reward": -12.052244275857648,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P14": 3094,
+          "P02": 3245,
+          "P08": 3263,
+          "P20": 3438,
+          "P03": 5089,
+          "P09": 5142,
+          "P15": 5183,
+          "P21": 5271
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 33245,
+        "grid_kwh": 3045.73267,
+        "energy_cost": 558.4567382,
+        "carbon_kg": 1112.2855635,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 708.4567382000025,
+        "operations": 228,
+        "moves": 333,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.8930198599991854,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1030,
+      "policy_seed": 900000,
+      "reward": -12.050597094747621,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P19": 1251,
+          "P07": 1505,
+          "P08": 3087,
+          "P02": 3171,
+          "P20": 3241,
+          "P14": 3349,
+          "P03": 4659,
+          "P15": 4795,
+          "P21": 4963,
+          "P09": 5151
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 31936,
+        "grid_kwh": 3150.846936666667,
+        "energy_cost": 633.6093222000001,
+        "carbon_kg": 1252.2711701666667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 783.6093222000042,
+        "operations": 241,
+        "moves": 355,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 1.93798425100249,
+      "decisions": 96,
+      "action_changes": 0,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 96
+      }
+    },
+    {
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 1031,
+      "policy_seed": 900000,
+      "reward": -12.047085351934221,
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 24,
+        "shipped": 12,
+        "shipped_at": {
+          "P01": 1105,
+          "P13": 1156,
+          "P07": 1251,
+          "P19": 1303,
+          "P02": 2616,
+          "P14": 2879,
+          "P20": 3194,
+          "P08": 3198,
+          "P03": 4417,
+          "P15": 4421,
+          "P09": 4531,
+          "P21": 4677
+        },
+        "all_orders_fulfilled": false,
+        "total_tardiness_ticks": 29597,
+        "grid_kwh": 3361.29439,
+        "energy_cost": 593.867123,
+        "carbon_kg": 1186.7086815,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 743.8671230000034,
+        "operations": 258,
+        "moves": 359,
+        "unfinished": 36,
+        "global_optimality_gap": null
+      },
+      "wall_seconds": 2.005980550999084,
+      "decisions": 96,
+      "action_changes": 2,
+      "policy_evidence": {
+        "kind": "ppo",
+        "network_digest": "516e55150a569bd2d1e32377b2c3e84aadbf58bf45d4a033d1a29de7acdedfd1"
+      },
+      "action_histogram": {
+        "21": 95,
+        "20": 1
+      }
+    }
+  ],
+  "wall_seconds": 7.0520919380032865
+}

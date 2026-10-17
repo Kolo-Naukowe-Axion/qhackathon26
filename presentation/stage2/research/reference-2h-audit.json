@@ -1,0 +1,763 @@
+{
+  "schema": "stage2-independent-two-hour-reference-audit.v1",
+  "valid": true,
+  "job_id": "6117555",
+  "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+  "payload_files_checked": 9,
+  "payload_hashes": {
+    "hint-trace.json": "29e39634c0fcb366d441fa315839f175179c2fd3668eea04bd6a1d52ea46c267",
+    "instance.json": "99816f6be6d0ab06225e1c3d1cb4941d28a42a8b73a6b61715f8f83d68806829",
+    "job.sbatch": "a71bf4ccd94571106550a4bc4c3b865e191ce570acf692696d1918a630938d25",
+    "run.py": "4abd0a7182142d48f09a371ca54cb8a89df471b816c8114e0400ab72425e2b5d",
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+    "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe"
+  },
+  "report_sha256": "9ceba65416fbe4376e5ad84baeec144042a7fd61a9a396949deeb7310184c0cd",
+  "artifact_hashes": {
+    "started.json": "fcaaf036cab8c5cc4217e333e64a95681f42ba87466da127cb9ccfcbc12ec2f7",
+    "cp-trace.json": "62c623db1a7d7bfde32674ea105fa5000217657666fc5fc576ae9f1de7ce4f71",
+    "cp-schedule.json": "e7c1e4336d00e7ad3311084f19deaf7eb288e855ad82a31492a12edf58324a7e"
+  },
+  "transfer_receipt_sha256": "97272c26bdd0bfa2bb575dc1c3d7b3cb5c9332b131300ef4fc86a3579bdaf4a6",
+  "transfer_archive_sha256": "b0883e8f0c56fb4a0ce1ea63ceda6dfcff58f53f7ba95241ba33330a4cc444bd",
+  "source_stability_verified": true,
+  "fresh_instance_exact_match": true,
+  "physical_checks": {
+    "new_cp": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 64,
+        "moves": 76,
+        "horizon_ticks": 10400,
+        "delivered_orders": 4,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 784,
+          "P02": 1177,
+          "P03": 1496,
+          "P04": 1541
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2703.9999999996567,
+        "energy_cost": 270.400000000046,
+        "carbon_kg": 540.800000000092,
+        "investment_cost": 0,
+        "total_cost": 270.400000000046,
+        "terminal_soc": 40
+      }
+    },
+    "hint": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 64,
+        "moves": 76,
+        "horizon_ticks": 10400,
+        "delivered_orders": 4,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 629,
+          "P02": 1078,
+          "P03": 1355,
+          "P04": 1567
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2703.9999999996558,
+        "energy_cost": 270.40000000004676,
+        "carbon_kg": 540.8000000000935,
+        "investment_cost": 0,
+        "total_cost": 270.40000000004676,
+        "terminal_soc": 40
+      }
+    },
+    "original_heuristic": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 64,
+        "moves": 76,
+        "horizon_ticks": 10400,
+        "delivered_orders": 4,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 616,
+          "P02": 1238,
+          "P03": 1860,
+          "P04": 2482
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2703.999999999613,
+        "energy_cost": 270.4000000000501,
+        "carbon_kg": 540.8000000001002,
+        "investment_cost": 0,
+        "total_cost": 270.4000000000501,
+        "terminal_soc": 40
+      }
+    }
+  },
+  "raw_stock_identity_checks": {
+    "new_cp": {
+      "schema": "stage2-identity-audit.v1",
+      "valid": false,
+      "issues": [
+        {
+          "code": "unit_before_identity_birth",
+          "message": "Part referenced before its canonical birth",
+          "unit_id": "P04/pump/1",
+          "field": "part_move",
+          "record_id": "move74"
+        }
+      ],
+      "coverage": [
+        "canonical_initial_components",
+        "canonical_urgent_order_and_components",
+        "single_canonical_pump_birth_per_order",
+        "bounded_canonical_replacement",
+        "authorized_part_references",
+        "immutable_unit_attempt_qa_stream"
+      ],
+      "metrics": {
+        "initial_components": 12,
+        "urgent_orders": 0,
+        "authorized_unit_identities": 16,
+        "initial_pump_births": 4,
+        "replacement_events": 0,
+        "qa_results": 16
+      },
+      "metadata_notes": [
+        {
+          "field": "instance.quality.paired_key",
+          "declared_value": null,
+          "actual_implemented_key": "quality:{unit_id}:{attempt}",
+          "operation_id_role": "Diagnostic reference only, never a random-stream key",
+          "status": "Execution key verified independently"
+        }
+      ],
+      "provenance": {
+        "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+        "instance_anchor": "supplied_instance"
+      },
+      "limitations": [
+        "Supplement only: run anchored check.py physical replay as well.",
+        "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+      ]
+    },
+    "hint": {
+      "schema": "stage2-identity-audit.v1",
+      "valid": false,
+      "issues": [
+        {
+          "code": "unit_before_identity_birth",
+          "message": "Part referenced before its canonical birth",
+          "unit_id": "P03/pump/1",
+          "field": "part_move",
+          "record_id": "move55"
+        }
+      ],
+      "coverage": [
+        "canonical_initial_components",
+        "canonical_urgent_order_and_components",
+        "single_canonical_pump_birth_per_order",
+        "bounded_canonical_replacement",
+        "authorized_part_references",
+        "immutable_unit_attempt_qa_stream"
+      ],
+      "metrics": {
+        "initial_components": 12,
+        "urgent_orders": 0,
+        "authorized_unit_identities": 16,
+        "initial_pump_births": 4,
+        "replacement_events": 0,
+        "qa_results": 16
+      },
+      "metadata_notes": [
+        {
+          "field": "instance.quality.paired_key",
+          "declared_value": null,
+          "actual_implemented_key": "quality:{unit_id}:{attempt}",
+          "operation_id_role": "Diagnostic reference only, never a random-stream key",
+          "status": "Execution key verified independently"
+        }
+      ],
+      "provenance": {
+        "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+        "instance_anchor": "supplied_instance"
+      },
+      "limitations": [
+        "Supplement only: run anchored check.py physical replay as well.",
+        "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+      ]
+    },
+    "original_heuristic": {
+      "schema": "stage2-identity-audit.v1",
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "canonical_initial_components",
+        "canonical_urgent_order_and_components",
+        "single_canonical_pump_birth_per_order",
+        "bounded_canonical_replacement",
+        "authorized_part_references",
+        "immutable_unit_attempt_qa_stream"
+      ],
+      "metrics": {
+        "initial_components": 12,
+        "urgent_orders": 0,
+        "authorized_unit_identities": 16,
+        "initial_pump_births": 4,
+        "replacement_events": 0,
+        "qa_results": 16
+      },
+      "metadata_notes": [
+        {
+          "field": "instance.quality.paired_key",
+          "declared_value": null,
+          "actual_implemented_key": "quality:{unit_id}:{attempt}",
+          "operation_id_role": "Diagnostic reference only, never a random-stream key",
+          "status": "Execution key verified independently"
+        }
+      ],
+      "provenance": {
+        "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+        "instance_anchor": "supplied_instance"
+      },
+      "limitations": [
+        "Supplement only: run anchored check.py physical replay as well.",
+        "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+      ]
+    }
+  },
+  "reference_scoped_physical_encounter_identity": {
+    "new_cp": {
+      "schema": "stage2-reference-only-physical-encounter-identity.v1",
+      "valid": true,
+      "issues": [],
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "canonical_unit_count": 16,
+      "initial_components": 12,
+      "canonical_pump_births": 4,
+      "physical_part_moves_checked": 76,
+      "loaded_legs_checked": 180,
+      "qa_streams_checked": 16,
+      "prebirth_planned_reservations": [
+        {
+          "move_id": "move74",
+          "unit_id": "P04/pump/1",
+          "dispatch_start": 1382,
+          "birth_tick": 1420,
+          "producer_completion": 1480,
+          "pickup_tick": 1480,
+          "first_loaded_tick": 1481,
+          "empty_leg_count": 0
+        }
+      ],
+      "source_hashes": {
+        "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+        "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+      },
+      "audit_source_sha256": "225ee4d5b0f1b064aabe22124e5f3ca589aa11d22f105e1a8e9bc956a3d7a49a",
+      "interpretation": "Reference-only identity audit at physical pickup and every loaded leg, with canonical producer/birth/parent/QA checks. Earlier empty dispatch or parked-AGV reservation is a planned future encounter, not physical cargo. Frozen generic identity_audit result is retained separately and is not relabeled valid. No input trace or frozen checker is modified."
+    },
+    "hint": {
+      "schema": "stage2-reference-only-physical-encounter-identity.v1",
+      "valid": true,
+      "issues": [],
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "canonical_unit_count": 16,
+      "initial_components": 12,
+      "canonical_pump_births": 4,
+      "physical_part_moves_checked": 76,
+      "loaded_legs_checked": 180,
+      "qa_streams_checked": 16,
+      "prebirth_planned_reservations": [
+        {
+          "move_id": "move55",
+          "unit_id": "P03/pump/1",
+          "dispatch_start": 1202,
+          "birth_tick": 1230,
+          "producer_completion": 1290,
+          "pickup_tick": 1290,
+          "first_loaded_tick": 1291,
+          "empty_leg_count": 3
+        }
+      ],
+      "source_hashes": {
+        "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+        "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+      },
+      "audit_source_sha256": "225ee4d5b0f1b064aabe22124e5f3ca589aa11d22f105e1a8e9bc956a3d7a49a",
+      "interpretation": "Reference-only identity audit at physical pickup and every loaded leg, with canonical producer/birth/parent/QA checks. Earlier empty dispatch or parked-AGV reservation is a planned future encounter, not physical cargo. Frozen generic identity_audit result is retained separately and is not relabeled valid. No input trace or frozen checker is modified."
+    },
+    "original_heuristic": {
+      "schema": "stage2-reference-only-physical-encounter-identity.v1",
+      "valid": true,
+      "issues": [],
+      "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+      "canonical_unit_count": 16,
+      "initial_components": 12,
+      "canonical_pump_births": 4,
+      "physical_part_moves_checked": 76,
+      "loaded_legs_checked": 180,
+      "qa_streams_checked": 16,
+      "prebirth_planned_reservations": [],
+      "source_hashes": {
+        "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+        "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+      },
+      "audit_source_sha256": "225ee4d5b0f1b064aabe22124e5f3ca589aa11d22f105e1a8e9bc956a3d7a49a",
+      "interpretation": "Reference-only identity audit at physical pickup and every loaded leg, with canonical producer/birth/parent/QA checks. Earlier empty dispatch or parked-AGV reservation is a planned future encounter, not physical cargo. Frozen generic identity_audit result is retained separately and is not relabeled valid. No input trace or frozen checker is modified."
+    }
+  },
+  "derived_normalized_witness": {
+    "path": "derived-normalized-witness.json",
+    "sha256": "76bc078f004a0176effc955dc7810d0ff3d49442da00e047465c45be2e11182a",
+    "transformation": {
+      "original_stock_identity": {
+        "schema": "stage2-identity-audit.v1",
+        "valid": false,
+        "issues": [
+          {
+            "code": "unit_before_identity_birth",
+            "message": "Part referenced before its canonical birth",
+            "unit_id": "P04/pump/1",
+            "field": "part_move",
+            "record_id": "move74"
+          }
+        ],
+        "coverage": [
+          "canonical_initial_components",
+          "canonical_urgent_order_and_components",
+          "single_canonical_pump_birth_per_order",
+          "bounded_canonical_replacement",
+          "authorized_part_references",
+          "immutable_unit_attempt_qa_stream"
+        ],
+        "metrics": {
+          "initial_components": 12,
+          "urgent_orders": 0,
+          "authorized_unit_identities": 16,
+          "initial_pump_births": 4,
+          "replacement_events": 0,
+          "qa_results": 16
+        },
+        "metadata_notes": [
+          {
+            "field": "instance.quality.paired_key",
+            "declared_value": null,
+            "actual_implemented_key": "quality:{unit_id}:{attempt}",
+            "operation_id_role": "Diagnostic reference only, never a random-stream key",
+            "status": "Execution key verified independently"
+          }
+        ],
+        "provenance": {
+          "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+          "instance_anchor": "supplied_instance"
+        },
+        "limitations": [
+          "Supplement only: run anchored check.py physical replay as well.",
+          "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+        ]
+      },
+      "reference_scoped_identity": {
+        "schema": "stage2-reference-only-physical-encounter-identity.v1",
+        "valid": true,
+        "issues": [],
+        "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+        "canonical_unit_count": 16,
+        "initial_components": 12,
+        "canonical_pump_births": 4,
+        "physical_part_moves_checked": 76,
+        "loaded_legs_checked": 180,
+        "qa_streams_checked": 16,
+        "prebirth_planned_reservations": [
+          {
+            "move_id": "move74",
+            "unit_id": "P04/pump/1",
+            "dispatch_start": 1382,
+            "birth_tick": 1420,
+            "producer_completion": 1480,
+            "pickup_tick": 1480,
+            "first_loaded_tick": 1481,
+            "empty_leg_count": 0
+          }
+        ],
+        "source_hashes": {
+          "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+          "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+          "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+          "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+          "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+        },
+        "audit_source_sha256": "225ee4d5b0f1b064aabe22124e5f3ca589aa11d22f105e1a8e9bc956a3d7a49a",
+        "interpretation": "Reference-only identity audit at physical pickup and every loaded leg, with canonical producer/birth/parent/QA checks. Earlier empty dispatch or parked-AGV reservation is a planned future encounter, not physical cargo. Frozen generic identity_audit result is retained separately and is not relabeled valid. No input trace or frozen checker is modified."
+      },
+      "structural_changes": [
+        {
+          "path": [
+            "moves",
+            73,
+            "start"
+          ],
+          "old": 1382,
+          "new": 1420
+        }
+      ],
+      "previous_agv_delivery": {
+        "move_id": "move62",
+        "end": 1381,
+        "location": "A1"
+      },
+      "scope": "Deterministic audit-only witness COPY: one parked-AGV wait/reservation begins at canonical birth instead of earlier; every physical leg, operation, pickup/drop, shipping, worker, energy, metric, source instance and original CP artifact remains unchanged. This is not literal solver output, a new factory execution or an added performance sample."
+    },
+    "physical_check": {
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "half_open_resource_capacity",
+        "machine_eligibility",
+        "mode_domain",
+        "worker_skills",
+        "worker_shift_breaks_travel",
+        "tool_assignment",
+        "batch_capacity",
+        "agv_path_continuity",
+        "agv_traction_soc",
+        "single_lane_conflicts",
+        "charger_capacity",
+        "part_and_tool_location_replay",
+        "machine_output_blocking",
+        "buffer_reservations",
+        "bom_genealogy",
+        "recipe_precedence_duration",
+        "setups_wear_service",
+        "qa_reveal_boundaries",
+        "physical_shipping",
+        "urgent_release_lineage",
+        "grid_solar_balance",
+        "stationary_battery_loss_bounds",
+        "energy_cost_carbon",
+        "bounded_quality_rework_replacement",
+        "finite_raw_stock_release",
+        "machine_outage_exclusion",
+        "transport_handling_boundaries",
+        "resource_lease_budget_leadtime_birth",
+        "material_delivery_realized_arrival",
+        "precision_mode_certification",
+        "manufacturing_mode_wear_quality_history",
+        "exogenous_keyed_scenario_tape",
+        "bounded_component_birth",
+        "next_required_part_destination",
+        "mounted_tool_mobility"
+      ],
+      "provenance": {
+        "checker": "independent-replay.v1",
+        "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+      },
+      "unsupported": [
+        "policy_nonanticipativity_proof",
+        "optional_emergency_procurement",
+        "leased_machine_footprint_power",
+        "reachable_burn_in",
+        "committed_rolling_replanning",
+        "interruption_resume_semantics"
+      ],
+      "all_orders_fulfilled": true,
+      "terminal_requirements_met": true,
+      "metrics": {
+        "operations": 64,
+        "moves": 76,
+        "horizon_ticks": 10400,
+        "delivered_orders": 4,
+        "unfulfilled_orders": 0,
+        "delivery_ticks": {
+          "P01": 784,
+          "P02": 1177,
+          "P03": 1496,
+          "P04": 1541
+        },
+        "tardiness_ticks": 0,
+        "terminal_deadline_debt_ticks": 0,
+        "grid_kwh": 2703.9999999996567,
+        "energy_cost": 270.400000000046,
+        "carbon_kg": 540.800000000092,
+        "investment_cost": 0,
+        "total_cost": 270.400000000046,
+        "terminal_soc": 40
+      }
+    },
+    "stock_identity_check": {
+      "schema": "stage2-identity-audit.v1",
+      "valid": true,
+      "issues": [],
+      "coverage": [
+        "canonical_initial_components",
+        "canonical_urgent_order_and_components",
+        "single_canonical_pump_birth_per_order",
+        "bounded_canonical_replacement",
+        "authorized_part_references",
+        "immutable_unit_attempt_qa_stream"
+      ],
+      "metrics": {
+        "initial_components": 12,
+        "urgent_orders": 0,
+        "authorized_unit_identities": 16,
+        "initial_pump_births": 4,
+        "replacement_events": 0,
+        "qa_results": 16
+      },
+      "metadata_notes": [
+        {
+          "field": "instance.quality.paired_key",
+          "declared_value": null,
+          "actual_implemented_key": "quality:{unit_id}:{attempt}",
+          "operation_id_role": "Diagnostic reference only, never a random-stream key",
+          "status": "Execution key verified independently"
+        }
+      ],
+      "provenance": {
+        "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+        "instance_anchor": "supplied_instance"
+      },
+      "limitations": [
+        "Supplement only: run anchored check.py physical replay as well.",
+        "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+      ]
+    },
+    "exact_one_field_change": true,
+    "all_physical_legs_operations_and_metrics_unchanged": true
+  },
+  "schedule_to_trace_exact_roundtrip": true,
+  "trace_to_schedule_exact_roundtrip": true,
+  "status": "FEASIBLE",
+  "proven_optimal": false,
+  "solver_reported_lower_bound": 1524,
+  "arithmetic_lower_bound_preserved": 1482,
+  "combined_scoped_optimum_interval": [
+    1524,
+    1541
+  ],
+  "absolute_incumbent_gap_upper_bound": 17,
+  "incumbent_relative_excess_upper_bound_over_optimum": 0.01115485564304462,
+  "heuristic_makespan": 2482,
+  "heuristic_absolute_excess_interval": [
+    941,
+    958
+  ],
+  "heuristic_relative_excess_over_optimum_interval": [
+    0.6106424399740429,
+    0.6286089238845144
+  ],
+  "exact_heuristic_relative_excess_rationals": [
+    [
+      941,
+      1541
+    ],
+    [
+      479,
+      762
+    ]
+  ],
+  "same_earlier_objective_tiers": true,
+  "constant_minimum_grid_kwh": 2704.0,
+  "constant_minimum_cost": 270.4,
+  "runtime": {
+    "python": "3.12.13",
+    "wall_seconds": 7173.494605467997,
+    "process_cpu_seconds": 114101.45280309001
+  },
+  "allocated_cpu_seconds": 114784,
+  "allocated_cpu_hours": 31.884444444444444,
+  "immutable_accounting_summary_sha256": "90251f9a858b097a78a69382e6e2dbbf07c38ad7aa826841c9cfe2cfd0ec1df3",
+  "raw_accounting_sha256": "0848d7fd4264e97c30d36d910e2f3d1e4cada2d1598cc19f6645453aa1dcaf38",
+  "original_heuristic_trace_sha256": "8fdfc3852c7e4b8afb78291d00c815cc2c5ae3cc89d7369cdffac6b1c0f27cd0",
+  "audit_source_sha256": "6d45ae11980b3feadabea283693e5b9db883db6f21e6e419d8483383f40df9f0",
+  "factory_calls": 0,
+  "solver_calls": 0,
+  "wall_seconds": 0.5079845408909023,
+  "additional_audit_source_hashes": {
+    "reference_identity.py": "225ee4d5b0f1b064aabe22124e5f3ca589aa11d22f105e1a8e9bc956a3d7a49a",
+    "normalize_witness.py": "2ab6e11fa72adf89538eb5a1cb7fb2a8caff5890215835a272cf6557dfbc4016",
+    "test_reference_identity.py": "949c3f99f73142c9fafb01c47e8f4e470097824befc6e72e59d8ddd4bda1a4df"
+  },
+  "limitations": [
+    "Lower1524 is the solver-reported bound for the unchanged audited exact CP domain, not a new independent arithmetic proof or external formal solver certificate",
+    "Raw newCP and old1567hint retain their literal frozen stock identity rejection for early future reservation. A separate reference-scoped physical-encounter audit passes; the one-field derived1541witness also passes the unchanged stock identity auditor",
+    "The broader CP dispatch domain supplies a relaxation lower bound for the stricter birth-at-dispatch domain; the normalized checked witness supplies its upper bound. No identical-optima theorem is asserted",
+    "The1567 hint upper bound does not exclude a better optimum; the new1541 feasible witness lies within that cutoff",
+    "FEASIBLE is not OPTIMAL; no exact1541-optimum claim",
+    "Reference only:1worker1AGV7stations, deterministic quality and declared nonbinding mechanisms; no flagship global-gap or final-policy change",
+    "Heuristic excess interval uses(2482-optimum)/optimum; it is not an exact known relative gap",
+    "All earlier arithmetic1480/1482, CP1466 and witness1567 archives remain historical evidence",
+    "Zero aggregate parallel solver branch/conflict counters are not evidence no search occurred",
+    "No factory/solver rerun, final-tape execution, publication or deployment by this audit"
+  ]
+}

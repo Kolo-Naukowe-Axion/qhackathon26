@@ -1,0 +1,1433 @@
+{
+  "boundary_id": 5,
+  "config": {
+    "orders": 8,
+    "horizon": 5760,
+    "profile": "full"
+  },
+  "seed": 2,
+  "tick": 240,
+  "weights": {
+    "wip_limit": 6,
+    "mode": "standard",
+    "due": 0.25,
+    "remaining": -4.0,
+    "family": 24.0,
+    "setup": 10,
+    "lease_calibration": true,
+    "selector": "exact",
+    "policy_seed": 0,
+    "tool_distance": 1,
+    "worker_calendar": true,
+    "preposition": false
+  },
+  "pool": {
+    "candidates": [
+      {
+        "id": "C0",
+        "reward": 295.6521739130435,
+        "resources": {
+          "power@240": 1600
+        }
+      },
+      {
+        "id": "C1",
+        "reward": 200.0,
+        "resources": {
+          "power@240": 1200
+        }
+      },
+      {
+        "id": "C2",
+        "reward": 200.0,
+        "resources": {
+          "power@240": 1200
+        }
+      }
+    ],
+    "conflicts": [
+      [
+        "C0",
+        "C1"
+      ],
+      [
+        "C0",
+        "C2"
+      ],
+      [
+        "C1",
+        "C2"
+      ]
+    ],
+    "capacities": {
+      "power@240": 5800
+    },
+    "offered_operations": [
+      {
+        "id": "O11",
+        "unit_ids": [
+          "P01/housing/1"
+        ],
+        "unit_id": "P01/housing/1",
+        "order_id": "P01",
+        "process": "HEAT",
+        "machine_id": "H1",
+        "start": 240,
+        "end": 360,
+        "mode": "standard",
+        "worker_ids": [
+          "W01"
+        ],
+        "worker_intervals": [
+          {
+            "worker_id": "W01",
+            "start": 240,
+            "end": 245,
+            "role": "process",
+            "skills": [
+              "setup"
+            ]
+          }
+        ],
+        "worker_roles": {
+          "W01": [
+            "setup"
+          ]
+        },
+        "tool_ids": [],
+        "parent_unit_ids": [],
+        "setup_ticks": 0,
+        "processing_ticks": 120,
+        "power_kw": 16,
+        "family": "alloy_A",
+        "kind": "process",
+        "recipe_step": 3,
+        "recipe_steps": {
+          "P01/housing/1": 3
+        },
+        "attempt": 0,
+        "is_rework": false,
+        "repair_step": null,
+        "wear_before": 120,
+        "worker_calendar_aware": true
+      },
+      {
+        "id": "O11",
+        "unit_ids": [
+          "P02/housing/1"
+        ],
+        "unit_id": "P02/housing/1",
+        "order_id": "P02",
+        "process": "F",
+        "machine_id": "F1",
+        "start": 240,
+        "end": 360,
+        "mode": "standard",
+        "worker_ids": [
+          "W01"
+        ],
+        "worker_intervals": [
+          {
+            "worker_id": "W01",
+            "start": 240,
+            "end": 275,
+            "role": "combined",
+            "skills": [
+              "machining",
+              "setup"
+            ]
+          }
+        ],
+        "worker_roles": {
+          "W01": [
+            "machining",
+            "setup"
+          ]
+        },
+        "tool_ids": [
+          "mill1"
+        ],
+        "parent_unit_ids": [],
+        "setup_ticks": 30,
+        "processing_ticks": 90,
+        "power_kw": 12,
+        "family": "alloy_B",
+        "kind": "process",
+        "recipe_step": 1,
+        "recipe_steps": {
+          "P02/housing/1": 1
+        },
+        "attempt": 0,
+        "is_rework": false,
+        "repair_step": null,
+        "wear_before": 60,
+        "worker_calendar_aware": true
+      },
+      {
+        "id": "O11",
+        "unit_ids": [
+          "P02/flange/1"
+        ],
+        "unit_id": "P02/flange/1",
+        "order_id": "P02",
+        "process": "F",
+        "machine_id": "F1",
+        "start": 240,
+        "end": 330,
+        "mode": "standard",
+        "worker_ids": [
+          "W01"
+        ],
+        "worker_intervals": [
+          {
+            "worker_id": "W01",
+            "start": 240,
+            "end": 275,
+            "role": "combined",
+            "skills": [
+              "machining",
+              "setup"
+            ]
+          }
+        ],
+        "worker_roles": {
+          "W01": [
+            "machining",
+            "setup"
+          ]
+        },
+        "tool_ids": [
+          "mill1"
+        ],
+        "parent_unit_ids": [],
+        "setup_ticks": 30,
+        "processing_ticks": 60,
+        "power_kw": 12,
+        "family": "alloy_B",
+        "kind": "process",
+        "recipe_step": 0,
+        "recipe_steps": {
+          "P02/flange/1": 0
+        },
+        "attempt": 0,
+        "is_rework": false,
+        "repair_step": null,
+        "wear_before": 60,
+        "worker_calendar_aware": true
+      }
+    ]
+  },
+  "pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a",
+  "prefix_sha256": "e11367574e87f12673b73e8081a9c1627dc9ed563924da9b5cadf6fb94b5fc9d",
+  "original_qubo_summary": {
+    "core_variables": 3,
+    "slack_variables": 0,
+    "variables": 3,
+    "couplers": 3,
+    "penalty": 696.6521739130435,
+    "capacity_encoding": {
+      "power@240": "redundant_upper_bound_removed"
+    },
+    "resource_integer_gcd_scales": {
+      "power@240": 400
+    },
+    "coefficient_abs_min": 200.0,
+    "coefficient_abs_max": 696.6521739130435,
+    "convention": "upper_triangular_once",
+    "domain": "fixed_candidate_pool"
+  },
+  "feasible_subsets": [
+    [],
+    [
+      "C0"
+    ],
+    [
+      "C1"
+    ],
+    [
+      "C2"
+    ]
+  ],
+  "counterfactuals": [
+    {
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 780,
+          "P07": 1251,
+          "P02": 1911,
+          "P08": 2130,
+          "P05": 2596,
+          "P04": 2954,
+          "P03": 3072,
+          "P06": 3349,
+          "U01": 3744,
+          "U02": 3914
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 2517.1664833333334,
+        "energy_cost": 438.4845014,
+        "carbon_kg": 877.3362088333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 588.4845014,
+        "operations": 173,
+        "moves": 221,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "objective": [
+        0,
+        0,
+        588.4845014
+      ],
+      "selected": [],
+      "forced_boundary": {
+        "hits": 1,
+        "forced_selected": [],
+        "reconstructed_pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a"
+      },
+      "prefix_sha256": "e11367574e87f12673b73e8081a9c1627dc9ed563924da9b5cadf6fb94b5fc9d",
+      "error": null,
+      "physical_instance_sha256": "8505dc4b00fcafcbd12d00e42c63a5d7213d3b428ef6c00d178234c31577c370",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/local-continuation-regret/boundary-5-subset-0.json.gz",
+      "trace_sha256": "4e4389b11566c5042491a571d5377a9525e1665d2e82e760e42ab941176f24aa",
+      "wall_seconds": 0.6897123749367893,
+      "cpu_seconds": 0.6791630000000008,
+      "boundary_id": 5,
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 2,
+      "tick": 240,
+      "pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a",
+      "source_hashes": {
+        "stage2/local_regret.py": "f2e4c3284718c7e4976b56e6bdc33f26b5e0d81e3b760af8ad923a2637d9253f",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+        "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+        "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+        "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+        "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+        "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    },
+    {
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 780,
+          "P07": 1251,
+          "P02": 1909,
+          "P08": 2130,
+          "P05": 2596,
+          "P04": 2954,
+          "P03": 3072,
+          "P06": 3349,
+          "U01": 3744,
+          "U02": 3914
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 0,
+        "grid_kwh": 2516.8522983333332,
+        "energy_cost": 438.2603451666667,
+        "carbon_kg": 876.91865525,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 588.2603451666661,
+        "operations": 173,
+        "moves": 220,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "objective": [
+        0,
+        0,
+        588.2603451666661
+      ],
+      "selected": [
+        "C0"
+      ],
+      "forced_boundary": {
+        "hits": 1,
+        "forced_selected": [
+          "C0"
+        ],
+        "reconstructed_pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a"
+      },
+      "prefix_sha256": "e11367574e87f12673b73e8081a9c1627dc9ed563924da9b5cadf6fb94b5fc9d",
+      "error": null,
+      "physical_instance_sha256": "8505dc4b00fcafcbd12d00e42c63a5d7213d3b428ef6c00d178234c31577c370",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/local-continuation-regret/boundary-5-subset-1.json.gz",
+      "trace_sha256": "3a58ababb4349742ea392d19ccaae60d9410623d11c2f832f82454db032152c9",
+      "wall_seconds": 0.6808852090034634,
+      "cpu_seconds": 0.6722450000000002,
+      "boundary_id": 5,
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 2,
+      "tick": 240,
+      "pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a",
+      "source_hashes": {
+        "stage2/local_regret.py": "f2e4c3284718c7e4976b56e6bdc33f26b5e0d81e3b760af8ad923a2637d9253f",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+        "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+        "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+        "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+        "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+        "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    },
+    {
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 867,
+          "P07": 1110,
+          "P02": 1919,
+          "P04": 2126,
+          "P08": 2579,
+          "P05": 2693,
+          "P03": 3175,
+          "P06": 3351,
+          "U02": 3914,
+          "U01": 4048
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 55,
+        "grid_kwh": 2577.7997333333333,
+        "energy_cost": 458.7918064,
+        "carbon_kg": 916.1878213333333,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 608.791806400003,
+        "operations": 175,
+        "moves": 221,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "objective": [
+        0,
+        55,
+        608.791806400003
+      ],
+      "selected": [
+        "C1"
+      ],
+      "forced_boundary": {
+        "hits": 1,
+        "forced_selected": [
+          "C1"
+        ],
+        "reconstructed_pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a"
+      },
+      "prefix_sha256": "e11367574e87f12673b73e8081a9c1627dc9ed563924da9b5cadf6fb94b5fc9d",
+      "error": null,
+      "physical_instance_sha256": "8505dc4b00fcafcbd12d00e42c63a5d7213d3b428ef6c00d178234c31577c370",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/local-continuation-regret/boundary-5-subset-2.json.gz",
+      "trace_sha256": "5451af5d6a0a12da2759f1c8e4fc24cc69dd3325c13324a78d3248cfecb44a03",
+      "wall_seconds": 0.7477758328896016,
+      "cpu_seconds": 0.7371870000000005,
+      "boundary_id": 5,
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 2,
+      "tick": 240,
+      "pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a",
+      "source_hashes": {
+        "stage2/local_regret.py": "f2e4c3284718c7e4976b56e6bdc33f26b5e0d81e3b760af8ad923a2637d9253f",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+        "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+        "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+        "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+        "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+        "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    },
+    {
+      "valid": true,
+      "issues": [],
+      "metrics": {
+        "orders": 10,
+        "shipped": 10,
+        "shipped_at": {
+          "P01": 788,
+          "P07": 1163,
+          "P04": 2122,
+          "P02": 2319,
+          "P08": 2527,
+          "P05": 2701,
+          "P03": 3169,
+          "P06": 3349,
+          "U01": 3746,
+          "U02": 3912
+        },
+        "all_orders_fulfilled": true,
+        "total_tardiness_ticks": 49,
+        "grid_kwh": 2565.5614883333333,
+        "energy_cost": 459.69813643333333,
+        "carbon_kg": 917.4462954166667,
+        "terminal_soc": 2400,
+        "terminal_soc_satisfied": true,
+        "investment_cost": 150,
+        "total_cost": 609.6981364333355,
+        "operations": 176,
+        "moves": 221,
+        "unfinished": 0,
+        "global_optimality_gap": null
+      },
+      "objective": [
+        0,
+        49,
+        609.6981364333355
+      ],
+      "selected": [
+        "C2"
+      ],
+      "forced_boundary": {
+        "hits": 1,
+        "forced_selected": [
+          "C2"
+        ],
+        "reconstructed_pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a"
+      },
+      "prefix_sha256": "e11367574e87f12673b73e8081a9c1627dc9ed563924da9b5cadf6fb94b5fc9d",
+      "error": null,
+      "physical_instance_sha256": "8505dc4b00fcafcbd12d00e42c63a5d7213d3b428ef6c00d178234c31577c370",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+      "trace_path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/local-continuation-regret/boundary-5-subset-3.json.gz",
+      "trace_sha256": "42404e21ca0ca6e179e127349d888df2f18588a1c33da5d9186799e549a86e12",
+      "wall_seconds": 0.7293589590117335,
+      "cpu_seconds": 0.7192089999999993,
+      "boundary_id": 5,
+      "config": {
+        "orders": 8,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "seed": 2,
+      "tick": 240,
+      "pool_sha256": "afa43381c7f0924b1c0ff01162c7d259271740ab840184ffc73eaddb7a87496a",
+      "source_hashes": {
+        "stage2/local_regret.py": "f2e4c3284718c7e4976b56e6bdc33f26b5e0d81e3b760af8ad923a2637d9253f",
+        "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+        "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+        "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+        "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+        "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+        "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+        "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+        "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+        "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+        "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+      }
+    }
+  ],
+  "controls": {
+    "qaoa": {
+      "result": {
+        "selected": [
+          "C0"
+        ],
+        "reward": 295.6521739130435,
+        "feasible": true,
+        "method": "qaoa_statevector",
+        "requested_method": "qaoa",
+        "quantum_executed": false,
+        "quantum_algorithm_simulated": true,
+        "physical_quantum_executed": false,
+        "fallback_reason": null,
+        "proven_optimal_within_pool": false,
+        "sampled_selection_matches_pool_optimum": true,
+        "qubo": {
+          "core_variables": 3,
+          "slack_variables": 0,
+          "variables": 3,
+          "couplers": 3,
+          "penalty": 696.6521739130435,
+          "capacity_encoding": {
+            "power@240": "redundant_upper_bound_removed"
+          },
+          "resource_integer_gcd_scales": {
+            "power@240": 400
+          },
+          "coefficient_abs_min": 200.0,
+          "coefficient_abs_max": 696.6521739130435,
+          "convention": "upper_triangular_once",
+          "domain": "fixed_candidate_pool"
+        },
+        "problem": {
+          "linear": [
+            -295.6521739130435,
+            -200.0,
+            -200.0
+          ],
+          "quadratic": [
+            {
+              "i": 0,
+              "j": 1,
+              "value": 696.6521739130435
+            },
+            {
+              "i": 0,
+              "j": 2,
+              "value": 696.6521739130435
+            },
+            {
+              "i": 1,
+              "j": 2,
+              "value": 696.6521739130435
+            }
+          ],
+          "offset": 0.0,
+          "penalty": 696.6521739130435,
+          "candidates": [
+            {
+              "id": "C0",
+              "reward": 295.6521739130435,
+              "resources": {
+                "power@240": 4
+              }
+            },
+            {
+              "id": "C1",
+              "reward": 200.0,
+              "resources": {
+                "power@240": 3
+              }
+            },
+            {
+              "id": "C2",
+              "reward": 200.0,
+              "resources": {
+                "power@240": 3
+              }
+            }
+          ],
+          "conflicts": [
+            [
+              "C0",
+              "C1"
+            ],
+            [
+              "C0",
+              "C2"
+            ],
+            [
+              "C1",
+              "C2"
+            ]
+          ],
+          "capacities": {
+            "power@240": 14
+          },
+          "slack": {},
+          "resource_integer_gcd_scales": {
+            "power@240": 400
+          },
+          "convention": "upper_triangular_once",
+          "variable_order": "candidate bits in listed order, followed by slack bit indices",
+          "problem_sha256": "2ab70e6d4385a9954f15a26d33d3d62bcc6c305691e3e3c0fca4217a3dec2705"
+        },
+        "raw": {
+          "bits": [
+            1,
+            0,
+            0
+          ],
+          "energy": -295.6521739130435,
+          "selected": [
+            "C0"
+          ],
+          "feasible": true
+        },
+        "repaired": false,
+        "reference": {
+          "indices": [
+            0
+          ],
+          "selected": [
+            "C0"
+          ],
+          "reward": 295.6521739130435,
+          "proven_optimal_within_pool": true,
+          "feasible_selections": 4,
+          "selections_examined": 8
+        },
+        "sampling": {
+          "shots": 1024,
+          "seed": 240,
+          "backend": "Python exact statevector + seeded Born sampling",
+          "ideal_basis_probabilities": [
+            0.25463713539850236,
+            0.3556872215334712,
+            0.14167915991213578,
+            0.04584526887369138,
+            0.1416791599121357,
+            0.04584526887369138,
+            0.011701527288016492,
+            0.0029252582083557706
+          ],
+          "raw_counts": {
+            "000": 259,
+            "001": 359,
+            "010": 141,
+            "011": 47,
+            "100": 149,
+            "101": 55,
+            "110": 11,
+            "111": 3
+          },
+          "samples": [
+            {
+              "bitstring": "000",
+              "count": 259,
+              "bits": [
+                0,
+                0,
+                0
+              ],
+              "feasible": true,
+              "reward": 0,
+              "energy": 0.0,
+              "exact_hit": false,
+              "zero_penalty": true
+            },
+            {
+              "bitstring": "001",
+              "count": 359,
+              "bits": [
+                1,
+                0,
+                0
+              ],
+              "feasible": true,
+              "reward": 295.6521739130435,
+              "energy": -295.6521739130435,
+              "exact_hit": true,
+              "zero_penalty": true
+            },
+            {
+              "bitstring": "010",
+              "count": 141,
+              "bits": [
+                0,
+                1,
+                0
+              ],
+              "feasible": true,
+              "reward": 200.0,
+              "energy": -200.0,
+              "exact_hit": false,
+              "zero_penalty": true
+            },
+            {
+              "bitstring": "011",
+              "count": 47,
+              "bits": [
+                1,
+                1,
+                0
+              ],
+              "feasible": false,
+              "reward": 495.6521739130435,
+              "energy": 201.0,
+              "exact_hit": false,
+              "zero_penalty": false
+            },
+            {
+              "bitstring": "100",
+              "count": 149,
+              "bits": [
+                0,
+                0,
+                1
+              ],
+              "feasible": true,
+              "reward": 200.0,
+              "energy": -200.0,
+              "exact_hit": false,
+              "zero_penalty": true
+            },
+            {
+              "bitstring": "101",
+              "count": 55,
+              "bits": [
+                1,
+                0,
+                1
+              ],
+              "feasible": false,
+              "reward": 495.6521739130435,
+              "energy": 201.0,
+              "exact_hit": false,
+              "zero_penalty": false
+            },
+            {
+              "bitstring": "110",
+              "count": 11,
+              "bits": [
+                0,
+                1,
+                1
+              ],
+              "feasible": false,
+              "reward": 400.0,
+              "energy": 296.6521739130435,
+              "exact_hit": false,
+              "zero_penalty": false
+            },
+            {
+              "bitstring": "111",
+              "count": 3,
+              "bits": [
+                1,
+                1,
+                1
+              ],
+              "feasible": false,
+              "reward": 695.6521739130435,
+              "energy": 1394.304347826087,
+              "exact_hit": false,
+              "zero_penalty": false
+            }
+          ],
+          "bit_order": "basis index bit i is qubit/variable i; count strings read q[n-1]...q[0]",
+          "ideal_core_feasible_probability": 0.893682676756245,
+          "ideal_exact_reward_hit_probability": 0.3556872215334712,
+          "ideal_qubo_ground_probability": 0.3556872215334712,
+          "ideal_zero_penalty_probability": 0.893682676756245,
+          "sampled_core_feasible_fraction": 0.88671875,
+          "sampled_exact_reward_hit_fraction": 0.3505859375,
+          "sample_ground_energy": -295.6521739130435,
+          "exact_ground_energy": -295.6521739130435,
+          "optimization": {
+            "optimizer": "coordinate",
+            "objective": "exact noiseless statevector expected QUBO energy",
+            "evaluations": 111,
+            "max_evaluations": 256,
+            "restarts": 3,
+            "attempts": [
+              {
+                "restart": 0,
+                "evaluations": 24,
+                "expected_energy": -121.52989365833413,
+                "status": "bounded_coordinate_search"
+              },
+              {
+                "restart": 1,
+                "evaluations": 25,
+                "expected_energy": -135.85158241057414,
+                "status": "bounded_coordinate_search"
+              },
+              {
+                "restart": 2,
+                "evaluations": 26,
+                "expected_energy": -121.52881770541211,
+                "status": "bounded_coordinate_search"
+              }
+            ],
+            "cost_scale": 696.6521739130435,
+            "expected_energy": -135.85158241057414,
+            "gamma": [
+              5.687987755982989
+            ],
+            "beta": [
+              1.0871975511965979
+            ],
+            "history_best_improvements": [
+              {
+                "evaluation": 1,
+                "expected_energy": 174.66304347826087,
+                "angles": [
+                  0.0,
+                  -1.5707963267948966
+                ]
+              },
+              {
+                "evaluation": 9,
+                "expected_energy": -90.21685731388328,
+                "angles": [
+                  1.0471975511965976,
+                  -0.5235987755982989
+                ]
+              },
+              {
+                "evaluation": 41,
+                "expected_energy": -95.00257423236026,
+                "angles": [
+                  0.7471975511965976,
+                  -0.5235987755982989
+                ]
+              },
+              {
+                "evaluation": 46,
+                "expected_energy": -99.1563831557317,
+                "angles": [
+                  0.8671975511965976,
+                  -0.5235987755982989
+                ]
+              },
+              {
+                "evaluation": 48,
+                "expected_energy": -119.74952618097655,
+                "angles": [
+                  0.8671975511965976,
+                  -0.40359877559829904
+                ]
+              },
+              {
+                "evaluation": 50,
+                "expected_energy": -121.03683856829323,
+                "angles": [
+                  0.9871975511965976,
+                  -0.40359877559829904
+                ]
+              },
+              {
+                "evaluation": 53,
+                "expected_energy": -121.52989365833413,
+                "angles": [
+                  0.9471975511965975,
+                  -0.40359877559829904
+                ]
+              },
+              {
+                "evaluation": 62,
+                "expected_energy": -124.53467867014518,
+                "angles": [
+                  5.935987755982989,
+                  1.0471975511965979
+                ]
+              },
+              {
+                "evaluation": 66,
+                "expected_energy": -131.81029886093972,
+                "angles": [
+                  5.635987755982989,
+                  1.0471975511965979
+                ]
+              },
+              {
+                "evaluation": 71,
+                "expected_energy": -133.69576462903464,
+                "angles": [
+                  5.755987755982989,
+                  1.0471975511965979
+                ]
+              },
+              {
+                "evaluation": 75,
+                "expected_energy": -133.85853801992158,
+                "angles": [
+                  5.715987755982989,
+                  1.0471975511965979
+                ]
+              },
+              {
+                "evaluation": 77,
+                "expected_energy": -135.71243719660433,
+                "angles": [
+                  5.715987755982989,
+                  1.0871975511965979
+                ]
+              },
+              {
+                "evaluation": 78,
+                "expected_energy": -135.8016953725291,
+                "angles": [
+                  5.675987755982989,
+                  1.0871975511965979
+                ]
+              },
+              {
+                "evaluation": 82,
+                "expected_energy": -135.85158241057414,
+                "angles": [
+                  5.687987755982989,
+                  1.0871975511965979
+                ]
+              }
+            ],
+            "elapsed_seconds": 0.0005396250635385513
+          },
+          "circuit": {
+            "qubits": 3,
+            "layers": 1,
+            "cost_scale": 696.6521739130435,
+            "gamma": [
+              5.687987755982989
+            ],
+            "beta": [
+              1.0871975511965979
+            ],
+            "parameter_order": "all gamma, then all beta",
+            "ising_z_fields": [
+              -200.5,
+              -248.32608695652175,
+              -248.32608695652175
+            ],
+            "ising_zz_couplings": [
+              {
+                "i": 0,
+                "j": 1,
+                "value": 174.16304347826087
+              },
+              {
+                "i": 0,
+                "j": 2,
+                "value": 174.16304347826087
+              },
+              {
+                "i": 1,
+                "j": 2,
+                "value": 174.16304347826087
+              }
+            ],
+            "dropped_global_phase_constant": 174.66304347826087,
+            "logical_depth_without_measurement": 12,
+            "gate_counts": {
+              "h": 3,
+              "rz": 6,
+              "cx": 6,
+              "rx": 3
+            },
+            "logical_gate_sequence": [
+              {
+                "name": "h",
+                "qubits": [
+                  0
+                ]
+              },
+              {
+                "name": "h",
+                "qubits": [
+                  1
+                ]
+              },
+              {
+                "name": "h",
+                "qubits": [
+                  2
+                ]
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  0
+                ],
+                "angle": -3.274062976560638
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  1
+                ],
+                "angle": -4.055038640491398
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  2
+                ],
+                "angle": -4.055038640491398
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  1
+                ],
+                "angle": 2.8439938779914944
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  0,
+                  1
+                ]
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  0,
+                  2
+                ]
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  2
+                ],
+                "angle": 2.8439938779914944
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  0,
+                  2
+                ]
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "name": "rz",
+                "qubits": [
+                  2
+                ],
+                "angle": 2.8439938779914944
+              },
+              {
+                "name": "cx",
+                "qubits": [
+                  1,
+                  2
+                ]
+              },
+              {
+                "name": "rx",
+                "qubits": [
+                  0
+                ],
+                "angle": 2.1743951023931958
+              },
+              {
+                "name": "rx",
+                "qubits": [
+                  1
+                ],
+                "angle": 2.1743951023931958
+              },
+              {
+                "name": "rx",
+                "qubits": [
+                  2
+                ],
+                "angle": 2.1743951023931958
+              }
+            ],
+            "openqasm2": "OPENQASM 2.0;\ninclude \"qelib1.inc\";\nqreg q[3];\ncreg c[3];\nh q[0];\nh q[1];\nh q[2];\nrz(-3.2740629765606379) q[0];\nrz(-4.0550386404913983) q[1];\nrz(-4.0550386404913983) q[2];\ncx q[0],q[1];\nrz(2.8439938779914944) q[1];\ncx q[0],q[1];\ncx q[0],q[2];\nrz(2.8439938779914944) q[2];\ncx q[0],q[2];\ncx q[1],q[2];\nrz(2.8439938779914944) q[2];\ncx q[1],q[2];\nrx(2.1743951023931958) q[0];\nrx(2.1743951023931958) q[1];\nrx(2.1743951023931958) q[2];\nmeasure q[0] -> c[0];\nmeasure q[1] -> c[1];\nmeasure q[2] -> c[2];\n",
+            "circuit_sha256": "12d1d0e23d3fc359b1d5949575a3bd2404fa5e0fbc3606eb930995acd8ae4773",
+            "backend_status": "logical_only_not_transpiled_not_submitted",
+            "bit_order": "basis index bit i is qubit/variable i; count strings read q[n-1]...q[0]"
+          },
+          "uniform_reference": {
+            "ideal_core_feasible_probability": 0.5,
+            "ideal_exact_reward_hit_probability": 0.125,
+            "probability_at_least_one_exact_in_same_shots": 1.0,
+            "sampled_best_feasible_reward": 295.6521739130435,
+            "raw_counts": {
+              "000": 135,
+              "001": 142,
+              "010": 122,
+              "011": 124,
+              "100": 132,
+              "101": 123,
+              "110": 137,
+              "111": 109
+            }
+          }
+        },
+        "limitations": [
+          "This is a classical simulation of a quantum circuit, not a physical ODRA5 run.",
+          "At most five total encoded variables are sampled; the full factory is handled by classical state/constraint machinery.",
+          "Exact enumeration is an evaluation reference, not the source of the selected actions.",
+          "Best feasible selection over many shots is classical postselection; the equal-shot uniform baseline is reported.",
+          "The candidate pool and frozen boundary restrict available actions; pool-optimality is not global scheduling optimality."
+        ],
+        "elapsed_seconds": 0.0008567918557673693
+      },
+      "wall_seconds": 0.0008910419419407845,
+      "cpu_seconds": 0.000890999999999309,
+      "cost_scope": "Includes QUBO preprocessing and QAOA angle training/sampling when requested",
+      "enumerated_subset_index": 1,
+      "continuation_objective": [
+        0,
+        0,
+        588.2603451666661
+      ],
+      "continuation_delta_vs_oracle": [
+        0,
+        0,
+        0.0
+      ],
+      "same_unfulfilled_as_oracle": true
+    },
+    "uniform": {
+      "result": {
+        "selected": [
+          "C0"
+        ],
+        "reward": 295.6521739130435,
+        "feasible": true,
+        "method": "uniform_born_baseline",
+        "quantum_executed": false,
+        "proven_optimal_within_pool": false,
+        "qubo": {
+          "core_variables": 3,
+          "slack_variables": 0,
+          "variables": 3,
+          "couplers": 3,
+          "penalty": 696.6521739130435,
+          "capacity_encoding": {
+            "power@240": "redundant_upper_bound_removed"
+          },
+          "resource_integer_gcd_scales": {
+            "power@240": 400
+          },
+          "coefficient_abs_min": 200.0,
+          "coefficient_abs_max": 696.6521739130435,
+          "convention": "upper_triangular_once",
+          "domain": "fixed_candidate_pool"
+        },
+        "raw": {
+          "bits": [
+            1,
+            0,
+            0
+          ],
+          "energy": -295.6521739130435,
+          "feasible": true
+        },
+        "repaired": false,
+        "reference": {
+          "indices": [
+            0
+          ],
+          "selected": [
+            "C0"
+          ],
+          "reward": 295.6521739130435,
+          "proven_optimal_within_pool": true,
+          "feasible_selections": 4,
+          "selections_examined": 8
+        },
+        "shots": 1024,
+        "raw_counts": {
+          "000": 146,
+          "001": 118,
+          "010": 143,
+          "011": 138,
+          "100": 123,
+          "101": 115,
+          "110": 127,
+          "111": 114
+        },
+        "elapsed_seconds": 0.00019149994477629662
+      },
+      "wall_seconds": 0.00019400008022785187,
+      "cpu_seconds": 0.00019400000000047157,
+      "cost_scope": "Includes QUBO preprocessing and QAOA angle training/sampling when requested",
+      "enumerated_subset_index": 1,
+      "continuation_objective": [
+        0,
+        0,
+        588.2603451666661
+      ],
+      "continuation_delta_vs_oracle": [
+        0,
+        0,
+        0.0
+      ],
+      "same_unfulfilled_as_oracle": true
+    },
+    "exact_random_tie": {
+      "result": {
+        "selected": [
+          "C0"
+        ],
+        "reward": 295.6521739130435,
+        "feasible": true,
+        "method": "exact_random_tie",
+        "proven_optimal_within_pool": true,
+        "qubo": {
+          "core_variables": 3,
+          "slack_variables": 0,
+          "variables": 3,
+          "couplers": 3,
+          "penalty": 696.6521739130435,
+          "capacity_encoding": {
+            "power@240": "redundant_upper_bound_removed"
+          },
+          "resource_integer_gcd_scales": {
+            "power@240": 400
+          },
+          "coefficient_abs_min": 200.0,
+          "coefficient_abs_max": 696.6521739130435,
+          "convention": "upper_triangular_once",
+          "domain": "fixed_candidate_pool"
+        },
+        "raw": {
+          "bits": [
+            1,
+            0,
+            0
+          ],
+          "energy": -295.6521739130435,
+          "optimal_ties": 1,
+          "selected": [
+            "C0"
+          ],
+          "feasible": true
+        },
+        "repaired": false,
+        "reference": {
+          "indices": [
+            0
+          ],
+          "selected": [
+            "C0"
+          ],
+          "reward": 295.6521739130435,
+          "proven_optimal_within_pool": true,
+          "feasible_selections": 4,
+          "selections_examined": 8
+        },
+        "elapsed_seconds": 3.491598181426525e-05
+      },
+      "wall_seconds": 3.629201091825962e-05,
+      "cpu_seconds": 3.600000000147929e-05,
+      "cost_scope": "Includes QUBO preprocessing and QAOA angle training/sampling when requested",
+      "enumerated_subset_index": 1,
+      "continuation_objective": [
+        0,
+        0,
+        588.2603451666661
+      ],
+      "continuation_delta_vs_oracle": [
+        0,
+        0,
+        0.0
+      ],
+      "same_unfulfilled_as_oracle": true
+    },
+    "exact_linear": {
+      "result": {
+        "selected": [
+          "C0"
+        ],
+        "reward": 295.6521739130435,
+        "feasible": true,
+        "method": "exact",
+        "proven_optimal_within_pool": true,
+        "qubo": {
+          "core_variables": 3,
+          "slack_variables": 0,
+          "variables": 3,
+          "couplers": 3,
+          "penalty": 696.6521739130435,
+          "capacity_encoding": {
+            "power@240": "redundant_upper_bound_removed"
+          },
+          "resource_integer_gcd_scales": {
+            "power@240": 400
+          },
+          "coefficient_abs_min": 200.0,
+          "coefficient_abs_max": 696.6521739130435,
+          "convention": "upper_triangular_once",
+          "domain": "fixed_candidate_pool"
+        },
+        "raw": {
+          "bits": [
+            1,
+            0,
+            0
+          ],
+          "energy": -295.6521739130435,
+          "selected": [
+            "C0"
+          ],
+          "feasible": true
+        },
+        "repaired": false,
+        "reference": {
+          "indices": [
+            0
+          ],
+          "selected": [
+            "C0"
+          ],
+          "reward": 295.6521739130435,
+          "proven_optimal_within_pool": true,
+          "feasible_selections": 4,
+          "selections_examined": 8
+        },
+        "elapsed_seconds": 4.037516191601753e-05
+      },
+      "wall_seconds": 0.0,
+      "cost_scope": "Exact action already measured in baseline full-run cost; no zero-cost claim",
+      "enumerated_subset_index": 1,
+      "continuation_objective": [
+        0,
+        0,
+        588.2603451666661
+      ],
+      "continuation_delta_vs_oracle": [
+        0,
+        0,
+        0.0
+      ],
+      "same_unfulfilled_as_oracle": true
+    }
+  },
+  "observed_best": {
+    "selected": [
+      "C0"
+    ],
+    "objective": [
+      0,
+      0,
+      588.2603451666661
+    ]
+  },
+  "complete_valid_audit": true,
+  "invalid_counterfactuals": 0,
+  "future_evaluation_wall_seconds": 2.847732375841588,
+  "control_generation_wall_seconds": 0.001121334033086896
+}

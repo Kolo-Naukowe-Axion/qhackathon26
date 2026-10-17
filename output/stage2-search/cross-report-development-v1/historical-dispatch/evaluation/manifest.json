@@ -1,0 +1,112 @@
+{
+  "schema": "stage2-frozen-selected-policy-evaluation.v1",
+  "phase": "frozen-selection",
+  "evaluation_role": "development",
+  "frozen_utc": "2026-10-16T23:12:13Z",
+  "runtime": {
+    "python": "3.14.6 (main, Jun 10 2026, 10:03:53) [Clang 21.0.0 (clang-2100.0.123.102)]",
+    "platform": "darwin",
+    "packages": {
+      "numpy": "2.5.4",
+      "scipy": null,
+      "torch": "2.14.1",
+      "ortools": "9.15.6755",
+      "qiskit": null,
+      "qiskit-aer": null
+    },
+    "scope": "Installed distribution metadata only; unavailable packages are null, not required by the standard-library factory"
+  },
+  "configs": [
+    {
+      "orders": 1,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    901,
+    902
+  ],
+  "methods": [
+    {
+      "id": "smoke",
+      "kind": "static",
+      "backend": "advanced",
+      "weights": {
+        "wip_limit": 3,
+        "mode": "standard",
+        "selector": "qaoa",
+        "lease_calibration": true,
+        "worker_calendar": true,
+        "preposition": false,
+        "policy_seed": 0
+      },
+      "selection_provenance": {
+        "data": "DEVELOPMENT smoke only",
+        "training_wall_seconds": 0
+      }
+    }
+  ],
+  "selection_provenance": {
+    "data": "DEVELOPMENT contract smoke only; no policy selection",
+    "training_wall_seconds": 0
+  },
+  "actor_seed_policy": "Declared actor seed overrides inherited policy_seed before callback construction; explicit fixed MPC planning seeds permitted only with one actor",
+  "selection_spec": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/historical-dispatch/selection.json",
+    "sha256": "faadd78f8ff58dfe2b2698b5a0e4ec56bd18f066d397eaeb86e8bdc91914a7db"
+  },
+  "protocol": {
+    "path": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/cross-report-development-v1/historical-dispatch/protocol.json",
+    "file_sha256": "5ab12edcaab2eac817d24e454c477b0773f73d46f9945c9229644aa1f93d5f41",
+    "payload": {
+      "schema": "stage2-development-protocol.v1",
+      "seed_role": "DEVELOPMENT",
+      "selection": "Explicit development smoke tapes; no final performance claim",
+      "total_tapes": 2,
+      "leaves": [
+        {
+          "outcomes": [
+            "development"
+          ],
+          "probability": [
+            1,
+            1
+          ],
+          "seeds": [
+            0,
+            1
+          ],
+          "per_tape_weight": 0.5
+        }
+      ],
+      "protocol_sha256": "47a131bfe22527bd7e7098154e99fe0d99a053de8dbd7bda6cc48330f83c66ff"
+    }
+  },
+  "artifacts": {},
+  "source_hashes": {
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "da50ae48f77512be433b042e8f6b8ecb40f7b2adc5ff35ba61bc769e3762b8a0",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/final_eval.py": "9be14d56c799f3761568ef287e83f7453cc6f8267fb57546bef045c532dde22b",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b"
+  },
+  "trace_policy": "all",
+  "statistics_scope": "Actor replicas are conditional outcomes within environment clusters, never additional factories",
+  "manifest_sha256": "8c1635108b03b9603e401984d6bca7e0f00c695ec65e19641d1c883fae34a148"
+}

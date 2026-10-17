@@ -1,0 +1,1457 @@
+{
+  "schema": "stage2-final-evidence-report.v1",
+  "cohort_scope": "partial",
+  "missing_cohorts": [
+    "frontier",
+    "mpc-12",
+    "mpc-13",
+    "mpc-14",
+    "mpc-16",
+    "mpc-24",
+    "quantum-deterministic",
+    "quantum-stochastic",
+    "strong-cheap"
+  ],
+  "expected_comparison_count": 41,
+  "comparisons_computed": true,
+  "protocol_sha256": "bb8e159ba48f1ab68584646809b9e0380ff6fe756dd4ad265b0accdb488f1599",
+  "inputs": {
+    "legacy": "/Users/iwosmura/projects/qhackathon26/output/stage2-search/final-downloaded/final-legacy-6117510"
+  },
+  "groups": 21,
+  "executions": 5376,
+  "invalid_executions": 0,
+  "preselected_frontier": [],
+  "comparisons": [
+    {
+      "id": "legacy-warm-ppo-2026-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2026-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 2.90265625,
+        "mean_difference": 1.63421875,
+        "mean_difference_percentile_bootstrap_95": [
+          1.4364062499999999,
+          1.8404687499999999
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 5.079687500000001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.03750000000000231,
+          1.3343750000000023
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 5.079687500000001,
+        "joint_actor_environment_cvar90_difference": 0.6156250000000005,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.03750000000000231,
+          1.3343750000000023
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 9242.02546875,
+        "mean_difference": 1641.05125,
+        "mean_difference_percentile_bootstrap_95": [
+          1293.7809375000006,
+          2014.2554687499996
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 13844.109375000002,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -235.4812499999989,
+          1805.6718749999927
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 13844.109375000002,
+        "joint_actor_environment_cvar90_difference": 802.8640624999989,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -235.4812499999989,
+          1805.6718749999927
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-ppo-2027-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2027-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 2.6165625,
+        "mean_difference": 1.348125,
+        "mean_difference_percentile_bootstrap_95": [
+          1.1853125,
+          1.51203125
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 4.525,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.4359375000000014,
+          0.5921875000000005
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 4.525,
+        "joint_actor_environment_cvar90_difference": 0.060937499999999645,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.4359375000000014,
+          0.5921875000000005
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 7954.22546875,
+        "mean_difference": 353.25125,
+        "mean_difference_percentile_bootstrap_95": [
+          61.705468749999454,
+          642.0179687500004
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 12018.826562500004,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1861.1703124999985,
+          -243.399999999996
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 12018.826562500004,
+        "joint_actor_environment_cvar90_difference": -1022.4187499999989,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1861.1703124999985,
+          -243.399999999996
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-cem-2026-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-cem-2026-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 2.5475,
+        "mean_difference": 1.2790625,
+        "mean_difference_percentile_bootstrap_95": [
+          1.10078125,
+          1.4517187499999997
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 4.715625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.30937500000000107,
+          0.9031250000000011
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 4.715625,
+        "joint_actor_environment_cvar90_difference": 0.25156249999999947,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.30937500000000107,
+          0.9031250000000011
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 8077.109375,
+        "mean_difference": 476.13515625,
+        "mean_difference_percentile_bootstrap_95": [
+          158.15406249999978,
+          795.8870312499994
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 12578.012500000004,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1434.8390624999993,
+          399.767187499996
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 12578.012500000004,
+        "joint_actor_environment_cvar90_difference": -463.23281249999854,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1434.8390624999993,
+          399.767187499996
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-bandit-2026-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-bandit-2026-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 2.4421875,
+        "mean_difference": 1.17375,
+        "mean_difference_percentile_bootstrap_95": [
+          1.0199999999999998,
+          1.3278124999999998
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 4.5406249999999995,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.41562500000000036,
+          0.5656250000000007
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 4.5406249999999995,
+        "joint_actor_environment_cvar90_difference": 0.07656249999999876,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.41562500000000036,
+          0.5656250000000007
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 7582.62875,
+        "mean_difference": -18.345468750000002,
+        "mean_difference_percentile_bootstrap_95": [
+          -322.5184374999999,
+          268.51468750000004
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 11668.384375000003,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2239.9765625000036,
+          -530.2656250000018
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 11668.384375000003,
+        "joint_actor_environment_cvar90_difference": -1372.8609374999996,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2239.9765625000036,
+          -530.2656250000018
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2026-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2026-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 1.0189062500000001,
+        "mean_difference": -0.24953125,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.40781250000000013,
+          -0.1015625
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 3.857812500000001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.1468749999999992,
+          0.0078124999999973355
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 3.857812500000001,
+        "joint_actor_environment_cvar90_difference": -0.6062499999999997,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.1468749999999992,
+          0.0078124999999973355
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 6576.188125000001,
+        "mean_difference": -1024.78609375,
+        "mean_difference_percentile_bootstrap_95": [
+          -1260.4117187500005,
+          -788.0104687499997
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 11647.9796875,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2198.8984375,
+          -590.4796875000029
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 11647.9796875,
+        "joint_actor_environment_cvar90_difference": -1393.2656250000036,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2198.8984375,
+          -590.4796875000029
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2027-vs-legacy-teacher-12",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2027-vs-legacy-teacher-12.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 1.2684375,
+        "right_mean": 1.1453125,
+        "mean_difference": -0.12312500000000001,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.23140625000000004,
+          -0.014687499999999964
+        ],
+        "left_cvar90": 4.464062500000001,
+        "right_cvar90": 4.4140625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.5234375,
+          0.33749999999999947
+        ],
+        "left_joint_actor_environment_cvar90": 4.464062500000001,
+        "right_joint_actor_environment_cvar90": 4.4140625,
+        "joint_actor_environment_cvar90_difference": -0.05000000000000071,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.5234375,
+          0.33749999999999947
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 7600.974218750001,
+        "right_mean": 7256.958125,
+        "mean_difference": -344.01609375000004,
+        "mean_difference_percentile_bootstrap_95": [
+          -511.0731249999999,
+          -161.73375000000033
+        ],
+        "left_cvar90": 13041.245312500003,
+        "right_cvar90": 12778.184375000004,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -873.6718750000091,
+          324.2765624999993
+        ],
+        "left_joint_actor_environment_cvar90": 13041.245312500003,
+        "right_joint_actor_environment_cvar90": 12778.184375000004,
+        "joint_actor_environment_cvar90_difference": -263.06093749999854,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -873.6718750000091,
+          324.2765624999993
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-ppo-2026-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2026-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 5.5321875,
+        "mean_difference": 0.09109375000000001,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.1729687499999999,
+          0.3618750000000004
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 9.3515625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.5468750000000053,
+          1.6546874999999996
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 9.3515625,
+        "joint_actor_environment_cvar90_difference": 0.035937500000001066,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.5468750000000053,
+          1.6546874999999996
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 15696.09921875,
+        "mean_difference": 246.470625,
+        "mean_difference_percentile_bootstrap_95": [
+          -206.44468750000124,
+          745.9801562500015
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 22282.65312500001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -3263.3531249999905,
+          3647.8875000000007
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 22282.65312500001,
+        "joint_actor_environment_cvar90_difference": 249.90468750000582,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -3263.3531249999905,
+          3647.8875000000007
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-ppo-2027-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2027-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 5.3328125,
+        "mean_difference": -0.10828125000000001,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.3984375,
+          0.1740624999999998
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 8.5984375,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2.1656250000000004,
+          0.6078125000000005
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 8.5984375,
+        "joint_actor_environment_cvar90_difference": -0.7171874999999996,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2.1656250000000004,
+          0.6078125000000005
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 15232.8646875,
+        "mean_difference": -216.76390625000005,
+        "mean_difference_percentile_bootstrap_95": [
+          -702.2992187500004,
+          244.19265624999935
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 20611.003125000007,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -4583.0453124999985,
+          1136.037499999995
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 20611.003125000007,
+        "joint_actor_environment_cvar90_difference": -1421.7453124999993,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -4583.0453124999985,
+          1136.037499999995
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-cem-2026-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-cem-2026-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 4.63625,
+        "mean_difference": -0.80484375,
+        "mean_difference_percentile_bootstrap_95": [
+          -1.0915625000000002,
+          -0.5410937499999999
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 7.6203125000000025,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -3.178125000000004,
+          -0.35312500000000213
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 7.6203125000000025,
+        "joint_actor_environment_cvar90_difference": -1.6953124999999964,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -3.178125000000004,
+          -0.35312500000000213
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 14093.32671875,
+        "mean_difference": -1356.301875,
+        "mean_difference_percentile_bootstrap_95": [
+          -1826.7071875000001,
+          -910.5803125000002
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 19242.71406250001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -6024.895312499997,
+          -149.19531250000364
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 19242.71406250001,
+        "joint_actor_environment_cvar90_difference": -2790.0343749999956,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -6024.895312499997,
+          -149.19531250000364
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-bandit-2026-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-bandit-2026-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 5.57984375,
+        "mean_difference": 0.13874999999999998,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.16078125000000032,
+          0.42249999999999943
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 8.749999999999998,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2.0046874999999993,
+          0.7578125000000053
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 8.749999999999998,
+        "joint_actor_environment_cvar90_difference": -0.5656250000000007,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2.0046874999999993,
+          0.7578125000000053
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 15814.53984375,
+        "mean_difference": 364.91125,
+        "mean_difference_percentile_bootstrap_95": [
+          -125.4140625,
+          811.6864062500008
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 20786.56250000001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -4458.862499999992,
+          1323.9687500000073
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 20786.56250000001,
+        "joint_actor_environment_cvar90_difference": -1246.185937499995,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -4458.862499999992,
+          1323.9687500000073
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2026-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2026-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 5.195625,
+        "mean_difference": -0.24546875,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.5331250000000001,
+          0.009375000000000355
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 8.1625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2.7484375000000014,
+          0.28593750000000107
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 8.1625,
+        "joint_actor_environment_cvar90_difference": -1.1531249999999993,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2.7484375000000014,
+          0.28593750000000107
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 15027.510781250001,
+        "mean_difference": -422.1178125,
+        "mean_difference_percentile_bootstrap_95": [
+          -899.4754687500008,
+          -12.850937499999418
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 19489.68125,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -5689.1171875,
+          68.50000000000364
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 19489.68125,
+        "joint_actor_environment_cvar90_difference": -2543.0671875000044,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -5689.1171875,
+          68.50000000000364
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2027-vs-legacy-teacher-16",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 16,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2027-vs-legacy-teacher-16.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 5.44109375,
+        "right_mean": 4.96125,
+        "mean_difference": -0.47984375,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.7690624999999995,
+          -0.20046875000000064
+        ],
+        "left_cvar90": 9.315624999999999,
+        "right_cvar90": 8.1140625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2.7953124999999996,
+          0.3453124999999968
+        ],
+        "left_joint_actor_environment_cvar90": 9.315624999999999,
+        "right_joint_actor_environment_cvar90": 8.1140625,
+        "joint_actor_environment_cvar90_difference": -1.2015624999999996,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2.7953124999999996,
+          0.3453124999999968
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 15449.62859375,
+        "right_mean": 14554.15046875,
+        "mean_difference": -895.4781250000001,
+        "mean_difference_percentile_bootstrap_95": [
+          -1375.9660937499993,
+          -433.29703125000015
+        ],
+        "left_cvar90": 22032.748437500006,
+        "right_cvar90": 19736.309375,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -5771.034374999981,
+          685.8562500000044
+        ],
+        "left_joint_actor_environment_cvar90": 22032.748437500006,
+        "right_joint_actor_environment_cvar90": 19736.309375,
+        "joint_actor_environment_cvar90_difference": -2296.439062500005,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -5771.034374999981,
+          685.8562500000044
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-ppo-2026-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2026-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 13.19078125,
+        "mean_difference": -0.0153125,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.1501562500000002,
+          0.11687500000000028
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 15.243749999999999,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.1437500000000007,
+          0.9687500000000089
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 15.243749999999999,
+        "joint_actor_environment_cvar90_difference": -0.10937499999999645,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.1437500000000007,
+          0.9687500000000089
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 33351.68671875,
+        "mean_difference": 770.966875,
+        "mean_difference_percentile_bootstrap_95": [
+          403.0348437499997,
+          1138.2935937500006
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 37898.781250000015,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1750.8250000000116,
+          355.20937499999127
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 37898.781250000015,
+        "joint_actor_environment_cvar90_difference": -809.5171875000015,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1750.8250000000116,
+          355.20937499999127
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-ppo-2027-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-ppo-2027",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-ppo-2027-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 13.32375,
+        "mean_difference": 0.11765625,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.011406249999998508,
+          0.24984375000000014
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 15.590625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.4953125000000007,
+          0.9499999999999993
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 15.590625,
+        "joint_actor_environment_cvar90_difference": 0.23750000000000426,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.4953125000000007,
+          0.9499999999999993
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 33903.949375000004,
+        "mean_difference": 1323.22953125,
+        "mean_difference_percentile_bootstrap_95": [
+          915.7854687500003,
+          1740.5034375000032
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 37986.82812500001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1653.9828125000058,
+          330.02500000000146
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 37986.82812500001,
+        "joint_actor_environment_cvar90_difference": -721.4703125000087,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1653.9828125000058,
+          330.02500000000146
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-cem-2026-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-cem-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-cem-2026-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 12.18671875,
+        "mean_difference": -1.019375,
+        "mean_difference_percentile_bootstrap_95": [
+          -1.1798437499999999,
+          -0.8634374999999999
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 14.9625,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.106250000000001,
+          0.29062500000000036
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 14.9625,
+        "joint_actor_environment_cvar90_difference": -0.39062499999999467,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.106250000000001,
+          0.29062500000000036
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 32897.176562500004,
+        "mean_difference": 316.45671875,
+        "mean_difference_percentile_bootstrap_95": [
+          -74.26343749999796,
+          708.8717187500006
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 38711.45625000002,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1165.659375000003,
+          1231.1343750000015
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 38711.45625000002,
+        "joint_actor_environment_cvar90_difference": 3.157812500001455,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1165.659375000003,
+          1231.1343750000015
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-warm-bandit-2026-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-warm-bandit-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-warm-bandit-2026-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 13.19078125,
+        "mean_difference": -0.0153125,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.1501562500000002,
+          0.11687500000000028
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 15.243749999999999,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.1437500000000007,
+          0.9687500000000089
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 15.243749999999999,
+        "joint_actor_environment_cvar90_difference": -0.10937499999999645,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.1437500000000007,
+          0.9687500000000089
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 33351.68671875,
+        "mean_difference": 770.966875,
+        "mean_difference_percentile_bootstrap_95": [
+          403.0348437499997,
+          1138.2935937500006
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 37898.781250000015,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1750.8250000000116,
+          355.20937499999127
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 37898.781250000015,
+        "joint_actor_environment_cvar90_difference": -809.5171875000015,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1750.8250000000116,
+          355.20937499999127
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2026-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2026",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2026-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 12.8240625,
+        "mean_difference": -0.38203125,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.5473437499999996,
+          -0.2257812500000007
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 15.228125000000002,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -0.9531250000000053,
+          0.5625000000000089
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 15.228125000000002,
+        "joint_actor_environment_cvar90_difference": -0.1249999999999929,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -0.9531250000000053,
+          0.5625000000000089
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 31181.412343750002,
+        "mean_difference": -1399.3075000000001,
+        "mean_difference_percentile_bootstrap_95": [
+          -1833.1287499999999,
+          -998.8556250000001
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 37258.69843750001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2395.0203125000044,
+          -471.6390625000131
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 37258.69843750001,
+        "joint_actor_environment_cvar90_difference": -1449.6000000000058,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2395.0203125000044,
+          -471.6390625000131
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    },
+    {
+      "id": "legacy-threshold-cem-2027-vs-legacy-teacher-24",
+      "left": "legacy",
+      "left_method": "legacy-routing-teacher",
+      "right": "legacy",
+      "right_method": "legacy-threshold-cem-2027",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full"
+      },
+      "primary_quantum": false,
+      "path": "comparisons/legacy-threshold-cem-2027-vs-legacy-teacher-24.json",
+      "missing": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 13.20609375,
+        "right_mean": 12.80015625,
+        "mean_difference": -0.4059375,
+        "mean_difference_percentile_bootstrap_95": [
+          -0.5582812500000003,
+          -0.2665625000000009
+        ],
+        "left_cvar90": 15.353124999999995,
+        "right_cvar90": 14.514062500000001,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -1.6015624999999947,
+          -0.13124999999999964
+        ],
+        "left_joint_actor_environment_cvar90": 15.353124999999995,
+        "right_joint_actor_environment_cvar90": 14.514062500000001,
+        "joint_actor_environment_cvar90_difference": -0.8390624999999936,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -1.6015624999999947,
+          -0.13124999999999964
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "deadline_debt": {
+        "schema": "stage2-paired-stratified-comparison.v1",
+        "direction": "right minus left; negative favors right for losses",
+        "environment_tapes": 256,
+        "actor_replicas_left": 256,
+        "actor_replicas_right": 256,
+        "left_mean": 32580.71984375,
+        "right_mean": 31032.39,
+        "mean_difference": -1548.32984375,
+        "mean_difference_percentile_bootstrap_95": [
+          -1983.2178125000028,
+          -1144.9164062500022
+        ],
+        "left_cvar90": 38708.298437500016,
+        "right_cvar90": 37122.23281250002,
+        "cvar90_difference_percentile_bootstrap_95": [
+          -2571.923437500016,
+          -603.2359375000015
+        ],
+        "left_joint_actor_environment_cvar90": 38708.298437500016,
+        "right_joint_actor_environment_cvar90": 37122.23281250002,
+        "joint_actor_environment_cvar90_difference": -1586.0656249999956,
+        "joint_actor_environment_cvar90_difference_percentile_bootstrap_95": [
+          -2571.923437500016,
+          -603.2359375000015
+        ],
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "risk_scope": "CVaR across exogenous/quality tapes of actor-averaged loss; actor randomness not new factories",
+        "joint_risk_scope": "CVaR over environment mass times equal conditional actor mass; bootstrap resamples whole environment clusters within strata",
+        "limitation": "Empirical conditional pseudorandom-tape estimate; no global-optimality or all-future-scenario proof"
+      },
+      "primary_interval": null
+    }
+  ],
+  "source_hashes": {
+    "final_report.py": "5b4fdc45fbb0db2a65c650dcce51b5c5671784fc44e4981c6b9592635663218d",
+    "compare_evaluations.py": "2ef6688c7331cfe7646c4d758aec690427b4e102204047ab03e32e2afa43ffe2",
+    "statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "primary_intervals.py": "1c7bbb503dbdec1e1c6663515bf38ff6bfc18ae9a5ff4301cf5da0fb93208022"
+  },
+  "wall_seconds": 39.3691287918482,
+  "interpretation": "No post-final policy switching. All contrasts other than the two named n12 quantum missing-order means are pointwise exploratory. Quantum is CPU simulation with measured classical fallback; primary global gap requires separate offline certificates; secondary gap unknown."
+}

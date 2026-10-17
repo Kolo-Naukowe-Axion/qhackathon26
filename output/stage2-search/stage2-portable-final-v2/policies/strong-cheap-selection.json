@@ -1,0 +1,823 @@
+{
+  "schema": "stage2-selected-policy-spec.v1",
+  "configs": [
+    {
+      "orders": 12,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 16,
+      "horizon": 5760,
+      "profile": "full"
+    },
+    {
+      "orders": 24,
+      "horizon": 5760,
+      "profile": "full"
+    }
+  ],
+  "actor_seeds": [
+    900000
+  ],
+  "methods": [
+    {
+      "id": "static-grid-12",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": false
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [
+          "QA"
+        ],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 270,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part0/report.json",
+        "policy_id": "n12-w8-g4-standard-QA1-credit270-join0",
+        "validation": {
+          "missing": 0,
+          "tardiness": 47641,
+          "cost": 10968.523506033387
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "static-matched18-12",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": false
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 0,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part0/report.json",
+        "policy_id": "n12-w6-g4-turbo-QA0-credit0-join0",
+        "validation": {
+          "missing": 2,
+          "tardiness": 67169,
+          "cost": 11748.191777266731
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "original-strong-12",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 8,
+        "mode": "standard",
+        "due": 0.25,
+        "remaining": -4.0,
+        "family": 24.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 0,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Exact retained strong-MPC scenarios0 control",
+        "task_id": 0,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "guard": "Explicit causal maintenance restriction; six actual development guarded replay checks preserve original physical results"
+      }
+    },
+    {
+      "id": "ppo6-2026-12",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2026.json",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo6-2027-12",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2027.json",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem6-2026-12",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-cem6-2026.json",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo18-2026-12",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-ppo18-2026.json",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem18-2026-12",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-cem18-2026.json",
+      "configs": [
+        {
+          "orders": 12,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "static-grid-16",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "eco",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": false
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [
+          "QA"
+        ],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 0,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part0/report.json",
+        "policy_id": "n16-w6-g4-eco-QA1-credit0-join0",
+        "validation": {
+          "missing": 35,
+          "tardiness": 204807,
+          "cost": 12773.896773300004
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "static-matched18-16",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": false
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 0,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part0/report.json",
+        "policy_id": "n16-w6-g4-standard-QA0-credit0-join0",
+        "validation": {
+          "missing": 44,
+          "tardiness": 213799,
+          "cost": 12716.199498333339
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "original-strong-16",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 1,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": true,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Exact retained strong-MPC scenarios0 control",
+        "task_id": 432,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "guard": "Explicit causal maintenance restriction; six actual development guarded replay checks preserve original physical results"
+      }
+    },
+    {
+      "id": "ppo6-2026-16",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2026.json",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo6-2027-16",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2027.json",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem6-2026-16",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-cem6-2026.json",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo18-2026-16",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-ppo18-2026.json",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem18-2026-16",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-cem18-2026.json",
+      "configs": [
+        {
+          "orders": 16,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "static-grid-24",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": "join",
+        "bom_join_weight": 6,
+        "bom_progress_weight": 1
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [
+          "QA"
+        ],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 270,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part1/report.json",
+        "policy_id": "n24-w6-g4-standard-QA1-credit270-join1",
+        "validation": {
+          "missing": 168,
+          "tardiness": 478239,
+          "cost": 13834.933267000022
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "static-matched18-24",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 6,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family",
+        "bom_priority": false
+      },
+      "specialist": true,
+      "admission": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "completion_policy": {
+        "credit_minutes": 0,
+        "reclaim_dead_slots": false
+      },
+      "maintenance_outage_guard": true,
+      "selection_provenance": {
+        "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+        "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part1/report.json",
+        "policy_id": "n24-w6-g4-standard-QA0-credit0-join0",
+        "validation": {
+          "missing": 190,
+          "tardiness": 519880,
+          "cost": 13012.594382366677
+        },
+        "cost_reference": "compute-ledger.json"
+      }
+    },
+    {
+      "id": "original-strong-24",
+      "kind": "recovery",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "weights": {
+        "wip_limit": 4,
+        "mode": "standard",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "specialist": true,
+      "maintenance_outage_guard": true,
+      "tool_policy": {
+        "mode": "hard"
+      },
+      "kit_reservation": false,
+      "admission": true,
+      "recovery_policy": {
+        "enabled": true
+      },
+      "routing_policy": {
+        "eta_processes": [],
+        "free_buffer_processes": []
+      },
+      "selection_provenance": {
+        "data": "Exact retained strong-MPC scenarios0 control",
+        "task_id": 576,
+        "task_path": "strong-mpc-confirmation-tasks.json",
+        "guard": "Explicit causal maintenance restriction; six actual development guarded replay checks preserve original physical results"
+      }
+    },
+    {
+      "id": "ppo6-2026-24",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2026.json",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo6-2027-24",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-ppo6-2027.json",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem6-2026-24",
+      "kind": "adaptive_recovery",
+      "checkpoint": "checkpoints/strong-cem6-2026.json",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "ppo18-2026-24",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-ppo18-2026.json",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    },
+    {
+      "id": "cem18-2026-24",
+      "kind": "adaptive_modes",
+      "checkpoint": "checkpoints/strong-cem18-2026.json",
+      "configs": [
+        {
+          "orders": 24,
+          "horizon": 5760,
+          "profile": "full"
+        }
+      ],
+      "maintenance_outage_guard": true,
+      "deterministic": true,
+      "selection_provenance": {
+        "data": "Original sealed fullTRAIN fit and reusedVAL checkpoint; all listed fit seeds retained",
+        "artifact_index": "strong-artifact-index.json",
+        "cost_reference": "compute-ledger.json",
+        "label": "CEM is learned time schedule; PPO state adaptive only if physical trace differs from static"
+      }
+    }
+  ],
+  "trace_policy": "first_per_leaf",
+  "selection_provenance": {
+    "data": "TRAIN0\u201331 and reusedVALIDATION100\u2013115; all final outcomes untouched at construction",
+    "criterion": "Lexicographic invalid,missing,cutoff deadline debt,energy+rental cost",
+    "plan": "predeclared-analysis-plan-v3.json",
+    "cost_reference": "compute-ledger.json"
+  }
+}

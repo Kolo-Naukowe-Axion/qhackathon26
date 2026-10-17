@@ -1,0 +1,216 @@
+{
+  "schema": "stage2-maintenance-outage-guard.v1",
+  "source_hashes": {
+    "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "source_tasks_file": "output/stage2-search/axion-download-2348/strong-modes-6117375/protocol.json",
+  "source_tasks_sha256": "958bebf7e4606b1e29dd8bb3249d1d21a42e3105cbfe1573dbebfc36f001a237",
+  "tasks": [
+    {
+      "task_id": 404,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 412,
+      "policy_id": "TRAIN/strong-modes/turbo/w6-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 6,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 420,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard0",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 0,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    },
+    {
+      "task_id": 428,
+      "policy_id": "TRAIN/strong-modes/turbo/w8-guard4",
+      "config": {
+        "orders": 24,
+        "horizon": 5760,
+        "profile": "full",
+        "seed": 4
+      },
+      "weights": {
+        "wip_limit": 8,
+        "mode": "turbo",
+        "due": 1.0,
+        "remaining": -4.0,
+        "family": 0.0,
+        "setup": 10,
+        "lease_calibration": true,
+        "selector": "priority",
+        "policy_seed": 0,
+        "tool_distance": 8,
+        "qa_guard_threshold": 4,
+        "worker_calendar": true,
+        "preposition": false,
+        "admission_rule": "family"
+      },
+      "solver_variant": "recovery_routing",
+      "solver_options": {
+        "tool_policy": {
+          "mode": "hard"
+        },
+        "kit_reservation": false,
+        "admission": true,
+        "recovery_policy": {
+          "enabled": true
+        },
+        "routing_policy": {
+          "eta_processes": [],
+          "free_buffer_processes": []
+        }
+      },
+      "seed_role": "TRAIN",
+      "selection": {
+        "question": "Do duration/wear/quality mode tradeoffs change after the strong physical-recovery decoder?",
+        "data": "TRAIN0\u20137 only; no validation/final",
+        "restriction": "Only T/F mode changes; precision certification still forbids turbo where the original factory requires it"
+      }
+    }
+  ],
+  "selection": "Four previously INVALID turbo TRAIN n24seed4 cases; preserve unguarded originals,not an unbiased rate",
+  "final_tapes": 0,
+  "validation_tapes": 0
+}
