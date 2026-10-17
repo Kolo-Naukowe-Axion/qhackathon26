@@ -1,5 +1,36 @@
 # Development log
 
+## 2026-10-17 — cluster-entangled VQE pilot: where does entanglement help?
+
+Stage 2 idea from the team: a 2-D grid of problem size against the size and
+structure of the entangled qubit "clusters" in a VQE. We first checked a claim
+in the idea. With no gates between clusters the state is an exact tensor
+product, so it is classically simulable (about sum_c 2^|c| amplitudes), not
+unsimulable. We kept the idea and reframed it: simulable by design, which lets
+the grid reach sizes beyond a full statevector, and it asks how much
+entanglement, and where, scheduling needs.
+
+Added `solver/cluster_vqe.py` (product-of-clusters simulator, real-amplitude
+RY/CZ ansatz, adjoint gradients of the mean energy),
+`scripts/run-cluster-vqe.py` and `tests/test_cluster_vqe.py` (energy vs
+stage1, full-enumeration expectation, adjoint vs finite differences, the 13
+optimal Instance B codewords). Go/no-go pilot on Instance B, domain wall,
+H=8, 30 qubits, 100 random starts per cell, L-BFGS-B: per-operation clusters
+(k<=4) reach an optimal schedule in 13/24/27% of starts at L=1/2/4. No
+entanglement gives 4/4/1%, and random clusters of the same sizes 2-3%.
+Per-machine and per-job clusters fall in between. Structure, not amount, of
+entanglement drives the effect. The run was stopped after 40 minutes, so two
+L=4 cells are partial or missing (recorded in the manifest). Results, figure
+and limits: `docs/STAGE2_CLUSTER_VQE.md`, `output/cluster-vqe-3x3-v1/`.
+
+Exact noiseless classical simulation only; no QPU or VeloxQ call; no advantage
+claim. Next: larger instances with CP-SAT references for the problem-size
+axis, and CVaR training with SPSA/COBYLA under shot noise.
+
+AI use: the simulator, tests, experiment and write-up were produced with an AI
+assistant at the team's direction. Recorded rows were re-run with the
+committed module and matched exactly (70 of 70).
+
 ## 2026-10-17 — game-like recovery demo and integrated Stage2 framing
 
 The user preferred the richer game-like factory over the formal workspace and

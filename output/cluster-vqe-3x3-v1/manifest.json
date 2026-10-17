@@ -1,0 +1,25 @@
+{
+  "instance": "instances/instance_3x3.json",
+  "encoding": "domain-wall",
+  "horizon": 8,
+  "qubits": 30,
+  "optimal_bitstrings": 13,
+  "layers": [
+    1,
+    2,
+    4
+  ],
+  "seeds_per_cell": 100,
+  "shots": 1000,
+  "optimizer": "scipy L-BFGS-B, maxiter 2000, adjoint gradients of the mean energy",
+  "init": "theta ~ U(-pi, pi), numpy default_rng(seed)",
+  "random_cluster_seed": "default_rng(500 + seed)",
+  "sampling_seed": "default_rng(10000 + seed)",
+  "frac_valid": "estimated on the first 300 of the 1000 shots",
+  "completeness": "Run interrupted after 40 min: L=1 and L=2 complete (100 seeds per cell); L=4 has product, per-operation and its random control at 100 seeds, per-machine and its random control at 67 seeds (0-66), per-job L=4 not run. 1834 runs total.",
+  "provenance": "Produced 2026-10-17 in an interactive session with code identical in arithmetic to solver/cluster_vqe.py; 70 rows (L=1,2, all schemes, seeds 0-4) were re-run with solver/cluster_vqe.py and matched exactly (mean_E, P_opt to 1e-9; best_E and hit identical; all 70 converged). The 'converged' column is not present in this file.",
+  "python": "3.11.15",
+  "numpy": "2.4.6",
+  "scipy": "1.17.1",
+  "execution": "exact noiseless classical simulation on a laptop CPU; no QPU, no VeloxQ, no shot-noise training"
+}
