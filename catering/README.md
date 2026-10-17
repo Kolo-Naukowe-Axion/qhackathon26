@@ -86,6 +86,17 @@ The circuit command uses optional Qiskit and routes to a synthetic heavy-hex
 topology, not a calibrated IBM backend. No command above uses VeloxQ, tokens,
 network services or physical QPUs. Do not overwrite retained evidence.
 
+## Larger inputs for the VeloxQ owner
+
+The ready scale workload is `output/catering-velox-scale-v3/`: 12 customers, S3,
+and nested **512 / 1,024 / 2,048-variable** paired-meal QUBOs. Actual couplers are
+37,008 / 156,129 / 636,882. These are larger restrictions of 18,182 generated local
+programs; density is measured, not assumed sparse. Restore large JSON matrices
+with `node scripts/restore-compressed-evidence.mjs` after pulling.
+Read [the VeloxQ handoff](../docs/catering-methods/VELOXQ.md) for scope, checked
+witnesses, finite-budget CP results, coefficient checks and the service hold.
+The 35-bit cell remains the small shared method comparison. No credits were used.
+
 ## Corrected v2 regression profile (historical shared handoff)
 
 ### What is implemented in v2

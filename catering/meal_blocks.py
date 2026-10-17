@@ -64,7 +64,7 @@ def stratified_pool(programs,cap):
     return sorted(selected,key=lambda p:p["id"])
 
 
-def compile_meal_blocks(instance,state,programs,*,parent_domain_sha256=None,complete_domain=False):
+def compile_meal_blocks(instance,state,programs,*,parent_domain_sha256=None,complete_domain=False,tight_bounds=False):
     validate_instance(instance)
     if instance["profile_id"]!=PROFILE:raise ValueError("Paired-meal profile required")
     fixed=state["fixed_batches"];remaining=residual_demand(state)
@@ -91,6 +91,13 @@ def compile_meal_blocks(instance,state,programs,*,parent_domain_sha256=None,comp
     meals=active_meals(instance,state)
     bounds=dict(U=sum(m["priority"] for m in meals),
                 W=sum(p["yield_lots"] for p in fixed+programs),B=n,R=n+len(previous))
+    if tight_bounds:
+        # A feasible one-hot assignment selects at most one program per anchor.
+        # Surplus plus orphan waste cannot exceed all selected/fixed output.
+        bounds["B"] = len(groups)
+        bounds["R"] = len(groups) + len(previous)
+        bounds["W"] = sum(p["yield_lots"] for p in fixed) + sum(
+            max(programs[i]["yield_lots"] for i in g["program_indices"]) for g in groups)
     weights={}
     for key in reversed(("U","W","B","R")):
         weights[key]=1+sum(weights[k]*bounds[k] for k in weights)
@@ -153,6 +160,8 @@ def compile_meal_blocks(instance,state,programs,*,parent_domain_sha256=None,comp
                 disabled_features=["phase_aware_WIP","interrupted_cooking","ingredients","holding","power","money"],
                 mixer=dict(kind="two-local-XY-rings",preserves="One choice per anchor block; cross-block physical conflicts remain penalized",
                            initial_state="Biased one-hot product states centered on the current quantum incumbent, no optimum teacher"))
+    if tight_bounds:
+        bundle["objective_bounds_policy"] = "Feasible anchor selection: at most one program per block"
     bundle["bundle_sha256"]=digest(bundle)
     return validate_bundle(bundle)
 

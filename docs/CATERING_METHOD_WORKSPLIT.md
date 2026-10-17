@@ -146,6 +146,14 @@ publish its status explicitly; do not fabricate a feasible reference.
 
 ## 3. Person 1 — VeloxQ
 
+**Scale assignment (current):** the complete 35-qubit cell is the shared check,
+not the main service experiment. Use the newly frozen **512 / 1,024 / 2,048
+variable** 12-customer S3 workloads in `output/catering-velox-scale-v3/`.
+Read [the concrete VeloxQ handoff](catering-methods/VELOXQ.md) for restore commands,
+actual coupler counts, reference results, numerical limits and the capped pilot
+gate. The earlier 128/256 pools remain integration inputs. No service execution
+has occurred or been authorized by this update.
+
 **Own:**
 
     catering/methods/veloxq.py

@@ -122,6 +122,22 @@ class MealBlockTests(unittest.TestCase):
         self.assertEqual(int(result["reference"]["objective"]),int(self.sector["energy"].min()))
         self.assertTrue(result["check"]["valid"])
 
+    def test_tighter_anchor_bounds_preserve_the_physical_optimum(self):
+        bundle=compile_meal_blocks(self.p,self.s,self.bundle["options"],tight_bounds=True)
+        sector=sector_data(bundle)
+        best=decode(bundle,sector_bits(bundle,sector,int(sector["energy"].argmin())))
+        old=decode(self.bundle,sector_bits(self.bundle,self.sector,int(self.sector["energy"].argmin())))
+        self.assertEqual(best["check"]["metrics"],old["check"]["metrics"])
+        self.assertLessEqual(bundle["objective"]["component_bounds"]["B"],len(bundle["onehot_groups"]))
+        self.assertGreater(int(bundle["penalty"]),sum(abs(int(c)) for c in bundle["objective"]["linear"])+sum(abs(int(q["value"])) for q in bundle["objective"]["quadratic"]))
+        # Every feasible one-hot schedule respects the new bounds, not just the optimum.
+        for index in range(sector["states"]):
+            if sector["valid"][index]:
+                result=decode(bundle,sector_bits(bundle,sector,index))
+                self.assertTrue(result["valid"])
+                for key,value in result["check"]["metrics"].items():
+                    self.assertLessEqual(value,bundle["objective"]["component_bounds"][key])
+
     def test_complete_cell_keeps_every_program_and_matches_raw_optimum(self):
         instance=cell_fixture();state=snapshot(instance,"S0")
         programs=enumerate_options(instance,state)

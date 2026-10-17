@@ -518,3 +518,15 @@ Corrected exact tuples: S0=(0,0,1,0), S1=(0,0,1,2), S2=(1,0,0,1),
 S3=(1,0,1,2). S2 misses the nominal B order. S3 serves only the urgent B order on
 C1. output/catering-foundation-v2/ is the current common-method release.
 The v1 outage results omitted this mandatory task and are superseded.
+
+
+## Prepared larger VeloxQ workload — 17 October
+
+`output/catering-velox-scale-v3/` now contains the 12-customer S3 nested
+512/1,024/2,048-variable inputs, with 37,008/156,129/636,882 couplers.
+These extend the same paired-meal decision; they are not a new domain or independent
+copies. See [the owner handoff](catering-methods/VELOXQ.md). Five-second local
+references and checked idle witnesses exist; no backend call was made. The scale
+compiler optionally tightens feasible anchor bounds without changing the priority
+order; historical inputs remain immutable. These dense inputs and finite-budget
+reference statuses establish neither sparse suitability nor a speedup.

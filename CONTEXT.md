@@ -558,3 +558,13 @@ older local edits and original Stage1/factory results. No user-owned new thread,
 subagent delegation or recurring automation was requested.
 
 Final local video review draft: `output/stage2-entry-video-v6/qfactoria-stage2-draft.mp4` (~173.217seconds), synthetic narration and edited real UI evidence with actual timestamped action frames. Submission/release duties remain in `docs/STAGE2_SUBMISSION.md`. The supplied mentor preference reinforces manufacturing but is pending wider jury consultation. No external message was sent.
+
+
+### 17 October — larger offline VeloxQ handoff
+
+Added catering/meal_scale.py and output/catering-velox-scale-v3/: same V3 model,
+12-customer S3, 512/1024/2048 total bits including 26 idle bits. Read
+ docs/catering-methods/VELOXQ.md. The larger matrices are losslessly compressed;
+node scripts/restore-compressed-evidence.mjs restores exact hashed JSON locally.
+No service calls or quota use; the service hold persists. Current game UI work
+is still being ported and is separate from this scale handoff commit.

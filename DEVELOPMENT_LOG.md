@@ -1071,3 +1071,17 @@ no mutual exclusion but does not explicitly confirm simultaneous receipt by
 one team. No organizer or teammate message was sent. Existing service/QPU
 execution and VeloxQ credit holds remain. This entry records a decision, not
 new solver results, service integration, push, deployment or submission.
+
+
+### 17 October — a concrete larger workload for the VeloxQ owner
+
+Prepared the same paired-meal S3 input at 12 customers and nested 512/1024/2048
+variables, including all 26 anchor blocks. Measured 37,008/156,129/636,882 couplers;
+these are approximately 28–30% dense, not a claimed sparse backend showcase.
+Generated local domain: 18,182 programs. Five-second one-worker CP references:
+FEASIBLE (7,2,10,10), FEASIBLE (8,8,10,10), UNKNOWN; independent raw CP FEASIBLE
+(8,1,7,7). Checked idle witnesses retained. These are limited references, not
+hardness or advantage evidence. Added optional feasible anchor bounds to avoid
+unnecessary coefficient inflation while preserving lexicographic priorities;
+existing frozen inputs are unchanged. The service owner still needs a capped
+pilot manifest and explicit user authorization. Zero VeloxQ/IBM calls.
