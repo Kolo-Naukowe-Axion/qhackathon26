@@ -135,9 +135,9 @@ well-measured 2,048-variable study is preferable to an unsupported size claim.
 
 ## Owner status (Person 1, 17 October 2026)
 
-**Offline deliverables 1–3 above are done; deliverables 4–6 wait for a
-user-set service cap.** One connectivity smoke job has run (phase C, approved
-cap 3, used 1). No catering bundle has been sent to VeloxQ.
+**Deliverables 1–3 are done; phase D steps 1–2 have run** (user approval
+17 October 2026, ledger total 4: the phase C smoke plus scale-512, scale-1024
+and scale-2048). Steps 3–4 are not authorized. See "Phase D steps 1–2 result".
 
 | Path | Content |
 |---|---|
@@ -145,8 +145,9 @@ cap 3, used 1). No catering bundle has been sent to VeloxQ.
 | `tests/catering/test_veloxq_adapter.py` | 66 offline tests, no token or network |
 | `output/catering-methods/veloxq/pilot_manifest.json` | Caps, frozen settings, case hashes, baselines and comparison declared before results |
 | `output/catering-methods/veloxq/offline-readiness-v3.json` | One `not_run` record per released v3 bundle (16), with sizes, coefficient ranges, packet dtype/size and timings |
-| `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 1) |
+| `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 4) |
 | `output/catering-methods/veloxq/smoke-20261017T162002/` | Phase C raw input/output and result |
+| `output/catering-methods/veloxq/paired-lunch-12-v1_S3_meal-block-{486,998,2022}-*/` | Phase D raw packet, raw result, `result.json` and shared-checker `evaluation.json` |
 
 ### Conventions (checked by tests)
 
@@ -178,11 +179,10 @@ packet would silently solve a rounded model. Adapter 0.2.0 therefore:
 - accepts float32 returned energies (VeloxQ returns them; phase C did) with a
   dtype-scaled tolerance, still rejecting shifts beyond rounding.
 
-Open: phase C used a float32 packet, so integer-packet acceptance by the service
-and the backend's internal arithmetic are unverified. The first authorized scale
-job answers the first question; the second is visible only through solution
-quality (whether B/R tie-breaks with weight 27/1 against coefficients up to 1.5e10
-are resolved).
+Phase D answered the first question: the service accepted the exact integer
+packets at all three widths (int64), and every reported energy matched
+the exact model within the float32 tolerance. The backend's internal arithmetic
+remains unverified and is a possible cause of the weak results below.
 
 ### Phase C smoke result
 
@@ -236,10 +236,33 @@ to equal the frozen scale bundles, and every returned sample recomputes to its
 stated literal energy. None of these incumbents is a certified optimum. Exact
 values and hashes are in `pilot_manifest.json`.
 
-### Service plan (held)
+### Phase D steps 1–2 result
 
-Following "begin with one scale tier": step 1 is one job on scale-512 (ledger
-total 2); step 2 adds scale-1024 and scale-2048 only if step 1 is useful (total 4);
+One cold-start job per width, `num_rep=512`, `num_steps=2000`, 60 s, no retries
+and no tuning. Every returned row was decoded by `catering.run evaluate` with
+repair off (`evaluation.json` in each run directory).
+
+| Width | Job | Valid rows | Best valid E | Best valid (U,W,B,R) | Running / end-to-end | Quota |
+|---:|---|---:|---:|---|---|---:|
+| 512 | 8e8a89bc… | 5 / 512 | 516,244 | (13,6,4,4) | 0.17 s / 8.0 s | 170 |
+| 1,024 | 64cf8366… | 1 / 512 | 557,068 | (14,8,4,4) | 0.55 s / 8.0 s | 549 |
+| 2,048 | 5c6e1a25… | 0 / 512 | — | — | 1.93 s / 14.2 s | 1,930 |
+
+Solver cost was 0.55 per job; total cost was reported as 0.0.
+
+Against the frozen baselines, under these settings VeloxQ is **worse than every
+classical control**. At 512 it beats the all-idle witness (E 551,853, U=14), but
+not cold SA (E 483,579) or 30 s CP (E 237,205). At 1,024 its only valid state is
+worse than all-idle. At 2,048 it returns no valid state, the same as cold SA.
+Most rows break one-hot groups: the lowest returned energy at 2,048 is 1.5e10,
+dominated by the penalty. This is one untuned setting per width, with a backend
+running time of 2 s or less. It shows the penalty-heavy matrices are hard for
+default settings; it does not measure VeloxQ's best attainable quality.
+
+### Service plan
+
+Steps 1–2 are done (above). Following "begin with one scale tier": step 1 was one job on scale-512 (ledger
+total 2); step 2 added scale-1024 and scale-2048 only if step 1 is useful (total 4);
 optional steps add the v3 four-event scale-128/256 set (total 12) and the shared
 small QUBOs (total 17). Settings: `num_rep=512`, `num_steps=2000`, cold start,
 60 s, one job per case, no retries, no tuning before step 1.

@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "date": "2026-10-17",
-  "status": "phase C smoke passed (1/3 jobs used); v3 phase D cases, settings and comparison frozen; service jobs held until the user sets a cap",
+  "status": "phase C smoke passed (1/3 jobs used); v3 phase D cases, settings and comparison frozen; phase D steps 1-2 run (ledger total 4/4); steps 3-4 not authorized",
   "source_commit": "2493cd49",
   "hard_caps": {
     "phase_C_connectivity_smoke": {
@@ -10,8 +10,15 @@
       "used": 1
     },
     "phase_D": {
-      "max_service_jobs_total": null,
-      "note": "to be set by the user. --max-service-jobs is the LEDGER TOTAL including phase C.",
+      "max_service_jobs_total": 4,
+      "approved": "2026-10-17 by the user: steps 1 and 2 (scale-512, then scale-1024 and scale-2048), 60 s per job, no retries",
+      "used": 3,
+      "results": {
+        "scale-512": {"job_id": "8e8a89bc-be97-44db-b964-3813921fc8f0", "valid_rows": "5/512", "best_valid_E": "516244", "best_valid_tuple": "(13,6,4,4)", "quota": 170},
+        "scale-1024": {"job_id": "64cf8366-1abf-40c7-84b8-ab0e679629ae", "valid_rows": "1/512", "best_valid_E": "557068", "best_valid_tuple": "(14,8,4,4)", "quota": 549},
+        "scale-2048": {"job_id": "5c6e1a25-27e1-4d51-b4d3-ce2b596fa601", "valid_rows": "0/512", "best_valid_E": null, "best_valid_tuple": null, "quota": 1930}
+      },
+      "note": "--max-service-jobs is the LEDGER TOTAL including phase C.",
       "proposal": {
         "step_1": "1 job: scale-512 (ledger total 2)",
         "step_2_if_step_1_useful": "+1 job each scale-1024, scale-2048 (ledger total 4)",
