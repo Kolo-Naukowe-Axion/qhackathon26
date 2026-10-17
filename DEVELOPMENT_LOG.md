@@ -198,3 +198,9 @@ counts. Video/live scripts remain 4:20/2:45 and within their speaking-rate
 limits. This is an explanation/evidence pass: no compiler, objective, frozen
 model, solver results, training or service use changed. Human rehearsal and
 final recording remain separate.
+
+The visual follow-up moved replay captions into the stage footer so they cannot
+cover the embedded Axion masthead. Captions follow replay/code visibility and
+remain distinct from the fresh-run receipt. The objective screen now defines
+main/side coverage, meal priority and the 10-portion lot units alongside its
+truth table. These are presentation-only clarifications of the frozen model.

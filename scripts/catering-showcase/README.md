@@ -22,6 +22,9 @@ controls and notes. F enters full screen. R starts/resets the actual rehearsal
 clock. That clock continues while chapter animation is paused; it marks 2:45
 as wrap-up and 3:00 as over time.
 Speaker notes stay outside the recorded stage. Use a dedicated shared window.
+Replay provenance appears in the stage footer, outside the embedded kitchen;
+the code and fresh-run chapters show their own scope labels instead. The
+objective slide defines coverage, priority and lot units before the equations.
 
 ## What the live button actually does
 
