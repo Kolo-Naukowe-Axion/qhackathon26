@@ -1,6 +1,8 @@
 # The little catering kitchen — checked V3 replay
 
 Run `PORT=4192 npm run dev`, then open <http://127.0.0.1:4192/catering/>.
+The landing page starts with **S3: outage + urgent order**, using its retained
+QAOA plan. `?case=CELL` opens the small encoding example used by the presentation.
 The normal `npm run build` includes this static page. No API or solver runs in
 playback, and no credentials are embedded in the page.
 
@@ -30,6 +32,12 @@ Repair ends at60; C2 waits until the clean and cannot resume cooking before80.
 Cleaning occupies equipment and the cleaning worker, is visible on the timeline,
 and can be inspected through C2 or the recovery-clean bar.
 
+VeloxQ solves larger offered-program QUBOs of the same model. Its actual
+service results, representation comparison and scaling table are on
+[Benchmarks → VeloxQ](benchmarks/#veloxq), also linked from the header. Those
+12-customer scale jobs are distinct from the smaller quantum replay scenarios;
+the kitchen does not label a QAOA animation as a VeloxQ result.
+
 ## Production sequence and order flow
 
 The batch timeline is visible by default. Each row is one selected batch, with
@@ -47,7 +55,7 @@ The order tickets show both courses separately, including prepared-but-waiting,
 cooking, packing, packed, served, missing and discarded states. Mobile keeps the
 timeline visible and opens the clipboard with the Sequence button.
 
-In the default retained sample, B is prepped before C but C cooks before B.
+In the small-cell retained sample, B is prepped before C but C cooks before B.
 Cooking is A→C→B; packing is A-main→A-side→B-side→B-main. C is one shared
 20-portion side batch. This is a description of the checked schedule, not an
 inferred explanation of the optimizer's internal search or a unique optimum.

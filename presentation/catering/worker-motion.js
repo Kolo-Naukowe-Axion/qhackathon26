@@ -25,12 +25,12 @@ export function buildWorkerTrack(c,worker){
   const segments=[];
   const add=(start,end,mode,from,to=from,op=null)=>{
     if(end<=start)return;
-    segments.push({start,end,mode,from,to,route:route(from,to),task:op?.kind??'',resource:op?.resource??'',direction:op?facing(op.resource):'down'});
+    segments.push({start,end,mode,from,to,route:route(from,to),task:op?.kind??'',resource:op?.resource??'',direction:op?(worker==='W2'&&op.resource.startsWith('C')?'right':facing(op.resource)):'down'});
   };
   let end=0,pos=rest;
   for(const op of ops){
     const station=WORKER_SPOTS[op.resource];
-    const target=worker==='W2'&&op.resource.startsWith('C')?[station[0]-55,420]:station,gap=op.start-end;
+    const target=worker==='W2'&&op.resource.startsWith('C')?[station[0]-168,420]:station,gap=op.start-end;
     if(gap>0){
       const back=length(route(pos,rest))/SPEED,approach=length(route(rest,target))/SPEED;
       if(gap>=back+approach+1){

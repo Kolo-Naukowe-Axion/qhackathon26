@@ -22,7 +22,7 @@ current evidence, not the result of experiments still running elsewhere.
 | How is correctness established? | We prove the encoding and penalty bound, then compare exact references and check raw schedules independently. |
 | Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
 | Did QAOA outperform the controls? | The trained setup increases median per-shot optimum probability about 11x/22x over random-angle search on S2/S3 at 256 evaluations. Both are restricted portfolios; this is no classical or hardware advantage. |
-| Why 35 qubits on a laptop? | The one-hot circuit stays in a 1045-state invariant sector. We simulate that sector, not a dense 35-qubit statevector. |
+| Why 35 qubits on a laptop? | The complete cell stays in a 1045-state one-hot sector. Larger frozen portfolios reach 279936 states; the dynamic replay uses its own pool. No dense 35-qubit statevector is used. |
 | Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits gives 512/512 valid at all three tested scales. CP and SA still find better plans. |
 
 ## Two-minute team drill
@@ -36,7 +36,7 @@ for the three-minute slot; this sheet is for questions afterward.
 | Why does a lone main count as waste? | Service requires both components by departure; production equals served components plus discarded components. |
 | Which solver won? | VQE has higher reported per-shot optimum probability; budgets differ. QAOA has the complete archived/live evidence chain. |
 | What did VeloxQ actually improve? | Same source, equal step budget, proven equivalent representation; both feasibility and best delivered service improve. |
-| Is this really 35 qubits? | Logical encoding is 35; invariant sector is 1,045 states; no generic dense 35-qubit simulation or hardware claim. |
+| Is this really 35 qubits? | Complete cell: 35 data qubits and 1,045 sector states. Larger frozen portfolios reach 279,936 states; dynamic replay pools differ. No generic dense 35-qubit simulation or hardware claim. |
 | Does stability help these results? | R=B here. The general stability expression is tested, but these fixtures do not isolate its benefit. |
 
 Give the short answer in 15–20 seconds, then stop. The operator should be able

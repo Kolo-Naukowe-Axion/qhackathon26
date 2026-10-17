@@ -18,7 +18,7 @@ PORT=4192 npm run dev
 Open `/catering/` for checked saved schedules and `/catering/benchmarks/` for
 the retained comparisons. The static viewer does not execute a solver.
 
-For a fresh local sample, install the foundation environment (Python 3.14.6 was
+For a fresh local sample, install the foundation environment (Python 3.12+; Python 3.14.6 was
 verified) and start the private studio:
 
 ```sh

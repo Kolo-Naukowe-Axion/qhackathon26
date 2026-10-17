@@ -1,0 +1,104 @@
+{
+  "budget": {
+    "allow_external_execution": false,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 0,
+    "wall_time_limit_s": 60
+  },
+  "bundle_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b",
+  "case_id": "paired-lunch-12-v1/S3",
+  "configuration": {
+    "backend_id": null,
+    "conditioning": {
+      "existing_frozen_runs_remain_valid": true,
+      "feasible_objective_unchanged": true,
+      "invalid_state_energies_unchanged": false,
+      "max_deletion_loss": "3510864",
+      "policy": "deletion-bound.v1",
+      "source_bundle_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b",
+      "source_penalty": "443079397",
+      "variable_order_unchanged": true
+    },
+    "initial_bits_sha256": null,
+    "initial_literal_energy": null,
+    "initializer": "none (cold start)",
+    "initializer_service_acceptance": "not applicable",
+    "packet_coefficient_dtype": "int32",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 2000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "python": "3.11.15",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": {
+    "reason": "external execution not allowed by budget"
+  },
+  "method_id": "veloxq",
+  "method_version": "0.3.0",
+  "physical_qpu_calls": 0,
+  "raw_artifacts": {
+    "ising_input": {
+      "path": "output/catering-velox-conditioning-v1/offline-cold/service/ising-input.h5",
+      "sha256": "1c6702a583c200773b9051690ff918e507d1fd455851e7f5df31106455950f1b"
+    }
+  },
+  "reference": null,
+  "representation": {
+    "couplers": 37008,
+    "float32_inexact_spin_coefficients": 500,
+    "float64_exact": true,
+    "n": 512,
+    "qubo_max_abs": 7021730,
+    "qubo_min_nonzero_abs": 40824,
+    "spin_coefficients": 37520,
+    "spin_dynamic_range": 20223.078581226728,
+    "spin_l1": 546471922048,
+    "spin_max_abs_including_offset": 135027740693
+  },
+  "representation_id": "paired-course-block-486",
+  "samples": [],
+  "sampling_bundle": {
+    "bundle_id": "paired-lunch-12-v1/S3/meal-block-486/deletion-bound.v1",
+    "bundle_sha256": "73df94610e855b3dcc1f471d3ba7b5738ddabfecf1bb4d8a3e4933e86e1f47f2",
+    "case_id": "paired-lunch-12-v1/S3",
+    "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+    "profile_id": "paired-course-contiguous.v3",
+    "qubo_sha256": "79499419d9e75babd2b461d410aafc38c93b2cdd4906ba2aca63d5e9e8fa375a",
+    "representation_id": "paired-course-block-486/deletion-bound.v1",
+    "scenario_id": "S3",
+    "schema_version": "catering-qubo.v1",
+    "snapshot_sha256": "86b41d9a3e91ae648e38dac118a07490e797924c9ff06f786997c20426ea30f9",
+    "variable_order_sha256": "18acc528d0b525658cbc04982202c00fa72b14f4528f32482cc65d248d52122c"
+  },
+  "sampling_bundle_sha256": "73df94610e855b3dcc1f471d3ba7b5738ddabfecf1bb4d8a3e4933e86e1f47f2",
+  "schema_version": "catering-method-result.v1",
+  "status": "not_run",
+  "timings": {
+    "build_s": 0.012462667189538479,
+    "serialize_s": 0.21641629189252853,
+    "total_s": 0.2869873745366931
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "service_jobs_submitted": 0
+  }
+}

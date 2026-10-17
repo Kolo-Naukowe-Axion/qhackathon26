@@ -158,6 +158,12 @@ kept under Stage 1. Earlier factory studies were removed from the active
 navigation. These changes affect branding and navigation only; the final site
 build and browser checks cover them separately from the model audit above.
 
+The default web replay now opens the larger combined outage/urgent-order case.
+Its source is labeled dynamic-portfolio QAOA, distinct from the later fixed-pool
+campaign in Benchmarks. VeloxQ has a direct results link; the studio still opens
+the small complete cell explicitly. The review also clarified the Python minimum
+and case-specific sector sizes in the setup and Q&A notes.
+
 ## AI use and remaining steps
 
 Codex assisted with formulation, implementation, experiments, tests and

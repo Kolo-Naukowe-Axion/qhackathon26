@@ -155,7 +155,7 @@ function updateDynamic(){
 function provenance(){
   const kind=current.manual?'MANUAL INTERVENTION':current.key==='qaoa'?'QAOA SIMULATOR':current.label.toUpperCase();
   $('#proof').textContent=`${kind} · U/W/B/R = (${tuple(current.metrics)}) · CHECKED`;
-  $('#run-scope').textContent=`${current.manual?'Checked skip-batch intervention · not a solver result':`${current.key==='raw'?'Independent scheduling reference · full declared physical grid':current.description} · ${current.reference_status}`}`;
+  $('#run-scope').textContent=`${current.manual?'Checked skip-batch intervention · not a solver result':`${current.key==='raw'?'Independent scheduling reference · full declared physical grid':current.key==='qaoa'&&current.id!=='CELL'?'Dynamic QAOA pilot · changing portfolios capped at 35 qubits · separate fixed-pool campaign in Benchmarks':current.description} · ${current.reference_status}`}`;
   $('#source').innerHTML=`<a href="${repo(current.source.path)}" target="_blank" rel="noopener">${current.source.path} ↗</a><br>${current.manual?'Checked manual intervention derived from this source':current.execution_kind}${current.shots&&!current.manual?` · ${current.valid_shots}/${current.shots} valid shots · displayed sample count ${current.count}`:''}`;
   $('#hash').textContent=`Source SHA-256: ${current.source.sha256}${current.bundle_sha256?`\nBundle SHA-256: ${current.bundle_sha256}`:''}`;
   $('#scope-note').textContent=current.id==='CELL'?'All 32 local programs of the declared small grid are included. QAOA and both simple controls attain the optimum.':'This QAOA plan comes from changing, restricted portfolios. Its result trails the full-grid classical reference. Compare methods using the selector above.';
@@ -165,7 +165,7 @@ function loadCase(id,key='qaoa'){
   endHold=0;
   for(const resource of RESOURCES)$(`#station-${resource}`).classList.remove('is-focused');
   cancelDecode();fixture=data.cases.find(c=>c.id===id);referenceCase=activateRun(fixture,key);current=referenceCase;sequence=productionSequence(current);time=current.snapshot.current_time;inspected=firstChoice();
-  $('#scenario').disabled=false;$('#method').disabled=false;$('#scenario').value=id;$('#method').innerHTML=fixture.runs.map(r=>`<option value="${r.key}">${r.label}</option>`).join('');$('#method').value=key;
+  $('#scenario').disabled=false;$('#method').disabled=false;$('#scenario').value=id;$('#method').innerHTML=fixture.runs.map(r=>`<option value="${r.key}">${r.key==='qaoa'&&id!=='CELL'?'QAOA · dynamic portfolio':r.label}</option>`).join('');$('#method').value=key;
   $('#scrubber').max=playbackEnd(current);$('#end-time').textContent=`/ ${clock(playbackEnd(current))}`;
   workerTracks=new Map(['W1','W2','W3'].map(id=>[id,buildWorkerTrack(current,id)]));
   drawBits();drawInspector();drawTranslation();drawSequence();provenance();updateDynamic();updateLayout();
@@ -251,7 +251,9 @@ async function loadReplay(){
     if(!response.ok)throw new Error(`Replay returned ${response.status}`);
     const payload=await response.json();
     if(payload.schema!=='catering-kitchen-replay.v3')throw new Error('V3 evidence required');
-    data=payload;evidenceContent();loadCase('CELL');setPlaying(!reduced);
+    data=payload;evidenceContent();
+    const requestedCase=new URLSearchParams(location.search).get('case');
+    loadCase(Object.hasOwn(CASES,requestedCase)?requestedCase:'S3');setPlaying(!reduced);
     document.querySelector('main').inert=false;$('#kitchen').inert=false;requestAnimationFrame(frame);
   }catch(error){
     current=null;data=null;$('#scenario').disabled=true;$('#method').disabled=true;

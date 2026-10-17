@@ -15,7 +15,9 @@ The saved-schedule viewer needs Node.js 20 or newer:
 PORT=4192 npm run dev
 ```
 
-Open [the kitchen](http://127.0.0.1:4192/catering/). This replays checked results;
+Open [the kitchen](http://127.0.0.1:4192/catering/). It starts with the larger
+outage-and-urgent-order case; choose Complete small cell for the encoding walkthrough.
+This replays checked results;
 it does not launch a solver. Click a batch to inspect its instructions or skip
 it in a checked intervention. The board reports meal handovers and discarded
 component portions at the current replay time. Use **Jump to final outcome**
@@ -24,7 +26,7 @@ Open [Benchmarks](http://127.0.0.1:4192/catering/benchmarks/) to filter retained
 QAOA, VQE, VeloxQ and classical results by case, configuration and budget.
 
 For the presentation studio and fresh local QAOA sampling, create the pinned
-foundation environment:
+foundation environment with **Python 3.12+** (verified with 3.14.6):
 
 ```sh
 python3 -m venv .venv-catering

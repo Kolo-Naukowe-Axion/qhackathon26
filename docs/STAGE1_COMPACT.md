@@ -164,17 +164,24 @@ execution. Python and browser interval checkers validate both selected exports.
 
 ## Reproduction
 
-Use the existing pinned Python 3.11 solver environment, or install from
-`requirements-solver.lock.txt` as in the README. Choose fresh output directories:
+Create the separate pinned Python 3.11 solver environment from the repository
+root. The catering foundation environment does not include the baseline SDKs.
 
 ```sh
-.venv/bin/python scripts/prepare-stage1.py --output output/new-stage1
+python3.11 -m venv .venv-baseline
+.venv-baseline/bin/python -m pip install -r requirements-solver.lock.txt
+```
+
+Choose fresh output directories for new solver runs:
+
+```sh
+.venv-baseline/bin/python scripts/prepare-stage1.py --output output/new-stage1
 # Export only after the bundle verifies; also refreshes guide evidence:
-.venv/bin/python -m solver.compact --phase bundle --output output/new-compact --export-final
-.venv/bin/python -m solver.compact --phase screen --output output/new-compact-screen
-.venv/bin/python -m solver.compact --phase validate --output output/new-compact-validation
-.venv/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-2x2
-.venv/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-3x3
+.venv-baseline/bin/python -m solver.compact --phase bundle --output output/new-compact --export-final
+.venv-baseline/bin/python -m solver.compact --phase screen --output output/new-compact-screen
+.venv-baseline/bin/python -m solver.compact --phase validate --output output/new-compact-validation
+.venv-baseline/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-2x2
+.venv-baseline/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-3x3
 ```
 
 `scripts/prepare-stage1.py` runs the solver tests, original time-indexed encoding
@@ -184,4 +191,7 @@ selection manifest refer to the selected quantum samples; the browser guide
 uses their actual metadata. Nothing here establishes a physical-device or
 VeloxQ result, event submission, or completion of the wider human deliverables.
 
-Final verification (17 October): all 179 retained compact run bundles pass the strengthened verifier and every run returns an exact optimum. Full preparation reproduces both required quantum schedules and the 512,000-assignment legacy audit. All 26 core Python tests pass (2 optional IQM tests skipped), all 52 Node tests and the static build pass, and the local browser renders the selected quantum panels and compact formulas correctly. Automatic guide evidence regeneration matches the checked public summary exactly.
+Baseline verification recorded during Stage 1 preparation (17 October): all 179 retained compact run bundles pass the strengthened verifier and every run returns an exact optimum. Full preparation reproduces both required quantum schedules and the 512,000-assignment legacy audit. All 26 core Python tests pass (2 optional IQM tests skipped), all 52 Node tests and the static build pass, and the local browser renders the selected quantum panels and compact formulas correctly. Automatic guide evidence regeneration matches the checked public summary exactly.
+
+The [final submission review](../output/catering-submission-review-v1/verification.json)
+records the later whole-project checks and their tested commit.
