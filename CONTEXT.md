@@ -1,5 +1,21 @@
 # QPoland Quantum Hackathon — running context
 
+## Presentation preparation and service update — 17 October
+
+Active talk/demo planning is in docs/CATERING_PRESENTATION.md: the two-course
+shared-side story, timed three-minute script, five-minute video storyboard,
+exact kitchen interactions, current claim sheet and remaining launch/rehearsal
+work. Preserve the game visual style. The current project design entry now
+points to catering; the factory submission package is marked historical.
+
+The VeloxQ owner committed four authorized service submissions: one contract
+smoke and one cold job at each of 512/1024/2048 bits. Phase D valid rows were 5/512,
+1/512,0/512; see docs/catering-methods/VELOXQ.md for receipts and scope. Earlier
+blanket no-service statements below describe the earlier local release. Further
+calls need their own concrete cap; this chat has performed none. Improving
+feasibility and measuring a useful result is the prize-track priority, alongside
+correct integration and reproducible scale evidence. No new training is requested.
+
 ## V3 implementation, frozen inputs and local verification — 17 October
 
 The dual-award direction is now concrete. Read catering/README.md and the top

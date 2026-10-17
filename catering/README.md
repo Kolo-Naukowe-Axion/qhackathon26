@@ -7,6 +7,7 @@ acceptance gates in [the quantum-first design](../docs/CATERING_QUANTUM_FIRST.md
 The [classical reference design](../docs/catering-methods/CLASSICAL.md) defines
 the independent raw CP model, exact same-input checks and SA controls, including
 how to distinguish representation loss from quantum search loss.
+For the talk and recording, use the [active presentation/demo plan](../docs/CATERING_PRESENTATION.md).
 
 **Superseded results:** v1 omitted the mandatory post-repair clean in S2/S3.
 Use V3for the paired-meal extension, or output/catering-foundation-v2/ for
@@ -97,8 +98,10 @@ and nested **512 / 1,024 / 2,048-variable** paired-meal QUBOs. Actual couplers a
 programs; density is measured, not assumed sparse. Restore large JSON matrices
 with `node scripts/restore-compressed-evidence.mjs` after pulling.
 Read [the VeloxQ handoff](../docs/catering-methods/VELOXQ.md) for scope, checked
-witnesses, finite-budget CP results, coefficient checks and the service hold.
-The 35-bit cell remains the small shared method comparison. No credits were used.
+witnesses, finite-budget CP results, coefficient checks and actual Phase D
+service receipts. The first authorized cold runs are retained; further service
+experiments need their own approved cap. The 35-bit cell remains the small shared
+method comparison. Input generation itself used no service credits.
 
 ## Corrected v2 regression profile (historical shared handoff)
 

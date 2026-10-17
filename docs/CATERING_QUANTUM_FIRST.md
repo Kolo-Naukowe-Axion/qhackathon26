@@ -23,8 +23,13 @@ classical controls; larger scale cases expose quality/runtime/representation
 tradeoffs. Record all cases, seeds or service replicates, raw feasibility,
 objective tuples, reference bounds/gaps and end-to-end timings. A sponsor call
 alone or a different problem disguised as a scale comparison is insufficient.
-Budget-aware offline preparation may continue; the existing hold on calls,
-uploads, token use and credit spending remains until separately lifted.
+Budget-aware offline preparation may continue. The VeloxQ owner has since
+committed four separately authorized service submissions: a contract smoke and
+one cold run at each of 512/1024/2048 variables. Read the actual receipts and limits
+in [the method report](catering-methods/VELOXQ.md). This does not authorize further
+calls, uploads or credit spending. No catering IBM hardware result is claimed.
+The [presentation/demo plan](CATERING_PRESENTATION.md) defines the current
+three-minute story and the next measured improvement needed for the prize track.
 
 17 October 2026. The user clarified that the quantum method is the main project;
 classical optimization provides validation and reference values. This supersedes

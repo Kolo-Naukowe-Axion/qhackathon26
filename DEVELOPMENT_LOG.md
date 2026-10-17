@@ -1141,3 +1141,27 @@ separate repair/wait/clean windows, mobile clipboard access, final20/20handovers
 and preserving that result when paused before the loop. Only local rendering,
 source reads and deterministic projection checks were used; no training or solver
 run accompanied this UI pass.
+
+### 17 October — plan the catering talk and demo around the actual decision
+
+Added docs/CATERING_PRESENTATION.md with a timed three-minute script, a
+five-minute recording storyboard, exact kitchen actions, a current claim sheet,
+Q&A and owner tasks. The shared side batch supplies the opening: two orders
+need both courses; skipping the side changes twenty complete meals to zero.
+Kept the game visual direction and separated local validation of a retained
+sample from a future fresh optimizer launch. No new training was requested.
+
+Reviewed the official launch/result, design, development-log and scoring
+requirements. Marked the old factory submission package as historical and
+pointed the current project design and entry docs to catering. Incorporated
+the service owner's already committed first cold VeloxQ runs into current
+status text; this chat made no service call. The prize plan prioritizes a
+budgeted, mathematically checked feasibility improvement and comparable
+quality/runtime measurements before recording a performance headline.
+
+Presentation-plan verification: the documented local evaluation command runs
+successfully and reports the retained best tuple (0,0,2,2), without repair.
+The spoken draft is 345 words. Entry-document links and git whitespace checks
+pass; npm run build passes all 138 site tests and produces the static site.
+This prepares the plan and checker demonstration; recording, fresh optimizer
+launch rehearsal and later VeloxQ improvement experiments remain open.

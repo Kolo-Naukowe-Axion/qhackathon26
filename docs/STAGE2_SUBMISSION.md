@@ -1,4 +1,18 @@
-# Local submission package — final merit story, human release remains
+# Submission preparation — catering active, factory package archived below
+
+**Active direction, 17 October:** use the
+[Axion Kitchen presentation/demo plan](CATERING_PRESENTATION.md) and
+[current catering design](CATERING_QUANTUM_FIRST.md). The timed script, live
+launch preparation, video storyboard, evidence map and VeloxQ improvement gates
+are there. The owner has committed actual initial VeloxQ service receipts in
+[the method report](catering-methods/VELOXQ.md). They are not factory results.
+
+The text below is the earlier factory package. Its script, video, acceptance
+counts and service holds are historical; do not copy them into the catering
+submission as current evidence. Final catering video, rehearsal, public-source
+check and submission receipt remain open.
+
+## Archived factory package
 
 17 October 2026. This is prepared local content, not a submitted entry or a
 public release. Actual VeloxQ use, physical QPU calls, public-source publication

@@ -9,6 +9,10 @@ Read the [current method, mathematics and evidence](docs/CATERING_QUANTUM_FIRST.
 [runnable quick start](catering/README.md), [four-person allocation](docs/CATERING_METHOD_WORKSPLIT.md)
 and [solver contract](docs/CATERING_SOLVER_CONTRACT.md).
 
+The [presentation and demo runbook](docs/CATERING_PRESENTATION.md) contains the
+three-minute script, five-minute video storyboard, exact kitchen interactions,
+live-launch preparation and the VeloxQ prize experiment priorities.
+
 The new paired-course profile requires both main and side for a complete meal,
 counts unmatched food as waste, and adds a quadratic service objective without
 product auxiliary qubits. It retains shared batches, freshness, equipment/crew
@@ -30,11 +34,14 @@ The VeloxQ owner has a [concrete scale handoff](docs/catering-methods/VELOXQ.md)
 nested 512/1,024/2,048-variable workloads of the same model, with 12 customers,
 checked witnesses and local reference statuses. After pulling, run
 `node scripts/restore-compressed-evidence.mjs` to restore the large matrices.
-These files were generated locally; no service credits were used.
+These input files were generated locally. The owner has since committed the
+first authorized service runs and raw evaluations; see the handoff's Phase D
+results. Further calls require the owner's concrete budget authorization.
 
 The [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md) describes additional
 future mechanisms, not features already implemented or required before delivery.
-IBM and VeloxQ execution/spending remain held; no remote result is implied.
+No catering IBM hardware result is claimed. VeloxQ's retained cold runs are
+actual service results; their quality and feasibility limits are documented.
 
 The existing factory implementation, results and demo below remain intact as
 a fallback. Its technical acceptance does not certify the new catering scope.

@@ -1,4 +1,28 @@
-# Project design — manufacturing recovery entry
+# Project design — active catering entry and factory archive
+
+## Active catering design — 17 October
+
+The current entry is Axion Kitchen, the paired-course catering-production
+extension. Its implemented model, full equations, penalty argument, scope and
+method evidence are in [CATERING_QUANTUM_FIRST.md](docs/CATERING_QUANTUM_FIRST.md).
+Use that document with the [solver contract](docs/CATERING_SOLVER_CONTRACT.md)
+and [run instructions](catering/README.md). The
+[presentation plan](docs/CATERING_PRESENTATION.md) maps this design to the live
+demo, recording, measured claims and remaining work.
+
+A decision bit selects a legal local batch program with yield, order allocations,
+resources and phase times. One-hot blocks include idle choices. Complete meals
+need both main and side; coverage products give quadratic service and unpaired
+waste terms without product-register qubits. Conflicts prohibit incompatible
+program pairs. The objective prioritizes missed complete meals, discarded
+components, new batches and changes to unstarted work; R=B in current fixtures.
+An independent checker validates resources, meal handovers and material balance.
+
+The complete small cell, larger restricted QAOA pilots and larger VeloxQ service
+runs have different measured scopes. The latter's first cold settings have low
+feasibility; improving them is active integration work. No hardware performance
+or quantum advantage follows from these results. Below is preserved factory
+design history, not the active catering formulation or its acceptance status.
 
 ## Current manufacturing centerpiece — 17 October update
 
