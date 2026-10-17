@@ -35,7 +35,7 @@ would require reruns, tell the user before changing that contract.
   multi-angle XY reaches each held-out offered-pool optimum in 10/10 seeds at
   both budgets; exact simulator training, with a full-kitchen restriction gap.
 - VQE primary held-out CSV medians are about 12.4%/12.8% optimum probability
-  with 10/10 and 9/10 sampled hits. Four exported S0–S3 plans are independently
+  with 10/10 and 9/10 sampled hits. Five exported cell/S0–S3 plans are independently
   checked. QAOA/VQE budgets and shots differ; no matched-budget winner is claimed.
 - No catering physical-QPU result.
 

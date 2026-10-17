@@ -228,7 +228,7 @@ portfolios, but their optimizers, parameter counts, training work and final
 shots differ. This is higher observed probability, not a matched-budget win.”
 
 QAOA has 10/10 sampled optimum hits on both cases at both budgets. The primary
-VQE report has 10/10 and 9/10 at 1024 shots. The four exported VQE S0–S3 plans
+VQE report has 10/10 and 9/10 at 1024 shots. The five exported VQE cell/S0–S3 plans
 were independently checked; the per-seed aggregates remain reported CSV results.
 Both are showcased with those evidence boundaries.
 Archived VQE circuit counts are a two-shifts-per-parameter heuristic, not a

@@ -73,7 +73,11 @@ def export():
                     row['best']=min((v['check']['metrics'] for v in valid),key=lambda m:tuple(m[k] for k in ['U','W','B','R']),default=None)
                 sources[str(path.relative_to(ROOT))]=public_source(str(path.relative_to(ROOT)))
         service.append(row)
-    vqe=dict(verification=load('output/catering-methods/vqe/integration-v1/verification.json'),grids={})
+    vqe=dict(verification=load('output/catering-methods/vqe/integration-v2/verification.json'),grids={})
+    for case in ['cell','S0','S1','S2','S3']:
+        for name in ['result.json','evaluation.json','artifacts.json']:
+            path=f'output/catering-methods/vqe/method-results/{case}/{name}'
+            sources[path]=public_source(path)
     for grid in ['E1','E2','E3','E5']:
         path=f'output/catering-methods/vqe/{grid}-v1/runs.csv'
         sources[path]=public_source(path)

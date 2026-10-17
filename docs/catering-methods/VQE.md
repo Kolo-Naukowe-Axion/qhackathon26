@@ -34,6 +34,10 @@ Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:
 
 ## Contract results (primary configuration, seed 0, `method-results/`)
 
+The current five-case release uses `<case>/result.json`, `evaluation.json` and
+`artifacts.json`. `solve_qubo(load_bundle(path), {"shots": 1024}, None, fresh_dir)`
+selects the recommended configuration and writes a new result directory.
+
 | Case | Qubits | Valid-sample rate | Best valid (U,W,B,R) | Sector reference | Evaluations | Legacy 2P+1 estimate* |
 |---|---:|---:|---|---|---:|---:|
 | cell | 35 | 0.31 | (0, 0, 2, 2) | (0, 0, 2, 2) | 9 | 13,905 |
@@ -78,16 +82,20 @@ used exact simulator adjoints. Gate routing and hardware shot costs are unmeasur
 
 ## Integration check and export fixes
 
-Merged from catering-vqe at eaec8ae2. Ten adapter/engine tests pass. Four retained
+Initial integration from catering-vqe at eaec8ae2. Twelve adapter/engine tests pass. Four retained
 S0–S3 MethodResults were normalized by renaming multiplicity to contract count,
 then all 4,096 sampled shots were independently evaluated on the exact frozen
 bundles. No bits, frequencies, energies, optimizer or circuit changed; no
 training was run. Originals remain intact. Normalized results and the check:
 output/catering-methods/vqe/integration-v1/.
 
-The cell export collided with the S0 filename and is missing from the branch;
-the CSV cell row is reported evidence only. Future output filenames include
-case_id and refuse overwrites. The adapter now writes contract count fields.
+That initial release lost its cell export through an S0 filename collision.
+Main at a3ce2135 then supplied fresh per-case exports for all five cases. The
+second integration independently rechecked all 5,120 shot counts against the
+raw checker and the retained evaluation files, including the new cell result;
+see `output/catering-methods/vqe/integration-v2/verification.json`. Old results
+and integration-v1 remain historical evidence. Future exports use fresh result
+directories and refuse overwrites before training. The adapter writes count fields.
 The original source is retained in source-v1/vqe.py at the predeclared hash.
 Held-out CSV counts are source-backed, but per-seed parameters and raw samples
 are not archived, so the integration does not claim to have rechecked those
@@ -106,6 +114,12 @@ The adapter now preserves the optimizer's convergence flag instead of marking
 every run converged, rejects shot-trained adjoint configurations that previously
 silently used an exact loss, and refuses unsupported sector/CVaR three-point NFT.
 The primary coupled L2 exact CVaR/L-BFGS configuration and frozen QUBO do not change.
+
+E1/E2 provenance also remains qualified: their source hashes were taken when
+the campaign finished, rather than at each worker launch. The teammate's review
+reproduced 10 of 12 sampled rows bit-for-bit; two trapped mean-energy runs had
+different numerical gaps with the same zero-optimum outcome. See the corrected
+manifest provenance notes. This does not establish exact replay of every row.
 
 Tests check fractional CVaR boundary mass, its adjoint gradient against finite
 differences, exact dense-circuit agreement, replay without training, and safe

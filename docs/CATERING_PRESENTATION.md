@@ -46,7 +46,7 @@ locally and checks the returned schedules. Label replay and fresh execution sepa
 | 20 meals / zero discarded portions | `output/catering-complete-cell-demo-v3.json`; actual handover and disposal ledger |
 | 6/8 final larger plans optimal within final offered pool | `output/catering-math-audit-v1/mathematics.json`; all trail raw-grid CP and final-step controls tie |
 | QAOA held-out S2/S3: 10/10 optimum hits at both budgets | 400-run campaign, `output/catering-methods/qaoa/test-v1/summary.json`; at 256 evaluations, median per-shot optimum probability is about 11x/22x random-angle search |
-| VQE primary held-out: 10/10 and 9/10 optimum hits | E5 CSV reports; four exported S0–S3 schedules independently checked. Different optimizer/budget and 1024 final shots prohibit a matched-budget winner claim |
+| VQE primary held-out: 10/10 and 9/10 optimum hits | E5 CSV reports; five exported cell/S0–S3 schedules independently checked. Different optimizer/budget and 1024 final shots prohibit a matched-budget winner claim |
 | VeloxQ: 486 / 998 / 2022 solver bits | [Representation study](CATERING_VELOXQ_TUNING.md); 512/512 valid at each width. At 512 source bits and 20,000 steps, validity rises 17→512/512. CP/SA still find better schedules |
 
 [Quality audit](CATERING_QUALITY.md) contains the full comparisons. Compare
@@ -56,7 +56,7 @@ R=B in the current fixtures. Do not claim monetary optimization or unsupported c
 ## Benchmark browser and scale
 
 Open `/catering/benchmarks/` from the kitchen or studio. It includes all 400
-QAOA runs, all 61 service attempts, VQE experiment rows and four checked VQE
+QAOA runs, all 61 service attempts, VQE experiment rows and five checked VQE
 exports. Filters expose cases, budgets, failed attempts and source hashes. The
 page downloads retained data only; no optimizer or service call runs there.
 Regenerate with `.venv-stage2/bin/python scripts/export-catering-benchmarks.py`.

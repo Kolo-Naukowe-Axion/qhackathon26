@@ -134,13 +134,13 @@ class VQETest(unittest.TestCase):
         first=load_bundle(CELL);second=load_bundle('output/catering-foundation-v3/S0/quantum-qubo.json')
         self.assertEqual(first['scenario_id'],second['scenario_id'])
         with tempfile.TemporaryDirectory() as tmp,patch.object(V,'run',side_effect=fake_run):
-            for b in [first,second]:
-                r=V.solve_qubo(b,dict(shots=3),dict(ansatz='sector'),tmp)
+            for i,b in enumerate([first,second]):
+                r=V.solve_qubo(b,dict(shots=3),dict(ansatz='sector'),Path(tmp)/str(i))
                 self.assertEqual(sum(s['count'] for s in r['samples']),3)
                 self.assertNotIn('multiplicity',r['samples'][0])
-            self.assertEqual(len(list(Path(tmp).glob('*.json'))),2)
+            self.assertEqual(len(list(Path(tmp).glob('*/result.json'))),2)
             with patch.object(V,'run',side_effect=AssertionError('must refuse before training')):
-                with self.assertRaises(ValueError):V.solve_qubo(first,dict(shots=3),dict(ansatz='sector'),tmp)
+                with self.assertRaises(ValueError):V.solve_qubo(first,dict(shots=3),dict(ansatz='sector'),Path(tmp)/'0')
 
     def test_cvar_fractional_boundary_and_adjoint(self):
         value, _ = V.cvar_loss(np.array([0., 10., 20.]), .5)(np.array([.2,.5,.3]))
@@ -198,6 +198,29 @@ class VQETest(unittest.TestCase):
             four.append(naive+(1-np.sqrt(2))/4*difference(np.pi))
         self.assertGreater(float(np.max(np.abs(np.array(two)-grad))),.01)
         np.testing.assert_allclose(four,grad,atol=1e-12)
+
+    def test_optimizer_failure_is_not_reported_as_converged(self):
+        from types import SimpleNamespace
+        from unittest.mock import patch
+        def stopped(fun,x0,**kwargs):
+            return SimpleNamespace(x=x0,nit=0,success=False,message='budget exhausted')
+        with patch.object(V,'minimize',side_effect=stopped):
+            r=V.run(V.Problem(toy_bundle()),V.Spec('sector'),0,shots=4)
+        self.assertFalse(r['converged'])
+        self.assertEqual(r['stop'],'budget exhausted')
+
+    def test_method_result_passes_central_evaluator(self):
+        import tempfile
+        from pathlib import Path
+        from catering.contracts import save_json
+        from catering.run import evaluate
+        bundle = load_bundle(CELL)
+        res = V.solve_qubo(bundle, dict(shots=128), dict(V.RECOMMENDED, layers=1))
+        self.assertEqual(sum(s['count'] for s in res['samples']),128)
+        with tempfile.TemporaryDirectory() as tmp:
+            save_json(Path(tmp)/'result.json',res)
+            checked=evaluate(Path(CELL),Path(tmp)/'result.json',Path(tmp)/'evaluation.json')
+        self.assertTrue(any(c['valid'] for c in checked))
 
     def test_frozen_cell_energies_and_optimum(self):
         bundle = load_bundle(CELL)

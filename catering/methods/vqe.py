@@ -686,30 +686,32 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
 # --------------------------------------------------------------------------
 # Contract adapter (docs/CATERING_SOLVER_CONTRACT.md section 6)
 # --------------------------------------------------------------------------
-def solve_qubo(bundle, budget, method_config, output_dir=None):
+def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
     """Run one VQE configuration and return a normalized MethodResult.
 
     method_config: Spec fields (ansatz, layers, pairs, cross, inblock, loss, alpha,
     optimizer, budget, train_shots, init, init_noise) plus 'seed'.
     budget: dict with optional 'shots' (final samples, default 1024) and
     'max_objective_evaluations' (overrides Spec.budget).
+    output_dir: fresh directory for result.json and its external hash manifest.
+    Missing method_config selects RECOMMENDED; supplied configurations are explicit.
     """
     import platform
     import hashlib
     from collections import Counter
     from pathlib import Path
     from catering.contracts import method_result, save_json
-    cfg = dict(method_config)
+    budget = dict(budget or {})
+    cfg = dict(RECOMMENDED if method_config is None else method_config)
     seed = int(cfg.pop("seed", 0))
     if budget.get("max_objective_evaluations"):
         cfg["budget"] = int(budget["max_objective_evaluations"])
     spec = Spec(**cfg)
     target = None
-    if output_dir:
-        case_label = bundle['case_id'].replace('/', '_')
-        target = Path(output_dir) / f"{case_label}-{spec.name()}-seed{seed}.json"
-        if target.exists():
-            raise ValueError('Choose a fresh output; existing evidence is never overwritten')
+    if output_dir is not None:
+        if Path(output_dir).exists():
+            raise ValueError('Choose a fresh output directory; existing evidence is never overwritten')
+        target = Path(output_dir) / 'result.json'
     prob = Problem(bundle)
     t0 = time.perf_counter()
     r = run(prob, spec, seed, shots=int(budget.get("shots", 1024)))
@@ -727,7 +729,7 @@ def solve_qubo(bundle, budget, method_config, output_dir=None):
                configuration=dict(spec=asdict(spec), tag=spec.tag(), n_params=r["n_params"], gates=r["gates"],
                                   expectation="exact ideal" if not spec.train_shots else f"{spec.train_shots}-shot estimates",
                                   gradient="adjoint" if r["n_grad"] else "none (gradient-free)",
-                                  initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True),
+                                  initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True, repair=False),
                optimized_parameters=np.asarray(r["x"]).tolist(),
                adapter_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                optimizer_status=dict(converged=r["converged"], stop=r["stop"]),
@@ -741,6 +743,12 @@ def solve_qubo(bundle, budget, method_config, output_dir=None):
         "hardware circuit count: Givens generators can require four shifts, and CVaR "
         "needs probability derivatives rather than shifting the scalar CVaR loss.")
     if target:
-        target.parent.mkdir(parents=True, exist_ok=True)
+        target.parent.mkdir(parents=True)
         save_json(target, res)
+        save_json(target.parent / 'artifacts.json', dict(files={
+            'result.json': hashlib.sha256(target.read_bytes()).hexdigest()}))
     return res
+
+
+RECOMMENDED = dict(ansatz="sector", pairs="coupled", cross="cgiv", inblock="giv", layers=2,
+                   loss="cvar", alpha=0.1, optimizer="lbfgs", init="w", init_noise=0.2, seed=0)

@@ -15,7 +15,7 @@ def run_demo(output,shots=4096,seed=17102026):
     from catering.contracts import load_bundle,method_result
     from catering.decode import decode
     from catering.meal_blocks import sector_data
-    from catering.meal_search import warm_state,evolve,sample_result
+    from catering.meal_search import warm_state,evolve,sample_result,distribution_stats
     from catering.qubo import energy
 
     started=time.monotonic();output=Path(output)
@@ -46,6 +46,12 @@ def run_demo(output,shots=4096,seed=17102026):
     sector=sector_data(bundle)
     state=warm_state(bundle,sector,set(warm['incumbent_program_ids']),warm['exploration'])
     state=evolve(state,sector,parameters,bundle['objective']['weights']['U'])
+    exact=distribution_stats(state,sector)
+    for local,retained in [('physical_valid_probability','valid_probability'),
+                           ('encoded_ground_probability','ground_probability'),
+                           ('expected_literal_energy','expected_energy')]:
+        if not np.isclose(exact[local],original['configuration']['distribution'][retained],rtol=1e-12,atol=1e-12):
+            raise AssertionError('Live circuit differs from retained trained distribution: '+local)
     measured,winner=sample_result(bundle,sector,state,np.random.default_rng(seed),shots)
     if winner is None:raise RuntimeError("No feasible sample returned; use retained fallback")
     result=method_result(bundle,'live_frozen_angle_xy_qaoa',measured['samples'])
@@ -73,6 +79,7 @@ def run_demo(output,shots=4096,seed=17102026):
                  seed=seed,training_runs=0,parameters_frozen=True,repair=False,
                  veloxq_calls=0,physical_qpu_calls=0,bundle_sha256=bundle['bundle_sha256'],
                  input_sha256=hashes,depth=len(parameters),parameter_configuration=frozen['configuration'],total_s=time.monotonic()-started,
+                 exact_distribution=exact,retained_distribution_reproduced=True,
                  source_result=str(output/'samples.json'),
                  limitation='Classically enumerated one-hot sector. No training, hardware or advantage claim.')
     (output/'checks.json').write_text(json.dumps(checks,indent=2)+'\n')

@@ -64,7 +64,7 @@ operator controls, F enters full screen, and R starts the rehearsal clock. See t
 - Trained QAOA: **400 retained runs**; the frozen setup samples each held-out
   portfolio optimum in 10/10 seeds at both evaluation budgets.
 - VQE: primary held-out CSV median optimum probabilities **12.4% / 12.8%**,
-  with 10/10 and 9/10 sampled hits; four exported schedules independently checked.
+  with 10/10 and 9/10 sampled hits; five exported schedules independently checked.
   Budgets and final shots differ from QAOA, so no matched-budget winner is claimed.
 - VeloxQ: proven idle elimination returns **512/512 valid samples** at actual
   widths **486 / 998 / 2,022**. The [representation study](docs/CATERING_VELOXQ_TUNING.md)

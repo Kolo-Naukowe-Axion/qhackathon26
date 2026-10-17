@@ -50,6 +50,8 @@ test('presentation routes fit the slots and include full problem and scaling',as
  assert.equal(story.reduce((a,c)=>a+c.duration,0),260);
  assert.equal(story.reduce((a,c)=>a+c.live_duration,0),165);
  for(const id of ['results','vqe','velox','scaling'])assert.ok(story.find(c=>c.id===id));
+ assert.equal(bench.vqe.verification.checked_results.length,5);
+ assert.deepEqual(bench.vqe.verification.checked_results.map(r=>r.case).sort(),['S0','S1','S2','S3','cell']);
  assert.ok(bench.vqe.verification.checked_results.every(r=>r.shots===1024));
 });
 

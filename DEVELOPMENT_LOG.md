@@ -1,5 +1,55 @@
 # Development log
 
+## 2026-10-17 — model replay, loss checks and five-case VQE integration
+
+Merged the teammate's a3ce2135 VQE exports with the reviewed adapter fixes.
+Independently rechecked all five retained exports and5,120 shot counts against
+literal energy, the raw checker, the offered-domain optimum and the retained
+evaluator output. Integration-v1 remains historical; integration-v2 includes
+the newly supplied cell result. No model input, bit order or objective changed.
+
+Future VQE results retain trained parameters, circuit configuration, seed and
+source hash; future grids save parameter checkpoints. The adapter keeps the
+fresh-directory API and recommended default, refuses overwrites before training,
+records actual optimizer convergence, and rejects shot/adjoint configurations
+that silently used exact losses. A three-point sector NFT control had an invalid
+single-frequency assumption; old rows stay marked as exploratory. The primary
+exact CVaR/L-BFGS method is unchanged.
+
+Twelve VQE tests pass, including CVaR fractional mass and adjoint finite
+differences, dense-circuit equivalence, checkpoint replay and convergence status.
+A counterexample verifies that naive two-shift Givens derivatives fail while
+the four-shift identity agrees to floating-point precision. Old hardware counts
+are relabeled as unvalidated legacy heuristics. The live depth-three QAOA state
+also reproduces the retained exact validity/ground probabilities and energy;
+its sampler now checks this before every demo run. No training campaign,
+remote service or physical QPU was run in this review.
+
+## 2026-10-17 — catering VQE: one-hot-sector ansatz, CVaR and held-out check
+
+Added the VQE track (catering/methods/vqe.py, tests/catering/test_vqe.py,
+scripts/run-catering-vqe.py, docs/catering-methods/VQE.md). It is an exact ideal
+simulation (`quantum_simulation`) of the frozen v3 bundles: gates that keep one choice
+per anchor block are simulated on the one-hot sector only (1,045 to 279,936 amplitudes),
+cross-checked against a gate-by-gate qubit simulation. Gradients are adjoint.
+
+Selection used only the complete cell, S0 and S1 (E1 310 runs, E2 600, E3 410, 10 seeds
+each). The mean-energy loss traps nearly every ansatz (cell 0/10 everywhere). Exact CVaR
+(alpha 0.1) with L-BFGS fixes this (cell 10/10). Under CVaR, controlled-Givens links
+between QUBO-coupled block pairs beat random pairs, all pairs and block-only; product and
+generic RY+CNOT ansatzes reach 0/10 on S0. The recommended configuration was written to
+output/catering-methods/vqe/E5-predeclaration.json and committed before S2/S3 were run:
+it reaches the offered-pool optimum in 10/10 (S2) and 9/10 (S3) seeds; the mean-energy
+control reaches 0/10. One MethodResult per released case passes `catering.run evaluate`
+and matches the sector reference tuple; valid-sample rates are 31-60 %. The fixed
+portfolios still miss 5/7/5/6 meal lots against the raw 2/3/2/3.
+
+Limits: CVaR is computed from the exact distribution (shot-based SPSA/COBYLA are much
+weaker); no noise, routing or hardware run; seeds are repeats on paired cases. No IBM,
+VeloxQ, network or credit use. AI use: the code, experiments and this text were produced
+with an AI assistant at the user's direction and reviewed against the checker outputs.
+
+
 ## 2026-10-17 — full problem overview, model comparison and benchmark browser
 
 Reworked the private pixel-kitchen presentation to introduce implemented inputs,
@@ -12,16 +62,16 @@ it performs fresh sampling and checking, with no training or service/QPU call.
 
 Added a public read-only benchmark notebook linked from kitchen and studio.
 It filters all 400 QAOA records, all 61 service attempts (including failures),
-VQE experiment rows and four checked exports. Held-out comparison rows show
+VQE experiment rows and five checked exports. Held-out comparison rows show
 per-shot probabilities, sampled hits, feasibility, final shots and training
 work without declaring a matched-budget winner. Archived VQE circuit counts
 are labeled as an unvalidated legacy heuristic; E2 NFT is identified as a
-limited control, separately from primary E5 L-BFGS-B/CVaR. Source paths and 132 hashes
+limited control, separately from primary E5 L-BFGS-B/CVaR. Source paths and 147 hashes
 are exported reproducibly; preflight rejects stale evidence. Source variables,
 actual solver width, restricted portfolios, graph density and exact-sector
 simulation have separate explanations on the scaling screen.
 
-Browser verification checks case/budget/run filters, four VQE exports, mobile
+Browser verification checks case/budget/run filters, five VQE exports, mobile
 390px width, probability-bar ratios and operator/stage fit at 1280×720,
 1440×900 and 1920×1080. No page errors. Build passes 148 site tests and all
 syntax checks; generated scripts match the chapter source and read-only demo
