@@ -244,7 +244,7 @@ function frame(now){
 }
 async function loadReplay(){
   $('#retry-load').hidden=true;$('#error').hidden=true;
-  document.querySelector('main').inert=true;
+  document.querySelector('main').inert=true;$('#kitchen').inert=true;
   try{
     await artReady;
     const response=await fetch('./replay-data.json');
@@ -252,7 +252,7 @@ async function loadReplay(){
     const payload=await response.json();
     if(payload.schema!=='catering-kitchen-replay.v3')throw new Error('V3 evidence required');
     data=payload;evidenceContent();loadCase('CELL');setPlaying(!reduced);
-    document.querySelector('main').inert=false;requestAnimationFrame(frame);
+    document.querySelector('main').inert=false;$('#kitchen').inert=false;requestAnimationFrame(frame);
   }catch(error){
     current=null;data=null;$('#scenario').disabled=true;$('#method').disabled=true;
     $('#error-message').textContent=`Kitchen evidence could not load: ${error.message}`;

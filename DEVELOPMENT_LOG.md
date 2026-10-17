@@ -9,7 +9,8 @@ component portions. Looping remains available explicitly. Order tickets show
 remaining time to departure; unrevealed tickets hide that time and are disabled.
 These are read-only projections of the same retained plans.
 
-Evidence loading now keeps the workspace inert until initialization succeeds.
+Evidence loading now keeps the workspace and SVG kitchen stations inert until
+initialization succeeds.
 A failed download offers retry and Stage 1 fallback. Playback/seek shortcuts
 ignore the unloaded state. Retry fetches retained evidence and does not run any
 optimizer. Browser fault injection confirms an initial 503 recovers on retry,
