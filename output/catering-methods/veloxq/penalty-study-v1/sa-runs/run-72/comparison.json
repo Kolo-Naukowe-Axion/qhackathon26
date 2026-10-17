@@ -1,0 +1,148 @@
+{
+  "plan": {
+    "argv": [
+      "--study",
+      "output/catering-methods/veloxq/penalty-study-v1",
+      "--output",
+      "output/catering-methods/veloxq/penalty-study-v1/sa-runs/run-72",
+      "--only",
+      "output/catering-foundation-v3/S3/scale-256-qubo.json",
+      "--variants",
+      "local",
+      "--restarts",
+      "32",
+      "--sweeps",
+      "200",
+      "--seconds",
+      "3600"
+    ],
+    "budget": {
+      "wall_time_limit_s": 3600.0
+    },
+    "config": {
+      "restarts": 32,
+      "seed": 2026,
+      "sweeps": 200
+    },
+    "declared_unix": 1792261203.7550828,
+    "solver": "catering.methods.classical.solve_qubo (seeded Metropolis SA, cold random bits, no repair)",
+    "variants": [
+      "source",
+      "local",
+      "local-uw",
+      "local-m8",
+      "local-uw-m8"
+    ]
+  },
+  "rows": [
+    {
+      "reference": "output/catering-foundation-v3/S3/scale-256-reference.json",
+      "reference_status": "OPTIMAL",
+      "reference_tuple": [
+        4,
+        1,
+        5,
+        5
+      ],
+      "runs": {
+        "local": {
+          "at_or_better_than_reference": 0,
+          "best_tuple": [
+            5,
+            5,
+            6,
+            6
+          ],
+          "bundle": "output/catering-methods/veloxq/penalty-study-v1/bundles/S3-scale-256-local-qubo.json",
+          "bundle_sha256": "671b5273284f94d1a4c14a961b61b89f5d3ca3cf76f2423c081740bf6ace9eba",
+          "samples": 32,
+          "status": "completed",
+          "valid": 12,
+          "valid_tuples": [
+            [
+              5,
+              5,
+              6,
+              6
+            ],
+            [
+              6,
+              3,
+              5,
+              5
+            ],
+            [
+              6,
+              4,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4,
+              4
+            ],
+            [
+              7,
+              4,
+              4,
+              4
+            ],
+            [
+              7,
+              5,
+              3,
+              3
+            ],
+            [
+              7,
+              6,
+              4,
+              4
+            ],
+            [
+              7,
+              7,
+              5,
+              5
+            ],
+            [
+              8,
+              5,
+              4,
+              4
+            ],
+            [
+              8,
+              7,
+              4,
+              4
+            ],
+            [
+              8,
+              8,
+              4,
+              4
+            ]
+          ],
+          "wall_s": 51.66123267399962,
+          "work": {
+            "bit_flip_proposals": 1638400,
+            "completed_restarts": 32,
+            "requested_restarts": 32,
+            "requested_sweeps": 200
+          }
+        }
+      },
+      "source": "output/catering-foundation-v3/S3/scale-256-qubo.json",
+      "source_sha256": "61a0944758e65bfe1eb0439471549a88bb0349d895d8976df4911f143f9ee26b"
+    }
+  ]
+}

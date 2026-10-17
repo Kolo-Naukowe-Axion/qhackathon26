@@ -1,0 +1,10 @@
+{
+  "declared": "2026-10-17, before any full SA run",
+  "solver": "catering.methods.classical.solve_qubo: seeded Metropolis SA, cold random bits, no repair, temperature scaled by the bundle's max |coefficient| (unchanged repo code)",
+  "config": {"seed": 2026, "restarts": 32, "sweeps": 200},
+  "budget": {"wall_time_limit_s": 3600},
+  "bundles": "16 frozen sources x {source, local, local-uw, local-m8, local-uw-m8} from bundles/build-report.json",
+  "metrics": ["valid samples / 32 after catering.decode", "best valid (U,W,B,R) (lexicographic; post-hoc B/R tie-break for local-uw)", "valid samples at or better than the frozen CP reference tuple", "wall time"],
+  "comparability": "tuples across variants of one source; never raw energies",
+  "limitations": "one seed, one CPU, one SA schedule; SA is a control, not VeloxQ. Results do not predict VeloxQ behaviour without service runs"
+}

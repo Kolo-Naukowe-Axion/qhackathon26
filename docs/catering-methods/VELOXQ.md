@@ -135,9 +135,15 @@ well-measured 2,048-variable study is preferable to an unsupported size claim.
 
 ## Owner status (Person 1, 17 October 2026)
 
-**Deliverables 1–3 are done; phase D steps 1–2 have run** (user approval
-17 October 2026, ledger total 4: the phase C smoke plus scale-512, scale-1024
-and scale-2048). Steps 3–4 are not authorized. See "Phase D steps 1–2 result".
+**Deliverables 1–3 are done; phase D steps 1–4 have run** (user approval
+17 October 2026, ledger total 20: the phase C smoke, three scale tiers,
+eight four-event integration bundles and five shared small QUBOs, one
+user-approved repeat of S3 quantum after a connection failure, and two post-hoc
+longer runs). See "Phase D result". A post-hoc local-penalty study (phase E)
+brought the ledger to 30, a low-conflict pool study (phase F) to 34, a
+parameter study (phase G) to 42 and new cost functions on the largest problems
+(phase H) to 54. See phases E–H below and the handoff in
+[VELOXQ_HANDOFF.md](VELOXQ_HANDOFF.md).
 
 | Path | Content |
 |---|---|
@@ -145,9 +151,13 @@ and scale-2048). Steps 3–4 are not authorized. See "Phase D steps 1–2 result
 | `tests/catering/test_veloxq_adapter.py` | 66 offline tests, no token or network |
 | `output/catering-methods/veloxq/pilot_manifest.json` | Caps, frozen settings, case hashes, baselines and comparison declared before results |
 | `output/catering-methods/veloxq/offline-readiness-v3.json` | One `not_run` record per released v3 bundle (16), with sizes, coefficient ranges, packet dtype/size and timings |
-| `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 4) |
+| `output/catering-methods/veloxq/job_ledger.json` | Every attempted service submission (currently 54) |
 | `output/catering-methods/veloxq/smoke-20261017T162002/` | Phase C raw input/output and result |
-| `output/catering-methods/veloxq/paired-lunch-12-v1_S3_meal-block-{486,998,2022}-*/` | Phase D raw packet, raw result, `result.json` and shared-checker `evaluation.json` |
+| `output/catering-methods/veloxq/paired-*-*/` | Phase D/E runs: raw packet, raw result, `result.json` and shared-checker `evaluation.json` |
+| `catering/methods/veloxq_penalty.py`, `veloxq_penalty_sa.py` | Phase E: local-penalty variant builder and same-SA comparison |
+| `tests/catering/test_veloxq_penalty.py` | 17 offline tests for the variants |
+| `catering/methods/veloxq_lowconflict.py`, `output/catering-methods/veloxq/lowconflict-v1/` | Phase F: low-conflict pools, CP references, SA results |
+| `output/catering-methods/veloxq/penalty-study-v1/` | Phase E variant bundles, `sa-plan.json`, `sa-comparison.json`, per-run SA results |
 
 ### Conventions (checked by tests)
 
@@ -180,7 +190,7 @@ packet would silently solve a rounded model. Adapter 0.2.0 therefore:
   dtype-scaled tolerance, still rejecting shifts beyond rounding.
 
 Phase D answered the first question: the service accepted the exact integer
-packets at all three widths (int64), and every reported energy matched
+packets for every phase D bundle (int64), and every reported energy matched
 the exact model within the float32 tolerance. The backend's internal arithmetic
 remains unverified and is a possible cause of the weak results below.
 
@@ -236,7 +246,9 @@ to equal the frozen scale bundles, and every returned sample recomputes to its
 stated literal energy. None of these incumbents is a certified optimum. Exact
 values and hashes are in `pilot_manifest.json`.
 
-### Phase D steps 1–2 result
+### Phase D result
+
+#### Steps 1–2: scale tiers
 
 One cold-start job per width, `num_rep=512`, `num_steps=2000`, 60 s, no retries
 and no tuning. Every returned row was decoded by `catering.run evaluate` with
@@ -259,9 +271,246 @@ dominated by the penalty. This is one untuned setting per width, with a backend
 running time of 2 s or less. It shows the penalty-heavy matrices are hard for
 default settings; it does not measure VeloxQ's best attainable quality.
 
+#### Steps 3–4: four-event integration and shared small QUBOs
+
+Same frozen settings and shared-checker decode. Reference columns come from
+`pilot_manifest.json` (offered-domain CP and cold SA, both frozen before results).
+
+| Bundle | Vars | Valid rows | Best valid E | (U,W,B,R) | Offered CP E | Cold SA best E |
+|---|---:|---:|---:|---|---:|---:|
+| S0 scale-128 | 128 | 29 / 512 | 13,093,156 | (5,3,4,4) | 7,832,094 opt | 13,093,273 |
+| S1 scale-128 | 128 | 15 / 512 | 18,285,487 | (7,0,1,1) | 7,876,266 opt | 13,100,543 |
+| S2 scale-128 | 128 | 18 / 512 | 13,100,845 | (5,2,4,4) | 7,858,194 opt | 13,128,459 |
+| S3 scale-128 | 128 | 22 / 512 | 15,685,314 | (6,4,4,4) | 10,435,105 opt | 18,303,864 |
+| S0 scale-256 | 256 | 3 / 512 | 147,471,652 | (6,5,4,4) | 49,059,134 feas | 122,883,529 |
+| S1 scale-256 | 256 | 1 / 512 | 198,883,830 | (8,4,2,2) | 74,494,866 opt | 149,222,044 |
+| S2 scale-256 | 256 | 1 / 512 | 171,551,696 | (7,2,1,1) | 49,041,901 opt | 122,752,355 |
+| S3 scale-256 | 256 | 6 / 512 | 197,046,513 | (8,1,0,0) | 98,554,001 opt | 123,295,532 |
+| complete cell | 35 | 26 / 512 | 53,429 | (1,1,2,2) | 68 opt | — |
+| S0 quantum | 33 | 500 / 512 | **66,216** | (5,0,3,3) | 66,216 opt | — |
+| S1 quantum | 35 | 505 / 512 | **101,893** | (7,0,1,1) | 101,893 opt | — |
+| S2 quantum | 31 | 464 / 512 | **63,684** | (5,4,4,4) | 63,684 opt | — |
+| S3 quantum (repeat) | 35 | 494 / 512 | **103,668** | (6,4,4,4) | 103,668 opt | — |
+
+The first S3 quantum attempt failed with `ConnectError` before a job was created
+(`job_id` null, zero VeloxQ calls). It counts in the ledger. The user approved one
+manual repeat with identical settings (ledger total 18); the row above is that repeat.
+
+Each job's backend running time was 0.05–0.09 s, its end-to-end time 4.2–6.7 s,
+its quota 47–89 and its solver cost 0.55.
+
+Reading: on all four 31–35-variable four-event QUBOs, VeloxQ reaches the
+CP-certified optimum (S0–S3 quantum: 11, 16, 1 and 4 rows), with 91–99% valid rows. On the
+35-variable complete cell, only 5% of rows are valid and the best is far from
+the optimum (53,429 vs 68). At 128 variables it never reaches the optimum, but it
+beats cold SA's best on S0, S2 and S3 (S1 is worse). At 256 variables and above it
+is worse than cold SA on every bundle. Valid-row rates fall steeply with width
+(about 3–6% at 128, at most 1.2% at 256 and above). The same caveat applies: one untuned
+setting and sub-second backend time.
+
+#### Post-hoc longer runs (num_steps 20,000)
+
+Approved by the user **after** seeing the results above, and declared in
+`pilot_manifest.json` before running. This is tuning after results, not a frozen
+setting. One job per bundle; only `num_steps` changed (2,000 → 20,000), with
+`num_rep` 512, cold start and 60 s unchanged.
+
+| Bundle | Steps | Valid rows | Distinct | Best valid E | (U,W,B,R) | Rows at CP optimum | Running time | Quota |
+|---|---:|---:|---:|---:|---|---:|---:|---:|
+| scale-512 | 2,000 | 5 / 512 | 173 | 516,244 | (13,6,4,4) | 0 | 0.17 s | 170 |
+| scale-512 | 20,000 | 10 / 512 | 176 | 554,096 | (14,4,2,2) | 0 | 1.66 s | 1,662 |
+| complete cell | 2,000 | 26 / 512 | 37 | 53,429 | (1,1,2,2) | 0 | 0.05 s | 50 |
+| complete cell | 20,000 | 14 / 512 | 15 | **68** | (0,0,2,2) | 1 | 0.49 s | 491 |
+
+On scale-512, ten times more steps doubled the valid rows, but the best valid
+state is worse than with 2,000 steps and worse than the all-idle witness
+(E 551,853). Without seed control, one job per setting cannot separate the step
+count from run-to-run variation. On the complete cell, one row reached the
+CP-certified optimum. The returned set collapsed from 37 to 15 distinct states, and
+valid rows fell from 5% to 2.7%.
+
+The scale-512 run's adapter call ended with `ConnectError` after the job was
+created. The completed result was fetched later by its saved job id
+(`Job.from_id`, no new submission), parsed with the adapter's own
+`parse_samples` and checked by `catering.run evaluate`. `result.json` keeps the
+original failure under `recovery`.
+
+### Phase E: local-penalty study (post-hoc)
+
+**Hypothesis:** the global penalty P (sum of all |objective coefficients| + 1)
+grows with width. At 2,048 variables it is ~196,000× the weight of one missed
+meal lot, which might hide the objective and exceed float32 resolution.
+
+**Variants** are built by `catering/methods/veloxq_penalty.py` from the frozen
+bundles; the sources are not modified. Variables, groups and conflicts stay the
+same, so decoded tuples are comparable.
+
+- `local`: each one-hot block and each conflict pair gets its own penalty,
+  computed from the objective coefficients of the variables it touches.
+  A 1- or 2-flip argument proves every minimum is feasible (module docstring;
+  checked by randomized repair on every built bundle).
+- `local-uw`: as `local`, with only (bound_W+1)·U + W in the QUBO. B and R are
+  linear, so they are subtracted exactly; B/R become post-hoc tie-breaks.
+- `-m8`: every local penalty ×8 (still provably safe).
+
+| Source | Max coefficient: source → local-uw | Penalty / w_U: source → local |
+|---|---:|---:|
+| S3 quantum | 856,680 → 376 | 25 → 5 |
+| scale-512 | 8.9e8 → 9,638 | 11,000 → 89 |
+| scale-2048 | 1.5e10 → 32,934 | 196,000 → 305 |
+
+#### Same-SA comparison (offline)
+
+Repo SA (`catering.methods.classical.solve_qubo`), declared in `sa-plan.json`
+before running: seed 2026, 32 restarts × 200 sweeps, cold random bits, no
+repair. Valid samples / 32 and best valid (U,W,B,R):
+
+| Bundle | CP reference | source | local | local-m8 | local-uw | local-uw-m8 |
+|---|---|---|---|---|---|---|
+| complete cell | (0,0,2,2) opt | 32 (0,0,2,2) | 31 (0,0,2,2) | 32 (0,0,2,2) | 32 (0,0,2,2) | 32 (0,0,2,2) |
+| S0 quantum | (5,0,3,3) opt | 32 (5,1,3,3) | 28 (5,0,3,3) | 32 (5,0,3,3) | 31 (5,0,3,3) | 32 (5,1,4,4) |
+| S1 quantum | (7,0,1,1) opt | 32 (7,0,1,1) | 29 (7,0,1,1) | 32 (7,1,2,2) | 30 (7,1,2,2) | 32 (7,0,1,1) |
+| S2 quantum | (5,4,4,4) opt | 32 (6,1,2,2) | 31 (5,4,4,4) | 32 (5,4,4,4) | 32 (6,1,2,2) | 32 (6,2,2,2) |
+| S3 quantum | (6,4,4,4) opt | 32 (6,4,4,4) | 32 (7,3,2,2) | 32 (7,3,2,2) | 30 (6,4,4,4) | 32 (6,4,4,4) |
+| S0 scale-128 | (3,0,6,6) | 32 (4,3,5,5) | 12 (4,3,6,6) | 22 (4,3,4,4) | 18 (4,1,5,5) | 19 (4,2,5,5) |
+| S1 scale-128 | (3,3,6,6) | 32 (5,3,5,5) | 15 (5,6,6,6) | 19 (6,3,5,5) | 20 (6,3,4,4) | 20 (6,3,4,4) |
+| S2 scale-128 | (3,1,6,6) | 32 (3,4,6,6) | 24 (5,2,5,5) | 19 (4,3,5,5) | 20 (5,4,6,6) | 24 (5,2,3,3) |
+| S3 scale-128 | (4,1,5,5) | 32 (5,4,5,5) | 30 (5,3,5,5) | 26 (6,3,3,3) | 27 (6,3,5,5) | 25 (6,3,3,3) |
+| S0 scale-256 | (2,0,6,6) | 32 (3,5,8,8) | 10 (3,2,7,7) | 14 (4,5,6,6) | 10 (4,3,6,6) | 13 (4,5,6,6) |
+| S1 scale-256 | (3,0,6,6) | 32 (4,3,6,6) | 8 (6,6,5,5) | 14 (5,3,5,5) | 18 (5,3,5,5) | 13 (6,2,3,3) |
+| S2 scale-256 | (2,1,6,6) | 32 (4,3,6,6) | 14 (5,5,4,4) | 10 (5,3,4,4) | 12 (5,3,4,4) | 14 (5,4,5,5) |
+| S3 scale-256 | (4,1,5,5) | 32 (5,2,5,5) | 12 (5,5,6,6) | 12 (6,6,5,5) | 11 (7,5,4,4) | 11 (6,6,5,5) |
+| scale-512 | (6,1,10,10) | 32 (8,9,11,11) | 8 (10,11,10,10) | 6 (12,7,8,8) | 6 (9,6,8,8) | 5 (11,12,10,10) |
+| scale-1024 | (7,2,11,11) | 32 (9,10,10,10) | 1 (12,14,10,10) | 1 (13,13,9,9) | 0 | 1 (13,10,11,11) |
+| scale-2048 | (8,3,8,8) | 32 (9,7,10,10) | 2 (9,10,11,11) | 2 (12,11,9,9) | 0 | 0 |
+
+The CP references for 128 and above are finite-budget incumbents; most 128/256
+references are CP-optimal on the offered domain (see the frozen baselines).
+
+SA on the **source** bundles is best or tied almost everywhere: 32/32 valid at
+every width, and the best U at 128 and above. Local penalties cut valid rates
+(to 0–2/32 at 1,024–2,048) and rarely improve the tuple. The exception is
+S2 quantum, where `local`/`local-m8` reach the optimum and source does not.
+With a much larger budget than the frozen 2 s control, SA on the source bundles
+also beats every VeloxQ result in phase D (e.g. scale-512 (8,9,11,11) vs
+(13,6,4,4); scale-2048 (9,7,10,10) vs no valid state).
+
+#### VeloxQ on the variants
+
+The cap was set to ledger total 30 before running and recorded in
+`pilot_manifest.json`. Settings were unchanged from phase D (num_rep 512,
+num_steps 2,000, 60 s, no retries). Packets became almost entirely
+float32-exact (0–736 inexact of up to 638,930 spin coefficients, vs 90–100%
+before).
+
+| Case | Phase D source | local-uw | local-uw-m8 |
+|---|---|---|---|
+| complete cell | 26/512 (1,1,2,2) | ConnectError, no job | 34/512 (1,1,1,1) |
+| S3 scale-256 | 6/512 (8,1,0,0) | 9/512 (8,2,1,1) | ConnectError, no job |
+| scale-512 | 5/512 (13,6,4,4) | 2/512 (14,3,1,1) | 6/512 (13,5,5,5) |
+| scale-1024 | 1/512 (14,8,4,4) | 1/512 (14,6,4,4) | 0/512 |
+| scale-2048 | 0/512 | ConnectError, no job | 0/512 |
+
+Three attempts failed to connect before a job existed. They count in the ledger
+and were not retried. Job 21 failed after creation and was recovered by its job
+id.
+
+**Conclusion:** the penalty magnitude is not the main obstacle. Smaller
+penalties fix float32 representability but do not improve U for VeloxQ, and they
+hurt SA validity. The likely obstacle is structural: a valid state needs exactly
+one choice in each of 26 blocks and no active pair among 27,801–487,167
+conflicts, and changing a block's choice is a 2-flip move. Fewer conflicts
+(smaller, better-chosen program pools) or a constraint-preserving method
+(XY-mixer QAOA) address that; penalty rescaling does not. One seed, one SA
+schedule and one VeloxQ setting per case; not a hardness claim.
+
+### Phase F: low-conflict pools (post-hoc)
+
+**Hypothesis:** phase E pointed to dense conflicts as the obstacle.
+`catering/methods/veloxq_lowconflict.py` builds pools of the same widths from the
+same full local domain (18,182 programs, hash checked against the frozen
+release). It keeps one seed per anchor, then goes round-robin over blocks, each
+time adding the program with the fewest conflicts with already selected
+programs. No reference or solver output is used. The unchanged compiler builds
+the QUBO (same weights, same global penalty rule). Only 46 of 486 (512) and 102
+of 998 (1,024) programs are shared with the frozen pools.
+
+| Pool | Conflicts | Couplers (density) | P | CP-SAT 30 s | SA 32×200 | VeloxQ (2,000 steps) |
+|---|---:|---:|---:|---|---|---|
+| frozen 512 | 27,801 | 37,008 (28%) | 4.4e8 | FEASIBLE (6,1,10,10) | 32/32 (8,9,11,11) | 5/512 (13,6,4,4) |
+| low-conflict 512 | 13,620 | 20,242 (15%) | 2.0e8 | **OPTIMAL** (6,1,13,13) | 32/32 (9,9,12,12) | 1/512 (14,6,4,4) |
+| frozen 1,024 | 118,165 | 156,129 (30%) | 1.9e9 | FEASIBLE (7,2,11,11) | 32/32 (9,10,10,10) | 1/512 (14,8,4,4) |
+| low-conflict 1,024 | 62,538 | 90,558 (17%) | 8.4e8 | **OPTIMAL** (6,1,13,13) | 32/32 (10,9,12,12) | 0/512, 0/512 |
+
+The cap was set to ledger total 34 before running: two replicate jobs per pool,
+because there is no seed control. The first 512 job failed with `ConnectError`
+before job creation and was not retried, so 512 has one replicate.
+
+**Reading:** halving the conflicts made the problem easier for CP-SAT (now
+proven optimal within 30 s), but not for VeloxQ (no or one valid row). SA quality
+is unchanged, and SA runs 4–7× faster because there are fewer couplers. Across
+phases D–F, no tested change to penalty magnitude or conflict density improved
+VeloxQ's U at 512 variables or more under default settings. Remaining untested
+levers are VeloxQ's own parameters beyond `num_steps` and a different encoding.
+Same caveats: one setting, one or two jobs per case, no seed.
+
+### Phase G: VeloxQ parameters (post-hoc)
+
+`VeloxQParameters` exposes only `num_rep` and `num_steps`. The SDK defaults
+(4,096 × 5,000) are about 20× the frozen 512 × 2,000 budget. The grid was
+declared in `pilot_manifest.json` before running; the cap was ledger total 46,
+and 42 were used. Frozen bundles unless noted:
+
+| Bundle | num_rep × num_steps | Valid rows | Best valid (U,W,B,R) | Running time |
+|---|---|---:|---|---:|
+| scale-512 | 512 × 2,000 (phase D) | 5 / 512 | (13,6,4,4) | 0.17 s |
+| scale-512 | 4,096 × 5,000 | 52 / 4,096 | (12,6,5,5) | 2.7 s |
+| scale-512 | 16,384 × 5,000 | 227 / 16,384 | (13,2,2,2) | 10.9 s |
+| scale-512 | 65,536 × 2,000 | 588 / 65,536 | (11,7,6,6) | 17.5 s |
+| complete cell | 4,096 × 5,000 | 103 / 4,096 | **(0,0,2,2)** opt, 4 rows | 0.19 s |
+| complete cell | 16,384 × 5,000 | 440 / 16,384 | **(0,0,2,2)** opt, 8 rows | 0.46 s |
+| scale-1024 | 4,096 × 5,000 | 16 / 4,096 | (14,2,1,1) | 10.4 s |
+| scale-2048 | 4,096 × 5,000 | 0 / 4,096 | — | 38.2 s |
+| lowconflict-512 | 16,384 × 5,000 | 18 / 16,384 | (12,5,6,6) | 6.6 s |
+
+A larger budget helps only slowly. The best U at 512 goes from 13 to 11 with
+128× more samples, while SA 32×200 reaches 8 and CP-SAT 6. The valid-row rate
+stays at about 1%. The complete cell now hits its optimum reliably. Nothing is
+valid at 2,048.
+
+### Phase H: new cost functions on the largest problems (post-hoc)
+
+All jobs used 4,096 × 5,000, declared before running; the cap was ledger total
+56, and 54 were used. `lowconflict-2048` was built like phase F (289,770
+conflicts vs 487,167 frozen; CP-SAT 30 s FEASIBLE (8,5,12,12)). Local-penalty
+variants of the low-conflict pools are in `penalty-study-v2/`.
+
+| Bundle | Valid rows | Best valid (U,W,B,R) |
+|---|---:|---|
+| frozen scale-1024 (phase G) | 16 / 4,096 | (14,2,1,1) |
+| scale-1024 local-uw | 6 / 4,096 | (13,6,5,5) |
+| scale-1024 local-uw-m8 | 6 / 4,096 | (13,4,3,3) |
+| lowconflict-1024 | 3 / 4,096 | (14,3,2,2) |
+| lowconflict-1024 local-uw | 3 / 4,096 | (13,3,3,3) |
+| lowconflict-1024 local-uw-m8 | 1 / 4,096 | (14,4,2,2) |
+| frozen scale-2048 (phase G), scale-2048 local-uw / -m8 | 0 / 4,096 each | — |
+| lowconflict-2048, local-uw / -m8 | 0 / 4,096 each | — |
+
+SA 32×200 on lowconflict-2048 returned 32/32 valid, best (10,9,11,11).
+
+Two attempts failed with `ConnectError` before a job existed and were
+resubmitted once each, as declared. Two failed after creation and were recovered
+by job id.
+
+**Overall (phases D–H):** VeloxQ matches CP-SAT optima on the 31–35-variable
+QUBOs. From 256 variables up it is behind seeded SA on the same matrix. At
+2,048 it returns no valid state under any tested cost function, pool or budget.
+Penalty magnitude, conflict density and a 20–128× larger budget each moved U by
+at most 1–2 lots.
+
 ### Service plan
 
-Steps 1–2 are done (above). Following "begin with one scale tier": step 1 was one job on scale-512 (ledger
+Steps 1–4 are done (above). Following "begin with one scale tier": step 1 was one job on scale-512 (ledger
 total 2); step 2 added scale-1024 and scale-2048 only if step 1 is useful (total 4);
 optional steps add the v3 four-event scale-128/256 set (total 12) and the shared
 small QUBOs (total 17). Settings: `num_rep=512`, `num_steps=2000`, cold start,

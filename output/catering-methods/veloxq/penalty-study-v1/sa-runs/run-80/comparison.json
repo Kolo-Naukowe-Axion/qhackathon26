@@ -1,0 +1,106 @@
+{
+  "plan": {
+    "argv": [
+      "--study",
+      "output/catering-methods/veloxq/penalty-study-v1",
+      "--output",
+      "output/catering-methods/veloxq/penalty-study-v1/sa-runs/run-80",
+      "--only",
+      "output/catering-velox-scale-v3/scale-512-qubo.json",
+      "--variants",
+      "local-uw-m8",
+      "--restarts",
+      "32",
+      "--sweeps",
+      "200",
+      "--seconds",
+      "3600"
+    ],
+    "budget": {
+      "wall_time_limit_s": 3600.0
+    },
+    "config": {
+      "restarts": 32,
+      "seed": 2026,
+      "sweeps": 200
+    },
+    "declared_unix": 1792261269.462705,
+    "solver": "catering.methods.classical.solve_qubo (seeded Metropolis SA, cold random bits, no repair)",
+    "variants": [
+      "source",
+      "local",
+      "local-uw",
+      "local-m8",
+      "local-uw-m8"
+    ]
+  },
+  "rows": [
+    {
+      "reference": "/home/raf/Projects/axion/qhackathon26/output/catering-classical-scale-v3/scale-512-reference.json",
+      "reference_status": "FEASIBLE",
+      "reference_tuple": [
+        6,
+        1,
+        10,
+        10
+      ],
+      "runs": {
+        "local-uw-m8": {
+          "at_or_better_than_reference": 0,
+          "best_tuple": [
+            11,
+            12,
+            10,
+            10
+          ],
+          "bundle": "output/catering-methods/veloxq/penalty-study-v1/bundles/catering-velox-scale-v3-scale-512-local-uw-m8-qubo.json",
+          "bundle_sha256": "6343710a8eb777803f13d3bb5ac6f9e772798eb8277af8362be1490dd53ad027",
+          "samples": 32,
+          "status": "completed",
+          "valid": 5,
+          "valid_tuples": [
+            [
+              11,
+              12,
+              10,
+              10
+            ],
+            [
+              11,
+              13,
+              11,
+              11
+            ],
+            [
+              12,
+              12,
+              10,
+              10
+            ],
+            [
+              14,
+              13,
+              8,
+              8
+            ],
+            [
+              14,
+              15,
+              9,
+              9
+            ]
+          ],
+          "wall_s": 136.06800081199617,
+          "work": {
+            "bit_flip_proposals": 3276800,
+            "completed_restarts": 32,
+            "requested_restarts": 32,
+            "requested_sweeps": 200
+          }
+        }
+      },
+      "source": "output/catering-velox-scale-v3/scale-512-qubo.json",
+      "source_sha256": "4c25dd491cae25942b0f655b94f601f6f065dfe054fa71ec57fb7b185f360c5b"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 # Lossless in-Git evidence assets
 
-These four deterministic gzip files preserve the exact large JSON files indexed
+These deterministic gzip files preserve the exact large JSON files indexed
 in [COMPRESSED_EVIDENCE.json](../COMPRESSED_EVIDENCE.json). Each asset is below
 GitHub's 100 MiB blob limit. The original raw paths are ignored locally.
 
@@ -21,3 +21,8 @@ files are removed on failure. Unsafe paths and symlinks are rejected.
 
 The existing GitHub release-asset index and restoration script remain separate
 and unchanged; these assets require no release upload.
+
+VeloxQ-track assets (`veloxq-*.gz`) cover service results, decoded evaluations
+and post-hoc study bundles under `output/catering-methods/veloxq/`. Without
+Node, `python3 scripts/restore_veloxq_evidence.py` restores them with the same
+SHA256 checks and also unpacks the `*.h5.gz` files stored beside their runs.

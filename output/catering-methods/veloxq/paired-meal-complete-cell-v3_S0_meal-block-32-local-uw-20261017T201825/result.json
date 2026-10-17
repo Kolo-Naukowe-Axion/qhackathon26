@@ -1,0 +1,93 @@
+{
+  "budget": {
+    "allow_external_execution": true,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 22,
+    "wall_time_limit_s": 60.0
+  },
+  "bundle": {
+    "bundle_id": "paired-meal-complete-cell-v3/S0/meal-block-32-local-uw",
+    "bundle_sha256": "82ce370292e83201eef7ffc12be95989b87c8e662d0fc93a29251a956ddcdf3b",
+    "case_id": "paired-meal-complete-cell-v3/S0",
+    "instance_sha256": "2d9dd9683d8bd17fc963113cde5131700097e0062d58a728907e1a9c827664b0",
+    "profile_id": "paired-course-contiguous.v3",
+    "qubo_sha256": "191afb2dcb81a337e00e8846af40bb1a813d17b596727b48c4aa74ab25e8855e",
+    "representation_id": "paired-course-block-32-local-uw",
+    "scenario_id": "S0",
+    "schema_version": "catering-qubo.v1",
+    "snapshot_sha256": "1446303519d679ff905455a14b7bf1b87b2c015303ae4d1d858bad09c915fb4c",
+    "variable_order_sha256": "f8b5714cd57e7c4d96d1b3e9dcf29f999bbb969810c00206a072096cb87ba7cf"
+  },
+  "bundle_sha256": "82ce370292e83201eef7ffc12be95989b87c8e662d0fc93a29251a956ddcdf3b",
+  "case_id": "paired-meal-complete-cell-v3/S0",
+  "configuration": {
+    "backend_id": "a87c8e0c-c883-4d6a-8495-6cd55e95ed96",
+    "backend_name": "VeloxQH100_1",
+    "initializer": "none (cold start)",
+    "packet_coefficient_dtype": "int16",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 2000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "solver_id": "3bce1dfa-e7af-4040-a283-67cff253cf94",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": {
+    "error_type": "ConnectError",
+    "job_id": null
+  },
+  "method_id": "veloxq",
+  "method_version": "0.2.0",
+  "physical_qpu_calls": 0,
+  "raw_artifacts": {
+    "ising_input": {
+      "path": "/home/raf/Projects/axion/qhackathon26/output/catering-methods/veloxq/paired-meal-complete-cell-v3_S0_meal-block-32-local-uw-20261017T201825/ising-input.h5",
+      "sha256": "1a7300ae42691c9de708f5cccaf7727c552d8363a36f6daf259d92cf2acacd32"
+    }
+  },
+  "reference": null,
+  "representation": {
+    "couplers": 520,
+    "float32_inexact_spin_coefficients": 0,
+    "float64_exact": true,
+    "n": 35,
+    "qubo_max_abs": 2004,
+    "qubo_min_nonzero_abs": 49,
+    "spin_coefficients": 555,
+    "spin_dynamic_range": 556.734693877551,
+    "spin_l1": 1500380,
+    "spin_max_abs_including_offset": 357620
+  },
+  "representation_id": "paired-course-block-32-local-uw",
+  "samples": [],
+  "schema_version": "catering-method-result.v1",
+  "status": "failed",
+  "timings": {
+    "build_s": 0.002884260000428185,
+    "serialize_s": 0.5748139799979981,
+    "total_s": 1.6843961830018088
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "service_jobs_submitted": 0
+  }
+}
