@@ -10,6 +10,7 @@ const types = { '.html': 'text/html', '.js': 'text/javascript', '.css': 'text/cs
 const server = createServer(async (req, res) => {
   try {
     const pathname = decodeURIComponent(new URL(req.url, 'http://localhost').pathname);
+    if(pathname==='/'||pathname==='/index.html'){res.writeHead(302,{'Location':'/catering/','Cache-Control':'no-store'});res.end();return;}
     if(pathname==='/baseline/'||pathname==='/baseline'){
       const html=await readFile(resolve(root,'index.html'),'utf8');
       res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});

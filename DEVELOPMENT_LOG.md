@@ -151,6 +151,13 @@ launch returned 20 meals and zero waste. The [final review receipt](output/cater
 records the tested source and raw checks. No new training campaign, service
 job, QPU call or video recording was performed.
 
+After the numerical audit, the UI follow-up restored the supplied Axion logo
+in the kitchen, benchmark browser and presentation studio. The local server
+and static build now both open catering at the root, with the original factory
+kept under Stage 1. Earlier factory studies were removed from the active
+navigation. These changes affect branding and navigation only; the final site
+build and browser checks cover them separately from the model audit above.
+
 ## AI use and remaining steps
 
 Codex assisted with formulation, implementation, experiments, tests and
