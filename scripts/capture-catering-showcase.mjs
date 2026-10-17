@@ -4,6 +4,7 @@ import {mkdir,writeFile,readFile,cp} from 'node:fs/promises';
 import {resolve,dirname} from 'node:path';
 import {spawn} from 'node:child_process';
 import {createHash} from 'node:crypto';
+import {fileURLToPath} from 'node:url';
 
 const args=process.argv.slice(2),value=(name,fallback)=>{const i=args.indexOf(name);return i<0?fallback:args[i+1];};
 const output=resolve(value('--output','output/playwright/catering-showcase-v1/captures'));
@@ -12,6 +13,11 @@ const require=createRequire(import.meta.url);
 let playwright;
 try{playwright=require('playwright');}catch(error){if(!process.env.AXION_NODE_MODULES)throw new Error('Install playwright or set AXION_NODE_MODULES to the bundled Node package directory.');playwright=createRequire(resolve(process.env.AXION_NODE_MODULES,'package.json'))('playwright');}
 await mkdir(output,{recursive:true});
+const studioRoot=resolve(dirname(fileURLToPath(import.meta.url)),'catering-showcase');
+const sourceHashes={};
+for(const name of ['index.html','studio.js','playback.js','studio.css','story.json','evidence.json']){
+ sourceHashes[name]=createHash('sha256').update(await readFile(resolve(studioRoot,name))).digest('hex');
+}
 const browser=await playwright.chromium.launch({headless:true});
 let context=await browser.newContext({viewport:{width:1920,height:1080},deviceScaleFactor:1,reducedMotion:'reduce'});
 let page=await context.newPage();const errors=[];
@@ -47,9 +53,10 @@ if(args.includes('--record')){
  videoPath=await page.video().path();
 }
 const state=await page.evaluate(()=>window.axionStudio.state);
+if(errors.length)throw new Error(errors.join('\n'));
 await context.close();await browser.close();
 const receipt={status:'Local silent rough cut; not submitted or uploaded',width:1920,height:1080,captures,errors,live_route_seconds:165,video_route_seconds:260,
- fresh_sampling_receipt:state.lastRun,continuous_studio_capture:args.includes('--record'),training_runs:0,veloxq_calls:0,physical_qpu_calls:0,
+ studio_source_sha256:sourceHashes,fresh_sampling_receipt:state.lastRun,continuous_studio_capture:args.includes('--record'),training_runs:0,veloxq_calls:0,physical_qpu_calls:0,
  placeholders:['Final method-owner result selection','Final VeloxQ experiment comparison','Human voiceover'],raw_video:videoPath};
 if(state.lastRun?.status==='completed'){
  const retained=resolve(output,'fresh-sampling');

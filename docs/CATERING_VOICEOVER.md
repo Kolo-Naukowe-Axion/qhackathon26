@@ -31,7 +31,7 @@ Do not narrate the five-minute video script over the shorter live route.
 
 ## 2:35–3:00 · Local QAOA sampling
 
-> We now run the local quantum simulator with retained angles. This generates fresh samples without retraining or contacting a quantum device. Every returned bitstring passes through the independent checker. The output shows the objective tuple, complete meals, waste and valid shots. The visible kitchen replay has its own retained source label.
+> The QAOA circuit prepares an initial state, applies a cost phase and blockwise XY mixing, then samples. Here we reuse saved angles for a fresh local execution. The mixer preserves one choice per block; the independent checker still rejects equipment, worker and allocation conflicts. This launch runs locally, without retraining or a quantum-device call.
 
 ## 3:00–3:35 · Results against exact and classical references
 
@@ -52,4 +52,4 @@ Do not narrate the five-minute video script over the shorter live route.
 3. Align narration to the visual beats; retime clips if needed. Keep code and equations visible long enough to read.
 4. Add final subtitles after editing, then check the exported file end to end. The present cut has no audio.
 
-Current narration: 470 words. Allow pauses for the actual launch, code excerpt and equation.
+Current narration: 473 words. Allow pauses for the actual launch, code excerpt and equation.

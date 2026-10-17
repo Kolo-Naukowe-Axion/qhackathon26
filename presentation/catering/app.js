@@ -128,6 +128,9 @@ function updateDynamic(){
   $('#event-title').textContent=time<current.snapshot.current_time?'Before the decision':active.length?active.map(label).join(' + '):'Between kitchen operations';
   $('#event-copy').textContent=active.length?active.map(o=>`${o.resource} · ${time<o.attended_end?o.worker:'unattended'}`).join(' / '):CASES[current.id].event;
   $('#meal-count').textContent=`${deliveredMeals(current,time)} / ${requestedMeals(current)} served`;
+  const waste=discardedComponents(current,time);
+  $('#waste-count').textContent=waste;
+  $('#waste-count').classList.toggle('has-waste',waste>0);
   $('#orders').innerHTML=orders.map(m=>{
     const hidden=time<m.revealed,departed=time>=m.departure,ready=m.ready_at!==null&&time>=m.ready_at;
     const status=hidden?'unrevealed':departed?(m.handed?'served':'missed'):ready?'ready to leave':m.handed?'scheduled':'incomplete';

@@ -1,5 +1,37 @@
 # Development log
 
+## 2026-10-17 — presentation iteration and live playback
+
+Reworked the opening around two concrete orders and departures, enlarged the
+kitchen view, removed duplicated hero headings and replaced the vanity stat
+strip with order details. The close now seeks the actual 12:10 end state and
+shows 20/20 delivered; previously it displayed an unfinished 11:39 replay
+beside final outcome text. The math screen includes the complete weighted
+objective and explicit hard-penalty term. QAOA has a prepare/cost/XY/sample/check
+sequence, and the results table identifies tuple units and domain differences.
+
+The live route holds each chapter at its end; Right Arrow advances when the
+speaker is ready. P toggles audience view, hiding controls and notes. A small
+playback module separates live holds from continuous video timing, with three
+regression cases. Browser checks at 1280×800 and 1440×900 verify chapter holds,
+iframe keyboard navigation, audience toggling, private notes and the actual
+closing handover count. All 141 site tests and the build pass.
+
+The game viewer now also shows discarded component portions beside meal service.
+This follows disposal timestamps rather than displaying final waste early.
+Browser checks verify zero waste in the saved cell, 0→10→20 discarded portions
+across the manual intervention's departures, and 10 in the larger raw S3 case.
+This small viewer addition follows the v2 recording's initial page load; its
+numbers use exactly the same retained ledger. It requires no solver reruns.
+
+Refreshed the narration/operator docs and added an eight-question quick table
+to the detailed Q&A sheet. The revised silent 4:20 capture is under ignored
+output/playwright/catering-showcase-v2/recording/. Its receipt preserves studio
+source hashes and the actual raw local samples. Final owner result selection,
+VeloxQ comparison, human voiceover and upload remain open. Shared solver models,
+input contracts and quantum parameters remain unchanged. No training, remote
+compute, VeloxQ call or physical QPU execution was performed.
+
 ## 2026-10-17 — remove slogan-style presentation copy
 
 Replaced the “Two courses. One meal.” headline and related slogans with

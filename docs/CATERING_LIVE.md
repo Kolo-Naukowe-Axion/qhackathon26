@@ -15,8 +15,10 @@ second server if the studio is already running.
 Share only the presentation window. Enter full screen. The live route starts
 paused. One operator advances with Right Arrow while one speaker talks. The
 notes, browser tabs, terminal paths and Q&A sheet should stay outside the share.
-Press Space to animate a chapter, then pause before advancing. Arrows alone
-change screens without playing them. For service, let the timeline reach the
+Press Space to animate a chapter. It holds automatically at the end; Right
+Arrow advances when the speaker is ready. Arrows alone change screens without
+playing them. Press P for audience view: it hides controls and speaker notes;
+press P again to restore them. F enters full screen. For service, let the timeline reach the
 second departure; for encoding, play past halfway to reveal the source excerpt.
 Use the sample button in the execution chapter; no API credentials are needed.
 
@@ -29,10 +31,10 @@ Use the sample button in the execution chapter; no API credentials are needed.
 |0:30–0:42 | Counterfactual | “Skipping that side leaves both orders incomplete and discards twenty component portions. This is a checked manual intervention.” |
 |0:42–1:04 | Encoding; optionally play the chapter to reveal the code excerpt | “Each bit selects one locally valid batch program, including quantity, resources and times. An anchor block chooses one program or idle. Pairwise conflicts enforce compatibility. We offer every legal program of this small cell.” |
 |1:04–1:29 | Loss | “Main times side represents complete service. Their sum minus twice that product counts unpaired food. Both expand quadratically without product qubits. We prioritize missed meals, waste, batches and changes. Proven bounds establish the priority order and hard-constraint penalty.” |
-|1:29–1:49 | Run; click Sample frozen-angle QAOA | “This is a fresh local execution with saved QAOA angles, not retraining. It samples the invariant sector and checks every returned bitstring. The receipt shows complete meals, waste and valid shots. No service or physical QPU is called.” |
+|1:29–1:49 | Run; click Sample frozen-angle QAOA | “QAOA applies cost phases and blockwise XY mixing, then samples. The mixer preserves one choice per block; the checker still rejects resource and allocation conflicts. This button reuses saved angles for a fresh local sample.” |
 |1:49–2:14 | Results | “All six small-cell trials found the optimum, as did the controls. Six of eight larger final incumbents match their offered-pool optimum, while all trail the raw-grid reference. That measures representation loss separately from search loss.” |
 |2:14–2:34 | VeloxQ | “The same meal model scales to larger VeloxQ workloads. We preserve integer packets and verify returned schedules. This frame will use the owner's final checked settings and comparison.” |
-|2:34–2:45 | Close | “Our contribution connects complete-meal service and waste to a checked quadratic scheduling model. Every selected bit becomes a real batch instruction and a meal outcome.” |
+|2:34–2:45 | Close | “The selected schedule serves twenty meals with no discarded portions. The repository contains the model, proofs, code, all measured trials and the development log.” |
 
 The VeloxQ sentence is a rehearsal placeholder. Replace it with one precise
 measured finding before the final talk. Likewise update the primary-method
@@ -49,9 +51,9 @@ exact bitstring 8 times. The two labels remain distinct: retained replay and
 fresh sampler output. These are repeated executions of one fixed instance,
 not additional independent research trials or evidence of a speedup.
 
-Its sample/evolve/check stage took about 0.1 seconds after imports in the local
-rehearsal. Browser startup, Python imports and the full request have additional
-cost. Do not sell the 0.1 second number as an end-to-end solver comparison.
+Its sample/evolve/check stage took roughly 0.07–0.18 seconds after imports in
+local rehearsals. Browser startup, Python imports and the full request have additional
+cost. Do not present that partial timing as an end-to-end solver comparison.
 
 ## Recovery plan
 

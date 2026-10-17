@@ -12,6 +12,19 @@ current evidence, not the result of experiments still running elsewhere.
 4. “The live action samples frozen QAOA angles locally. It does not retrain or call a QPU.”
 5. “All methods use versioned inputs and the same independent physical checker.”
 
+## Most likely questions: read these first
+
+| Jury question | Short answer |
+|---|---|
+| What is the optimizer deciding? | Batch quantities, allocations, equipment, crew and timing. It selects compatible local batch programs. |
+| What are you minimizing? | Weighted missed complete meals, discarded food, new batches and changes, in that priority order. |
+| Why is it quadratic? | Main coverage times side coverage gives complete service. Both coverage expressions are linear in selection bits. |
+| How is correctness established? | We prove the encoding and penalty bound, then compare exact references and check raw schedules independently. |
+| Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
+| Did QAOA outperform the controls? | No. The controls also attain the cell optimum and tie the final pilot steps. The contribution is the checked model and method study. |
+| Why 35 qubits on a laptop? | The one-hot circuit stays in a 1045-state invariant sector. We simulate that sector, not a dense 35-qubit statevector. |
+| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Use the final integrated owner's receipt for its quality claim. |
+
 ## When the question is unclear
 
 These bridges buy a moment while identifying what the jury wants. Pick one,

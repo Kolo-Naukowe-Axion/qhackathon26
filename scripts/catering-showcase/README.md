@@ -13,7 +13,9 @@ Start from the repository root:
 Open `http://127.0.0.1:4193/` for the video cut, or
 `http://127.0.0.1:4193/?mode=live` for the shorter manual presentation.
 The video route is 260 seconds (4:20); the live route is 165 seconds (2:45).
-Arrows change chapters. Space plays/pauses. F enters full screen.
+Arrows change chapters. Space plays/pauses. In live mode each chapter holds at
+its end until Right Arrow advances. P toggles audience view, hiding all operator
+controls and notes. F enters full screen.
 Speaker notes stay outside the recorded stage. Use a dedicated shared window.
 
 ## What the live button actually does
@@ -40,6 +42,7 @@ and continue. Do not represent replay as completed fresh execution.
 ## Recording and human voiceover
 
 `story.json` is the editable chapter order, duration and narration source.
+`playback.js` handles continuous video timing and live chapter holds.
 `evidence.json` is a small read-only export of the retained audited results,
 including source hashes and an actual compiler excerpt. Final method-owner
 selection and the VeloxQ final comparison remain replacement slots.
@@ -56,7 +59,10 @@ The optional environment path is unnecessary if `playwright` is installed
 normally. Chromium and ffmpeg are required. Capture makes preview stills,
 then opens a separate context for a continuous studio recording. It performs
 one local sample during still QA and one during the recorded execution chapter.
-The result is a silent MP4, with a receipt and actual fresh-sampling metadata.
+The result is a silent MP4, with a receipt, hashes of the studio sources and
+preserved raw fresh samples. The revised capture is under
+`output/playwright/catering-showcase-v2/recording/`. Earlier v1 footage retains
+the old copy and unfinished closing replay; use v2 for further editing.
 
 The visual playback compresses schedule time and edits between explanatory
 screens; it is not a 260-second unedited view of factory time. The sampler action

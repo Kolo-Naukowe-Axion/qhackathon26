@@ -8,14 +8,16 @@ voiceover, upload and submission remain open.
 ## Prepared studio and speaker pack
 
 The executable [private studio](../scripts/catering-showcase/README.md) now
-provides a 4:20 recording route and a 2:45 live route. Start it with
+provides a 4:20 recording route and a 2:45 live route with chapter holds and a
+separate audience view. Start it with
 `.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193`.
 The active [live operator sheet](CATERING_LIVE.md),
 [timecoded narration](CATERING_VOICEOVER.md) and [Q&A desk sheet](CATERING_QA.md)
-supersede the provisional timing and launch instructions below. The silent
+supersede the provisional timing and launch instructions below. The revised silent
 rough cut and capture receipts live locally under ignored
-`output/playwright/catering-showcase-v1/recording/`. They are not uploaded. The existing MP4 predates the latest copy revision;
-re-record from the studio after final results and wording are frozen.
+`output/playwright/catering-showcase-v2/recording/`. They are not uploaded.
+This cut includes the revised copy and completed closing replay. Final owner
+results and human voiceover still need integration.
 
 A real fresh 4096-shot frozen-angle QAOA sample was recorded, with independent
 checking and no training, service or QPU calls. Result: (0,0,2,2), 20 complete

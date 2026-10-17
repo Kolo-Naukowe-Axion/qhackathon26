@@ -99,7 +99,7 @@ measurement. See the owner's report for approved versus still-proposed work.
 | Dated Development Log | Exists. | Final entry records chosen methods, measured outcomes, decisions and verification. |
 | Project Design | Exists with active catering entry and linked math. | Finish coherent current design and cross-check it against selected implementation. |
 | Demo video URL, at most 5 min | Silent 4:20 rough cut and timecoded voiceover draft exist; final owner results and audio pending. | Upload and play through as a viewer. Include real launch/result, code/model/method walkthrough and log summary. |
-| Live presentation, at most 3 min plus about 2 min Q&A | 2:45 executable live route, operator cues, fresh sample and Q&A cheats prepared. | Rehearse actual launch and screen-share layout, prepare fallback, attend assigned slot. |
+| Live presentation, at most 3 min plus about 2 min Q&A | 2:45 executable live route with chapter holds, audience view, operator cues, fresh sample and Q&A cheats prepared. | Rehearse actual launch and screen-share layout, prepare fallback, attend assigned slot. |
 | Organizer submission | No receipt recorded here. | Submit through the supplied form and retain acknowledgment, commit, video URL and team details. |
 
 ## Priorities and freeze
