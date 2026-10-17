@@ -20,12 +20,17 @@ training. Final samples are drawn from the exact distribution.
 from __future__ import annotations
 
 import itertools
+import hashlib
 import math
 import time
 from dataclasses import dataclass, field, asdict
+from pathlib import Path
 
 import numpy as np
 from scipy.optimize import minimize
+
+# Capture at import, so edits on disk during optimization cannot relabel a run.
+SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
 
 
 # --------------------------------------------------------------------------
@@ -697,7 +702,6 @@ def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
     Missing method_config selects RECOMMENDED; supplied configurations are explicit.
     """
     import platform
-    import hashlib
     from collections import Counter
     from pathlib import Path
     from catering.contracts import method_result, save_json
@@ -731,7 +735,7 @@ def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
                                   gradient="adjoint" if r["n_grad"] else "none (gradient-free)",
                                   initializer=f"{spec.init} (no reference/teacher state)", seed_supported=True, repair=False),
                optimized_parameters=np.asarray(r["x"]).tolist(),
-               adapter_sha256=hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
+               adapter_sha256=SOURCE_SHA256,
                optimizer_status=dict(converged=r["converged"], stop=r["stop"]),
                environment=dict(python=platform.python_version(), numpy=np.__version__,
                                 processor=platform.machine(), backend="numpy one-hot-sector / block statevector"),
