@@ -15,6 +15,8 @@ const facing=resource=>resource?.startsWith('C')?'left':'up';
 
 export function buildWorkerTrack(c,worker){
   const rest=REST_SPOTS[worker],horizon=c.instance.horizon_minutes,ops=[];
+  // Cleaning approaches the opposite side of each pot. Its return lane stays
+  // clear of both the cook's cross-stove walk and the cook's resting spot.
   const lane={W1:710,W2:910,W3:870}[worker];
   const route=(from,to)=>corridorRoute(from,to,lane);
   for(const raw of allOperations(c).filter(o=>o.worker===worker).sort((a,b)=>a.start-b.start)){

@@ -164,6 +164,13 @@ campaign in Benchmarks. VeloxQ has a direct results link; the studio still opens
 the small complete cell explicitly. The review also clarified the Python minimum
 and case-specific sector sizes in the setup and Q&A notes.
 
+The final animation review aligned tools with the active pot or counter while
+retaining the larger cooks. Cleaner placement and its return lane avoid pot
+occlusion and collisions. All 153 build tests pass, including a geometric reach
+check across all 16 method views. Six visual checks covered prep, both cookers,
+packing, cleaning and recovery cleaning, including pause/seek consistency.
+No model, schedule, training result or service allowance changed.
+
 ## AI use and remaining steps
 
 Codex assisted with formulation, implementation, experiments, tests and

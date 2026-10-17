@@ -10,7 +10,7 @@ none is a screenshot of a real kitchen or an optimization result.
 | `kitchen-pixel-v2.png` | Earlier background retained as the source for the empty-room edit |
 | `chef-pixel-v1.png` | Transparent 1254 × 1254 reference; not used at runtime |
 
-`chef-sprites.js` draws the runtime cooks as native 16 × 24 animation frames.
+`chef-sprites.js` draws the runtime cooks as native 16 × 24 bodies, with transparent canvas padding for hand-held tools.
 `kitchen-props.js` draws ingredients, pots, flames, cleaning and packed food
 from the checked replay state. Worker routes illustrate the schedule; walking
 time is not an optimized or measured constraint.

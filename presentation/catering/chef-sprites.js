@@ -38,10 +38,11 @@ export function drawChef(ctx,worker,direction,mode,frame,task=''){
       const {grip,tip}=chefToolPose('left',task,frame);
       // The raised forearm, hand and handle share the same pixel anchor.
       r(3,12,3,3,cream);r(1,10,3,3,cream);r(0,8-hand,2,3,c.skin);
-      line(grip,tip,task==='clean'?'#658894':'#88613d');
+      line([grip[0]+1,grip[1]],[tip[0]+1,tip[1]],'#4a392b');
+      line(grip,tip,task==='clean'?'#a5ced0':'#e2bf83');
       r(grip[0],grip[1],2,2,c.skin);
       if(task==='clean'){r(tip[0]-1,tip[1]-1,3,2,'#8fc0cc');r(tip[0]-1,tip[1]-1,3,1,'#d8e8d3');}
-      else{r(tip[0]-1,tip[1]-1,3,2,'#bdbba4');r(tip[0],tip[1],1,1,'#6e7952');}
+      else{r(tip[0]-1,tip[1]-1,3,2,'#eee1bd');r(tip[0],tip[1],1,1,'#6e7952');}
     }else{
       r(5,14-stride,3,4,cream);r(5,17-stride,2,2,c.skin);
     }

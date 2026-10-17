@@ -1,5 +1,7 @@
 // Live cookware is drawn on the same 384 × 256 grid as the environment.
 import { kitchenVisualState } from './kitchen-state.js';
+export const POT_ORIGINS={C1:[144,77],C2:[240,77]};
+export const WORK_SURFACES={P1:[400,512,528,568],K1:[1032,520,1084,556]};
 const r=(ctx,x,y,w,h,color)=>{ctx.fillStyle=color;ctx.fillRect(Math.round(x),Math.round(y),w,h);};
 function pot(ctx,x,y,menu,mode,frame,progress){
   const q=(a,b,w,h,c)=>r(ctx,x+a,y+b,w,h,c);
@@ -33,7 +35,7 @@ export function drawKitchenProps(ctx,c,time){
   const state=kitchenVisualState(c,time),frame=Math.floor(time*4)%4;
   for(const id of ['C1','C2']){
     const s=state.stations[id];
-    if(s.mode==='cook'||s.mode==='clean')pot(ctx,id==='C1'?144:240,77,s.batch?.menu,s.mode,frame,s.progress);
+    if(s.mode==='cook'||s.mode==='clean')pot(ctx,...POT_ORIGINS[id],s.batch?.menu,s.mode,frame,s.progress);
   }
   if(state.stations.P1.mode==='prepare')prep(ctx,state.stations.P1);
   state.waitingPrep.forEach((b,i)=>{r(ctx,148-i*10,133,8,5,'#68694a');r(ctx,147-i*10,132,10,2,'#dfd4ab');r(ctx,149-i*10,131,6,2,b.menu==='A'?'#d8984a':'#6e9045');});

@@ -54,3 +54,29 @@ test('mandatory recovery clean gives the cleaning worker a visible work segment'
   assert.equal(workerPoseAt(track,75).mode,'work');
   assert.equal(workerPoseAt(track,75).task,'clean');
 });
+
+
+import {chefToolPose,CHEF_FRAME} from '../presentation/catering/chef-sprites.js';
+import {POT_ORIGINS,WORK_SURFACES} from '../presentation/catering/kitchen-props.js';
+test('enlarged chef tools reach the active work surface in both replay frames',()=>{
+ // Body size is retained; only transparent tool padding is added.
+ assert.equal(16*CHEF_FRAME.worldScale,112);assert.equal(24*CHEF_FRAME.worldScale,168);
+ assert.equal(CHEF_FRAME.x+CHEF_FRAME.offsetX*CHEF_FRAME.worldScale,-56);
+ assert.equal(CHEF_FRAME.y+CHEF_FRAME.offsetY*CHEF_FRAME.worldScale,-168);
+ for(const c of cases)for(const worker of ['W1','W2','W3']){
+  for(const segment of buildWorkerTrack(c,worker).filter(s=>s.mode==='work'))for(const frame of [0,1]){
+   const pose=workerPoseAt([segment],(segment.start+segment.end)/2);
+   const tool=chefToolPose(pose.direction,pose.task,frame);
+   const x=Math.round(pose.x/4)*4-56+tool.tip[0]*7,y=Math.round(pose.y/4)*4-168+tool.tip[1]*7;
+   if(POT_ORIGINS[segment.resource]){
+    const [cx,cy]=POT_ORIGINS[segment.resource];
+    assert.ok(Math.abs(x-cx*4)<=16&&Math.abs(y-(cy-5)*4)<=12,`${c.id}/${worker}/${pose.task}: tool misses pot at ${x},${y}`);
+    assert.equal(pose.direction,worker==='W2'?'right':'left');
+   }else{
+    const [left,top,right,bottom]=WORK_SURFACES[segment.resource];
+    assert.ok(x>=left&&x<=right&&y>=top&&y<=bottom,`${pose.task}: tool misses counter at ${x},${y}`);
+   }
+   for(const point of [tool.tip,tool.grip])assert.ok(point[0]+8>=0&&point[0]+8<32&&point[1]+8>=0&&point[1]+8<32);
+  }
+ }
+});
