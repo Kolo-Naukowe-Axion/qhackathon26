@@ -1,5 +1,82 @@
 # QPoland Quantum Hackathon — running context
 
+## V3 implementation, frozen inputs and local verification — 17 October
+
+The dual-award direction is now concrete. Read catering/README.md and the top
+of docs/CATERING_QUANTUM_FIRST.md. Paired-meal scoring/checking, one-hot XY
+compiler, exact-sector QAOA pilot, actual Qiskit exporter, offered-domain CP,
+lossless bounded allocation enumeration, immutable input builder and evidence
+verifier are implemented. No IBM or VeloxQ call, token use or credit spending.
+
+Frozen research release output/catering-foundation-v3 has four six-customer
+cases,33/35/31/35bit quantum portfolios and nested128/256bit scale pools.
+Raw release optima: S0(2,0,6,6),S1(3,0,5,5),S2(2,1,6,6),S3(3,1,6,6).
+Fixed quantum portfolios still lose service; they are not final kitchen solves.
+Eight predeclared dynamic QAOA runs at output/catering-paired-pilot-v1 all
+improve their empty initializers but trail raw CP. Preserve every negative run.
+
+The separate output/catering-complete-cell-v3 includes all32legal programs,
+35data qubits (3idle),1045sector states,59physically feasible states. Raw CP,
+encoded CP, subset audit and exact-sector reference agree on(0,0,2,2). All6
+p1/p2simulator trials recover that optimum, as do initializer/mixer-only controls.
+It is a complete small-cell correctness example, not advantage. An actual
+QAOA sample is exported to output/catering-complete-cell-demo-v3.json for UI.
+The current other-chat presentation/catering exporter still uses foundation-v1;
+it must be ported before presentation, despite its passing animation tests.
+
+Independent output/catering-v3-verification.json rechecks965artifact hashes,
+152340retained bitstrings,467003sample frequencies and8final raw plans.
+Offline35qubit circuit audits give925CX(pilot) and1914CX(complete cell) on
+synthetic57nodeheavyhex, not actual IBM target estimates. Width alone is not
+hardware readiness. Current tests:44Python cases (one SDK test skipped there),
+separate Qiskit test passes; npm run build passes with current UI worktree.
+Preserve concurrent UI/package/test edits. V2inputs remain unchanged.
+Older unbuilt/unpushed-profile notes below are historical; consult actual Git
+state for remote publication, and do not assume teammate notification.
+
+## Accepted priority: one entry targeting both prizes — 17 October
+
+The user explicitly chose optimizing for winning the hackathon rather than
+demonstrating quantum advantage, and wants to target VeloxQ too. Keep catering
+as the integrated production-scheduling extension; finish correct paired-meal
+math, checked quantum outputs, matched references/scaling and the game-style
+demo/docs. QAOA is the current working default; compare with the existing VQE
+human track and feature whichever method's real results justify. Standalone
+SAT/exact-cover advantage research and speculative cluster growth are parked.
+The other three people retain VeloxQ/QAOA/VQE ownership; no messages sent.
+
+VeloxQ should solve larger/broader cases of this same declared model, share
+smallQUBOs/checker with the other methods and produce measured quality,
+feasibility, reference gaps and full runtime insight. Paper capacity is not
+account entitlement and no service advantage is promised. The supplied PDF
+Section15lists2000PLNoverall and1000PLNbestVeloxQ, with no explicit exclusion;
+simultaneous awards to one team are not explicitly confirmed. Calls/uploads/
+credentials/credit spending and IBM execution remain on hold. Preparing a
+dual-award entry does not itself lift the spending hold. V3code/docs and local
+screens remain unpushed; do not imply teammates have received the new profile.
+
+## Paired-meal quantum workload and hardness gate — 17 October
+
+The user wants a meaningful quantum-first problem given reported156-qubitIBM,
+48GBMac and90+GBH100 access. New local paired-course v3 code requires main AND
+side for a delivered meal, encodes completion/disposal quadratically without
+product auxiliaries, and uses one-hot anchor blocks with local XY mixers.
+Cross-block conflicts remain penalized; it is not a fully feasible mixer.
+Quantum-led changing portfolios preserve incumbents; noCPteacher/repair.
+This is not yet the frozen remote handoff. See the current top sections of
+docs/CATERING_QUANTUM_FIRST.md; its older MIS-only section is historical.
+
+Fresh local screen output/catering-paired-classical-screen-v1: S3customers4/8/12,
+five seconds each, fourCPworkers, seed2026. N4OPTIMAL0.492s (3,1,4,4);
+N8FEASIBLE5.002s (4,1,7,7), with minimumU4already certified by scalar bound;
+N12FEASIBLE5.005s (5,1,11,11), bound permits U3. A timeout is not intrinsic
+hardness or difficulty finding good plans. A35-qubit one-hot sector may contain
+only279,936states and be exactly enumerable. Existing exploratory quantum
+pilots remain worse than rawCP; no quantum advantage is established.
+Prioritize matched controller/mixer comparisons and actual compiled depth over
+qubit padding or arbitrary complexity. NoIBM/VeloxQ/H100 calls accompanied this
+screen. Preserve other people's UI edits and all execution holds.
+
 ## Classical reference design — 17 October
 
 The user requested the classical solution design. The concrete design is now

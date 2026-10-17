@@ -1,5 +1,15 @@
 # Catering production: a concrete dual-award proposal
 
+**Accepted implementation direction:** one catering-production project targets
+both awards. See [the current method and evidence](CATERING_QUANTUM_FIRST.md),
+[V3 shared-input contract](CATERING_SOLVER_CONTRACT.md) and
+[quick start](../catering/README.md). Paired-meal complete-cell and nested
+128/256-variable research inputs now exist, with local references and a retained
+QAOA pilot. Actual VeloxQ execution remains held. The extensive proposal and
+earlier decisions below are historical/design context, not current result claims.
+The supplied rules do not explicitly settle whether one team can receive both
+prizes; targeting both is the accepted strategy, not an eligibility guarantee.
+
 Decision memo, 17 October 2026. Research and proposed problem definition, not an
 executed VeloxQ experiment or a claim of industrial deployment. The optional
 offline algebra probe described below is a separate, much smaller model.

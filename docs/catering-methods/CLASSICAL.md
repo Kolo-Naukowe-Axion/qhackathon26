@@ -1,9 +1,39 @@
 # Classical reference design for the quantum-first catering project
 
-17 October 2026. This design uses the corrected repair-clean v2 semantics.
+17 October 2026. The active extension is paired-course v3, retaining the
+corrected repair-clean v2 physical policies. The lower sections document the
+base raw scheduling model; the following additions define whole-meal scoring.
 The classical track establishes reference values, checks the formulation and
 measures any loss from restricting quantum inputs. Quantum samples decode to
 their own schedules; the reference solver does not finish or repair them.
+
+## Current V3implementation and retained evidence
+
+`native_slots.solve_native` now introduces a classical Boolean completion flag
+for each meal and enforces complete=main_covered AND side_covered. U counts
+weighted incomplete meals; W adds main+side-2*complete for unpaired waste.
+These are classical CP variables, not additional QUBO or hardware qubits.
+The emitted plan is independently checked for actual complete handovers,
+unpaired disposal and per-batch material balance. Mandatory repair cleaning
+and disabled aggregate/phase-aware mechanisms are unchanged.
+
+`meal_reference.solve_bundle` minimizes the same offered quadratic objective
+with exact one-hot and crossing-conflict constraints. The compiler's full-span
+penalty proof makes its optimum equal the literal QUBO ground energy. This
+reference reads the shared graph; distinguish it from the raw reference that
+does not enumerate programs or read QUBO conflicts. Exact sector enumeration
+also covers the small quantum portfolios. Existing literal SA supports the
+new objective without repair.
+
+`output/catering-foundation-v3/` freezes four6customer inputs, exact raw tuples
+S0=(2,0,6,6),S1=(3,0,5,5),S2=(2,1,6,6),S3=(3,1,6,6), plus nested fixed
+quantum/128/256bit restrictions. Their reference statuses/gaps are per-file;
+an offered-domain optimum is not a raw optimum. The separate complete35qubit
+cell at `output/catering-complete-cell-v3/` has no option cap and certifies
+(0,0,2,2) using raw CP, offered CP, independent subset checking and sector
+enumeration. It is deliberately classically easy. The larger QAOA pilot is
+retained with negative quality gaps; neither experiment establishes quantum
+or VeloxQ superiority. Reproduce and verify using catering/README.md.
 
 ## 1. Three reference tasks
 

@@ -1,0 +1,309 @@
+{
+  "calendars": {
+    "C1": [
+      [
+        0,
+        160
+      ]
+    ],
+    "C2": [
+      [
+        0,
+        160
+      ]
+    ],
+    "K1": [
+      [
+        0,
+        160
+      ]
+    ],
+    "P1": [
+      [
+        0,
+        160
+      ]
+    ],
+    "W1": [
+      [
+        0,
+        160
+      ]
+    ],
+    "W2": [
+      [
+        0,
+        160
+      ]
+    ],
+    "W3": [
+      [
+        0,
+        160
+      ]
+    ]
+  },
+  "capacities": {
+    "holding": false,
+    "ingredients": false,
+    "power": false
+  },
+  "demand_groups": [
+    {
+      "departure": 80,
+      "id": "A/11:50",
+      "lots": 1,
+      "menu": "A",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 80,
+      "id": "committed/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 100,
+      "id": "customer-0/main",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 100,
+      "id": "customer-0/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 120,
+      "id": "customer-1/main",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 120,
+      "id": "customer-1/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 140,
+      "id": "customer-2/main",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 140,
+      "id": "customer-2/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 160,
+      "id": "customer-3/main",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 160,
+      "id": "customer-3/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 0
+    }
+  ],
+  "equipment": {
+    "cook": [
+      "C1",
+      "C2"
+    ],
+    "pack": [
+      "K1"
+    ],
+    "prepare": [
+      "P1"
+    ]
+  },
+  "event_time": 20,
+  "fixed_batches": [
+    {
+      "allocation_order": [
+        "A/11:50"
+      ],
+      "cook_start": 10,
+      "cooker": "C1",
+      "id": "batch-87a2cab16e2943a00488",
+      "menu": "A",
+      "pack_start": 60,
+      "prep_start": 0,
+      "prep_station": "P1",
+      "workers": {
+        "clean": "W2",
+        "cook": "W3",
+        "pack": "W1",
+        "prepare": "W1"
+      },
+      "yield_lots": 1
+    }
+  ],
+  "grid_minutes": 10,
+  "horizon_minutes": 160,
+  "instance_id": "paired-lunch-4-v1",
+  "lot_size": 10,
+  "menus": {
+    "A": {
+      "clean": 10,
+      "cook_attendance": 10,
+      "cooking": {
+        "1": 50
+      },
+      "max_age": 30,
+      "pack_per_lot": 10,
+      "prepare": 10,
+      "yields": [
+        1
+      ]
+    },
+    "B": {
+      "clean": 10,
+      "cook_attendance": 10,
+      "cooking": {
+        "1": 20,
+        "2": 20
+      },
+      "max_age": 40,
+      "pack_per_lot": 10,
+      "prepare": 10,
+      "yields": [
+        1,
+        2
+      ]
+    },
+    "C": {
+      "clean": 10,
+      "cook_attendance": 10,
+      "cooking": {
+        "1": 10,
+        "2": 20
+      },
+      "max_age": 40,
+      "pack_per_lot": 10,
+      "prepare": 10,
+      "yields": [
+        1,
+        2
+      ]
+    }
+  },
+  "outage": {
+    "end": 60,
+    "resource": "C2",
+    "start": 20
+  },
+  "policies": {
+    "continuation": "whole_started_batch",
+    "objective": [
+      "U",
+      "W",
+      "B",
+      "R"
+    ],
+    "outage": "idle_capacity_withdrawal",
+    "packing": "contiguous",
+    "surplus": "discard_at_cook_end"
+  },
+  "previous_unstarted": [],
+  "profile_id": "paired-course-contiguous.v3",
+  "repair_clean_minutes": 10,
+  "schema_version": "catering-instance.v1",
+  "service_model": {
+    "kind": "two-course-unit.v1",
+    "meals": [
+      {
+        "id": "committed",
+        "main": "A/11:50",
+        "priority": 1,
+        "side": "committed/side"
+      },
+      {
+        "id": "customer-0",
+        "main": "customer-0/main",
+        "priority": 1,
+        "side": "customer-0/side"
+      },
+      {
+        "id": "customer-1",
+        "main": "customer-1/main",
+        "priority": 1,
+        "side": "customer-1/side"
+      },
+      {
+        "id": "customer-2",
+        "main": "customer-2/main",
+        "priority": 1,
+        "side": "customer-2/side"
+      },
+      {
+        "id": "customer-3",
+        "main": "customer-3/main",
+        "priority": 1,
+        "side": "customer-3/side"
+      },
+      {
+        "id": "urgent",
+        "main": "urgent/main",
+        "priority": 1,
+        "side": "urgent/side"
+      }
+    ]
+  },
+  "time_origin": "10:30",
+  "urgent_groups": [
+    {
+      "departure": 160,
+      "id": "urgent/main",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 20
+    },
+    {
+      "departure": 160,
+      "id": "urgent/side",
+      "lots": 1,
+      "menu": "C",
+      "priority": 1,
+      "revealed": 20
+    }
+  ],
+  "workers": {
+    "W1": [
+      "prepare",
+      "pack"
+    ],
+    "W2": [
+      "clean"
+    ],
+    "W3": [
+      "cook"
+    ]
+  }
+}

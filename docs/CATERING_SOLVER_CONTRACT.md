@@ -1,6 +1,37 @@
 # Catering solver contract v1 — foundation handoff design
 
-Current common release: output/catering-foundation-v2/. V1 S2/S3 omitted the
+New shared research release: `output/catering-foundation-v3/`, profile
+`paired-course-contiguous.v3`, encoding `paired-course-anchor-onehot.v1`.
+The accepted goal is one integrated entry for the overall and VeloxQ awards,
+not a quantum-advantage requirement. The existing v2 handoff remains available;
+owners explicitly select the new profile and bundle hashes. Fixed v3 quantum
+portfolios have measured losses and are not final full-kitchen answers.
+
+### V3 additions that every method must respect
+
+- A complete meal needs both main and side. U counts weighted complete meal
+  misses; W counts component waste, including unpaired reserved components.
+- `service_model` defines the pairing. Plan `allocations` are component
+  reservations; actual deliveries are `meal_handovers`. `unpaired_disposals`
+  must preserve the independent per-batch material balance.
+- `onehot_groups` gives program_indices, idle_index and all indices. The idle
+  qubit is a real data qubit. No missed-demand or product registers are used.
+- `objective.quadratic` is present in addition to its constant and linear
+  terms. Do not score only the linear objective or reuse the v2 missed-register
+  master. The central energy/Ising/decoder helpers support this encoding.
+- The literal QUBO includes one-hot and crossing physical-conflict penalties.
+  XY preserves the former only. Generic ansatzes may leave the one-hot sector;
+  returning those samples is allowed, but the evaluator marks them invalid.
+- `parent_domain_kind` identifies a hash of all generated local program IDs,
+  not a full compiled parent QUBO. All offered pools remain restrictions.
+- `catering.meal_reference.solve_bundle` is the same-offered-domain reference;
+  it reads conflict constraints. `native_slots.solve_native` remains the raw
+  reference independent of option enumeration and QUBO conflict terms.
+- Scale widths128/256 refer to total encoded bits including idle qubits.
+  Compare operational tuples across widths; weights/raw energy can differ.
+
+The old `core-contiguous-repair-clean.v2` contract below remains a regression
+profile. Its release is output/catering-foundation-v2/. V1 S2/S3 omitted the
 mandatory repair clean and are superseded. V2 snapshots include immutable
 recovery_operations; decoders must preserve these equipment/worker reservations
 in the raw plan. The conservative earliest-fixed-compatible policy reserves

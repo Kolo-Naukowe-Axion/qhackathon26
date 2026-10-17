@@ -14,6 +14,8 @@ from .qubo import validate_bundle
 
 def compile_unit_qubo(instance, state, programs, *, representation="unit-demand-complete", parent_sha256=None):
     validate_instance(instance)
+    if instance.get("service_model"):
+        raise ValueError("Complete meals require the paired-course objective compiler")
     remaining = residual_demand(state)
     if any(q != 1 for q in remaining.values()):
         raise ValueError("Slack-free encoding requires unit residual demand groups")

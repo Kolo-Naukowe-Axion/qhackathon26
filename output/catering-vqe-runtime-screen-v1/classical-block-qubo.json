@@ -1,0 +1,1826 @@
+{
+  "schema_version": "catering-qubo.v1",
+  "bundle_id": "paired-lunch-6-v1/S3/meal-block-16",
+  "case_id": "paired-lunch-6-v1/S3",
+  "profile_id": "paired-course-contiguous.v3",
+  "scenario_id": "S3",
+  "instance": {
+    "schema_version": "catering-instance.v1",
+    "instance_id": "paired-lunch-6-v1",
+    "profile_id": "paired-course-contiguous.v3",
+    "time_origin": "10:30",
+    "horizon_minutes": 200,
+    "grid_minutes": 10,
+    "lot_size": 10,
+    "event_time": 20,
+    "menus": {
+      "A": {
+        "yields": [
+          1
+        ],
+        "prepare": 10,
+        "cooking": {
+          "1": 50
+        },
+        "cook_attendance": 10,
+        "pack_per_lot": 10,
+        "clean": 10,
+        "max_age": 30
+      },
+      "B": {
+        "yields": [
+          1,
+          2
+        ],
+        "prepare": 10,
+        "cooking": {
+          "1": 20,
+          "2": 20
+        },
+        "cook_attendance": 10,
+        "pack_per_lot": 10,
+        "clean": 10,
+        "max_age": 40
+      },
+      "C": {
+        "yields": [
+          1,
+          2
+        ],
+        "prepare": 10,
+        "cooking": {
+          "1": 10,
+          "2": 20
+        },
+        "cook_attendance": 10,
+        "pack_per_lot": 10,
+        "clean": 10,
+        "max_age": 40
+      }
+    },
+    "equipment": {
+      "prepare": [
+        "P1"
+      ],
+      "cook": [
+        "C1",
+        "C2"
+      ],
+      "pack": [
+        "K1"
+      ]
+    },
+    "workers": {
+      "W1": [
+        "prepare",
+        "pack"
+      ],
+      "W2": [
+        "clean"
+      ],
+      "W3": [
+        "cook"
+      ]
+    },
+    "calendars": {
+      "P1": [
+        [
+          0,
+          200
+        ]
+      ],
+      "C1": [
+        [
+          0,
+          200
+        ]
+      ],
+      "C2": [
+        [
+          0,
+          200
+        ]
+      ],
+      "K1": [
+        [
+          0,
+          200
+        ]
+      ],
+      "W1": [
+        [
+          0,
+          200
+        ]
+      ],
+      "W2": [
+        [
+          0,
+          200
+        ]
+      ],
+      "W3": [
+        [
+          0,
+          200
+        ]
+      ]
+    },
+    "demand_groups": [
+      {
+        "id": "A/11:50",
+        "menu": "A",
+        "lots": 1,
+        "departure": 80,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "committed/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 80,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-0/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 100,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-0/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 100,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-1/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 120,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-1/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 120,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-2/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 140,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-2/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 140,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-3/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 160,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-3/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 160,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-4/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 180,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-4/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 180,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-5/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-5/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 0,
+        "priority": 1
+      }
+    ],
+    "urgent_groups": [
+      {
+        "id": "urgent/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 20,
+        "priority": 1
+      },
+      {
+        "id": "urgent/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 20,
+        "priority": 1
+      }
+    ],
+    "outage": {
+      "resource": "C2",
+      "start": 20,
+      "end": 60
+    },
+    "policies": {
+      "continuation": "whole_started_batch",
+      "outage": "idle_capacity_withdrawal",
+      "packing": "contiguous",
+      "surplus": "discard_at_cook_end",
+      "objective": [
+        "U",
+        "W",
+        "B",
+        "R"
+      ]
+    },
+    "capacities": {
+      "ingredients": false,
+      "holding": false,
+      "power": false
+    },
+    "repair_clean_minutes": 10,
+    "fixed_batches": [
+      {
+        "menu": "A",
+        "yield_lots": 1,
+        "prep_station": "P1",
+        "cooker": "C1",
+        "prep_start": 0,
+        "cook_start": 10,
+        "pack_start": 60,
+        "workers": {
+          "prepare": "W1",
+          "cook": "W3",
+          "pack": "W1",
+          "clean": "W2"
+        },
+        "allocation_order": [
+          "A/11:50"
+        ],
+        "id": "batch-87a2cab16e2943a00488"
+      }
+    ],
+    "previous_unstarted": [],
+    "service_model": {
+      "kind": "two-course-unit.v1",
+      "meals": [
+        {
+          "id": "committed",
+          "main": "A/11:50",
+          "side": "committed/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-0",
+          "main": "customer-0/main",
+          "side": "customer-0/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-1",
+          "main": "customer-1/main",
+          "side": "customer-1/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-2",
+          "main": "customer-2/main",
+          "side": "customer-2/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-3",
+          "main": "customer-3/main",
+          "side": "customer-3/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-4",
+          "main": "customer-4/main",
+          "side": "customer-4/side",
+          "priority": 1
+        },
+        {
+          "id": "customer-5",
+          "main": "customer-5/main",
+          "side": "customer-5/side",
+          "priority": 1
+        },
+        {
+          "id": "urgent",
+          "main": "urgent/main",
+          "side": "urgent/side",
+          "priority": 1
+        }
+      ]
+    }
+  },
+  "snapshot": {
+    "schema_version": "catering-snapshot.v1",
+    "scenario_id": "S3",
+    "current_time": 20,
+    "demand_groups": [
+      {
+        "id": "A/11:50",
+        "menu": "A",
+        "lots": 1,
+        "departure": 80,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "committed/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 80,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-0/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 100,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-0/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 100,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-1/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 120,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-1/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 120,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-2/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 140,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-2/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 140,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-3/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 160,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-3/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 160,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-4/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 180,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-4/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 180,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-5/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "customer-5/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 0,
+        "priority": 1
+      },
+      {
+        "id": "urgent/main",
+        "menu": "B",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 20,
+        "priority": 1
+      },
+      {
+        "id": "urgent/side",
+        "menu": "C",
+        "lots": 1,
+        "departure": 200,
+        "revealed": 20,
+        "priority": 1
+      }
+    ],
+    "fixed_batches": [
+      {
+        "menu": "A",
+        "yield_lots": 1,
+        "prep_station": "P1",
+        "cooker": "C1",
+        "prep_start": 0,
+        "cook_start": 10,
+        "pack_start": 60,
+        "workers": {
+          "prepare": "W1",
+          "cook": "W3",
+          "pack": "W1",
+          "clean": "W2"
+        },
+        "allocation_order": [
+          "A/11:50"
+        ],
+        "id": "batch-87a2cab16e2943a00488"
+      }
+    ],
+    "previous_unstarted": [],
+    "outages": [
+      {
+        "resource": "C2",
+        "start": 20,
+        "end": 60
+      }
+    ],
+    "common_prefix_sha256": "a1702e71781d035081dc3feef8d6223bb18a02ac1bca2fdc259da57f20c829a3",
+    "recovery_policy": "earliest_fixed_compatible_clean",
+    "recovery_operations": [
+      {
+        "id": "repair-clean:C2",
+        "kind": "recovery_clean",
+        "resource": "C2",
+        "worker": "W2",
+        "start": 70,
+        "end": 80,
+        "repair_end": 60
+      }
+    ]
+  },
+  "instance_sha256": "71981152821ea4d725fe2c2d9191473132f5a3d4c5549a6dd2036997382b237d",
+  "snapshot_sha256": "cac902e4db763b5494b25ffa0ffea70d2bbc2b3537669fe33f1cd43e47649272",
+  "encoding": "paired-course-anchor-onehot.v1",
+  "representation_id": "paired-course-block-16",
+  "parent_sha256": null,
+  "parent_domain_kind": "All generated local program IDs; not a complete QUBO hash",
+  "scope": "Complete on the explicitly offered local program domain; restriction of the physical grid",
+  "options": [
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 110,
+      "cook_start": 150,
+      "pack_start": 170,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "urgent/side",
+        "customer-5/side"
+      ],
+      "id": "batch-0a55574d5ca97bd69bb4"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 1,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 30,
+      "cook_start": 70,
+      "pack_start": 90,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-0/main"
+      ],
+      "id": "batch-0fe4568c105753b2cc5d"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 1,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 80,
+      "cook_start": 90,
+      "pack_start": 110,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-2/side"
+      ],
+      "id": "batch-286d40992e0c7c9d4c4e"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 1,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 20,
+      "cook_start": 100,
+      "pack_start": 130,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-3/main"
+      ],
+      "id": "batch-288972253b6e0955dced"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 70,
+      "cook_start": 140,
+      "pack_start": 170,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-4/side",
+        "urgent/side"
+      ],
+      "id": "batch-32ffb5547217dd89d7ac"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 1,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 30,
+      "cook_start": 70,
+      "pack_start": 90,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-0/side"
+      ],
+      "id": "batch-5a632c7d5891281e22e3"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 50,
+      "cook_start": 70,
+      "pack_start": 90,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-0/main",
+        "customer-1/main"
+      ],
+      "id": "batch-5d3805e8c3c7a3f7b190"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 20,
+      "cook_start": 120,
+      "pack_start": 150,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-4/main"
+      ],
+      "id": "batch-69b7cc7724075b0bbbcc"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 110,
+      "cook_start": 140,
+      "pack_start": 180,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "urgent/main"
+      ],
+      "id": "batch-6f008e8f1577778016d1"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 1,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 50,
+      "cook_start": 70,
+      "pack_start": 100,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-1/main"
+      ],
+      "id": "batch-83c00f9a244be0441c7a"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 80,
+      "cook_start": 140,
+      "pack_start": 190,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-5/side"
+      ],
+      "id": "batch-8acd0b41669c85959efc"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C1",
+      "prep_start": 20,
+      "cook_start": 80,
+      "pack_start": 100,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-2/side",
+        "customer-1/side"
+      ],
+      "id": "batch-9979bcd3bb0eb3b1011d"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 50,
+      "cook_start": 150,
+      "pack_start": 190,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "urgent/side"
+      ],
+      "id": "batch-9f23dbacb29a4b35c1a0"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 20,
+      "cook_start": 100,
+      "pack_start": 130,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-2/main"
+      ],
+      "id": "batch-9fcc7fd4798c4c6638f1"
+    },
+    {
+      "menu": "C",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 100,
+      "cook_start": 120,
+      "pack_start": 140,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "customer-4/side",
+        "customer-3/side"
+      ],
+      "id": "batch-b398a344f072f3986b96"
+    },
+    {
+      "menu": "B",
+      "yield_lots": 2,
+      "prep_station": "P1",
+      "cooker": "C2",
+      "prep_start": 90,
+      "cook_start": 140,
+      "pack_start": 180,
+      "workers": {
+        "prepare": "W1",
+        "cook": "W3",
+        "pack": "W1",
+        "clean": "W2"
+      },
+      "allocation_order": [
+        "urgent/main",
+        "customer-5/main"
+      ],
+      "id": "batch-f74659fc5521b832f088"
+    }
+  ],
+  "variable_order": [
+    "option:batch-0a55574d5ca97bd69bb4",
+    "option:batch-0fe4568c105753b2cc5d",
+    "option:batch-286d40992e0c7c9d4c4e",
+    "option:batch-288972253b6e0955dced",
+    "option:batch-32ffb5547217dd89d7ac",
+    "option:batch-5a632c7d5891281e22e3",
+    "option:batch-5d3805e8c3c7a3f7b190",
+    "option:batch-69b7cc7724075b0bbbcc",
+    "option:batch-6f008e8f1577778016d1",
+    "option:batch-83c00f9a244be0441c7a",
+    "option:batch-8acd0b41669c85959efc",
+    "option:batch-9979bcd3bb0eb3b1011d",
+    "option:batch-9f23dbacb29a4b35c1a0",
+    "option:batch-9fcc7fd4798c4c6638f1",
+    "option:batch-b398a344f072f3986b96",
+    "option:batch-f74659fc5521b832f088",
+    "idle:customer-0/main",
+    "idle:customer-0/side",
+    "idle:customer-1/main",
+    "idle:customer-1/side",
+    "idle:customer-2/main",
+    "idle:customer-2/side",
+    "idle:customer-3/main",
+    "idle:customer-3/side",
+    "idle:customer-4/main",
+    "idle:customer-4/side",
+    "idle:customer-5/main",
+    "idle:customer-5/side",
+    "idle:urgent/main",
+    "idle:urgent/side"
+  ],
+  "registers": [],
+  "onehot_groups": [
+    {
+      "anchor": "customer-0/main",
+      "program_indices": [
+        1,
+        6
+      ],
+      "idle_index": 16,
+      "indices": [
+        1,
+        6,
+        16
+      ]
+    },
+    {
+      "anchor": "customer-0/side",
+      "program_indices": [
+        5
+      ],
+      "idle_index": 17,
+      "indices": [
+        5,
+        17
+      ]
+    },
+    {
+      "anchor": "customer-1/main",
+      "program_indices": [
+        9
+      ],
+      "idle_index": 18,
+      "indices": [
+        9,
+        18
+      ]
+    },
+    {
+      "anchor": "customer-1/side",
+      "program_indices": [
+        11
+      ],
+      "idle_index": 19,
+      "indices": [
+        11,
+        19
+      ]
+    },
+    {
+      "anchor": "customer-2/main",
+      "program_indices": [
+        13
+      ],
+      "idle_index": 20,
+      "indices": [
+        13,
+        20
+      ]
+    },
+    {
+      "anchor": "customer-2/side",
+      "program_indices": [
+        2
+      ],
+      "idle_index": 21,
+      "indices": [
+        2,
+        21
+      ]
+    },
+    {
+      "anchor": "customer-3/main",
+      "program_indices": [
+        3
+      ],
+      "idle_index": 22,
+      "indices": [
+        3,
+        22
+      ]
+    },
+    {
+      "anchor": "customer-3/side",
+      "program_indices": [
+        14
+      ],
+      "idle_index": 23,
+      "indices": [
+        14,
+        23
+      ]
+    },
+    {
+      "anchor": "customer-4/main",
+      "program_indices": [
+        7
+      ],
+      "idle_index": 24,
+      "indices": [
+        7,
+        24
+      ]
+    },
+    {
+      "anchor": "customer-4/side",
+      "program_indices": [
+        4
+      ],
+      "idle_index": 25,
+      "indices": [
+        4,
+        25
+      ]
+    },
+    {
+      "anchor": "customer-5/main",
+      "program_indices": [
+        15
+      ],
+      "idle_index": 26,
+      "indices": [
+        15,
+        26
+      ]
+    },
+    {
+      "anchor": "customer-5/side",
+      "program_indices": [
+        0,
+        10
+      ],
+      "idle_index": 27,
+      "indices": [
+        0,
+        10,
+        27
+      ]
+    },
+    {
+      "anchor": "urgent/main",
+      "program_indices": [
+        8
+      ],
+      "idle_index": 28,
+      "indices": [
+        8,
+        28
+      ]
+    },
+    {
+      "anchor": "urgent/side",
+      "program_indices": [
+        12
+      ],
+      "idle_index": 29,
+      "indices": [
+        12,
+        29
+      ]
+    }
+  ],
+  "conflicts": [
+    [
+      0,
+      2
+    ],
+    [
+      0,
+      4
+    ],
+    [
+      0,
+      8
+    ],
+    [
+      0,
+      11
+    ],
+    [
+      0,
+      12
+    ],
+    [
+      0,
+      15
+    ],
+    [
+      1,
+      2
+    ],
+    [
+      1,
+      5
+    ],
+    [
+      1,
+      9
+    ],
+    [
+      1,
+      11
+    ],
+    [
+      1,
+      15
+    ],
+    [
+      2,
+      6
+    ],
+    [
+      2,
+      8
+    ],
+    [
+      2,
+      9
+    ],
+    [
+      2,
+      10
+    ],
+    [
+      2,
+      11
+    ],
+    [
+      3,
+      7
+    ],
+    [
+      3,
+      11
+    ],
+    [
+      3,
+      13
+    ],
+    [
+      3,
+      14
+    ],
+    [
+      4,
+      8
+    ],
+    [
+      4,
+      10
+    ],
+    [
+      4,
+      12
+    ],
+    [
+      4,
+      14
+    ],
+    [
+      4,
+      15
+    ],
+    [
+      5,
+      6
+    ],
+    [
+      5,
+      9
+    ],
+    [
+      5,
+      11
+    ],
+    [
+      5,
+      15
+    ],
+    [
+      6,
+      9
+    ],
+    [
+      6,
+      11
+    ],
+    [
+      6,
+      12
+    ],
+    [
+      6,
+      14
+    ],
+    [
+      6,
+      15
+    ],
+    [
+      7,
+      8
+    ],
+    [
+      7,
+      11
+    ],
+    [
+      7,
+      13
+    ],
+    [
+      7,
+      14
+    ],
+    [
+      7,
+      15
+    ],
+    [
+      8,
+      10
+    ],
+    [
+      8,
+      11
+    ],
+    [
+      8,
+      12
+    ],
+    [
+      8,
+      14
+    ],
+    [
+      8,
+      15
+    ],
+    [
+      9,
+      11
+    ],
+    [
+      9,
+      12
+    ],
+    [
+      9,
+      14
+    ],
+    [
+      10,
+      12
+    ],
+    [
+      10,
+      15
+    ],
+    [
+      11,
+      13
+    ],
+    [
+      11,
+      14
+    ],
+    [
+      12,
+      15
+    ],
+    [
+      13,
+      14
+    ],
+    [
+      14,
+      15
+    ]
+  ],
+  "constant": "2312867",
+  "linear": [
+    "-159799",
+    "-160088",
+    "-160088",
+    "-160088",
+    "-159799",
+    "-160088",
+    "-159799",
+    "-159799",
+    "-159799",
+    "-160088",
+    "-159799",
+    "-159799",
+    "-159799",
+    "-159799",
+    "-159799",
+    "-159799",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395",
+    "-160395"
+  ],
+  "quadratic": [
+    {
+      "i": 0,
+      "j": 2,
+      "value": "160395"
+    },
+    {
+      "i": 0,
+      "j": 4,
+      "value": "160395"
+    },
+    {
+      "i": 0,
+      "j": 8,
+      "value": "151436"
+    },
+    {
+      "i": 0,
+      "j": 10,
+      "value": "320790"
+    },
+    {
+      "i": 0,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 0,
+      "j": 12,
+      "value": "160395"
+    },
+    {
+      "i": 0,
+      "j": 15,
+      "value": "142477"
+    },
+    {
+      "i": 0,
+      "j": 27,
+      "value": "320790"
+    },
+    {
+      "i": 1,
+      "j": 2,
+      "value": "160395"
+    },
+    {
+      "i": 1,
+      "j": 5,
+      "value": "151436"
+    },
+    {
+      "i": 1,
+      "j": 6,
+      "value": "320790"
+    },
+    {
+      "i": 1,
+      "j": 9,
+      "value": "160395"
+    },
+    {
+      "i": 1,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 1,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 1,
+      "j": 16,
+      "value": "320790"
+    },
+    {
+      "i": 2,
+      "j": 6,
+      "value": "160395"
+    },
+    {
+      "i": 2,
+      "j": 8,
+      "value": "160395"
+    },
+    {
+      "i": 2,
+      "j": 9,
+      "value": "160395"
+    },
+    {
+      "i": 2,
+      "j": 10,
+      "value": "160395"
+    },
+    {
+      "i": 2,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 2,
+      "j": 13,
+      "value": "-8959"
+    },
+    {
+      "i": 2,
+      "j": 21,
+      "value": "320790"
+    },
+    {
+      "i": 3,
+      "j": 7,
+      "value": "160395"
+    },
+    {
+      "i": 3,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 3,
+      "j": 13,
+      "value": "160395"
+    },
+    {
+      "i": 3,
+      "j": 14,
+      "value": "151436"
+    },
+    {
+      "i": 3,
+      "j": 22,
+      "value": "320790"
+    },
+    {
+      "i": 4,
+      "j": 7,
+      "value": "-8959"
+    },
+    {
+      "i": 4,
+      "j": 8,
+      "value": "151436"
+    },
+    {
+      "i": 4,
+      "j": 10,
+      "value": "160395"
+    },
+    {
+      "i": 4,
+      "j": 12,
+      "value": "160395"
+    },
+    {
+      "i": 4,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 4,
+      "j": 15,
+      "value": "151436"
+    },
+    {
+      "i": 4,
+      "j": 25,
+      "value": "320790"
+    },
+    {
+      "i": 5,
+      "j": 6,
+      "value": "151436"
+    },
+    {
+      "i": 5,
+      "j": 9,
+      "value": "160395"
+    },
+    {
+      "i": 5,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 5,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 5,
+      "j": 17,
+      "value": "320790"
+    },
+    {
+      "i": 6,
+      "j": 9,
+      "value": "160395"
+    },
+    {
+      "i": 6,
+      "j": 11,
+      "value": "151436"
+    },
+    {
+      "i": 6,
+      "j": 12,
+      "value": "160395"
+    },
+    {
+      "i": 6,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 6,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 6,
+      "j": 16,
+      "value": "320790"
+    },
+    {
+      "i": 7,
+      "j": 8,
+      "value": "160395"
+    },
+    {
+      "i": 7,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 7,
+      "j": 13,
+      "value": "160395"
+    },
+    {
+      "i": 7,
+      "j": 14,
+      "value": "151436"
+    },
+    {
+      "i": 7,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 7,
+      "j": 24,
+      "value": "320790"
+    },
+    {
+      "i": 8,
+      "j": 10,
+      "value": "160395"
+    },
+    {
+      "i": 8,
+      "j": 11,
+      "value": "160395"
+    },
+    {
+      "i": 8,
+      "j": 12,
+      "value": "151436"
+    },
+    {
+      "i": 8,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 8,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 8,
+      "j": 28,
+      "value": "320790"
+    },
+    {
+      "i": 9,
+      "j": 11,
+      "value": "151436"
+    },
+    {
+      "i": 9,
+      "j": 12,
+      "value": "160395"
+    },
+    {
+      "i": 9,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 9,
+      "j": 18,
+      "value": "320790"
+    },
+    {
+      "i": 10,
+      "j": 12,
+      "value": "160395"
+    },
+    {
+      "i": 10,
+      "j": 15,
+      "value": "151436"
+    },
+    {
+      "i": 10,
+      "j": 27,
+      "value": "320790"
+    },
+    {
+      "i": 11,
+      "j": 13,
+      "value": "151436"
+    },
+    {
+      "i": 11,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 11,
+      "j": 19,
+      "value": "320790"
+    },
+    {
+      "i": 12,
+      "j": 15,
+      "value": "151436"
+    },
+    {
+      "i": 12,
+      "j": 29,
+      "value": "320790"
+    },
+    {
+      "i": 13,
+      "j": 14,
+      "value": "160395"
+    },
+    {
+      "i": 13,
+      "j": 20,
+      "value": "320790"
+    },
+    {
+      "i": 14,
+      "j": 15,
+      "value": "160395"
+    },
+    {
+      "i": 14,
+      "j": 23,
+      "value": "320790"
+    },
+    {
+      "i": 15,
+      "j": 26,
+      "value": "320790"
+    }
+  ],
+  "objective": {
+    "constant": "67337",
+    "linear": [
+      "596",
+      "307",
+      "307",
+      "307",
+      "596",
+      "307",
+      "596",
+      "596",
+      "596",
+      "307",
+      "596",
+      "596",
+      "596",
+      "596",
+      "596",
+      "596",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0",
+      "0"
+    ],
+    "quadratic": [
+      {
+        "i": 0,
+        "j": 8,
+        "value": "-8959"
+      },
+      {
+        "i": 0,
+        "j": 15,
+        "value": "-17918"
+      },
+      {
+        "i": 1,
+        "j": 5,
+        "value": "-8959"
+      },
+      {
+        "i": 2,
+        "j": 13,
+        "value": "-8959"
+      },
+      {
+        "i": 3,
+        "j": 14,
+        "value": "-8959"
+      },
+      {
+        "i": 4,
+        "j": 7,
+        "value": "-8959"
+      },
+      {
+        "i": 4,
+        "j": 8,
+        "value": "-8959"
+      },
+      {
+        "i": 4,
+        "j": 15,
+        "value": "-8959"
+      },
+      {
+        "i": 5,
+        "j": 6,
+        "value": "-8959"
+      },
+      {
+        "i": 6,
+        "j": 11,
+        "value": "-8959"
+      },
+      {
+        "i": 7,
+        "j": 14,
+        "value": "-8959"
+      },
+      {
+        "i": 8,
+        "j": 12,
+        "value": "-8959"
+      },
+      {
+        "i": 9,
+        "j": 11,
+        "value": "-8959"
+      },
+      {
+        "i": 10,
+        "j": 15,
+        "value": "-8959"
+      },
+      {
+        "i": 11,
+        "j": 13,
+        "value": "-8959"
+      },
+      {
+        "i": 12,
+        "j": 15,
+        "value": "-8959"
+      }
+    ],
+    "weights": {
+      "R": 1,
+      "B": 17,
+      "W": 289,
+      "U": 8381
+    },
+    "component_bounds": {
+      "U": 8,
+      "W": 28,
+      "B": 16,
+      "R": 16
+    }
+  },
+  "penalty": "160395",
+  "penalty_proof": "P exceeds the total absolute nonconstant linear and quadratic objective coefficients",
+  "size": {
+    "binary_variables": 30,
+    "option_bits": 16,
+    "shortfall_bits": 0,
+    "auxiliary_bits": 14,
+    "idle_data_bits": 14,
+    "couplers": 74,
+    "objective_couplers": 16
+  },
+  "disabled_features": [
+    "phase_aware_WIP",
+    "interrupted_cooking",
+    "ingredients",
+    "holding",
+    "power",
+    "money"
+  ],
+  "mixer": {
+    "kind": "two-local-XY-rings",
+    "preserves": "One choice per anchor block; cross-block physical conflicts remain penalized",
+    "initial_state": "Biased one-hot product states centered on the current quantum incumbent, no optimum teacher"
+  },
+  "bundle_sha256": "55743df29ad3ad70c84ef7f66b4cd6f42f581ddec9bcb2a1556aed6df4672dd8"
+}

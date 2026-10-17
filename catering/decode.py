@@ -18,6 +18,7 @@ def decode(bundle, bits):
     literal, objective = energy(bundle, bits), objective_energy(bundle, bits)
     expected = (sum(bundle["objective"]["weights"][k]*raw["metrics"][k] for k in ("U", "W", "B", "R"))
                 if raw["valid"] else None)
-    valid = raw["valid"] and register_ok and literal == objective and objective == expected
-    return dict(valid=valid, physical_valid=raw["valid"], register_valid=register_ok,
+    onehot_ok=all(sum(bits[i] for i in group["indices"])==1 for group in bundle.get("onehot_groups",[]))
+    valid = raw["valid"] and register_ok and onehot_ok and literal == objective and objective == expected
+    return dict(valid=valid, physical_valid=raw["valid"], register_valid=register_ok,onehot_valid=onehot_ok,
                 energy=str(literal), objective_energy=str(objective), check=raw, plan=plan)

@@ -1,0 +1,113 @@
+{
+  "bundle_sha256": "df6eb3da9ea1d63653b3eab022037a9840b1ccd7266e0486648704f06215a521",
+  "case_id": "paired-lunch-6-v1/S0",
+  "check": {
+    "completed_meal_lots": 2,
+    "component_metrics": {
+      "B": 3,
+      "R": 3,
+      "U": 10,
+      "W": 0
+    },
+    "covered_lots": {
+      "A/11:50": 1,
+      "committed/side": 1,
+      "customer-5/main": 1,
+      "customer-5/side": 1
+    },
+    "discarded_lots": 0,
+    "metrics": {
+      "B": 3,
+      "R": 3,
+      "U": 5,
+      "W": 0
+    },
+    "operations": 16,
+    "quantity_units": {
+      "U": "priority-weighted complete meal lots",
+      "W": "component lots",
+      "lot_size": 10
+    },
+    "unpaired_component_lots": 0,
+    "valid": true,
+    "violations": []
+  },
+  "configuration": {
+    "initializer": "All-idle partial hint",
+    "repair": false,
+    "seed": 2026,
+    "wall_time_limit_s": 3.0
+  },
+  "environment": {
+    "processor": "arm64",
+    "python": "3.14.6"
+  },
+  "execution_kind": "classical",
+  "method_id": "paired_program_cp",
+  "method_version": 1,
+  "physical_qpu_calls": 0,
+  "raw_artifacts": [],
+  "reference": {
+    "bound": "66216",
+    "objective": "66216",
+    "raw_kitchen_reference": false,
+    "reads_qubo_conflict_list": true,
+    "scope": "Identical offered paired-meal domain; exact zero-penalty constraints",
+    "status": "OPTIMAL"
+  },
+  "representation_id": "paired-course-block-20",
+  "samples": [
+    {
+      "bits": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        0,
+        1,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        0,
+        0
+      ],
+      "count": 1,
+      "reported_energy": "66216"
+    }
+  ],
+  "schema_version": "catering-method-result.v1",
+  "status": "completed",
+  "timings": {
+    "build_s": 0.0007717497646808624,
+    "solver_s": 0.001052,
+    "total_s": 0.00206120777875185
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "note": "Classical CP products are not QUBO data qubits",
+    "product_auxiliaries": 19,
+    "workers": 1
+  }
+}

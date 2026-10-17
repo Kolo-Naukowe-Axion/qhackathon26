@@ -1,5 +1,11 @@
 # Mentor feedback: extension scope, originality and correctness
 
+**Current project decision:** the user subsequently selected catering production
+and approved one integrated entry targeting the overall and VeloxQ awards.
+The runnable v3 scope is in [the current method](CATERING_QUANTUM_FIRST.md).
+Factory-first interpretations and tiny-proposal implementation statuses in the
+older commentary below are historical. The quoted correspondence is preserved.
+
 Saved 17 October 2026, Europe/Warsaw. Source: the user's pasted team question
 and mentor reply in this chat. The displayed reply time is 12:23; the original
 message date and a direct Discord permalink were not supplied. This records

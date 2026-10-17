@@ -9,6 +9,7 @@ import copy
 import hashlib
 import json
 from collections import Counter
+from .paired_meals import PROFILE as PAIRED_PROFILE,validate_service,service_records
 
 LEGACY_PROFILE = "core-contiguous-conservative.v1"
 PROFILE = "core-contiguous-repair-clean.v2"
@@ -78,13 +79,13 @@ def program_id(program):
 
 
 def validate_instance(instance):
-    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE):
+    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE,PAIRED_PROFILE):
         raise ValueError("Unsupported profile; ambitious mechanisms are not silently ignored")
     step = integer(instance["grid_minutes"], "grid", 1)
     end = integer(instance["horizon_minutes"], "horizon", step)
     if end % step or instance["event_time"] % step:
         raise ValueError("Grid-aligned calendar required")
-    if instance["profile_id"] == PROFILE:
+    if instance["profile_id"] != LEGACY_PROFILE:
         duration = integer(instance["repair_clean_minutes"],"repair clean",1)
         if duration % step:
             raise ValueError("Grid-aligned repair clean required")
@@ -135,6 +136,10 @@ def validate_instance(instance):
     for b in instance["fixed_batches"] + instance["previous_unstarted"]:
         if b["id"] != program_id(b):
             raise ValueError("Invalid semantic program ID")
+    if instance["profile_id"] == PAIRED_PROFILE:
+        validate_service(instance)
+    elif "service_model" in instance:
+        raise ValueError("Service extension requires its own declared profile")
     return instance
 
 
@@ -157,7 +162,7 @@ def snapshot(instance, scenario):
             for outage in result["outages"]:
                 if op["resource"] == outage["resource"] and overlap(op["start"], op["end"], outage["start"], outage["end"]):
                     raise ValueError("Outage interrupts committed work; phase-aware profile required")
-    if instance["profile_id"] == PROFILE:
+    if instance["profile_id"] != LEGACY_PROFILE:
         result["recovery_policy"] = "earliest_fixed_compatible_clean"
         result["recovery_operations"] = []
         # Conservative core policy: reserve a mandatory clean at the earliest
@@ -229,6 +234,8 @@ def make_plan(instance, programs, recovery_operations=()):
                 operations=operations, allocations=allocations, disposals=disposals)
     if recovery_operations:
         plan["recovery_operations"] = copy.deepcopy(list(recovery_operations))
+    if instance["profile_id"] == PAIRED_PROFILE:
+        plan["meal_handovers"],plan["unpaired_disposals"] = service_records(instance,allocations)
     return plan
 
 

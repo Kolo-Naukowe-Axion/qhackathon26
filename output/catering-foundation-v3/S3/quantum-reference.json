@@ -1,0 +1,118 @@
+{
+  "bundle_sha256": "9179b3cb4e4629bb3138d4856ca36531018d2bf8a082e21e5d6bb3fdd2fa1c6f",
+  "case_id": "paired-lunch-6-v1/S3",
+  "check": {
+    "completed_meal_lots": 2,
+    "component_metrics": {
+      "B": 4,
+      "R": 4,
+      "U": 9,
+      "W": 1
+    },
+    "covered_lots": {
+      "A/11:50": 1,
+      "customer-1/side": 1,
+      "customer-2/main": 1,
+      "customer-2/side": 1,
+      "customer-4/main": 1,
+      "customer-4/side": 1,
+      "urgent/side": 1
+    },
+    "discarded_lots": 4,
+    "metrics": {
+      "B": 4,
+      "R": 4,
+      "U": 6,
+      "W": 4
+    },
+    "operations": 22,
+    "quantity_units": {
+      "U": "priority-weighted complete meal lots",
+      "W": "component lots",
+      "lot_size": 10
+    },
+    "unpaired_component_lots": 3,
+    "valid": true,
+    "violations": []
+  },
+  "configuration": {
+    "initializer": "All-idle partial hint",
+    "repair": false,
+    "seed": 2026,
+    "wall_time_limit_s": 3.0
+  },
+  "environment": {
+    "processor": "arm64",
+    "python": "3.14.6"
+  },
+  "execution_kind": "classical",
+  "method_id": "paired_program_cp",
+  "method_version": 1,
+  "physical_qpu_calls": 0,
+  "raw_artifacts": [],
+  "reference": {
+    "bound": "103668",
+    "objective": "103668",
+    "raw_kitchen_reference": false,
+    "reads_qubo_conflict_list": true,
+    "scope": "Identical offered paired-meal domain; exact zero-penalty constraints",
+    "status": "OPTIMAL"
+  },
+  "representation_id": "paired-course-block-21",
+  "samples": [
+    {
+      "bits": [
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        0,
+        0,
+        1,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1
+      ],
+      "count": 1,
+      "reported_energy": "103668"
+    }
+  ],
+  "schema_version": "catering-method-result.v1",
+  "status": "completed",
+  "timings": {
+    "build_s": 0.0008294167928397655,
+    "solver_s": 0.000786,
+    "total_s": 0.0018496247939765453
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "note": "Classical CP products are not QUBO data qubits",
+    "product_auxiliaries": 22,
+    "workers": 1
+  }
+}

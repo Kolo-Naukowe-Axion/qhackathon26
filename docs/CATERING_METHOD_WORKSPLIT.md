@@ -2,13 +2,32 @@
 
 Active work allocation — 17 October 2026, Europe/Warsaw.
 
-**Current priority:** quantum-first encoding and QAOA are the central method;
-classical work supplies sanity/reference checks. See [the updated method and
-proofs](CATERING_QUANTUM_FIRST.md). Foundation-v2 corrects mandatory recovery
-cleaning; v1 outage answers are superseded. Existing adapter work can continue,
-but result comparisons must identify the corrected bundle hashes. The newer
-unit-demand encoding is a separately labeled prototype, not a silent replacement
-for everybody’s inputs. No teammate messages have been sent by this update.
+**Accepted award strategy:** one integrated catering-production extension,
+targeting the overall award and best use of VeloxQ. The user chose judging
+merit, solution quality and execution over a quantum-advantage requirement.
+No standalone SAT pivot or larger-cluster work is required for this decision.
+The quantum method remains substantive; actual QAOA/VQE evidence will determine
+which is featured. VeloxQ owns the larger same-model/portfolio experiment and
+shared small-QUBO comparisons, not a separate application. Native and same-QUBO
+classical controls, scope gaps and independent checks remain required.
+Section15does not explicitly settle whether the same team can receive both
+prizes. The existing four human owners are unchanged. V3paired-meal code and
+frozen inputs are now implemented; foundation-v2 must not be silently replaced. No teammate
+notification or VeloxQ/IBM call accompanied this strategy update.
+
+**Current inputs:** use the complete35qubit cell at
+`output/catering-complete-cell-v3/quantum-qubo.json` for a small unrestricted
+paired-meal comparison. Use `output/catering-foundation-v3/S0..S3/quantum-qubo.json`
+for fixed portfolios with measured restriction gaps, and its nested
+`scale-128-qubo.json` / `scale-256-qubo.json` for VeloxQ/classical scaling.
+Every method must read the [V3contract additions](CATERING_SOLVER_CONTRACT.md):
+objective.quadratic, onehot_groups and actual meal_handovers. The original
+foundation-v2 remains regression input. The independent classical reference is
+native_slots; meal_reference is the exact/limited offered-domain reference.
+No one should claim the larger fixed quantum pools solve the whole kitchen.
+For35qubit simulation, use the one-hot-sector implementation or a suitable
+MPS/other simulator; a generic dense double statevector needs512GiB. A VQE
+ansatz that leaves the one-hot sector cannot use the current sector shortcut.
 
 The user selected catering as the direction to try now and requested asynchronous
 work across four people. Their clarification supersedes a component-based split:
@@ -24,10 +43,11 @@ first runnable core is now released: see [the quick start](../catering/README.md
 and the frozen inputs in output/catering-foundation-v2/. The full ambitious
 profile remains incomplete. IBM/VeloxQ execution holds remain unchanged.
 
-**Method owners can start now:** pull main and use the frozen quantum-qubo.json
-files for QAOA/VQE, complete-qubo.json for offline VeloxQ integration, and the
-same bundle hashes for direct method comparisons. The shared compiler/encoding
-is ours; do not rebuild it per method. New larger workloads will be versioned.
+**Method owners can work independently:** consume the V3inputs above when the
+new profile is selected, preserving exact bundle hashes. V2 complete-qubo files
+and the older instructions below remain historical integration examples.
+The shared compiler/encoding is ours; do not rebuild it per method or silently
+change the physical model. New workloads are versioned.
 
 Read the [ambitious specification](CATERING_AMBITIOUS_SPEC.md) for the target
 problem and the [solver contract](CATERING_SOLVER_CONTRACT.md) for shared inputs,

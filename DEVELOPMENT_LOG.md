@@ -1,5 +1,42 @@
 # Development log
 
+## 2026-10-17 — paired-meal foundation, complete quantum cell and retained scaling pilot
+
+Implemented paired-course v3: complete meals require main AND side, and reserved
+unpaired components become explicit disposal at departure. The checker rebuilds
+service records and per-batch material balances. Completion/waste are quadratic
+in unit program coverage with zero product-register qubits. The full objective
+span gives a safe penalty despite negative coefficients on invalid selections.
+One-hot anchor blocks add real idle data qubits; local XY preserves one choice,
+while crossing physical conflicts remain penalized. Old v2 inputs are unchanged.
+
+Replaced exponential demand-quantity scanning with an exact bounded multiset
+enumerator, tested against the Cartesian definition. Added offered-domain CP
+with exact quadratic objective, separate from the independent raw batch-slot
+model. New builders retain source snapshots and immutable experiment plans.
+Frozen six-customer research inputs have33/35/31/35quantum bits and nested
+128/256bit scale pools. All4raw release references reached OPTIMAL. Restricted
+quantum pools lose service, and the predeclared eight-run QAOA portfolio pilot
+still trails raw CP. These negative results remain part of the evidence.
+
+Created a complete small physical cell with explicit preparation/attendance
+calendars: all32legal programs,35data qubits,1045one-hot states,59physically
+feasible states. Raw CP, offered CP, independent subset audit and sector minimum
+agree on U0,W0,B2,R2. All6p1/p2simulator trials recover it, and initializer and
+mixer-only controls do too. No quantum superiority is inferred. A separate demo
+receipt selects an actual retained QAOA sample rather than relabeling a reference.
+
+The independent verifier checks965artifact hashes,152340retained bitstrings,
+467003sample frequencies and8final raw plans. Actual Qiskit9qubit/full-Hilbert
+and routed-circuit tests validate the sector implementation. Synthetic heavy-hex
+compilation of35qubit circuits requires925CX(pilot) and1914CX(cell); these are
+not calibrated IBM results. The44test Python suite passes with one SDK skip;
+the SDK test passes separately, and npm run build passes. The other chat's
+existing catering UI still uses v1 evidence and needs a V3port before presentation.
+Updated README, solver contract, work split, math/evidence, reference design,
+compute notes and historical-proposal banners. No remote solver, QPU, new compute
+allocation, credit spending, organizer message or teammate message was used.
+
 ## 2026-10-17 — classical reference formulation and comparison design
 
 Authored docs/catering-methods/CLASSICAL.md at the user's request. The design
@@ -1015,3 +1052,22 @@ physical QPU use, external compute, commits, pushes and deployment remain held.
 Final acceptance uses `scripts/verify-stage2-merit.py`, independent document/UI
 consistency and command/source-hash receipts. Its generated acceptance document
 records actual pass/pending status; this log entry does not predeclare a pass.
+## 2026-10-17 — accepted integrated strategy for both awards
+
+The user approved prioritizing the hackathon rubric over a quantum-advantage
+requirement and targeting the overall award plus best use of VeloxQ through
+one catering-production extension. Keep the complete-meal/shared-batch model,
+compact correct QUBO, meaningful quantum solver outputs, matched references,
+scaling measurements and polished trace-backed demo. A standalone SAT pivot
+and speculative cluster expansion are parked. QAOA/VQE remain method variants
+on shared inputs; actual checked results should decide the featured method.
+
+VeloxQ's intended role is larger/broader same-model production optimization,
+with small shared-QUBO comparisons and independent schedule validation. Measure
+raw feasibility, quality/reference gaps, build/service/full timings and repeat
+variability rather than claiming superiority from an SDK call or paper capacity.
+The challenge PDF Section15lists2000PLNoverall and1000PLNbestVeloxQ; it states
+no mutual exclusion but does not explicitly confirm simultaneous receipt by
+one team. No organizer or teammate message was sent. Existing service/QPU
+execution and VeloxQ credit holds remain. This entry records a decision, not
+new solver results, service integration, push, deployment or submission.

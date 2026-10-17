@@ -2,21 +2,27 @@
 
 ## Active Stage 2 direction: catering
 
-The method is now explicitly quantum-first: read [the current encoding/mixer
-design and evidence gates](docs/CATERING_QUANTUM_FIRST.md). Classical solvers
-provide reference checks. The v2 core fixes mandatory post-repair cleaning; v1
-outage results are superseded. Quantum-first prototype pools still have a
-measured restriction gap and are not yet the accepted main quantum workload.
+We are building one catering-production extension for both the overall award
+and best use of VeloxQ. The goal is a correct compact formulation, good checked
+solutions and clear experiments; a quantum advantage is not a release requirement.
+Read the [current method, mathematics and evidence](docs/CATERING_QUANTUM_FIRST.md),
+[runnable quick start](catering/README.md), [four-person allocation](docs/CATERING_METHOD_WORKSPLIT.md)
+and [solver contract](docs/CATERING_SOLVER_CONTRACT.md).
 
-The user selected catering as the direction to try on 17 October. Start with
-the [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md),
-[four-person method allocation](docs/CATERING_METHOD_WORKSPLIT.md) and
-[common solver contract](docs/CATERING_SOLVER_CONTRACT.md). Codex builds the shared
-foundation first; independent owners then evaluate VeloxQ, QAOA, VQE and classical
-references. The [first runnable core](catering/README.md) and frozen inputs at
-output/catering-foundation-v2/ now provide four checked cases, common QUBO/Ising
-encodings, decoder/checker, exact/native references and SA. The ambitious profile
-and quantum/service results remain incomplete. IBM/VeloxQ execution remains held.
+The new paired-course profile requires both main and side for a complete meal,
+counts unmatched food as waste, and adds a quadratic service objective without
+product auxiliary qubits. It retains shared batches, freshness, equipment/crew
+conflicts, committed work and mandatory post-repair cleaning. Frozen research
+inputs in output/catering-foundation-v3/ provide33/35/31/35qubit portfolios and
+nested128/256bit scale pools with independent raw and offered-domain references.
+These portfolios have measured restriction gaps; they are not full-kitchen
+optima or the accepted final quantum workload. The QAOA pilot and offline circuit
+audit are separate from the input release. Method owners must opt into the new
+profile explicitly; v2 component-demand inputs remain unchanged for regression.
+
+The [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md) describes additional
+future mechanisms, not features already implemented or required before delivery.
+IBM and VeloxQ execution/spending remain held; no remote result is implied.
 
 The existing factory implementation, results and demo below remain intact as
 a fallback. Its technical acceptance does not certify the new catering scope.

@@ -1,5 +1,14 @@
 # Lunch under pressure: ambitious catering production specification
 
+**Current delivery scope:** the user chose one integrated catering entry for
+the overall and VeloxQ awards, with correctness, solution quality and presentation
+as the priority. The runnable paired-course v3 profile and evidence are defined
+in [the current method](CATERING_QUANTUM_FIRST.md) and [quick start](../catering/README.md).
+This document is the expanded design backlog. Ingredient/holding/power, money,
+interrupted cooking and movable recovery tasks are not implemented acceptance
+requirements merely because they appear below. The older v2 component-demand
+profile remains regression evidence. Do not advertise backlog features as active.
+
 Current implementation status: see [the quantum-first method and correction](CATERING_QUANTUM_FIRST.md)
 and [the runnable core](../catering/README.md). Foundation-v2 includes mandatory
 post-repair cleaning under an explicit fixed conservative cleanup policy. V1

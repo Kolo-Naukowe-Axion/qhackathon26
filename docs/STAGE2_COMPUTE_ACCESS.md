@@ -19,6 +19,87 @@ runtime remain separate constraints; no new simulation benchmark was run.
 Current recipe-bridge sector simulation is a restricted state space, not a
 generic dense-register benchmark.
 
+### Dense-state storage limits versus a usable simulation
+
+17 October clarification. A dense statevector uses `16 * 2^n` bytes in
+complex128 or `8 * 2^n` bytes in complex64. These are exact amplitude-storage
+requirements, not total process memory. A 35-qubit vector alone needs 512 GiB
+or 256 GiB respectively. Shots do not require a separate vector for each shot;
+concurrent simulations and saved intermediate states can multiply storage.
+
+The following budgets are **GiB**, not decimal GB. The single-vector columns
+require strictly less than the whole budget. The conservative planning columns
+reserve 25% of the budget and allow two statevectors; they still do not guarantee
+a particular simulator's runtime or peak memory without profiling it.
+
+| Memory budget | Single vector: complex128 / complex64 qubits | Two vectors plus 25% reserved: complex128 / complex64 qubits |
+|---:|---:|---:|
+| 48 GiB | 31 / 32 | 30 / 31 |
+| 96 GiB | 32 / 33 | 31 / 32 |
+| 128 GiB | 32 / 33 | 31 / 32 |
+| 256 GiB | 33 / 34 | 32 / 33 |
+| 512 GiB | 34 / 35 | 33 / 34 |
+| 1,024 GiB | 35 / 36 | 34 / 35 |
+
+For example, 32 double-precision qubits require 64 GiB for one vector; an
+optimized implementation may run on a 128 GiB host, while one that holds two
+vectors plus other arrays cannot fit that budget. The Mac's unified memory is
+shared with the OS and other apps. CPU RAM and GPU VRAM are separate pools on
+H100 systems; do not add them together as a single GPU statevector budget.
+
+The new paired-meal code in `catering/meal_blocks.py` supports exact simulation
+of an invariant one-hot sector: for block sizes k_g, amplitude storage is
+`16 * product(k_g)` bytes, while circuit width is `sum(k_g)` data qubits.
+Fourteen blocks with sizes 3 repeated seven times and 2 repeated seven times
+have 35 data qubits, 279,936 sector states and about 4.27 MiB of complex128
+amplitudes. This is an arithmetic example, not a benchmark of total working
+memory. The current implementation additionally stores per-state choices,
+objective/penalty arrays and working vectors, and has a default two-million-
+state guard. It is not a generic 35-qubit simulator: the initialization and
+all simulated gates must preserve the declared one-hot sector. Arbitrary VQE
+ansatzes or noise channels may invalidate this restriction.
+
+### Local runtime screen: shallow VQE-style circuits and a classical block
+
+17 October, local only. Receipts are in
+`output/catering-vqe-runtime-screen-v1/`. This is a circuit-execution screen,
+not a trained VQE result or a convergence estimate. Qiskit2.5.2/Aer versions
+are recorded in the receipt; use the receipt as authority for installed versions.
+The ideal circuit has two layers of RY/RZ rotations and alternating nearest-
+neighbor CNOTs,1024shots, four simulator threads and two repeats per width.
+
+| Qubits | Dense statevector median seconds/evaluation | MPS median seconds/evaluation |
+|---:|---:|---:|
+| 22 | 0.126 | 0.031 |
+| 24 | 0.563 | 0.032 |
+| 26 | 2.309 | 0.035 |
+| 30 | Not run; roughly40seconds projected from smaller widths | 0.040 measured |
+
+MPS used zero truncation threshold. This shallow nearest-neighbor circuit has
+limited entanglement across separators, making it especially MPS-friendly;
+these timings do not apply to arbitrary deeper/highly connected ansatzes. The
+dense30qubit estimate extrapolates a16fold state-size increase from26qubits;
+actual peak memory and runtime were not measured at30. A density-matrix/noisy
+simulation is outside this screen.
+
+For500objective evaluations, the measured shallow MPS circuit implies about
+20seconds of simulator execution per30qubit cluster; scoring/optimizer setup
+adds time, so seconds-to-minutes is a reasonable experimental budget for this
+ansatz, not a promise of a good answer. The dense extrapolation instead implies
+about5.6hours per cluster. A200variable partition with six30bit clusters and
+one20bit cluster repeats those costs at least six times per complete update
+pass; further passes/restarts/gradient evaluations multiply the budget. Count
+circuit evaluations, not just optimizer iterations. No global solution quality
+or convergence time follows from these execution timings.
+
+A separate actual paired-meal block from S3/customers6 had30encoded data bits,
+16offered programs and a5462program broader local domain. Single-worker CP-SAT
+proved this restricted block optimum in0.0149seconds; option generation and
+bundle construction took0.370seconds. The independently checked tuple was
+U7,W2,B2,R2. This is one deliberately bounded portfolio, not a full-kitchen
+optimum or universal30variable timing. All measurements used the Mac; no
+H100, IBM or VeloxQ execution occurred.
+
 ## WCSS via the existing `wcss` SSH alias
 
 Authentication succeeded. Confirmed user membership in Axion/quantum groups and
@@ -66,6 +147,31 @@ verified remaining personal balance. No unlimited-resource claim follows.
 - Authenticated, read-only Vast.ai instance listing returned an empty list.
   There is no current instance there; no machine was rented or started.
 - The existing `pracus` SSH alias timed out. Its current hardware is unverified.
+
+## VeloxQ capacity: published scale is not account entitlement
+
+Read-only public-source check, 17 October 2026; no VeloxQ API or job was called.
+The current [VeloxQ paper, v2](https://arxiv.org/abs/2501.19221v2) reports runs
+with up to 100 million sparsely connected variables. Its older indexed abstract
+mentions 200 million; use the current version's 100-million figure. This is a
+reported research scale for particular sparse models, not a guaranteed limit
+for our kitchen QUBOs or our access tier. These are classical QUBO variables,
+not simulated or physical qubits.
+
+The [public pricing page](https://veloxq.com/) advertises unlimited problem size
+for its prepaid service and lists cloud backends. It does not establish our
+hackathon credit balance, enabled backends, maximum upload/nonzero count or job
+limits. Our actual largest permitted run remains unverified. Memory depends on
+both variables and nonzero interactions, as well as solver state and number of
+parallel samples; a densely coupled scheduling QUBO cannot inherit a sparse
+benchmark's capacity just from its variable count.
+
+For project planning, compile and measure a progression of meaningful whole-
+kitchen QUBOs (for example 1,000, 5,000 and 10,000 variables) before spending
+credits. These are proposed test sizes, not confirmed account limits or jobs.
+Record nonzero count, coefficient range, serialized size and independent
+schedule validity. The quantum method can use smaller neighborhoods of the
+same decision model. No capacity check reverses the existing execution hold.
 
 ## IBM Quantum versus IQM
 

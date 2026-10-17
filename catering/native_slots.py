@@ -3,7 +3,7 @@
 No option enumeration, QUBO, conflict graph or encoded reference is imported.
 Every new batch serves at least one residual lot, giving an exact slot bound.
 """
-from collections import defaultdict
+from collections import defaultdict,Counter
 import argparse
 import json
 import math
@@ -13,6 +13,7 @@ import time
 
 from .check import check_plan
 from .domain import fixture, snapshot, validate_instance, residual_demand, make_plan, program_id, digest
+from .paired_meals import PROFILE as PAIRED_PROFILE,active_meals
 
 
 def _union(intervals):
@@ -262,6 +263,21 @@ def solve_native(instance, state, budget=None, config=None, output_dir=None):
     bounds = dict(U=sum(groups[g]["priority"]*remaining[g] for g in groups),
                   W=fixed_waste+sum(max(instance["menus"][s["menu"]]["yields"]) for s in slots),
                   B=len(slots),R=len(prior)+len(slots))
+    if instance["profile_id"] == PAIRED_PROFILE:
+        fixed_coverage = Counter(g for b in state["fixed_batches"] for g in b["allocation_order"])
+        completions,orphan = [],[]
+        for meal in active_meals(instance,state):
+            main = fixed_coverage[meal["main"]]+sum(assignments[meal["main"]])
+            side = fixed_coverage[meal["side"]]+sum(assignments[meal["side"]])
+            complete = boolean("complete-meal:"+meal["id"])
+            model.Add(complete <= main);model.Add(complete <= side)
+            model.Add(complete >= main+side-1)
+            completions.append(meal["priority"]*(1-complete))
+            orphan.append(main+side-2*complete)
+        components["U"] = sum(completions)
+        components["W"] += sum(orphan)
+        bounds["U"] = sum(m["priority"] for m in active_meals(instance,state))
+        bounds["W"] = sum(b["yield_lots"] for b in state["fixed_batches"])+sum(max(instance["menus"][s["menu"]]["yields"]) for s in slots)
     # Explicit nonnegative component domains strengthen the relaxation, notably
     # for the symmetric-difference expression B + |prior| - 2*matches.
     for key, expression in components.items():
@@ -284,7 +300,7 @@ def solve_native(instance, state, budget=None, config=None, output_dir=None):
                                                                seed=int(config.get("seed",2026)),
                                                                initialization="Partial zero-activity hints"),
                   model_size=model_size,objective_weights=weights,component_bounds=bounds,
-                  objective_scope="Raw core lexicographic (U,W,B,R); weights differ from option QUBOs",
+                  objective_scope="Raw declared-profile lexicographic (U,W,B,R); weights differ from option QUBOs",
                   program_enumeration=False,qubo_construction=False,
                   reference_scope="Complete declared raw grid/contiguous packing/conservative boundary",
                   plan=None,check=None,status="timeout",reference_status="NOT_RUN",

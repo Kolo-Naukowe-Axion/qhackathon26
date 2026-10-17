@@ -19,6 +19,10 @@ def bits_for_selection(bundle, selected):
     bits = [0] * n
     for i in selected:
         bits[i] = 1
+    for group in bundle.get("onehot_groups",[]):
+        count=sum(bits[i] for i in group["program_indices"])
+        if count>1:raise ValueError("Selection violates a demand-anchor block")
+        if count==0:bits[group["idle_index"]]=1
     chosen = [bundle["options"][i] for i in selected]
     for r in bundle["registers"]:
         remaining = residual_demand(bundle["snapshot"])[r["demand_group"]]
@@ -50,8 +54,8 @@ def solve_program_master(bundle, budget=None, method_config=None, output_dir=Non
     model = cp_model.CpModel()
     choices = [model.NewBoolVar(f"option-{i}") for i in range(len(bundle["options"]))]
     occupancy = defaultdict(list)
-    if bundle.get("encoding") == "unit-demand-coverage-reward.v1":
-        raise ValueError("Use raw slots or literal exact audit for the coverage-reward representation")
+    if bundle.get("encoding"):
+        raise ValueError("Use raw slots or literal exact audit for this alternate encoding")
     fixed = make_plan(instance, state["fixed_batches"],state.get("recovery_operations",[]))
     if not check_plan(instance, state, fixed)["valid"]:
         raise ValueError("Invalid committed boundary")

@@ -1,0 +1,786 @@
+{
+  "check": {
+    "completed_meal_lots": 6,
+    "component_metrics": {
+      "B": 7,
+      "R": 7,
+      "U": 7,
+      "W": 0
+    },
+    "covered_lots": {
+      "A/11:50": 1,
+      "customer-2/main": 1,
+      "customer-2/side": 1,
+      "customer-3/main": 1,
+      "customer-3/side": 1,
+      "customer-4/main": 1,
+      "customer-4/side": 1,
+      "customer-5/main": 1,
+      "customer-5/side": 1,
+      "customer-6/main": 1,
+      "customer-6/side": 1,
+      "urgent/main": 1,
+      "urgent/side": 1
+    },
+    "discarded_lots": 1,
+    "metrics": {
+      "B": 7,
+      "R": 7,
+      "U": 4,
+      "W": 1
+    },
+    "operations": 37,
+    "quantity_units": {
+      "U": "priority-weighted complete meal lots",
+      "W": "component lots",
+      "lot_size": 10
+    },
+    "unpaired_component_lots": 1,
+    "valid": true,
+    "violations": []
+  },
+  "component_bounds": {
+    "B": 19,
+    "R": 19,
+    "U": 10,
+    "W": 39
+  },
+  "configuration": {
+    "allow_sharing": true,
+    "initialization": "Partial zero-activity hints",
+    "seed": 2026,
+    "workers": 4
+  },
+  "environment": {
+    "machine": "arm64",
+    "python": "3.14.6"
+  },
+  "execution_kind": "classical",
+  "instance_sha256": "20b3df40c52f6e17a4247e35399e75085aa7d03d21dea6172025a4fa6aa2885a",
+  "method_id": "native_cp_raw_slots",
+  "model_size": {
+    "batch_slots": 19,
+    "constraints": 2979,
+    "variables": 1098
+  },
+  "objective": "64547",
+  "objective_bound": 64126.0,
+  "objective_scope": "Raw declared-profile lexicographic (U,W,B,R); weights differ from option QUBOs",
+  "objective_weights": {
+    "B": 20,
+    "R": 1,
+    "U": 16000,
+    "W": 400
+  },
+  "physical_qpu_calls": 0,
+  "plan": {
+    "allocations": [
+      {
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "demand_group": "A/11:50",
+        "lots": 1,
+        "packing_operation": "batch-87a2cab16e2943a00488/pack-0"
+      },
+      {
+        "batch_id": "batch-2d789c5b899e94c90225",
+        "demand_group": "customer-2/main",
+        "lots": 1,
+        "packing_operation": "batch-2d789c5b899e94c90225/pack-0"
+      },
+      {
+        "batch_id": "batch-f0a75d194c49ec92884f",
+        "demand_group": "urgent/main",
+        "lots": 1,
+        "packing_operation": "batch-f0a75d194c49ec92884f/pack-0"
+      },
+      {
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "demand_group": "customer-6/main",
+        "lots": 1,
+        "packing_operation": "batch-4abe28855a2d3eb9891a/pack-0"
+      },
+      {
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "demand_group": "customer-5/main",
+        "lots": 1,
+        "packing_operation": "batch-4abe28855a2d3eb9891a/pack-1"
+      },
+      {
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "demand_group": "customer-4/main",
+        "lots": 1,
+        "packing_operation": "batch-b35f69a6b9d707f0210d/pack-0"
+      },
+      {
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "demand_group": "customer-3/main",
+        "lots": 1,
+        "packing_operation": "batch-b35f69a6b9d707f0210d/pack-1"
+      },
+      {
+        "batch_id": "batch-76f790d46547dede86d1",
+        "demand_group": "urgent/side",
+        "lots": 1,
+        "packing_operation": "batch-76f790d46547dede86d1/pack-0"
+      },
+      {
+        "batch_id": "batch-76f790d46547dede86d1",
+        "demand_group": "customer-6/side",
+        "lots": 1,
+        "packing_operation": "batch-76f790d46547dede86d1/pack-1"
+      },
+      {
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "demand_group": "customer-3/side",
+        "lots": 1,
+        "packing_operation": "batch-0f79712fa6bda519adba/pack-0"
+      },
+      {
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "demand_group": "customer-2/side",
+        "lots": 1,
+        "packing_operation": "batch-0f79712fa6bda519adba/pack-1"
+      },
+      {
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "demand_group": "customer-5/side",
+        "lots": 1,
+        "packing_operation": "batch-72d0042168d7307e3d8e/pack-0"
+      },
+      {
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "demand_group": "customer-4/side",
+        "lots": 1,
+        "packing_operation": "batch-72d0042168d7307e3d8e/pack-1"
+      }
+    ],
+    "batches": [
+      {
+        "allocation_order": [
+          "A/11:50"
+        ],
+        "cook_start": 10,
+        "cooker": "C1",
+        "id": "batch-87a2cab16e2943a00488",
+        "menu": "A",
+        "pack_start": 60,
+        "prep_start": 0,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      },
+      {
+        "allocation_order": [
+          "customer-2/main"
+        ],
+        "cook_start": 90,
+        "cooker": "C2",
+        "id": "batch-2d789c5b899e94c90225",
+        "menu": "B",
+        "pack_start": 110,
+        "prep_start": 20,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      },
+      {
+        "allocation_order": [
+          "urgent/main"
+        ],
+        "cook_start": 190,
+        "cooker": "C2",
+        "id": "batch-f0a75d194c49ec92884f",
+        "menu": "B",
+        "pack_start": 220,
+        "prep_start": 30,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      },
+      {
+        "allocation_order": [
+          "customer-6/main",
+          "customer-5/main"
+        ],
+        "cook_start": 160,
+        "cooker": "C2",
+        "id": "batch-4abe28855a2d3eb9891a",
+        "menu": "B",
+        "pack_start": 180,
+        "prep_start": 70,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      },
+      {
+        "allocation_order": [
+          "customer-4/main",
+          "customer-3/main"
+        ],
+        "cook_start": 120,
+        "cooker": "C2",
+        "id": "batch-b35f69a6b9d707f0210d",
+        "menu": "B",
+        "pack_start": 140,
+        "prep_start": 90,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      },
+      {
+        "allocation_order": [
+          "urgent/side",
+          "customer-6/side"
+        ],
+        "cook_start": 180,
+        "cooker": "C1",
+        "id": "batch-76f790d46547dede86d1",
+        "menu": "C",
+        "pack_start": 200,
+        "prep_start": 40,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      },
+      {
+        "allocation_order": [
+          "customer-3/side",
+          "customer-2/side"
+        ],
+        "cook_start": 100,
+        "cooker": "C1",
+        "id": "batch-0f79712fa6bda519adba",
+        "menu": "C",
+        "pack_start": 120,
+        "prep_start": 50,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      },
+      {
+        "allocation_order": [
+          "customer-5/side",
+          "customer-4/side"
+        ],
+        "cook_start": 140,
+        "cooker": "C1",
+        "id": "batch-72d0042168d7307e3d8e",
+        "menu": "C",
+        "pack_start": 160,
+        "prep_start": 80,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      }
+    ],
+    "disposals": [],
+    "meal_handovers": [
+      {
+        "components": [
+          "customer-2/main",
+          "customer-2/side"
+        ],
+        "lots": 1,
+        "meal_id": "customer-2",
+        "time": 140
+      },
+      {
+        "components": [
+          "customer-3/main",
+          "customer-3/side"
+        ],
+        "lots": 1,
+        "meal_id": "customer-3",
+        "time": 160
+      },
+      {
+        "components": [
+          "customer-4/main",
+          "customer-4/side"
+        ],
+        "lots": 1,
+        "meal_id": "customer-4",
+        "time": 180
+      },
+      {
+        "components": [
+          "customer-5/main",
+          "customer-5/side"
+        ],
+        "lots": 1,
+        "meal_id": "customer-5",
+        "time": 200
+      },
+      {
+        "components": [
+          "customer-6/main",
+          "customer-6/side"
+        ],
+        "lots": 1,
+        "meal_id": "customer-6",
+        "time": 220
+      },
+      {
+        "components": [
+          "urgent/main",
+          "urgent/side"
+        ],
+        "lots": 1,
+        "meal_id": "urgent",
+        "time": 240
+      }
+    ],
+    "operations": [
+      {
+        "attended_end": 10,
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "end": 10,
+        "id": "batch-87a2cab16e2943a00488/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 0,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 20,
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "end": 60,
+        "id": "batch-87a2cab16e2943a00488/cook",
+        "kind": "cook",
+        "resource": "C1",
+        "start": 10,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 70,
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "end": 70,
+        "id": "batch-87a2cab16e2943a00488/clean",
+        "kind": "clean",
+        "resource": "C1",
+        "start": 60,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 70,
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "end": 70,
+        "id": "batch-87a2cab16e2943a00488/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 60,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 30,
+        "batch_id": "batch-2d789c5b899e94c90225",
+        "end": 30,
+        "id": "batch-2d789c5b899e94c90225/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 20,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 100,
+        "batch_id": "batch-2d789c5b899e94c90225",
+        "end": 110,
+        "id": "batch-2d789c5b899e94c90225/cook",
+        "kind": "cook",
+        "resource": "C2",
+        "start": 90,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 120,
+        "batch_id": "batch-2d789c5b899e94c90225",
+        "end": 120,
+        "id": "batch-2d789c5b899e94c90225/clean",
+        "kind": "clean",
+        "resource": "C2",
+        "start": 110,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 120,
+        "batch_id": "batch-2d789c5b899e94c90225",
+        "end": 120,
+        "id": "batch-2d789c5b899e94c90225/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 110,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 40,
+        "batch_id": "batch-f0a75d194c49ec92884f",
+        "end": 40,
+        "id": "batch-f0a75d194c49ec92884f/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 30,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 200,
+        "batch_id": "batch-f0a75d194c49ec92884f",
+        "end": 210,
+        "id": "batch-f0a75d194c49ec92884f/cook",
+        "kind": "cook",
+        "resource": "C2",
+        "start": 190,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 220,
+        "batch_id": "batch-f0a75d194c49ec92884f",
+        "end": 220,
+        "id": "batch-f0a75d194c49ec92884f/clean",
+        "kind": "clean",
+        "resource": "C2",
+        "start": 210,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 230,
+        "batch_id": "batch-f0a75d194c49ec92884f",
+        "end": 230,
+        "id": "batch-f0a75d194c49ec92884f/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 220,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 80,
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "end": 80,
+        "id": "batch-4abe28855a2d3eb9891a/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 70,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 170,
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "end": 180,
+        "id": "batch-4abe28855a2d3eb9891a/cook",
+        "kind": "cook",
+        "resource": "C2",
+        "start": 160,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 190,
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "end": 190,
+        "id": "batch-4abe28855a2d3eb9891a/clean",
+        "kind": "clean",
+        "resource": "C2",
+        "start": 180,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 190,
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "end": 190,
+        "id": "batch-4abe28855a2d3eb9891a/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 180,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 200,
+        "batch_id": "batch-4abe28855a2d3eb9891a",
+        "end": 200,
+        "id": "batch-4abe28855a2d3eb9891a/pack-1",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 190,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 100,
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "end": 100,
+        "id": "batch-b35f69a6b9d707f0210d/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 90,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 130,
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "end": 140,
+        "id": "batch-b35f69a6b9d707f0210d/cook",
+        "kind": "cook",
+        "resource": "C2",
+        "start": 120,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 150,
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "end": 150,
+        "id": "batch-b35f69a6b9d707f0210d/clean",
+        "kind": "clean",
+        "resource": "C2",
+        "start": 140,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 150,
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "end": 150,
+        "id": "batch-b35f69a6b9d707f0210d/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 140,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 160,
+        "batch_id": "batch-b35f69a6b9d707f0210d",
+        "end": 160,
+        "id": "batch-b35f69a6b9d707f0210d/pack-1",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 150,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 50,
+        "batch_id": "batch-76f790d46547dede86d1",
+        "end": 50,
+        "id": "batch-76f790d46547dede86d1/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 40,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 190,
+        "batch_id": "batch-76f790d46547dede86d1",
+        "end": 200,
+        "id": "batch-76f790d46547dede86d1/cook",
+        "kind": "cook",
+        "resource": "C1",
+        "start": 180,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 210,
+        "batch_id": "batch-76f790d46547dede86d1",
+        "end": 210,
+        "id": "batch-76f790d46547dede86d1/clean",
+        "kind": "clean",
+        "resource": "C1",
+        "start": 200,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 210,
+        "batch_id": "batch-76f790d46547dede86d1",
+        "end": 210,
+        "id": "batch-76f790d46547dede86d1/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 200,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 220,
+        "batch_id": "batch-76f790d46547dede86d1",
+        "end": 220,
+        "id": "batch-76f790d46547dede86d1/pack-1",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 210,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 60,
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "end": 60,
+        "id": "batch-0f79712fa6bda519adba/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 50,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 110,
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "end": 120,
+        "id": "batch-0f79712fa6bda519adba/cook",
+        "kind": "cook",
+        "resource": "C1",
+        "start": 100,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 130,
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "end": 130,
+        "id": "batch-0f79712fa6bda519adba/clean",
+        "kind": "clean",
+        "resource": "C1",
+        "start": 120,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 130,
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "end": 130,
+        "id": "batch-0f79712fa6bda519adba/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 120,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 140,
+        "batch_id": "batch-0f79712fa6bda519adba",
+        "end": 140,
+        "id": "batch-0f79712fa6bda519adba/pack-1",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 130,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 90,
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "end": 90,
+        "id": "batch-72d0042168d7307e3d8e/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 80,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 150,
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "end": 160,
+        "id": "batch-72d0042168d7307e3d8e/cook",
+        "kind": "cook",
+        "resource": "C1",
+        "start": 140,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 170,
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "end": 170,
+        "id": "batch-72d0042168d7307e3d8e/clean",
+        "kind": "clean",
+        "resource": "C1",
+        "start": 160,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 170,
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "end": 170,
+        "id": "batch-72d0042168d7307e3d8e/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 160,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 180,
+        "batch_id": "batch-72d0042168d7307e3d8e",
+        "end": 180,
+        "id": "batch-72d0042168d7307e3d8e/pack-1",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 170,
+        "worker": "W1"
+      }
+    ],
+    "recovery_operations": [
+      {
+        "end": 80,
+        "id": "repair-clean:C2",
+        "kind": "recovery_clean",
+        "repair_end": 60,
+        "resource": "C2",
+        "start": 70,
+        "worker": "W2"
+      }
+    ],
+    "schema_version": "catering-plan.v1",
+    "unpaired_disposals": [
+      {
+        "batch_id": "batch-87a2cab16e2943a00488",
+        "component_group": "A/11:50",
+        "lots": 1,
+        "meal_id": "committed",
+        "reason": "incomplete_meal",
+        "time": 80
+      }
+    ]
+  },
+  "profile_id": "paired-course-contiguous.v3",
+  "program_enumeration": false,
+  "qubo_construction": false,
+  "reference_scope": "Complete declared raw grid/contiguous packing/conservative boundary",
+  "reference_status": "FEASIBLE",
+  "schema_version": "catering-native-slots.v1",
+  "snapshot_sha256": "df7eaf92c54594ad06aa52fd1c3e222bd09030b6fc9af31853b49dad924ba31f",
+  "status": "completed",
+  "timings": {
+    "build_s": 0.009998667053878307,
+    "solver_s": 4.991910000000001,
+    "total_s": 5.002100707963109
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "branches": 137416,
+    "conflicts": 7937
+  }
+}

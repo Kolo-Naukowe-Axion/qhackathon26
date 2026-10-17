@@ -62,6 +62,8 @@ def audit_bundle(bundle):
         observed_min = None
         for masks, bits, values in energy_chunks(bundle):
             objective = bits @ linear + int(bundle["objective"]["constant"])
+            for term in bundle["objective"].get("quadratic",[]):
+                objective += int(term["value"])*(bits[:,term["i"]].astype(np.int64)*bits[:,term["j"]])
             expected = np.isin(masks, valid_masks_array)
             if not np.array_equal(values == objective, expected):
                 raise AssertionError("Zero-penalty set differs from independently feasible selections")

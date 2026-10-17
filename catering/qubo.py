@@ -16,6 +16,8 @@ def bounded_weights(limit):
 def compile_qubo(instance, state, programs, *, representation="complete-core-grid", parent_sha256=None):
     from .check import check_plan
     validate_instance(instance)
+    if instance.get("service_model"):
+        raise ValueError("Complete meals require the paired-course objective compiler")
     if not check_plan(instance, state, make_plan(instance, state["fixed_batches"],state.get("recovery_operations",[])))["valid"]:
         raise ValueError("Invalid committed boundary")
     for p in programs:
@@ -135,7 +137,8 @@ def energy(bundle, bits):
 
 def objective_energy(bundle, bits):
     checked_bits(bundle, bits)
-    return int(bundle["objective"]["constant"]) + sum(int(c)*x for c, x in zip(bundle["objective"]["linear"], bits))
+    return (int(bundle["objective"]["constant"]) + sum(int(c)*x for c, x in zip(bundle["objective"]["linear"], bits))
+            +sum(int(t["value"])*bits[t["i"]]*bits[t["j"]] for t in bundle["objective"].get("quadratic",[])))
 
 
 def ising(bundle):

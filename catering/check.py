@@ -1,17 +1,18 @@
 """Independent raw-record validation. No compiler/conflict-list imports."""
 from collections import Counter, defaultdict
 from .domain import PROFILE, LEGACY_PROFILE, program_id
+from .paired_meals import PROFILE as PAIRED_PROFILE,check_service
 
 
 def _check_plan(instance, state, plan):
     errors, claims = [], defaultdict(list)
     horizon, step = instance["horizon_minutes"], instance["grid_minutes"]
-    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE):
+    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE,PAIRED_PROFILE):
         return dict(valid=False, violations=["Unsupported profile"], metrics=None)
     recovery = state.get("recovery_operations",[])
     if plan.get("recovery_operations",[]) != recovery:
         errors.append("Mandatory post-repair clean changed or missing")
-    if instance["profile_id"] == PROFILE:
+    if instance["profile_id"] != LEGACY_PROFILE:
         if len(recovery) != len(state["outages"]):
             errors.append("Missing mandatory post-repair clean in state")
         for outage in state["outages"]:
@@ -153,7 +154,8 @@ def _check_plan(instance, state, plan):
 
 def check_plan(instance, state, plan):
     try:
-        return _check_plan(instance, state, plan)
+        physical = _check_plan(instance, state, plan)
+        return check_service(instance,state,plan,physical) if instance["profile_id"]==PAIRED_PROFILE else physical
     except (KeyError, TypeError, ValueError, IndexError) as exc:
         return dict(valid=False, violations=["Malformed raw plan: " + type(exc).__name__],
                     metrics=None)

@@ -1,14 +1,16 @@
 # Catering foundation: start here
 
-Current corrected release: v2, 17 October 2026. The project is quantum-first;
-classical methods provide reference checks. Read the current method, proofs and
+Current extension: paired-course v3, 17 October 2026. One integrated project
+targets the overall award and best use of VeloxQ. A substantive quantum method
+remains central; classical methods provide references. Read the method, proofs and
 acceptance gates in [the quantum-first design](../docs/CATERING_QUANTUM_FIRST.md).
 The [classical reference design](../docs/catering-methods/CLASSICAL.md) defines
 the independent raw CP model, exact same-input checks and SA controls, including
 how to distinguish representation loss from quantum search loss.
 
 **Superseded results:** v1 omitted the mandatory post-repair clean in S2/S3.
-Use output/catering-foundation-v2/ for new method runs. Existing v1 files are
+Use V3for the paired-meal extension, or output/catering-foundation-v2/ for
+component-demand regression runs. Existing v1 files are
 retained as historical evidence; their outage answers are not spec-conformant.
 
 Read [method ownership](../docs/CATERING_METHOD_WORKSPLIT.md) and
@@ -16,7 +18,77 @@ Read [method ownership](../docs/CATERING_METHOD_WORKSPLIT.md) and
 [ambitious specification](../docs/CATERING_AMBITIOUS_SPEC.md) is the larger target,
 not the scope already implemented here.
 
-## What is implemented
+## New paired-course extension and shared research inputs
+
+For an unrestricted small quantum example, use
+`output/catering-complete-cell-v3/quantum-qubo.json`:35qubits, all32legal
+programs of that cell, no choice cap. Its three idle qubits are included.
+Raw/encoded/subset/sector references agree on(0,0,2,2). All6retained QAOA
+simulator trials recover it, as do initializer and mixer-only controls. This
+is an intentional correctness/method example, not quantum advantage. The
+larger release below instead measures the cost of restricting program choices.
+
+    .venv-stage2/bin/python -m catering.meal_cell --output output/NEW-COMPLETE-CELL
+
+`paired-course-contiguous.v3` represents a meal lot as one main-component lot
+AND one side-component lot. The physical allocations are reservations;
+`meal_handovers` records actual complete meals, and `unpaired_disposals` records
+reserved components discarded when their counterpart is missing. The independent
+checker reconstructs these records and balances all produced components.
+U counts priority-weighted missed complete meal lots; W counts discarded
+component lots; B/R retain their meanings. Lot size is10portions. This differs
+from the older v2 objective; do not compare raw energies or relabel old outputs.
+
+For a meal, M/S are its 0/1 main/side coverage expressions. Its objective terms
+are U=priority*(1-M*S) and unmatched waste=M+S-2*M*S. With unit groups these
+expand quadratically without product-register qubits. Each demand-anchor block
+has program-choice data qubits and one idle data qubit. XY mixers preserve one
+choice per block; cross-block conflicts still require penalties and raw checks.
+
+Frozen inputs: `output/catering-foundation-v3/`. Each S0/S1/S2/S3 folder contains:
+
+| Files | Purpose |
+|---|---|
+| quantum-qubo.json / quantum-ising.json | Fixed shared quantum portfolio and exact4E Pauli-Z coefficients |
+| scale-128-qubo.json / scale-256-qubo.json | Nested larger portfolios for offline VeloxQ integration and classical controls |
+| *-reference.json | Exact/limited offered-domain CP status, samples, objective bound and checked metrics |
+| raw-reference.json | Independent raw batch-slot reference without program enumeration |
+| quantum-sector-reference.json | Exact one-hot-sector minimum and state counts |
+| *-sa.json | Unrepaired seeded literal-QUBO annealing control |
+| *-witness.json | Known all-idle continuation, explicitly not a solver result |
+
+The report declares each portfolio's measured size/scope and restriction loss.
+All larger pools retain every smaller pool choice. These are research inputs,
+not a claim that a capped quantum pool solves the full kitchen. All4raw release
+references reached OPTIMAL at their declared budgets. The33/35/31/35bit fixed
+quantum pools miss5/7/5/6meal lots respectively versus raw2/3/2/3; they fail the
+final full-kitchen quality gate and must be shown with those gaps. Changing
+portfolios can explore more choices, but has no global convergence guarantee.
+Sources are copied and hashed in source_snapshot/; v2 is preserved byte-for-byte.
+
+UI integration remains separate: the existing presentation/catering/build-data.py
+still reads foundation-v1, whose outage-clean results are superseded. Do not
+present those traces as current V3evidence. The actual-sample receipt
+`output/catering-complete-cell-demo-v3.json` provides an independently checked
+QAOA plan for the next viewer update; producing that file does not port the UI.
+
+Reproduce into fresh directories:
+
+    .venv-stage2/bin/python -m catering.build_meal_release --output output/NEW-PAIRED-RELEASE
+    .venv-stage2/bin/python -m catering.meal_campaign --output output/NEW-PAIRED-PILOT
+    .venv/bin/python -m catering.meal_circuit --step output/NEW-PAIRED-PILOT/S3-seed-2026/step-00 --output output/NEW-CIRCUIT-AUDIT
+    .venv-stage2/bin/python -m catering.verify_meals output/catering-foundation-v3 output/catering-paired-pilot-v1 output/catering-complete-cell-v3 --output output/NEW-VERIFICATION.json
+
+The campaign declares4paired scenarios and2algorithm seeds before execution;
+it is an exact-sector QAOA development pilot, not IBM hardware or a broad
+statistical study. CP/exact evaluation references never initialize its plans.
+The circuit command uses optional Qiskit and routes to a synthetic heavy-hex
+topology, not a calibrated IBM backend. No command above uses VeloxQ, tokens,
+network services or physical QPUs. Do not overwrite retained evidence.
+
+## Corrected v2 regression profile (historical shared handoff)
+
+### What is implemented in v2
 
 The core is a finite-grid kitchen with a committed started batch, optional new
 batch yields, same-menu sharing, prep/cook/pack/clean phases, identified qualified

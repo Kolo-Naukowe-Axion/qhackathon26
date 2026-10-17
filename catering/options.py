@@ -5,6 +5,16 @@ from .check import check_plan
 from .domain import make_plan, program_id, residual_demand
 
 
+def bounded_allocations(demands, remaining, capacity):
+    """All nonempty demand multisets up to capacity, without a 2^groups scan."""
+    limits = [remaining[d["id"]] for d in demands]
+    for count in range(1, min(capacity, sum(limits)) + 1):
+        for indices in itertools.combinations_with_replacement(range(len(demands)), count):
+            quantities = Counter(indices)
+            if all(q <= limits[i] for i, q in quantities.items()):
+                yield [demands[i]["id"] for i in indices]
+
+
 def enumerate_options(instance, state):
     groups = state["demand_groups"]
     remaining = residual_demand(state)
@@ -17,11 +27,8 @@ def enumerate_options(instance, state):
         if not demands:
             continue
         for y in recipe["yields"]:
-            for quantities in itertools.product(*(range(remaining[d["id"]] + 1) for d in demands)):
-                served = sum(quantities)
-                if not 0 < served <= y:
-                    continue
-                lots = [d["id"] for d, q in zip(demands, quantities) for _ in range(q)]
+            for lots in bounded_allocations(demands, remaining, y):
+                served = len(lots)
                 orders = sorted(set(itertools.permutations(lots)))
                 for order in orders:
                     for prep in range(state["current_time"], horizon, step):
