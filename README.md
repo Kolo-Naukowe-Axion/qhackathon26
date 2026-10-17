@@ -88,6 +88,8 @@ after the setup above. It checks retained evidence and performs three fresh
 sampling executions; it records no video, retrains no campaign and calls no
 service. Add `--full-qaoa` to independently recheck every archived QAOA return.
 The receipt keeps human rehearsal and final release/submission gates pending.
+The [checked clean-export receipt](output/catering-release-prep-v1/verification.json)
+records the tested source commit and its remaining human steps.
 
 The build runs site tests and syntax checks, then copies only `presentation/`
 to `dist/`. See the [catering guide](catering/README.md) for Python math,

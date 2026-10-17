@@ -34,8 +34,12 @@ human rehearsal record and prepared submission fields; public release, final
 video and actual submission still require their own completed steps.
 
 No new training campaign, external optimizer or physical QPU was run for this
-preparation. Final clean-export verification is recorded separately against its
-source commit.
+preparation. Clean export e78b1d46 passed all ten release checks on Python 3.14.6,
+including 151 site tests, all quantum archive checks, 43 core tests and three local
+sampling executions. Its receipt is output/catering-release-prep-v1/verification.json.
+The export initially had no unpacked VQE evaluator files; all nine restored
+byte-for-byte from the tracked gzip catalog. Human speaking rehearsal and video
+remain pending.
 
 ## 2026-10-17 — model replay, loss checks and five-case VQE integration
 
