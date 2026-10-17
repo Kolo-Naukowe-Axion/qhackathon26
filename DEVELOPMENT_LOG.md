@@ -1,5 +1,36 @@
 # Development log
 
+## 2026-10-17 — quantum-first direction and mandatory repair-clean correction
+
+The user redirected the project toward quantum-first modeling, with classical
+methods as sanity/reference checks. Added a unit-demand coverage-reward QUBO
+without missed registers, a full-objective-range penalty proof and a logical
+conflict-preserving controlled-rotation mixer. Attributed the established mixer
+construction. All32catering tests pass, including independent all-bitstring/raw
+checks, norm/support invariants and cleanup omission/early-cook regressions.
+
+A user audit identified the missing mandatory ten-minute post-repair clean.
+Corrected snapshots, raw checking, local option generation, CP references and
+decoding together. Conservative core policy reserves W2/C2 at70–80; A consumes
+W2 at60–70. New output/catering-foundation-v2/ gives S2 U=1/B=0 and S3 U=1/B=1,
+serving only the urgent order on C1. All four exact/native audits agree. V1
+outage results are superseded and preserved without overwriting their receipts.
+The clean is fixed by an explicit policy, not an optimized recovery-task choice.
+
+Retained quantum-first v1 diagnostic had clique-only pools and was rejected.
+V2 admits compatible batches but caps8/12/16/20 all still miss one lot relative
+to the complete359-bit raw-reference domain. Fixed-angle logical probes verify
+feasibility preservation, not trained performance or hardware feasibility.
+These pools fail the main-workload gate; improving the restriction and costing
+the controlled gates remain necessary. See docs/CATERING_QUANTUM_FIRST.md.
+
+Direct raw batch-slot CP was completed before the quantum-first clarification.
+The classical-v1 outage answers omit the clean and are historical. S0-only
+calibration remains an old-profile diagnostic, not the new quantum workload.
+Current small sanity cases are retained in output/catering-classical-v2/.
+No service/QPU calls or remote allocations were made. Existing concurrent UI
+work remains separate; any v1 replay needs refreshed data before presentation.
+
 ## 2026-10-17 — runnable catering foundation and first classical references
 
 Implemented the complete finite-grid contiguous-packing conservative core,

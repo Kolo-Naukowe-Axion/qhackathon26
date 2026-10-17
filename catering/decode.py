@@ -9,7 +9,7 @@ def decode(bundle, bits):
     checked_bits(bundle, bits)
     instance, state = bundle["instance"], bundle["snapshot"]
     chosen = [p for x, p in zip(bits, bundle["options"]) if x]
-    plan = make_plan(instance, state["fixed_batches"] + chosen)
+    plan = make_plan(instance, state["fixed_batches"] + chosen,state.get("recovery_operations",[]))
     raw = check_plan(instance, state, plan)
     coverage = Counter(g for p in chosen for g in p["allocation_order"])
     register_ok = all(

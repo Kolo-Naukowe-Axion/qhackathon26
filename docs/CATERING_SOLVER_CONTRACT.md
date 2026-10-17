@@ -1,5 +1,14 @@
 # Catering solver contract v1 — foundation handoff design
 
+Current common release: output/catering-foundation-v2/. V1 S2/S3 omitted the
+mandatory repair clean and are superseded. V2 snapshots include immutable
+recovery_operations; decoders must preserve these equipment/worker reservations
+in the raw plan. The conservative earliest-fixed-compatible policy reserves
+W2/C2 at70–80. The new unit-demand coverage-reward representation remains a
+separately labeled prototype; see CATERING_QUANTUM_FIRST.md for its supported
+adapters and scope. Do not compare results across different bundle hashes.
+
+
 17 October 2026. The first runnable core now implements the loader, exact energy,
 Ising conversion, decoder/checker, classical adapters and frozen fixtures.
 Start with [the runnable quick start](../catering/README.md). Quantum/VeloxQ

@@ -45,7 +45,7 @@ def enumerate_options(instance, state):
                                              workers=dict(zip(("prepare", "cook", "pack", "clean"), crew)),
                                              allocation_order=list(order))
                                     p["id"] = program_id(p)
-                                    plan = make_plan(instance, state["fixed_batches"] + [p])
+                                    plan = make_plan(instance, state["fixed_batches"] + [p],state.get("recovery_operations",[]))
                                     if check_plan(instance, state, plan)["valid"]:
                                         programs[p["id"]] = p
     return [programs[k] for k in sorted(programs)]

@@ -50,7 +50,9 @@ def solve_program_master(bundle, budget=None, method_config=None, output_dir=Non
     model = cp_model.CpModel()
     choices = [model.NewBoolVar(f"option-{i}") for i in range(len(bundle["options"]))]
     occupancy = defaultdict(list)
-    fixed = make_plan(instance, state["fixed_batches"])
+    if bundle.get("encoding") == "unit-demand-coverage-reward.v1":
+        raise ValueError("Use raw slots or literal exact audit for the coverage-reward representation")
+    fixed = make_plan(instance, state["fixed_batches"],state.get("recovery_operations",[]))
     if not check_plan(instance, state, fixed)["valid"]:
         raise ValueError("Invalid committed boundary")
     def add_operations(plan, presence, prefix):
@@ -63,9 +65,12 @@ def solve_program_master(bundle, budget=None, method_config=None, output_dir=Non
                     interval = model.NewOptionalIntervalVar(op["start"], end-op["start"], end, presence, name)
                 occupancy[resource].append(interval)
     add_operations(fixed, None, "fixed:")
+    for op in state.get("recovery_operations",[]):
+        for resource in (op["resource"],op["worker"]):
+            occupancy[resource].append(model.NewIntervalVar(op["start"],op["end"]-op["start"],op["end"],op["id"]+resource))
     for i, program in enumerate(bundle["options"]):
         # Recheck raw calendar/qualifications/material behavior; no conflict-list use.
-        if not check_plan(instance, state, make_plan(instance, state["fixed_batches"] + [program]))["valid"]:
+        if not check_plan(instance, state, make_plan(instance, state["fixed_batches"] + [program],state.get("recovery_operations",[])))["valid"]:
             raise ValueError("Invalid offered raw program")
         add_operations(make_plan(instance, [program]), choices[i], "new:")
     for intervals in occupancy.values():

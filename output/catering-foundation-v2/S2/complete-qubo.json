@@ -1,0 +1,362 @@
+{
+  "bundle_id": "shared-lunch-core-v2/S2/complete-core-grid",
+  "bundle_sha256": "dc0d9dc293898135134cc508a35d37cad17224242fbe59006212c995af74eec3",
+  "case_id": "shared-lunch-core-v2/S2",
+  "coefficients": {
+    "max_abs": 5
+  },
+  "conflicts": [],
+  "constant": "5",
+  "disabled_features": [
+    "phase_aware_WIP",
+    "interrupted_cooking",
+    "ingredients",
+    "holding",
+    "power",
+    "money"
+  ],
+  "instance": {
+    "calendars": {
+      "C1": [
+        [
+          0,
+          110
+        ]
+      ],
+      "C2": [
+        [
+          0,
+          110
+        ]
+      ],
+      "K1": [
+        [
+          0,
+          110
+        ]
+      ],
+      "P1": [
+        [
+          0,
+          110
+        ]
+      ],
+      "W1": [
+        [
+          0,
+          110
+        ]
+      ],
+      "W2": [
+        [
+          0,
+          110
+        ]
+      ],
+      "W3": [
+        [
+          0,
+          110
+        ]
+      ]
+    },
+    "capacities": {
+      "holding": false,
+      "ingredients": false,
+      "power": false
+    },
+    "demand_groups": [
+      {
+        "departure": 80,
+        "id": "A/11:50",
+        "lots": 1,
+        "menu": "A",
+        "priority": 1,
+        "revealed": 0
+      },
+      {
+        "departure": 90,
+        "id": "B/12:00",
+        "lots": 1,
+        "menu": "B",
+        "priority": 1,
+        "revealed": 0
+      }
+    ],
+    "equipment": {
+      "cook": [
+        "C1",
+        "C2"
+      ],
+      "pack": [
+        "K1"
+      ],
+      "prepare": [
+        "P1"
+      ]
+    },
+    "event_time": 20,
+    "fixed_batches": [
+      {
+        "allocation_order": [
+          "A/11:50"
+        ],
+        "cook_start": 10,
+        "cooker": "C1",
+        "id": "batch-87a2cab16e2943a00488",
+        "menu": "A",
+        "pack_start": 60,
+        "prep_start": 0,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      }
+    ],
+    "grid_minutes": 10,
+    "horizon_minutes": 110,
+    "instance_id": "shared-lunch-core-v2",
+    "lot_size": 10,
+    "menus": {
+      "A": {
+        "clean": 10,
+        "cook_attendance": 10,
+        "cooking": {
+          "1": 50
+        },
+        "max_age": 30,
+        "pack_per_lot": 10,
+        "prepare": 10,
+        "yields": [
+          1
+        ]
+      },
+      "B": {
+        "clean": 10,
+        "cook_attendance": 10,
+        "cooking": {
+          "1": 20,
+          "2": 20
+        },
+        "max_age": 40,
+        "pack_per_lot": 10,
+        "prepare": 10,
+        "yields": [
+          1,
+          2
+        ]
+      }
+    },
+    "outage": {
+      "end": 60,
+      "resource": "C2",
+      "start": 20
+    },
+    "policies": {
+      "continuation": "whole_started_batch",
+      "objective": [
+        "U",
+        "W",
+        "B",
+        "R"
+      ],
+      "outage": "idle_capacity_withdrawal",
+      "packing": "contiguous",
+      "surplus": "discard_at_cook_end"
+    },
+    "previous_unstarted": [
+      {
+        "allocation_order": [
+          "B/12:00"
+        ],
+        "cook_start": 30,
+        "cooker": "C2",
+        "id": "batch-252eff6e502d8137f014",
+        "menu": "B",
+        "pack_start": 50,
+        "prep_start": 20,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      }
+    ],
+    "profile_id": "core-contiguous-repair-clean.v2",
+    "repair_clean_minutes": 10,
+    "schema_version": "catering-instance.v1",
+    "time_origin": "10:30",
+    "urgent_groups": [
+      {
+        "departure": 100,
+        "id": "B/12:10-urgent",
+        "lots": 1,
+        "menu": "B",
+        "priority": 1,
+        "revealed": 20
+      }
+    ],
+    "workers": {
+      "W1": [
+        "prepare",
+        "pack"
+      ],
+      "W2": [
+        "clean"
+      ],
+      "W3": [
+        "cook"
+      ]
+    }
+  },
+  "instance_sha256": "05344d791bee559dd11040b0381d079ef522f20a7f28d1c8ad933ea58908434a",
+  "linear": [
+    "-2"
+  ],
+  "objective": {
+    "component_bounds": {
+      "B": 0,
+      "R": 1,
+      "U": 1,
+      "W": 0
+    },
+    "constant": "1",
+    "linear": [
+      "2"
+    ],
+    "upper_bound": "3",
+    "weights": {
+      "B": 2,
+      "R": 1,
+      "U": 2,
+      "W": 2
+    }
+  },
+  "options": [],
+  "parent_sha256": null,
+  "penalty": "4",
+  "profile_id": "core-contiguous-repair-clean.v2",
+  "quadratic": [],
+  "registers": [
+    {
+      "demand_group": "B/12:00",
+      "indices": [
+        0
+      ],
+      "maximum": 1,
+      "minimum": 0,
+      "purpose": "missed_lots",
+      "weights": [
+        1
+      ]
+    }
+  ],
+  "representation_id": "complete-core-grid",
+  "scenario_id": "S2",
+  "schema_version": "catering-qubo.v1",
+  "scope": "Complete only on this profile's finite grid",
+  "size": {
+    "auxiliary_bits": 0,
+    "binary_variables": 1,
+    "capacity_bits": 0,
+    "couplers": 0,
+    "option_bits": 0,
+    "shortfall_bits": 1
+  },
+  "snapshot": {
+    "common_prefix_sha256": "a1702e71781d035081dc3feef8d6223bb18a02ac1bca2fdc259da57f20c829a3",
+    "current_time": 20,
+    "demand_groups": [
+      {
+        "departure": 80,
+        "id": "A/11:50",
+        "lots": 1,
+        "menu": "A",
+        "priority": 1,
+        "revealed": 0
+      },
+      {
+        "departure": 90,
+        "id": "B/12:00",
+        "lots": 1,
+        "menu": "B",
+        "priority": 1,
+        "revealed": 0
+      }
+    ],
+    "fixed_batches": [
+      {
+        "allocation_order": [
+          "A/11:50"
+        ],
+        "cook_start": 10,
+        "cooker": "C1",
+        "id": "batch-87a2cab16e2943a00488",
+        "menu": "A",
+        "pack_start": 60,
+        "prep_start": 0,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      }
+    ],
+    "outages": [
+      {
+        "end": 60,
+        "resource": "C2",
+        "start": 20
+      }
+    ],
+    "previous_unstarted": [
+      {
+        "allocation_order": [
+          "B/12:00"
+        ],
+        "cook_start": 30,
+        "cooker": "C2",
+        "id": "batch-252eff6e502d8137f014",
+        "menu": "B",
+        "pack_start": 50,
+        "prep_start": 20,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      }
+    ],
+    "recovery_operations": [
+      {
+        "end": 80,
+        "id": "repair-clean:C2",
+        "kind": "recovery_clean",
+        "repair_end": 60,
+        "resource": "C2",
+        "start": 70,
+        "worker": "W2"
+      }
+    ],
+    "recovery_policy": "earliest_fixed_compatible_clean",
+    "scenario_id": "S2",
+    "schema_version": "catering-snapshot.v1"
+  },
+  "snapshot_sha256": "724ceb2463c93cf3fab6fca7631046403ba3c3271ad54500a93effc0823b3b80",
+  "variable_order": [
+    "missed:B/12:00:0"
+  ]
+}

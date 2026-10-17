@@ -2,6 +2,14 @@
 
 Active work allocation — 17 October 2026, Europe/Warsaw.
 
+**Current priority:** quantum-first encoding and QAOA are the central method;
+classical work supplies sanity/reference checks. See [the updated method and
+proofs](CATERING_QUANTUM_FIRST.md). Foundation-v2 corrects mandatory recovery
+cleaning; v1 outage answers are superseded. Existing adapter work can continue,
+but result comparisons must identify the corrected bundle hashes. The newer
+unit-demand encoding is a separately labeled prototype, not a silent replacement
+for everybody’s inputs. No teammate messages have been sent by this update.
+
 The user selected catering as the direction to try now and requested asynchronous
 work across four people. Their clarification supersedes a component-based split:
 **Codex builds the common foundation first; each person then owns an optimization
@@ -13,7 +21,7 @@ the classical track as well as the foundation. The three other people take the
 VeloxQ, QAOA and VQE tracks; their names are not assigned here.
 Factory code, evidence and demo remain intact as a fallback. The catering
 first runnable core is now released: see [the quick start](../catering/README.md)
-and the frozen inputs in output/catering-foundation-v1/. The full ambitious
+and the frozen inputs in output/catering-foundation-v2/. The full ambitious
 profile remains incomplete. IBM/VeloxQ execution holds remain unchanged.
 
 **Method owners can start now:** pull main and use the frozen quantum-qubo.json

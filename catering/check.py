@@ -1,13 +1,36 @@
 """Independent raw-record validation. No compiler/conflict-list imports."""
 from collections import Counter, defaultdict
-from .domain import PROFILE, program_id
+from .domain import PROFILE, LEGACY_PROFILE, program_id
 
 
 def _check_plan(instance, state, plan):
     errors, claims = [], defaultdict(list)
     horizon, step = instance["horizon_minutes"], instance["grid_minutes"]
-    if instance.get("profile_id") != PROFILE:
+    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE):
         return dict(valid=False, violations=["Unsupported profile"], metrics=None)
+    recovery = state.get("recovery_operations",[])
+    if plan.get("recovery_operations",[]) != recovery:
+        errors.append("Mandatory post-repair clean changed or missing")
+    if instance["profile_id"] == PROFILE:
+        if len(recovery) != len(state["outages"]):
+            errors.append("Missing mandatory post-repair clean in state")
+        for outage in state["outages"]:
+            tasks = [op for op in recovery if op["resource"] == outage["resource"]]
+            if len(tasks) != 1:
+                errors.append("Invalid recovery clean identity")
+                continue
+            op = tasks[0]
+            if (op["kind"] != "recovery_clean" or op["start"] < outage["end"]
+                    or op["end"]-op["start"] != instance["repair_clean_minutes"]
+                    or op["repair_end"] != outage["end"] or "clean" not in instance["workers"].get(op["worker"],[])
+                    or not 0 <= op["start"] < op["end"] <= horizon or op["start"]%step or op["end"]%step):
+                errors.append("Invalid mandatory recovery clean")
+            for r in (op["resource"],op["worker"]):
+                if not any(a <= op["start"] and op["end"] <= b for a,b in instance["calendars"][r]):
+                    errors.append("Recovery clean calendar violation")
+                if any(o["resource"] == r and op["start"] < o["end"] and o["start"] < op["end"] for o in state["outages"]):
+                    errors.append("Recovery clean outage violation")
+                claims[r].append((op["start"],op["end"],op["id"]))
     batches = {b["id"]: b for b in plan.get("batches", [])}
     if len(batches) != len(plan.get("batches", [])):
         errors.append("Duplicate batch")
@@ -31,6 +54,8 @@ def _check_plan(instance, state, plan):
         if bid not in fixed_ids and a < state["current_time"]:
             errors.append("New work starts in the past")
         resource, worker = op.get("resource"), op.get("worker")
+        if kind == "cook" and a >= state["current_time"] and any(task["resource"] == resource and a < task["end"] for task in recovery):
+            errors.append("Cooking before post-repair clean finishes")
         role = "cook" if kind == "clean" else kind
         if resource not in instance["equipment"].get(role, []) or kind not in instance["workers"].get(worker, []):
             errors.append("Resource eligibility/qualification")

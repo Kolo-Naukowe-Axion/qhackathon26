@@ -30,7 +30,7 @@ class FoundationTests(unittest.TestCase):
         self.assertEqual(len({s["common_prefix_sha256"] for s in self.states.values()}),1)
         self.assertEqual([len(self.states[s]["demand_groups"]) for s in self.states],[2,3,2,3])
         self.assertEqual([len(self.states[s]["outages"]) for s in self.states],[0,0,1,1])
-        self.assertEqual([len(self.programs[s]) for s in self.states],[26,89,8,44])
+        self.assertEqual([len(self.programs[s]) for s in self.states],[26,89,0,8])
 
     def test_unsupported_capacities_and_interrupted_outage_fail_closed(self):
         p=copy.deepcopy(self.instance);p["capacities"]["holding"]=True
@@ -78,6 +78,35 @@ class FoundationTests(unittest.TestCase):
         state=self.states["S2"]
         plan=make_plan(self.instance,state["fixed_batches"]+state["previous_unstarted"])
         self.assertIn("Outage violation",check_plan(self.instance,state,plan)["violations"])
+
+    def test_post_repair_clean_is_mandatory_even_without_new_production(self):
+        state=self.states["S2"]
+        self.assertEqual(state["recovery_operations"][0]["start"],70)
+        self.assertEqual(state["recovery_operations"][0]["end"],80)
+        plan=make_plan(self.instance,state["fixed_batches"],state["recovery_operations"])
+        self.assertTrue(check_plan(self.instance,state,plan)["valid"])
+        plan.pop("recovery_operations")
+        self.assertIn("Mandatory post-repair clean changed or missing",check_plan(self.instance,state,plan)["violations"])
+        broken=copy.deepcopy(state);broken["recovery_operations"]=[]
+        self.assertIn("Missing mandatory post-repair clean in state",check_plan(self.instance,broken,plan)["violations"])
+
+    def test_cooking_at_repair_end_before_the_clean_is_rejected(self):
+        state=self.states["S2"]
+        p=copy.deepcopy(state["previous_unstarted"][0])
+        p.update(prep_start=40,cook_start=60,pack_start=80)
+        p["id"]=program_id(p)
+        plan=make_plan(self.instance,state["fixed_batches"]+[p],state["recovery_operations"])
+        self.assertIn("Cooking before post-repair clean finishes",check_plan(self.instance,state,plan)["violations"])
+
+    def test_corrected_outage_metrics_include_the_lost_nominal_order(self):
+        for scenario,metrics in (("S2",dict(U=1,W=0,B=0,R=1)),("S3",dict(U=1,W=0,B=1,R=2))):
+            result=solve_native(self.instance,self.states[scenario],dict(wall_time_limit_s=3))
+            self.assertEqual(result["reference"]["status"],"OPTIMAL")
+            self.assertEqual(result["check"]["metrics"],metrics)
+            if scenario=="S3":
+                new=[b for b in result["plan"]["batches"] if b["menu"]=="B"]
+                self.assertEqual(new[0]["cooker"],"C1")
+                self.assertEqual(new[0]["allocation_order"],["B/12:10-urgent"])
 
     def test_bounded_registers_cover_exact_ranges(self):
         for bound in range(65):

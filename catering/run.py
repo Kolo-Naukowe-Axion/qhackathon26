@@ -90,8 +90,8 @@ def build(output, *, instance_path=None, cap=16, native_seconds=10, sa_seconds=2
         rows.append(row)
         print(json.dumps(dict(scenario=scenario, complete_bits=complete["size"]["binary_variables"],
                               quantum_bits=quantum["size"]["binary_variables"], native=cbest, quantum=qbest)), flush=True)
-    report = dict(schema_version="catering-foundation.v1", profile_id=PROFILE,
-                  scope="Small complete finite-grid contiguous-packing core; frozen whole-started-batch reservations; idle cooker withdrawal",
+    report = dict(schema_version="catering-foundation.v1", profile_id=instance["profile_id"],
+                  scope="Small complete finite-grid contiguous-packing core; frozen started batches; idle cooker outage with mandatory earliest-fixed-compatible post-repair clean",
                   not_flagship=True, rows=rows, all_checks_passed=True,
                   four_cases_share_committed_prefix=len({r["common_prefix_sha256"] for r in rows}) == 1,
                   total_s=time.monotonic()-started, physical_qpu_calls=0, veloxq_calls=0,

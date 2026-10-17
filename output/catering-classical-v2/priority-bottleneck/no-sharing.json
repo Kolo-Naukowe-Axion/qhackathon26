@@ -1,0 +1,144 @@
+{
+  "check": {
+    "covered_lots": {
+      "B/priority-5": 1
+    },
+    "discarded_lots": 0,
+    "metrics": {
+      "B": 1,
+      "R": 1,
+      "U": 1,
+      "W": 0
+    },
+    "operations": 4,
+    "valid": true,
+    "violations": []
+  },
+  "component_bounds": {
+    "B": 2,
+    "R": 2,
+    "U": 6,
+    "W": 4
+  },
+  "configuration": {
+    "allow_sharing": false,
+    "initialization": "Partial zero-activity hints",
+    "seed": 2026,
+    "workers": 1
+  },
+  "environment": {
+    "machine": "arm64",
+    "python": "3.14.6"
+  },
+  "execution_kind": "classical",
+  "instance_sha256": "e2a25bdc43dfa1487ca818dd57452894529aa390f607c07bf58efb731c11e570",
+  "method_id": "native_cp_raw_slots",
+  "model_size": {
+    "batch_slots": 2,
+    "constraints": 207,
+    "variables": 92
+  },
+  "objective": "49",
+  "objective_bound": "49",
+  "objective_scope": "Raw core lexicographic (U,W,B,R); weights differ from option QUBOs",
+  "objective_weights": {
+    "B": 3,
+    "R": 1,
+    "U": 45,
+    "W": 9
+  },
+  "physical_qpu_calls": 0,
+  "plan": {
+    "allocations": [
+      {
+        "batch_id": "batch-01096ef9df7aba0ec4dc",
+        "demand_group": "B/priority-5",
+        "lots": 1,
+        "packing_operation": "batch-01096ef9df7aba0ec4dc/pack-0"
+      }
+    ],
+    "batches": [
+      {
+        "allocation_order": [
+          "B/priority-5"
+        ],
+        "cook_start": 30,
+        "cooker": "C1",
+        "id": "batch-01096ef9df7aba0ec4dc",
+        "menu": "B",
+        "pack_start": 50,
+        "prep_start": 20,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 1
+      }
+    ],
+    "disposals": [],
+    "operations": [
+      {
+        "attended_end": 30,
+        "batch_id": "batch-01096ef9df7aba0ec4dc",
+        "end": 30,
+        "id": "batch-01096ef9df7aba0ec4dc/prepare",
+        "kind": "prepare",
+        "resource": "P1",
+        "start": 20,
+        "worker": "W1"
+      },
+      {
+        "attended_end": 40,
+        "batch_id": "batch-01096ef9df7aba0ec4dc",
+        "end": 50,
+        "id": "batch-01096ef9df7aba0ec4dc/cook",
+        "kind": "cook",
+        "resource": "C1",
+        "start": 30,
+        "worker": "W3"
+      },
+      {
+        "attended_end": 60,
+        "batch_id": "batch-01096ef9df7aba0ec4dc",
+        "end": 60,
+        "id": "batch-01096ef9df7aba0ec4dc/clean",
+        "kind": "clean",
+        "resource": "C1",
+        "start": 50,
+        "worker": "W2"
+      },
+      {
+        "attended_end": 60,
+        "batch_id": "batch-01096ef9df7aba0ec4dc",
+        "end": 60,
+        "id": "batch-01096ef9df7aba0ec4dc/pack-0",
+        "kind": "pack",
+        "resource": "K1",
+        "start": 50,
+        "worker": "W1"
+      }
+    ],
+    "schema_version": "catering-plan.v1"
+  },
+  "profile_id": "core-contiguous-repair-clean.v2",
+  "program_enumeration": false,
+  "qubo_construction": false,
+  "reference_scope": "Complete declared raw grid/contiguous packing/conservative boundary",
+  "reference_status": "OPTIMAL",
+  "schema_version": "catering-native-slots.v1",
+  "snapshot_sha256": "804957b83b3ff17d7b37f61cebf521459c22ccbb1c504f0f3706e1593fbe7ad4",
+  "status": "completed",
+  "timings": {
+    "build_s": 0.0009219162166118622,
+    "solver_s": 0.002565,
+    "total_s": 0.003568541258573532
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "branches": 0,
+    "conflicts": 0
+  }
+}

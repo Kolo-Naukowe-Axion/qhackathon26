@@ -2,13 +2,19 @@
 
 ## Active Stage 2 direction: catering
 
+The method is now explicitly quantum-first: read [the current encoding/mixer
+design and evidence gates](docs/CATERING_QUANTUM_FIRST.md). Classical solvers
+provide reference checks. The v2 core fixes mandatory post-repair cleaning; v1
+outage results are superseded. Quantum-first prototype pools still have a
+measured restriction gap and are not yet the accepted main quantum workload.
+
 The user selected catering as the direction to try on 17 October. Start with
 the [ambitious specification](docs/CATERING_AMBITIOUS_SPEC.md),
 [four-person method allocation](docs/CATERING_METHOD_WORKSPLIT.md) and
 [common solver contract](docs/CATERING_SOLVER_CONTRACT.md). Codex builds the shared
 foundation first; independent owners then evaluate VeloxQ, QAOA, VQE and classical
 references. The [first runnable core](catering/README.md) and frozen inputs at
-output/catering-foundation-v1/ now provide four checked cases, common QUBO/Ising
+output/catering-foundation-v2/ now provide four checked cases, common QUBO/Ising
 encodings, decoder/checker, exact/native references and SA. The ambitious profile
 and quantum/service results remain incomplete. IBM/VeloxQ execution remains held.
 

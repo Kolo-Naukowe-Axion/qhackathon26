@@ -1,5 +1,12 @@
 # Lunch under pressure: ambitious catering production specification
 
+Current implementation status: see [the quantum-first method and correction](CATERING_QUANTUM_FIRST.md)
+and [the runnable core](../catering/README.md). Foundation-v2 includes mandatory
+post-repair cleaning under an explicit fixed conservative cleanup policy. V1
+outage results are superseded. This ambitious document remains a target;
+movable cleanup/phase-aware failure and aggregate capacities are not active.
+
+
 Design revision 1 — 17 October 2026, Europe/Warsaw.
 
 **Status:** the user subsequently selected catering as the active direction to
@@ -963,7 +970,8 @@ verified factory work until catering has earned a demonstrated improvement.
 | Tiny supplied-option catering algebra | Verified separately: 18/16 bits |
 | Full ambitious kitchen implementation | Not built |
 | Four full scenario register counts | Unknown |
-| Actual waste/WIP/aggregate-capacity implementation | Proposed here |
+| Explicit surplus/material waste | Implemented in the conservative core |
+| Phase-aware WIP and aggregate capacities | Proposed; not implemented |
 | Native catering reference at flagship scale | Not built |
 | Catering QAOA/circuit timing on IBM target | Not built |
 | Physical catering quantum execution | None |

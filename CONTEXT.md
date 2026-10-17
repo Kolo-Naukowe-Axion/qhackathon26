@@ -1,5 +1,28 @@
 # QPoland Quantum Hackathon — running context
 
+## Current correction and quantum-first priority — 17 October
+
+The user clarified that the quantum method is the main project; classical
+optimization is a reference/sanity check. See docs/CATERING_QUANTUM_FIRST.md.
+Shared unit-demand encoding and a tested conflict-preserving mixer primitive
+exist, with logical fixed-angle audits. They are not trained QAOA or hardware
+results. Current capped pools lose one lot against the broader optimum and
+fail the main-workload gate. Do not oversell them.
+
+A user audit caught the omitted post-repair clean. The current profile is
+core-contiguous-repair-clean.v2: mandatory W2/C2 clean at70–80 in S2/S3 because
+A already uses W2 at60–70. Cooking on C2 must wait until80. Correct exact tuples:
+S0=(0,0,1,0), S1=(0,0,1,2), S2=(1,0,0,1), S3=(1,0,1,2).
+S3 serves the urgent order on C1. Use output/catering-foundation-v2/.
+V1 outage results and any replay still using them are superseded. Cleanup time
+is fixed by an explicit earliest-fixed-compatible conservative policy; movable
+mandatory tasks and phase-aware recovery remain future extensions.
+All32catering tests pass. Classical raw slots and exact/SA provide reference
+checks. No IBM, VeloxQ or new remote allocations were used. Preserve existing
+teammate UI edits and refresh stale replay data before a current-results demo.
+
+Earlier entries below are historical; this section overrides conflicting status.
+
 ## Active direction: try catering; shared foundation then methods — 17 October
 
 **First runnable handoff released:** catering/README.md points to the shared

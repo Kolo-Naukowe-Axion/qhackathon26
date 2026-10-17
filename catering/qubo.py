@@ -16,10 +16,10 @@ def bounded_weights(limit):
 def compile_qubo(instance, state, programs, *, representation="complete-core-grid", parent_sha256=None):
     from .check import check_plan
     validate_instance(instance)
-    if not check_plan(instance, state, make_plan(instance, state["fixed_batches"]))["valid"]:
+    if not check_plan(instance, state, make_plan(instance, state["fixed_batches"],state.get("recovery_operations",[])))["valid"]:
         raise ValueError("Invalid committed boundary")
     for p in programs:
-        if not p["allocation_order"] or not check_plan(instance, state, make_plan(instance, state["fixed_batches"] + [p]))["valid"]:
+        if not p["allocation_order"] or not check_plan(instance, state, make_plan(instance, state["fixed_batches"] + [p],state.get("recovery_operations",[])))["valid"]:
             raise ValueError("Compiler accepts only individually valid nonempty programs")
     order = [p["id"] for p in programs]
     if len(order) != len(set(order)):

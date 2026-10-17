@@ -25,7 +25,7 @@ def audit_bundle(bundle):
     for count in range(min(max_selected, len(programs)) + 1):
         for selected in itertools.combinations(range(len(programs)), count):
             checked += 1
-            plan = make_plan(instance, state["fixed_batches"] + [programs[i] for i in selected])
+            plan = make_plan(instance, state["fixed_batches"] + [programs[i] for i in selected],state.get("recovery_operations",[]))
             physical = check_plan(instance, state, plan)
             if not physical["valid"]:
                 continue

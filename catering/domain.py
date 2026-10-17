@@ -10,7 +10,8 @@ import hashlib
 import json
 from collections import Counter
 
-PROFILE = "core-contiguous-conservative.v1"
+LEGACY_PROFILE = "core-contiguous-conservative.v1"
+PROFILE = "core-contiguous-repair-clean.v2"
 SCENARIOS = ("S0", "S1", "S2", "S3")
 ROLES = ("prepare", "cook", "pack", "clean")
 
@@ -32,7 +33,7 @@ def integer(value, name, minimum=0):
 def fixture():
     """A small declared grid domain; not the proposed 240-meal flagship."""
     instance = dict(
-        schema_version="catering-instance.v1", instance_id="shared-lunch-core-v1",
+        schema_version="catering-instance.v1", instance_id="shared-lunch-core-v2",
         profile_id=PROFILE, time_origin="10:30", horizon_minutes=110,
         grid_minutes=10, lot_size=10, event_time=20,
         menus={
@@ -54,6 +55,7 @@ def fixture():
                       outage="idle_capacity_withdrawal", packing="contiguous",
                       surplus="discard_at_cook_end", objective=["U", "W", "B", "R"]),
         capacities=dict(ingredients=False, holding=False, power=False),
+        repair_clean_minutes=10,
     )
     fixed = dict(menu="A", yield_lots=1, prep_station="P1", cooker="C1",
                  prep_start=0, cook_start=10, pack_start=60,
@@ -76,12 +78,16 @@ def program_id(program):
 
 
 def validate_instance(instance):
-    if instance.get("profile_id") != PROFILE:
+    if instance.get("profile_id") not in (PROFILE,LEGACY_PROFILE):
         raise ValueError("Unsupported profile; ambitious mechanisms are not silently ignored")
     step = integer(instance["grid_minutes"], "grid", 1)
     end = integer(instance["horizon_minutes"], "horizon", step)
     if end % step or instance["event_time"] % step:
         raise ValueError("Grid-aligned calendar required")
+    if instance["profile_id"] == PROFILE:
+        duration = integer(instance["repair_clean_minutes"],"repair clean",1)
+        if duration % step:
+            raise ValueError("Grid-aligned repair clean required")
     if instance["policies"] != dict(continuation="whole_started_batch",
                                    outage="idle_capacity_withdrawal",
                                    packing="contiguous", surplus="discard_at_cook_end",
@@ -151,6 +157,37 @@ def snapshot(instance, scenario):
             for outage in result["outages"]:
                 if op["resource"] == outage["resource"] and overlap(op["start"], op["end"], outage["start"], outage["end"]):
                     raise ValueError("Outage interrupts committed work; phase-aware profile required")
+    if instance["profile_id"] == PROFILE:
+        result["recovery_policy"] = "earliest_fixed_compatible_clean"
+        result["recovery_operations"] = []
+        # Conservative core policy: reserve a mandatory clean at the earliest
+        # grid time compatible with the committed prefix and qualified crew.
+        # This is explicit preprocessing, not an optimized recovery-task domain.
+        committed = make_plan(instance,fixed)["operations"]
+        for outage in result["outages"]:
+            duration = instance["repair_clean_minutes"]
+            chosen = None
+            for start in range(outage["end"],instance["horizon_minutes"]-duration+1,instance["grid_minutes"]):
+                for worker,skills in sorted(instance["workers"].items()):
+                    if "clean" not in skills:
+                        continue
+                    resources = (outage["resource"],worker)
+                    if not all(available(instance,result,r,start,start+duration) for r in resources):
+                        continue
+                    occupied = [(op["resource"],op["start"],op["end"]) for op in committed]
+                    occupied += [(op["worker"],op["start"],op["attended_end"]) for op in committed]
+                    occupied += [(op[r],op["start"],op["end"]) for op in result["recovery_operations"] for r in ("resource","worker")]
+                    if any(r in resources and overlap(start,start+duration,a,b) for r,a,b in occupied):
+                        continue
+                    chosen = dict(id="repair-clean:"+outage["resource"],kind="recovery_clean",
+                                  resource=outage["resource"],worker=worker,start=start,end=start+duration,
+                                  repair_end=outage["end"])
+                    break
+                if chosen is not None:
+                    break
+            if chosen is None:
+                raise ValueError("Mandatory post-repair clean cannot fit the committed boundary")
+            result["recovery_operations"].append(chosen)
     return result
 
 
@@ -164,7 +201,7 @@ def available(instance, state, resource, start, end):
                         for o in state["outages"]))
 
 
-def make_plan(instance, programs):
+def make_plan(instance, programs, recovery_operations=()):
     """Emit explicit raw records. The separate checker validates their rules."""
     operations, allocations, disposals = [], [], []
     for b in programs:
@@ -188,8 +225,11 @@ def make_plan(instance, programs):
         waste = b["yield_lots"] - len(b["allocation_order"])
         if waste:
             disposals.append(dict(batch_id=b["id"], lots=waste, time=cook_end, reason="unallocated_output"))
-    return dict(schema_version="catering-plan.v1", batches=copy.deepcopy(programs),
+    plan = dict(schema_version="catering-plan.v1", batches=copy.deepcopy(programs),
                 operations=operations, allocations=allocations, disposals=disposals)
+    if recovery_operations:
+        plan["recovery_operations"] = copy.deepcopy(list(recovery_operations))
+    return plan
 
 
 def residual_demand(state):

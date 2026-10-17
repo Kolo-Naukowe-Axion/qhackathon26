@@ -1,7 +1,12 @@
 # Catering foundation: start here
 
-First runnable core release, 17 October 2026. We own shared infrastructure and
-classical references. The other three tracks are VeloxQ, QAOA and VQE.
+Current corrected release: v2, 17 October 2026. The project is quantum-first;
+classical methods provide reference checks. Read the current method, proofs and
+acceptance gates in [the quantum-first design](../docs/CATERING_QUANTUM_FIRST.md).
+
+**Superseded results:** v1 omitted the mandatory post-repair clean in S2/S3.
+Use output/catering-foundation-v2/ for new method runs. Existing v1 files are
+retained as historical evidence; their outage answers are not spec-conformant.
 
 Read [method ownership](../docs/CATERING_METHOD_WORKSPLIT.md) and
 [solver conventions](../docs/CATERING_SOLVER_CONTRACT.md). The
@@ -17,7 +22,7 @@ Four observed cases share one fixed production state: normal, urgent order,
 idle-cooker withdrawal and both. The nominal previous plan is provided openly;
 it is not an optimal-plan teacher for option generation.
 
-The executable profile is core-contiguous-conservative.v1:
+The executable profile is core-contiguous-repair-clean.v2:
 
 - Started batches retain their whole remaining local program.
 - New batches must serve at least one lot.
@@ -25,6 +30,10 @@ The executable profile is core-contiguous-conservative.v1:
 - A cooker clean immediately follows cooking.
 - Waste is unallocated yielded lots explicitly discarded at cook completion.
 - Outages must not interrupt committed operations. Such inputs are rejected.
+- Every outage requires a qualified worker and ten-minute post-repair clean,
+  even if the cooker remains unused. The core fixes it at the earliest slot
+  compatible with committed work. Here W2/C2 clean at 70–80; no C2 cook may
+  start before 80. Optimizing that task is outside this conservative policy.
 - Aggregate ingredients/holding/power, money and phase-aware failure are disabled
   explicitly. Enabling them without an implementation raises an error.
 
@@ -56,7 +65,7 @@ QPU, credit, H100 allocation or private credential is touched.
 
 The first retained input release is:
 
-    output/catering-foundation-v1/
+    output/catering-foundation-v2/
 
 Within each S0/S1/S2/S3 directory:
 
@@ -84,20 +93,21 @@ method output directory. New fixtures/releases get new identities/directories.
 |---|---:|---:|
 | S0 normal | 27 / 351 | 17 / 136 |
 | S1 urgent | 91 / 3,782 | 18 / 149 |
-| S2 withdrawal | 9 / 36 | 9 / 36 |
-| S3 both | 46 / 946 | 18 / 140 |
+| S2 withdrawal + repair clean | 1 / 0 | 1 / 0 |
+| S3 both + repair clean | 10 / 36 | 10 / 36 |
 
 The cap is a restriction, not a lossless encoding proof. For these particular
-four cases it retains the complete core optimum. S2 retains every offered
-program, so there is no domain reduction in that case. Coefficient scales and
+four cases it retains the complete core optimum. S2 and S3 retain every offered
+program, so there is no domain reduction in those cases. Coefficient scales and
 objective weights differ across differently sized bundles: compare operational
 tuples across representations, never raw energies.
 
-All four exact core optima fulfill the current demand without waste, using one
-new B batch. The urgent/combined cases share a two-lot batch across two demand
-groups. S0 retains the old unstarted plan (R=0); the other cases replace it (R=2).
-These are easy initial verification cases. They are not evidence of solver
-advantage or a successful quantum experiment.
+The exact tuples (U,W,B,R) are S0=(0,0,1,0), S1=(0,0,1,2),
+S2=(1,0,0,1), S3=(1,0,1,2). S2 misses the nominal B order. S3 serves only
+the urgent B order, on C1. The repair clean still executes in both cases.
+S2 offers no new production program and has only its shortfall register bit.
+These small cases validate physics and encoding; they are not the main quantum
+workload or evidence of quantum/service advantage.
 
 ## Use the stable helpers
 
@@ -105,7 +115,7 @@ advantage or a successful quantum experiment.
     from catering.qubo import energy, ising
     from catering.decode import decode
 
-    bundle = load_bundle("output/catering-foundation-v1/S1/quantum-qubo.json")
+    bundle = load_bundle("output/catering-foundation-v2/S1/quantum-qubo.json")
     # Your adapter returns Python int bits in bundle["variable_order"].
     # energy(bundle, bits) returns the exact original integer energy.
     # ising(bundle) gives coefficients of 4H with z=1-2x.
@@ -114,8 +124,8 @@ advantage or a successful quantum experiment.
 For a known-valid integration smoke, evaluate a retained reference response:
 
     python -m catering.run evaluate \
-      --bundle output/catering-foundation-v1/S1/quantum-qubo.json \
-      --samples output/catering-foundation-v1/S1/reference-quantum.json \
+      --bundle output/catering-foundation-v2/S1/quantum-qubo.json \
+      --samples output/catering-foundation-v2/S1/reference-quantum.json \
       --output /tmp/catering-reference-check.json
 
 The output path must be fresh. Your MethodResult should use the same bundle
@@ -129,7 +139,9 @@ divide its full energy including offset by four before reporting E.
 - VeloxQ: catering/methods/veloxq.py; offline adapter first, service held.
 - QAOA: catering/methods/qaoa.py; simulate quantum-qubo inputs first.
 - VQE: catering/methods/vqe.py; same small inputs/Hamiltonian as QAOA.
-- Us: catering/native.py and catering/methods/classical.py.
+- Us: shared quantum-oriented encoding/checking and classical reference sanity checks.
+- New encoding/mixer semantics: catering/quantum_first.py.
+- Direct raw CP sanity reference: catering/native_slots.py.
 - Shared model/compiler/checker/contracts: this chat's integrator ownership.
 
 Every owner can work without another adapter's implementation. Do not edit
@@ -142,9 +154,9 @@ remain a later foundation tier. IBM also remains held.
 
 The native master enforces raw optional equipment/attendance intervals with
 NoOverlap and demand equations, without reading QUBO conflict penalties. It shares
-the complete program generator and objective specification. This is not an
-independent unrestricted batch-slot reference; the stronger raw-model reference
-is further classical work.
+the complete program generator and objective specification. The separate catering/native_slots.py now chooses raw
+batch quantities, allocations, workers and times without enumerating programs
+or reading QUBO conflicts. Both use the declared core packing/recovery policies.
 
 The independent audit instead enumerates all potentially feasible program subsets
 up to residual demand and checks raw operation/material records. Every new program
@@ -155,3 +167,17 @@ optima with the native master and audits every QUBO bitstring for bundles up to
 SA returns its best state from each restart. Its returned-state feasibility is
 not a measurement of every visited state or an equal-budget comparison with
 quantum shots. The release records work counts and does not repair returns.
+
+## Quantum-first prototype
+
+The shared unit-demand coverage-reward encoding removes shortfall bits and
+supports a conflict-preserving mixer. See the design document above before
+using output/catering-quantum-first-v2/. It is an audited design prototype, not
+a trained QAOA result or an accepted main workload: its capped pools still lose
+one demand lot against the complete raw reference. The old program-master
+adapter rejects this representation to prevent double-counting service costs.
+Generic QUBO/Ising loaders, energy evaluation, decoder and exact/SA adapters work.
+
+All 32 catering tests pass. No IBM or VeloxQ calls were made. A kitchen replay
+still loading foundation-v1 is historical and must be refreshed before it is
+used to explain the corrected S2/S3 outcomes.

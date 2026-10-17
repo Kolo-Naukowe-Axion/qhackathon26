@@ -1,0 +1,151 @@
+{
+  "calendars": {
+    "C1": [
+      [
+        0,
+        110
+      ]
+    ],
+    "C2": [
+      [
+        0,
+        110
+      ]
+    ],
+    "K1": [
+      [
+        0,
+        110
+      ]
+    ],
+    "P1": [
+      [
+        0,
+        110
+      ]
+    ],
+    "W1": [
+      [
+        0,
+        110
+      ]
+    ],
+    "W2": [
+      [
+        0,
+        110
+      ]
+    ],
+    "W3": [
+      [
+        0,
+        110
+      ]
+    ]
+  },
+  "capacities": {
+    "holding": false,
+    "ingredients": false,
+    "power": false
+  },
+  "demand_groups": [
+    {
+      "departure": 60,
+      "id": "B/priority-1",
+      "lots": 1,
+      "menu": "B",
+      "priority": 1,
+      "revealed": 0
+    },
+    {
+      "departure": 60,
+      "id": "B/priority-5",
+      "lots": 1,
+      "menu": "B",
+      "priority": 5,
+      "revealed": 0
+    }
+  ],
+  "equipment": {
+    "cook": [
+      "C1",
+      "C2"
+    ],
+    "pack": [
+      "K1"
+    ],
+    "prepare": [
+      "P1"
+    ]
+  },
+  "event_time": 20,
+  "fixed_batches": [],
+  "grid_minutes": 10,
+  "horizon_minutes": 110,
+  "instance_id": "priority-bottleneck",
+  "lot_size": 10,
+  "menus": {
+    "A": {
+      "clean": 10,
+      "cook_attendance": 10,
+      "cooking": {
+        "1": 50
+      },
+      "max_age": 30,
+      "pack_per_lot": 10,
+      "prepare": 10,
+      "yields": [
+        1
+      ]
+    },
+    "B": {
+      "clean": 10,
+      "cook_attendance": 10,
+      "cooking": {
+        "1": 20,
+        "2": 20
+      },
+      "max_age": 40,
+      "pack_per_lot": 10,
+      "prepare": 10,
+      "yields": [
+        1,
+        2
+      ]
+    }
+  },
+  "outage": {
+    "end": 60,
+    "resource": "C2",
+    "start": 20
+  },
+  "policies": {
+    "continuation": "whole_started_batch",
+    "objective": [
+      "U",
+      "W",
+      "B",
+      "R"
+    ],
+    "outage": "idle_capacity_withdrawal",
+    "packing": "contiguous",
+    "surplus": "discard_at_cook_end"
+  },
+  "previous_unstarted": [],
+  "profile_id": "core-contiguous-conservative.v1",
+  "schema_version": "catering-instance.v1",
+  "time_origin": "10:30",
+  "urgent_groups": [],
+  "workers": {
+    "W1": [
+      "prepare",
+      "pack"
+    ],
+    "W2": [
+      "clean"
+    ],
+    "W3": [
+      "cook"
+    ]
+  }
+}
