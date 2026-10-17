@@ -1,12 +1,100 @@
 [
-  {"id":"hook","title":"Lunch service: 20 meals","kicker":"LUNCH SERVICE","duration":12,"live_duration":8,"narration":"Our baseline schedules finish in four and eight hours. For Stage Two, we asked a different production question: can shared batches deliver complete meals without wasting their components?"},
-  {"id":"service","title":"Two orders sharing a side batch","kicker":"THE PRODUCTION DECISION","duration":28,"live_duration":22,"narration":"Each order is for ten people. The first main is already cooking. We choose a new main for Order B and one twenty-portion side batch shared across both orders. The plan assigns preparation, cooking, packing and cleaning to actual equipment and workers. Separate cookers allow overlap, while one packing line links each portion to its departure."},
-  {"id":"counter","title":"What happens without the side batch","kicker":"A CHECKED COUNTERFACTUAL","duration":20,"live_duration":12,"narration":"Here we manually skip the shared side. The mains can still finish, but neither customer receives a complete meal. Twenty component portions become waste. This intervention explains the service objective. It is independently checked, and it is not another optimizer run."},
-  {"id":"encoding","title":"Batch selection and scheduling constraints","kicker":"FROM OPERATIONS TO QUBO","duration":34,"live_duration":22,"narration":"A program specifies quantity, allocations, equipment, workers and phase times for one batch. It is not a pre-solved whole-kitchen schedule. Programs sharing a unit demand anchor form a one-hot block, including idle. Cross-block conflicts forbid double delivery and shared-resource overlaps. The complete small cell keeps all thirty-two legal programs and three idle choices."},
-  {"id":"loss","title":"Complete meals and food waste","kicker":"THE MATHEMATICAL CONTRIBUTION","duration":36,"live_duration":25,"narration":"Main coverage times side coverage tells us whether a meal is complete. Their sum minus twice their product counts unpaired components. These expressions expand directly into quadratic program-selection terms, without product qubits. We prioritize missed meals, then waste, then new batches and plan changes. Integer bounds prove that priority order. A separate full-objective bound makes every global ground state feasible."},
-  {"id":"recovery","title":"Mandatory cleaning after repair","kicker":"PHYSICAL CONSTRAINTS","duration":25,"live_duration":0,"narration":"In the larger disruption case, the repaired cooker cannot resume immediately. Its qualified worker first finishes committed work, then cleans the repaired cooker. The clean occupies both worker and equipment. Freshness, calendars and departures are checked from raw operation records, independently of the QUBO conflict graph."},
-  {"id":"run","title":"Local QAOA sampling","kicker":"THE PROGRAM RUNNING","duration":25,"live_duration":20,"narration":"The QAOA circuit prepares an initial state, applies a cost phase and blockwise XY mixing, then samples. Here we reuse saved angles for a fresh local execution. The mixer preserves one choice per block; the independent checker still rejects equipment, worker and allocation conflicts. This launch runs locally, without retraining or a quantum-device call."},
-  {"id":"results","title":"Results against exact and classical references","kicker":"WHAT WE MEASURED","duration":35,"live_duration":25,"narration":"All six small-cell QAOA trials found its optimum, and the simple controls found it too. On the larger pilot, six of eight final incumbents match their final offered-pool optimum. All eight still trail the full-grid reference. Final-step controls also tie. This separates the cost of restricted choices from search quality, without claiming a quantum advantage."},
-  {"id":"velox","title":"VeloxQ at 512–2,048 variables","kicker":"VELOXQ INTEGRATION","duration":30,"live_duration":20,"narration":"VeloxQ receives larger instances of this same paired-meal formulation, at five hundred twelve through two thousand forty-eight variables. Our integration preserves integer coefficients, checks the spin convention and validates raw returned schedules. The first cold jobs identify a feasibility bottleneck. This section will feature the owner's final checked settings and comparisons when those results are frozen."},
-  {"id":"close","title":"Results and implementation","kicker":"CHECKED SMALL-CELL RESULT","duration":15,"live_duration":11,"narration":"The selected schedule serves twenty meals with no discarded portions. The repository includes the formulation, correctness proofs, source code, checked results and development log."}
+  {
+    "id": "hook",
+    "title": "Lunch service: 20 meals",
+    "kicker": "LUNCH SERVICE",
+    "duration": 12,
+    "live_duration": 8,
+    "narration": "Stage One gives us checked four- and eight-hour schedules. Our extension schedules catering batches: both courses must reach the same departure, and unused food counts as waste.",
+    "live_action": "Start the rehearsal timer; show the kitchen.",
+    "live_narration": "Stage One reaches four and eight hours. Our extension schedules batches so each catering order leaves with both courses."
+  },
+  {
+    "id": "service",
+    "title": "Two orders sharing a side batch",
+    "kicker": "ORDERS AND BATCHES",
+    "duration": 28,
+    "live_duration": 22,
+    "narration": "Two customers each need ten meals. Main A is already cooking. We choose Main B and a twenty-portion side batch shared between both orders. The schedule assigns equipment, workers, preparation, cooking, packing and cleaning. Separate cookers can overlap, but both orders use the same packing line.",
+    "live_action": "Play this chapter through both departures; it then holds.",
+    "live_narration": "Each customer needs ten meals. Main A is already cooking. We choose a new Main B and one shared side batch. Preparation, cooking, packing and cleaning reserve real equipment and workers. Both orders share the packing line."
+  },
+  {
+    "id": "counter",
+    "title": "What happens without the side batch",
+    "kicker": "BATCH REMOVAL",
+    "duration": 20,
+    "live_duration": 12,
+    "narration": "Remove the side batch and neither order receives a complete meal, despite both mains being cooked. Twenty component portions are discarded. This is a checked manual intervention that exposes the consequence of a batch choice.",
+    "live_action": "Show the checked side-batch removal.",
+    "live_narration": "Remove the side batch and we serve no complete meals. Twenty component portions become waste. This is a checked manual intervention."
+  },
+  {
+    "id": "encoding",
+    "title": "Batch selection and scheduling constraints",
+    "kicker": "QUBO ENCODING",
+    "duration": 34,
+    "live_duration": 22,
+    "narration": "Each program describes one batch: quantity, allocations, equipment, crew and phase times. A bit selects it. Programs sharing an anchor demand form a one-hot block with an idle choice. Cross-block penalties forbid duplicate allocations and resource clashes. The small cell includes all thirty-two legal programs, plus three idle bits.",
+    "live_action": "Play past halfway for the compiler excerpt.",
+    "live_narration": "A bit selects one batch program: quantity, allocations, resources and times. One-hot blocks choose a program or idle; pairwise penalties forbid clashes. The small cell offers all thirty-two legal programs, plus three idle bits."
+  },
+  {
+    "id": "loss",
+    "title": "Complete meals and food waste",
+    "kicker": "OBJECTIVE",
+    "duration": 36,
+    "live_duration": 25,
+    "narration": "For a meal lot, binary main coverage times side coverage gives complete service. Their sum minus twice their product counts unpaired components. Coverage is linear in batch-selection bits, so both expressions remain quadratic without auxiliary product bits. We prioritize missed meals, waste, batches and plan changes. Integer bounds prove that ordering and the hard-constraint penalty.",
+    "live_action": "Point to MS, then the priority order.",
+    "live_narration": "Main coverage times side coverage gives complete service. Their sum minus twice the product counts unpaired food. Both expand quadratically without product bits. We prove the objective priority order and a penalty bound that makes every ground state feasible."
+  },
+  {
+    "id": "recovery",
+    "title": "Mandatory cleaning after repair",
+    "kicker": "RECOVERY CLEANING",
+    "duration": 25,
+    "live_duration": 0,
+    "narration": "A repaired cooker still needs cleaning. Here the qualified worker first finishes committed work, then cleans the repaired cooker from eleven forty to eleven fifty. Both worker and cooker are reserved. The independent checker reconstructs these intervals, freshness and meal handovers from raw schedule records."
+  },
+  {
+    "id": "run",
+    "title": "Local QAOA sampling",
+    "kicker": "QAOA SIMULATOR",
+    "duration": 25,
+    "live_duration": 20,
+    "narration": "QAOA applies cost and conflict phases followed by blockwise XY mixing. We now sample the saved angles locally, without retraining. The mixer preserves one choice per block; equipment, worker and allocation conflicts still need checking. Every distinct returned bitstring is decoded and checked. The receipt reports complete meals, waste and valid shots.",
+    "live_action": "Click Sample frozen-angle QAOA.",
+    "live_narration": "QAOA uses cost phases and blockwise XY mixing. The mixer preserves one choice per block, while the checker still rejects cross-block conflicts. This button samples saved angles locally and checks the returned schedules."
+  },
+  {
+    "id": "results",
+    "title": "Results against exact and classical references",
+    "kicker": "MEASURED RESULTS",
+    "duration": 35,
+    "live_duration": 25,
+    "narration": "All six small-cell trials find the certified optimum; the controls find it too. On the larger pilot, six of eight final plans match their final offered-pool optimum. All eight trail the full-grid reference, and final-step controls tie. A solver cannot recover a good schedule excluded by its representation: we measure that loss separately from search.",
+    "live_action": "Show the cell outcome and larger comparison.",
+    "live_narration": "Six cell trials find the optimum, as do the controls. Six of eight larger final plans attain their offered-pool optimum, but all trail the full grid. We distinguish missing choices from poor search; neither is hidden by a success headline."
+  },
+  {
+    "id": "velox",
+    "title": "VeloxQ at 512–2,048 variables",
+    "kicker": "VELOXQ INTEGRATION",
+    "duration": 30,
+    "live_duration": 20,
+    "narration": "VeloxQ solves larger QUBOs of the same meal model, from five hundred twelve to two thousand forty-eight variables. We preserve integer packets, verify the spin convention and check raw returned schedules. The initial cold runs return few feasible plans. This establishes the integration and identifies the next experiment: improve feasible solution quality under a fixed budget.",
+    "live_action": "Use the final owner receipt before presenting.",
+    "live_narration": "VeloxQ solves the larger version of this same meal model: five hundred twelve to two thousand forty-eight variables. We verify the coefficient conversion and every returned schedule. The initial settings expose a feasibility bottleneck; the final comparison will measure usable-plan quality and runtime."
+  },
+  {
+    "id": "close",
+    "title": "Results and implementation",
+    "kicker": "CHECKED SMALL-CELL RESULT",
+    "duration": 15,
+    "live_duration": 11,
+    "narration": "The checked schedule serves twenty meals with no discarded portions. During development, we corrected recovery cleaning and separated portfolio restriction from solver quality. The repository contains the formulation, proofs, raw results and development log.",
+    "live_action": "Show completed handovers, then stop.",
+    "live_narration": "The checked schedule serves twenty meals with zero discarded portions. Our code, proofs, raw trials and development log document how we reached and verified it."
+  }
 ]

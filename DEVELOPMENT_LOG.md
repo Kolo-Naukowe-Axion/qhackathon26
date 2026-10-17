@@ -1,5 +1,38 @@
 # Development log
 
+## 2026-10-17 — single-source scripts, timed rehearsal and documentation cleanup
+
+The user requested tighter narration/live preparation and to start cleaning the
+repository. Replaced competing active README/context/presentation narratives
+with one short entry route and a documentation index. These three active files
+shrank from 1314 to 245 lines. Their previous contents are retained under
+`docs/archive/2026-10-17/`; moved the unreferenced factory story there and marked
+the older factory live script as historical. Required root schedules, design,
+license and full development log remain. No frozen JSON, source manifest,
+solver workload or model code moved or changed; untracked graphics are preserved.
+
+Video and live speech now come from the same chapter source. The current draft
+is 454 video words / 291 live words. A renderer generates both Markdown scripts,
+and the build checks for drift. Live mode displays the short live wording.
+The VeloxQ wording describes only retained initial runs and still needs final
+result integration; no claim is invented. The closing narration names actual
+development corrections instead of merely listing documentation files.
+
+Added a separate rehearsal clock: R starts/resets actual wall time; animation
+holds do not pause it. It flags wrap-up at 2:45 and overrun at 3:00. Controls fit
+1280×720, 1440×900 and 1920×1080, including opened notes; audience mode hides notes.
+Browser checks verify the running clock across a chapter hold and short live
+script selection, with no optimizer call. Four playback/timing unit cases and
+all 142 site tests pass. Read-only demo preflight checks Python dependencies,
+input manifest hashes, displayed evidence hashes, route budgets and required
+files. All 17 checks pass without training, sampling, service calls or QPU work.
+135 local links in the revised/archived documentation were checked and resolve.
+
+The silent v2 pictures remain a draft; updated human voiceover, final method
+and VeloxQ results, rehearsals and upload are still required before submission.
+The repository stays private. This cleanup introduces no teammate migration or
+rerun, and does not delete historical research outcomes for presentation value.
+
 ## 2026-10-17 — presentation iteration and live playback
 
 Reworked the opening around two concrete orders and departures, enlarged the

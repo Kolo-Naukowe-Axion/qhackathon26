@@ -13,9 +13,14 @@ Start from the repository root:
 Open `http://127.0.0.1:4193/` for the video cut, or
 `http://127.0.0.1:4193/?mode=live` for the shorter manual presentation.
 The video route is 260 seconds (4:20); the live route is 165 seconds (2:45).
+Before presenting, run `.venv-stage2/bin/python scripts/check-catering-demo.py`.
+It checks dependencies, frozen hashes and evidence without starting a sampler.
+
 Arrows change chapters. Space plays/pauses. In live mode each chapter holds at
 its end until Right Arrow advances. P toggles audience view, hiding all operator
-controls and notes. F enters full screen.
+controls and notes. F enters full screen. R starts/resets the actual rehearsal
+clock. That clock continues while chapter animation is paused; it marks 2:45
+as wrap-up and 3:00 as over time.
 Speaker notes stay outside the recorded stage. Use a dedicated shared window.
 
 ## What the live button actually does
@@ -41,7 +46,9 @@ and continue. Do not represent replay as completed fresh execution.
 
 ## Recording and human voiceover
 
-`story.json` is the editable chapter order, duration and narration source.
+`story.json` is the single source for video and live narration, actions and
+durations. `npm run docs:write` regenerates both speaker scripts;
+`npm run docs:check` prevents drift. Live mode shows `live_narration`.
 `playback.js` handles continuous video timing and live chapter holds.
 `evidence.json` is a small read-only export of the retained audited results,
 including source hashes and an actual compiler excerpt. Final method-owner

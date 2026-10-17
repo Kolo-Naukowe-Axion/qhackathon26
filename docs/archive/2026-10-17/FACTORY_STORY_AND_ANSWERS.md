@@ -1,3 +1,7 @@
+# Archived factory narrative
+
+The active entry is catering. This earlier factory story is retained as design history.
+
 # MetalTech's Monday — working story and answer bank
 
 Draft, 17 October 2026. The user asked for the story, explanations and answers
@@ -206,7 +210,7 @@ establish quality, scalability or advantage.
 
 ### Did the mentor approve this direction?
 
-The supplied [mentor reply](STAGE2_MENTOR_FEEDBACK.md) expresses a preference for
+The supplied [mentor reply](../../STAGE2_MENTOR_FEEDBACK.md) expresses a preference for
 staying in the factory/ERP context, pending consultation with other jury members.
 Our direction follows that preference. It is not approval of our implementation
 or a statement about how the full jury will score it.
@@ -225,13 +229,13 @@ follow the measured outcome.
 
 ## Evidence pointers
 
-- [Current scope and acceptance](STAGE2_STATUS.md)
-- [Full recovery and independent references](STAGE2_MANUFACTURING_STUDY.md)
-- [Nested operation enrichment](STAGE2_CAPACITY_FRONTIER.md)
-- [Exact deadline query](STAGE2_DEADLINE_DECISION.md)
-- [Whole-recipe quantum study](STAGE2_RECIPE_BRIDGE.md)
-- [Synthetic economics and assumptions](STAGE2_CAPACITY_ECONOMICS.md)
-- [Backend comparison protocol](STAGE2_VELOXQ_RUNBOOK.md)
+- [Current scope and acceptance](../../STAGE2_STATUS.md)
+- [Full recovery and independent references](../../STAGE2_MANUFACTURING_STUDY.md)
+- [Nested operation enrichment](../../STAGE2_CAPACITY_FRONTIER.md)
+- [Exact deadline query](../../STAGE2_DEADLINE_DECISION.md)
+- [Whole-recipe quantum study](../../STAGE2_RECIPE_BRIDGE.md)
+- [Synthetic economics and assumptions](../../STAGE2_CAPACITY_ECONOMICS.md)
+- [Backend comparison protocol](../../STAGE2_VELOXQ_RUNBOOK.md)
 
 Narrative drafting changes no experiment, source model, UI, stored measurement,
 external permission or release state.

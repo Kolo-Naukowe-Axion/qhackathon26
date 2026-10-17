@@ -1,3 +1,6 @@
+> Historical factory script. For the active catering entry, use
+> [CATERING_LIVE.md](CATERING_LIVE.md). This path remains for older verifiers.
+
 # Three-minute explanation and likely questions
 
 ## Current three-minute main script — integrated recovery study

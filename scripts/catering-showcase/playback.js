@@ -11,3 +11,12 @@ export function advancePlayback({time, delta, chapters, mode}) {
   }
   return {time: nextTime, pause: nextTime === total};
 }
+
+export function rehearsalStatus(seconds) {
+  const elapsed=Math.max(0,Math.floor(seconds));
+  return {
+    elapsed,
+    label:`${Math.floor(elapsed/60)}:${String(elapsed%60).padStart(2,'0')}`,
+    level:elapsed>=180?'over':elapsed>=165?'wrap':'normal',
+  };
+}

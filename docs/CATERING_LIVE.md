@@ -1,71 +1,58 @@
-# Axion Kitchen: live operator and speaker sheet
+# Live presentation — 2:45 route
 
-The prerecorded submission video and the live slot are separate requirements:
-video ≤5 minutes; live presentation ≤3 minutes plus about 2 minutes Q&A. This is the
-shorter live route. Aim for 2:45 and leave transition margin.
+Generated from [story.json](../scripts/catering-showcase/story.json). Edit that
+source, then run `npm run docs:write`. The slot is at most three minutes plus
+about two minutes Q&A. This 2:45 route leaves 15 seconds of margin; chapter
+holds do not pause the jury's clock.
 
-## Before the slot
+## Setup and controls
 
-Run `.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193`
-from the repository root. Open <http://127.0.0.1:4193/?mode=live> and the
-[Q&A sheet](CATERING_QA.md) in a separate private window. Keep the existing
-<http://127.0.0.1:4192/catering/> replay available as a fallback. Do not start a
-second server if the studio is already running.
+Run `.venv-stage2/bin/python scripts/serve-catering-showcase.py --port 4193`.
+Open [the live studio](http://127.0.0.1:4193/?mode=live). Use one speaker and
+one operator. Share only the audience window; keep [Q&A notes](CATERING_QA.md)
+outside the share.
 
-Share only the presentation window. Enter full screen. The live route starts
-paused. One operator advances with Right Arrow while one speaker talks. The
-notes, browser tabs, terminal paths and Q&A sheet should stay outside the share.
-Press Space to animate a chapter. It holds automatically at the end; Right
-Arrow advances when the speaker is ready. Arrows alone change screens without
-playing them. Press P for audience view: it hides controls and speaker notes;
-press P again to restore them. F enters full screen. For service, let the timeline reach the
-second departure; for encoding, play past halfway to reveal the source excerpt.
-Use the sample button in the execution chapter; no API credentials are needed.
+- Right/Left Arrow: next/previous chapter.
+- Space: play/pause animation; live chapters hold at their end.
+- P: hide or restore operator controls and notes. F: full screen.
+- R: start/reset the rehearsal timer at the first spoken word. Animation holds do not
+  pause it. Target 2:45; stop before 3:00.
 
-## Timed route and short script
+## Read-aloud script and operator cues
 
-| Target | Screen / operator action | Read-aloud cue |
+| Target time | Operator | Speaker |
 |---|---|---|
-|0:00–0:08 | Hook | “Our baseline schedules finish in four and eight hours. Our extension schedules batches that must become complete meals.” |
-|0:08–0:30 | Service; let playback illustrate the schedule or seek toward the departure | “Each order needs a main and a side before departure. Main A is committed. We choose Main B and one shared twenty-portion side batch. Separate cookers overlap, but packing still has to serve both tickets.” |
-|0:30–0:42 | Counterfactual | “Skipping that side leaves both orders incomplete and discards twenty component portions. This is a checked manual intervention.” |
-|0:42–1:04 | Encoding; optionally play the chapter to reveal the code excerpt | “Each bit selects one locally valid batch program, including quantity, resources and times. An anchor block chooses one program or idle. Pairwise conflicts enforce compatibility. We offer every legal program of this small cell.” |
-|1:04–1:29 | Loss | “Main times side represents complete service. Their sum minus twice that product counts unpaired food. Both expand quadratically without product qubits. We prioritize missed meals, waste, batches and changes. Proven bounds establish the priority order and hard-constraint penalty.” |
-|1:29–1:49 | Run; click Sample frozen-angle QAOA | “QAOA applies cost phases and blockwise XY mixing, then samples. The mixer preserves one choice per block; the checker still rejects resource and allocation conflicts. This button reuses saved angles for a fresh local sample.” |
-|1:49–2:14 | Results | “All six small-cell trials found the optimum, as did the controls. Six of eight larger final incumbents match their offered-pool optimum, while all trail the raw-grid reference. That measures representation loss separately from search loss.” |
-|2:14–2:34 | VeloxQ | “The same meal model scales to larger VeloxQ workloads. We preserve integer packets and verify returned schedules. This frame will use the owner's final checked settings and comparison.” |
-|2:34–2:45 | Close | “The selected schedule serves twenty meals with no discarded portions. The repository contains the model, proofs, code, all measured trials and the development log.” |
+| 0:00–0:08 | Start the rehearsal timer; show the kitchen. | Stage One reaches four and eight hours. Our extension schedules batches so each catering order leaves with both courses. |
+| 0:08–0:30 | Play this chapter through both departures; it then holds. | Each customer needs ten meals. Main A is already cooking. We choose a new Main B and one shared side batch. Preparation, cooking, packing and cleaning reserve real equipment and workers. Both orders share the packing line. |
+| 0:30–0:42 | Show the checked side-batch removal. | Remove the side batch and we serve no complete meals. Twenty component portions become waste. This is a checked manual intervention. |
+| 0:42–1:04 | Play past halfway for the compiler excerpt. | A bit selects one batch program: quantity, allocations, resources and times. One-hot blocks choose a program or idle; pairwise penalties forbid clashes. The small cell offers all thirty-two legal programs, plus three idle bits. |
+| 1:04–1:29 | Point to MS, then the priority order. | Main coverage times side coverage gives complete service. Their sum minus twice the product counts unpaired food. Both expand quadratically without product bits. We prove the objective priority order and a penalty bound that makes every ground state feasible. |
+| 1:29–1:49 | Click Sample frozen-angle QAOA. | QAOA uses cost phases and blockwise XY mixing. The mixer preserves one choice per block, while the checker still rejects cross-block conflicts. This button samples saved angles locally and checks the returned schedules. |
+| 1:49–2:14 | Show the cell outcome and larger comparison. | Six cell trials find the optimum, as do the controls. Six of eight larger final plans attain their offered-pool optimum, but all trail the full grid. We distinguish missing choices from poor search; neither is hidden by a success headline. |
+| 2:14–2:34 | Use the final owner receipt before presenting. | VeloxQ solves the larger version of this same meal model: five hundred twelve to two thousand forty-eight variables. We verify the coefficient conversion and every returned schedule. The initial settings expose a feasibility bottleneck; the final comparison will measure usable-plan quality and runtime. |
+| 2:34–2:45 | Show completed handovers, then stop. | The checked schedule serves twenty meals with zero discarded portions. Our code, proofs, raw trials and development log document how we reached and verified it. |
 
-The VeloxQ sentence is a rehearsal placeholder. Replace it with one precise
-measured finding before the final talk. Likewise update the primary-method
-name only when its source-hashed result is integrated. The route is a speaking
-aid; avoid reading long appendix tables during the three minutes.
+291 spoken words. The VeloxQ paragraph describes retained initial runs, not a final quality result.
+Replace it with one measured finding before presenting. Rehearse three times
+under 2:50 with the actual speaker, operator and final result set.
 
-## Freeze-angle launch details
+## What the launch does
 
-The runner verifies the retained complete-cell input/parameter hashes, uses
-p=1 and seed 17102026, samples 4096 shots locally, saves raw samples and rechecks
-them. Current rehearsal output is (U,W,B,R)=(0,0,2,2), 20 complete meals and 0 waste
-portions, with 3771/4096 valid shots. It observed the displayed retained replay's
-exact bitstring 8 times. The two labels remain distinct: retained replay and
-fresh sampler output. These are repeated executions of one fixed instance,
-not additional independent research trials or evidence of a speedup.
+The button verifies frozen input hashes, reuses the p=1/seed-2026 angles and
+samples 4096 shots with fixed sampling seed 17102026. It independently checks
+every distinct returned bitstring. Rehearsals returned (U,W,B,R)=(0,0,2,2),
+20 complete meals, zero waste and 3771 valid shots. This is repeat execution
+of one fixed setup, not another independent training trial. It uses no paid
+service, training or physical QPU. The kitchen replay retains its own label.
 
-Its sample/evolve/check stage took roughly 0.07–0.18 seconds after imports in
-local rehearsals. Browser startup, Python imports and the full request have additional
-cost. Do not present that partial timing as an end-to-end solver comparison.
+Terminal fallback, with a fresh directory:
 
-## Recovery plan
+```sh
+.venv-stage2/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
+```
 
-- If the button fails: say, “The fresh launch hasn't completed; we'll use the
-  retained checked schedule to explain the result.” Continue in the kitchen.
-- If the studio fails: switch to the existing `/catering/` viewer and use the
-  shared-side/timeline walkthrough. That is saved evidence, clearly labeled.
-- If the network/video service fails: keep the local studio, MP4 and screenshots
-  on the presenting laptop. The normal local demo requires no internet.
-- If the question is unclear: ask whether they mean raw-grid or offered-domain
-  quality, or encoding correctness versus solver performance. Then answer one point.
-
-Practice three timed runs. Keep each under 2:50. After final result selection,
-check every spoken number against the frozen release; do not update model inputs
-or interrupt other owners' runs merely to prepare this presentation.
+If the launch fails, say: “The fresh launch hasn't completed; we'll use the
+retained checked schedule.” Continue with the saved kitchen replay. If the
+studio fails, open the [standalone viewer](http://127.0.0.1:4192/catering/)
+with its separate static server running. Keep the local MP4 and screenshots
+on the presenting laptop. Do not wait for a remote queue during the slot.

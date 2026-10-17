@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {advancePlayback} from '../scripts/catering-showcase/playback.js';
+import {advancePlayback,rehearsalStatus} from '../scripts/catering-showcase/playback.js';
 
 const chapters = [{start:0,end:8},{start:8,end:30},{start:30,end:42}];
 test('live playback holds the current chapter before advancing', () => {
@@ -18,4 +18,11 @@ test('both routes stop exactly at the end', () => {
     assert.deepEqual(advancePlayback({time:41.9,delta:0.2,chapters,mode}),
       {time:42,pause:true});
   }
+});
+
+test('rehearsal clock flags wrap-up and the actual three-minute limit', () => {
+  assert.deepEqual(rehearsalStatus(164.9),{elapsed:164,label:'2:44',level:'normal'});
+  assert.equal(rehearsalStatus(165).level,'wrap');
+  assert.equal(rehearsalStatus(179.9).level,'wrap');
+  assert.deepEqual(rehearsalStatus(180),{elapsed:180,label:'3:00',level:'over'});
 });
