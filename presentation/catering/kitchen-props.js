@@ -15,15 +15,14 @@ function pot(ctx,x,y,menu,mode,frame,progress){
     if(progress>.5)q(-4,-5,8,1,'#e4ecdc');
   }
 }
-function prep(ctx,state,frame){
-  const q=(x,y,w,h,c)=>r(ctx,x,y,w,h,c),p=state.progress;
-  q(86,128,28,14,'#80512d');q(87,128,26,12,'#d5a05d');q(88,129,24,1,'#ebba73');
+function prep(ctx,state){
+  const q=(x,y,w,h,c)=>r(ctx,x+14,y,w,h,c),p=state.progress;
+  q(86,128,32,14,'#80512d');q(87,128,30,12,'#d5a05d');q(88,129,28,1,'#ebba73');
   const chopped=Math.floor(p*8);
   for(let i=0;i<8;i++){
     if(i<chopped)q(91+(i%4)*3,132+Math.floor(i/4)*3,2,2,i%2?'#ce813b':'#7e9946');
     else{q(126+(i%4)*5,130+Math.floor(i/4)*5,4,3,i%2?'#dc9c46':'#597f36');q(127+(i%4)*5,129+Math.floor(i/4)*5,2,1,'#aac66b');}
   }
-  q(107,131+frame%2,6,2,'#c1c4b4');q(112,133+frame%2,3,2,'#513b2c');
 }
 function tray(ctx,x,y,fill,menu){
   r(ctx,x,y,13,9,'#654b36');r(ctx,x+1,y,11,8,'#eee4c5');r(ctx,x+2,y+1,9,6,'#b7b6a0');
@@ -36,7 +35,7 @@ export function drawKitchenProps(ctx,c,time){
     const s=state.stations[id];
     if(s.mode==='cook'||s.mode==='clean')pot(ctx,id==='C1'?144:240,77,s.batch?.menu,s.mode,frame,s.progress);
   }
-  if(state.stations.P1.mode==='prepare')prep(ctx,state.stations.P1,frame);
+  if(state.stations.P1.mode==='prepare')prep(ctx,state.stations.P1);
   state.waitingPrep.forEach((b,i)=>{r(ctx,148-i*10,133,8,5,'#68694a');r(ctx,147-i*10,132,10,2,'#dfd4ab');r(ctx,149-i*10,131,6,2,b.menu==='A'?'#d8984a':'#6e9045');});
   const packing=state.stations.K1;
   if(packing.mode==='pack'){

@@ -139,7 +139,10 @@ log is a curated account of decisions; the full working history remains linked.
 The selected baseline verifier now has adversarial tests for forged exports,
 measured-count changes and changed model coefficients. The historical factory
 guide's display-source list was refreshed for the archived documentation paths;
-its numerical evidence exports were not changed.
+its numerical evidence exports were not changed. A final UI correction enlarged
+the cooks, placed their working positions closer to the benches and attached
+the chopping tool to the moving hand instead of animating it independently on
+the worktop. Replay time still drives movement; physical schedules are unchanged.
 
 ## AI use and remaining steps
 

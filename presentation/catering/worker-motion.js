@@ -1,7 +1,7 @@
 import {allOperations} from './model.js';
 // Walking is a display-only transition; it never changes the checked plan.
-export const WORKER_SPOTS={P1:[470,688],C1:[662,458],C2:[1042,458],K1:[1090,688]};
-export const REST_SPOTS={W1:[680,570],W2:[860,620],W3:[880,520]};
+export const WORKER_SPOTS={P1:[470,668],C1:[662,458],C2:[1042,458],K1:[1090,668]};
+export const REST_SPOTS={W1:[680,570],W2:[860,620],W3:[820,450]};
 const SPEED=160; // World units per replay minute, not wall-clock seconds.
 const same=(a,b)=>a[0]===b[0]&&a[1]===b[1];
 const distance=(a,b)=>Math.abs(b[0]-a[0])+Math.abs(b[1]-a[1]);

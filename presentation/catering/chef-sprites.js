@@ -21,9 +21,12 @@ export function drawChef(ctx,worker,direction,mode,frame,task=''){
     r(work?0:5,work?12-hand:17-(walk?stride:0),2,2,c.skin);
     if(work){r(0,11-hand,3,1,task==='clean'?'#8eb3c0':'#b6b4a2');r(0,10-hand,1,3,task==='clean'?'#8eb3c0':'#816342');}
   }else{
-    const ly=work&&direction==='up'?12-hand:13+stride,ry=work&&direction==='up'?11+hand:13-stride;
+    const ly=work&&direction==='up'?12-hand:13+stride,ry=work&&direction==='up'?(task==='prepare'?8:11)+hand:13-stride;
     r(2,ly,3,4,shadow);r(2,ly+3,2,2,c.skin);r(12,ry,3,4,cream);r(13,ry+3,2,2,c.skin);
-    if(work&&task==='prepare')r(13,ry-2,1,4,'#c1c6b6');
+    if(work&&task==='prepare'){
+      // The blade and handle move with the hand, never as a separate countertop prop.
+      r(14,ry+1,1,3,'#69452d');r(14,ry-2,2,3,'#c1c6b6');
+    }
     if(work&&task==='pack'){r(2,11+hand,3,3,'#ba8a4f');r(2,11+hand,3,1,'#ead09b');}
   }
   r(4,6,8,7,ink);r(5,7,6,5,c.skin);r(5,6,6,2,c.hair);
