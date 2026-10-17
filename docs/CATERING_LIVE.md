@@ -13,7 +13,7 @@ one operator. Share only the audience window; keep [Q&A notes](CATERING_QA.md)
 outside the share.
 
 - Right/Left Arrow: next/previous chapter.
-- Space: play/pause animation; live chapters hold at their end.
+- Space: play/pause animation; at a live chapter hold, replay that chapter.
 - P: hide or restore operator controls and notes. F: full screen.
 - R: start/reset the rehearsal timer at the first spoken word. Animation holds do not
   pause it. Target 2:45; stop before 3:00.
@@ -25,7 +25,7 @@ outside the share.
 | 0:00–0:20 | Start R. Hold the opening for four seconds, then map machines, setups and due dates to the kitchen before naming the extension. | Axion Kitchen: quantum optimization for catering production. Cookers are machines, cleaning is setup work, and departures are due dates. We choose shared batches, qualified workers and phase times under freshness and calendar constraints. Urgent orders and outages trigger replanning. We prioritize complete meals, waste, batches and changes. |
 | 0:20–0:36 | Point to the actual x1/x3 cooker conflict; the retained plan uses x11 on C1. Play through both departures. | Two customers share a twenty-portion side batch. One Main B option clashes with it on C2. The checked QAOA plan instead chooses Main B on C1, so both orders leave complete. |
 | 0:36–0:43 | Show the checked side-batch removal. | Remove the side: zero complete meals and twenty wasted portions. This is a manual intervention. |
-| 0:43–0:59 | Play past halfway; point to product(...) and penalty=span+1 in the actual compiler excerpt. | A bit selects one local batch program, not a whole schedule. Blocks preserve compatible offered subsets; conflicts forbid clashes. In the code, product expands coverage couplings; span plus one sets the penalty. This cell has thirty-two programs and three idle bits. |
+| 0:43–0:59 | Explain the actual x3 operation timeline and same-anchor exclusivity. Play past halfway; point to product(...) and penalty=span+1 in the compiler excerpt. | A bit selects a local batch and its schedule. Same-anchor programs share demand, so each block chooses one or idle. Conflicts forbid clashes. The code expands coverage products and sets the penalty to span plus one. This cell uses thirty-five bits. |
 | 0:59–1:20 | Explain MS and waste first; after 60% the screen shows the range bound and penalty inequality. State the ground-state guarantee. | Linear main and side coverage multiply into quadratic service and waste terms. Priority weights dominate lower costs. For hard constraints, the objective range is at most S. Set P to S plus one: every invalid state costs more than every feasible state. That proves the ground-state guarantee. |
 | 1:20–1:37 | Click Run trained QAOA. Only after completion, read actual meals and waste aloud: expected 20 meals/0 waste. If launch fails or values differ, describe the actual receipt and use the labeled retained fallback. | Return to the original choices. We run the saved depth-three circuit, draw four thousand ninety-six fresh samples, and independently check the outcomes. |
 | 1:37–1:57 | Compare trained and random probabilities, then point to the restriction gap. | On both held-out disruption cases, QAOA finds the offered-pool optimum in all ten seeds. Random-angle search also hits all ten on S2. With two hundred fifty-six evaluations, optimum probability per shot is about eleven and twenty-two times random-angle search. The full kitchen still has better schedules than these restricted portfolios. |
@@ -59,6 +59,6 @@ Terminal fallback, with a fresh directory:
 
 If the launch fails, say: “The fresh launch hasn't completed; we'll use the
 retained checked schedule.” Continue with the saved kitchen replay. If the
-studio fails, open the [standalone viewer](http://127.0.0.1:4192/catering/)
+studio fails, open the [standalone viewer](http://127.0.0.1:4192/catering/?case=CELL)
 with its separate static server running. Keep the local MP4 and screenshots
 on the presenting laptop. Do not wait for a remote queue during the slot.

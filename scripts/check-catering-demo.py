@@ -28,6 +28,9 @@ def preflight():
         for name,item in evidence['source_files'].items():
             digest=hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()
             check('Displayed evidence: '+name,digest==item['sha256'],item['path'])
+        compiler=(ROOT/'catering/meal_blocks.py').read_text().splitlines()
+        excerpt='\n'.join(f'{i+1:3}  {compiler[i]}' for i in range(118,128))
+        check('Displayed compiler excerpt',evidence['code_excerpt']==excerpt)
         argument=evidence['explanation']
         bundle=json.loads((ROOT/evidence['source_files']['cell_bundle']['path']).read_text())
         scale=json.loads((ROOT/evidence['source_files']['scale_domain']['path']).read_text())
@@ -42,6 +45,13 @@ def preflight():
             and alternative['menu']==a['menu'] and alternative['allocation_order']==a['allocation_order']
             and alternative['cooker']==witness['alternative_cooker']
             and [min(j,alternate),max(j,alternate)] not in bundle['conflicts'])
+        program_example=argument['program_example']
+        demo=json.loads((ROOT/evidence['source_files']['demo']['path']).read_text())
+        selected=bundle['options'][program_example['index']]
+        check('Displayed program operation timeline',
+            program_example['batch']==selected
+            and demo['sample']['bits'][program_example['index']]==1
+            and program_example['operations']==[o for o in demo['plan']['operations'] if o['batch_id']==selected['id']])
         span=sum(abs(int(v)) for v in bundle['objective']['linear'])+sum(abs(int(t['value'])) for t in bundle['objective']['quadratic'])
         check('Displayed penalty proof constants',argument['objective_span']==span and argument['penalty']==int(bundle['penalty'])==span+1)
         expected_rows=[dict(source_bits=r['size']['binary_variables'],program_bits=r['size']['option_bits'],qubo_pairs=r['size']['couplers']) for r in scale['rows']]

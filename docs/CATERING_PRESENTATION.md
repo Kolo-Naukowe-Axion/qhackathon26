@@ -95,10 +95,39 @@ pair counts, actual solver width and exact-sector simulation. Neither size nor a
   animation progress. Keep saved replay, screenshots and the MP4 as fallbacks.
 - Follow the [submission checklist](STAGE2_SUBMISSION.md) for public access and turn-in.
 
-Current v4 stills-only capture dry run: ignored
+Earlier v4 stills-only capture dry run: ignored
 `output/playwright/catering-showcase-v4/dry-run/`. It records no video and
-blocks sampling. Current v3 browser checks: ignored
+blocks sampling. Earlier v3 browser checks: ignored
 `output/playwright/catering-showcase-v3/`. The silent v2 recording in
 `output/playwright/catering-showcase-v2/recording/` predates the new results,
 problem overview and scaling chapters; it is a rough-cut fallback, not the
 current submission video. Current routes remain 4:20 video and 2:45 live.
+
+## 18 October screen and interaction review
+
+The browser review covers 24 video states and 16 live states: every chapter,
+opening/problem cut, both sides of the compiler and proof reveals, service
+handover, recovery cleaning and the final hold. Layout checks found no remaining
+text overflow in these states. All eleven live chapters were also checked with
+speaker notes open; the operator area keeps a fixed height.
+
+The encoding chapter now shows the selected x3 program's actual operation
+intervals instead of compressing the whole application. The preflight compares
+those records with the frozen bundle and checked plan, and compares the code
+excerpt with the compiler source. Opening art contains no working viewer
+controls. Probability bars state their scales; VeloxQ rows show best objective
+quality as well as validity.
+
+Verified interactions include scrubbing, chapter navigation, play/pause,
+completed-video replay, live chapter replay/advance, audience-view restoration,
+notes, terminal expansion, rehearsal timer and fullscreen controls. Browser
+fullscreen availability is host-dependent; rejection offers audience view.
+Two fixed-angle local launches each returned 20 meals, zero waste and 2,173
+valid shots out of 4,096. A separate loopback-only fixture returned deliberate
+HTTP 503 errors without starting a sampler: failed receipts keep both values
+blank, offer Retry launch and link to the retained **same-cell** fallback.
+The fixture and its browser tab were stopped after review.
+
+Review captures remain outside the repository. This pass changes presentation,
+controls and evidence checks; it starts no training, service or QPU jobs.
+Human rehearsal, final 1920×1080 recording and voiceover remain required.

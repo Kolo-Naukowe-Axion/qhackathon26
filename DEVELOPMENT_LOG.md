@@ -204,3 +204,22 @@ cover the embedded Axion masthead. Captions follow replay/code visibility and
 remain distinct from the fresh-run receipt. The objective screen now defines
 main/side coverage, meal priority and the 10-portion lot units alongside its
 truth table. These are presentation-only clarifications of the frozen model.
+
+
+## 18 October — presentation state and interaction review
+
+Reviewed 24 video states and 16 live states, including reveal boundaries and
+final holds, plus notes across every live chapter. The encoding strip now
+shows source-checked x3 operations with parallel packing/cleaning and partial
+cooking attendance. The opening uses kitchen art without viewer controls;
+charts state their scales and VeloxQ tables include best objective tuples.
+
+The review caught two playback faults: Play stopped immediately at the video
+end and could not replay a held live chapter. Both now restart correctly, with
+a regression test. Failure/retry wording no longer describes an absent sample
+as checked, and the fallback opens the same complete cell. A deliberate local
+503 fixture verified blank failed values and retry; it started no sampler and
+was stopped afterward. Two ordinary frozen-angle local launches each returned
+20 meals, zero waste and 2,173/4,096 valid shots. No training, backend allowance,
+QPU use, frozen model or retained solver campaign changed. The timed routes
+remain 4:20 and 2:45; final human rehearsal and recording remain open.

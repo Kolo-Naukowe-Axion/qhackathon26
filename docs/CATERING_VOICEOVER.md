@@ -19,7 +19,7 @@ reported campaign medians from checked exported schedules.
 
 ## 1:02–1:28 · Batch selection and scheduling constraints
 
-> A bit selects one locally valid batch, not a solved kitchen schedule. It fixes quantity, allocations, resources and times. Anchor blocks preserve compatible offered subsets; cross-block penalties exclude clashes. In the code, product expands coverage products; the coefficient span plus one sets a safe penalty. This cell has thirty-two programs and three idle bits. Restricting the offered programs can lose schedules.
+> A bit selects a locally valid batch: its quantity, allocations, resources and times. Programs with the same anchor share demand, so a block chooses one program or idle. Cross-block penalties exclude clashes. In the code, product expands coverage products; coefficient span plus one sets the penalty. This cell uses thirty-two programs and three idle bits. Restricted portfolios can exclude better schedules.
 
 ## 1:28–1:56 · Complete meals and food waste
 

@@ -20,3 +20,11 @@ export function rehearsalStatus(seconds) {
     level:elapsed>=180?'over':elapsed>=165?'wrap':'normal',
   };
 }
+
+// Resume normally; restart a completed video or a live chapter at its hold.
+export function playbackStartTime({time,chapters,mode}) {
+  const current=chapters.find(chapter=>time<chapter.end)??chapters.at(-1);
+  if(mode==='video'&&time>=chapters.at(-1).end)return 0;
+  if(mode==='live'&&current.end-time<=0.01)return current.start;
+  return time;
+}

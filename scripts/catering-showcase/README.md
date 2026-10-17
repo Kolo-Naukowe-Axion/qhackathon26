@@ -17,14 +17,18 @@ Before presenting, run `.venv-catering/bin/python scripts/check-catering-demo.py
 It checks dependencies, frozen hashes and evidence without starting a sampler.
 
 Arrows change chapters. Space plays/pauses. In live mode each chapter holds at
-its end until Right Arrow advances. P toggles audience view, hiding all operator
-controls and notes. F enters full screen. R starts/resets the actual rehearsal
+its end. Space replays a held chapter; Right Arrow advances. A completed video
+can be restarted with Replay cut. P toggles audience view, hiding all operator
+controls and notes. F toggles full screen; if the browser rejects it, the button offers audience
+view instead. R starts/resets the actual rehearsal
 clock. That clock continues while chapter animation is paused; it marks 2:45
 as wrap-up and 3:00 as over time.
 Speaker notes stay outside the recorded stage. Use a dedicated shared window.
 Replay provenance appears in the stage footer, outside the embedded kitchen;
 the code and fresh-run chapters show their own scope labels instead. The
 objective slide defines coverage, priority and lot units before the equations.
+The encoding view shows actual x3 operation intervals before the source-code
+reveal; both the intervals and excerpt are checked against retained sources.
 
 ## What the live button actually does
 
@@ -44,7 +48,8 @@ Terminal fallback, using a fresh output directory each time:
 .venv-catering/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
 ```
 
-If fresh launch fails, use the retained kitchen viewer, disclose the fallback
+If fresh launch fails, use the retained complete-cell kitchen viewer
+(`/catering/?case=CELL`), disclose the fallback
 and continue. Do not represent replay as completed fresh execution.
 
 ## Recording and human voiceover

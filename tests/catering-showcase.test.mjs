@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {advancePlayback,rehearsalStatus} from '../scripts/catering-showcase/playback.js';
+import {advancePlayback,rehearsalStatus,playbackStartTime} from '../scripts/catering-showcase/playback.js';
 
 const chapters = [{start:0,end:8},{start:8,end:30},{start:30,end:42}];
 test('live playback holds the current chapter before advancing', () => {
@@ -109,4 +109,13 @@ test('speaker scripts fit each chapter and separate result cues from spoken text
  const close=story.find(c=>c.id==='close');
  assert.equal(close.log_summary.length,3);assert.match(close.narration,/Our log records/);
  assert.match(story.find(c=>c.id==='encoding').narration,/product expands.*coefficient span plus one/is);
+});
+
+
+test('play restarts completed cuts and held live chapters instead of immediately stopping',()=>{
+ assert.equal(playbackStartTime({time:42,chapters,mode:'video'}),0);
+ assert.equal(playbackStartTime({time:29.999,chapters,mode:'live'}),8);
+ assert.equal(playbackStartTime({time:42,chapters,mode:'live'}),30);
+ assert.equal(playbackStartTime({time:29,chapters,mode:'live'}),29);
+ assert.equal(playbackStartTime({time:29.999,chapters,mode:'video'}),29.999);
 });

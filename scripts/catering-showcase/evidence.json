@@ -657,6 +657,81 @@
         "program_bits": 2022,
         "qubo_pairs": 636882
       }
-    ]
+    ],
+    "program_example": {
+      "index": 2,
+      "batch": {
+        "allocation_order": [
+          "committed/side",
+          "customer-0/side"
+        ],
+        "cook_start": 50,
+        "cooker": "C2",
+        "id": "batch-1446a7d310b3b1450d99",
+        "menu": "C",
+        "pack_start": 70,
+        "prep_start": 40,
+        "prep_station": "P1",
+        "workers": {
+          "clean": "W2",
+          "cook": "W3",
+          "pack": "W1",
+          "prepare": "W1"
+        },
+        "yield_lots": 2
+      },
+      "operations": [
+        {
+          "id": "batch-1446a7d310b3b1450d99/prepare",
+          "batch_id": "batch-1446a7d310b3b1450d99",
+          "kind": "prepare",
+          "start": 40,
+          "end": 50,
+          "resource": "P1",
+          "worker": "W1",
+          "attended_end": 50
+        },
+        {
+          "id": "batch-1446a7d310b3b1450d99/cook",
+          "batch_id": "batch-1446a7d310b3b1450d99",
+          "kind": "cook",
+          "start": 50,
+          "end": 70,
+          "resource": "C2",
+          "worker": "W3",
+          "attended_end": 60
+        },
+        {
+          "id": "batch-1446a7d310b3b1450d99/clean",
+          "batch_id": "batch-1446a7d310b3b1450d99",
+          "kind": "clean",
+          "start": 70,
+          "end": 80,
+          "resource": "C2",
+          "worker": "W2",
+          "attended_end": 80
+        },
+        {
+          "id": "batch-1446a7d310b3b1450d99/pack-0",
+          "batch_id": "batch-1446a7d310b3b1450d99",
+          "kind": "pack",
+          "start": 70,
+          "end": 80,
+          "resource": "K1",
+          "worker": "W1",
+          "attended_end": 80
+        },
+        {
+          "id": "batch-1446a7d310b3b1450d99/pack-1",
+          "batch_id": "batch-1446a7d310b3b1450d99",
+          "kind": "pack",
+          "start": 80,
+          "end": 90,
+          "resource": "K1",
+          "worker": "W1",
+          "attended_end": 90
+        }
+      ]
+    }
   }
 }
