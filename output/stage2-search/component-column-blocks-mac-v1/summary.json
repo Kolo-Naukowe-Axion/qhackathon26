@@ -1,0 +1,817 @@
+{
+  "master": {
+    "schema": "stage2-component-column-qubo.v1",
+    "operations": 32,
+    "column_groups": 8,
+    "variables": 388,
+    "couplers": 32668,
+    "column_choices": {
+      "P01/flange": 41,
+      "P01/housing": 48,
+      "P01/pump": 47,
+      "P01/rotor": 47,
+      "P02/flange": 48,
+      "P02/housing": 48,
+      "P02/pump": 48,
+      "P02/rotor": 48
+    },
+    "unconstrained_pattern_combinations": "23077340577792",
+    "makespan_bits": 13,
+    "penalty": 1578901,
+    "feasible_objective_upper_bound": 1578900,
+    "incompatible_column_pairs": 23339,
+    "problem_sha256": "74b19f61cc87cb054de1cdc1a03bb1e82319a88d88ae8016e8b73680ce4256c3",
+    "pool_sha256": "2d2ede6ecad07f31f548191d261b04be9d33cb5ed910bd156d57d064936c32b3",
+    "scope": "All supplied component choices and cross-component BOM/resource constraints retained. Exact within restricted pool, not lossless full raw-model compression."
+  },
+  "best_parent_objective": 1124895,
+  "native_pool_reference": {
+    "status": "OPTIMAL",
+    "optimal": true,
+    "bound": 1124820.0,
+    "wall_seconds": 0.4430130000691861,
+    "derived_nonoccupation_forbidden_pairs": 20324,
+    "uses_qubo_coefficients": false,
+    "scope": "Native raw-column-pool reference. Bound applies to this supplied restricted pool only.",
+    "objective": 1124820,
+    "choices": {
+      "P01/flange": 17,
+      "P01/housing": 2,
+      "P01/pump": 10,
+      "P01/rotor": 2,
+      "P02/flange": 2,
+      "P02/housing": 12,
+      "P02/pump": 32,
+      "P02/rotor": 2
+    },
+    "plan": [
+      {
+        "operation": "P01/flange/step0",
+        "machine": "F1",
+        "worker": "W05",
+        "start": 45,
+        "end": 105,
+        "attended_end": 50,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step1",
+        "machine": "S1",
+        "worker": "W06",
+        "start": 180,
+        "end": 240,
+        "attended_end": 240,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step2",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 255,
+        "end": 285,
+        "attended_end": 260,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step3",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 300,
+        "end": 345,
+        "attended_end": 345,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step0",
+        "machine": "T1",
+        "worker": "W05",
+        "start": 105,
+        "end": 165,
+        "attended_end": 110,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step1",
+        "machine": "F1",
+        "worker": "W05",
+        "start": 180,
+        "end": 270,
+        "attended_end": 185,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step2",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 285,
+        "end": 315,
+        "attended_end": 290,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step3",
+        "machine": "H1",
+        "worker": "W08",
+        "start": 345,
+        "end": 465,
+        "attended_end": 350,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step4",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 480,
+        "end": 525,
+        "attended_end": 525,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/pump/step0",
+        "machine": "A1",
+        "worker": "W09",
+        "start": 660,
+        "end": 720,
+        "attended_end": 720,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/pump/step1",
+        "machine": "QA1",
+        "worker": "W04",
+        "start": 735,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step0",
+        "machine": "T2",
+        "worker": "W05",
+        "start": 120,
+        "end": 180,
+        "attended_end": 125,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step1",
+        "machine": "H1",
+        "worker": "W05",
+        "start": 195,
+        "end": 315,
+        "attended_end": 200,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step2",
+        "machine": "F1",
+        "worker": "W08",
+        "start": 330,
+        "end": 405,
+        "attended_end": 335,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 420,
+        "end": 450,
+        "attended_end": 425,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step4",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 525,
+        "end": 570,
+        "attended_end": 570,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step0",
+        "machine": "F3",
+        "worker": "W05",
+        "start": 60,
+        "end": 135,
+        "attended_end": 65,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step1",
+        "machine": "S1",
+        "worker": "W09",
+        "start": 270,
+        "end": 330,
+        "attended_end": 330,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step2",
+        "machine": "WASH2",
+        "worker": "W10",
+        "start": 360,
+        "end": 390,
+        "attended_end": 365,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step3",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 660,
+        "end": 705,
+        "attended_end": 705,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step0",
+        "machine": "T1",
+        "worker": "W05",
+        "start": 15,
+        "end": 75,
+        "attended_end": 20,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step1",
+        "machine": "F2",
+        "worker": "W05",
+        "start": 90,
+        "end": 180,
+        "attended_end": 95,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step2",
+        "machine": "WASH1",
+        "worker": "W07",
+        "start": 195,
+        "end": 225,
+        "attended_end": 200,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step3",
+        "machine": "H2",
+        "worker": "W10",
+        "start": 240,
+        "end": 360,
+        "attended_end": 245,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step4",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 375,
+        "end": 420,
+        "attended_end": 420,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step0",
+        "machine": "A2",
+        "worker": "W03",
+        "start": 720,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step1",
+        "machine": "QA2",
+        "worker": "W03",
+        "start": 795,
+        "end": 840,
+        "attended_end": 840,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/rotor/step0",
+        "machine": "T2",
+        "worker": "W05",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step1",
+        "machine": "H2",
+        "worker": "W07",
+        "start": 105,
+        "end": 225,
+        "attended_end": 110,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/rotor/step2",
+        "machine": "F2",
+        "worker": "W08",
+        "start": 240,
+        "end": 315,
+        "attended_end": 245,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W10",
+        "start": 345,
+        "end": 375,
+        "attended_end": 350,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step4",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 585,
+        "end": 630,
+        "attended_end": 630,
+        "hall": "B"
+      }
+    ],
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 780,
+      "makespan": 840,
+      "objective": 1124820
+    }
+  },
+  "native_raw_reference": {
+    "status": "OPTIMAL",
+    "optimal": true,
+    "bound": 908670.0,
+    "wall_seconds": 5.164947249926627,
+    "plan": [
+      {
+        "operation": "P01/housing/step0",
+        "machine": "T1",
+        "worker": "W05",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step1",
+        "machine": "F1",
+        "worker": "W05",
+        "start": 120,
+        "end": 210,
+        "attended_end": 125,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step2",
+        "machine": "WASH2",
+        "worker": "W07",
+        "start": 225,
+        "end": 255,
+        "attended_end": 230,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/housing/step3",
+        "machine": "H2",
+        "worker": "W08",
+        "start": 270,
+        "end": 390,
+        "attended_end": 275,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/housing/step4",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 405,
+        "end": 450,
+        "attended_end": 450,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/rotor/step0",
+        "machine": "T2",
+        "worker": "W05",
+        "start": 15,
+        "end": 75,
+        "attended_end": 20,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step1",
+        "machine": "H2",
+        "worker": "W07",
+        "start": 90,
+        "end": 210,
+        "attended_end": 95,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/rotor/step2",
+        "machine": "F1",
+        "worker": "W05",
+        "start": 225,
+        "end": 300,
+        "attended_end": 230,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 315,
+        "end": 345,
+        "attended_end": 320,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step4",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 360,
+        "end": 405,
+        "attended_end": 405,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step0",
+        "machine": "F2",
+        "worker": "W05",
+        "start": 60,
+        "end": 120,
+        "attended_end": 65,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step1",
+        "machine": "S1",
+        "worker": "W06",
+        "start": 180,
+        "end": 240,
+        "attended_end": 240,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step2",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 255,
+        "end": 285,
+        "attended_end": 260,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step3",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 300,
+        "end": 345,
+        "attended_end": 345,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/pump/step0",
+        "machine": "A2",
+        "worker": "W09",
+        "start": 480,
+        "end": 540,
+        "attended_end": 540,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/pump/step1",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 585,
+        "end": 630,
+        "attended_end": 630,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step0",
+        "machine": "T2",
+        "worker": "W05",
+        "start": 105,
+        "end": 165,
+        "attended_end": 110,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step1",
+        "machine": "F3",
+        "worker": "W05",
+        "start": 195,
+        "end": 308,
+        "attended_end": 200,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step2",
+        "machine": "WASH2",
+        "worker": "W08",
+        "start": 330,
+        "end": 360,
+        "attended_end": 335,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step3",
+        "machine": "H1",
+        "worker": "W08",
+        "start": 390,
+        "end": 510,
+        "attended_end": 395,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step4",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 525,
+        "end": 570,
+        "attended_end": 570,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/rotor/step0",
+        "machine": "T1",
+        "worker": "W05",
+        "start": 135,
+        "end": 195,
+        "attended_end": 140,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step1",
+        "machine": "H1",
+        "worker": "W05",
+        "start": 210,
+        "end": 330,
+        "attended_end": 215,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step2",
+        "machine": "F1",
+        "worker": "W08",
+        "start": 360,
+        "end": 435,
+        "attended_end": 365,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 495,
+        "end": 525,
+        "attended_end": 500,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step4",
+        "machine": "QA1",
+        "worker": "W10",
+        "start": 660,
+        "end": 705,
+        "attended_end": 705,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step0",
+        "machine": "F2",
+        "worker": "W05",
+        "start": 180,
+        "end": 240,
+        "attended_end": 185,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step1",
+        "machine": "S2",
+        "worker": "W09",
+        "start": 255,
+        "end": 315,
+        "attended_end": 315,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step2",
+        "machine": "WASH1",
+        "worker": "W08",
+        "start": 435,
+        "end": 465,
+        "attended_end": 440,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step3",
+        "machine": "QA2",
+        "worker": "W10",
+        "start": 480,
+        "end": 525,
+        "attended_end": 525,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step0",
+        "machine": "A1",
+        "worker": "W03",
+        "start": 720,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step1",
+        "machine": "QA2",
+        "worker": "W03",
+        "start": 795,
+        "end": 840,
+        "attended_end": 840,
+        "hall": "B"
+      }
+    ],
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 630,
+      "makespan": 840,
+      "objective": 908670
+    },
+    "objective": 908670
+  },
+  "runs": [
+    {
+      "method": "exact",
+      "seed": 7,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.2808025840204209,
+      "process_cpu_seconds": 0.279507,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 32,
+      "strict_improvement": 0
+    },
+    {
+      "method": "uniform_onehot",
+      "seed": 7,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.289064624812454,
+      "process_cpu_seconds": 0.287372,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 27,
+      "strict_improvement": 0
+    },
+    {
+      "method": "qaoa_xy",
+      "seed": 7,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.35632895794697106,
+      "process_cpu_seconds": 0.35424,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 31,
+      "strict_improvement": 0
+    },
+    {
+      "method": "exact",
+      "seed": 13,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.2898770421743393,
+      "process_cpu_seconds": 0.2846310000000001,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 32,
+      "strict_improvement": 0
+    },
+    {
+      "method": "uniform_onehot",
+      "seed": 13,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.27054666681215167,
+      "process_cpu_seconds": 0.26958300000000013,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 8,
+      "accepted": 21,
+      "strict_improvement": 0
+    },
+    {
+      "method": "qaoa_xy",
+      "seed": 13,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.35438795783557,
+      "process_cpu_seconds": 0.35285999999999995,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 32,
+      "strict_improvement": 0
+    },
+    {
+      "method": "exact",
+      "seed": 29,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.28331562504172325,
+      "process_cpu_seconds": 0.281428,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 32,
+      "strict_improvement": 0
+    },
+    {
+      "method": "uniform_onehot",
+      "seed": 29,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.2804969591088593,
+      "process_cpu_seconds": 0.2787539999999997,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 25,
+      "strict_improvement": 0
+    },
+    {
+      "method": "qaoa_xy",
+      "seed": 29,
+      "iterations": 32,
+      "shots": 32,
+      "layers": 2,
+      "angle_evaluations_per_block": 64,
+      "initial_energy": 1124895,
+      "energy": 1124895,
+      "physical_qpu_calls": 0,
+      "wall_seconds": 0.34232449997216463,
+      "process_cpu_seconds": 0.34067899999999973,
+      "scope": "Heuristic resource-connected conditional search of a restricted component pool. Exact affine energies; no CP teacher. Runtime budgets differ by method; quantum angles use classical exact expectations.",
+      "raw_check": true,
+      "qubits_max": 7,
+      "accepted": 32,
+      "strict_improvement": 0
+    }
+  ],
+  "source_stable": true,
+  "wall_seconds": 2.8029046249575913,
+  "process_cpu_seconds": 2.782512,
+  "peak_rss_bytes": 56737792
+}

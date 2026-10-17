@@ -1,0 +1,192 @@
+{
+  "name": "Pump assembly recovery and urgent component inspection",
+  "horizon": 180,
+  "grid": 30,
+  "machines": {
+    "F1": {
+      "hall": "A",
+      "available": [
+        [
+          60,
+          180
+        ]
+      ]
+    },
+    "T1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          180
+        ]
+      ]
+    },
+    "A1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          180
+        ]
+      ]
+    },
+    "QA1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          180
+        ]
+      ]
+    }
+  },
+  "workers": {
+    "machinist": {
+      "skills": [
+        "mill",
+        "turn",
+        "assembly"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          180
+        ]
+      ]
+    },
+    "finisher": {
+      "skills": [
+        "assembly",
+        "qa"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          180
+        ]
+      ]
+    }
+  },
+  "operations": [
+    {
+      "id": "P01/housing",
+      "durations": {
+        "F1": 30
+      },
+      "skill": "mill",
+      "attendance": "full",
+      "release": 0,
+      "due": 120,
+      "weight": 1,
+      "predecessors": []
+    },
+    {
+      "id": "P01/rotor",
+      "durations": {
+        "T1": 30
+      },
+      "skill": "turn",
+      "attendance": "full",
+      "release": 0,
+      "due": 120,
+      "weight": 1,
+      "predecessors": []
+    },
+    {
+      "id": "P01/assembly",
+      "durations": {
+        "A1": 30
+      },
+      "skill": "assembly",
+      "attendance": "full",
+      "release": 0,
+      "due": 120,
+      "weight": 1,
+      "predecessors": [
+        "P01/housing",
+        "P01/rotor"
+      ]
+    },
+    {
+      "id": "P01/qa",
+      "durations": {
+        "QA1": 30
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "release": 0,
+      "due": 120,
+      "weight": 2,
+      "predecessors": [
+        "P01/assembly"
+      ]
+    },
+    {
+      "id": "urgent/qa",
+      "durations": {
+        "QA1": 30
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "release": 60,
+      "due": 90,
+      "weight": 1,
+      "predecessors": []
+    }
+  ],
+  "transport_lags": {
+    "F1": {
+      "F1": 0,
+      "T1": 0,
+      "A1": 0,
+      "QA1": 0
+    },
+    "T1": {
+      "F1": 0,
+      "T1": 0,
+      "A1": 0,
+      "QA1": 0
+    },
+    "A1": {
+      "F1": 0,
+      "T1": 0,
+      "A1": 0,
+      "QA1": 0
+    },
+    "QA1": {
+      "F1": 0,
+      "T1": 0,
+      "A1": 0,
+      "QA1": 0
+    }
+  },
+  "worker_travel": 0,
+  "provenance": {
+    "synthetic": true,
+    "recorded_full_factory_snapshot": false,
+    "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+    "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+    "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+    "included": [
+      "alternative milling machine",
+      "shared skilled workers",
+      "assembly join",
+      "due dates and weighted terminal tardiness",
+      "machine outage calendar",
+      "partial-state releases and known boundary material"
+    ],
+    "excluded": [
+      "AGV contention",
+      "power",
+      "finite buffers",
+      "stochastic quality",
+      "sequence-dependent setups",
+      "worker travel",
+      "learned control"
+    ],
+    "objective": "(H+1)*weighted terminal tardiness + makespan",
+    "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+  }
+}

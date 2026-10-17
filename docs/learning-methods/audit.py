@@ -256,6 +256,136 @@ for n in range(2,7):
             assert residual == e(x)
 record("annealing one-bit delta and fixed-variable substitution", randomized_sizes=list(range(2,7)))
 
+# Reader-feedback walkthrough: a,b each take 3 units on fixed different
+# machines, broad unpruned candidate starts 0..3, with a required before b.
+lookup = [(o,t) for o in ('a','b') for t in range(4)]
+reverse_lookup = {pair:i for i,pair in enumerate(lookup)}
+assert reverse_lookup['b',3]+1 == 8
+encoded = [int({'a':0,'b':3}[o] == t) for o,t in lookup]
+assert encoded == [1,0,0,0,0,0,0,1]
+assert {o:t for (o,t),bit in zip(lookup,encoded) if bit} == {'a':0,'b':3}
+teaching_zero_states = 0
+for bits in assignments(8):
+    selected = {o:[t for (op,t),bit in zip(lookup,bits) if op==o and bit] for o in ('a','b')}
+    once = sum((len(starts)-1)**2 for starts in selected.values())
+    for group in (bits[:4],bits[4:]):
+        fully_expanded = 1-sum(group)+2*sum(group[i]*group[j] for i,j in itertools.combinations(range(4),2))
+        assert fully_expanded == (sum(group)-1)**2
+    bad_order = sum(bits[reverse_lookup['a',t]]*bits[reverse_lookup['b',u]]
+                    for t in range(4) for u in range(4) if u<t+3)
+    independent_feasible = all(len(starts)==1 for starts in selected.values()) and selected['b'][0]>=selected['a'][0]+3
+    assert (once+bad_order==0) == independent_feasible
+    teaching_zero_states += independent_feasible
+assert teaching_zero_states == 1
+
+for sizes in ([0,1,3],[2,4,1],[4,4]):
+    pairs = [(j,r) for j,k in enumerate(sizes) for r in range(k)]
+    assert all(sum(sizes[:j])+r+1==i+1 for i,(j,r) in enumerate(pairs))
+    assert len(set(pairs))==sum(sizes)
+
+# The arbitrary-N exactly-once expansion, including empty and singleton groups.
+square_cases = 0
+for k in range(8):
+    for bits in assignments(k):
+        expanded = 1-sum(bits)+2*sum(bits[i]*bits[j] for i,j in itertools.combinations(range(k),2))
+        assert expanded == (sum(bits)-1)**2
+        square_cases += 1
+
+# Full matrix multiplication versus grouped diagonal and mirror-pair entries.
+matrix_cases = 0
+for n in range(1,6):
+    for _ in range(3):
+        q = [[rng.randint(-5,5) for j in range(n)] for i in range(n)]
+        for bits in assignments(n):
+            full = sum(q[i][j]*bits[i]*bits[j] for i in range(n) for j in range(n))
+            grouped = sum(q[i][i]*bits[i] for i in range(n))
+            grouped += sum((q[i][j]+q[j][i])*bits[i]*bits[j] for i,j in itertools.combinations(range(n),2))
+            assert full == grouped
+            matrix_cases += 1
+record("beginner encoding/decoding walkthrough and every-step algebra", teaching_assignments=256,
+       teaching_feasible_states=teaching_zero_states, arbitrary_group_square_assignments=square_cases,
+       arbitrary_matrix_assignments=matrix_cases, unequal_group_lookup_sizes=[[0,1,3],[2,4,1],[4,4]])
+
+# New chapter-10 foundation: verify the gate rules independently of the UI.
+def hadamard_pair(pair):
+    a, b = pair
+    return ((a+b)/math.sqrt(2), (a-b)/math.sqrt(2))
+
+
+prepared = (1, 0)
+equal = hadamard_pair(prepared)
+assert all(abs(abs(a)**2-.5) < 1e-12 for a in equal)
+for use_sign_gate in (False, True):
+    intermediate = (equal[0], -equal[1] if use_sign_gate else equal[1])
+    assert all(abs(abs(a)**2-.5) < 1e-12 for a in intermediate)
+    final = hadamard_pair(intermediate)
+    target = (0, 1) if use_sign_gate else (1, 0)
+    assert all(abs(a-b) < 1e-12 for a, b in zip(final, target))
+
+relative_phase_cases = 65
+for k in range(relative_phase_cases):
+    theta = 2*math.pi*k/(relative_phase_cases-1)
+    phase = (equal[0], cmath.exp(1j*theta)*equal[1])
+    assert all(abs(abs(a)**2-.5) < 1e-12 for a in phase)
+    final = hadamard_pair(phase)
+    assert abs(abs(final[0])**2-(1+math.cos(theta))/2) < 1e-12
+    assert abs(abs(final[1])**2-(1-math.cos(theta))/2) < 1e-12
+
+for _ in range(100):
+    raw = (complex(rng.uniform(-1,1), rng.uniform(-1,1)),
+           complex(rng.uniform(-1,1), rng.uniform(-1,1)))
+    norm = math.sqrt(sum(abs(a)**2 for a in raw))
+    state = tuple(a/norm for a in raw)
+    once = hadamard_pair(state)
+    twice = hadamard_pair(once)
+    assert abs(sum(abs(a)**2 for a in once)-1) < 1e-12
+    assert all(abs(a-b) < 1e-12 for a,b in zip(state,twice))
+    common_phase = cmath.exp(1j*rng.uniform(-math.pi,math.pi))
+    rotated = hadamard_pair(tuple(a*common_phase for a in state))
+    assert all(abs(abs(a)**2-abs(b)**2) < 1e-12 for a,b in zip(once,rotated))
+bell = (1/math.sqrt(2), 0, 0, 1/math.sqrt(2))
+assert abs(sum(abs(a)**2 for a in bell)-1) < 1e-12
+assert abs(bell[0]*bell[3]-bell[1]*bell[2]) > .49
+# Explicit basis-coordinate example used to unpack the compact register sum.
+basis = [tuple(int(i==j) for i in range(4)) for j in range(4)]
+weights = (0, math.sqrt(3)/2, .5, 0)
+reconstructed = tuple(sum(weights[j]*basis[j][i] for j in range(4)) for i in range(4))
+assert reconstructed == weights
+probabilities = tuple(abs(a)**2 for a in weights)
+assert all(abs(a-b)<1e-12 for a,b in zip(probabilities,(0,.75,.25,0)))
+assert abs(sum(probabilities)-1)<1e-12
+assert weights != tuple(1 for _ in range(4))
+for n in range(1,7):
+    outcomes = list(assignments(n))
+    assert len(outcomes)==2**n and len(set(outcomes))==2**n
+# Coordinate ordering may change, but label-to-probability assignments must not.
+original = dict(zip(('00','01','10','11'),probabilities))
+permutation = (2,0,3,1)
+reordered = {('00','01','10','11')[i]:probabilities[i] for i in permutation}
+assert reordered == original
+
+# The standard X mixer alone gives the all-plus register only a global phase.
+uniform_mixer_cases = 0
+for n in range(1,7):
+    base = [1/math.sqrt(2**n)]*(2**n)
+    for beta in (-1.2, -math.pi/4, 0, .37, math.pi/2):
+        current = [complex(a) for a in base]
+        for bit in range(n):
+            previous = current
+            current = [math.cos(beta)*previous[i]-1j*math.sin(beta)*previous[i^(1<<bit)]
+                       for i in range(2**n)]
+        expected = [a*cmath.exp(-1j*beta*n) for a in base]
+        assert all(abs(a-b)<1e-12 for a,b in zip(current,expected))
+        assert all(abs(abs(a)**2-1/(2**n))<1e-12 for a in current)
+        uniform_mixer_cases += 1
+
+record("quantum foundation walkthrough, phase and normalization", gate_paths=2,
+       relative_phase_cases=relative_phase_cases, complex_input_states=100, uniform_mixer_cases=uniform_mixer_cases,
+       explicit_register_probabilities=[0,.75,.25,0], register_dimension_checks=list(range(1,7)),
+       checks=["H followed by H restores the input", "H-Z-H maps 0 to 1",
+               "phase preserves immediate probabilities", "interference depends on relative phase",
+               "global phase does not affect probabilities", "Bell-state normalization and non-product amplitudes"])
+
 report = dict(status="passed", seed=20261017, scope="finite example and implementation checks; general guarantees are proved in guide.md", checks=checks)
 (HERE / "audit-report.json").write_text(json.dumps(report, indent=2)+"\n")
 print(json.dumps(dict(status=report["status"], check_groups=len(checks), checks=[c["name"] for c in checks]), indent=2))

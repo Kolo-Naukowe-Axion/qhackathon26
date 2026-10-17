@@ -1,0 +1,80 @@
+{
+  "protocol": {
+    "schema": "qfactoria-continuous-calendar-streaming-counts.v1",
+    "source": "output/realism-frontier-v1/ablation-continuous_worker_calendars",
+    "source_hashes": {
+      "realism_streaming.py": "325d9558f346b59a55f960be06277311453b8fcbc571f1465c031128fb1474c5",
+      "window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1"
+    },
+    "problem_sha256": "f7312b35e1ef155500459e40d68842f88aba4ff7c7a0bb5c8bcaa5c200218eac",
+    "fixed_horizon": 1440,
+    "fixed_grid": 30,
+    "numpy_version": "2.5.4",
+    "expanded_count_pair_budget": 220000000,
+    "max_block_cells": 4000000,
+    "selection": "Follow-up to retained dense-build guard, predeclared vectorized count-only audit; no solver performance experiment",
+    "scope": "Exact original full-optimization coefficient counts for continuous-worker-calendar ablation; no global QUBO matrix allocated",
+    "veloxq_calls": 0,
+    "physical_qpu_calls": 0
+  },
+  "unary_complete": {
+    "variables": 14871,
+    "assignment_variables": 14688,
+    "makespan_variables": 183,
+    "couplers": 9467283,
+    "penalty": 1514491,
+    "coefficient_min": -1514491,
+    "coefficient_max": 4543473,
+    "min_abs_nonzero_coefficient": 757966,
+    "max_abs_coefficient": 4543473,
+    "coefficient_dynamic_range": 5.994296577946768,
+    "onehot_couplers": 3528387,
+    "makespan_links": 1354216,
+    "incompatibility_multiplicity_histogram": {
+      "1": 4066548,
+      "2": 463188,
+      "3": 54944
+    },
+    "pair_checks": 104349594,
+    "max_pair_block_cells": 324900,
+    "global_quadratic_dictionary_allocated": false,
+    "build_seconds": 1.2299487078562379
+  },
+  "support_complete": {
+    "variables": 9322,
+    "assignment_variables": 9180,
+    "makespan_variables": 142,
+    "couplers": 3785787,
+    "penalty": 1514476,
+    "coefficient_min": -1514476,
+    "coefficient_max": 4543428,
+    "min_abs_nonzero_coefficient": 757951,
+    "max_abs_coefficient": 4543428,
+    "coefficient_dynamic_range": 5.994355835667477,
+    "onehot_couplers": 1386609,
+    "makespan_links": 665692,
+    "incompatibility_multiplicity_histogram": {
+      "1": 1440458,
+      "2": 262374,
+      "3": 30654
+    },
+    "pair_checks": 40755012,
+    "max_pair_block_cells": 156816,
+    "global_quadratic_dictionary_allocated": false,
+    "build_seconds": 1.5813422077335417,
+    "reduction": {
+      "before": 14688,
+      "after": 9180,
+      "removed": 5508,
+      "pair_checks": 104349594,
+      "max_pair_block_cells": 324900,
+      "method": "Exact binary arc consistency using independently tested vectorized conflict blocks"
+    }
+  },
+  "source_stable": true,
+  "wall_seconds": 2.828769041225314,
+  "reference_source": "output/realism-frontier-v1/ablation-continuous_worker_calendars/report.json",
+  "reference_report_sha256": "1dbf40db96a375ed7fac4e0a15b891ec99be2bffda911db4d7222ea2c83b29d9",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

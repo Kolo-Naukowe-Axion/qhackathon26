@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>QFactoria — Recover the order</title><link rel="stylesheet" href="style.css"></head>
+<body>
+<header><a href="/" class="brand">QFACTORIA <span>AXION / MANUFACTURING SYSTEMS</span></a><nav aria-label="Project"><a href="/stage2/">Factory replay</a><a href="/problem-explanation/">Stage 1</a><a href="#evidence">Evidence</a></nav></header>
+<main>
+<section class="hero" id="problem">
+<div><p class="eyebrow">STAGE 02 / PRODUCTION RECOVERY</p><h1>Save the pump.<br>Keep the promise.</h1><p class="lede">A mill is down. Two people share five remaining operations. Can we finish the pump and an urgent inspection on time?</p><div class="stamp"><span></span>Complete synthetic recovery cell · quantum simulation</div></div>
+<div class="assembly" aria-label="Housing and rotor join at assembly, then pump inspection; an urgent inspection shares QA and a worker."><div class="assembly-title">THE CUSTOMER ORDER <span>DUE 120 MIN</span></div><div class="branches"><div>01 <b>Housing</b><small>F1 / F2 · 30 min</small></div><div>02 <b>Rotor</b><small>T1 · 30 min</small></div></div><div class="join">↘ &nbsp; ↙</div><div class="assembly-end"><div>03 <b>Assembly</b><small>A1 · 30 min</small></div><span>→</span><div>04 <b>Inspection</b><small>QA1 · 30 min</small></div></div><p>Urgent component inspection also needs QA1 and the finisher at minute 60. Assembly cross-training unlocks parallel work.</p></div>
+</section>
+<section class="workbench" id="recovery">
+<div class="section-title"><div><p class="eyebrow">01 / MAKE THE DECISION</p><h2>What changes when capacity disappears?</h2></div><label class="case-label">Scenario<select id="case"><option value="outage-spare">Mill outage · spare + cross-training</option><option value="outage-no-spare">Mill outage · no spare</option><option value="without-cross-skill">Nominal machines · no cross-training</option><option value="nominal-120">Nominal · 120-minute window</option><option value="nominal-150">Nominal · 150-minute window</option><option value="nominal-180">Nominal · 180-minute window</option></select></label></div>
+<div class="decision-strip"><div><strong id="tardy">—</strong><span>weighted late minutes</span></div><div><strong id="finish">—</strong><span>last operation ends</span></div><div><strong id="qubits">—</strong><span>logical qubits</span></div><p id="decision">Loading retained evidence…</p></div>
+<div class="timeline-wrap"><div id="timeline" role="img" aria-label="Machine schedule"></div></div>
+<div class="run-bar"><div><p id="run-source">Retained run · first declared TEST seed 101</p><small id="run-detail">No reference solution is injected into the circuit.</small></div><form id="run-form"><label>Fresh seed<input id="seed" type="number" min="0" max="1000000" value="202610" required></label><button id="run" disabled>Checking local solver… <span>↗</span></button></form></div><p id="run-status" role="status" aria-live="polite"></p>
+</section>
+<section class="evidence" id="evidence">
+<div class="section-title"><div><p class="eyebrow">02 / SAME MODEL, THREE METHODS</p><h2>Show the gap. Show the cost.</h2></div><p>10 declared TEST seeds per scenario.<br>Every returned plan is independently checked.</p></div>
+<div class="table-wrap"><table><thead><tr><th>Method</th><th>Valid plans</th><th>Optimal schedules</th><th>Exact QUBO minima</th><th>Mean run</th></tr></thead><tbody id="comparison"></tbody></table></div>
+<p class="footnote">Schedule objective uses the actual last completion. QUBO energy uses the measured makespan register, which can be larger. Across six cases: QAOA 60/60 optimal schedules and 57/60 exact encoded minima; SA 60/60 of both. No quantum advantage established.</p>
+<div class="cost-note"><b>The compute budget matters.</b><p>QAOA: 128 exact simulated expectation/CVaR evaluations + 8,192 Born samples. Uniform: 8,192 samples. Annealing: 32 replicas × 256 proposals. These are unequal costs. CP-SAT certifies the same input independently. Preparation enumerates the one-hot sector classically.</p></div>
+</section>
+<section class="formulation" id="formulation">
+<div><p class="eyebrow">03 / FROM SHOP FLOOR TO QUBO</p><h2>One choice per operation.<br>Every conflict accounted for.</h2><p>A bit chooses an operation, machine, qualified worker and start time. A separate one-hot register bounds completion.</p><div class="formula">E = J + P Σ<sub>g</sub>(Σ<sub>i∈g</sub> xᵢ − 1)²<br>+ P Σ<sub>(i,j)∈conflicts</sub> nᵢⱼ xᵢxⱼ</div><p>J = (H+1) × weighted terminal tardiness + encoded makespan. The nonnegative objective is bounded by B; choosing P = B+1 makes every infeasible state worse than every feasible state.</p></div>
+<div class="code-panel"><p class="eyebrow">THE IMPLEMENTED PATH</p><pre><code>problem = recovery_cell(outage=True)
+q = compile_qubo(problem,
+                 support_pruning=True)
+sector = AssignmentSector.build(q)
+result = sample(sector,
+  layers=2, alpha=.25,
+  shots=8192, seed=202610)
+reference = solve_cp(problem)
+assert result['decoded']['valid']</code></pre><p>W-state preparation and an ordered XY mixer preserve every assignment one-hot group. Other constraints remain cost penalties. The mixer is established prior work; the manufacturing model and implementation are ours.</p></div>
+</section>
+<section id="scaling"><p class="eyebrow">04 / THE PRICE OF REALISM</p><h2>Count interactions, not just bits.</h2><div class="table-wrap"><table><thead><tr><th>Residual pumps</th><th>Operations</th><th>QUBO variables</th><th>Couplers</th><th>Quantum executed?</th></tr></thead><tbody id="scaling-rows"></tbody></table></div><div class="scope-columns"><p><b>Exact reduction.</b>At H=180, safe support pruning reduces 46 variables / 475 couplers to 34 / 218. The sector simulation stores 24,576 amplitudes, but the circuit still has 34 logical qubits.</p><p><b>Measured circuit cost.</b>The 34-qubit emitted circuit has 852 CX gates and depth 322 after logical transpilation. The 18-qubit QASM independently matches full-Hilbert Qiskit probabilities within 1.1×10⁻¹⁵. No hardware routing or execution.</p></div></section>
+<section class="boundaries" id="scope"><div><p class="eyebrow">05 / WHAT THIS ESTABLISHES</p><h2>A bounded result.<br>A useful production question.</h2></div><div><p><b>Included:</b> alternative milling, shared workers and skills, calendars, assembly joins, release times and weighted due dates. Synthetic data and a 30-minute grid.</p><p><b>Separate evidence:</b> the larger two-hall factory includes transport, buffers, energy and stochastic quality. Its frozen campaign has 23,552 executions; the strongest tested controllers are classical. Those outcomes are not attributed to this quantum core. This residual cell is not an extracted factory state.</p><p><b>VeloxQ:</b> offline Ising files are prepared and energy-checked. No service request, credential use or credit use. Future runs can compare recovery choices and larger versions of this same manufacturing model.</p></div></section>
+<details id="provenance"><summary>Reproduce, inspect provenance, and see the decision trail</summary><div class="provenance-grid"><div><pre><code>.venv-stage2/bin/python -m stage2.entry_demo
+# Open http://127.0.0.1:4189/entry/
+
+.venv-stage2/bin/python -m stage2.entry_campaign \
+  --output output/my-fresh-campaign
+
+.venv/bin/python -m stage2.entry_circuit_audit \
+  --campaign output/my-fresh-campaign \
+  --output output/my-fresh-audit</code></pre><p id="hash"></p></div><div><h3>Development decisions</h3><ol><li>Establish both official baseline optima: 4 h and 8 h.</li><li>Build and independently replay the richer pump factory.</li><li>Retain failed QAOA integrations and the 21.41% planning gap.</li><li>Replace a restricted proposal pool with a complete residual-cell domain.</li><li>Select p=2 / CVaR .25 on TRAIN seeds only; retain fresh TEST outcomes.</li><li>Keep strong classical controls, circuit costs and remote holds explicit.</li></ol></div></div></details>
+<footer><span>QFACTORIA / AXION · QPOLAND 2026</span><span>Local research candidate · 0 physical QPU calls · 0 VeloxQ calls</span></footer>
+</main><script type="module" src="app.js"></script>
+</body></html>

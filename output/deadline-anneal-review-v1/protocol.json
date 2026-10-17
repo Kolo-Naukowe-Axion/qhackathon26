@@ -1,0 +1,58 @@
+{
+  "seeds": [
+    101,
+    103,
+    107,
+    109,
+    113
+  ],
+  "reads": 16,
+  "binary_sweeps": 1024,
+  "onehot_proposals_per_read": 4096,
+  "onehot_temperature": "Geometric4*penalty to0.02*penalty; symmetric one-operation swaps",
+  "tasks": [
+    {
+      "case": "heat-outage-32",
+      "kind": "deadline",
+      "cap": 900
+    },
+    {
+      "case": "heat-outage-32",
+      "kind": "original",
+      "cap": 900
+    },
+    {
+      "case": "heat-lease-32",
+      "kind": "deadline",
+      "cap": 900
+    },
+    {
+      "case": "heat-lease-32",
+      "kind": "original",
+      "cap": 900
+    }
+  ],
+  "initialization": "Cold binary random for dwave SA; cold uniform independent one-hot choices for grouped SA",
+  "budgets": "Different update counts and kernels; no equal-budget or hardware superiority claim",
+  "selection": "Known development fixtures; frozen settings before these outcomes, not held-out evaluation",
+  "reference_usage": "No witness files or exact solutions read; native reference status loaded only after all samples saved",
+  "source_hashes": {
+    "stage2/deadline_anneal.py": "48f1f49b898753a4b59ca6c2b2b09c577422f29085e54938a873f6ce2f02916a",
+    "stage2/deadline_qubo.py": "78ce29aca37a8aa8b6dd4a94a4a662279cc94a1a4fbad145fba394c7edd36ac5",
+    "stage2/window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1"
+  },
+  "dimod": "0.12.22",
+  "dwave_samplers": "1.8.0",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0,
+  "input_sha256": {
+    "output/deadline-decision-review-v1/heat-outage-32-cap-900/problem.json": "7b4f4ac4f7f906323412bd134074e505fea88f5722f6c62e0d59fb77fe223e73",
+    "output/deadline-decision-review-v1/heat-outage-32-cap-900/qubo.json": "4d62e8751afa68eb779ba5497a742d77aeacea67c733501e653de268ae5fdeca",
+    "output/manufacturing-full-recovery-v1/heat-outage-32/problem.json": "7b4f4ac4f7f906323412bd134074e505fea88f5722f6c62e0d59fb77fe223e73",
+    "output/manufacturing-full-recovery-v1/heat-outage-32/qubo.json": "1bdccd6feced2f2187faf2013f1cbc20acff1ea2035189a096cb56d868b61b3e",
+    "output/deadline-decision-review-v1/heat-lease-32-cap-900/problem.json": "44300511d4ab1694dd3dc98e768760aa7fe30c979d15a6e49ae06348b23d07c6",
+    "output/deadline-decision-review-v1/heat-lease-32-cap-900/qubo.json": "237089c52fdff48389fe02fe6174f1ebc6ada08371e4407da4580636682755fb",
+    "output/manufacturing-full-recovery-v1/heat-lease-32/problem.json": "44300511d4ab1694dd3dc98e768760aa7fe30c979d15a6e49ae06348b23d07c6",
+    "output/manufacturing-full-recovery-v1/heat-lease-32/qubo.json": "63d5a7dc90c52d56c818f35592db4ac4e9f92db9375f279ee10db5084dff3c3d"
+  }
+}

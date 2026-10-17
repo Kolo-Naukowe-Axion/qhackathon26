@@ -1,5 +1,30 @@
 # Stage 2 research implementation
 
+**Current technical status — 17 October 2026:** all 14 agreed non-VeloxQ core
+requirements passed. Start with [current status](../docs/STAGE2_STATUS.md),
+[manufacturing study](../docs/STAGE2_MANUFACTURING_STUDY.md) and
+[whole-recipe quantum bridge](../docs/STAGE2_RECIPE_BRIDGE.md). The main studio
+shows the 32-operation recovery case, representation frontier, 18–36 logical-qubit
+QAOA bridge, feature accounting and synthetic economics. Scaling reaches 128
+operations with explicit reference limits. No quantum advantage is established.
+
+```sh
+.venv-stage2/bin/python -m stage2.entry_demo --port 4192
+```
+
+Open [the production studio](http://127.0.0.1:4192/manufacturing/#merit).
+Fresh execution is local simulation; the static build displays retained results.
+The [smaller residual-cell study](../docs/STAGE2_ENTRY.md) remains at `/entry/`.
+Actual VeloxQ service/credit use, final synchronized video, human rehearsal and
+public release/submission remain separate open duties.
+
+For the original model, read
+[the current complete explanation](../docs/STAGE2_CURRENT_EXPLAINED.md) first,
+or open the local [Start here guide](http://127.0.0.1:4187/stage2/start.html).
+They distinguish the full physical factory below from the later, separately
+simplified planning cells, and identify which results are classical or quantum.
+The earlier explanation-only pause was superseded by the user's entry-refinement request.
+
 The executable factory is `spec.py` + `engine.py`. The original Stage1 entry,
 instances, validator and selected artifacts remain separate. The full Stage2
 profile uses one-minute time steps and a 96-hour horizon by default. All measured

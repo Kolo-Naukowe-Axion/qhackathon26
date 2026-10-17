@@ -1,0 +1,67 @@
+{
+  "schema": "stage2-window-development-comparison.v1",
+  "cases": [
+    [
+      2,
+      3,
+      480,
+      30
+    ],
+    [
+      3,
+      4,
+      720,
+      30
+    ],
+    [
+      4,
+      5,
+      960,
+      30
+    ]
+  ],
+  "seeds": [
+    7,
+    13,
+    29
+  ],
+  "cp_seconds": 15.0,
+  "cp_workers": 4,
+  "literal_seconds": 5,
+  "literal_max_couplers": 150000,
+  "annealing_proposals_per_restart": 12000,
+  "annealing_restarts": 2,
+  "block_methods": [
+    "uniform",
+    "qaoa",
+    "exact"
+  ],
+  "iterations": 16,
+  "shots": 512,
+  "angle_evaluations": 48,
+  "initializer": "Earliest-finish constructive, no CP hints; failed initialization remains a failed case",
+  "comparisons": "Paired seeds and initial incumbents; wall/CPU budgets NOT equal. Exact-block is exponential classical control.",
+  "final_tapes_used": 0,
+  "factory_rollouts": 0,
+  "physical_qpu_calls": 0,
+  "gpu_hours": 0,
+  "source_hashes": {
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/window_qubo.py": "13a8d5ddf26810bd9f42760149e1c8bff24549966ae0b5804a675f57c41de6bc",
+    "stage2/window_experiments.py": "6adb724f77bafaa1e279e7b458fe5f962974dd60783d9ee6129e5db3aee47fe7",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049",
+    "stage2/window_search.py": "9f83b3dac03fbb8edfc817f653ef9e0a8bb3079e6409a9039b49b98eecd2ddd0",
+    "stage2/window_campaign.py": "b5e64d1f34b178b050df98fd5627c322821f036c54e1683e5a02054aba231541",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/bounds.py": "dafff70b906237bb5caeeb602da1207657b1582f1f36d33c7e7be1c8e6d15836",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "runtime": {
+    "python": "3.14.6",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "ortools": "9.15.6755"
+    }
+  }
+}

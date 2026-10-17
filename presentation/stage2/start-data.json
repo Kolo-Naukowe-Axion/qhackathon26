@@ -1,0 +1,413 @@
+{
+  "schema": "stage2-start-guide.v1",
+  "role": "Explanation of retained evidence; no new results",
+  "stage1": {
+    "A": {
+      "problem": "erp_scheduling",
+      "jobs": [
+        {
+          "id": "Z1",
+          "operations": [
+            {
+              "machine": "T",
+              "duration": 2
+            },
+            {
+              "machine": "F",
+              "duration": 1
+            }
+          ]
+        },
+        {
+          "id": "Z2",
+          "operations": [
+            {
+              "machine": "T",
+              "duration": 1
+            },
+            {
+              "machine": "F",
+              "duration": 2
+            }
+          ]
+        }
+      ]
+    },
+    "B": {
+      "problem": "erp_scheduling",
+      "jobs": [
+        {
+          "id": "Z1",
+          "operations": [
+            {
+              "machine": "T",
+              "duration": 2
+            },
+            {
+              "machine": "F",
+              "duration": 1
+            },
+            {
+              "machine": "S",
+              "duration": 2
+            }
+          ]
+        },
+        {
+          "id": "Z2",
+          "operations": [
+            {
+              "machine": "T",
+              "duration": 1
+            },
+            {
+              "machine": "F",
+              "duration": 2
+            },
+            {
+              "machine": "S",
+              "duration": 1
+            }
+          ]
+        },
+        {
+          "id": "Z3",
+          "operations": [
+            {
+              "machine": "T",
+              "duration": 2
+            },
+            {
+              "machine": "F",
+              "duration": 2
+            },
+            {
+              "machine": "S",
+              "duration": 1
+            }
+          ]
+        }
+      ]
+    }
+  },
+  "selected_classical": [
+    {
+      "method": "static-grid-12",
+      "orders": 12,
+      "horizon_hours": 96.0,
+      "all_shipped": 0.94984375,
+      "mean_missing": 0.07500000000000001,
+      "deadline_debt": 3263.6262500000003,
+      "cpu_seconds": 3.3309936045571877,
+      "environments": 256
+    },
+    {
+      "method": "cem6-2026-16",
+      "orders": 16,
+      "horizon_hours": 96.0,
+      "all_shipped": 0.08796875,
+      "mean_missing": 2.6906250000000003,
+      "deadline_debt": 13040.94125,
+      "cpu_seconds": 3.4114307088476536,
+      "environments": 256
+    },
+    {
+      "method": "cem6-2026-24",
+      "orders": 24,
+      "horizon_hours": 96.0,
+      "all_shipped": 0.0,
+      "mean_missing": 10.0209375,
+      "deadline_debt": 31238.5403125,
+      "cpu_seconds": 3.766404781807188,
+      "environments": 256
+    },
+    {
+      "method": "selected-stretch-32",
+      "orders": 32,
+      "horizon_hours": 240.0,
+      "all_shipped": 0.91015625,
+      "mean_missing": 0.10234375,
+      "deadline_debt": 113997.5421875,
+      "cpu_seconds": 7.757447111939218,
+      "environments": 256
+    }
+  ],
+  "mpc": [
+    {
+      "method": "mpc-4future-12",
+      "orders": 12,
+      "mean_missing": 0.03765625,
+      "all_shipped": 0.9696875,
+      "cpu_seconds": 156.1899481254014
+    },
+    {
+      "method": "mpc-2future-16",
+      "orders": 16,
+      "mean_missing": 2.30140625,
+      "all_shipped": 0.1740625,
+      "cpu_seconds": 113.181725853635
+    },
+    {
+      "method": "mpc-4future-24",
+      "orders": 24,
+      "mean_missing": 11.26765625,
+      "all_shipped": 0.0,
+      "cpu_seconds": 255.3504378356947
+    }
+  ],
+  "quantum_scope": {
+    "max_simulated_qubits": 5,
+    "max_encoded_variables": 27,
+    "classical_fallback_calls": 40455,
+    "scope": "Maxima and fallbacks refer to the completed stochastic comparison cohort; QAOA-named controllers include declared classical fallback. Other cohorts retain their own telemetry."
+  },
+  "primary_contrasts": [
+    {
+      "id": "quantum-qaoa-vs-sa-12",
+      "label": "no-batch-sa-12 \u2192 no-batch-qaoa-12",
+      "metric": "missing orders",
+      "predeclared": true,
+      "interval": {
+        "mean_difference": 0.03203125,
+        "direction": "Right minus left; negative favors right for a loss",
+        "percentile_interval": [
+          -0.014375000000000006,
+          0.079375
+        ],
+        "individual_nominal_coverage": 0.975,
+        "family_size": 2,
+        "nominal_family_error_rate": 0.05,
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "environment_tapes": 256,
+        "actor_replicas_left": 768,
+        "actor_replicas_right": 768,
+        "scope": "Whole paired environment clusters resampled within leaves; actors remain nested. Nominal Bonferroni adjustment for the predeclared family only; bootstrap coverage is approximate."
+      }
+    },
+    {
+      "id": "quantum-qaoa-vs-uniform-12",
+      "label": "no-batch-uniform-12 \u2192 no-batch-qaoa-12",
+      "metric": "missing orders",
+      "predeclared": true,
+      "interval": {
+        "mean_difference": 0.01026041666666667,
+        "direction": "Right minus left; negative favors right for a loss",
+        "percentile_interval": [
+          -0.042604166666666665,
+          0.06364583333333333
+        ],
+        "individual_nominal_coverage": 0.975,
+        "family_size": 2,
+        "nominal_family_error_rate": 0.05,
+        "bootstrap_replicates": 2000,
+        "bootstrap_seed": 60819,
+        "environment_tapes": 256,
+        "actor_replicas_left": 768,
+        "actor_replicas_right": 768,
+        "scope": "Whole paired environment clusters resampled within leaves; actors remain nested. Nominal Bonferroni adjustment for the predeclared family only; bootstrap coverage is approximate."
+      }
+    }
+  ],
+  "planning": [
+    {
+      "operations": 32,
+      "pumps": 2,
+      "grid": 15,
+      "horizon_minutes": 1440,
+      "status": "OPTIMAL",
+      "lower": 908670.0,
+      "upper": 908670,
+      "pool_bits": 1489,
+      "pool_objective": 908670
+    },
+    {
+      "operations": 48,
+      "pumps": 3,
+      "grid": 15,
+      "horizon_minutes": 1920,
+      "status": "OPTIMAL",
+      "lower": 1297680.0,
+      "upper": 1297680,
+      "pool_bits": 2265,
+      "pool_objective": 1470600
+    },
+    {
+      "operations": 64,
+      "pumps": 4,
+      "grid": 15,
+      "horizon_minutes": 2880,
+      "status": "OPTIMAL",
+      "lower": 1945958.0,
+      "upper": 1945958,
+      "pool_bits": 3054,
+      "pool_objective": 2637398
+    },
+    {
+      "operations": 128,
+      "pumps": 8,
+      "grid": 15,
+      "horizon_minutes": 4320,
+      "status": "FEASIBLE",
+      "lower": 8071630.0,
+      "upper": 13941691,
+      "pool_bits": 6046,
+      "pool_objective": 19580896
+    }
+  ],
+  "recipe": [
+    {
+      "id": "housing/step0",
+      "process": "T",
+      "predecessors": [],
+      "attendance": "start"
+    },
+    {
+      "id": "housing/step1",
+      "process": "F",
+      "predecessors": [
+        "housing/step0"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "housing/step2",
+      "process": "WASH",
+      "predecessors": [
+        "housing/step1"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "housing/step3",
+      "process": "H",
+      "predecessors": [
+        "housing/step2"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "housing/step4",
+      "process": "QA",
+      "predecessors": [
+        "housing/step3"
+      ],
+      "attendance": "full"
+    },
+    {
+      "id": "rotor/step0",
+      "process": "T",
+      "predecessors": [],
+      "attendance": "start"
+    },
+    {
+      "id": "rotor/step1",
+      "process": "H",
+      "predecessors": [
+        "rotor/step0"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "rotor/step2",
+      "process": "F",
+      "predecessors": [
+        "rotor/step1"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "rotor/step3",
+      "process": "WASH",
+      "predecessors": [
+        "rotor/step2"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "rotor/step4",
+      "process": "QA",
+      "predecessors": [
+        "rotor/step3"
+      ],
+      "attendance": "full"
+    },
+    {
+      "id": "flange/step0",
+      "process": "F",
+      "predecessors": [],
+      "attendance": "start"
+    },
+    {
+      "id": "flange/step1",
+      "process": "S",
+      "predecessors": [
+        "flange/step0"
+      ],
+      "attendance": "full"
+    },
+    {
+      "id": "flange/step2",
+      "process": "WASH",
+      "predecessors": [
+        "flange/step1"
+      ],
+      "attendance": "start"
+    },
+    {
+      "id": "flange/step3",
+      "process": "QA",
+      "predecessors": [
+        "flange/step2"
+      ],
+      "attendance": "full"
+    },
+    {
+      "id": "pump/step0",
+      "process": "A",
+      "predecessors": [
+        "housing/step4",
+        "rotor/step4",
+        "flange/step3"
+      ],
+      "attendance": "full"
+    },
+    {
+      "id": "pump/step1",
+      "process": "QA",
+      "predecessors": [
+        "pump/step0"
+      ],
+      "attendance": "full"
+    }
+  ],
+  "sector": {
+    "max_qubits": 21,
+    "qaoa_end": [
+      1103205,
+      1103205,
+      1103205
+    ],
+    "proposal_end": [
+      1103205,
+      1103205,
+      1103205
+    ],
+    "initial": 1124895,
+    "reference": 908670,
+    "physical_qpu_calls": 0
+  },
+  "source_sha256": {
+    "presentation/stage2/research/final-evidence.json": "6a66d36b2ea032b773a2b550d8773c13a0c4ea3f1fab0ef3565894853746fd60",
+    "presentation/stage2/planning-data/scaling.json": "88fba547ecccb806c9f9b2336779724fa6d0f98b5e1f719e82130a0bc08d4228",
+    "output/stage2-search/operation-sector-blocks32-long-mac-v1/summary.json": "13c716aaaed0e7b142d0bc208610596955e526a00b7009adfd31b6f62b57af9f",
+    "instances/instance_2x2.json": "15a96febcadb2211fd63cfd913f5b4025ede5596a655ce30e70cbfde6d4ec981",
+    "instances/instance_3x3.json": "83ee0e64869970133a4780426113258152c507b47659f8d866868fcb6cf63fe0",
+    "docs/STAGE2_RESULTS.md": "f4354c903f3e5157d424c732795b02cdded7fd56b57bcd59ec10bf73ff22c068",
+    "docs/SOLUTION_QUALITY.md": "bfd69e9714054ef3f3183e276c3f705fc3a39cb4916bc865ad9672da3143da14",
+    "docs/STAGE2_PLANNING_CORE.md": "3a557c1071fe92e05d97976813e450b2f141d9e76d1b9f72648a9e523411a690",
+    "stage2/README.md": "4bc75035d56355f55ba55809d08bb68a677469bd751b9dd0441277af6e11aedc"
+  },
+  "no_factory_runs": true,
+  "no_solver_runs": true
+}

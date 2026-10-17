@@ -1,0 +1,78 @@
+{
+  "schema": "stage2-window-development-comparison.v2",
+  "cases": [
+    [
+      2,
+      1440,
+      60
+    ],
+    [
+      2,
+      1440,
+      30
+    ],
+    [
+      3,
+      1920,
+      60
+    ],
+    [
+      4,
+      1920,
+      60
+    ]
+  ],
+  "seeds": [
+    7,
+    13,
+    29
+  ],
+  "pump": true,
+  "support_pruning": true,
+  "max_variables": 4000,
+  "cp_seconds": 20.0,
+  "cp_workers": 4,
+  "literal_seconds": 5,
+  "literal_max_couplers": 150000,
+  "annealing_proposals_per_restart": 20000,
+  "annealing_restarts": 2,
+  "block_methods": [
+    "uniform",
+    "qaoa",
+    "exact",
+    "compressed_uniform",
+    "compressed_qaoa",
+    "compressed_exact"
+  ],
+  "iterations": 64,
+  "shots": 512,
+  "angle_evaluations": 48,
+  "initializer": "64 list-scheduling attempts (EDD, critical path, seeded randomized topological); no CP hints; all failed attempts retained",
+  "comparisons": "Paired seeds and initial incumbents; wall/CPU budgets NOT equal. Exact-block is exponential classical control.",
+  "final_tapes_used": 0,
+  "factory_rollouts": 0,
+  "physical_qpu_calls": 0,
+  "gpu_hours": 0,
+  "source_hashes": {
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/window_qubo.py": "3c526e0c0febb6f0e3a384b156e04cfe5f48b292d59b4e2517a66c193a568af8",
+    "stage2/window_experiments.py": "6adb724f77bafaa1e279e7b458fe5f962974dd60783d9ee6129e5db3aee47fe7",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049",
+    "stage2/planning_compressed.py": "78d50d757e4d163e0bcc57649ec386c4068d95c589e5c81bd65a96586c520e1a",
+    "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "stage2/window_pump.py": "bb64c3fa40de3a9af5e6dba09d1b69553144c225a3659bedcfd410c886011f11",
+    "stage2/window_search.py": "9b1241cf9368454d93de0cc4c477ffd37795f1d831ee17c54e659108851aea5f",
+    "stage2/window_campaign.py": "2376e5ad778d0d05f731ef62447b460a516b13ec8882d0666adc2b90de004406",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/bounds.py": "dafff70b906237bb5caeeb602da1207657b1582f1f36d33c7e7be1c8e6d15836",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35"
+  },
+  "runtime": {
+    "python": "3.14.6",
+    "machine": "arm64",
+    "packages": {
+      "numpy": "2.5.4",
+      "ortools": "9.15.6755"
+    }
+  }
+}

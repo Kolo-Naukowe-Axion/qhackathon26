@@ -1,0 +1,339 @@
+{
+  "name": "factory-derived hypothetical backlog:2housing\u00d73steps",
+  "horizon": 480,
+  "grid": 30,
+  "machines": {
+    "T1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "T2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "F1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "F2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "F3": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "WASH1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    },
+    "WASH2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          480
+        ]
+      ]
+    }
+  },
+  "workers": {
+    "W05": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W06": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W07": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W08": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          240,
+          450
+        ]
+      ]
+    },
+    "W09": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          240,
+          450
+        ]
+      ]
+    },
+    "W10": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          240,
+          450
+        ]
+      ]
+    }
+  },
+  "operations": [
+    {
+      "id": "P01/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 4,
+      "due": 240,
+      "predecessors": []
+    },
+    {
+      "id": "P01/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "due": 240,
+      "predecessors": [
+        "P01/housing/step0"
+      ]
+    },
+    {
+      "id": "P01/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "due": 240,
+      "predecessors": [
+        "P01/housing/step1"
+      ]
+    },
+    {
+      "id": "P02/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 4,
+      "due": 600,
+      "predecessors": []
+    },
+    {
+      "id": "P02/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "due": 600,
+      "predecessors": [
+        "P02/housing/step0"
+      ]
+    },
+    {
+      "id": "P02/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "due": 600,
+      "predecessors": [
+        "P02/housing/step1"
+      ]
+    }
+  ],
+  "transport_lags": {
+    "T1": {
+      "T1": 0,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8
+    },
+    "T2": {
+      "T1": 4,
+      "T2": 0,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8
+    },
+    "F1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 0,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8
+    },
+    "F2": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 0,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8
+    },
+    "F3": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 0,
+      "WASH1": 8,
+      "WASH2": 4
+    },
+    "WASH1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 0,
+      "WASH2": 8
+    },
+    "WASH2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "WASH1": 8,
+      "WASH2": 0
+    }
+  },
+  "worker_travel": 2,
+  "provenance": {
+    "factory_instance_sha256": "ee979dce3fd9bb99f5362d5a85e3e708e57b8e8aa480f7789519cf8c76f26c54",
+    "source_origin_minutes": 2160,
+    "actual_recorded_snapshot": false,
+    "remaining_recipe": "housing prefix; terminal means end of declared prefix, not a shipped pump",
+    "transport": "Uncapacitated minimum lags; initial common minimum delivery release is a relaxation across eligible machines",
+    "excluded": [
+      "sequence-dependent setups",
+      "portable tools/service",
+      "energy",
+      "quality/recovery",
+      "finite buffers",
+      "capacitated AGV motion",
+      "heat batching"
+    ],
+    "current_claim": "Complete declared scheduling-cell QUBO, not lossless full-factory formulation or measured rollout improvement"
+  }
+}

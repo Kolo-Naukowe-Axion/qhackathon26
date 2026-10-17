@@ -1,0 +1,968 @@
+{
+  "problem_sha256": "55d3e6c133d0f045878796eb9bef45226d0ade5f4d5aa0bcbd57cc7c3d72478c",
+  "operations": 32,
+  "horizon": 1440,
+  "grid": 30,
+  "counts": {
+    "naive_assignment_product": 34300,
+    "naive_one_hot_couplers_lower_bound": 18950750,
+    "naive_scope": "Eligible machine x every worker x every grid start before skill, calendar, release and duration checks; assignment family only, no complete naive QUBO claimed",
+    "unary_assignment_variables": 3936,
+    "cross_operation_pair_checks": 7485722,
+    "count_seconds": 0.015244124922901392
+  },
+  "parent_generation": {
+    "history": [
+      {
+        "trial": 0,
+        "complete": true,
+        "scheduled": 32,
+        "objective": 65790,
+        "distinct": true
+      },
+      {
+        "trial": 1,
+        "complete": true,
+        "scheduled": 32,
+        "objective": 65790,
+        "distinct": true
+      },
+      {
+        "trial": 2,
+        "complete": true,
+        "scheduled": 32,
+        "objective": 195570,
+        "distinct": true
+      },
+      {
+        "trial": 3,
+        "complete": true,
+        "scheduled": 32,
+        "objective": 65790,
+        "distinct": true
+      }
+    ],
+    "raw_assignment_candidates": 3936,
+    "compatibility_checks": 57342,
+    "wall_seconds": 0.031037000007927418,
+    "process_cpu_seconds": 0.030891000000000446,
+    "cp_teacher_used": false,
+    "scope": "Seeded randomized topological list scheduling over raw finite domains; no time-indexed QUBO matrix built. Every complete parent independently checked."
+  },
+  "heuristic_check": {
+    "valid": true,
+    "issues": [],
+    "weighted_terminal_tardiness": 45,
+    "makespan": 945,
+    "objective": 65790
+  },
+  "restricted": {
+    "variables": 781,
+    "assignment_variables": 768,
+    "makespan_variables": 13,
+    "couplers": 26307,
+    "build_seconds": 0.11944066686555743,
+    "penalty": 865846,
+    "coefficient_min": -865846,
+    "coefficient_max": 1731692,
+    "min_abs_nonzero_coefficient": 368701,
+    "max_abs_coefficient": 1731692,
+    "coefficient_dynamic_range": 4.696738007219943,
+    "reduction": {},
+    "coefficient_sha256": "d2c789bf9d4b7974f4454c3c843844ebd047fa07c32aa6a0df49c82c02c70648",
+    "candidate_generation_seconds": 0.015311582945287228,
+    "exact": false,
+    "restriction": {
+      "method": "Unary operation rows with parent retention and round-robin mode/timing diversity",
+      "per_operation_cap": 24,
+      "radius": 240,
+      "groups": {
+        "P01/housing/step0": {
+          "raw_rows": 106,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P01/housing/step1": {
+          "raw_rows": 158,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P01/housing/step2": {
+          "raw_rows": 162,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P01/housing/step3": {
+          "raw_rows": 133,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P01/housing/step4": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 7
+        },
+        "P01/rotor/step0": {
+          "raw_rows": 106,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P01/rotor/step1": {
+          "raw_rows": 133,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P01/rotor/step2": {
+          "raw_rows": 158,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 9
+        },
+        "P01/rotor/step3": {
+          "raw_rows": 162,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P01/rotor/step4": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 7
+        },
+        "P01/flange/step0": {
+          "raw_rows": 156,
+          "parent_rows": 2,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P01/flange/step1": {
+          "raw_rows": 66,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P01/flange/step2": {
+          "raw_rows": 162,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P01/flange/step3": {
+          "raw_rows": 84,
+          "parent_rows": 2,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P01/pump/step0": {
+          "raw_rows": 130,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 12
+        },
+        "P01/pump/step1": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P02/housing/step0": {
+          "raw_rows": 106,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P02/housing/step1": {
+          "raw_rows": 158,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P02/housing/step2": {
+          "raw_rows": 162,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/housing/step3": {
+          "raw_rows": 133,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/housing/step4": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P02/rotor/step0": {
+          "raw_rows": 106,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P02/rotor/step1": {
+          "raw_rows": 133,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/rotor/step2": {
+          "raw_rows": 158,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 9
+        },
+        "P02/rotor/step3": {
+          "raw_rows": 162,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/rotor/step4": {
+          "raw_rows": 84,
+          "parent_rows": 2,
+          "retained": 24,
+          "eligible_modes": 7
+        },
+        "P02/flange/step0": {
+          "raw_rows": 156,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P02/flange/step1": {
+          "raw_rows": 66,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 4
+        },
+        "P02/flange/step2": {
+          "raw_rows": 162,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/flange/step3": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 6
+        },
+        "P02/pump/step0": {
+          "raw_rows": 130,
+          "parent_rows": 3,
+          "retained": 24,
+          "eligible_modes": 8
+        },
+        "P02/pump/step1": {
+          "raw_rows": 84,
+          "parent_rows": 4,
+          "retained": 24,
+          "eligible_modes": 4
+        }
+      },
+      "cp_teacher_used": false,
+      "scope": "Lossy finite unary-domain restriction. Precedence, resource, travel, setup and Cmax constraints remain global. No component route frozen."
+    }
+  },
+  "pool_reference": {
+    "status": "OPTIMAL",
+    "optimal": true,
+    "bound": 65790.0,
+    "wall_seconds": 0.23580887541174889,
+    "derived_nonoccupation_forbidden_pairs": 14885,
+    "uses_qubo_coefficients": false,
+    "scope": "Native raw-column-pool reference. Bound applies to this supplied restricted pool only.",
+    "objective": 65790,
+    "choices": {
+      "P01/housing/step0": 10,
+      "P01/housing/step1": 1,
+      "P01/housing/step2": 14,
+      "P01/housing/step3": 0,
+      "P01/housing/step4": 0,
+      "P01/rotor/step0": 14,
+      "P01/rotor/step1": 10,
+      "P01/rotor/step2": 14,
+      "P01/rotor/step3": 2,
+      "P01/rotor/step4": 1,
+      "P01/flange/step0": 0,
+      "P01/flange/step1": 0,
+      "P01/flange/step2": 0,
+      "P01/flange/step3": 0,
+      "P01/pump/step0": 1,
+      "P01/pump/step1": 3,
+      "P02/housing/step0": 0,
+      "P02/housing/step1": 8,
+      "P02/housing/step2": 16,
+      "P02/housing/step3": 0,
+      "P02/housing/step4": 0,
+      "P02/rotor/step0": 2,
+      "P02/rotor/step1": 2,
+      "P02/rotor/step2": 5,
+      "P02/rotor/step3": 1,
+      "P02/rotor/step4": 1,
+      "P02/flange/step0": 0,
+      "P02/flange/step1": 0,
+      "P02/flange/step2": 0,
+      "P02/flange/step3": 0,
+      "P02/pump/step0": 1,
+      "P02/pump/step1": 1
+    },
+    "plan": [
+      {
+        "operation": "P01/housing/step0",
+        "machine": "T1",
+        "worker": "W04",
+        "start": 120,
+        "end": 180,
+        "attended_end": 125,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step1",
+        "machine": "F2",
+        "worker": "W04",
+        "start": 180,
+        "end": 270,
+        "attended_end": 185,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step2",
+        "machine": "WASH1",
+        "worker": "W01",
+        "start": 300,
+        "end": 330,
+        "attended_end": 305,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step3",
+        "machine": "H3",
+        "worker": "W01",
+        "start": 360,
+        "end": 480,
+        "attended_end": 365,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/housing/step4",
+        "machine": "QA2",
+        "worker": "W07",
+        "start": 480,
+        "end": 525,
+        "attended_end": 525,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/rotor/step0",
+        "machine": "T2",
+        "worker": "W01",
+        "start": 120,
+        "end": 180,
+        "attended_end": 125,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step1",
+        "machine": "H1",
+        "worker": "W02",
+        "start": 240,
+        "end": 360,
+        "attended_end": 245,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step2",
+        "machine": "F2",
+        "worker": "W04",
+        "start": 360,
+        "end": 435,
+        "attended_end": 365,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step3",
+        "machine": "WASH2",
+        "worker": "W01",
+        "start": 450,
+        "end": 480,
+        "attended_end": 455,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/rotor/step4",
+        "machine": "QA2",
+        "worker": "W07",
+        "start": 720,
+        "end": 765,
+        "attended_end": 765,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step0",
+        "machine": "F1",
+        "worker": "W01",
+        "start": 60,
+        "end": 120,
+        "attended_end": 65,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step1",
+        "machine": "S1",
+        "worker": "W02",
+        "start": 120,
+        "end": 180,
+        "attended_end": 180,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step2",
+        "machine": "WASH1",
+        "worker": "W01",
+        "start": 180,
+        "end": 210,
+        "attended_end": 185,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step3",
+        "machine": "QA1",
+        "worker": "W03",
+        "start": 240,
+        "end": 285,
+        "attended_end": 285,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/pump/step0",
+        "machine": "A2",
+        "worker": "W06",
+        "start": 780,
+        "end": 840,
+        "attended_end": 840,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/pump/step1",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 900,
+        "end": 945,
+        "attended_end": 945,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step0",
+        "machine": "T2",
+        "worker": "W04",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step1",
+        "machine": "F3",
+        "worker": "W04",
+        "start": 90,
+        "end": 203,
+        "attended_end": 95,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step2",
+        "machine": "WASH2",
+        "worker": "W01",
+        "start": 270,
+        "end": 300,
+        "attended_end": 275,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step3",
+        "machine": "H1",
+        "worker": "W01",
+        "start": 420,
+        "end": 540,
+        "attended_end": 425,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step4",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 600,
+        "end": 645,
+        "attended_end": 645,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step0",
+        "machine": "T1",
+        "worker": "W01",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step1",
+        "machine": "H1",
+        "worker": "W01",
+        "start": 90,
+        "end": 210,
+        "attended_end": 95,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step2",
+        "machine": "F1",
+        "worker": "W04",
+        "start": 240,
+        "end": 315,
+        "attended_end": 245,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W02",
+        "start": 360,
+        "end": 390,
+        "attended_end": 365,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step4",
+        "machine": "QA1",
+        "worker": "W03",
+        "start": 420,
+        "end": 465,
+        "attended_end": 465,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step0",
+        "machine": "F2",
+        "worker": "W04",
+        "start": 60,
+        "end": 120,
+        "attended_end": 65,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step1",
+        "machine": "S1",
+        "worker": "W02",
+        "start": 270,
+        "end": 330,
+        "attended_end": 330,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step2",
+        "machine": "WASH2",
+        "worker": "W01",
+        "start": 330,
+        "end": 360,
+        "attended_end": 335,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step3",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 540,
+        "end": 585,
+        "attended_end": 585,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/pump/step0",
+        "machine": "A1",
+        "worker": "W06",
+        "start": 720,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step1",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 780,
+        "end": 825,
+        "attended_end": 825,
+        "hall": "A"
+      }
+    ],
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 45,
+      "makespan": 945,
+      "objective": 65790
+    }
+  },
+  "unary_complete": {
+    "variables": 4105,
+    "assignment_variables": 3936,
+    "makespan_variables": 169,
+    "couplers": 946728,
+    "build_seconds": 2.596529624890536,
+    "penalty": 1514491,
+    "coefficient_min": -1514491,
+    "coefficient_max": 4543473,
+    "min_abs_nonzero_coefficient": 757966,
+    "max_abs_coefficient": 4543473,
+    "coefficient_dynamic_range": 5.994296577946768,
+    "reduction": {},
+    "coefficient_sha256": "c86858d86a22ddc66c8d5d222ec2ceb3eb7afac232138ad9daf47d94efb28cc0",
+    "exact": true
+  },
+  "support_complete": {
+    "variables": 2763,
+    "assignment_variables": 2630,
+    "makespan_variables": 133,
+    "couplers": 457015,
+    "build_seconds": 3.894486750010401,
+    "penalty": 1514476,
+    "coefficient_min": -1514476,
+    "coefficient_max": 4543428,
+    "min_abs_nonzero_coefficient": 757951,
+    "max_abs_coefficient": 4543428,
+    "coefficient_dynamic_range": 5.994355835667477,
+    "reduction": {
+      "method": "binary_arc_consistency",
+      "before": 3936,
+      "after": 2630,
+      "pair_checks": 7485722
+    },
+    "coefficient_sha256": "969bd186462a3a8c3aee960477498d6db261580a3592257e176cd478c60181a8",
+    "exact": true
+  },
+  "raw_reference": {
+    "status": "OPTIMAL",
+    "optimal": true,
+    "bound": 825.0,
+    "wall_seconds": 3.923345709219575,
+    "feasible_hint_used": true,
+    "hint_objective": 65790,
+    "plan": [
+      {
+        "operation": "P01/housing/step0",
+        "machine": "T2",
+        "worker": "W01",
+        "start": 90,
+        "end": 150,
+        "attended_end": 95,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step1",
+        "machine": "F3",
+        "worker": "W04",
+        "start": 150,
+        "end": 263,
+        "attended_end": 155,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/housing/step2",
+        "machine": "WASH1",
+        "worker": "W01",
+        "start": 330,
+        "end": 360,
+        "attended_end": 335,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step3",
+        "machine": "H1",
+        "worker": "W01",
+        "start": 420,
+        "end": 540,
+        "attended_end": 425,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/housing/step4",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 540,
+        "end": 585,
+        "attended_end": 585,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step0",
+        "machine": "T2",
+        "worker": "W01",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step1",
+        "machine": "H3",
+        "worker": "W01",
+        "start": 360,
+        "end": 480,
+        "attended_end": 365,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/rotor/step2",
+        "machine": "F1",
+        "worker": "W05",
+        "start": 510,
+        "end": 585,
+        "attended_end": 515,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step3",
+        "machine": "WASH1",
+        "worker": "W07",
+        "start": 600,
+        "end": 630,
+        "attended_end": 605,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor/step4",
+        "machine": "QA2",
+        "worker": "W07",
+        "start": 630,
+        "end": 675,
+        "attended_end": 675,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step0",
+        "machine": "F1",
+        "worker": "W01",
+        "start": 60,
+        "end": 120,
+        "attended_end": 65,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step1",
+        "machine": "S2",
+        "worker": "W02",
+        "start": 120,
+        "end": 180,
+        "attended_end": 180,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/flange/step2",
+        "machine": "WASH1",
+        "worker": "W01",
+        "start": 300,
+        "end": 330,
+        "attended_end": 305,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/flange/step3",
+        "machine": "QA2",
+        "worker": "W03",
+        "start": 330,
+        "end": 375,
+        "attended_end": 375,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/pump/step0",
+        "machine": "A2",
+        "worker": "W06",
+        "start": 720,
+        "end": 780,
+        "attended_end": 780,
+        "hall": "B"
+      },
+      {
+        "operation": "P01/pump/step1",
+        "machine": "QA2",
+        "worker": "W07",
+        "start": 780,
+        "end": 825,
+        "attended_end": 825,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step0",
+        "machine": "T1",
+        "worker": "W04",
+        "start": 90,
+        "end": 150,
+        "attended_end": 95,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step1",
+        "machine": "F1",
+        "worker": "W01",
+        "start": 150,
+        "end": 240,
+        "attended_end": 155,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step2",
+        "machine": "WASH2",
+        "worker": "W01",
+        "start": 240,
+        "end": 270,
+        "attended_end": 245,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/housing/step3",
+        "machine": "H1",
+        "worker": "W01",
+        "start": 270,
+        "end": 390,
+        "attended_end": 275,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/housing/step4",
+        "machine": "QA1",
+        "worker": "W04",
+        "start": 420,
+        "end": 465,
+        "attended_end": 465,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step0",
+        "machine": "T1",
+        "worker": "W04",
+        "start": 30,
+        "end": 90,
+        "attended_end": 35,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step1",
+        "machine": "H1",
+        "worker": "W02",
+        "start": 90,
+        "end": 210,
+        "attended_end": 95,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step2",
+        "machine": "F1",
+        "worker": "W04",
+        "start": 270,
+        "end": 345,
+        "attended_end": 275,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/rotor/step3",
+        "machine": "WASH2",
+        "worker": "W02",
+        "start": 360,
+        "end": 390,
+        "attended_end": 365,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/rotor/step4",
+        "machine": "QA2",
+        "worker": "W03",
+        "start": 420,
+        "end": 465,
+        "attended_end": 465,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step0",
+        "machine": "F2",
+        "worker": "W04",
+        "start": 60,
+        "end": 120,
+        "attended_end": 65,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/flange/step1",
+        "machine": "S1",
+        "worker": "W02",
+        "start": 240,
+        "end": 300,
+        "attended_end": 300,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step2",
+        "machine": "WASH2",
+        "worker": "W02",
+        "start": 300,
+        "end": 330,
+        "attended_end": 305,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/flange/step3",
+        "machine": "QA1",
+        "worker": "W04",
+        "start": 330,
+        "end": 375,
+        "attended_end": 375,
+        "hall": "A"
+      },
+      {
+        "operation": "P02/pump/step0",
+        "machine": "A1",
+        "worker": "W06",
+        "start": 480,
+        "end": 540,
+        "attended_end": 540,
+        "hall": "B"
+      },
+      {
+        "operation": "P02/pump/step1",
+        "machine": "QA1",
+        "worker": "W07",
+        "start": 720,
+        "end": 765,
+        "attended_end": 765,
+        "hall": "A"
+      }
+    ],
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 0,
+      "makespan": 825,
+      "objective": 825
+    },
+    "objective": 825
+  },
+  "raw_objective_interval": {
+    "lower_bound": 825.0,
+    "checked_upper_bound": 825,
+    "certified": true,
+    "qualification": "Raw CP bound plus independently raw-checked witnesses; restricted optimality is not global"
+  },
+  "restricted_objective_loss": 64965
+}

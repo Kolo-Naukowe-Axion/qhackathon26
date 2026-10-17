@@ -1,0 +1,552 @@
+{
+  "schema": "qfactoria-stage2-merit-acceptance.v1",
+  "auditor_sha256": "08577de56fb30bb08a755ca7ac58c645fbf1d6973f42d1946f365abe8b014b9e",
+  "scope": "Read-only retained-artifact audit; not optimizer execution, public release, independent run authentication, prize eligibility or claimed score",
+  "requirements": [
+    {
+      "id": "C01",
+      "requirement": "Correct official baselines and comparable 3\u00d73 encoding count",
+      "category": "non_velox_core",
+      "authority": [
+        "Challenge \u00a74 gate",
+        "Challenge \u00a75 comparable number",
+        "Combined plan preamble"
+      ],
+      "evidence": [
+        "output/stage1-compact-ready/formulation-certificates.json",
+        "docs/STAGE1_COMPACT.md",
+        "schedule_2x2.json",
+        "schedule_3x3.json"
+      ],
+      "acceptance": "4/8-hour optima; 72 naive/39 pruned/3 selected bits; six-order classical tabulation and representation limits disclosed.",
+      "checked_result": {
+        "official_optima_hours": [
+          4,
+          8
+        ],
+        "baseline_3x3_bits": {
+          "naive": 72,
+          "pruned": 39,
+          "selected": 3
+        },
+        "selected_scope": "Six earliest-start common orders; factorial classical preprocessing already reveals this tiny optimum"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C02",
+      "requirement": "Checked full-recipe manufacturing recovery centerpiece",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item1",
+        "Review priority1",
+        "Challenge \u00a75 depth"
+      ],
+      "evidence": [
+        "output/manufacturing-recovery-v2/",
+        "output/manufacturing-full-recovery-v1/"
+      ],
+      "acceptance": "Identical32-operation problems, complete references, 45\u21920 weighted late minutes and945\u2192855 makespan; raw plans checked.",
+      "checked_result": {
+        "manifest_files": 38,
+        "result": {
+          "heat-outage-32": {
+            "raw_reference": {
+              "tardiness": 45,
+              "makespan": 945
+            },
+            "pool_reference": {
+              "tardiness": 45,
+              "makespan": 945
+            }
+          },
+          "heat-lease-32": {
+            "raw_reference": {
+              "tardiness": 0,
+              "makespan": 855
+            },
+            "pool_reference": {
+              "tardiness": 45,
+              "makespan": 945
+            }
+          }
+        },
+        "parameters": "Synthetic; 30-minute start grid; due900; replacement360"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C03",
+      "requirement": "Nested representation/quality frontier and stronger pool control",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item2",
+        "Review priority1",
+        "Review pass3"
+      ],
+      "evidence": [
+        "stage2/capacity_frontier.py",
+        "output/capacity-frontier-review-v1/",
+        "docs/STAGE2_CAPACITY_FRONTIER.md"
+      ],
+      "acceptance": "All pools nested and legal; full spans unary domain; independent native bounds;2,078-bit pool preserves0/855 optimum.",
+      "checked_result": {
+        "manifest_files": 34,
+        "recovered_optimum_bits": 2078,
+        "recovered_optimum_couplers": 196228,
+        "caveat": "Known-fixture development frontier; no minimum sufficient encoding or held-out result"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C04",
+      "requirement": "Exact hard-deadline operational query",
+      "category": "non_velox_core",
+      "authority": [
+        "Review priority1",
+        "Challenge \u00a75 compact/correct formulation"
+      ],
+      "evidence": [
+        "stage2/deadline_qubo.py",
+        "stage2/deadline_reference.py",
+        "output/deadline-decision-review-v1/"
+      ],
+      "acceptance": "Zero iff all original operations legally meet dues and cap; independent tri-state reference;818/33,817 positive query; no false infeasibility from sampling.",
+      "checked_result": {
+        "manifest_files": 25,
+        "rows": [
+          {
+            "case": "heat-outage-32",
+            "cap": 900,
+            "bits": 796,
+            "couplers": 32760,
+            "feasible": false
+          },
+          {
+            "case": "heat-lease-32",
+            "cap": 900,
+            "bits": 818,
+            "couplers": 33817,
+            "feasible": true
+          },
+          {
+            "case": "heat-lease-32",
+            "cap": 855,
+            "bits": 818,
+            "couplers": 33817,
+            "feasible": true
+          },
+          {
+            "case": "heat-lease-32",
+            "cap": 854,
+            "bits": 632,
+            "couplers": 21152,
+            "feasible": false
+          }
+        ],
+        "claim": "Exact hard-deadline question, not lossless compression of original soft optimization"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C05",
+      "requirement": "Repeated local controls and physical-versus-encoded validity",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item4 local controls",
+        "Review priority2",
+        "Challenge \u00a75 verified quality"
+      ],
+      "evidence": [
+        "output/deadline-anneal-review-v1/",
+        "output/deadline-anneal-report-audit-v2/"
+      ],
+      "acceptance": "Forty frozen cold runs/640 retained samples; reporting audit confirms0encoded-valid/0raw-valid/0target; all work/budgets disclosed.",
+      "checked_result": {
+        "manifest_files": 90,
+        "runs": 40,
+        "retained_samples": 640,
+        "encoded_valid": 0,
+        "raw_valid": 0,
+        "target": 0,
+        "caveat": "Failure at declared local budgets is UNKNOWN; no classical hardness or sponsor advantage"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C06",
+      "requirement": "Manufacturing scaling32/64/128 with honest reference status",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item1",
+        "Review priority1",
+        "Challenge \u00a75 scaling"
+      ],
+      "evidence": [
+        "output/manufacturing-study-v1/",
+        "docs/STAGE2_MANUFACTURING_STUDY.md"
+      ],
+      "acceptance": "Per-size construction/solver metadata, incumbents/bounds/statuses; UNKNOWN and pool restrictions explicit.",
+      "checked_result": {
+        "rows": [
+          {
+            "operations": 32,
+            "status": "OPTIMAL",
+            "bound": 855.0,
+            "objective": 855
+          },
+          {
+            "operations": 64,
+            "status": "UNKNOWN",
+            "bound": 0.0,
+            "objective": null
+          },
+          {
+            "operations": 128,
+            "status": "UNKNOWN",
+            "bound": 0.0,
+            "objective": null
+          }
+        ],
+        "caveat": "UNKNOWN is unresolved, not infeasible; restricted optimum is not a global optimum"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C07",
+      "requirement": "Audited separate assignment-QAOA correctness study",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item3 retained study",
+        "Challenge \u00a711 correct quantum implementation"
+      ],
+      "evidence": [
+        "output/stage2-entry-v2/",
+        "output/stage2-entry-circuit-audit-v1/",
+        "docs/STAGE2_ENTRY.md"
+      ],
+      "acceptance": "60/60 optimal schedules,57/60 encoded minima; SA60/60; uniform59/60;18\u201334logicalqubits; independent circuit audit and unequal budgets disclosed.",
+      "checked_result": {
+        "manifest_files": 340,
+        "totals": {
+          "qaoa_xy": {
+            "runs": 60,
+            "valid": 60,
+            "optimal_schedules": 60,
+            "encoded_minima": 57
+          },
+          "uniform_onehot": {
+            "runs": 60,
+            "valid": 60,
+            "optimal_schedules": 59,
+            "encoded_minima": 52
+          },
+          "sa_onehot": {
+            "runs": 60,
+            "valid": 60,
+            "optimal_schedules": 60,
+            "encoded_minima": 60
+          }
+        },
+        "claim": "Separate synthetic 18\u201334 logical-qubit cell; unequal work budgets; no quantum advantage"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C08",
+      "requirement": "Quantum comparison on a recovery-derived full-recipe restriction",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item3",
+        "Review priority3",
+        "Challenge \u00a75 one integrated result"
+      ],
+      "evidence": [
+        "stage2/recipe_bridge.py",
+        "output/recipe-bridge-review-v2/",
+        "docs/STAGE2_RECIPE_BRIDGE.md"
+      ],
+      "acceptance": "All32operations and cross-component joins retained; independent conditional headroom/reference; repeated actual QAOA/SA/uniform/exact on identical restrictions; whole-plan checks, source snapshots and all preprocessing costs.",
+      "checked_result": {
+        "manifest_files": 91,
+        "rows": 6,
+        "retained_runs": 54,
+        "logical_qubits": [
+          18,
+          28,
+          36
+        ],
+        "sector_amplitudes": [
+          512,
+          26244,
+          262144
+        ],
+        "totals": {
+          "heat-outage-32:qaoa_xy:valid": 9,
+          "heat-outage-32:uniform_onehot:valid": 3,
+          "heat-outage-32:sa_onehot:valid": 9,
+          "heat-lease-32:qaoa_xy:valid": 9,
+          "heat-lease-32:qaoa_xy:ontime": 9,
+          "heat-lease-32:uniform_onehot:valid": 3,
+          "heat-lease-32:uniform_onehot:ontime": 3,
+          "heat-lease-32:sa_onehot:valid": 9,
+          "heat-lease-32:sa_onehot:ontime": 9
+        },
+        "caveat": "All32operations retained through restricted constructive component trajectories. Best constructive parent already supplies optimum; exact sector preparation reveals restricted optimum; no quantum advantage."
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C09",
+      "requirement": "Per-feature price-of-realism accounting on the actual model",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item2",
+        "Review priority4",
+        "Challenge \u00a75 price of realism"
+      ],
+      "evidence": [
+        "stage2/manufacturing_realism.py",
+        "output/realism-frontier-v1/",
+        "output/realism-continuous-counts-v2/",
+        "docs/STAGE2_REALISM_FRONTIER.md"
+      ],
+      "acceptance": "Fixed horizon/grid; features mapped to naive/unary counts and bounded safely-pruned/restricted metrics, coefficients, timing and native/pool quality; explicitly skipped complete compilations and grid loss distinguished.",
+      "checked_result": {
+        "manifest_files": 52,
+        "independently_counted_variants": 9,
+        "guarded_complete_compilations": [
+          "ablation-continuous_worker_calendars:unary_complete",
+          "ablation-continuous_worker_calendars:support_complete",
+          "scaling-64:unary_complete",
+          "scaling-64:support_complete",
+          "scaling-128:unary_complete",
+          "scaling-128:support_complete"
+        ],
+        "authoritative_calendar_supplement": "output/realism-continuous-counts-v2",
+        "caveat": "Naive counts are assignment-family counts and coupling lower bounds; no naive complete coefficient claim. Feature removal changes model. Calendar exact counts come from separately tested streaming v2, not failed v1;64/128 complete compilations remain guarded."
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C10",
+      "requirement": "Current sponsor formulations prepared and audited entirely offline",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item1 offline packets",
+        "Review priority2 integration preparation"
+      ],
+      "evidence": [
+        "stage2/sponsor_merit_packets.py",
+        "output/sponsor-merit-packets-v1/",
+        "output/sponsor-enriched-matched-penalty-v1/",
+        "docs/STAGE2_SPONSOR_PACKETS.md"
+      ],
+      "acceptance": "Cold818query/2,078enriched/2,499complete plus matched-penalty2,078packet; independent literal-coefficient inverse Ising audit, labels/offsets/scale, no hidden reference initialization or network calls.",
+      "checked_result": {
+        "manifest_files": 34,
+        "exact_inverse_coefficients": 815121,
+        "sdk_imported": false,
+        "cold_packets": 4,
+        "caveat": "Exact offline serialization only; no platform acceptance, internal arithmetic or solver-performance inference"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C11",
+      "requirement": "Economic sensitivity and capacity break-even answer",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item5",
+        "Review priority4",
+        "Challenge \u00a75 functional scaling"
+      ],
+      "evidence": [
+        "stage2/capacity_economics.py",
+        "output/capacity-economics-v2/"
+      ],
+      "acceptance": "Explicit rates/scenario assumptions; independently checked cost ledger and break-even;45weighted minutes translate to45c only under declared objective/weights; no unproved minimum-cost or calibrated ROI claim.",
+      "checked_result": {
+        "manifest_files": 9,
+        "independently_minute_valued_plans": 4,
+        "sensitivity_rows": 135,
+        "maximum_event_fee_at_rate10": "11389/24",
+        "caveat": "Exact declared-plan valuation and conditional break-even; original plans optimize priority objective, not monetary cost; synthetic rates and event probabilities"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C12",
+      "requirement": "One authoritative design/log/README/submission/UI story",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item6 local preparation",
+        "Review priority5",
+        "Challenge \u00a711 consistency/design/log"
+      ],
+      "evidence": [
+        "PROJECT_DESIGN.md",
+        "DEVELOPMENT_LOG.md",
+        "README.md",
+        "docs/STAGE2_COMBINED_DIRECTION.md",
+        "docs/STAGE2_SUBMISSION.md",
+        "presentation/manufacturing/"
+      ],
+      "acceptance": "All current entrypoints include enriched frontier, deadline query, integrated quantum scope, economics and feature table; no stale claim that2,499bits is necessary; links/hashes/claims and static build checked.",
+      "checked_result": {
+        "receipt": "output/merit-document-consistency-v2/report.json",
+        "receipt_sha256": "5224e2b6022bbc45ba11aa6d8f53a41fa4910eeb39b02c21e1b86eac81205d64",
+        "checks": 20,
+        "files": 34
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C13",
+      "requirement": "Reproducible final local acceptance tests and build",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item6 reproducibility",
+        "Challenge \u00a711 reproducibility/consistency"
+      ],
+      "evidence": [
+        "scripts/verify-stage2-merit.py",
+        "tests/stage2/",
+        "tests/manufacturing-studio.test.mjs",
+        "package.json"
+      ],
+      "acceptance": "Run targeted meaningful tests for changed model/compiler/bridge/economics/packets plus presentation checks and static build on final sources; retained command result and hash scope recorded.",
+      "checked_result": {
+        "receipt": "output/merit-final-checks-v1/report.json",
+        "receipt_sha256": "a9a0cfad243276c8afdde7d3e81889acd2c14f1cbd08160860f163d1c64dcd41",
+        "commands": 5,
+        "tested_source_files": 269
+      },
+      "status": "passed"
+    },
+    {
+      "id": "C14",
+      "requirement": "Preserve failures and distinguish solver loss from representation loss",
+      "category": "non_velox_core",
+      "authority": [
+        "Combined plan item2",
+        "Review corrections",
+        "Challenge \u00a75 state approximation gaps"
+      ],
+      "evidence": [
+        "docs/STAGE2_REVIEW_PASSES.md",
+        "output/deadline-boundary-review-v1/",
+        "output/deadline-boundary-review-v2/",
+        "output/manufacturing-anneal-pilot-v1/",
+        "output/recipe-bridge-review-v1/",
+        "output/realism-continuous-counts-v1/"
+      ],
+      "acceptance": "Failed greedy quantum gates, failed penalty tuning, sampling failures, initial bridge pool loss and rejected streaming-countv1 remain accessible; successful bridge/countv2 are distinct corrected evidence.",
+      "checked_result": {
+        "manifest_files": 116,
+        "historical_penalty_runs": 60,
+        "feasible_by_penalty": {
+          "original_bound": 21,
+          "checked_incumbent_bound": 1
+        },
+        "caveat": "Original pilot has no standalone manifest; its retained raw samples are covered by the independent manufacturing audit, rather than inventing a seal"
+      },
+      "status": "passed"
+    },
+    {
+      "id": "V01",
+      "requirement": "Actual VeloxQ pilot and bounded sponsor scaling campaign",
+      "category": "held_external",
+      "authority": [
+        "Combined plan item4",
+        "Review priority2",
+        "Challenge \u00a75/\u00a711 sponsor"
+      ],
+      "evidence": [
+        "docs/STAGE2_VELOXQ_RUNBOOK.md"
+      ],
+      "acceptance": "Separate authorization lifts backend/credit hold; validated platform limits and cost; identical-model baselines, repeated raw returned schedules, full time/cost accounting.",
+      "status": "held"
+    },
+    {
+      "id": "R01",
+      "requirement": "Recovery-centered final \u22643-minute video",
+      "category": "release_or_human",
+      "authority": [
+        "Combined plan item6",
+        "Review priority5",
+        "Challenge \u00a711 video"
+      ],
+      "evidence": [
+        "docs/STAGE2_MANUFACTURING_VIDEO_SCRIPT.json",
+        "output/manufacturing-video-v3/receipt.json"
+      ],
+      "acceptance": "Local cut/script matches final newly extended evidence; duration\u2264180s; human content review, accessible hosted URL and upload separate.",
+      "status": "pending"
+    },
+    {
+      "id": "R02",
+      "requirement": "Live presentation and Q&A readiness",
+      "category": "release_or_human",
+      "authority": [
+        "Combined plan item6",
+        "Challenge \u00a711 live"
+      ],
+      "evidence": [
+        "docs/STAGE2_LIVE_SCRIPT.md"
+      ],
+      "acceptance": "Team understands code/model, rehearses slot and answers limitations. Cannot be completed by local documents alone.",
+      "status": "human_required"
+    },
+    {
+      "id": "R03",
+      "requirement": "Public MIT repository, exact release and submission receipt",
+      "category": "release_or_human",
+      "authority": [
+        "Combined plan item6",
+        "Challenge submission requirements"
+      ],
+      "evidence": [
+        "docs/STAGE2_SUBMISSION.md"
+      ],
+      "acceptance": "Separately authorize exact public release/commit/push; verify visibility/license; human team/declaration data, final video URL, official form and receipt.",
+      "status": "held"
+    },
+    {
+      "id": "S01",
+      "requirement": "Full calibrated weekly monetary optimization and purchase ROI",
+      "category": "optional_stretch",
+      "authority": [
+        "Combined plan item5 explicit stretch"
+      ],
+      "evidence": [],
+      "acceptance": "Not promised for core completion. Requires new tariff/overtime/activation/investment assumptions, optimization model and matching independent reference.",
+      "status": "optional"
+    },
+    {
+      "id": "S02",
+      "requirement": "Stochastic robust scheduling, external industrial data and QOBLIB trials",
+      "category": "optional_stretch",
+      "authority": [
+        "Combined plan secondary work",
+        "Review corrections"
+      ],
+      "evidence": [],
+      "acceptance": "Not required for accepted combined core; must not be inferred from a linear exposure proxy or synthetic scenarios.",
+      "status": "optional"
+    }
+  ],
+  "counts": {
+    "passed": 14,
+    "held": 2,
+    "pending": 1,
+    "human_required": 1,
+    "optional": 2
+  },
+  "non_velox_core_complete": true,
+  "incomplete_core": [],
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0,
+  "solver_calls": 0,
+  "report_path": "output/merit-audit-final-v1/requirements.json"
+}

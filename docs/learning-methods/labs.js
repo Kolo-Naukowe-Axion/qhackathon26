@@ -74,6 +74,76 @@
     e.currentTarget.textContent = show ? 'Hide all solutions' : 'Show all solutions';
   });
 
+  // BEGIN ONE-QUBIT WALKTHROUGH
+  (() => {
+    const root = document.getElementById('quantum-basics-lab');
+    if (!root) return;
+    root.innerHTML = `<div class="lab-kicker">LAB / QUANTUM FOUNDATIONS</div>
+      <h3>Watch amplitudes change before probabilities do</h3>
+      <p>This is the chapter's ideal one-qubit example, not a scheduling problem. The bars show the state after each operation and the probabilities <em>if we stopped and measured there</em>. We do not measure between gates.</p>
+      <div class="lab-controls"><button type="button" id="qb-prev">Previous step</button><span id="qb-step" aria-label="Current walkthrough step"></span><button type="button" id="qb-next">Next step</button></div>
+      <label class="qb-comparison"><input type="checkbox" id="qb-include-z" checked> Include the sign-change gate Z</label>
+      <div class="qb-circuit" aria-label="Gate sequence"><span data-qb-stage="0">Prepare 0</span><span aria-hidden="true">→</span><span data-qb-stage="1">Hadamard H</span><span aria-hidden="true">→</span><span data-qb-stage="2" id="qb-phase-label">Sign change Z</span><span aria-hidden="true">→</span><span data-qb-stage="3">Hadamard H</span></div>
+      <h4 id="qb-title"></h4>
+      <div id="qb-state" role="img" aria-label="Amplitude and probability values">
+        ${[0,1].map(i=>`<div class="qb-row"><b>Outcome ${i}</b><div><div class="qb-caption">Amplitude for ${i}</div><div class="qb-amplitude-track"><span class="qb-zero"></span><span class="qb-amplitude" id="qb-a${i}"></span></div><div class="qb-scale"><span>−1</span><span>0</span><span>+1</span></div><div class="qb-number" id="qb-number${i}"></div></div><div class="qb-chance"><div class="qb-caption">Chance of measuring ${i}</div><div class="qb-probability-track"><span id="qb-p${i}"></span></div><div class="qb-number" id="qb-percent${i}"></div></div></div>`).join('')}
+      </div>
+      <p id="qb-detail" class="qb-detail" aria-live="polite"></p>
+      <div id="qb-calculation" class="qb-calculation"></div>
+      <p class="lab-note">Amplitude: left of zero means negative; right means positive. Probability: always nonnegative. The exact square-root values, rather than the rounded 0.707 labels, determine these probabilities.</p>`;
+    const find = id => root.querySelector('#' + id);
+    const h = Math.SQRT1_2;
+    const hadamard = ([a,b]) => [(a+b)*h,(a-b)*h];
+    let step = 0;
+    function formatAmplitude(value) {
+      if (Math.abs(value)<1e-12) return '0';
+      if (Math.abs(Math.abs(value)-1)<1e-12) return value>0 ? '+1' : '−1';
+      return value>0 ? '+1/√2 ≈ +0.707' : '−1/√2 ≈ −0.707';
+    }
+    function render() {
+      const includeZ = find('qb-include-z').checked;
+      const prepared = [1,0];
+      const equal = hadamard(prepared);
+      const phase = [equal[0],includeZ ? -equal[1] : equal[1]];
+      const final = hadamard(phase).map(v=>Math.abs(v)<1e-12 ? 0 : v);
+      const values = [prepared,equal,phase,final][step];
+      const titles = ['1 · Prepare a definite 0','2 · H creates equal positive amplitudes',includeZ ? '3 · Z changes one sign, not the probabilities' : '3 · Omit Z: both signs stay positive','4 · H combines the amplitudes'];
+      const details = ['Amplitudes (1, 0): measurement now would always give 0.', 'Both amplitudes are +1/√2. Squaring each gives 1/2: measurement now would be 50/50.', includeZ ? 'The amplitude for 1 is now negative. Its square is still +1/2, so the probabilities remain 50/50.' : 'No phase change occurs. The amplitudes and the 50/50 probabilities stay the same.', includeZ ? 'Opposite contributions cancel at outcome 0 and add at outcome 1. Measurement now gives 1 with certainty.' : 'Equal contributions add at outcome 0 and cancel at outcome 1. Measurement now gives 0 with certainty.'];
+      find('qb-step').textContent = (step+1)+' / 4';
+      find('qb-prev').disabled = step===0;
+      find('qb-next').disabled = step===3;
+      find('qb-phase-label').textContent = includeZ ? 'Sign change Z' : 'No sign change';
+      find('qb-title').textContent = titles[step];
+      find('qb-detail').textContent = details[step];
+      root.querySelectorAll('[data-qb-stage]').forEach(e=>{
+        const active = Number(e.dataset.qbStage)===step;
+        e.classList.toggle('qb-active',active);
+        if(active) e.setAttribute('aria-current','step'); else e.removeAttribute('aria-current');
+      });
+      values.forEach((a,i)=>{
+        const probability = Math.max(0,Math.min(1,a*a));
+        find('qb-a'+i).style.left = (a<0 ? 50+a*50 : 50)+'%';
+        find('qb-a'+i).style.width = Math.abs(a)*50+'%';
+        find('qb-number'+i).textContent = formatAmplitude(a);
+        find('qb-p'+i).style.width = probability*100+'%';
+        find('qb-percent'+i).textContent = Math.round(probability*100)+'%';
+      });
+      find('qb-state').setAttribute('aria-label',values.map((a,i)=>'Outcome '+i+': amplitude '+formatAmplitude(a)+', probability '+Math.round(a*a*100)+' percent').join('. '));
+      const calculations = [
+        '<p>State vector: (1, 0). Probabilities: 1² = 1 and 0² = 0.</p>',
+        '<p>For 0: (1 + 0)/√2 = 1/√2.</p><p>For 1: (1 − 0)/√2 = 1/√2.</p><p>Each probability: (1/√2)² = 1/2.</p>',
+        includeZ ? '<p>For 0: unchanged, +1/√2.</p><p>For 1: (−1) × (1/√2) = −1/√2.</p><p>Squaring: (−1/√2)² = 1/2.</p>' : '<p>Neither amplitude changes: (+1/√2, +1/√2). Each square remains 1/2.</p>',
+        includeZ ? '<p>For 0: [1/√2 + (−1/√2)]/√2 = 0.</p><p>For 1: [1/√2 − (−1/√2)]/√2 = (2/√2)/√2 = 2/2 = 1.</p>' : '<p>For 0: [1/√2 + 1/√2]/√2 = (2/√2)/√2 = 2/2 = 1.</p><p>For 1: [1/√2 − 1/√2]/√2 = 0.</p>'
+      ];
+      find('qb-calculation').innerHTML = calculations[step];
+    }
+    find('qb-prev').addEventListener('click',()=>{ step=Math.max(0,step-1); render(); });
+    find('qb-next').addEventListener('click',()=>{ step=Math.min(3,step+1); render(); });
+    find('qb-include-z').addEventListener('change',render);
+    render();
+  })();
+  // END ONE-QUBIT WALKTHROUGH
+
   const encoding = $('#encoding-lab');
   let K = 4, rank = 2, ys = [1,1,0];
   encoding.innerHTML = `<div class="lab-kicker">LAB 01 / GENERAL ENCODINGS</div><h3>One choice. Three representations.</h3>

@@ -1,12 +1,65 @@
-# Project design — current implementation and next solver boundary
+# Project design — manufacturing recovery entry
 
-Status: presentation environment and both locally verified Stage 1 runs, 2026-10-16. VeloxQ remote and ODRA5 physical execution remain pending.
+## Current manufacturing centerpiece — 17 October update
+
+The main demonstration uses complete 16-operation recipes (32–128 operations). Replacing heat capacity changes certified full-model weighted tardiness from 45 to 0; the original 781-bit operation pool stays at 45. Nested deterministic enrichment restores recovery with 2,078 bits, versus 2,499 for complete optimization. A distinct exact deadline-decision QUBO uses 818 bits and 33,817 couplers for the replacement query. Its zero-energy guarantee concerns feasibility, not the original soft-objective landscape.
+
+The integrated [recipe bridge](docs/STAGE2_RECIPE_BRIDGE.md) keeps all 32 operations in eight component groups, recombining independently constructed complete routes. Its 18/28/36 logical-qubit models have 512/26,244/262,144 one-hot sector states. QAOA and sector annealing each produce 18/18 physically valid same-pool optimal schedules across two capacity cases, three caps and three seeds. The constructor already supplies an optimal incumbent; exact sector construction reveals minima classically. This is quantum integration and a sampling comparison, without advantage or scalable quantum-simulation claims. An independent circuit audit checks emitted QASM; the six 18-qubit circuits receive full-Hilbert probability checks, while larger circuits receive resource audits.
+
+[Feature ablations](docs/STAGE2_REALISM_FRONTIER.md) fix horizon/grid and count unary/support bits, couplers and coefficient scale. All six ablations have exact native and restricted references. Larger 64/128-operation native runs remain UNKNOWN with checked bounds. [Economics](docs/STAGE2_CAPACITY_ECONOMICS.md) computes an exact rational ledger and 135 sensitivities for four checked saved plans under synthetic prices. It values schedules selected for deadline priority; it is not a minimum-money weekly optimizer. The studio exposes these assumptions and purchase/event-fee thresholds.
+
+See [the evidence map](docs/STAGE2_MANUFACTURING_STUDY.md), [combined design](docs/STAGE2_COMBINED_DIRECTION.md), and [acceptance record](docs/STAGE2_MERIT_ACCEPTANCE.md). Local studio: http://127.0.0.1:4192/manufacturing/. Four new cold offline packets support the future backend comparison, including matched original-objective penalties. No VeloxQ execution, physical QPU call or publication. Earlier sections below retain their explicitly smaller scopes.
+
+Status: agreed non-VeloxQ technical merit scope complete, 17 October 2026; all 14 core requirements passed. See [current status](docs/STAGE2_STATUS.md) for evidence and the remaining VeloxQ, synchronized video, rehearsal and release duties. The complete-recipe bridge is integrated; the residual-cell study below retains its separate scope. No VeloxQ or physical ODRA5 execution is claimed.
+
+## Main-model mathematical specification
+
+[Mathematics of the complete-recipe manufacturing model](docs/STAGE2_MANUFACTURING_MATH.md)
+is the readable formulation reference for the main32-operation entry. It defines
+raw assignment domains, processing/attendance calendars, metric setup and worker
+travel assumptions, material precedence, the completion register, full quadratic
+polynomial and coefficient conventions. It proves the integer objective hierarchy
+and represented-witness penalty bound, and distinguishes exact support pruning,
+lossy grid/pool restrictions, the hard-deadline query and the component-route
+quantum bridge. Owning code, exhaustive tests and frozen evidence are linked.
+
+## Smaller quantum validation design
+
+The smaller validation cell’s numerical definition, complete equations, reduction proof,
+source-sealed experiment protocol, results, scopes and rubric map are in
+[STAGE2_ENTRY.md](docs/STAGE2_ENTRY.md). The decision is how to schedule remaining
+pump machining, a material-join assembly and inspections after capacity changes,
+including shared workers, cross-training, alternate machines, calendars and due
+dates. This stays within manufacturing. All data are explicitly synthetic.
+
+Use the full two-hall factory below to explain the industrial system; use the
+complete residual-cell QUBO to demonstrate the quantum formulation on a bounded,
+explicit model. The residual cell is not a trace-extracted state or a lossless
+full-factory reduction. Its independent native CP reference uses the same input
+and objective. No CP schedule or pool of reference answers initializes QAOA.
+
+`entry_core.py` defines instances; `window_qubo.py` compiles assignment and
+completion bits; `assignment_qaoa.py` preserves every one-hot group through W
+preparation and ordered XY mixing. CVaR .25 / p=2 is selected on TRAIN seeds only.
+All 60 TEST quantum outputs are valid optimal actual schedules; 57 measured
+bitstrings attain exact QUBO minima. Three completion registers exceed actual
+completion by 30, and both values are disclosed. Annealing attains all 60 exact
+minima too. The simulator classically enumerates the sector energy table; no
+speedup or full-factory optimum is claimed.
+
+`entry_demo.py` serves a loopback-only fresh-run action and `presentation/entry/`
+shows retained evidence and counterfactual schedules. The static build contains
+no Python service or credentials. `entry_velox_offline.py` has no submit option;
+its nine SDK-format packets use exact integer Hamiltonian rescaling after an
+audit detected float32 energy loss. Backend acceptance and internal precision
+remain unverified. Source snapshots, counts, QASM, references and manifests are
+retained; `scripts/verify-stage2-entry.py` rechecks claims and every TEST plan.
 
 ## Official optimization problem
 
 Each job visits the common machine route, with the fixed processing durations in `instances/`. Each operation runs once, machine processing intervals do not overlap, and a predecessor completes before a successor starts. Minimize the latest completion time. Baseline outputs use nonnegative integer hours and `end = start + duration`.
 
-Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator. Instance B requires its QUBO to be solved using a QUBO solver; our plan uses VeloxQ. The implemented fixed-horizon time-indexed QUBO, exact weights, window bounds, feasibility argument, and classical reference algorithm are documented in [STAGE1_OFFLINE.md](docs/STAGE1_OFFLINE.md). Both required methods have now run locally; the refined settings and validation are recorded in docs/STAGE1_REFINEMENT.md. Both remote backends are on user hold.
+Instance A requires its QUBO to be solved using a quantum algorithm on hardware or a simulator. Instance B requires its QUBO to be solved using a QUBO solver. Both selected outputs use actual local QAOA simulation of the compact order QUBOs, with exact makespans 4/8 hours; see [STAGE1_COMPACT.md](docs/STAGE1_COMPACT.md). The earlier fixed-horizon time-indexed QUBO, weights, window bounds, feasibility argument and classical reference remain comparison evidence in [STAGE1_OFFLINE.md](docs/STAGE1_OFFLINE.md) and [STAGE1_REFINEMENT.md](docs/STAGE1_REFINEMENT.md). Neither VeloxQ nor ODRA5 executed; both remain on user hold.
 
 ## Implemented display model
 
@@ -88,3 +141,10 @@ are not used in the current research scope. The versioned trace contract is
 See `stage2/README.md`, `docs/STAGE2_METHOD_AUDIT.md` and
 `docs/STAGE2_EXPERIMENT_LOG.md` for actual mechanisms, limitations, results and
 precomputation costs. Reserved final tapes remain distinct from development.
+
+The frozen campaign is complete: 23,552 valid executions across 74 method/context
+groups, with 41 declared comparisons. The later [solution-quality supplement](docs/SOLUTION_QUALITY.md)
+quantifies realized-primary gap intervals using unchanged final outcomes and
+stronger offline necessary-quality bounds. Exact deterministic reference makespans
+and full-factory missing-order certificates have separate scopes; neither implies
+optimal full-factory deadline debt/cost or a quantum advantage.

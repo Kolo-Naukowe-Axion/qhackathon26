@@ -1,0 +1,762 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="A step-by-step written explanation of the Stage2 factory, its numerical rules, solver scopes and QUBO encodings."><title>Our Stage 2 factory: the problem, every system, and the encoding</title><style>:root{--paper:#faf9f5;--ink:#233331;--muted:#596a67;--accent:#315e72;--line:#d7dedc;--wash:#edf1ef;--side:282px;--bar:64px;color-scheme:light}*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}body{margin:0;background:var(--paper);color:var(--ink);font:18px/1.78 Georgia,'Times New Roman',serif}a{color:var(--accent);text-underline-offset:3px;text-decoration-thickness:1px}a:hover{color:#163d50}button{font:inherit;color:inherit;cursor:pointer;background:transparent;border:1px solid #a9bbb9;border-radius:3px;padding:6px 11px}button:hover{background:var(--wash)}button:focus-visible,a:focus-visible,summary:focus-visible,.table-scroll:focus-visible,pre:focus-visible{outline:3px solid #5b8692;outline-offset:4px}.skip{position:fixed;top:-100px;left:20px;z-index:50;background:var(--ink);color:white;padding:14px}.skip:focus{top:10px}.topbar{position:fixed;inset:0 0 auto;height:var(--bar);display:flex;align-items:center;justify-content:space-between;gap:20px;background:#faf9f5f7;border-bottom:1px solid var(--line);padding:0 28px;z-index:20;font:12px/1.4 system-ui,sans-serif}.wordmark{font-weight:700;letter-spacing:.13em;text-decoration:none;color:var(--ink)}.tools{display:flex;gap:20px;align-items:center}.tools>span{color:var(--muted);font-size:11px}.tools button{font-size:11px}#menu-toggle{display:none}.reading-progress{position:fixed;top:0;left:0;right:0;height:3px;z-index:30;pointer-events:none}.reading-progress i{display:block;background:var(--accent);height:100%;width:0}.contents{position:fixed;inset:var(--bar) auto 0 0;width:var(--side);background:var(--paper);border-right:1px solid var(--line);padding:27px 18px 30px 23px;overflow:auto;font:12px/1.5 system-ui,sans-serif;z-index:10}.nav-title{font-size:10px;letter-spacing:.15em;color:var(--muted);margin:0 0 18px 9px}.contents nav a{display:flex;gap:10px;align-items:baseline;padding:8px 9px;border-left:2px solid transparent;text-decoration:none;color:var(--muted)}.contents nav a small{font-size:10px;flex:0 0 20px;font-variant-numeric:tabular-nums;opacity:.8}.contents nav a.active{color:var(--accent);background:var(--wash);border-left-color:var(--accent);font-weight:600}.contents nav a:hover{background:var(--wash);color:var(--accent)}.nav-footer{margin:25px 9px 0;padding-top:18px;border-top:1px solid var(--line);font-size:11px;color:var(--muted)}.nav-footer a{display:block;margin:10px 0}.nav-footer code{background:transparent;padding:0;font-size:9px;overflow-wrap:anywhere}main{margin-left:var(--side);padding:115px clamp(30px,6vw,100px) 70px;max-width:1350px}.book-opening{padding-bottom:40px;border-bottom:1px solid var(--ink)}.kicker{font:10px system-ui,sans-serif;letter-spacing:.17em;color:var(--accent);margin-bottom:20px}h1{font-size:clamp(40px,4.5vw,65px);font-weight:400;line-height:1.08;letter-spacing:-.045em;margin:0 0 27px;max-width:900px}h2,h3,h4,th,.chapter-number,.book-footer{font-family:system-ui,sans-serif}h2{font-size:29px;line-height:1.28;font-weight:580;letter-spacing:-.03em;margin:0 0 27px}h3{font-size:21px;line-height:1.4;font-weight:600;letter-spacing:-.02em;margin:35px 0 16px}h4{font-size:17px;margin:27px 0 12px}p{margin:0 0 21px;max-width:830px}p:last-child{margin-bottom:0}.chapter{padding:52px 0;border-bottom:1px solid var(--line);scroll-margin-top:90px;min-width:0}.chapter-number{display:block;font-size:10px;letter-spacing:.16em;color:var(--accent);margin:0 0 12px}.chapter h2{max-width:900px}.chapter li{max-width:820px}ul,ol{padding-left:27px;margin:0 0 24px}li{padding-left:4px;margin:8px 0}li>p{margin:9px 0}strong{font-weight:700}code{font: .79em/1.6 ui-monospace,SFMono-Regular,Menlo,monospace;background:var(--wash);border-radius:3px;padding:2px 4px;overflow-wrap:anywhere}pre{padding:20px 22px;background:#edf0eb;border-left:3px solid #b4c4bd;overflow:auto;font-size:14px;line-height:1.7;max-width:100%;margin:24px 0}pre code{padding:0;background:transparent;white-space:pre;overflow-wrap:normal;font-size:1em}table{border-collapse:collapse;width:100%;font-size:15px;line-height:1.6}th{font-size:12px;text-align:left;font-weight:600;background:var(--wash);color:var(--muted);border-bottom:1px solid #b4c4bd;vertical-align:bottom}th,td{padding:11px 13px}td{vertical-align:top;border-bottom:1px solid var(--line)}thead{display:table-header-group}.table-scroll{overflow:auto;max-width:100%;margin:25px 0 30px}.table-scroll table{min-width:600px}.table-scroll td code{white-space:normal}.callout,blockquote{margin:28px 0;padding:17px 22px;border-left:3px solid var(--accent);background:var(--wash);max-width:860px;font-size:17px;line-height:1.75}.callout p,blockquote p{margin-bottom:12px}.callout p:last-child,blockquote p:last-child{margin-bottom:0}blockquote.callout-warning{border-left-color:#a0764f}.book-footer{padding:40px 0 0;color:var(--muted);font-size:12px;line-height:1.8}.book-footer strong{font-size:21px;font-weight:500;color:var(--ink);display:block;margin-bottom:10px}.book-footer code{font-size:10px}.book-footer p{max-width:760px}.heading-anchor{font-size:.6em;text-decoration:none;opacity:0;margin-left:8px;vertical-align:middle}h2:hover .heading-anchor,h3:hover .heading-anchor,.heading-anchor:focus{opacity:.8}hr{border:0;border-top:1px solid var(--line);margin:30px 0}.math-scroll{overflow:auto;max-width:100%;margin:25px 0;padding:12px 0}math{font-size:1.08em;font-family:'STIX Two Math','Cambria Math',math}math[display=block]{min-width:max-content}.inline-math{display:inline-block;vertical-align:middle;max-width:100%;overflow-x:auto}details{margin:25px 0;border-block:1px solid var(--line);padding:0 14px}summary{font:14px/1.6 system-ui,sans-serif;cursor:pointer;padding:16px 0;color:var(--accent)}details[open]{padding-bottom:18px}img{max-width:100%;height:auto}.footnote{font-size:14px}.source-caption{font:11px/1.7 system-ui,sans-serif;color:var(--muted);border-top:1px solid var(--line);padding-top:15px;margin-top:30px;overflow-wrap:anywhere}@media(min-width:1500px){main{margin-left:calc(var(--side) + (100vw - 1500px)/4)}}@media(max-width:1060px){:root{--side:235px}.contents{padding-left:14px}.contents nav a{font-size:11px}main{padding-left:34px;padding-right:34px}.tools>span{display:none}h1{font-size:51px}}@media(max-width:760px){:root{--bar:58px}body{font-size:17px;line-height:1.8}.topbar{padding:0 17px;font-size:10px}.wordmark{font-size:10px;letter-spacing:.09em}.tools{gap:8px}.tools button{font-size:10px;padding:6px 8px}#menu-toggle{display:block}.contents{display:none;width:min(330px,92vw);box-shadow:12px 0 35px #23333122}.contents.open{display:block}.contents nav a{font-size:12px;padding:9px}main{margin-left:0;padding:96px 23px 40px}h1{font-size:42px}h2{font-size:25px}h3{font-size:20px}.chapter{padding:40px 0}.book-opening{padding-bottom:32px}table{font-size:14px}th,td{padding:10px}pre{font-size:12px;padding:16px}.callout,blockquote{font-size:16px;padding:15px 17px}.heading-anchor{opacity:.6}.book-footer{font-size:11px}.tools>a{display:none}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}@media print{@page{size:A4;margin:18mm 17mm}html{scroll-behavior:auto}body{background:#fff;color:#111;font-size:10.5pt;line-height:1.55}.topbar,.contents,.reading-progress,.skip,.heading-anchor{display:none!important}main{margin:0;padding:0;max-width:none}h1{font-size:33pt}h2{font-size:21pt}h3{font-size:14pt}h4{font-size:11pt}.book-opening{border:0}.chapter{border:0;padding:22pt 0 0;break-before:page}.chapter-number{font-size:8pt}h2,h3,h4{break-after:avoid}p,li{orphans:3;widows:3}table{font-size:8pt;line-height:1.4}th,td{padding:6pt}tr{break-inside:avoid}.table-scroll{overflow:visible}.table-scroll table{min-width:0}pre{font-size:8pt;white-space:pre-wrap;overflow-wrap:anywhere;break-inside:avoid}pre code{white-space:pre-wrap}.callout,blockquote{break-inside:avoid;font-size:10pt;padding:10pt}a{color:inherit;text-decoration:none}.book-footer{font-size:9pt}details{background:transparent}details:not([open])>*:not(summary){display:block!important}.math-scroll{overflow:visible}math{font-size:1em}.book-footer{break-before:page}}
+</style></head><body><a class="skip" href="#book">Skip to the walkthrough</a><div class="reading-progress" aria-hidden="true"><i id="progress"></i></div><header class="topbar"><a class="wordmark" href="#book">AXION / FACTORY FIELD GUIDE</a><div class="tools"><span>Written walkthrough · retained evidence</span><a href="../../presentation/stage2/start.html">Visual overview ↗</a><button type="button" id="print">Print / save PDF</button><button type="button" id="menu-toggle" aria-expanded="false" aria-controls="contents">Contents</button></div></header><aside class="contents" id="contents" aria-label="Table of contents"><p class="nav-title">THE FACTORY, STEP BY STEP</p><nav><a href="#1-what-the-competition-expects"><small>01</small><span>1. What the competition expects</span></a><a href="#2-the-actual-task-in-one-sentence"><small>02</small><span>2. The actual task in one sentence</span></a><a href="#3-what-enters-orders-and-stock"><small>03</small><span>3. What enters: orders and stock</span></a><a href="#4-follow-one-pump-through-production"><small>04</small><span>4. Follow one pump through production</span></a><a href="#5-what-each-machine-does"><small>05</small><span>5. What each machine does</span></a><a href="#6-workers-and-setups-why-an-idle-machine-may-not-start"><small>06</small><span>6. Workers and setups: why an idle machine may not start</span></a><a href="#7-tools-batches-wear-and-finite-space"><small>07</small><span>7. Tools, batches, wear and finite space</span></a><a href="#8-agvs-the-single-lane-and-why-transport-creates-queues"><small>08</small><span>8. AGVs, the single lane, and why transport creates queues</span></a><a href="#9-charge-a-and-charge-b-robot-charging-bays"><small>09</small><span>9. CHARGE A and CHARGE B: robot charging bays</span></a><a href="#10-grid-solar-and-the-stationary-battery"><small>10</small><span>10. Grid, solar and the stationary battery</span></a><a href="#11-quality-stock-loss-and-disruptions"><small>11</small><span>11. Quality, stock loss and disruptions</span></a><a href="#12-what-counts-as-a-good-solution"><small>12</small><span>12. What counts as a good solution</span></a><a href="#13-how-the-current-factory-controller-makes-decisions"><small>13</small><span>13. How the current factory controller makes decisions</span></a><a href="#14-the-separate-planning-cell-what-it-keeps-and-removes"><small>14</small><span>14. The separate planning cell: what it keeps and removes</span></a><a href="#15-encoding-the-short-answer-about-domain-wall"><small>15</small><span>15. Encoding: the short answer about domain wall</span></a><a href="#16-one-hot-a-worked-start-assignment-example"><small>16</small><span>16. One-hot: a worked start-assignment example</span></a><a href="#17-what-domain-wall-would-mean-and-why-the-name-does-not-fit-our-current-model"><small>17</small><span>17. What domain wall would mean, and why the name does not fit our current model</span></a><a href="#18-local-selectors-and-capacity-slack"><small>18</small><span>18. Local selectors and capacity slack</span></a><a href="#19-how-thousands-of-planning-bits-became-a-21-qubit-circuit"><small>19</small><span>19. How thousands of planning bits became a 21-qubit circuit</span></a><a href="#20-what-the-results-currently-justify"><small>20</small><span>20. What the results currently justify</span></a><a href="#21-map-labels-and-symbols-quick-reference"><small>21</small><span>21. Map labels and symbols: quick reference</span></a><a href="#22-source-map-and-reading-order"><small>22</small><span>22. Source map and reading order</span></a></nav><div class="nav-footer"><a href="../learning-methods/index.html">General scheduling & quantum course ↗</a><a href="../STAGE2_PROBLEM_WALKTHROUGH.md">Canonical Markdown source ↗</a><p>Same source, readable document.<br>No solver, experiment or training is run.</p></div></aside><main id="book"><header class="book-opening"><p class="kicker">AXION / STAGE2 PROBLEM WALKTHROUGH</p><h1 id="our-stage-2-factory-the-problem-every-system-and-the-encoding">Our Stage 2 factory: the problem, every system, and the encoding</h1>
+<p>This is a written explanation of the project as it exists on 17 October 2026. Read it in order: first the factory, then the mathematical representation. Optimization remains paused. Nothing in this document launches a solver.</p>
+<p>The main model is a synthetic pump factory that we designed. Its numerical assumptions are ours, not an industrial dataset supplied by the organizers. The official Stage 1 inputs are separate. The newer simplified planning cells are also separate from the full factory; chapter 14 explains the boundary.</p>
+</header><section class="chapter" aria-labelledby="1-what-the-competition-expects"><span class="chapter-number">SECTION 01</span><h2 id="1-what-the-competition-expects">1. What the competition expects<a class="heading-anchor" href="#1-what-the-competition-expects" aria-label="Link to this section">#</a></h2>
+<p>Yes: Stage 2 is strongly focused on quantum/QUBO optimization of an extended scheduling problem. Section 5 asks teams to make the factory realistic while making the quantum solution compact, accurate and understood. It asks for reduction, algorithm comparisons and scaling on the extended model, a classical reference on the same model, and disclosure of any loss of optimum. Decomposition and partitioning are explicitly listed as legitimate directions.</p>
+<p>It does not require a demonstrated quantum advantage or one quantum circuit containing every factory mechanism. A hybrid is legitimate. But a complex factory animation plus an unrelated quantum example is a weak response to the integrated-result requirement. The gap between our rich physical factory and the narrower problems our quantum circuits optimize is a real weakness. My earlier explanation understated this emphasis.</p>
+<p>The current defensible claim is: an implemented factory with classical/hybrid dispatch, genuine local quantum experiments, and a separate extended planning formulation with reference checks. We cannot claim that quantum optimization currently produces our strongest factory outcomes.</p>
+<p>Source: <a href="../../Quantum_Hackathon_2026_ERP_Challenge.pdf#page=2">challenge §5 and §11</a>. These are competition requirements; the manufacturing numbers below are our chosen model parameters.</p>
+</section><section class="chapter" aria-labelledby="2-the-actual-task-in-one-sentence"><span class="chapter-number">SECTION 02</span><h2 id="2-the-actual-task-in-one-sentence">2. The actual task in one sentence<a class="heading-anchor" href="#2-the-actual-task-in-one-sentence" aria-label="Link to this section">#</a></h2>
+<p>Given customer orders, raw materials, machines, workers, tools, transport robots and an electricity system, choose legal production actions over time so that as many complete pumps as possible are shipped, with as little lateness and cost as possible, while reacting to disruptions as they become known.</p>
+<p>The main pressure benchmark starts at minute zero with <strong>24 known pump orders</strong> and runs for <strong>96 simulated hours</strong>, or <strong>5,760 one-minute steps</strong>. It does not begin from an independently generated factory-in-progress snapshot. The 12-, 16- and 32-order experiments change the initial workload; some also change the horizon. The 32-order successful stretch examples use 240 hours.</p>
+<p>Stage 1 instead gives two tiny fixed flow shops and asks only for makespan. There are no transport robots, workforce calendars, matched assembly, stock failures or electricity system in those official inputs.</p>
+<h3 id="input-decision-and-outcome-are-different-things">Input, decision and outcome are different things<a class="heading-anchor" href="#input-decision-and-outcome-are-different-things" aria-label="Link to this section">#</a></h3>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Kind</th>
+<th>Examples</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Fixed input parameter</td>
+<td>15 machines; milling takes 90 min; grid cap 90 kW</td>
+<td>The controller must work with this number; it does not choose it during the run</td>
+</tr>
+<tr>
+<td>Decision</td>
+<td>Which ready part to prioritize; which mill to use; when to start</td>
+<td>A choice the control system can influence</td>
+</tr>
+<tr>
+<td>Random future event</td>
+<td>Whether F2 fails; whether an inspection fails</td>
+<td>An outcome the controller cannot choose or secretly read in advance</td>
+</tr>
+<tr>
+<td>Changing state</td>
+<td>Machine busy until minute 420; robot battery 70%; two blanks left</td>
+<td>The information that changes after decisions and events</td>
+</tr>
+<tr>
+<td>Measured result</td>
+<td>23 pumps shipped; deadline debt; electricity bill</td>
+<td>What we calculate from the resulting execution</td>
+</tr>
+</tbody></table></div>
+<p>Not every possible decision is globally optimized. Many are made by deterministic rules inside our current controller.</p>
+</section><section class="chapter" aria-labelledby="3-what-enters-orders-and-stock"><span class="chapter-number">SECTION 03</span><h2 id="3-what-enters-orders-and-stock">3. What enters: orders and stock<a class="heading-anchor" href="#3-what-enters-orders-and-stock" aria-label="Link to this section">#</a></h2>
+<p>An <strong>order</strong> is a customer request for one finished pump. An order is not a machine operation. Each order has an identity, release time, due time, material family and precision requirement.</p>
+<p>Initial order release times cycle through <strong>0, 2, 4 and 6 hours</strong>. Due times cycle through <strong>40, 46, 52, 58, 64 and 70 hours</strong>. Families cycle through alloy A, B and C. Every fourth initial order requires precision manufacturing/inspection. These cycles repeat as order count increases.</p>
+<p>For example, the first order P01 is released at hour 0 and due at hour 40. P02 is released at hour 2 and due at hour 46. These dates are fixed inputs, not answers found by the optimizer. Due means the desired shipment time; the 96-hour horizon is when evaluation stops.</p>
+<p>The <strong>STOCK</strong> area on the drawing is the raw-material store in Hall A, called <code>RAW_A</code> in the code. It initially contains:</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Raw material</th>
+<th align="right">Initial quantity</th>
+<th align="right">Normal later delivery</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Housing blanks</td>
+<td align="right">30</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>Rotor blanks</td>
+<td align="right">30</td>
+<td align="right">4</td>
+</tr>
+<tr>
+<td>Flange blanks</td>
+<td align="right">30</td>
+<td align="right">4</td>
+</tr>
+</tbody></table></div>
+<p>A blank is an unfinished piece of material. Ninety blanks are not ninety pumps: one pump needs one of each type. When an eligible component is released into production, it consumes one corresponding blank. Replacement components need additional blanks.</p>
+<p>At 24 orders, nominal production uses 24 of each type, leaving six of each before urgent orders or replacements. At 32 orders, the initial 30 cannot cover all demand even without defects. The delivery supplies four of each at hour 30, or hour 39 under supply stress. There is no unlimited emergency material purchase.</p>
+</section><section class="chapter" aria-labelledby="4-follow-one-pump-through-production"><span class="chapter-number">SECTION 04</span><h2 id="4-follow-one-pump-through-production">4. Follow one pump through production<a class="heading-anchor" href="#4-follow-one-pump-through-production" aria-label="Link to this section">#</a></h2>
+<p>Each pump needs <strong>its own housing, rotor and flange</strong>. Their identities matter: P01&#39;s assembly cannot simply consume P02&#39;s rotor. The three component chains can progress in parallel, but operations within each chain must occur in order.</p>
+<p>The following times are standard processing on normal-speed machines, before setup, transport, queueing, breaks or rework:</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Component or stage</th>
+<th>Required operation sequence</th>
+<th>Standard processing minutes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Housing</td>
+<td>Turn → mill → wash → heat → inspect</td>
+<td>60 + 90 + 30 + 120 + 45 = 345</td>
+</tr>
+<tr>
+<td>Rotor</td>
+<td>Turn → heat → mill → wash → inspect</td>
+<td>60 + 120 + 75 + 30 + 45 = 330</td>
+</tr>
+<tr>
+<td>Flange</td>
+<td>Mill → weld → wash → inspect</td>
+<td>60 + 60 + 30 + 45 = 195</td>
+</tr>
+<tr>
+<td>Finished pump</td>
+<td>Assemble matching components → inspect</td>
+<td>60 + 45 = 105</td>
+</tr>
+</tbody></table></div>
+<p>There are <strong>16 nominal operations per pump</strong>: five housing, five rotor, four flange, assembly and final inspection. For 24 orders that is 384 nominal operations. Extra setups, trips, maintenance, repairs and replacement recipes add activity beyond those 384.</p>
+<p>The sum above is 975 processing minutes per ordinary pump. That is not its elapsed completion time: component chains can overlap, while shared resources and waiting can delay them. Even the idealized longest recipe chain, 345 + 105 = 450 min, ignores substantial constraints and is not a checked feasible schedule.</p>
+<p>All three components must pass their component inspections and physically arrive at the selected assembly station. Assembly consumes them and creates the assembled pump. The pump then needs final QA and an AGV trip to <code>SHIP_B</code>, the shipping area in Hall B. Only the recorded shipment fulfills the order. Assembly completion and final inspection completion are earlier milestones.</p>
+</section><section class="chapter" aria-labelledby="5-what-each-machine-does"><span class="chapter-number">SECTION 05</span><h2 id="5-what-each-machine-does">5. What each machine does<a class="heading-anchor" href="#5-what-each-machine-does" aria-label="Link to this section">#</a></h2>
+<p>The letters on the map name processes. The number distinguishes parallel machines of the same type.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Labels</th>
+<th>Plain meaning</th>
+<th>Hall</th>
+<th align="right">Ordinary process power</th>
+<th>Useful detail</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>T1, T2</td>
+<td>Lathes: turn a rotating blank into shape</td>
+<td>A</td>
+<td align="right">9 kW</td>
+<td>Housing/rotor turning normally takes 60 min</td>
+</tr>
+<tr>
+<td>F1, F2</td>
+<td>Mills: remove material to create shapes/features</td>
+<td>A</td>
+<td align="right">12 kW</td>
+<td>Housing 90 min, rotor 75, flange 60</td>
+</tr>
+<tr>
+<td>F3</td>
+<td>An alternative milling machine</td>
+<td>B</td>
+<td align="right">12 kW</td>
+<td>Takes 1.25 times the normal milling duration, rounded up</td>
+</tr>
+<tr>
+<td>S1, S2</td>
+<td>Welding stations</td>
+<td>B</td>
+<td align="right">10 kW</td>
+<td>Flange welding normally takes 60 min</td>
+</tr>
+<tr>
+<td>WASH1, WASH2</td>
+<td>Clean parts</td>
+<td>A / B</td>
+<td align="right">4 kW</td>
+<td>30 min</td>
+</tr>
+<tr>
+<td>H1, H2</td>
+<td>Heat-treatment furnaces</td>
+<td>A / B</td>
+<td align="right">16 kW</td>
+<td>120 min; compatible same-family batches up to four</td>
+</tr>
+<tr>
+<td>QA1, QA2</td>
+<td>Quality inspection stations</td>
+<td>A / B</td>
+<td align="right">3 kW</td>
+<td>45 min normally; precision takes 68 min and 3.6 kW</td>
+</tr>
+<tr>
+<td>A1, A2</td>
+<td>Assembly stations</td>
+<td>B</td>
+<td align="right">4 kW</td>
+<td>Join the matched housing, rotor and flange in 60 min</td>
+</tr>
+</tbody></table></div>
+<p>There are 15 machines in total. A process cannot be moved to an arbitrary machine: a lathe does not become a welder. Alternative milling, washing, heat and inspection stations create routing choices. F3 is slower but may save cross-hall travel or avoid a queue.</p>
+<p>Apart from declared heat batches, a machine runs one operation at a time. A finished part left at its output can keep the machine blocked even after processing ends.</p>
+<h3 id="modes-change-the-tradeoff">Modes change the tradeoff<a class="heading-anchor" href="#modes-change-the-tradeoff" aria-label="Link to this section">#</a></h3>
+<p>Turning and milling offer standard, eco and turbo modes. Eco takes 1.5 times as long and uses 65% of standard power. Turbo takes 75% of the time, uses 150% of the power, increases wear and has greater manufacturing defect risk. Integer durations round up. Welding/assembly have a careful mode that takes 1.5 times as long and uses 80% of ordinary power. QA has standard or precision modes; precision takes 1.5 times the standard duration.</p>
+<p>For a normal lathe operation, standard is 60 min at 9 kW; eco is 90 min at 5.85 kW; turbo is 45 min at 13.5 kW. Slower eco processing does not imply a proportionally smaller energy bill because it runs longer. Precision orders disallow turbo turning/milling and require precision QA.</p>
+</section><section class="chapter" aria-labelledby="6-workers-and-setups-why-an-idle-machine-may-not-start"><span class="chapter-number">SECTION 06</span><h2 id="6-workers-and-setups-why-an-idle-machine-may-not-start">6. Workers and setups: why an idle machine may not start<a class="heading-anchor" href="#6-workers-and-setups-why-an-idle-machine-may-not-start" aria-label="Link to this section">#</a></h2>
+<p>There are ten workers, each with specified skills. W01–W04 work 00:00–08:00, W05–W07 work 08:00–16:00, and W08–W10 work 16:00–24:00. These calendars repeat daily. Each shift includes two 30-minute breaks, starting 3 h 30 min and 6 h 30 min after shift start. Thus ten workers do not mean ten available people at every moment.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Worker</th>
+<th>Skills</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>W01, W05, W08</td>
+<td>Setup, machining, maintenance</td>
+</tr>
+<tr>
+<td>W02</td>
+<td>Welding, setup</td>
+</tr>
+<tr>
+<td>W03</td>
+<td>QA, assembly</td>
+</tr>
+<tr>
+<td>W04</td>
+<td>Machining, assembly, QA</td>
+</tr>
+<tr>
+<td>W06, W09</td>
+<td>Welding, assembly</td>
+</tr>
+<tr>
+<td>W07, W10</td>
+<td>QA, assembly, setup</td>
+</tr>
+</tbody></table></div>
+<p>Turning, milling, washing and heat treatment require <strong>five minutes of start attendance</strong>. After that the worker can leave while the machine continues. Welding, QA and assembly require <strong>full processing attendance</strong>. The required attendance must fit the worker&#39;s shift and avoid breaks. Automatic machining may continue across a break once legal tending ends. Workers take two minutes to change halls; worker walking is modeled separately from AGV lane reservations.</p>
+<p>The machine also remembers the last material family. Same-family work needs zero changeover; A↔B costs 30 min; switching to or from C costs 45 min. The machine is unavailable during this setup. Qualified setup attendance is required in the full factory, sometimes from the same worker and sometimes a second person. An unused machine, free material and a machining worker still may be insufficient if no setup-qualified person is available.</p>
+</section><section class="chapter" aria-labelledby="7-tools-batches-wear-and-finite-space"><span class="chapter-number">SECTION 07</span><h2 id="7-tools-batches-wear-and-finite-space">7. Tools, batches, wear and finite space<a class="heading-anchor" href="#7-tools-batches-wear-and-finite-space" aria-label="Link to this section">#</a></h2>
+<p>Milling requires a portable milling kit; welding requires a welding fixture; inspection requires a calibration kit. We have <strong>two milling kits, two welding fixtures and one calibration kit</strong> initially. Their physical locations matter. AGVs move them, competing with part deliveries. Two QA machines do not initially give two simultaneous equipped inspections when the one calibration kit is the limiting resource.</p>
+<p>Tools have 600 processing minutes of life and take 60 min to service, with appropriate worker attendance. Machines have a separate wear limit of 1,050 standard wear units and 75-minute maintenance. Eco/turbo modes change wear accumulation. Tool servicing and machine maintenance are different activities.</p>
+<p>Heat treatment can combine up to four compatible same-family parts. A batch is one shared furnace occupation, rather than four separate 120-minute furnace runs. Waiting to fill a batch can save capacity but delay an urgent component.</p>
+<p>Input buffers hold two parts at ordinary machining/welding/washing stations, four at heat/QA stations, and six at assembly. A destination slot is reserved before a part trip begins. Completed outputs can block machines until AGV collection. We therefore cannot plan unlimited future deliveries into a station that has nowhere to put them.</p>
+<p>One extra calibration kit may be rented for 150 model-currency units, arriving eight hours after the request, under a 250-unit investment budget. This is a tool rental, not an additional machine.</p>
+</section><section class="chapter" aria-labelledby="8-agvs-the-single-lane-and-why-transport-creates-queues"><span class="chapter-number">SECTION 08</span><h2 id="8-agvs-the-single-lane-and-why-transport-creates-queues">8. AGVs, the single lane, and why transport creates queues<a class="heading-anchor" href="#8-agvs-the-single-lane-and-why-transport-creates-queues" aria-label="Link to this section">#</a></h2>
+<p>An <strong>AGV</strong> is an automated guided vehicle: a small transport robot. Four robots share the factory. Each carries one part or one portable tool at a time. A robot first travels empty to the pickup, loads the item, travels with it and unloads it. Those steps consume time; its battery also limits which trips it can accept.</p>
+<p>The transport graph has one-minute station-to-hub edges and a four-minute edge connecting Hall A&#39;s hub to Hall B&#39;s hub. Loading and unloading each add one minute. An otherwise clear loaded station-to-station trip within a hall takes four minutes; one across halls takes eight. Empty repositioning, traffic and charger waits add time. The drawing is schematic: pixel distance does not determine travel duration.</p>
+<p><strong>SINGLE LANE</strong> means the bridge admits one robot at a time, in either direction. For example, a crossing from minute 100 to 104 prevents a conflicting crossing before minute 104. A robot returning empty occupies it too. Tool deliveries also use it. Four robots therefore cannot provide four simultaneous cross-hall trips. Every modeled road edge has capacity one; the bridge is especially important because all cross-hall trips share it.</p>
+<p>At most 15 four-minute bridge crossings fit in an hour even before other constraints. That is a crossing bound, not 15 finished pumps per hour: a pump can require several component/tool crossings, plus empty repositioning. The actual impact depends on chosen routes and which resources are on each side.</p>
+<p>This creates the tradeoff behind F3: milling in B takes longer, but may avoid a bridge trip or a congested A-side queue. Conversely, moving a part to a nominally free machine may be worse once travel and tooling are counted.</p>
+</section><section class="chapter" aria-labelledby="9-charge-a-and-charge-b-robot-charging-bays"><span class="chapter-number">SECTION 09</span><h2 id="9-charge-a-and-charge-b-robot-charging-bays">9. CHARGE A and CHARGE B: robot charging bays<a class="heading-anchor" href="#9-charge-a-and-charge-b-robot-charging-bays" aria-label="Link to this section">#</a></h2>
+<p>These labels mean <strong>a robot charger in Hall A and a robot charger in Hall B</strong>. They do not mean two electrical grids, two production processes or two factory storage batteries. Each bay accommodates one charging robot at a time. A charging robot cannot simultaneously carry a part.</p>
+<p>In the numerical model a robot&#39;s battery has 160 charge units, equivalent to 0.8 kWh; it starts with 120 units, or 75%. Empty travel consumes one unit per minute of movement; loaded travel consumes two. The controller preserves enough charge to reach a charger after a delivery.</p>
+<p>The current charging rule considers idle robots below 90 units, sends them to a suitable available bay and charges to full at 12 units per minute, rounding duration up. Each charging robot draws 4 kW from the factory electrical system. The stored-energy rate is approximately 3.6 kW before saturation/rounding; charging is not free energy. The internal units are synthetic model choices, not measured vehicle specifications.</p>
+<p>If both charging bays are occupied, another low-battery robot may wait. If two robots charge together they add 8 kW to factory demand. Under grid stress, this competes with starting production equipment.</p>
+</section><section class="chapter" aria-labelledby="10-grid-solar-and-the-stationary-battery"><span class="chapter-number">SECTION 10</span><h2 id="10-grid-solar-and-the-stationary-battery">10. Grid, solar and the stationary battery<a class="heading-anchor" href="#10-grid-solar-and-the-stationary-battery" aria-label="Link to this section">#</a></h2>
+<p>The factory&#39;s electricity system is separate from the robots&#39; individual batteries. It supplies the machines, building load and robot chargers.</p>
+<p><strong>kW is power:</strong> the rate of using electricity at a moment. <strong>kWh is energy:</strong> power accumulated over time. A 12 kW mill running for one hour uses 12 kWh. Its 90-minute housing operation uses 18 kWh in standard mode, before setup and other loads.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Electrical quantity</th>
+<th align="right">Our model&#39;s value</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Building base load</td>
+<td align="right">12 kW</td>
+<td>Consumption even when production is idle</td>
+</tr>
+<tr>
+<td>Normal grid limit</td>
+<td align="right">90 kW</td>
+<td>Maximum permitted external power import at a time</td>
+</tr>
+<tr>
+<td>Stressed grid limit</td>
+<td align="right">45 kW</td>
+<td>Reduced limit during the supply-stress event</td>
+</tr>
+<tr>
+<td>Solar maximum</td>
+<td align="right">16 kW</td>
+<td>Local generation, varying with time of day</td>
+</tr>
+<tr>
+<td>Stationary battery capacity</td>
+<td align="right">40 kWh</td>
+<td>Energy storage for the factory</td>
+</tr>
+<tr>
+<td>Initial stored energy</td>
+<td align="right">10 kWh</td>
+<td>Battery charge at the beginning</td>
+</tr>
+<tr>
+<td>Minimum stored energy</td>
+<td align="right">2 kWh</td>
+<td>Lower operating limit</td>
+</tr>
+<tr>
+<td>Required ending energy</td>
+<td align="right">At least 10 kWh</td>
+<td>Cannot improve results by leaving a depleted battery</td>
+</tr>
+<tr>
+<td>Battery charge action</td>
+<td align="right">10 kW draw</td>
+<td>Stores energy at an effective 9 kW rate</td>
+</tr>
+<tr>
+<td>Battery discharge action</td>
+<td align="right">9 kW output</td>
+<td>Consumes stored energy at an effective 10 kW rate</td>
+</tr>
+</tbody></table></div>
+<h3 id="what-solar-does">What solar does<a class="heading-anchor" href="#what-solar-does" aria-label="Link to this section">#</a></h3>
+<p>Solar is an assumed local photovoltaic supply. It follows a deterministic daily curve: zero overnight, positive from 06:00 to 18:00, peaking at 16 kW at noon. There are no random cloud forecasts in this version. Solar reduces the electricity the factory needs to import. Surplus that cannot be used or stored is curtailed; it is not sold for revenue.</p>
+<h3 id="what-the-grid-limit-does">What the grid limit does<a class="heading-anchor" href="#what-the-grid-limit-does" aria-label="Link to this section">#</a></h3>
+<p>The limit is on instantaneous imported power, not total energy over the entire run. A 90 kW cap is not a stock of 90 kWh that gets used up. Once one machine finishes, the freed power can support another start.</p>
+<p>At each minute the electrical balance is:</p>
+<pre tabindex="0" aria-label="Code or formula block"><code class="language-text">load = building base load + active operation loads + robot charging loads
+grid import = max(0, load - solar + stationary charging - stationary discharge)
+grid import must not exceed the current grid cap
+</code></pre>
+<p>Illustrative arithmetic: if total load is 60 kW and solar is producing 10 kW, we need 50 kW from elsewhere. That is within a 90 kW grid limit. Under a 45 kW limit, 9 kW of battery output would reduce import to 41 kW, if stored energy and all other rules permit. The battery cannot rescue an arbitrarily large overload: its discharge power is bounded as well as its stored energy.</p>
+<h3 id="what-the-battery-does-in-our-actual-controller">What the battery does in our actual controller<a class="heading-anchor" href="#what-the-battery-does-in-our-actual-controller" aria-label="Link to this section">#</a></h3>
+<p>It can move some energy between times, absorb charging losses and cover limited peaks. The current implementation applies a simple automatic rule: discharge for an excess over the grid cap if charge permits; otherwise charge when headroom permits and it is before 06:00 or below the ending-charge target. It is <strong>not</strong> a globally optimized battery-arbitrage schedule.</p>
+<p>Machine-start guards are conservative: they generally leave an 8 kW reserve for robot charging and do not fully exploit forecast solar/battery flexibility. Thus an electrically possible action under the balance equation may still be rejected by our controller. This is a distinction between physical feasibility and the policy&#39;s decisions.</p>
+<h3 id="what-tariffs-and-carbon-do">What tariffs and carbon do<a class="heading-anchor" href="#what-tariffs-and-carbon-do" aria-label="Link to this section">#</a></h3>
+<p>Grid electricity costs 0.34 model-currency units/kWh from 08:00 to 18:00 and 0.12 otherwise. Reported grid carbon intensity is 0.65 kg/kWh during those peak hours and 0.25 otherwise. The electricity bill sums imported energy times its tariff. Carbon sums imported energy times its carbon intensity.</p>
+<p>These are synthetic assumptions. Electricity/rental cost enters our performance comparison; carbon is also reported. We did not implement a hard total electricity-bill or carbon budget. The hard energy constraints are power balance/capacity and the stationary battery&#39;s limits, including its ending charge.</p>
+</section><section class="chapter" aria-labelledby="11-quality-stock-loss-and-disruptions"><span class="chapter-number">SECTION 11</span><h2 id="11-quality-stock-loss-and-disruptions">11. Quality, stock loss and disruptions<a class="heading-anchor" href="#11-quality-stock-loss-and-disruptions" aria-label="Link to this section">#</a></h2>
+<p>Manufacturing accumulates defect risk depending on process, mode and wear. QA reveals whether a component passes. The controller cannot inspect its future quality draw before inspection. For example, the base turning risk contribution is 1% in eco, 2.5% in standard and 8% in turbo, with a wear contribution; several process risks combine across the route. These are not three fixed final-pump failure probabilities.</p>
+<p>A failed inspection can cause one 45-minute repair followed by reinspection. Repair retains residual risk. A component that fails again is scrapped; an original component can trigger at most one replacement, released after a 180-minute lead time and needing a fresh blank and recipe. Replacements can also fail. A lost flange can therefore leave an otherwise completed housing and rotor unable to form a pump.</p>
+<p>The hidden random outcomes use stable unit/attempt identities. Renaming a part does not legitimately obtain another draw. Uncertainty is part of the problem, not an optimization variable we can set to a favorable outcome.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Reveal time</th>
+<th>Event</th>
+<th align="right">Probability</th>
+<th>Consequence</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Hour 12</td>
+<td>F2 outage</td>
+<td align="right">35%</td>
+<td>F2 unavailable from hour 12 to 18</td>
+</tr>
+<tr>
+<td>Hour 24</td>
+<td>Supply/grid stress</td>
+<td align="right">40%</td>
+<td>Grid cap 45 kW until hour 36; material delivery delayed from hour 30 to 39</td>
+</tr>
+<tr>
+<td>Hour 40</td>
+<td>Urgent demand</td>
+<td align="right">50%</td>
+<td>Two additional precision alloy-C pump orders, due at hour 72</td>
+</tr>
+</tbody></table></div>
+<p>The three binary branches create eight exogenous scenarios, with further randomness from inspection. The controller can react once an event is revealed. It may simulate possible futures but must not use the actual hidden future as if known.</p>
+</section><section class="chapter" aria-labelledby="12-what-counts-as-a-good-solution"><span class="chapter-number">SECTION 12</span><h2 id="12-what-counts-as-a-good-solution">12. What counts as a good solution<a class="heading-anchor" href="#12-what-counts-as-a-good-solution" aria-label="Link to this section">#</a></h2>
+<p>First a run must satisfy the implemented physical and terminal constraints: no illegal overlaps or resource use, legitimate material identities, legal transport, and the battery&#39;s required ending state. A run can satisfy these rules and still ship few pumps.</p>
+<p>Among valid executions, we compare the following in priority order:</p>
+<ol>
+<li>Number of final orders not physically shipped by the horizon.</li>
+<li>Total deadline debt: for shipped orders, time after due date; for unfinished orders, debt measured through the horizon.</li>
+<li>Electricity-tariff plus rental cost. Carbon is reported alongside these.</li>
+</ol>
+<p>This is lexicographic: fewer missing orders is prioritized over the secondary scores. It is not one unconstrained weighted energy-saving objective. The horizon does not replace due dates: all pumps shipped in 96 hours can still mean many late deliveries.</p>
+<p>The solution is a sequence of actions and the resulting execution trace: operation starts/ends, workers, tool use, movements, quality events, electrical measurements and shipments. An independent checker reconstructs rule compliance; that is different from proving the policy globally optimal.</p>
+</section><section class="chapter" aria-labelledby="13-how-the-current-factory-controller-makes-decisions"><span class="chapter-number">SECTION 13</span><h2 id="13-how-the-current-factory-controller-makes-decisions">13. How the current factory controller makes decisions<a class="heading-anchor" href="#13-how-the-current-factory-controller-makes-decisions" aria-label="Link to this section">#</a></h2>
+<p>At each simulated minute it processes completions and newly revealed events, releases eligible work with available stock, prioritizes parts, chooses routes, arranges tools and workers, assembles legal start offers, starts a compatible set, and updates transport, service and energy activity.</p>
+<p>There is a hierarchy rather than one enormous quantum call. Macro settings influence admission, urgency and scarce-resource protection. CEM searches settings/time segments; PPO attempts to choose them from observed state; MPC simulates possible continuations. The underlying dispatcher still reacts to actual resource availability.</p>
+<p>The best full-factory results are classical. Optional QUBO selectors replace a small start-selection step; they do not choose every route, battery action, tool trip and future event jointly.</p>
+</section><section class="chapter" aria-labelledby="14-the-separate-planning-cell-what-it-keeps-and-removes"><span class="chapter-number">SECTION 14</span><h2 id="14-the-separate-planning-cell-what-it-keeps-and-removes">14. The separate planning cell: what it keeps and removes<a class="heading-anchor" href="#14-the-separate-planning-cell-what-it-keeps-and-removes" aria-label="Link to this section">#</a></h2>
+<p>The newer deterministic cells schedule all 16 operations of each selected pump onto machines, workers and a discrete start grid. Their standard origin is factory hour 36, with the selected components treated as a hypothetical raw backlog. This is not a measured full-factory snapshot at hour 36.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Condition</th>
+<th>Full physical factory</th>
+<th>Deterministic planning cell</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Complete recipes and matching assembly</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Machine choices, worker skills, shifts, breaks and attendance</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Worker hall walking</td>
+<td>Yes</td>
+<td>Yes</td>
+</tr>
+<tr>
+<td>Family setups</td>
+<td>Machine and setup crew</td>
+<td>Optional machine-only metric setup gaps</td>
+</tr>
+<tr>
+<td>Transfer time</td>
+<td>Actual scheduled AGV trips</td>
+<td>Only machine-dependent minimum lag</td>
+</tr>
+<tr>
+<td>AGV capacity, chargers, lanes and bridge queues</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Buffers, output blocking and portable tools</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Wear, maintenance, heat batching</td>
+<td>Yes</td>
+<td>No; heat operations individually scheduled</td>
+</tr>
+<tr>
+<td>Manufacturing modes</td>
+<td>Several choices</td>
+<td>Fixed prescribed modes, required precision retained</td>
+</tr>
+<tr>
+<td>Energy, materials and investment</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Failures, repairs, urgent demand and disruptions</td>
+<td>Yes</td>
+<td>No</td>
+</tr>
+<tr>
+<td>Completion event</td>
+<td>Physical shipment</td>
+<td>Final pump QA</td>
+</tr>
+</tbody></table></div>
+<p>All mandatory cell operations must finish within its own horizon. For its standard pump DAG the score is:</p>
+<pre tabindex="0" aria-label="Code or formula block"><code class="language-text">T = sum over pumps of weight * max(0, final-QA completion - due time)
+score = (H + 1) * T + makespan
+</code></pre>
+<p>H and makespan are minutes. The multiplication ensures tardiness has priority over makespan, since makespan cannot exceed H. The combined score is not a number of minutes. Neither its optimum nor its lower bound automatically applies to the richer physical factory.</p>
+</section><section class="chapter" aria-labelledby="15-encoding-the-short-answer-about-domain-wall"><span class="chapter-number">SECTION 15</span><h2 id="15-encoding-the-short-answer-about-domain-wall">15. Encoding: the short answer about domain wall<a class="heading-anchor" href="#15-encoding-the-short-answer-about-domain-wall" aria-label="Link to this section">#</a></h2>
+<p><strong>The current Stage 2 planning models are not domain-wall encoded.</strong> They primarily use one-hot assignment or column choices. The conditional quantum experiments combine binary choices with a one-hot makespan register. Full-factory local QUBOs use action-selection bits and, when necessary, bounded-binary capacity slack.</p>
+<p>Domain-wall code does exist in the project: it belongs to an earlier Stage 1 start-time formulation. The selected final Stage 1 formulation instead uses pairwise job-order bits.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Project layer</th>
+<th>What a bit means</th>
+<th>Encoding actually used</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Earlier Stage 1 time-indexed model</td>
+<td>Start-time indicator or threshold</td>
+<td>One-hot and domain-wall variants; earlier A used four domain-wall qubits</td>
+</tr>
+<tr>
+<td>Selected Stage 1 compact model</td>
+<td>Job A precedes job B</td>
+<td>Pairwise order; one bit for A, three for B</td>
+</tr>
+<tr>
+<td>Full-factory local selector</td>
+<td>Start this offered operation/crew assignment now</td>
+<td>Independent action bits; conflicts and bounded-binary slack where needed</td>
+</tr>
+<tr>
+<td>Complete planning-cell QUBO</td>
+<td>This operation uses this machine/worker/start</td>
+<td>One-hot group per operation, plus one-hot makespan</td>
+</tr>
+<tr>
+<td>Restricted component/operation pool</td>
+<td>Choose this supplied candidate assignment or trajectory</td>
+<td>One-hot candidate groups, plus one-hot makespan</td>
+</tr>
+<tr>
+<td>Two-choice conditional quantum block</td>
+<td>Choose option 0 or option 1</td>
+<td>One binary bit per two-choice group, plus one-hot makespan</td>
+</tr>
+</tbody></table></div>
+<p>QUBO is the quadratic objective form. One-hot, domain wall and pairwise order are ways of representing decisions inside that form. QAOA is a solver using a quantum circuit. These are different concepts, not interchangeable names.</p>
+</section><section class="chapter" aria-labelledby="16-one-hot-a-worked-start-assignment-example"><span class="chapter-number">SECTION 16</span><h2 id="16-one-hot-a-worked-start-assignment-example">16. One-hot: a worked start-assignment example<a class="heading-anchor" href="#16-one-hot-a-worked-start-assignment-example" aria-label="Link to this section">#</a></h2>
+<p>Suppose one housing-milling operation has three supplied candidate assignments. This is an illustrative group, not a recorded feasible schedule:</p>
+<pre tabindex="0" aria-label="Code or formula block"><code class="language-text">x1 = 1: choose F1, worker W01, start minute 120
+x2 = 1: choose F2, worker W01, start minute 120
+x3 = 1: choose F3, worker W05, start minute 600
+</code></pre>
+<p>Exactly one is required. The bit strings 100, 010 and 001 choose the three options. 000 omits the operation; 110 schedules it twice. A penalty enforces the choice:</p>
+<pre tabindex="0" aria-label="Code or formula block"><code class="language-text">P * (x1 + x2 + x3 - 1)^2
+= P * (1 - x1 - x2 - x3 + 2*x1*x2 + 2*x1*x3 + 2*x2*x3)
+</code></pre>
+<p>The equality uses x*x=x for binary x. Every term is constant, linear or quadratic, so it is a QUBO. Legal choices cost zero penalty; omission or duplicate choices cost at least P.</p>
+<p>Other operations have their own candidate groups. If a selected assignment x conflicts with assignment y because they overlap on F1, use the same worker concurrently, violate a predecessor/transfer lag or leave insufficient setup time, a term <code>P*x*y</code> penalizes choosing both. Individual impossible options, such as an unqualified worker or illegal attendance interval, are removed before construction.</p>
+<p>There is also a one-hot makespan group. A bit says that the completion bound is a particular candidate time. Pair penalties forbid choosing a bound earlier than any selected operation ends. The objective rewards smaller legal bounds and smaller terminal tardiness. A penalty larger than a certified upper bound on feasible objective cost makes every global ground state legal and optimal for the declared feasible cell. A heuristic sample need not be a ground state, so decoding/checking is still required.</p>
+</section><section class="chapter" aria-labelledby="17-what-domain-wall-would-mean-and-why-the-name-does-not-fit-our-current-model"><span class="chapter-number">SECTION 17</span><h2 id="17-what-domain-wall-would-mean-and-why-the-name-does-not-fit-our-current-model">17. What domain wall would mean, and why the name does not fit our current model<a class="heading-anchor" href="#17-what-domain-wall-would-mean-and-why-the-name-does-not-fit-our-current-model" aria-label="Link to this section">#</a></h2>
+<p>For an ordered choice among four starts, one-hot uses four bits. A domain wall can use three monotone threshold bits:</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Chosen option</th>
+<th>One-hot indicator</th>
+<th>Domain-wall thresholds</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>First</td>
+<td>1000</td>
+<td>000</td>
+</tr>
+<tr>
+<td>Second</td>
+<td>0100</td>
+<td>100</td>
+</tr>
+<tr>
+<td>Third</td>
+<td>0010</td>
+<td>110</td>
+</tr>
+<tr>
+<td>Fourth</td>
+<td>0001</td>
+<td>111</td>
+</tr>
+</tbody></table></div>
+<p>With thresholds y0,y1,y2, recover the indicators by <code>x0=1-y0</code>, <code>x1=y0-y1</code>, <code>x2=y1-y2</code>, <code>x3=y2</code>. Valid thresholds satisfy y0≥y1≥y2. A penalty such as <code>P*y_next*(1-y_previous)</code> punishes a forbidden 0→1 increase. Our earlier Stage 1 implementation derives a sufficient wall penalty so that negative indicators from invalid strings cannot exploit conflict energy.</p>
+<p>This saves one bit per d-choice group, replacing d by d−1; it does not generally turn d choices into log2(d) bits. It needs an ordered domain and a checked transformed objective/penalty argument. We have not implemented or validated this transformation across the current Stage 2 planning models. We cannot advertise its possible savings as measured results.</p>
+<p>The two-choice substitution <code>x0=1-z, x1=z</code> is mathematically also the simplest two-state domain-wall mapping. In our current circuits it is used as direct binary/affine elimination of a two-choice group, not as a general multi-state domain-wall schedule encoding.</p>
+</section><section class="chapter" aria-labelledby="18-local-selectors-and-capacity-slack"><span class="chapter-number">SECTION 18</span><h2 id="18-local-selectors-and-capacity-slack">18. Local selectors and capacity slack<a class="heading-anchor" href="#18-local-selectors-and-capacity-slack" aria-label="Link to this section">#</a></h2>
+<p>In a full-factory local QUBO, xA=1 means start offered operation A now. Unlike the mandatory planning groups, the selector can choose neither A nor B if starting nothing is the best compatible selection. Rewards encourage useful work; pair penalties prevent incompatible starts.</p>
+<p>For an integer capacity, a nonnegative slack variable can turn an inequality into an equality. An illustrative resource budget of five and offers consuming three/four units gives:</p>
+<pre tabindex="0" aria-label="Code or formula block"><code class="language-text">3*xA + 4*xB &lt;= 5
+3*xA + 4*xB + s = 5, with s in {0,1,2,3,4,5}
+penalty = P * (3*xA + 4*xB + s - 5)^2
+</code></pre>
+<p>Our local builder represents s by bounded-binary weighted bits, removes redundant capacities and common integer factors, and uses pair conflicts without slack for applicable unit capacities. These extra bits count toward circuit size. They are not domain-wall bits. The integrated simulated QAOA selector caps at five total bits including slack; larger instances fall back to a recorded classical method.</p>
+<p>The local reward is a scheduling priority surrogate, not the exact eventual shipment objective. A globally best local choice therefore need not be a globally best factory policy.</p>
+</section><section class="chapter" aria-labelledby="19-how-thousands-of-planning-bits-became-a-21-qubit-circuit"><span class="chapter-number">SECTION 19</span><h2 id="19-how-thousands-of-planning-bits-became-a-21-qubit-circuit">19. How thousands of planning bits became a 21-qubit circuit<a class="heading-anchor" href="#19-how-thousands-of-planning-bits-became-a-21-qubit-circuit" aria-label="Link to this section">#</a></h2>
+<p>They did not all fit simultaneously into 21 qubits. The process is decomposition and restriction:</p>
+<ol>
+<li>Build a complete schedule classically and construct a finite candidate pool.</li>
+<li>Keep most assignments fixed to the current schedule.</li>
+<li>Select a small neighborhood and retain two choices for each selected operation.</li>
+<li>Substitute each two-choice group by one binary variable.</li>
+<li>Keep a small one-hot makespan register.</li>
+<li>Run the conditional circuit, decode and independently check a proposal, and retain a valid non-worsening move.</li>
+</ol>
+<p>A largest saved block has 16 binary operation choices and five one-hot makespan qubits: <strong>21 logical qubits</strong>. The rest of the 1,489-variable restricted master remains fixed. This experiment concerns the 32-operation cell. The separate 128-operation/6,046-variable pilot actually reached only six logical qubits and did not improve its parent.</p>
+<p>The makespan qubits start in a state with exactly one excitation. An XY mixer moves that excitation among the register qubits, preserving the one-hot choice. Ordinary choice qubits use X mixing. This preserves the makespan register&#39;s form; it does not automatically enforce resource compatibility or solve the whole scheduling problem.</p>
+<p>An invariant-sector classical simulator stores only the states reachable within that makespan sector. This reduces simulator memory without reducing the physical logical-qubit count. All reported circuits were simulated; no physical quantum computer was used.</p>
+</section><section class="chapter" aria-labelledby="20-what-the-results-currently-justify"><span class="chapter-number">SECTION 20</span><h2 id="20-what-the-results-currently-justify">20. What the results currently justify<a class="heading-anchor" href="#20-what-the-results-currently-justify" aria-label="Link to this section">#</a></h2>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Evidence</th>
+<th>Result</th>
+<th>Boundary</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Official Stage 1</td>
+<td>4 h / 8 h optimum schedules from selected simulated QAOA</td>
+<td>Tiny pairwise-order costs constructed exhaustively classically</td>
+</tr>
+<tr>
+<td>Cheap full-factory controller, 12 orders / 96 h</td>
+<td>94.98% weighted observed all-shipped frequency; mean misses 0.075</td>
+<td>256 final tapes; due-date/cost optimality not established</td>
+</tr>
+<tr>
+<td>Cheap full-factory controller, 24 orders / 96 h</td>
+<td>Mean misses 10.0209; no all-shipped final tape observed</td>
+<td>High-load control is weak; this alone does not prove physical infeasibility</td>
+</tr>
+<tr>
+<td>Cheap full-factory controller, 32 orders / 240 h</td>
+<td>91.02% weighted all-shipped frequency</td>
+<td>Much longer horizon and substantial lateness</td>
+</tr>
+<tr>
+<td>More expensive MPC</td>
+<td>Improves 12/16-order missing counts; worsens 24</td>
+<td>No universal quality gain; greater CPU cost</td>
+</tr>
+<tr>
+<td>Raw deterministic planning cells</td>
+<td>32/48/64-operation grid15 optima proved by classical CP</td>
+<td>The declared simplified cells, not rich-factory optima</td>
+</tr>
+<tr>
+<td>128-operation raw cell</td>
+<td>Best score 13,941,691; lower bound 8,071,630</td>
+<td>42.10% remaining relative bound interval</td>
+</tr>
+<tr>
+<td>32-operation 21-qubit conditional search</td>
+<td>1.93% improvement from its initial score</td>
+<td>Classical proposal/uniform controls reach the same result</td>
+</tr>
+<tr>
+<td>New planner connected to full factory</td>
+<td>Mean misses worsened on fresh validation</td>
+<td>Integration rejected; not promoted as our controller</td>
+</tr>
+</tbody></table></div>
+<p>The 32-operation complete time-indexed QUBO has 5,443 variables and 1,664,149 couplers. A restricted operation pool has 1,489 variables and retains the same optimum on that one instance. At 128 operations the 6,046-variable restricted pool loses materially better raw schedules: its own optimum is 40.45% above the best known raw feasible score. A compact pool is not automatically a good pool.</p>
+<p>There is no established quantum optimization advantage. The important achieved work is a working detailed model, explicit formulations, same-model checks, real circuit experiments and measured limits. The main unresolved issues are full-factory high-load performance and making quantum optimization useful on a coherent extended problem.</p>
+</section><section class="chapter" aria-labelledby="21-map-labels-and-symbols-quick-reference"><span class="chapter-number">SECTION 21</span><h2 id="21-map-labels-and-symbols-quick-reference">21. Map labels and symbols: quick reference<a class="heading-anchor" href="#21-map-labels-and-symbols-quick-reference" aria-label="Link to this section">#</a></h2>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Label</th>
+<th>Meaning</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>STOCK / RAW_A</td>
+<td>Hall A raw blanks and material entry point</td>
+</tr>
+<tr>
+<td>SHIP / SHIP_B</td>
+<td>Hall B destination whose completed delivery fulfills an order</td>
+</tr>
+<tr>
+<td>CHARGE A / CHARGE B</td>
+<td>One AGV charging bay in each hall</td>
+</tr>
+<tr>
+<td>HUB_A / HUB_B</td>
+<td>Junctions in the transport graph; not processing machines</td>
+</tr>
+<tr>
+<td>TOOL_A / TOOL_B</td>
+<td>Portable-tool starting/storage locations</td>
+</tr>
+<tr>
+<td>T / F / S</td>
+<td>Turning / milling / welding</td>
+</tr>
+<tr>
+<td>WASH / H / QA / A</td>
+<td>Washing / heat treatment / inspection / assembly</td>
+</tr>
+<tr>
+<td>W01–W10</td>
+<td>Worker identities, not machines or jobs</td>
+</tr>
+<tr>
+<td>AGV</td>
+<td>A transport robot</td>
+</tr>
+<tr>
+<td>SOC</td>
+<td>State of charge: how much battery energy remains; two different battery systems use it</td>
+</tr>
+<tr>
+<td>Grid</td>
+<td>External electrical power imported by the factory</td>
+</tr>
+<tr>
+<td>Solar</td>
+<td>Local time-dependent electrical generation</td>
+</tr>
+<tr>
+<td>Load</td>
+<td>Current electrical demand before subtracting solar or battery output</td>
+</tr>
+<tr>
+<td>Horizon</td>
+<td>The evaluation cutoff; not an order&#39;s due date</td>
+</tr>
+<tr>
+<td>One-hot</td>
+<td>Exactly one selected indicator among a group</td>
+</tr>
+<tr>
+<td>Domain wall</td>
+<td>Ordered choices represented by monotone threshold bits</td>
+</tr>
+<tr>
+<td>QUBO</td>
+<td>A quadratic function of binary variables, usable with classical or quantum solvers</td>
+</tr>
+<tr>
+<td>QAOA</td>
+<td>A quantum/classical variational algorithm used to sample candidate bit strings</td>
+</tr>
+<tr>
+<td>CP-SAT</td>
+<td>A classical constraint-programming solver used for scheduling references</td>
+</tr>
+</tbody></table></div>
+</section><section class="chapter" aria-labelledby="22-source-map-and-reading-order"><span class="chapter-number">SECTION 22</span><h2 id="22-source-map-and-reading-order">22. Source map and reading order<a class="heading-anchor" href="#22-source-map-and-reading-order" aria-label="Link to this section">#</a></h2>
+<p>Read this document for the problem and actual encoding. Then use <a href="../STAGE2_CURRENT_EXPLAINED.md">the current complete research explanation</a> for the fuller result tables and proof scopes. <a href="../learning-methods/index.html">The methods course</a> explains general QUBO/quantum mathematics; it is not the specification of this factory.</p>
+<div class="table-scroll" tabindex="0" aria-label="Scrollable reference table"><table>
+<thead>
+<tr>
+<th>Subject</th>
+<th>Owning source</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Official competition requirements</td>
+<td><a href="../../Quantum_Hackathon_2026_ERP_Challenge.pdf">Challenge PDF</a></td>
+</tr>
+<tr>
+<td>Chosen factory numerical tables</td>
+<td><a href="../../stage2/spec.py">Runtime specification</a>, <a href="../../instances/stage2/metaltech_pressure.json">input blueprint</a></td>
+</tr>
+<tr>
+<td>Actual events, transport, charging and energy rules</td>
+<td><a href="../../stage2/engine.py">Factory engine</a></td>
+</tr>
+<tr>
+<td>Physical rule checking</td>
+<td><a href="../../stage2/check.py">Independent checker</a></td>
+</tr>
+<tr>
+<td>Earlier Stage 1 domain-wall transformation</td>
+<td><a href="../../solver/stage1.py">Stage 1 builder</a></td>
+</tr>
+<tr>
+<td>Selected compact Stage 1 pairwise order</td>
+<td><a href="../../solver/sequence.py">Sequence model</a></td>
+</tr>
+<tr>
+<td>Local action QUBO and bounded-binary slack</td>
+<td><a href="../../stage2/qubo.py">Local QUBO builder</a></td>
+</tr>
+<tr>
+<td>Complete deterministic planning-cell assignments</td>
+<td><a href="../../stage2/window_qubo.py">Window QUBO</a></td>
+</tr>
+<tr>
+<td>Restricted operation columns</td>
+<td><a href="../../stage2/operation_columns.py">Candidate generation</a>, <a href="../../stage2/operation_qubo.py">compiler</a></td>
+</tr>
+<tr>
+<td>Binary choices and one-hot register</td>
+<td><a href="../../stage2/trajectory_qubo.py">Trajectory model</a>, <a href="../../stage2/trajectory_mixer.py">mixer</a></td>
+</tr>
+<tr>
+<td>Sector simulation</td>
+<td><a href="../../stage2/sector_mixer.py">Sector simulator</a></td>
+</tr>
+<tr>
+<td>Full-factory measured results</td>
+<td><a href="../STAGE2_RESULTS.md">Results document</a></td>
+</tr>
+<tr>
+<td>Planning experiment details</td>
+<td><a href="../STAGE2_PLANNING_CORE.md">Planning-core evidence</a></td>
+</tr>
+</tbody></table></div>
+<p>Numbers above describe the fine one-minute runtime profile. The original blueprint stores many durations in 15-minute ticks, so reading its raw integers without the expansion in spec.py gives the wrong physical times. Road-edge and worker-walk times have their own explicit runtime values. This document is a source-grounded explanation, not a claim of industrial calibration or a new optimization result.</p>
+</section><footer class="book-footer"><strong>End of the walkthrough.</strong><p>Always name the model, the decisions searched, the units and the certificate. A valid replay, complete order set, restricted-pool optimum and full-model optimum establish different things.</p><a href="#book">Return to the beginning ↑</a><p class="source-caption">Built from docs/STAGE2_PROBLEM_WALKTHROUGH.md.<br>Source SHA256:<code>2cba88795dc6290098dafa289a74879b54e6896de91a36e8c23445fce404f1b0</code><br>Renderer:marked17.0.5. CSS and navigation are embedded; reading requires no server, network, account or installed package.</p></footer></main><script>const menu=document.querySelector('#menu-toggle'),contents=document.querySelector('#contents');menu.onclick=()=>{const open=contents.classList.toggle('open');menu.setAttribute('aria-expanded',String(open));};document.querySelector('#print').onclick=()=>window.print();const nav=[...contents.querySelectorAll('nav a')],sections=[...document.querySelectorAll('.chapter')];contents.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{contents.classList.remove('open');menu.setAttribute('aria-expanded','false');}));let queued=false;function update(){queued=false;const y=window.scrollY,range=document.documentElement.scrollHeight-innerHeight;document.querySelector('#progress').style.width=(range>0?Math.min(100,100*y/range):100)+'%';let active=sections[0]?.getAttribute('aria-labelledby');for(const s of sections){if(s.getBoundingClientRect().top<innerHeight*.35)active=s.getAttribute('aria-labelledby');}nav.forEach(a=>{const current=a.hash==='#'+active;a.classList.toggle('active',current);current?a.setAttribute('aria-current','location'):a.removeAttribute('aria-current');});}addEventListener('scroll',()=>{if(!queued){queued=true;requestAnimationFrame(update);}},{passive:true});addEventListener('resize',update);addEventListener('keydown',e=>{if(e.key==='Escape'){contents.classList.remove('open');menu.setAttribute('aria-expanded','false');}});update();</script></body></html>

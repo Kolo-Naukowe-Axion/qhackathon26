@@ -1,0 +1,54 @@
+{
+  "source_case": "output/stage2-search/operation-columns-mac-v1/case3",
+  "source_files": {
+    "report.json": "1c22bb2422895bdb6b7cf12e4c71ad50118a666c7305a7a82be1502a523a66eb",
+    "columns.json": "ae0086a86ba69b945cb290c62cfdac7b92b293b737a20cb3cb622c13e653fd9e",
+    "problem.json": "ef94dba616fccb501f7d2e2d248560b2193f824a488ffea7ee3cc15fb023e052",
+    "qubo.json": "c861d69c8887e58fa7a1efb8fd906e9860cd2203fba98f90b9fcfe65c8ee5654"
+  },
+  "source_hashes": {
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+    "stage2/window_experiments.py": "6adb724f77bafaa1e279e7b458fe5f962974dd60783d9ee6129e5db3aee47fe7",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049",
+    "stage2/planning_compressed.py": "78d50d757e4d163e0bcc57649ec386c4068d95c589e5c81bd65a96586c520e1a",
+    "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "stage2/window_pump.py": "db9ab9d329567eac0bd2f2eec65148d88d155f8b081b5ea3426394e46cf34c5a",
+    "stage2/window_search.py": "9b1241cf9368454d93de0cc4c477ffd37795f1d831ee17c54e659108851aea5f",
+    "stage2/window_campaign.py": "2376e5ad778d0d05f731ef62447b460a516b13ec8882d0666adc2b90de004406",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/bounds.py": "dafff70b906237bb5caeeb602da1207657b1582f1f36d33c7e7be1c8e6d15836",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/column_blocks.py": "84518dfccb6e6eace73af3561ace8dfa453070136c725a501c0fe2042560e736",
+    "stage2/column_closure.py": "230023d6ecd70bd29efff64bf3bb42219022e36a8c16d3f24d679fcf0aceabb3",
+    "stage2/sector_mixer.py": "8d86621c01bcff9931308fcda708881e1b698f972e2f0d2c9ba76d1a51e82c1e",
+    "stage2/column_search_experiments.py": "78ac629b369beeb58cd504f1d7eb60dbc88248307c19388ec6e4444de41ba939",
+    "stage2/column_qubo.py": "4c0964029724b389298a3e9dee517bd62dc121fa9825d97aaf975f95f89b8776",
+    "stage2/trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+    "stage2/trajectory_mixer.py": "5cc0884592912b6bfef72c0ab9b1fb57e6b31fc9c7bd23a9f4617b16bc2edb02"
+  },
+  "seeds": [
+    7,
+    13,
+    29
+  ],
+  "methods": [
+    "proposal_only",
+    "exact",
+    "uniform_onehot",
+    "qaoa_xy"
+  ],
+  "iterations": 16,
+  "shots": 32,
+  "layers": 2,
+  "expectation_evaluations": 64,
+  "max_component_choices_per_block": 16,
+  "proposal": "closure",
+  "engine": "sector",
+  "max_qubits": 64,
+  "max_sector_amplitudes": 16777216,
+  "compute": "Local Mac CPU exact statevector simulator; no GPU, remote or physical quantum calls",
+  "comparisons": "Paired initial heuristic parent/seeds/proposal algorithm. Adaptive neighborhoods can diverge. Quantum training has extra exact-expectation cost; no runtime advantage implied.",
+  "cp_teacher_used": false,
+  "scope": "Exact conditional energies of the supplied restricted master, not lossless reduction of the raw full cell."
+}

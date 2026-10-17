@@ -1,0 +1,3149 @@
+{
+  "schema": "qfactoria-entry-presentation.v1",
+  "cases": {
+    "nominal-120": {
+      "model": {
+        "raw_variables": 30,
+        "raw_couplers": 208,
+        "pruned_variables": 18,
+        "pruned_couplers": 55,
+        "sector_states": 512,
+        "raw_groups": {
+          "P01/housing": 8,
+          "P01/rotor": 4,
+          "P01/assembly": 8,
+          "P01/qa": 4,
+          "urgent/qa": 2,
+          "@makespan": 4
+        },
+        "pruned_groups": {
+          "P01/housing": 4,
+          "P01/rotor": 2,
+          "P01/assembly": 4,
+          "P01/qa": 2,
+          "urgent/qa": 2,
+          "@makespan": 4
+        },
+        "compiler_seconds": 0.0006582499481737614,
+        "classical_statevector_preparation_seconds": 0.00022858288139104843,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 0,
+        "makespan": 120,
+        "objective": 120,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 120,
+        "energy": 120,
+        "selected": [
+          0,
+          5,
+          9,
+          11,
+          12,
+          17
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 120.0,
+        "wall_seconds": 0.0033713337033987045,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 120,
+          "objective": 120
+        },
+        "objective": 120
+      },
+      "seed": 101,
+      "case": "nominal-120",
+      "optimization": {
+        "gammas": [
+          0.9351188792625199,
+          5.368709005456247
+        ],
+        "betas": [
+          0.9478875715101317,
+          1.3929586176800948
+        ],
+        "scale": 7502,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 120,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          },
+          "F2": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn",
+              "assembly"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                120
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30,
+              "F2": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "F2": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.012696483312174678
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.00020387079566717148
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.017215729039162398
+        }
+      ]
+    },
+    "nominal-150": {
+      "model": {
+        "raw_variables": 38,
+        "raw_couplers": 328,
+        "pruned_variables": 26,
+        "pruned_couplers": 123,
+        "sector_states": 4860,
+        "raw_groups": {
+          "P01/housing": 10,
+          "P01/rotor": 5,
+          "P01/assembly": 10,
+          "P01/qa": 5,
+          "urgent/qa": 3,
+          "@makespan": 5
+        },
+        "pruned_groups": {
+          "P01/housing": 6,
+          "P01/rotor": 3,
+          "P01/assembly": 6,
+          "P01/qa": 3,
+          "urgent/qa": 3,
+          "@makespan": 5
+        },
+        "compiler_seconds": 0.0005635842680931091,
+        "classical_statevector_preparation_seconds": 0.0021138330921530724,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 0,
+        "makespan": 120,
+        "objective": 120,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 120,
+        "energy": 120,
+        "selected": [
+          0,
+          7,
+          13,
+          16,
+          18,
+          24
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 120.0,
+        "wall_seconds": 0.0036115837283432484,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 120,
+          "objective": 120
+        },
+        "objective": 120
+      },
+      "seed": 101,
+      "case": "nominal-150",
+      "optimization": {
+        "gammas": [
+          1.2514865401887645,
+          1.2236785848472598
+        ],
+        "betas": [
+          5.2648515736252035,
+          5.805514951196297
+        ],
+        "scale": 36542,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 150,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          },
+          "F2": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn",
+              "assembly"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                150
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30,
+              "F2": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "F2": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.05384534592740238
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.001047712517902255
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.01784752928651869
+        }
+      ]
+    },
+    "nominal-180": {
+      "model": {
+        "raw_variables": 46,
+        "raw_couplers": 475,
+        "pruned_variables": 34,
+        "pruned_couplers": 218,
+        "sector_states": 24576,
+        "raw_groups": {
+          "P01/housing": 12,
+          "P01/rotor": 6,
+          "P01/assembly": 12,
+          "P01/qa": 6,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "pruned_groups": {
+          "P01/housing": 8,
+          "P01/rotor": 4,
+          "P01/assembly": 8,
+          "P01/qa": 4,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "compiler_seconds": 0.0007915417663753033,
+        "classical_statevector_preparation_seconds": 0.015424040611833334,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 0,
+        "makespan": 120,
+        "objective": 120,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 120,
+        "energy": 120,
+        "selected": [
+          0,
+          9,
+          17,
+          21,
+          24,
+          31
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 120.0,
+        "wall_seconds": 0.004833499900996685,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 120,
+          "objective": 120
+        },
+        "objective": 120
+      },
+      "seed": 101,
+      "case": "nominal-180",
+      "optimization": {
+        "gammas": [
+          1.2514865401887645,
+          1.2236785848472598
+        ],
+        "betas": [
+          5.2648515736252035,
+          5.805514951196297
+        ],
+        "scale": 76382,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 180,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "F2": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn",
+              "assembly"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30,
+              "F2": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "F2": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 9,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 3.0,
+          "mean_seconds": 0.21123937075026333
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 4,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 21.0,
+          "mean_seconds": 0.001897870795801282
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.017718912195414306
+        }
+      ]
+    },
+    "outage-spare": {
+      "model": {
+        "raw_variables": 44,
+        "raw_couplers": 445,
+        "pruned_variables": 32,
+        "pruned_couplers": 200,
+        "sector_states": 18432,
+        "raw_groups": {
+          "P01/housing": 10,
+          "P01/rotor": 6,
+          "P01/assembly": 12,
+          "P01/qa": 6,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "pruned_groups": {
+          "P01/housing": 6,
+          "P01/rotor": 4,
+          "P01/assembly": 8,
+          "P01/qa": 4,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "compiler_seconds": 0.0007045408710837364,
+        "classical_statevector_preparation_seconds": 0.017724125180393457,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 0,
+        "makespan": 120,
+        "objective": 120,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 120,
+        "energy": 120,
+        "selected": [
+          2,
+          7,
+          15,
+          19,
+          22,
+          29
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 120.0,
+        "wall_seconds": 0.005694041959941387,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 120,
+          "objective": 120
+        },
+        "objective": 120
+      },
+      "seed": 101,
+      "case": "outage-spare",
+      "optimization": {
+        "gammas": [
+          1.2514865401887645,
+          1.22367858484726
+        ],
+        "betas": [
+          5.2648515736252035,
+          5.805514951196297
+        ],
+        "scale": 76382,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 180,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                60,
+                180
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "F2": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn",
+              "assembly"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30,
+              "F2": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "F2": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 9,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 3.0,
+          "mean_seconds": 0.1622786456719041
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 8,
+          "schedule_optimal": 9,
+          "mean_encoded_gap": 1092.0,
+          "mean_seconds": 0.0017851706594228744
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.01734902514144778
+        }
+      ]
+    },
+    "outage-no-spare": {
+      "model": {
+        "raw_variables": 38,
+        "raw_couplers": 343,
+        "pruned_variables": 22,
+        "pruned_couplers": 95,
+        "sector_states": 1536,
+        "raw_groups": {
+          "P01/housing": 4,
+          "P01/rotor": 6,
+          "P01/assembly": 12,
+          "P01/qa": 6,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "pruned_groups": {
+          "P01/housing": 2,
+          "P01/rotor": 4,
+          "P01/assembly": 4,
+          "P01/qa": 2,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "compiler_seconds": 0.0005016252398490906,
+        "classical_statevector_preparation_seconds": 0.0005792081356048584,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 60,
+        "makespan": 150,
+        "objective": 11010,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 150,
+        "energy": 11010,
+        "selected": [
+          0,
+          2,
+          6,
+          10,
+          12,
+          20
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 11010.0,
+        "wall_seconds": 0.003229208290576935,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 60,
+          "makespan": 150,
+          "objective": 11010
+        },
+        "objective": 11010
+      },
+      "seed": 101,
+      "case": "outage-no-spare",
+      "optimization": {
+        "gammas": [
+          0.21283991421280968,
+          2.7506204239947216
+        ],
+        "betas": [
+          0.9344025905353482,
+          5.3016386452606845
+        ],
+        "scale": 76382,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 180,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                60,
+                180
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn",
+              "assembly"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 9,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 3.0,
+          "mean_seconds": 0.02348745004273951
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.0004480916075408459
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.0173656000290066
+        }
+      ]
+    },
+    "without-cross-skill": {
+      "model": {
+        "raw_variables": 40,
+        "raw_couplers": 325,
+        "pruned_variables": 30,
+        "pruned_couplers": 162,
+        "sector_states": 12288,
+        "raw_groups": {
+          "P01/housing": 12,
+          "P01/rotor": 6,
+          "P01/assembly": 6,
+          "P01/qa": 6,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "pruned_groups": {
+          "P01/housing": 8,
+          "P01/rotor": 4,
+          "P01/assembly": 4,
+          "P01/qa": 4,
+          "urgent/qa": 4,
+          "@makespan": 6
+        },
+        "compiler_seconds": 0.0005584158934652805,
+        "classical_statevector_preparation_seconds": 0.006013124715536833,
+        "classical_preprocessing_scope": "Safe unary/support pruning; no CP optimum or schedule enters compiler or initial state.",
+        "simulation_scope": "Exponential exact diagonal/sector preparation; not scalable quantum compilation or a logical-qubit reduction."
+      },
+      "example": {
+        "valid": true,
+        "issues": [],
+        "weighted_terminal_tardiness": 60,
+        "makespan": 150,
+        "objective": 11010,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          }
+        ],
+        "encoded_makespan": 150,
+        "energy": 11010,
+        "selected": [
+          0,
+          9,
+          13,
+          17,
+          22,
+          28
+        ]
+      },
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 11010.0,
+        "wall_seconds": 0.004141499754041433,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 60,
+          "makespan": 150,
+          "objective": 11010
+        },
+        "objective": 11010
+      },
+      "seed": 101,
+      "case": "without-cross-skill",
+      "optimization": {
+        "gammas": [
+          1.0128399142128097,
+          1.9506204239947216
+        ],
+        "betas": [
+          6.017587897714934,
+          6.101638645260684
+        ],
+        "scale": 76382,
+        "evaluations": 128,
+        "objective": "CVaR",
+        "alpha": 0.25,
+        "exact_reference_used_for_training": false
+      },
+      "problem": {
+        "name": "Pump assembly recovery and urgent component inspection",
+        "horizon": 180,
+        "grid": 30,
+        "machines": {
+          "F1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "T1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "A1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "QA1": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "F2": {
+            "hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "workers": {
+          "machinist": {
+            "skills": [
+              "mill",
+              "turn"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          },
+          "finisher": {
+            "skills": [
+              "assembly",
+              "qa"
+            ],
+            "initial_hall": "A",
+            "available": [
+              [
+                0,
+                180
+              ]
+            ]
+          }
+        },
+        "operations": [
+          {
+            "id": "P01/housing",
+            "durations": {
+              "F1": 30,
+              "F2": 30
+            },
+            "skill": "mill",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/rotor",
+            "durations": {
+              "T1": 30
+            },
+            "skill": "turn",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": []
+          },
+          {
+            "id": "P01/assembly",
+            "durations": {
+              "A1": 30
+            },
+            "skill": "assembly",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 1,
+            "predecessors": [
+              "P01/housing",
+              "P01/rotor"
+            ]
+          },
+          {
+            "id": "P01/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 0,
+            "due": 120,
+            "weight": 2,
+            "predecessors": [
+              "P01/assembly"
+            ]
+          },
+          {
+            "id": "urgent/qa",
+            "durations": {
+              "QA1": 30
+            },
+            "skill": "qa",
+            "attendance": "full",
+            "release": 60,
+            "due": 90,
+            "weight": 1,
+            "predecessors": []
+          }
+        ],
+        "transport_lags": {
+          "F1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "T1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "A1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "QA1": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          },
+          "F2": {
+            "F1": 0,
+            "T1": 0,
+            "A1": 0,
+            "QA1": 0,
+            "F2": 0
+          }
+        },
+        "worker_travel": 0,
+        "provenance": {
+          "synthetic": true,
+          "recorded_full_factory_snapshot": false,
+          "boundary": "All earlier housing/rotor steps and flanges are completed. Only final housing/rotor machining, pump assembly and inspection remain. The urgent separate component is available for inspection at minute 60.",
+          "outage": "F1 unavailable [0,60) when enabled; no operation interrupted or erased.",
+          "material": "One preassigned housing, rotor and flange per pump; no substitutions or rework.",
+          "included": [
+            "alternative milling machine",
+            "shared skilled workers",
+            "assembly join",
+            "due dates and weighted terminal tardiness",
+            "machine outage calendar",
+            "partial-state releases and known boundary material"
+          ],
+          "excluded": [
+            "AGV contention",
+            "power",
+            "finite buffers",
+            "stochastic quality",
+            "sequence-dependent setups",
+            "worker travel",
+            "learned control"
+          ],
+          "objective": "(H+1)*weighted terminal tardiness + makespan",
+          "scope": "Complete discrete residual-cell problem, not lossless full-factory optimization."
+        }
+      },
+      "methods": [
+        {
+          "method": "qaoa_xy",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.11247265422716737
+        },
+        {
+          "method": "uniform_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.0015736167319118977
+        },
+        {
+          "method": "sa_onehot",
+          "runs": 10,
+          "valid": 10,
+          "encoded_optimal": 10,
+          "schedule_optimal": 10,
+          "mean_encoded_gap": 0.0,
+          "mean_seconds": 0.018994087912142278
+        }
+      ]
+    }
+  },
+  "scaling": [
+    {
+      "pumps": 1,
+      "operations": 5,
+      "horizon": 180,
+      "variables": 34,
+      "couplers": 218,
+      "build_seconds": 0.0005894997157156467,
+      "problem_sha256": "2183a7485d73b30e7c622bba2b47cc155cf8a302eeeafcc2f00964d1f3e5ae2a",
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 120.0,
+        "wall_seconds": 0.0056030419655144215,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 120,
+          "objective": 120
+        },
+        "objective": 120
+      },
+      "quantum_executed": false,
+      "offline_packet_roundtrip_states": 64
+    },
+    {
+      "pumps": 2,
+      "operations": 9,
+      "horizon": 300,
+      "variables": 114,
+      "couplers": 1787,
+      "build_seconds": 0.005313584115356207,
+      "problem_sha256": "abd0a86d8159661bb3d7f1a94f8c63d948d3039993ae86fa6f0db6d2144910ca",
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 210.0,
+        "wall_seconds": 0.023606709204614162,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 150,
+            "end": 180,
+            "attended_end": 180,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 180,
+            "end": 210,
+            "attended_end": 210,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 210,
+          "objective": 210
+        },
+        "objective": 210
+      },
+      "quantum_executed": false,
+      "offline_packet_roundtrip_states": 64
+    },
+    {
+      "pumps": 3,
+      "operations": 13,
+      "horizon": 420,
+      "variables": 242,
+      "couplers": 6124,
+      "build_seconds": 0.025283082854002714,
+      "problem_sha256": "e63e9dd097d2651c1f93009e152a7a3bec385cfe51f65e7929942552bd085f0d",
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 270.0,
+        "wall_seconds": 0.06091983336955309,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 150,
+            "end": 180,
+            "attended_end": 180,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 180,
+            "end": 210,
+            "attended_end": 210,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 180,
+            "end": 210,
+            "attended_end": 210,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 150,
+            "end": 180,
+            "attended_end": 180,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 210,
+            "end": 240,
+            "attended_end": 240,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 240,
+            "end": 270,
+            "attended_end": 270,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 270,
+          "objective": 270
+        },
+        "objective": 270
+      },
+      "quantum_executed": false,
+      "offline_packet_roundtrip_states": 64
+    },
+    {
+      "pumps": 4,
+      "operations": 17,
+      "horizon": 540,
+      "variables": 418,
+      "couplers": 14645,
+      "build_seconds": 0.06779674999415874,
+      "problem_sha256": "36f399d8f943b44ee6100b6c4baf1db8e8258a6548bd9e5891f22afb25b38046",
+      "reference": {
+        "status": "OPTIMAL",
+        "optimal": true,
+        "bound": 330.0,
+        "wall_seconds": 0.11007291683927178,
+        "feasible_hint_used": false,
+        "hint_objective": null,
+        "plan": [
+          {
+            "operation": "P01/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 0,
+            "end": 30,
+            "attended_end": 30,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 30,
+            "end": 60,
+            "attended_end": 60,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          },
+          {
+            "operation": "P01/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 120,
+            "end": 150,
+            "attended_end": 150,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 90,
+            "end": 120,
+            "attended_end": 120,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 150,
+            "end": 180,
+            "attended_end": 180,
+            "hall": "A"
+          },
+          {
+            "operation": "P02/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 180,
+            "end": 210,
+            "attended_end": 210,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 210,
+            "end": 240,
+            "attended_end": 240,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 180,
+            "end": 210,
+            "attended_end": 210,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/assembly",
+            "machine": "A1",
+            "worker": "finisher",
+            "start": 240,
+            "end": 270,
+            "attended_end": 270,
+            "hall": "A"
+          },
+          {
+            "operation": "P03/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 270,
+            "end": 300,
+            "attended_end": 300,
+            "hall": "A"
+          },
+          {
+            "operation": "P04/housing",
+            "machine": "F2",
+            "worker": "machinist",
+            "start": 150,
+            "end": 180,
+            "attended_end": 180,
+            "hall": "A"
+          },
+          {
+            "operation": "P04/rotor",
+            "machine": "T1",
+            "worker": "machinist",
+            "start": 240,
+            "end": 270,
+            "attended_end": 270,
+            "hall": "A"
+          },
+          {
+            "operation": "P04/assembly",
+            "machine": "A1",
+            "worker": "machinist",
+            "start": 270,
+            "end": 300,
+            "attended_end": 300,
+            "hall": "A"
+          },
+          {
+            "operation": "P04/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 300,
+            "end": 330,
+            "attended_end": 330,
+            "hall": "A"
+          },
+          {
+            "operation": "urgent/qa",
+            "machine": "QA1",
+            "worker": "finisher",
+            "start": 60,
+            "end": 90,
+            "attended_end": 90,
+            "hall": "A"
+          }
+        ],
+        "check": {
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 330,
+          "objective": 330
+        },
+        "objective": 330
+      },
+      "quantum_executed": false,
+      "offline_packet_roundtrip_states": 64
+    }
+  ],
+  "audit": {
+    "schema": "qfactoria-entry-independent-qiskit-audit.v1",
+    "qiskit_version": "2.5.2",
+    "rows": [
+      {
+        "case": "nominal-120",
+        "logical_qubits": 18,
+        "native_gates": {
+          "rz": 384,
+          "cx": 280,
+          "sx": 192
+        },
+        "native_depth": 163,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "35f510b5721e2af352e2c8a61871235a55fddedda2155d13f70541ceec7df041",
+        "qasm_sha256": "c77ebace31d9d9cef888e2b246e3322d56833dbfd37f9ef8beb88704af7826f9",
+        "full_hilbert_replayed": true,
+        "hilbert_states": 262144,
+        "max_probability_error": 1.0061396160665481e-15,
+        "outside_onehot_probability": 1.1102230246251565e-16,
+        "valid": true
+      },
+      {
+        "case": "nominal-150",
+        "logical_qubits": 26,
+        "native_gates": {
+          "rz": 664,
+          "cx": 536,
+          "sx": 304
+        },
+        "native_depth": 244,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "3764159dbbba042d0b223ff4bdaf279d6d929a99cd839e264d4e7f78cb73c6a6",
+        "qasm_sha256": "fb22c8fad91262aa5afc9cd919e3dc302b6b64f94495bd27db8f6ea0a1789e21",
+        "full_hilbert_replayed": false
+      },
+      {
+        "case": "nominal-180",
+        "logical_qubits": 34,
+        "native_gates": {
+          "rz": 974,
+          "cx": 852,
+          "sx": 416
+        },
+        "native_depth": 322,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "4c10366f5d344140466aeb3ad2d876bd459a5ca0cb48e6d61e724c7a50530e2e",
+        "qasm_sha256": "a8f16efe2807758037a61e3d6a272b0fc7e1153fe24288d99ce1c99bfaa264b4",
+        "full_hilbert_replayed": false
+      },
+      {
+        "case": "outage-no-spare",
+        "logical_qubits": 22,
+        "native_gates": {
+          "rz": 534,
+          "cx": 432,
+          "sx": 246
+        },
+        "native_depth": 207,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "a6970861e6565d648b541f8395459a6d869df4b8a7d421783d82ad49a0475ed1",
+        "qasm_sha256": "45b066e718eba11d3b4c88b0203b533092eafe7d550748750fb786c2e75afcd7",
+        "full_hilbert_replayed": false
+      },
+      {
+        "case": "outage-spare",
+        "logical_qubits": 32,
+        "native_gates": {
+          "rz": 914,
+          "cx": 808,
+          "sx": 388
+        },
+        "native_depth": 310,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "6abdca66b8eeda575c72bf43955406b650397f54c01341ef25b8a6acea9a46cd",
+        "qasm_sha256": "6804fc6b66234684c2e1cbe267760d8be8226d6f28e0673e6e8110be328342da",
+        "full_hilbert_replayed": false
+      },
+      {
+        "case": "without-cross-skill",
+        "logical_qubits": 30,
+        "native_gates": {
+          "rz": 806,
+          "cx": 668,
+          "sx": 360
+        },
+        "native_depth": 271,
+        "connectivity": "Unrestricted logical connectivity; physical routing not performed",
+        "source_sha256": "4ffcf5d219b51e7e739a2aa689b63508cc01a0aa2cc65e273917283bf45b6734",
+        "qasm_sha256": "33b1df68b426ab8e08e20edcbf76dc6b4c7de4b2459e0ab60b6e39178f2e8dd9",
+        "full_hilbert_replayed": false
+      }
+    ],
+    "valid": true,
+    "physical_qpu_calls": 0,
+    "veloxq_calls": 0,
+    "scope": "Independent full-Hilbert probabilities for 18 qubits only; larger QASM parsed/transpiled. Native counts include preparation, cost and mixer, without hardware routing."
+  },
+  "protocol": {
+    "schema": "qfactoria-entry-core-protocol.v1",
+    "train_seeds": [
+      7,
+      13,
+      29
+    ],
+    "test_seeds": [
+      101,
+      103,
+      107,
+      109,
+      113,
+      127,
+      131,
+      137,
+      139,
+      149
+    ],
+    "configurations": [
+      {
+        "layers": 1,
+        "alpha": 1.0
+      },
+      {
+        "layers": 2,
+        "alpha": 1.0
+      },
+      {
+        "layers": 2,
+        "alpha": 0.25
+      }
+    ],
+    "selection": "Minimum aggregate TRAIN sampled-energy excess, then fewer layers, then expectation before CVaR.",
+    "shots": 8192,
+    "angle_evaluations": 128,
+    "sa_replicas": 32,
+    "sa_sweeps": 256,
+    "reference": "Independent native interval CP-SAT, one worker, 10s cap; source separate from QUBO compiler.",
+    "source_hashes": {
+      "stage2/assignment_qaoa.py": "469a535a201c9b3f5a6ccf67a2977f98150f53ec9f2dcb3912ffacf717adfc9d",
+      "stage2/entry_core.py": "0b8b42edf2aaf5e21048d0158739c5b5ac55dceea511e4efec8a3f69015458cb",
+      "stage2/entry_campaign.py": "8b59af1ff234b96e73736033fbef3360ee7971acae8ca2e8e2c1eae0e1eb0318",
+      "stage2/window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+      "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+      "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42"
+    },
+    "quick": false,
+    "methods": [
+      "qaoa_xy",
+      "uniform_onehot",
+      "sa_onehot"
+    ],
+    "budgets": "All use the same full assignment domain. Budgets differ: quantum uses 128 exact simulated objective evaluations plus 8192 Born samples; uniform uses 8192 samples; SA uses 8192 proposals and returns 32 replica bests. No equal-compute or runtime-advantage claim.",
+    "physical_qpu_calls": 0,
+    "veloxq_calls": 0,
+    "status": "Declared before TRAIN/TEST outcomes"
+  },
+  "source": "output/stage2-entry-v2/report.json",
+  "source_sha256": "4ad4f72ea5e3475e8a65a5aa2223aaeb4e913fc0ad9fa772272cf02abf0b07fc",
+  "campaign_wall_seconds": 11.979753416031599,
+  "campaign_cpu_seconds": 11.838301000000001,
+  "physical_qpu_calls": 0,
+  "veloxq_calls": 0
+}

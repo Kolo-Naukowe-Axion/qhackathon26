@@ -1,5 +1,21 @@
 # QHackathon 2026
 
+## Current local Stage 2 work
+
+**Technical closeout, 17 October:** all 14 agreed non-VeloxQ core requirements passed; 52 targeted Python tests, 113 site tests and the static build passed. Read the [current status and remaining work](docs/STAGE2_STATUS.md). Actual VeloxQ execution, the final synchronized video, human rehearsal and public release/submission remain open.
+
+The [manufacturing recovery study](docs/STAGE2_MANUFACTURING_STUDY.md) is the main demonstration: complete pump recipes, capacity recovery, representation loss, QAOA on the same 32 operations, feature ablations and an explicit cost ledger. The original 781-bit pool loses a certified 45→0 weighted-lateness recovery; deterministic enrichment restores it at 2,078 bits. A separate exact deadline query uses 818 bits. Complete optimization uses 2,499 bits. These are different representations with stated guarantees.
+
+The [whole-recipe quantum bridge](docs/STAGE2_RECIPE_BRIDGE.md) recombines all eight component groups using 18–36 logical qubits. The constructor already finds an optimal recovery plan; QAOA and classical annealing both recover it. Sector enumeration is classical and budgets differ. This establishes integration, not quantum advantage. The [economics](docs/STAGE2_CAPACITY_ECONOMICS.md) values saved schedules under synthetic prices; it does not optimize monetary cost or establish calibrated ROI.
+
+```sh
+.venv-stage2/bin/python -m stage2.entry_demo --port 4192
+```
+
+Open [the local manufacturing studio](http://127.0.0.1:4192/manufacturing/). It provides checked schedule comparisons, a fresh whole-recipe QAOA action, adjustable capacity economics and the price-of-realism table. Static builds support retained evidence; fresh execution requires the Python server. The [combined direction](docs/STAGE2_COMBINED_DIRECTION.md), [acceptance record](docs/STAGE2_MERIT_ACCEPTANCE.md) and [submission preparation](docs/STAGE2_SUBMISSION.md) describe scope and remaining duties. Four new cold SDK packets cover deadline, enriched and complete models, including matched-penalty controls. VeloxQ calls, physical QPU work and publication remain held.
+
+The revised desktop studio has a four-step recovery rail, separate floor/timeline/results/questions views, and an inspectable QUBO explanation. Read the [complete main-model mathematics](docs/STAGE2_MANUFACTURING_MATH.md) for variables, constraints, coefficient conventions, penalty proofs and exact-versus-restricted scope. Current UI checks pass all114site tests; desktop browser verification includes a fresh checked28-qubit run. [UI design and verification](docs/STAGE2_UI_DESIGN.md) records the limits.
+
 Team workspace for the QPoland Quantum Hackathon 2026.
 
 ## Production deployment
@@ -27,7 +43,7 @@ over240 hours. These individual traces illustrate the policies; the final
 probability-weighted results and limitations remain in
 [Stage2 results](docs/STAGE2_RESULTS.md). Both controllers are classical.
 
-All source, tests and research evidence are retained on `main`, except three
+The frozen final-evaluation bundle is retained on `main`, except three
 files above GitHub's100MiB blob limit, preserved as release assets with exact
 sizes and SHA-256 digests in
 [the artifact index](output/stage2-search/REMOTE_ARTIFACTS.json).
@@ -42,6 +58,13 @@ The smaller10.1MB portable bundle, site assets and ordinary build/test inputs
 are included directly in the repository. The hosted viewer contains only
 `presentation/`; local Python environments and bulk research files are not
 published as website assets.
+
+Four additional development JSON files exceed the GitHub blob limit. Their
+lossless gzip copies are included in Git with raw/compressed hashes in
+[the compressed evidence index](output/COMPRESSED_EVIDENCE.json).
+`npm test` (and therefore `npm run build`) restores and verifies these files
+locally using Node built-ins, without a download or credentials. Existing raw
+files must match the index; differing files are never overwritten.
 
 Requires Node.js 20 or newer. No package installation or API key is needed for the viewer.
 
@@ -113,6 +136,51 @@ dependencies are required.
 
 ## Stage 2 implementation and research
 
+The [combined Stage 2 direction](docs/STAGE2_COMBINED_DIRECTION.md) joins
+manufacturing recovery, the measured cost of compact formulations and conditional
+capacity economics. It records the checked full-domain versus restricted-pool
+recovery result and assesses QOBLIB as an optional external benchmark.
+The [independent review passes](docs/STAGE2_REVIEW_PASSES.md) add deterministic
+pool enrichment, an exact818-variable deadline decision formulation and measured
+local-search/boundary-gate failures, with explicit scope and retained evidence.
+
+**Manufacturing entry refinement resumed by the user, 17 October.** Start with
+[the smaller quantum validation and point-by-point evidence](docs/STAGE2_ENTRY.md).
+It adds a complete residual manufacturing cell, 18–34 logical-qubit simulated
+QAOA, independent references, source-sealed TRAIN/TEST results and offline-only
+VeloxQ packets. The larger factory and earlier failures remain separate evidence.
+No VeloxQ service request, upload, credit use or physical QPU call was made.
+
+For a fresh local solver demonstration:
+
+```sh
+.venv-stage2/bin/python -m stage2.entry_demo --port 4189
+# Open http://127.0.0.1:4189/entry/
+python3 scripts/verify-stage2-entry.py
+```
+
+The `Run fresh QAOA` action computes a new result and independent CP reference;
+the static page shows labeled retained evidence. Publication holds still apply.
+
+For the original, broader factory model, start with
+[the written factory and encoding walkthrough](docs/stage2-problem/index.html)
+([Markdown source](docs/STAGE2_PROBLEM_WALKTHROUGH.md)) for the step-by-step
+problem definition, all factory systems and the domain-wall/one-hot distinction.
+Then read
+[what we actually have](docs/STAGE2_CURRENT_EXPLAINED.md): the full problem,
+Stage 1 comparison, all implemented conditions, solver scope, measured results,
+QUBO boundaries and limitations. The local interactive
+[Start here guide](http://127.0.0.1:4187/stage2/start.html) walks through the same
+distinctions visually. Later Mac planning experiments and this explanation are
+local working-tree additions; the earlier frozen release does not imply that
+these additions have been committed, published or deployed.
+
+For the solution-quality scoring evidence, see
+[solution quality against classical references](docs/SOLUTION_QUALITY.md): exact
+extended makespan references, the four-pump certified interval, and the later
+full-factory realized-primary gap audit. The latter preserves all frozen outcomes
+and distinguishes missing-order certificates from deadline/cost optimality.
+
 The implemented Stage 2 domain is a two-hall pump factory with
 24 known orders, 72 component lots, 384 nominal manufacturing operations,
 15 machines, 4 AGVs, 10 workers, assembly joins, batches, shared tooling,
@@ -141,6 +209,8 @@ QUBO. The executable simulator, controller experiments and trace checker are
 separate artifacts. No physical ODRA run or full-factory quantum speedup is claimed.
 
 ## AI use
+
+The manufacturing entry refinement also used Codex for the complete assignment mixer, offline SDK precision checks, generated evidence view and documentation. Any local draft demo marked synthetic narration uses the macOS text-to-speech voice; it is not a team member speaking. The team must review and can replace that narration before upload.
 
 OpenAI Codex assisted with extracting/checking requirements, planning, the presentation environment, original SVG illustration, baseline QUBO/domain-wall formulations, quantum/local solver code, the exact compact sequence-QUBO construction, SDK adapters, experiments, tests and documentation. The team supplied objectives, references, corrections and direction. Actual solver executions, parameters and samples are retained under `output/stage1-compact-ready/`, the experiment archive `output/stage1-compact/`, and the earlier `output/stage1-local-ready/` / `output/stage1-ready/` archives; Stage 2 implementation and research evidence are under `stage2/` and `output/stage2-search/`. Neither VeloxQ nor physical ODRA5 success is claimed. Team members must review the code, understand the formulation and validation, and explain it during the live defense.
 

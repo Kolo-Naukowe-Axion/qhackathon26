@@ -71,6 +71,15 @@ At 12 orders, mean missing is 0.1503 for QAOA,0.1183 for matched SA and 0.1401 f
 
 ## Proof and reproduction
 
+A later, separately labeled [solution-quality supplement](SOLUTION_QUALITY.md)
+quantifies realized-primary gap intervals for all 74 frozen groups and 23,552
+original outcome rows. A stronger compounded-quality necessary bound raises the
+unchanged 32-order/240-hour primary-optimum certificate rate from the original
+93.44% below to 95.28%; mean excess above the realized primary optimum is at most
+0.04719 missing orders on the weighted final sample. No policy or outcome changed,
+and secondary optimality remains unknown. This is an offline proof supplement,
+not additional final performance samples or a nonanticipating-policy guarantee.
+
 An independent checker reconstructs resource occupation, transport, BOM consumption, power/SOC, quality and metrics against a freshly rebuilt instance; a separate identity audit fixes the unit/attempt quality stream. Complete-group audits reject hidden invalid or dropped executions. Empirical paired-prefix checks probe future-information leakage. These checks establish the stated coverage, not universal nonanticipativity or global optimization.
 
 The probability-weighted attainment rate of the conservative offline quality/material lower bound is 93.44% at 32 orders (239/256 unweighted tapes). Where executed missing matches that bound, this certifies the **primary missing-order objective on that realized tape**. A particularly clear audit-only witness at seed 10020 proves a nonzero optimum: 32 demanded, 31 shipped, and the last pump's unavoidable initial-plus-repair failure forces at least one miss. Thus `L=U=1`. Hidden QA draws enter only the offline proof. The posthoc explanatory replay is excluded from the 256-tape estimates and the predeclared presentation replays. Deadline debt/cost optimality remains unknown. [Proof illustration](STAGE2_JUDGES_EXPLANATION.md#an-audit-only-example-of-a-nonzero-optimum).

@@ -1,0 +1,27 @@
+{
+  "tasks": [
+    "nominal-32/full-domain",
+    "rush-and-outage-32/full-domain",
+    "heat-outage-32",
+    "nominal-64",
+    "nominal-128"
+  ],
+  "seeds": [
+    101,
+    103,
+    107
+  ],
+  "reads": 8,
+  "sweeps": 256,
+  "penalties": [
+    "original_bound",
+    "checked_incumbent_bound"
+  ],
+  "initialization": [
+    "random",
+    "heuristic_witness"
+  ],
+  "scope": "CPU simulated annealing development controls. Identical domains/feasible objectives; penalty variants intentionally change infeasible energies. No VeloxQ prediction or equal-runtime claim.",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

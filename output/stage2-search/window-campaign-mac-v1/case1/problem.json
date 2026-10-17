@@ -1,0 +1,527 @@
+{
+  "name": "factory-derived hypothetical backlog:3housing\u00d74steps",
+  "horizon": 720,
+  "grid": 30,
+  "machines": {
+    "T1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "T2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "F1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "F2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "F3": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "WASH1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "WASH2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "H1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    },
+    "H2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          720
+        ]
+      ]
+    }
+  },
+  "workers": {
+    "W05": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W06": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W07": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          150
+        ],
+        [
+          180,
+          240
+        ]
+      ]
+    },
+    "W08": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          240,
+          450
+        ],
+        [
+          480,
+          630
+        ],
+        [
+          660,
+          720
+        ]
+      ]
+    },
+    "W09": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          240,
+          450
+        ],
+        [
+          480,
+          630
+        ],
+        [
+          660,
+          720
+        ]
+      ]
+    },
+    "W10": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          240,
+          450
+        ],
+        [
+          480,
+          630
+        ],
+        [
+          660,
+          720
+        ]
+      ]
+    }
+  },
+  "operations": [
+    {
+      "id": "P01/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 240,
+      "predecessors": []
+    },
+    {
+      "id": "P01/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 240,
+      "predecessors": [
+        "P01/housing/step0"
+      ]
+    },
+    {
+      "id": "P01/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 240,
+      "predecessors": [
+        "P01/housing/step1"
+      ]
+    },
+    {
+      "id": "P01/housing/step3",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 240,
+      "predecessors": [
+        "P01/housing/step2"
+      ]
+    },
+    {
+      "id": "P02/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 600,
+      "predecessors": []
+    },
+    {
+      "id": "P02/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 600,
+      "predecessors": [
+        "P02/housing/step0"
+      ]
+    },
+    {
+      "id": "P02/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 600,
+      "predecessors": [
+        "P02/housing/step1"
+      ]
+    },
+    {
+      "id": "P02/housing/step3",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 600,
+      "predecessors": [
+        "P02/housing/step2"
+      ]
+    },
+    {
+      "id": "P03/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 960,
+      "predecessors": []
+    },
+    {
+      "id": "P03/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P03/housing/step0"
+      ]
+    },
+    {
+      "id": "P03/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P03/housing/step1"
+      ]
+    },
+    {
+      "id": "P03/housing/step3",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P03/housing/step2"
+      ]
+    }
+  ],
+  "transport_lags": {
+    "T1": {
+      "T1": 0,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8
+    },
+    "T2": {
+      "T1": 4,
+      "T2": 0,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8
+    },
+    "F1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 0,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8
+    },
+    "F2": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 0,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8
+    },
+    "F3": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 0,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4
+    },
+    "WASH1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 0,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8
+    },
+    "WASH2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "WASH1": 8,
+      "WASH2": 0,
+      "H1": 8,
+      "H2": 4
+    },
+    "H1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 0,
+      "H2": 8
+    },
+    "H2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 0
+    }
+  },
+  "worker_travel": 2,
+  "provenance": {
+    "factory_instance_sha256": "ee979dce3fd9bb99f5362d5a85e3e708e57b8e8aa480f7789519cf8c76f26c54",
+    "source_origin_minutes": 2160,
+    "actual_recorded_snapshot": false,
+    "remaining_recipe": "housing prefix; terminal means end of declared prefix, not a shipped pump",
+    "transport": "Uncapacitated machine-dependent minimum lags and exact per-machine initial loaded/handling release",
+    "excluded": [
+      "sequence-dependent setups",
+      "portable tools/service",
+      "energy",
+      "quality/recovery",
+      "finite buffers",
+      "capacitated AGV motion",
+      "heat batching"
+    ],
+    "current_claim": "Complete declared scheduling-cell QUBO, not lossless full-factory formulation or measured rollout improvement"
+  }
+}

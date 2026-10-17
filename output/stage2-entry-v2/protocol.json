@@ -1,0 +1,58 @@
+{
+  "schema": "qfactoria-entry-core-protocol.v1",
+  "train_seeds": [
+    7,
+    13,
+    29
+  ],
+  "test_seeds": [
+    101,
+    103,
+    107,
+    109,
+    113,
+    127,
+    131,
+    137,
+    139,
+    149
+  ],
+  "configurations": [
+    {
+      "layers": 1,
+      "alpha": 1.0
+    },
+    {
+      "layers": 2,
+      "alpha": 1.0
+    },
+    {
+      "layers": 2,
+      "alpha": 0.25
+    }
+  ],
+  "selection": "Minimum aggregate TRAIN sampled-energy excess, then fewer layers, then expectation before CVaR.",
+  "shots": 8192,
+  "angle_evaluations": 128,
+  "sa_replicas": 32,
+  "sa_sweeps": 256,
+  "reference": "Independent native interval CP-SAT, one worker, 10s cap; source separate from QUBO compiler.",
+  "source_hashes": {
+    "stage2/assignment_qaoa.py": "469a535a201c9b3f5a6ccf67a2977f98150f53ec9f2dcb3912ffacf717adfc9d",
+    "stage2/entry_core.py": "0b8b42edf2aaf5e21048d0158739c5b5ac55dceea511e4efec8a3f69015458cb",
+    "stage2/entry_campaign.py": "8b59af1ff234b96e73736033fbef3360ee7971acae8ca2e8e2c1eae0e1eb0318",
+    "stage2/window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+    "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42"
+  },
+  "quick": false,
+  "methods": [
+    "qaoa_xy",
+    "uniform_onehot",
+    "sa_onehot"
+  ],
+  "budgets": "All use the same full assignment domain. Budgets differ: quantum uses 128 exact simulated objective evaluations plus 8192 Born samples; uniform uses 8192 samples; SA uses 8192 proposals and returns 32 replica bests. No equal-compute or runtime-advantage claim.",
+  "physical_qpu_calls": 0,
+  "veloxq_calls": 0,
+  "status": "Declared before TRAIN/TEST outcomes"
+}

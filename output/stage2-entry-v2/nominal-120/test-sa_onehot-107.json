@@ -1,0 +1,118 @@
+{
+  "method": "sa_onehot",
+  "seed": 107,
+  "layers": 2,
+  "samples": 32,
+  "requested_samples": 8192,
+  "logical_qubits": 18,
+  "sector_amplitudes": 512,
+  "energy": 120,
+  "decoded": {
+    "valid": true,
+    "issues": [],
+    "weighted_terminal_tardiness": 0,
+    "makespan": 120,
+    "objective": 120,
+    "plan": [
+      {
+        "operation": "P01/housing",
+        "machine": "F1",
+        "worker": "machinist",
+        "start": 0,
+        "end": 30,
+        "attended_end": 30,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor",
+        "machine": "T1",
+        "worker": "machinist",
+        "start": 30,
+        "end": 60,
+        "attended_end": 60,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/assembly",
+        "machine": "A1",
+        "worker": "machinist",
+        "start": 60,
+        "end": 90,
+        "attended_end": 90,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/qa",
+        "machine": "QA1",
+        "worker": "finisher",
+        "start": 90,
+        "end": 120,
+        "attended_end": 120,
+        "hall": "A"
+      },
+      {
+        "operation": "urgent/qa",
+        "machine": "QA1",
+        "worker": "finisher",
+        "start": 60,
+        "end": 90,
+        "attended_end": 90,
+        "hall": "A"
+      }
+    ],
+    "encoded_makespan": 120,
+    "energy": 120,
+    "selected": [
+      0,
+      5,
+      9,
+      11,
+      12,
+      17
+    ]
+  },
+  "bits": [
+    1,
+    0,
+    0,
+    0,
+    0,
+    1,
+    0,
+    0,
+    0,
+    1,
+    0,
+    1,
+    1,
+    0,
+    0,
+    0,
+    0,
+    1
+  ],
+  "optimization": {
+    "replicas": 32,
+    "sweeps": 256,
+    "score_evaluations": 8192
+  },
+  "sector_exact_energy": 120,
+  "optimal_samples": 28,
+  "feasible_samples": 28,
+  "exact_hit_probability": null,
+  "feasible_probability": null,
+  "observed_counts": {
+    "71": 1,
+    "123": 7,
+    "139": 1,
+    "187": 9,
+    "295": 1,
+    "299": 1,
+    "379": 7,
+    "443": 5
+  },
+  "wall_seconds": 0.01694654067978263,
+  "process_cpu_seconds": 0.016938000000000564,
+  "physical_qpu_calls": 0,
+  "scope": "Complete declared one-hot assignment domain; no candidate cap or fixed outside bits. All logical qubits retained. Exact classical simulation/training costs included separately."
+}

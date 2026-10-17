@@ -1,0 +1,89 @@
+{
+  "profile": {
+    "currency": "illustrative PLN",
+    "calibrated": false,
+    "clock": "Minutes from synthetic midnight",
+    "tariff_period": 1440,
+    "tariffs": [
+      {
+        "start": 0,
+        "end": 360,
+        "pln_per_kwh": "0.50"
+      },
+      {
+        "start": 360,
+        "end": 1080,
+        "pln_per_kwh": "1.00"
+      },
+      {
+        "start": 1080,
+        "end": 1440,
+        "pln_per_kwh": "0.70"
+      }
+    ],
+    "active_kw": {
+      "T": "9",
+      "F": "12",
+      "S": "10",
+      "WASH": "4",
+      "H": "16",
+      "QA": "3",
+      "A": "4"
+    },
+    "standby_kw": "0.5",
+    "base_load_kw": "12",
+    "labor_pln_per_attended_hour": "40",
+    "night_premium_pln_per_attended_hour": "10",
+    "night_intervals": [
+      [
+        0,
+        360
+      ],
+      [
+        1320,
+        1440
+      ]
+    ],
+    "machine_start_pln": "5",
+    "late_pln_per_weighted_minute": "10",
+    "powered_policy": "used_from_first_start_to_last_end",
+    "description": "All prices and power rates are explicit synthetic assumptions. Attendance wages exclude walking, setup crews and salaried standby. Active machine power includes standby; family-setup gaps consume standby only. No solar, battery, export, demand charge or grid-cap optimization is claimed."
+  },
+  "source_hashes": {
+    "stage2/capacity_economics.py": "a5dfda72bf03afd72eecb58db94c7095b9e9f80f8107955118321e9435942efc",
+    "stage2/window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1"
+  },
+  "variants": [
+    "outage_complete",
+    "replacement_complete",
+    "replacement_original_pool",
+    "replacement_enriched_pool"
+  ],
+  "late_rates": [
+    "0",
+    "1",
+    "5",
+    "10",
+    "20"
+  ],
+  "fees": [
+    "0",
+    "100",
+    "500"
+  ],
+  "probabilities": [
+    "0",
+    "0.3",
+    "1"
+  ],
+  "scope": "Exact plan-cost and capacity-fee sensitivity; original native plans optimize priority objective, not money",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0,
+  "input_file_sha256": {
+    "output/manufacturing-recovery-v2/heat-outage-32/problem.json": "7b4f4ac4f7f906323412bd134074e505fea88f5722f6c62e0d59fb77fe223e73",
+    "output/manufacturing-recovery-v2/heat-outage-32/report.json": "a78fd9a92b4db0abb43bab74cd20e41e123fbb0ee5e2461a5b8730ecc67b4932",
+    "output/manufacturing-recovery-v2/heat-lease-32/problem.json": "44300511d4ab1694dd3dc98e768760aa7fe30c979d15a6e49ae06348b23d07c6",
+    "output/manufacturing-recovery-v2/heat-lease-32/report.json": "173ae766fe8e2c9ae9786057d59763267b26d67d1e0b3b4b341ec9ac34fc740b",
+    "output/capacity-frontier-review-v1/heat-lease-32/cap-64/report.json": "3f727edc1668403d6c3e2c2fea53e500b0f34baabab92e2f1d972478adf64929"
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "valid": true,
+  "source_report_sha256": "11bb875e72bb85cc00c6b2798a3631b93d7fc93ee60e93704e3cb9d50b14eb80",
+  "manifest_files_checked": 9,
+  "method": "Independent minute-by-minute Fraction electricity/attendance/start/late arithmetic; no ledger helpers used",
+  "rows": [
+    {
+      "variant": "outage_complete",
+      "independent_integer_minute_ledger_matches": true,
+      "line_items": 9
+    },
+    {
+      "variant": "replacement_complete",
+      "independent_integer_minute_ledger_matches": true,
+      "line_items": 9
+    },
+    {
+      "variant": "replacement_original_pool",
+      "independent_integer_minute_ledger_matches": true,
+      "line_items": 9
+    },
+    {
+      "variant": "replacement_enriched_pool",
+      "independent_integer_minute_ledger_matches": true,
+      "line_items": 9
+    }
+  ],
+  "targeted_test_command": ".venv-stage2/bin/python -m unittest tests.stage2.test_capacity_economics -v",
+  "targeted_tests_passed": 4,
+  "fresh_recipe_function_check": {
+    "artifact": "output/recipe-bridge-live/20261017T114936Z-c75670c7",
+    "case": "heat-lease-32",
+    "seed": 101,
+    "cap": 3,
+    "objective": 855,
+    "valid": true,
+    "elapsed_seconds": 0.8193279998376966
+  },
+  "remote_calls": 0
+}

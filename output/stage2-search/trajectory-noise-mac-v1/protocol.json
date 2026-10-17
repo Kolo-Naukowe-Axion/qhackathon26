@@ -1,0 +1,47 @@
+{
+  "schema": "stage2-trajectory-generic-noise.v1",
+  "settings": [
+    {
+      "name": "ideal",
+      "p1": 0,
+      "p2": 0,
+      "readout": 0
+    },
+    {
+      "name": "lambda1e-3",
+      "p1": 0.0001,
+      "p2": 0.001,
+      "readout": 0.01
+    },
+    {
+      "name": "lambda5e-3",
+      "p1": 0.0005,
+      "p2": 0.005,
+      "readout": 0.01
+    },
+    {
+      "name": "lambda1e-2",
+      "p1": 0.001,
+      "p2": 0.01,
+      "readout": 0.02
+    }
+  ],
+  "source_campaign": "output/stage2-search/trajectory-mixer-mac-v1",
+  "source_hashes": {
+    "stage2/trajectory_noise.py": "4b2620273a56691e8aa5a1a3b6bfbf2b4faf018e7cf31376d4962271f37b0742",
+    "stage2/trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+    "stage2/window_qubo.py": "594f682845d3b7d76f8a6f30c18c29aa3b7c5f083a00c1b69648b9078b439588",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049"
+  },
+  "basis": [
+    "rz",
+    "sx",
+    "x",
+    "cx"
+  ],
+  "virtual_rz_noise": 0,
+  "compiled_optimization_level": 3,
+  "transpiler_seed": 19,
+  "solver_threads": 4,
+  "scope": "Frozen ideal-trained angles, all actor seeds7/13/29 and p1/p2. Generic depolarizing channels after sx/x and CX plus independent symmetric readout bit flips. No relaxation/crosstalk/routing/calibration model or hardware prediction; physical QPU calls0."
+}

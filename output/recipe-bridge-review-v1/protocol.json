@@ -1,0 +1,50 @@
+{
+  "cases": [
+    "heat-outage-32",
+    "heat-lease-32"
+  ],
+  "parent_attempts": 256,
+  "parent_wanted": 64,
+  "parent_seed": 17021,
+  "parent_seconds": 12,
+  "caps": [
+    2,
+    3,
+    4
+  ],
+  "choice_rule": "First two raw constructive parents, then earliest component completion/time sum; nested prefixes",
+  "quantum": {
+    "layers": 2,
+    "evaluations": 64,
+    "shots": 512,
+    "alpha": 0.25,
+    "seeds": [
+      7,
+      13,
+      29
+    ]
+  },
+  "controls": [
+    "exact native restricted pool",
+    "exact complete sector",
+    "best constructive parent",
+    "uniform_onehot",
+    "sa_onehot"
+  ],
+  "max_states": 1000000,
+  "reference_seconds": 5,
+  "cp_teacher_used": false,
+  "gate": "Genuine restricted same-model recombination; no required advantage or best-parent improvement",
+  "source_hashes": {
+    "recipe_bridge.py": "dcada269c6f863dca47dc90e1829bbb11551b2e674322d36441a0271de6989bf",
+    "column_parents.py": "e00dd626ab6b643565715aa282a905ce34a1519b5e871f301a0f6cd5cbf850b9",
+    "column_qubo.py": "4c0964029724b389298a3e9dee517bd62dc121fa9825d97aaf975f95f89b8776",
+    "column_reference.py": "6f0082fef359ca089e68a39cb812ec2679e0860f9e28681ad61be3367d353f8f",
+    "window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+    "trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+    "assignment_qaoa.py": "469a535a201c9b3f5a6ccf67a2977f98150f53ec9f2dcb3912ffacf717adfc9d"
+  },
+  "remote_calls": 0,
+  "development": "Known recovery fixture; new raw constructive seeds; not held-out industrial instances",
+  "prior_probe": "Existing four-parent lease component pool exact native optimum65790; exploratory0.295s reference diagnostic before this redesign; no plan used in generation"
+}

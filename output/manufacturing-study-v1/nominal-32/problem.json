@@ -1,0 +1,1224 @@
+{
+  "name": "2 full pumps / 32 operations / nominal",
+  "horizon": 1440,
+  "grid": 30,
+  "machines": {
+    "T1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "T2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "F1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "F2": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "F3": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "S1": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "S2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "WASH1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "WASH2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "H1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "H2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "QA1": {
+      "hall": "A",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "QA2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "A1": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    },
+    "A2": {
+      "hall": "B",
+      "available": [
+        [
+          0,
+          1440
+        ]
+      ]
+    }
+  },
+  "workers": {
+    "W01": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          210
+        ],
+        [
+          240,
+          390
+        ],
+        [
+          420,
+          480
+        ]
+      ]
+    },
+    "W02": {
+      "skills": [
+        "welding",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          210
+        ],
+        [
+          240,
+          390
+        ],
+        [
+          420,
+          480
+        ]
+      ]
+    },
+    "W03": {
+      "skills": [
+        "qa",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          0,
+          210
+        ],
+        [
+          240,
+          390
+        ],
+        [
+          420,
+          480
+        ]
+      ]
+    },
+    "W04": {
+      "skills": [
+        "machining",
+        "assembly",
+        "qa"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          0,
+          210
+        ],
+        [
+          240,
+          390
+        ],
+        [
+          420,
+          480
+        ]
+      ]
+    },
+    "W05": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          480,
+          690
+        ],
+        [
+          720,
+          870
+        ],
+        [
+          900,
+          960
+        ]
+      ]
+    },
+    "W06": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          480,
+          690
+        ],
+        [
+          720,
+          870
+        ],
+        [
+          900,
+          960
+        ]
+      ]
+    },
+    "W07": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          480,
+          690
+        ],
+        [
+          720,
+          870
+        ],
+        [
+          900,
+          960
+        ]
+      ]
+    },
+    "W08": {
+      "skills": [
+        "setup",
+        "machining",
+        "maintenance"
+      ],
+      "initial_hall": "A",
+      "available": [
+        [
+          960,
+          1170
+        ],
+        [
+          1200,
+          1350
+        ],
+        [
+          1380,
+          1440
+        ]
+      ]
+    },
+    "W09": {
+      "skills": [
+        "welding",
+        "assembly"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          960,
+          1170
+        ],
+        [
+          1200,
+          1350
+        ],
+        [
+          1380,
+          1440
+        ]
+      ]
+    },
+    "W10": {
+      "skills": [
+        "qa",
+        "assembly",
+        "setup"
+      ],
+      "initial_hall": "B",
+      "available": [
+        [
+          960,
+          1170
+        ],
+        [
+          1200,
+          1350
+        ],
+        [
+          1380,
+          1440
+        ]
+      ]
+    }
+  },
+  "operations": [
+    {
+      "id": "P01/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 960,
+      "predecessors": [],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/housing/step0"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/housing/step1"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/housing/step3",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/housing/step2"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/housing/step4",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/housing/step3"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/rotor/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 960,
+      "predecessors": [],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/rotor/step1",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/rotor/step0"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/rotor/step2",
+      "durations": {
+        "F1": 75,
+        "F2": 75,
+        "F3": 94
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/rotor/step1"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/rotor/step3",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/rotor/step2"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/rotor/step4",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/rotor/step3"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/flange/step0",
+      "durations": {
+        "F1": 60,
+        "F2": 60,
+        "F3": 75
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "F1": 4,
+        "F2": 4,
+        "F3": 8
+      },
+      "due": 960,
+      "predecessors": [],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/flange/step1",
+      "durations": {
+        "S1": 60,
+        "S2": 60
+      },
+      "skill": "welding",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/flange/step0"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/flange/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/flange/step1"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/flange/step3",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/flange/step2"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/pump/step0",
+      "durations": {
+        "A1": 60,
+        "A2": 60
+      },
+      "skill": "assembly",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/housing/step4",
+        "P01/rotor/step4",
+        "P01/flange/step3"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P01/pump/step1",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 960,
+      "predecessors": [
+        "P01/pump/step0"
+      ],
+      "family": "alloy_A"
+    },
+    {
+      "id": "P02/housing/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 1320,
+      "predecessors": [],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/housing/step1",
+      "durations": {
+        "F1": 90,
+        "F2": 90,
+        "F3": 113
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/housing/step0"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/housing/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/housing/step1"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/housing/step3",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/housing/step2"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/housing/step4",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/housing/step3"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/rotor/step0",
+      "durations": {
+        "T1": 60,
+        "T2": 60
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "T1": 4,
+        "T2": 4
+      },
+      "due": 1320,
+      "predecessors": [],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/rotor/step1",
+      "durations": {
+        "H1": 120,
+        "H2": 120
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/rotor/step0"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/rotor/step2",
+      "durations": {
+        "F1": 75,
+        "F2": 75,
+        "F3": 94
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/rotor/step1"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/rotor/step3",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/rotor/step2"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/rotor/step4",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/rotor/step3"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/flange/step0",
+      "durations": {
+        "F1": 60,
+        "F2": 60,
+        "F3": 75
+      },
+      "skill": "machining",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {
+        "F1": 4,
+        "F2": 4,
+        "F3": 8
+      },
+      "due": 1320,
+      "predecessors": [],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/flange/step1",
+      "durations": {
+        "S1": 60,
+        "S2": 60
+      },
+      "skill": "welding",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/flange/step0"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/flange/step2",
+      "durations": {
+        "WASH1": 30,
+        "WASH2": 30
+      },
+      "skill": "setup",
+      "attendance": "start",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/flange/step1"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/flange/step3",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/flange/step2"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/pump/step0",
+      "durations": {
+        "A1": 60,
+        "A2": 60
+      },
+      "skill": "assembly",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/housing/step4",
+        "P02/rotor/step4",
+        "P02/flange/step3"
+      ],
+      "family": "alloy_B"
+    },
+    {
+      "id": "P02/pump/step1",
+      "durations": {
+        "QA1": 45,
+        "QA2": 45
+      },
+      "skill": "qa",
+      "attendance": "full",
+      "start_attendance": 5,
+      "release": 0,
+      "machine_release": {},
+      "due": 1320,
+      "predecessors": [
+        "P02/pump/step0"
+      ],
+      "family": "alloy_B"
+    }
+  ],
+  "transport_lags": {
+    "T1": {
+      "T1": 0,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "T2": {
+      "T1": 4,
+      "T2": 0,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "F1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 0,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "F2": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 0,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "F3": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 0,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 4
+    },
+    "S1": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 0,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 4
+    },
+    "S2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 0,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 4
+    },
+    "WASH1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 0,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "WASH2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 0,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 4
+    },
+    "H1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 0,
+      "H2": 8,
+      "QA1": 4,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "H2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 0,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 4
+    },
+    "QA1": {
+      "T1": 4,
+      "T2": 4,
+      "F1": 4,
+      "F2": 4,
+      "F3": 8,
+      "S1": 8,
+      "S2": 8,
+      "WASH1": 4,
+      "WASH2": 8,
+      "H1": 4,
+      "H2": 8,
+      "QA1": 0,
+      "QA2": 8,
+      "A1": 8,
+      "A2": 8
+    },
+    "QA2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 0,
+      "A1": 4,
+      "A2": 4
+    },
+    "A1": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 0,
+      "A2": 4
+    },
+    "A2": {
+      "T1": 8,
+      "T2": 8,
+      "F1": 8,
+      "F2": 8,
+      "F3": 4,
+      "S1": 4,
+      "S2": 4,
+      "WASH1": 8,
+      "WASH2": 4,
+      "H1": 8,
+      "H2": 4,
+      "QA1": 8,
+      "QA2": 4,
+      "A1": 4,
+      "A2": 0
+    }
+  },
+  "worker_travel": 2,
+  "provenance": {
+    "factory_instance_sha256": "ee979dce3fd9bb99f5362d5a85e3e708e57b8e8aa480f7789519cf8c76f26c54",
+    "source_origin_minutes": 1440,
+    "actual_recorded_snapshot": false,
+    "remaining_recipe": "All housing/rotor/flange steps, three-parent assembly join, final pump QA; shipping excluded",
+    "transport": "Uncapacitated machine-dependent minimum lags and exact per-machine initial loaded/handling release",
+    "excluded": [
+      "Capacitated AGVs",
+      "finite buffers",
+      "power",
+      "tool location/service",
+      "stochastic quality/rework",
+      "human setup crews",
+      "shipment"
+    ],
+    "current_claim": "Complete declared deterministic pump/BOM cell QUBO. Full physical factory constraints listed as excluded remain excluded.",
+    "setup_scope": "Machine-only directed-metric family changes on uninterrupted remaining machines; no split setups or mid-operation failure model.",
+    "synthetic": true,
+    "scenario": "nominal",
+    "decision": "Full backlog plan at a known disruption boundary; all16 recipe operations per pump remain mandatory.",
+    "outage": "Selected F3 or H2 withdrawn for the entire declared planning window; no in-progress work or setup is erased.",
+    "lease": "F4/H3 copies the withdrawn machine capability/transfer lags; processing starts no earlier than360min, no fee/ROI modeled; first family is neutral as in baseline.",
+    "rush": "When enabled, P02 terminal due date changes from1320 to900min, known at planning time.",
+    "data_scope": "Factory-derived synthetic parameters; not an industrial dataset or trace-extracted state."
+  },
+  "machine_setups": {
+    "alloy_A": {
+      "alloy_A": 0,
+      "alloy_B": 30,
+      "alloy_C": 45
+    },
+    "alloy_B": {
+      "alloy_A": 30,
+      "alloy_B": 0,
+      "alloy_C": 45
+    },
+    "alloy_C": {
+      "alloy_A": 45,
+      "alloy_B": 45,
+      "alloy_C": 0
+    }
+  }
+}

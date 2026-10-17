@@ -1,0 +1,138 @@
+{
+  "schema": "stage2-window-integration-development.v1",
+  "orders": 12,
+  "horizon": 5760,
+  "seeds": [
+    0,
+    1
+  ],
+  "methods": [
+    "baseline",
+    "constructive",
+    "anneal",
+    "compressed_uniform",
+    "compressed_qaoa",
+    "cp"
+  ],
+  "interval": 240,
+  "max_parts": 4,
+  "prefix_depth": 2,
+  "window_horizon": 480,
+  "grid": 15,
+  "iterations": 8,
+  "shots": 256,
+  "angle_evaluations": 24,
+  "frozen_baseline_method": {
+    "id": "static-grid-12",
+    "kind": "recovery",
+    "configs": [
+      {
+        "orders": 12,
+        "horizon": 5760,
+        "profile": "full"
+      }
+    ],
+    "weights": {
+      "wip_limit": 8,
+      "mode": "standard",
+      "due": 0.25,
+      "remaining": -4.0,
+      "family": 24.0,
+      "setup": 10,
+      "lease_calibration": true,
+      "selector": "priority",
+      "policy_seed": 0,
+      "tool_distance": 0,
+      "qa_guard_threshold": 4,
+      "worker_calendar": true,
+      "preposition": false,
+      "admission_rule": "family",
+      "bom_priority": false
+    },
+    "specialist": true,
+    "admission": true,
+    "tool_policy": {
+      "mode": "hard"
+    },
+    "kit_reservation": true,
+    "recovery_policy": {
+      "enabled": true
+    },
+    "routing_policy": {
+      "eta_processes": [
+        "QA"
+      ],
+      "free_buffer_processes": []
+    },
+    "completion_policy": {
+      "credit_minutes": 270,
+      "reclaim_dead_slots": false
+    },
+    "maintenance_outage_guard": true,
+    "selection_provenance": {
+      "data": "Full32TRAIN static factorial then atmost4 candidates on reusedVAL16",
+      "validation_report": "output/stage2-search/axion-static-control-validation-v16p2-submission/validation-part0/report.json",
+      "policy_id": "n12-w8-g4-standard-QA1-credit270-join0",
+      "validation": {
+        "missing": 0,
+        "tardiness": 47641,
+        "cost": 10968.523506033387
+      },
+      "cost_reference": "compute-ledger.json"
+    }
+  },
+  "baseline_selection_sha256": "197e115d0dd9900a2f76858590e7416f1dabb65ae6f7f3ebececda0cf5125fec",
+  "source_hashes": {
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/window_qubo.py": "3c526e0c0febb6f0e3a384b156e04cfe5f48b292d59b4e2517a66c193a568af8",
+    "stage2/window_experiments.py": "6adb724f77bafaa1e279e7b458fe5f962974dd60783d9ee6129e5db3aee47fe7",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049",
+    "stage2/planning_compressed.py": "78d50d757e4d163e0bcc57649ec386c4068d95c589e5c81bd65a96586c520e1a",
+    "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "stage2/window_pump.py": "bb64c3fa40de3a9af5e6dba09d1b69553144c225a3659bedcfd410c886011f11",
+    "stage2/window_search.py": "9b1241cf9368454d93de0cc4c477ffd37795f1d831ee17c54e659108851aea5f",
+    "stage2/window_campaign.py": "2376e5ad778d0d05f731ef62447b460a516b13ec8882d0666adc2b90de004406",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/bounds.py": "dafff70b906237bb5caeeb602da1207657b1582f1f36d33c7e7be1c8e6d15836",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/dispatch.py": "575c243418fc282ec4de8864ff6744809ed0d920a948607b83e271fa9e0c6fe5",
+    "stage2/qubo.py": "4b5852d061356fefad1499ab3cf9538e2f51a52cab551d242c3ce96a1fd509e5",
+    "stage2/quantum.py": "c230771ae2665e5cd6c0f208ce6d3e974496a41427a723c6040d9f528366d484",
+    "stage2/final_eval.py": "6264f3f6b93ba5128b742b06facad97714ef09b3f244ce076bf0123848236e5e",
+    "stage2/statistics.py": "a7a7fca099159b97dfa55c74387f0576af2e8eb04488ad41edb1225751d674e0",
+    "stage2/threshold.py": "57f0d70367b8ff55a9bd3feef2c05c978213c3fb5f41884625daca4b8ddf3346",
+    "stage2/sequential.py": "3cfa66f8f394d4e8251bd91f8a5d21bce204c74be3e3bde97e8a337dae6c3a16",
+    "stage2/advanced.py": "01d827bacbc77c7492f7d9a860afd23376df62d0aa99f12c9bf98153f270f555",
+    "stage2/specialist.py": "7121a810d71be6b6c57b7504031e45cdf0658bb1a6645ee42e8e6b712dd3fff5",
+    "stage2/mpc.py": "ea2b951696b6733b8a30f035da226b55541a093f275c1ee21c93271955aed812",
+    "stage2/energy.py": "af64114ac4f0d8ff80fb27e1358b46fa0ad1e8353b9add5e91fc95e2c3ac9271",
+    "stage2/burnin.py": "a7e082ae5fcd91fca2062dca795de3323dc39f8021f4d56636d83d0e6d232b0f",
+    "stage2/admission.py": "295a4bce9ebd7fcc94b15e4630b92012de54f2c021745703f8332f2cce19cd0e",
+    "stage2/tooling.py": "8117e6039c103c723bf50996bec5c789d639f287e0284797525164a1da01f316",
+    "stage2/kitting.py": "277a5b97c453d7bd74691380f21fe50672376ee955e7c00d73c8ed2b0d75e8ab",
+    "stage2/kit_recovery.py": "de405130cf3b1ef6ed76a5dc3c27893c23bfc65cf87bde2eae5d0cdd8b3bde8b",
+    "stage2/routing.py": "2997cb4bd643bb0f46529a6591121ce11b95089dda37c37236fa14fe744bbe34",
+    "stage2/recovery_routing.py": "926ec6f9fe5a9a7aa2fa338eb69f5bf64e31d3bb11837d185ddf8f878ff918b1",
+    "stage2/recovery_mpc.py": "074ab50ffa8fa05a7e90e7c23d729531602752de5791e4d1b69443c6eacaffc4",
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+    "stage2/selector_reward.py": "4af17eae69f34dd5396a08a51fa9c1c6aebd8a0ebcc357074e64dac6271fc253",
+    "stage2/adaptive_recovery.py": "7fbe58fb6131e0a2101bf7f2a0282bc8c81e3ab09a6ccf7ce0e01da8f5b9498e",
+    "stage2/adaptive_modes.py": "4a4c6b3fcd5a40020393950b064e908310b87b69752324a9def7e08d0ffd3801",
+    "stage2/completion_policy.py": "263f421243e22c5a67a846e2abe2e039337dbee0fdf61eaccaa1fc23c2920a03",
+    "stage2/bom_probe.py": "48ca779cc088765d364a3d81a25a352e118573ef63d27e145a5f1a631fbe0e75",
+    "stage2/maintenance_guard.py": "d49f590a518cb2fe5001a334a8ca465751fdd034c2afe3c10af5a3bdc2136987",
+    "stage2/compare_evaluations.py": "2ef6688c7331cfe7646c4d758aec690427b4e102204047ab03e32e2afa43ffe2",
+    "stage2/quality_material_bound.py": "c16698d81a2803df30c4b8d331904a14f45a375040ac9a3ca750b151e2e80236",
+    "stage2/certify_evaluations.py": "0ebad4ec76aa0401b985489a9421e24b522a31cf44a6c4c83c7c7e552ef7dd12",
+    "stage2/primary_intervals.py": "1c7bbb503dbdec1e1c6663515bf38ff6bfc18ae9a5ff4301cf5da0fb93208022",
+    "stage2/selected_run.py": "59692c53faaa25932f5e841bd1dcb14e47793a5785bc2e4609c5c78fd582d5de",
+    "stage2/window_factory.py": "efbe2cdebf4797326863ac5d76357f6a0d9259c8165ff774f012d6dee1b00e05",
+    "stage2/window_integration.py": "5d7331ce5b2974bc867ce81818a55577a0922136170fe5a29e2ff6a65a92e084"
+  },
+  "scope": "Development only, seeds0/1 reused for diagnosis. Strong static recovery factory with advisory routing/priority. No held-out gain/quantum advantage claim.",
+  "final_tapes_used": 0,
+  "physical_qpu_calls": 0,
+  "gpu_hours": 0
+}

@@ -1,5 +1,41 @@
 # Technical claim register — 17 October 2026
 
+## Complete-recipe recovery — current application centerpiece
+
+[Manufacturing study](STAGE2_MANUFACTURING_STUDY.md) and [combined direction](STAGE2_COMBINED_DIRECTION.md) supersede the small-fixture centerpiece below.
+
+| Claim | Evidence and limit |
+|---|---|
+|Replacement heat capacity removes45 weighted late minutes|`manufacturing-recovery-v2`: full native CP OPTIMAL65,790→855; makespan945→855. Synthetic32-operation planning model, not physical shipment or monetary ROI.|
+|This capped pool hides the recovery benefit|Same-input restricted optima65,790 in both scenarios; all32 operations retained but assignment choices lost. Does not prove all compact encodings lose it.|
+|Complete recovery QUBOs retained|2,353/343,682 and2,499/381,371 bits/couplers. Compiled, not solved by VeloxQ or full-size QAOA.|
+|Scaling reaches128 operations|Saved checked schedules; complete64/128 native references UNKNOWN under saved budget. Restricted optimum is not global.|
+|Smaller safe penalty is not automatically better|CPU pilot60 runs: original21/240 feasible reads, tightened1/240; no improvement over heuristic. Old study-v1 heat due dates, not recovery-v2.|
+|Six larger SDK-format inputs audited offline|`manufacturing-packets-v1`: twelve cold/witness-initialized HDF5 files, exact coefficient/offset and witness checks. Process-local token forced empty before SDK import. Service acceptance/internal precision unverified; no credit usage.|
+|New production studio shows actual checked schedules|`presentation/manufacturing/`, source-hashed exported reports, full recipe/BOM and worker/machine timelines. Playback only; no AGV shipment claims.|
+|Recovery-centered video draft exists|`manufacturing-video-v3/receipt.json`:161.9493 seconds, actual UI captures and synthetic narration; no upload/submission.|
+
+Small QAOA and the physical simulator remain separately scoped evidence below.
+
+## Later local manufacturing entry — complete residual cell
+
+The smaller quantum candidate is defined in [STAGE2_ENTRY.md](STAGE2_ENTRY.md), with
+literal artifacts in `output/stage2-entry-v2/`. Its scope differs from every
+older row below: a new synthetic, complete residual cell, not a full-factory
+snapshot or a lossless whole-factory encoding.
+
+| Current claim | Exact evidence and boundary |
+|---|---|
+|18–34 logical-qubit simulated QAOA uses all assignment groups|`assignment_qaoa.py`; no reference pool, fixed outside bits or hidden qubit compression. Exact sector enumeration is classical preprocessing and reveals the minimum. Resource feasibility is penalized, not mixer-preserved.|
+|60 optimal actual schedules, 57 measured exact minima|Six declared cases ×ten TEST seeds in `output/stage2-entry-v2/report.json`; three completion registers overshoot by30. SA60/60 both, uniform59 schedules/52 minima. No quantum advantage or unseen-instance claim.|
+|Circuit output matches independent full-Hilbert calculation|`output/stage2-entry-circuit-audit-v1/report.json`:18-qubit error1.0062e−15. Larger QASM parsed/transpiled only;34qubits852CX/depth322 without routing.|
+|Capacity decisions change optimal deadline debt|Outage/no-spare optimum11,010 vs120 with spare; no-cross-training also11,010 but selected plan delays urgent QA, not pump QA. Synthetic counterfactual, no measured ROI.|
+|Offline SDK serialization preserves the whole model|Nine packets in `output/stage2-entry-velox-offline-v4/`,576 probe energies and274,653 independent exact coefficient checks in `output/stage2-entry-velox-coefficient-audit-v2.json`. ×4 integer scaling fixes detected local float32 loss. Platform acceptance/internal precision unverified.|
+|Fresh demo actually computes a result|`entry_demo.py`, timestamped `output/stage2-entry-live/`, and captured native action in `output/playwright/entry-recording-v2/`. Demo runs are excluded from the60 TEST results.|
+|Video draft exists locally|`output/stage2-entry-video-v6/receipt.json`: edited UI evidence and actual action capture, synthetic narration,173.217366seconds. Human review/upload and live delivery remain undone.|
+
+The original claim register follows; its historical evidence/scopes are retained.
+
 Authority is the local [challenge PDF](../Quantum_Hackathon_2026_ERP_Challenge.pdf), especially §§4–6,8–14 (SHA256 `821b7d47a02cdf1d1e5bacc730ad030683d37a56e282b98c4e221675b01d1e99`). This is a read-only evidence audit plus this register, not organizer approval or a claim of submission. New results require an explicit dated update.
 
 The defensible narrative is: **both mandatory baselines actually run and attain their exact optima; a certified instance-specific reduction preserves all five deadline-feasible B machine orders in three semantic bits; a much richer physical factory has checked classical/hybrid execution, genuine small simulated QAOA decisions, scoped exact references and measured development improvements.** Neither a full-factory quantum compression nor quantum advantage is established.

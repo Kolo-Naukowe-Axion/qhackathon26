@@ -1,5 +1,218 @@
 # Development log
 
+## 2026-10-17 — authorized repository sync and lossless evidence packaging
+
+The user requested committing and pushing all current work to the existing
+private remote. This authorizes the configured automatic site deployment;
+repository visibility, actual VeloxQ/QPU use and final submission remain held.
+Three newer remote tutorial commits are preserved during integration.
+
+Four development JSON files exceed GitHub's100MiB limit. They are retained
+locally, represented in Git by deterministic gzip assets and a size/SHA-256
+index, and restored by a Node-only pretest hook. This preserves literal bytes
+and fresh-clone build inputs without network downloads. Earlier release assets
+retain their existing restoration path. The user explicitly deferred Markdown
+and JSON cleanup: no pruning or consolidation is part of this sync.
+
+## 2026-10-17 — mathematical specification and manufacturing workspace refinement
+
+The user emphasized verified merit and readable mathematics, then requested that
+the UI meet the same standard. Added the independently reviewed main-model
+`docs/STAGE2_MANUFACTURING_MATH.md`: raw domains/constraints, complete polynomial,
+coefficient conventions, integer hierarchy, represented-witness penalty proof,
+exact/lossy reductions, unit-deadline query and restricted quantum bridge.
+Fifteen display equations,79inline expressions and31local links were checked.
+No compiler correctness issue was found; actual measured advantage is not inferred.
+
+Rebuilt the manufacturing page around a dark story rail, clear outcome and shop
+floor, with separate recipe/timeline, model/results and questions views. The
+math walkthrough ties a selected assignment to the objective and penalties.
+Independent source review found and root fixed five UI defects: SVG keyboard
+activation, focus loss after redraw, focus/status hidden by panel switches,
+misplaced nominal comparison and processing-duration worker ghost bars.
+Story semantic tests check the four actual retained0/45late schedule choices.
+A full build passes114site tests and syntax checks. A stale hash in the older
+Start guide was refreshed by its read-only exporter; frozen evidence stays intact.
+
+The preview server now handles idle preconnections concurrently. After a browser
+policy block was resolved by the user loading the HTTP preview, desktop review
+checked story outcomes, keyboard selection/focus, tabs, nominal People comparison,
+math rendering and a fresh local QAOA action. That28-qubit run returns checked
+0weighted lateness/855-minute completion in1.43seconds, with a visible result
+notice and timestamped artifact `output/recipe-bridge-live/20261017T121949Z-1a0a57ab`.
+No browser warning/error logs. Mobile visual verification is not claimed.
+Original pending-review workspace-v1sources remain a separate snapshot; current
+browser evidence is in `output/manufacturing-workspace-qa-v1/`.
+
+Actual VeloxQ, physical QPU, final video, publication and submission remain held
+or deferred as recorded; no remote call, upload, commit, push or deploy occurs.
+
+## 2026-10-17 — technical acceptance closeout and current documentation
+
+The final strict acceptance snapshot, `output/merit-audit-final-v1/requirements.json`,
+passes all 14 agreed non-VeloxQ core requirements with no incomplete core items.
+The final implementation receipt records 52 targeted Python tests, 113 site
+tests, syntax checks and a successful static build, with 269 source hashes.
+Independent consistency-v2 checks 20 conditions, 34 files and 116 local links,
+including the actual fresh 28-qubit artifact and complete raw 32-operation plan:
+zero weighted lateness / 855-minute completion. These are dated snapshots.
+
+The user then requested a documentation update. Added [current status](docs/STAGE2_STATUS.md)
+and aligned README, context, design, combined plan, submission preparation and
+implementation/earlier-explanation entrypoints with this closeout. Historical
+pause, separate small-cell results and failed experiments remain scoped.
+Documentation verification is refreshed in a new output directory rather than
+rewriting any historical numerical or test receipt. No implementation or UI
+behavior changes accompany this update, so model tests are not rerun.
+
+Actual VeloxQ execution remains held. The final synchronized video, human live
+rehearsal and public release/submission remain open; technical acceptance does
+not imply these are complete. No service use, paid compute, new optimization,
+commit, push, upload, deployment, publication or submission occurs in this update.
+
+## 2026-10-17 — independent review passes and new formulation experiments
+
+- Review closeout:19new tests pass. Expanded cold controls completed40runs with
+  640returned bitstrings in54.04seconds. A separate reporting-only audit
+  independently checks physical operation plans apart from completion-register
+  validity:0encoded-valid,0physically-valid and0target. Original manifests and
+  all input hashes verify; no resampling was needed for the reporting correction.
+- Both declared boundary-release gates fail before quantum sampling:12freed
+  operations leave98/60candidate bits and an empty mandatory domain. This is not
+  proof every small block is impossible. At this point the larger-case quantum
+  connection remained unresolved; the later whole-recipe bridge entry below
+  resolves integration using a different representation. Full review and revised priorities are in
+  `docs/STAGE2_REVIEW_PASSES.md`; no VeloxQ run, credits or publication occurred.
+
+- User explicitly requested multiple subagent passes. Three reviewers challenged
+  rubric integration, VeloxQ relevance and technical validity, then reviewed the
+  resulting experiments. Their strongest objection was that a weak candidate
+  pool does not prove the complete QUBO is necessary.
+- Implemented deterministic nested mode/time enrichment with all original rows
+  retained, no CP-plan teacher and saved pools before references. All ten pool
+  references prove OPTIMAL. Replacement cap64 recovers0 tardiness/855min with
+  2,078bits/196,228couplers; smaller tested caps stay45late. Saved evidence in
+  `output/capacity-frontier-review-v1/` and `docs/STAGE2_CAPACITY_FRONTIER.md`.
+- Implemented exact hard-terminal-deadline/cap QUBO with unit feasibility
+  penalties, no makespan register and explicit pair/coupler guards. Independent
+  raw CP reference preserves original calendars/horizon. Replacement query is
+  818bits/33,817couplers; cap855 is feasible,854 infeasible; outage900 infeasible.
+  Eleven deadline tests cover tiny exhaustive energies, pruning, richer resource
+  rules, query hashes, guard semantics and unresolved native solves.
+- `docs/STAGE2_DEADLINE_DECISION.md` records exact scope and study. Pure
+  feasibility does not optimize the original secondary objective; positive-energy
+  sampler returns do not prove infeasibility. No remote backend, SDK credentials,
+  publication or credit use occurred. Expanded local controls and the same-model
+  quantum headroom gates are complete with the negative outcomes recorded above.
+
+## 2026-10-17 — complete-recipe recovery study and production studio
+
+- Promoted complete16-operation pump recipes to the application centerpiece; retained the small QAOA fixture as a separately scoped validation microscope. Added `docs/STAGE2_MANUFACTURING_STUDY.md` alongside implementation.
+- Ran nine manufacturing cases, then a separate due-date-matched recovery-v2 pair. Complete native CP certifies45→0 weighted late minutes with replacement heat capacity; the restricted-pool optima both remain45. Compiled complete recovery QUBOs with2,353/2,499 variables and343,682/381,371 couplers. Saved source snapshots and inputs distinguish old due dates.
+- Added checked-incumbent penalty proof and60 CPU annealing controls on saved study-v1 models. No returned improvement over heuristic incumbents; tightened penalty yields1/240 feasible reads versus21/240 for the original bound at these settings. Retained the negative evidence; this is not a VeloxQ prediction.
+- Built the saved-plan production studio, linking worker attendance, full recipes, actual Gantts, counterfactuals, domain loss and honest scaling bounds. Browser checks passed for outage/replacement, restricted-pool loss, worker lanes,128-operation UNKNOWN and no console errors. Six larger model inputs / twelve HDF5 files passed6,301,798 independent coefficient checks;37 plans and480 annealing samples rechecked. Three manufacturing Python tests and110 site tests/build passed. Added a gated backend runbook. Completed the recovery-centered161.9493-second local video review cut in `output/manufacturing-video-v3/`, with actual captures, disclosed synthetic narration and source-hash receipt. Sampled encoded video frame inspected; no upload or submission. No remote service/QPU, credits, publication or deployment.
+
+## 2026-10-17 — combined direction and QOBLIB assessment
+
+- User emphasized competing for the VeloxQ prize with a workload the solver can
+  actually handle well. Added a sponsor-priority pilot ladder to the combined
+  direction: known-target full recovery, growing backlogs/windows, strong native
+  CP and identical-QUBO controls, feasibility/quality/time/cost/diversity metrics.
+  Measured the saved recovery graph as12.22% dense with mean degree305.22;
+  sparse storage alone is not the sparse-topology promise of published tests.
+  Local tiny-budget annealing failures motivate testing, not a performance claim.
+  The existing remote-use hold remains; no VeloxQ call was made.
+
+- User authorized combining iwos, kari and iwow, then asked for ongoing
+  documentation. Added `docs/STAGE2_COMBINED_DIRECTION.md`; the other active
+  instance continues to own manufacturing implementation and visualization.
+- Centered the synthesis on saved recovery-v2 evidence: complete native CP
+  weighted tardiness 45→0 with replacement heat capacity, while this restricted
+  candidate pool remains at45. Freshly replayed the four raw/pool schedules with
+  the source-matched checker and verified objectives/input hashes. The audit is
+  `output/combined-direction-20261017/evidence.json`; no new optimizer ran.
+- Kept older study-v1 due dates distinct, small QAOA separate from full-recipe
+  results, and proposed economic sensitivity separate from calibrated ROI.
+- Read QOBLIB's official site, participation guidance and MIS family. Recommend
+  its reporting discipline now and optional predeclared external solver controls
+  after the main manufacturing evidence is secure. Its current ten-family list
+  has no manufacturing job-shop family. No benchmark run or external submission
+  was performed; remote-backend and publication holds remain.
+
+## 2026-10-17 — manufacturing entry refinement and complete assignment mixer
+
+- Closeout: five new assignment/circuit tests and twenty existing window-model
+  regression tests pass. The site build passes all107 browser-model tests;
+  syntax checks now include the new entry app. The final retained claim audit
+  is `output/stage2-entry-claim-audit-v3.json`. Independent coefficient equality
+  checks274,653 values across the nine final SDK files, covering every state.
+- The supplied mentor reply is personal preference pending further jury
+  consultation; it reinforces staying in manufacturing and is not quoted as
+  a formal ban. No message was sent to the mentor/private channel.
+- Credential wording correction: earlier receipts counted only the preparer's
+  explicit token lookups, overlooking the SDK's import-time environment lookup.
+  No credential was displayed or used in a request. The final v4 preparer forces
+  an empty process-local token before import without reading its previous value.
+  Parent environment/configuration is unchanged. Earlier receipts are retained
+  with that narrower interpretation; no service request or credit use occurred.
+- A local173.217366-second H.264/AAC review draft is prepared in
+  `output/stage2-entry-video-v6/`, using real UI captures plus timestamped
+  before/after frames of an actual fresh button action. Synthetic Daniel
+  narration and editing are disclosed; this is not a continuous recording of
+  the entire presentation. A transcript and hashes accompany it. Human review,
+  upload and actual live delivery remain separate.
+
+- User resumed Stage 2 implementation after the explanation pause and reported
+  organizer advice to remain in manufacturing. Kept the pump domain. Replaced
+  catering as the active direction; its proposal remains historical research.
+- The existing full-factory study stays frozen. Built an explicitly synthetic,
+  complete residual cell: final housing/rotor machining, assembly join, pump QA
+  and an urgent QA order, with shared people, alternative machines, a calendar
+  outage and due-date priorities. It is not a trace-extracted factory state.
+- Implemented W preparation and ordered XY mixing for every operation assignment
+  group and makespan group. This removes the earlier proposal-pool restriction
+  within the declared cell. It does not preserve all resource constraints or
+  encode the rich factory losslessly. Simulation enumerates the one-hot sector
+  classically and retains the full logical-qubit register.
+- Saved protocol/source snapshots before TRAIN/TEST. TRAIN seeds 7/13/29 select
+  p=2/CVaR .25; ten TEST seeds per six cases test fresh optimizer/sampling
+  randomness on those same instances. QAOA: 60/60 valid optimal actual schedules,
+  57/60 exact encoded minima. Three makespan registers are 30 too large;
+  operation plans are unchanged. SA: 60/60 of both. Uniform: 59/60 optimal plans,
+  52/60 minima. Unequal evaluation budgets and all classical costs are disclosed.
+- `output/stage2-entry-v1/` retains a duplicate-keyword reporting failure; v2
+  fixes reporting without retuning the algorithm. Completed v2 campaign takes
+  11.980 wall / 11.838 CPU seconds on this host. No hardware timing claim.
+- Qiskit independently replays the emitted 18-qubit circuit: maximum probability
+  error 1.0062e-15. Larger circuits are parsed/transpiled only. The 34-qubit
+  circuit has 852 logical CX and depth 322, including preparation; no routing.
+- Capacity ablations change the reference objective 120→11,010. Without a spare
+  during outage, the pump is 30 minutes late. Without cross-training, the
+  selected optimum instead delays urgent inspection by 60. This is a synthetic
+  scheduling counterfactual, not measured purchase ROI.
+- Prepared nine actual SDK-format VeloxQ files without a token or network call.
+  The first packet attempt found missing OR-Tools in the SDK environment;
+  references now run separately with problem hashes checked. The next attempt
+  caught an actual float32 serialization energy mismatch. Exact ×4 integer
+  Hamiltonian scaling preserves quarter-integral coefficients and all 576 final
+  round-trip checks pass. Failed directories are retained. SDK 1.0.0 backend
+  acceptance/internal precision remain unverified. Largest packet: 1,602
+  variables / 118,889 couplers; its native CP reference is separately optimal.
+- Built the local jury view `/entry/` and a loopback Python action that actually
+  recomputes QAOA and a native CP reference. Browser verification confirms a new
+  timestamped result/QASM/manifest and the no-spare ablation. Saved evidence is
+  labeled separately. The static build includes no Python service.
+- Added the authoritative `docs/STAGE2_ENTRY.md`, root Design/README links and
+  `scripts/verify-stage2-entry.py`. The audit checks 386 file hashes, independently
+  redecodes all 180 TEST outputs, confirms winners were actually sampled and
+  checks display totals against the retained source. An old guide hash correctly
+  failed after README changed; its generated reference is refreshed, rather
+  than removing the check. No frozen factory export is rewritten.
+- VeloxQ service calls, token reads, uploads, credit use and physical QPU calls
+  remain zero. Stage 2 commit/push/deploy/publication hold remains in force.
+  Video review/upload, public MIT release, team declaration, form submission and
+  human live rehearsal are separate completion duties, not inferred from tests.
+
 ## 2026-10-17 — Stage 2 implementation and ongoing research
 
 - Implemented the full minute-resolution two-hall factory and independent
@@ -255,3 +468,276 @@ The local 4187 research view shows the final frontier, TRAIN neighborhood, condi
 
 
 Stage2 authorized eight-hour research window completed at 2026-10-17T04:14:35.500900+00:00. Technical evidence and local handoff are complete; all tracked research jobs are finished. See output/stage2-search/research-closeout.json and docs/STAGE2_RESULTS.md. Publication hold remains; repository private at the04:11UTC live recheck, with video/team/form receipt unverified. No further experiments or policy changes are scheduled.
+
+## 2026-10-17 — Later solution-quality scoring supplement
+
+The user requested stronger evidence for the five-point solution-quality criterion
+and authorized local Mac compute. Stage 1 was already optimal and needed no new
+search. No VeloxQ, physical QPU or remote compute was used.
+
+Added `stage2/quality_gap_audit.py`: rebuild all 2,048 distinct configuration/tapes
+and audit the 23,552 original frozen outcome rows across all 74 groups. The
+original source-bound quality/material lower bound and best valid same-tape
+retained witness bracket the realized primary optimum; exact actor-within-tape
+weighting gives absolute excess-missing intervals. Hindsight witness selection is
+an offline bound, not a deployable policy. Invalid/mismatched rows, incomplete
+actors, duplicate actors and incorrect weights are rejected. No final policy,
+factory source, outcome, held-out sample or previous report is changed.
+
+Added a stronger independent `quality_compound_bound.py` supplement: the engine's
+`1-(1-r)(1-p)` recurrence gives the necessary floor
+`1-product(1-min_legal_mode_risk)` across mandatory steps, with zero wear granted,
+exact fractions and a conservative rounding margin. Original source/domain guards
+remain mandatory. Inspection draws enter offline proof only. On the unchanged
+32-order/240-hour final sample, primary-optimum certification rises from 93.44%
+to 95.28%, and mean excess above the realized primary optimum is at most 0.04719
+missing orders. The 12-order selected controller's weighted certificate rate is
+95.61%, with excess interval [0.06469,0.06875]. Secondary optimality and quantum
+advantage remain unestablished; the weak 24-order results remain visible.
+
+Tested a supplemental equivalent deterministic CP formulation in
+`reference_polish.py`, preserving the original reference solver and all frozen
+physics/checkers. It replaces worker-path bits with chronological hall-order
+constraints, adds AGV occupation intervals and prunes precedence-impossible arcs.
+The original 1541-minute witness fits every new constraint; both formulations
+agree on a proved small optimum. A five-minute/eight-worker search retained1541
+and reported1457, below the earlier1524 lower bound. Three worker-order
+neighborhood searches also retained1541 and proved only their restricted local
+optima. Their lower bounds are explicitly excluded from global claims. Thus the
+combined best four-pump interval remains [1524,1541], at most1.116% excess.
+Fresh unchanged physical/identity checks also validate the existing863/1191
+two/three-pump exact witnesses.
+
+Measured local reference searches used2374.76 process CPU seconds (0.660CPUh),
+separate from the immutable earlier432CPUh ledger. Tests/audits are excluded from
+that process-CPU subtotal. All local searches ended. The closeout, source
+snapshots, negative searches and audit tables are in
+`output/solution-quality-20261017/`. The evidence is summarized in
+`docs/SOLUTION_QUALITY.md`, linked from README/results/judge notes. The Project
+Design now describes the actual QAOA baseline and unused remote adapters.
+
+Validation:18 quality tests,7 supplemental-reference tests,6 original multi-pump
+reference tests and87 frontend tests passed. Hash checks match the original input
+rows and current compound-audit snapshots. Jury points cannot be guaranteed.
+
+
+## 2026-10-17 — renewed Stage 2 planning-core research (active)
+
+The user renewed the goal of the strongest feasible Stage2 contender after the
+original8h campaign. New local-only work is separate from its immutable final
+tapes. Complete deterministic32/48/64-operation pump/BOM scheduling-window
+QUBOs now have raw interval CP references, exact support pruning, independently
+checked conditional energies, affine dual-rail reductions and optional exact
+machine-only metric-family changeovers with zero added bits. The32-operation
+minute-grid/setup raw CP optimum787555 is proved in9.71s; coarser grids have
+measured loss and are never called exact reductions. Fine-grid raw CP did not
+construct the115878-candidate time-indexed QUBO.
+
+Restricted complete-trajectory masters fit5/8bits but explicitly discard raw
+schedules; their nonzero full-model gaps and failed4-pump parent generation
+remain visible. W-state/XY makespan-preserving circuits improve the8bit pool's
+mean p2 single-shot optimum probability to13.42% vs0.48% X QAOA and2.5% strong
+one-hot-uniform control. Logical CX64->48 includes preparation; depth worsens
+67->81-83. This is not a classical runtime/quantum advantage result.36 emitted
+X/XY circuits and48 earlier block circuits independently match Qiskit;144 generic
+noise experiments are proxy sensitivity only, not hardware calibration.
+
+Both full-factory advisory integrations are rejected. The softer rule's16 fresh
+seeds50000000..15 produce48 physically valid traces but mean missing orders
+worsen1.4375->2.125; constructive and QAOA outcomes are identical. Keep the
+previous strong controller. Do not add these tapes to frozen final estimates.
+
+24 targeted tests pass, including30 randomized exhaustive raw/CP/pruning checks.
+New primary campaigns copy sources before running and retain source-stable
+manifests and failures. Initial two prototypes have hashes but no copied sources.
+The local checkpoint meters813.58 process CPU seconds across14 distinct reports
+(excluding unmetered tests/diagnostics), max recorded process RSS6.60GB; GPU/QPU0.
+This is separate from both the original frozen ledger and the other chat's
+solution-quality searches. Research remains active, next on broader component
+trajectory masters rather than merely reducing already-tiny recombination pools.
+
+See docs/STAGE2_PLANNING_CORE.md and
+output/stage2-search/planning-core-checkpoint-v1/report.json. Visualization
+subagent built the optional /stage2/planning.html with saved BOM/machine/worker
+schedules, losses, mixer controls, logical costs and negative validation; frozen
+final export unchanged. No Stage2 commit/push/deploy, autoresearch, ODRA/VPN or
+remote compute.
+
+### 2026-10-17 — Mac-only planning-core scaling and verified circuit compilation
+
+The user authorized the full48GiB Mac memory, with external compute held until
+a concrete need is explained. All renewed work stays local. Larger rigid
+component pools, time-shift pools and machine/worker-flexible suffix pools are
+retained, including negative results: most cannot beat an existing parent even
+when the finite pool is solved to proven optimality. Larger bit counts alone do
+not establish useful search complexity.
+
+Finer operation-level pools retain cross-operation BOM, machine/crew/calendar,
+travel and machine-only metric setup constraints. The128-operation pool has
+6,046bits/491,109couplers; native same-pool CP proves19,580,896 versus its
+21,525,346 heuristic parent. Its32-operation pool retains the proven grid15
+raw optimum908,670 using1,489bits/112,060couplers. This is measured optimum
+retention for that instance, not lossless compression of every feasible plan.
+The specialized compiler matches every saved128-operation coefficient and
+reduces measured construction244.62s→6.52s; no quantum speedup is claimed.
+
+The original128-operation table reference returns UNKNOWN in120s. Analytic
+calendar domains and shared exact earliest-walk completion functions make a
+stronger independent native reference practical. Forty small exhaustive cases
+cross-check domains and optima; walking boundaries are independently checked.
+Complete raw grid15 references prove32/48/64-operation optima908,670 /
+1,297,680 /1,945,958. A600s128-operation local continuation finds13,941,691,
+with solver lower bound8,071,630, independently checked raw schedule and
+42.10% remaining interval gap. Its peak process RSS is1.322GB. The operation
+pool's optimum is40.45% above this better raw feasible incumbent. These cells
+exclude physical shipping, AGV capacity, finite buffers, tools/service, energy,
+human setup crews and stochastic quality; they are not whole-factory bounds.
+
+Conditional circuits now use exact affine choice substitution and a W/XY
+makespan mixer. An exact invariant-sector simulator stores k*2^n amplitudes
+for n binary choices plus k makespan qubits without reducing logical qubits.
+The256-block, three-seed controls reach21 logical qubits and a small scheduling
+improvement, but the plain classical proposal and uniform controls match QAOA.
+No quantum advantage is established; the best new physical-factory controller
+remains the earlier incumbent after both advisory integrations were rejected.
+
+All768 longer-run raw QASM circuits match Qiskit's full-state simulation.
+Three aggressive level3 compilations fail the1e-10 probability check, maximum
+3.93e-6; the failed audit is retained. Diagnostics isolate identity-removal and
+commuting-cancellation passes. Verified level1 fallbacks for those three cases
+preserve all768 compiled circuits within2.06e-14, with unchanged tolerance and
+actual selected compiled QASM exported. Resource counts from rejected
+compilations are not promoted. Earlier48-local/36-trajectory/48-sector audits
+remain separate; overlapping audit cases are not distinct-circuit counts.
+
+37 targeted backend tests pass, including the earlier30 and additional40
+randomized exhaustive instances. The optional scaling visualization passes45
+targeted viewer checks and shows the newest128-operation Gantt/BOM, bounded
+quality and all prior references. Frozen final export SHA6a66d36b… remains
+unchanged. Latest scaling export SHA88fba547… is an optional development view.
+
+`output/stage2-search/planning-core-checkpoint-v2/report.json` seals36 distinct
+top-level reports and combines the same-model raw128 interval. It meters
+5,678.26 process CPU seconds, including failures, and maximum recorded process
+RSS6.741GB. This is a lower bound excluding unmetered tests/diagnostics, separate
+from the original431.9967 allocated-CPU-hour frozen ledger. New GPU/QPU/remote
+jobs0. No autoresearch, ODRA/VPN, VeloxQ, publication, submission, Stage2 commit,
+push or deployment occurred. See `docs/STAGE2_PLANNING_CORE.md` and
+`http://127.0.0.1:4187/stage2/planning.html?scaling=1`.
+
+This bounded planning-core batch is complete. Its formulation, same-model
+references, costs, circuit verification and integration tests are reviewable.
+The failed integrations and absent quantum advantage remain findings; completion
+of this batch does not certify competition acceptance or a winning submission.
+
+## 2026-10-17 — user pause and complete owner explanation
+
+The user explicitly stopped further optimization to understand the current
+problem and results. The latest larger native-CP probes had already completed
+when the stop was processed. No optimization processes remain running; no new
+search, training, factory episode or hardware job was launched for this task.
+The pause receipt is retained at
+`output/stage2-search/pause-explanation-20261017/pause-receipt.json`.
+
+Completed larger probes cover 512 operations over 96/120 hours and 384 operations
+over 96 hours. All short CP runs returned UNKNOWN without a complete plan.
+A separate optimistic QA-worker packing certificate proves the declared
+512-operation/96-hour cell infeasible: 6,496 required attendance minutes exceed
+5,979 available packed minutes. The other two certificates are inconclusive.
+These are simplified planning-cell statements, not full-factory limits.
+The three probes add 1,364.66 process CPU seconds; together with checkpoint v2,
+the renewed metered local work is approximately 1.96 process CPU-hours. This is
+not directly additive to earlier allocated cluster CPU-hours.
+
+`docs/STAGE2_CURRENT_EXPLAINED.md` now explains Stage 1, every implemented
+factory condition, the controller hierarchy, measured performance, separate
+physical references and planning cells, complete/restricted/conditional QUBO
+scope, classical/quantum viability, capacity and proof meanings. README and
+CONTEXT link it and state the pause. It explicitly separates the 21-qubit
+32-operation experiment from the 128-operation pilot and from factory results.
+
+The read-only visual guide at `/stage2/start.html` adds four chapters: distinct
+models, one pump and its conditions, solver/QUBO behavior, and measured evidence.
+Factory/research/planning navigation links it. Its small hash-anchored export
+uses retained files only; frozen final/base-planning exports remain unchanged.
+The visualization work passed 51 targeted tests and browser review. No new
+commit, push, deployment, publication or submission is implied.
+
+## 2026-10-17 — written factory definition and encoding clarification
+
+The owner requested an actual readable document comparable to the existing
+learning-methods course, with the complete factory definition and a direct
+answer about domain-wall encoding. The supplied challenge §5/§11 was reread;
+its integrated quantum/QUBO emphasis is stronger than the previous general
+explanation conveyed. Decomposition is permitted, but the physical/quantum
+scope gap remains a submission weakness, not solved by interface complexity.
+
+`docs/STAGE2_PROBLEM_WALKTHROUGH.md` provides 22 connected chapters explaining
+input quantities and orders, each recipe/machine, workers/setups/tools, finite
+buffers, stock, actual lane times, robot chargers, the separate stationary
+battery, solar/grid/tariff arithmetic, failures, objectives and controller scope.
+Its encoding chapters trace the actual builders: earlier Stage1 domain-wall,
+selected Stage1 pairwise order, Stage2 local action/bounded-binary slack, planning
+one-hot groups and conditional binary choices with a one-hot makespan register.
+Worked examples distinguish choices, penalties, domain-wall thresholds and
+logical-qubit counts. The HTML edition is generated under `docs/stage2-problem/`
+without touching the other chat's learning-methods files. Research remains paused.
+
+## 2026-10-17 — final combined merit integration and adversarial passes
+
+The user authorized multiple independent subagent review passes, relevant fixes
+and completion of the non-VeloxQ merit implementation. The resulting centerpiece
+is the same complete32-operation furnace-recovery input, rather than a separate
+small fixture. Earlier pauses and failed attempts above remain historical.
+
+The certified full-model45→0weighted-lateness recovery is lost by the original
+781-bit pool and restored by deterministic nested enrichment at2078bits. Complete
+optimization uses2499bits/381371couplers. A distinct exact hard-deadline query
+uses818bits/33817couplers and has an independently checked zero-energy witness.
+The outage query is infeasible; sampling a nonzero state is not its certificate.
+Forty cold binary/one-hot annealing runs retain640samples; an independent report
+audit confirms0encoded-valid,0raw-valid,0target-satisfying samples at those
+budgets. Native query CP is fast; these failures do not imply intrinsic hardness.
+
+The completed trajectory bridge uses all eight components and every original
+operation, preserving first and best constructive parents before adding choices.
+Nested caps2/3/4 give18/28/36logical qubits and512/26244/262144sector states.
+Across two known inputs and three sampling seeds, QAOA and sectorSA each return
+18/18valid encoded optima; uniform returns6/18. The constructor already finds the
+optimal recovery plan, and sector energies are enumerated classically. There is
+no quantum advantage claim. A final review caught invalid uniform winners being
+counted by raw objective alone; exporter regression tests now require validity,
+raw objective and literal energy. All54records and observed counts were audited.
+Six18-qubit circuits pass independent full-Hilbert before/after-transpilation
+checks; all18circuits receive logical resource audits. Failed first-two-parent
+and fixed-boundary attempts remain preserved with their original outputs.
+
+Six fixed-grid/horizon ablations quantify feature effects, with all native and
+pool optima certified. Continuous-calendar dense counts are supplemented by an
+exact blockwise audit instead of allocating its3,785,787-coupler support matrix.
+The larger64/128native references remain UNKNOWN, with checked incumbents/bounds.
+Four current cold SDK files cover818deadline,2078enriched at two penalty settings
+and2499complete;815121literal coefficient/constant checks establish exact integer
+serialization. These are offline preparation, with no token access or service call.
+
+`capacity-economics-v2` values four checked saved schedules under an explicit
+synthetic PLN profile, using exact rational arithmetic and135sensitivities. An
+independent minute-by-minute ledger recomputes36cost lines. The example event-fee
+threshold is11389/24PLN=474.5416667; the assumed repeated-exposure purchase-price
+threshold is19923.63PLN. These value deadline-priority schedules; they are not
+minimum-money optimization, calibrated industrial ROI or a measured failure law.
+
+The manufacturing studio now integrates the representation frontier, same-model
+whole-recipe QAOA, adjustable economic assumptions and feature table. Its local
+fresh action actually generated and simulated a28-qubit run with0weighted late
+minutes and855-minute completion in0.84s, retaining a timestamped protocol,
+counts, QASM, sources and manifest. The constructor is shown alongside it.
+README, design, combined plan, current live script and submission preparation
+are reconciled around these scopes. The older manufacturing-v3video remains
+explicitly a review draft predating these additions; final recording, human
+rehearsal, publication and submission are separate release duties. VeloxQ and
+physical QPU use, external compute, commits, pushes and deployment remain held.
+
+Final acceptance uses `scripts/verify-stage2-merit.py`, independent document/UI
+consistency and command/source-hash receipts. Its generated acceptance document
+records actual pass/pending status; this log entry does not predeclare a pass.

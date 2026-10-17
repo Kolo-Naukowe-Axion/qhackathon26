@@ -1,6 +1,52 @@
 # QPoland Quantum Hackathon — running context
 
-Updated: 2026-10-16 (Europe/Warsaw). Maintained as context arrives.
+## Technical merit complete — 17 October, supersedes historical status below
+
+**Closeout:** all 14 agreed non-VeloxQ core requirements passed. The completed goal was technical merit implementation; actual VeloxQ, final synchronized video, human rehearsal and public release/submission remain open. [Current status](docs/STAGE2_STATUS.md) links evidence, limits and next actions. Final checks passed 52 targeted Python tests, all 113 site tests and the static build.
+
+The user emphasized doing the scoped merit, math, visuals and docs thoroughly, and explicitly requested UI improvement. The main-model [math specification](docs/STAGE2_MANUFACTURING_MATH.md) is independently reviewed, with coefficient/penalty proofs and scope boundaries. The revised manufacturing workspace uses a story rail and separate views;114site tests/build and desktop browser checks pass. A fresh local28-qubit run returns0/855. See [UI verification](docs/STAGE2_UI_DESIGN.md); mobile appearance is not visually certified. Final video/formal release remains deferred until after VeloxQ; its authorization hold is unchanged.
+
+The user resumed work, explicitly requested multiple subagent passes, fixes and completion of the merit side except actual VeloxQ, and requested ongoing documentation. Current centerpiece: [complete-recipe manufacturing recovery](docs/STAGE2_MANUFACTURING_STUDY.md), [combined direction](docs/STAGE2_COMBINED_DIRECTION.md). Recovery-v2 certifies full-model weighted tardiness45→0 with replacement heat capacity; the original781-bit pool stays45. Deterministic enrichment restores0/855 using2078bits. Complete optimization has2499bits; exact deadline feasibility has818bits. Distinguish lossless pruning, lossy choice restrictions and a changed query.
+
+The [recipe bridge](docs/STAGE2_RECIPE_BRIDGE.md) integrates simulated QAOA with all32operations through complete component choices at18–36logical qubits. QAOA and sectorSA each return18/18 valid same-pool optimal schedules; the constructor already finds the best plan, and sector enumeration is classical. No quantum advantage. Failed boundary-release attempts remain preserved. Six fixed-horizon feature ablations,32/64/128 scaling, exact count-only dense audit,135 synthetic economic sensitivities and four cold sponsor packets are implemented. Economics values checked priority-optimal plans rather than optimizing money. Cold operation-level annealing returns0valid of640; it does not prove those instances hard.
+
+Current local studio: http://127.0.0.1:4192/manufacturing/ with `stage2.entry_demo`; it includes fresh recipe QAOA, representation comparisons, feature costs and adjustable economic assumptions. Final requirements/evidence are in [acceptance](docs/STAGE2_MERIT_ACCEPTANCE.md). No VeloxQ calls, physical QPU calls, commit, deployment or publication. Human presentation/video/public-release duties remain separate. The older paused state below is historical.
+
+Updated: 2026-10-17 (Europe/Warsaw). Maintained as context arrives.
+
+## Historical pause: explanation completed before refinement resumed
+
+The user explicitly paused research on 17 October to understand the work.
+No optimization processes remain running and no further search/training/hardware
+jobs are scheduled. The latest larger probes completed before the pause; their
+UNKNOWN results are retained, not classified as interrupted runs.
+
+Start with [the current full explanation](docs/STAGE2_CURRENT_EXPLAINED.md) and
+the local [visual guide](http://127.0.0.1:4187/stage2/start.html). These distinguish
+the official Stage 1 cases, the full physical factory, smaller physical reference
+fixtures and newer deterministic planning cells. The strongest full-factory
+controllers are classical. The separate 21-qubit planning experiments did not
+beat their matched classical controls; their attempted factory integrations
+were rejected after worsening results. Later Mac work and the explanation are
+local additions, without a new commit, deployment or submission.
+
+The later owner request for a document is answered by
+[the written factory/encoding walkthrough](docs/STAGE2_PROBLEM_WALKTHROUGH.md)
+and [its standalone HTML edition](docs/stage2-problem/index.html). It explains
+stock, routes, lane capacity, both battery systems, electrical balance, fixed
+parameters/decisions/random outcomes, and actual encodings. Current Stage 2
+planning is primarily one-hot; local selectors use action bits and bounded-binary
+slack. Domain-wall belongs to earlier Stage 1 variants; selected Stage 1 uses
+pairwise-order bits. The document also corrects the earlier understated quantum
+emphasis: §5 expects integrated quantum/QUBO work on the extended model;
+simulator complexity alone is insufficient. This is not a claim of automatic
+submission rejection or a requirement for monolithic hardware execution.
+
+The new 32-pump/512-operation/96-hour planning cell has a separate QA-worker
+capacity proof of infeasibility. The 120-hour version and 24-pump/96-hour cell
+remain unresolved after short native-CP runs. These statements apply to their
+declared simplified models, not automatically to full-factory scenarios.
+Historical entries below retain the state and decisions at their recorded times.
 
 ## Sources and authority
 
@@ -12,6 +58,9 @@ Updated: 2026-10-16 (Europe/Warsaw). Maintained as context arrives.
 - PDF coverage rechecked on 2026-10-16 against all 8 challenge pages and all 14 opening slides, including the image-only strategic-partners slide. Both PDFs currently present in this repository are incorporated; no additional challenge requirement was found missing.
 
 ## User decisions and working agreement
+
+- Latest user direction: push all current work to the existing remote; keep the Markdown/JSON material for now. Consolidation and repository cleanup are explicitly deferred to a separate later task. Lossless packaging of files above GitHub’s size limit preserves their content; it does not authorize deleting evidence.
+
 
 - Demonstrating that BOTH Stage 1 instances have actually been solved is a non-negotiable eligibility gate. Code alone is insufficient evidence.
 - Aim for both the overall award and best use of VeloxQ; whether one team can receive both is not explicitly stated in the supplied material.
@@ -240,4 +289,42 @@ Portable v2 is 10,097,277 bytes, SHA 8a54050496537a794e17bdf73c7d47ed323798f0ae7
 The local 4187 research view shows the final frontier, TRAIN neighborhood, conditional leaves, posthoc proof and current reference interval with qualifications. Frozen final-export SHA 6a66d36b2ea032b773a2b550d8773c13a0c4ea3f1fab0ef3565894853746fd60 remains unchanged. GitHub rechecked at 03:26 UTC is still private: the public-MIT requirement is unmet; completed video, team and form receipt remain unverified. Preserve the other chat's Stage1/root presentation changes and the publication hold.
 
 
-Stage2 authorized eight-hour research window completed at 2026-10-17T04:14:35.500900+00:00. Technical evidence and local handoff are complete; all tracked research jobs are finished. See output/stage2-search/research-closeout.json and docs/STAGE2_RESULTS.md. Publication hold remains; repository private at the04:11UTC live recheck, with video/team/form receipt unverified. No further experiments or policy changes are scheduled.
+Stage2 authorized eight-hour research window completed at 2026-10-17T04:14:35.500900+00:00. Technical evidence and local handoff are complete; all tracked research jobs are finished. See output/stage2-search/research-closeout.json and docs/STAGE2_RESULTS.md. Publication hold remains; repository private at the04:11UTC live recheck, with video/team/form receipt unverified. No further experiments or policy changes were scheduled at that closeout.
+
+### Manufacturing entry refinement resumed — 17 October 2026
+
+The user subsequently authorized improving the current manufacturing Stage 2
+entry, problem definition and remaining local deliverables. This supersedes the
+optimization/explanation pause. **Do not run VeloxQ or consume its credits.**
+Existing physical-hardware and publication/commit/push/deploy holds remain.
+
+Read `docs/STAGE2_ENTRY.md` as the current entry narrative; the original factory
+and its frozen final evidence remain unchanged. A new explicitly synthetic
+complete residual cell (not an extracted factory snapshot) combines alternate
+machines, shared workers/skills, calendars, assembly join and weighted due dates.
+Actual QAOA preserves all assignment one-hot groups using W/XY, with 18–34 logical
+qubits and exact invariant-sector simulation. Sector memory is not qubit
+compression; complete classical diagonal enumeration already reveals the optimum.
+
+`output/stage2-entry-v2/`: source-sealed TRAIN selection p=2/CVaR .25; six instances
+×ten TEST seeds ×three methods. QAOA gives 60 optimal actual schedules / 57 exact
+QUBO minima, SA 60/60 both, uniform 59 schedules / 52 minima. Three QAOA makespan
+registers overshoot 30; no operation repair or reference substitution. No quantum
+advantage. TEST generalizes randomness, not unseen industrial instances.
+
+Independent Qiskit audit v1 replays the18-qubit emitted circuit to1.0062e-15
+probability error; larger QASM parsed/transpiled, not full-Hilbert replayed.
+Nine offline SDK packets in `output/stage2-entry-velox-offline-v4/` include a
+1,602-variable model. v2 caught float32 energy loss; final ×4 integer scaling
+passes576 round-trip energies exactly. Platform acceptance/precision remain
+unverified. No remote call. Final offline v4 forces an empty token in its own process before SDK import; earlier zero-token-lookup receipts count only explicit preparer lookups and overlook SDK import defaults. No credential was printed or used for authentication. Failed artifact versions are retained.
+
+Fresh local demonstration: `.venv-stage2/bin/python -m stage2.entry_demo --port
+4189`, then `/entry/`. It writes timestamped files under
+`output/stage2-entry-live/`; static deployment exposes retained evidence only.
+`python3 scripts/verify-stage2-entry.py` checks frozen hashes, every TEST plan and
+generated view totals without optimization or network. Preserve all concurrent
+older local edits and original Stage1/factory results. No user-owned new thread,
+subagent delegation or recurring automation was requested.
+
+Final local video review draft: `output/stage2-entry-video-v6/qfactoria-stage2-draft.mp4` (~173.217seconds), synthetic narration and edited real UI evidence with actual timestamped action frames. Submission/release duties remain in `docs/STAGE2_SUBMISSION.md`. The supplied mentor preference reinforces manufacturing but is pending wider jury consultation. No external message was sent.

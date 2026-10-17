@@ -6,6 +6,7 @@ python3 docs/learning-methods/build.py
 """
 from pathlib import Path
 import html
+import hashlib
 import json
 import re
 
@@ -66,8 +67,13 @@ content = '<header class="book-opening">'+parts[0]+'</header>' + ''.join(
     f'<section class="chapter" aria-labelledby="{chapters[i][0]}">{part}</section>' for i,part in enumerate(parts[1:]))
 
 report = json.loads((HERE / 'audit-report.json').read_text())
+visual_source = (HERE / 'visuals.js').read_text()
+visual_report = json.loads((HERE / 'visual-audit-report.json').read_text())
+assert visual_report['status'] == 'passed'
+assert visual_report['source_sha256'] == hashlib.sha256(visual_source.encode()).hexdigest(), 'visuals.js changed: run node docs/learning-methods/check-visuals.cjs before rebuilding'
+report['visual_checks'] = visual_report
 style = (HERE / 'style.css').read_text()
-script = (HERE / 'labs.js').read_text()
+script = (HERE / 'labs.js').read_text() + '\n' + visual_source
 page = f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="A self-contained course on scheduling, QUBO modelling, algebraic transformations, encodings, Ising models and QAOA, with general proofs and interactive laboratories.">

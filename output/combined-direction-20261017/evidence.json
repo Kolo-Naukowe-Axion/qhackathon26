@@ -1,0 +1,68 @@
+{
+  "scope": "Read-only synthesis audit of saved development results; no optimization or remote calls",
+  "source_sha256": {
+    "output/manufacturing-recovery-v2/report.json": "df359c92a691333c3a2272b85bfb952db7b17e64fa90ca0583a8f03bb4cc5177",
+    "output/manufacturing-full-recovery-v1/report.json": "fbfaeea91edb2427755cd52635101404cac9bf5d7ac82358cff462a5c5c9abaf",
+    "output/stage2-entry-v2/report.json": "4ad4f72ea5e3475e8a65a5aa2223aaeb4e913fc0ad9fa772272cf02abf0b07fc"
+  },
+  "checker_sha256": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+  "rows": [
+    {
+      "case": "heat-outage-32",
+      "operations": 32,
+      "problem_sha256": "c4ca9f900a3272fdb60db6fca91760503e528218068da67bd5324e075b10164c",
+      "full_variables": 2353,
+      "full_couplers": 343682,
+      "pool_variables": 781,
+      "pool_couplers": 25818,
+      "checks": {
+        "raw_reference": {
+          "status": "OPTIMAL",
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 45,
+          "makespan": 945,
+          "objective": 65790
+        },
+        "pool_reference": {
+          "status": "OPTIMAL",
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 45,
+          "makespan": 945,
+          "objective": 65790
+        }
+      }
+    },
+    {
+      "case": "heat-lease-32",
+      "operations": 32,
+      "problem_sha256": "041a03f470d615a5442b86f20c19b96c77288752b7f66d7274a31b6ec4f88d4e",
+      "full_variables": 2499,
+      "full_couplers": 381371,
+      "pool_variables": 781,
+      "pool_couplers": 26307,
+      "checks": {
+        "raw_reference": {
+          "status": "OPTIMAL",
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 0,
+          "makespan": 855,
+          "objective": 855
+        },
+        "pool_reference": {
+          "status": "OPTIMAL",
+          "valid": true,
+          "issues": [],
+          "weighted_terminal_tardiness": 45,
+          "makespan": 945,
+          "objective": 65790
+        }
+      }
+    }
+  ],
+  "interpretation": "Larger complete declared grid model retains a capacity benefit absent from this restricted candidate pool. Full QUBO was compiled; its optimum is certified by native CP, not a VeloxQ run.",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

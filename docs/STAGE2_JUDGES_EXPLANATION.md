@@ -1,5 +1,13 @@
 # Judge-facing explanation and requirement audit
 
+**Current local entry, 17 October:** start with [the manufacturing recovery
+specification and rubric evidence](STAGE2_ENTRY.md). It adds a complete residual
+cell with 18–34 logical-qubit simulated QAOA and same-model certified references.
+All 60 quantum TEST schedules are optimal; 57 measured states are exact QUBO
+minima. Classical annealing reaches all 60 minima too. Offline SDK precision
+audits and the fresh-run demo are separate from the older factory studies below.
+The full factory's favorable classical results are not quantum-core outcomes.
+
 Authority: the supplied [challenge PDF](../Quantum_Hackathon_2026_ERP_Challenge.pdf), SHA256 `821b7d47a02cdf1d1e5bacc730ad030683d37a56e282b98c4e221675b01d1e99`. Its Stage2 expectations on page3 were checked against the rendered page, not only extracted text. The narrative and requirement matrix were prepared before final evaluation. The separately labeled final audit-only proof illustration below was added afterward; it is not a population performance estimate. Organizer acceptance or completed submission is not asserted.
 
 ## The factual story
@@ -23,6 +31,13 @@ At a dispatch boundary, a binary variable chooses an individually legal offered 
 Actual simulated QAOA samples drive checked extended-factory decisions. The integrated experiment caps circuits at five **total** bits and labels larger classical fallbacks; a separate larger saved-pool simulator measures scaling. These are decomposition choices, not a claim that the factory has been encoded losslessly into five qubits. Classical filtering, state maintenance, angle search, training and rollout costs remain real. The learned-CEM-time-policy/QAOA hybrid was actually tested and rejected for worse average fulfillment. We claim neither physical-QPU execution nor quantum advantage. The [method-selection record](STAGE2_METHOD_SELECTION.md) explains why strong statics and a cheap learned CEM schedule often beat more elaborate approaches.
 
 ## Formal requirement matrix
+
+For the solution-quality criterion specifically, the later
+[same-model comparison and quantified gap supplement](SOLUTION_QUALITY.md)
+collects exact two/three-pump makespans, the four-pump interval and complete
+realized-primary gap intervals across the unchanged final outcomes. Its stronger
+compounded-risk certificate is posthoc and source-bound; it neither switches the
+preselected controllers nor establishes quantum advantage or secondary optimality.
 
 | Supplied requirement | Evidence and precise status |
 |---|---|

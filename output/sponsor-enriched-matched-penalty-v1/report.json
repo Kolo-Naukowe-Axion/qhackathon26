@@ -1,0 +1,59 @@
+{
+  "protocol": {
+    "schema": "qfactoria-matched-enriched-penalty-packet.v1",
+    "source_hashes": {
+      "sponsor_merit_packets.py": "964fa9eb3221fd8e49bc1143fb75e1c1f2d6b480967926a32b6fc281c36e588d",
+      "manufacturing_penalty.py": "7073eac77f9824b6b36eebcf83604a5eea2997771880b531577e8569f2f45c7d",
+      "deadline_qubo.py": "78ce29aca37a8aa8b6dd4a94a4a662279cc94a1a4fbad145fba394c7edd36ac5",
+      "operation_qubo.py": "ae6f487f31205a90b70e571a3e7115a6ad47355efc3b20aaf0d9844588930800",
+      "column_qubo.py": "4c0964029724b389298a3e9dee517bd62dc121fa9825d97aaf975f95f89b8776",
+      "trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+      "window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1"
+    },
+    "heuristic_parents": "output/manufacturing-recovery-v2/heat-lease-32/parents.json",
+    "heuristic_parents_sha256": "a4e95d2f2204512bc27942ada3ed9e30e3a260d9a05cba5abe12a9475f5b9213",
+    "prior_packet": "output/sponsor-merit-packets-v1/enriched-2078/cold.h5",
+    "matched_complete_packet": "output/sponsor-merit-packets-v1/complete-2499/cold.h5",
+    "sdk_version": "1.0.0",
+    "initialization": "Cold HDF5 with no Spectrum; heuristic witness certifies penalty only",
+    "solver_calls": 0,
+    "veloxq_calls": 0,
+    "physical_qpu_calls": 0,
+    "landscape": "Feasible objectives and global minima preserved; invalid-state energies change. Both enriched penalty variants retained; no empirical performance prediction."
+  },
+  "source_stable": true,
+  "variables": 2078,
+  "couplers": 196228,
+  "penalty": 65791,
+  "penalty_certificate": {
+    "original_penalty": 1514476,
+    "penalty": 65791,
+    "witness_objective": 65790,
+    "witness_plan_sha256": "7acec2e14b7fa5bb16d19d745807979e57782eb04158ed848d3a13a259a29ff3",
+    "witness_source": "Saved original pre-CP list heuristic; retained by nested pool; used for penalty proof only",
+    "ratio": 23.019501147573376,
+    "proof": "Objective terms are nonnegative for every state. A checked feasible witness has energy U. Every infeasible state has energy >=P=U+1>U. Therefore all global minima remain feasible and globally objective-optimal in this exact domain. Feasible energies unchanged; non-optimal infeasible energies intentionally change."
+  },
+  "problem_sha256": "041a03f470d615a5442b86f20c19b96c77288752b7f66d7274a31b6ec4f88d4e",
+  "file": "cold.h5",
+  "bytes": 4915300,
+  "file_sha256": "28ad40dd7b2a622ca1ba2f6c547dc4f254c9ee0095862f975e4ce8d5708ee15b",
+  "min_abs_ising_coefficient": 65791,
+  "max_abs_ising_coefficient": 136582206,
+  "ising_dynamic_range": 2076.001367968263,
+  "audit": {
+    "coefficients_checked": 198307,
+    "all_state_coefficient_identity": true,
+    "proof": "Inverse substitution recovers every original linear/quadratic coefficient and constant exactly; therefore equality holds for every bitstring",
+    "labels_exact": true,
+    "offset_exact": true,
+    "spin_convention": "s=2x-1",
+    "hdf5_energy_scale": 4,
+    "checked_bitstrings": 6,
+    "bias_dtype": "uint32",
+    "cold_only": true
+  },
+  "service_acceptance": false,
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

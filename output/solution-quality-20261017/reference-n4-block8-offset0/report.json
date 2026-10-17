@@ -1,0 +1,202 @@
+{
+  "schema": "stage2-polished-deterministic-reference.v1",
+  "status": "OPTIMAL",
+  "optimal": false,
+  "neighborhood_optimal": true,
+  "objective_ticks": 1541,
+  "best_bound_ticks": null,
+  "neighborhood_lower_bound_ticks": 1541.0,
+  "worker_neighborhood": {
+    "block_size": 8,
+    "offset": 0
+  },
+  "solver": "OR-Tools CP-SAT",
+  "solver_version": "9.15.6755",
+  "python": "3.14.6",
+  "instance_sha256": "3c6bda8bbf315951447394c68053894ff4a756be1c63f826de7c58739b5c3f7e",
+  "source_sha256": {
+    "stage2/reference_polish.py": "398ec2417c1161a6cf37220acc71e0cb29ec1f833cd596fd43276ea13d7399f3",
+    "stage2/reference_multi.py": "226dced1939ee824a0e661d4112efc488be4de3286e6280e9da4e58163700efe",
+    "stage2/reference.py": "ffd604b8e5da58bd789cdc24cdf7bdc69f18ea984a28b4d843c718326d8c5732",
+    "stage2/engine.py": "ec97bf3c1e57110cc0ddef02e54fafc2626b3aab079718a8ab0f04a5ba26244f",
+    "stage2/check.py": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b",
+    "stage2/identity_audit.py": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70"
+  },
+  "workers": 4,
+  "seed": 2026,
+  "wall_limit_seconds": 45.0,
+  "solver_wall_seconds": 4.607605,
+  "build_and_solve_wall_seconds": 4.908010374987498,
+  "process_cpu_seconds": 16.950174,
+  "counts": {
+    "operations": 64,
+    "moves": 76,
+    "agv_arc_bits": 5552,
+    "pruned_agv_arcs": 300,
+    "worker_order_bits": 376
+  },
+  "incumbent_history": [
+    {
+      "wall_seconds": 0.76988,
+      "objective": 1541.0,
+      "lower_bound": 1504.0
+    }
+  ],
+  "solver_response": "CpSolverResponse summary:\nstatus: OPTIMAL\nobjective: 1541\nbest_bound: 1541\nintegers: 3769\nbooleans: 3743\nconflicts: 1587\nbranches: 29557\npropagations: 960109\ninteger_propagations: 2049639\nrestarts: 18\nlp_iterations: 31278\nwalltime: 4.60761\nusertime: 4.60761\ndeterministic_time: 11.9567\ngap_integral: 21.3829\nsolution_fingerprint: 0x634ec874c1b60459\n",
+  "model_stats": "optimization model '': (model_fingerprint: 0x8d9621635c272267)\n#Variables: 6'433 (#ints: 1 in objective) (6'144 primary variables)\n  - 5'928 Booleans in [0,1]\n  - 8 in [0,1421]\n  - 4 in [0,1451]\n  - 4 in [0,1466]\n  - 20 in [0,1481]\n  - 16 in [0,1496]\n  - 12 in [0,1511]\n  - 377 in [0,1541]\n  - 12 in [30,1541]\n  - 16 in [45,1541]\n  - 20 in [60,1541]\n  - 4 in [75,1541]\n  - 4 in [90,1541]\n  - 8 in [120,1541]\n#kCircuit: 1\n#kCumulative: 7 (#intervals: 72, #variable_sizes: 72)\n#kInterval: 276\n#kLinMax: 1 (#expressions: 4)\n#kLinear1: 73\n#kLinear2: 12'363 (#enforced: 11'628)\n#kLinear3: 212\n#kNoOverlap: 9 (#intervals: 204, #variable_sizes: 140)",
+  "scope": {
+    "kind": "deterministic parameterized instance",
+    "singleton_heat_batches": true,
+    "dispatch_after_source_completion": false,
+    "fixed_shortest_tree_paths": true,
+    "early_empty_preposition": true,
+    "nonbinding": [
+      "tool life/service",
+      "machine wear/maintenance",
+      "AGV battery/charging",
+      "grid cap",
+      "stationary battery",
+      "worker shifts/breaks",
+      "quality/rework",
+      "exogenous disruptions",
+      "investment"
+    ],
+    "binding": [
+      "recipe precedence",
+      "machine processing and output blocking",
+      "finite reserved input buffers",
+      "physical loaded and empty AGV travel",
+      "one AGV",
+      "one worker attendance and hall travel",
+      "BOM join"
+    ],
+    "flagship_global_gap": null,
+    "pumps": 4,
+    "matched_order_bom": true,
+    "continuous_worker_calendar": true,
+    "standalone_empty_agv_actions": false,
+    "empty_repositioning": "Shortest tree path inside each mandatory part-transfer dispatch; early preposition may wait for source completion",
+    "objective": "All orders fulfilled, constant minimum energy cost, then last physical shipment",
+    "label_symmetry": "Identical orders may be relabeled; first housing starts ordered without loss"
+  },
+  "flagship_global_gap": null,
+  "final_heldout_tapes_used": 0,
+  "physical_quantum_calls": 0,
+  "veloxq_calls": 0,
+  "normalization_changes": [],
+  "physical_check": {
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "half_open_resource_capacity",
+      "machine_eligibility",
+      "mode_domain",
+      "worker_skills",
+      "worker_shift_breaks_travel",
+      "tool_assignment",
+      "batch_capacity",
+      "agv_path_continuity",
+      "agv_traction_soc",
+      "single_lane_conflicts",
+      "charger_capacity",
+      "part_and_tool_location_replay",
+      "machine_output_blocking",
+      "buffer_reservations",
+      "bom_genealogy",
+      "recipe_precedence_duration",
+      "setups_wear_service",
+      "qa_reveal_boundaries",
+      "physical_shipping",
+      "urgent_release_lineage",
+      "grid_solar_balance",
+      "stationary_battery_loss_bounds",
+      "energy_cost_carbon",
+      "bounded_quality_rework_replacement",
+      "finite_raw_stock_release",
+      "machine_outage_exclusion",
+      "transport_handling_boundaries",
+      "resource_lease_budget_leadtime_birth",
+      "material_delivery_realized_arrival",
+      "precision_mode_certification",
+      "manufacturing_mode_wear_quality_history",
+      "exogenous_keyed_scenario_tape",
+      "bounded_component_birth",
+      "next_required_part_destination",
+      "mounted_tool_mobility"
+    ],
+    "provenance": {
+      "checker": "independent-replay.v1",
+      "checker_sha256": "40c96bf26f19aa10e33566332d55133f8bd73c32878753668202b4690ce4bf5b"
+    },
+    "unsupported": [
+      "policy_nonanticipativity_proof",
+      "optional_emergency_procurement",
+      "leased_machine_footprint_power",
+      "reachable_burn_in",
+      "committed_rolling_replanning",
+      "interruption_resume_semantics"
+    ],
+    "all_orders_fulfilled": true,
+    "terminal_requirements_met": true,
+    "metrics": {
+      "operations": 64,
+      "moves": 76,
+      "horizon_ticks": 10400,
+      "delivered_orders": 4,
+      "unfulfilled_orders": 0,
+      "delivery_ticks": {
+        "P01": 784,
+        "P02": 1177,
+        "P03": 1496,
+        "P04": 1541
+      },
+      "tardiness_ticks": 0,
+      "terminal_deadline_debt_ticks": 0,
+      "grid_kwh": 2703.9999999996567,
+      "energy_cost": 270.400000000046,
+      "carbon_kg": 540.800000000092,
+      "investment_cost": 0,
+      "total_cost": 270.400000000046,
+      "terminal_soc": 40
+    }
+  },
+  "identity_check": {
+    "schema": "stage2-identity-audit.v1",
+    "valid": true,
+    "issues": [],
+    "coverage": [
+      "canonical_initial_components",
+      "canonical_urgent_order_and_components",
+      "single_canonical_pump_birth_per_order",
+      "bounded_canonical_replacement",
+      "authorized_part_references",
+      "immutable_unit_attempt_qa_stream"
+    ],
+    "metrics": {
+      "initial_components": 12,
+      "urgent_orders": 0,
+      "authorized_unit_identities": 16,
+      "initial_pump_births": 4,
+      "replacement_events": 0,
+      "qa_results": 16
+    },
+    "metadata_notes": [
+      {
+        "field": "instance.quality.paired_key",
+        "declared_value": null,
+        "actual_implemented_key": "quality:{unit_id}:{attempt}",
+        "operation_id_role": "Diagnostic reference only, never a random-stream key",
+        "status": "Execution key verified independently"
+      }
+    ],
+    "provenance": {
+      "auditor_sha256": "3faf6ca7e90e8061babef543aeb68e19a292ce8dbcab309d4412f0a258f95c70",
+      "instance_anchor": "supplied_instance"
+    },
+    "limitations": [
+      "Supplement only: run anchored check.py physical replay as well.",
+      "Does not certify nonanticipativity, optimality or model provenance; a trusted fresh numerical instance is required for external identity anchoring."
+    ]
+  },
+  "sources_stable_during_run": true
+}

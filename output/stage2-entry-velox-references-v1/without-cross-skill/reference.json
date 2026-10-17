@@ -1,0 +1,66 @@
+{
+  "problem_sha256": "9efef8718b7638ebd9ba850cad45288137250feafcf3081c3e1c2afbcbeccf84",
+  "reference": {
+    "status": "OPTIMAL",
+    "optimal": true,
+    "bound": 11010.0,
+    "wall_seconds": 0.004244459327310324,
+    "feasible_hint_used": false,
+    "hint_objective": null,
+    "plan": [
+      {
+        "operation": "P01/housing",
+        "machine": "F1",
+        "worker": "machinist",
+        "start": 30,
+        "end": 60,
+        "attended_end": 60,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/rotor",
+        "machine": "T1",
+        "worker": "machinist",
+        "start": 0,
+        "end": 30,
+        "attended_end": 30,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/assembly",
+        "machine": "A1",
+        "worker": "finisher",
+        "start": 90,
+        "end": 120,
+        "attended_end": 120,
+        "hall": "A"
+      },
+      {
+        "operation": "P01/qa",
+        "machine": "QA1",
+        "worker": "finisher",
+        "start": 120,
+        "end": 150,
+        "attended_end": 150,
+        "hall": "A"
+      },
+      {
+        "operation": "urgent/qa",
+        "machine": "QA1",
+        "worker": "finisher",
+        "start": 60,
+        "end": 90,
+        "attended_end": 90,
+        "hall": "A"
+      }
+    ],
+    "check": {
+      "valid": true,
+      "issues": [],
+      "weighted_terminal_tardiness": 60,
+      "makespan": 150,
+      "objective": 11010
+    },
+    "objective": 11010
+  }
+}

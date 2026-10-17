@@ -1,0 +1,48 @@
+{
+  "schema": "qfactoria-full-recipe-realism-frontier.v1",
+  "source_hashes": {
+    "manufacturing_realism.py": "44ce4729104f1244542d9915b027da3b73d2cb00c5d7a3cc91b930b0b3341dab",
+    "window_qubo.py": "af74b2f24d632de551bcfc9f9b70cc3a60b47b514a8e7d3212647397b32ee0f1",
+    "window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "column_parents.py": "e00dd626ab6b643565715aa282a905ce34a1519b5e871f301a0f6cd5cbf850b9",
+    "column_reference.py": "6f0082fef359ca089e68a39cb812ec2679e0860f9e28681ad61be3367d353f8f",
+    "operation_columns.py": "37b7c992152a37dce1085c481b29e2415bc536b0793b809cb8f0540d7e81a1e3",
+    "operation_qubo.py": "ae6f487f31205a90b70e571a3e7115a6ad47355efc3b20aaf0d9844588930800",
+    "column_qubo.py": "4c0964029724b389298a3e9dee517bd62dc121fa9825d97aaf975f95f89b8776",
+    "trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12"
+  },
+  "input_sha256": {
+    "/Users/iwosmura/projects/qhackathon26/output/manufacturing-recovery-v2/heat-lease-32/problem.json": "44300511d4ab1694dd3dc98e768760aa7fe30c979d15a6e49ae06348b23d07c6",
+    "/Users/iwosmura/projects/qhackathon26/output/manufacturing-study-v1/nominal-32/problem.json": "e9e301367ba4c82ec9fc936d30de026f1f6a78e500b3f885d1e0426332122f08",
+    "/Users/iwosmura/projects/qhackathon26/output/manufacturing-study-v1/nominal-64/problem.json": "5739c00c69b327dcf1855022a1270e2d7621f12bc4aa572ec5c18493ed1dcbe4",
+    "/Users/iwosmura/projects/qhackathon26/output/manufacturing-study-v1/nominal-128/problem.json": "65f2e0fa0a193c6492eedf99122939cf4c5f6d647869f647cd5c3b5b3293694b"
+  },
+  "ablations": [
+    "full",
+    "no_machine_setups",
+    "zero_transfer_lags",
+    "zero_worker_walk",
+    "continuous_worker_calendars",
+    "no_deadline_cost"
+  ],
+  "scaling_operations": [
+    32,
+    64,
+    128
+  ],
+  "raw_cp_seconds": 10,
+  "raw_cp_workers": 1,
+  "pool_cp_seconds": 5,
+  "max_pair_checks": 10000000,
+  "max_assignment_variables": 6000,
+  "parent_seed": 7001,
+  "parent_attempts": 48,
+  "parent_wanted": 4,
+  "per_operation_pool_cap": 24,
+  "pool_radius": 240,
+  "scope": "Feature removals change the model; unary/support reductions preserve their own variant; restricted pools are lossy. All ablations share horizon1440/grid30/operations/resources.",
+  "naive_scope": "Exact variable-family count and one-hot coupling lower bound only; naive complete coefficients/couplers intentionally not claimed",
+  "selection": "Development fixtures/settings fixed before outcomes; not a held-out industrial evaluation",
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0
+}

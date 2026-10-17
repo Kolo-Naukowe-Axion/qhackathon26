@@ -1,0 +1,35 @@
+{
+  "schema": "stage2-trajectory-master-development.v1",
+  "source_campaign": "output/stage2-search/window-pump-campaign-mac-v1",
+  "seeds": [
+    7,
+    13,
+    29
+  ],
+  "parent_attempt_cap": 64,
+  "parent_rule": "First two distinct complete feasible randomized list schedules; no CP teacher, no objective-based parent selection",
+  "methods": [
+    "uniform",
+    "qaoa_p1",
+    "qaoa_p2"
+  ],
+  "shots": 512,
+  "angle_evaluations": 64,
+  "source_hashes": {
+    "stage2/__init__.py": "15806a8b456031ce659cb4227812ef4c51f7decf797981a8672c96bfa81b4f42",
+    "stage2/window_qubo.py": "3c526e0c0febb6f0e3a384b156e04cfe5f48b292d59b4e2517a66c193a568af8",
+    "stage2/window_experiments.py": "6adb724f77bafaa1e279e7b458fe5f962974dd60783d9ee6129e5db3aee47fe7",
+    "stage2/planning_quantum.py": "ee09c96bfd01c9d68fc88d51754050e3ac571da348dcd090aaac84230fca4049",
+    "stage2/planning_compressed.py": "78d50d757e4d163e0bcc57649ec386c4068d95c589e5c81bd65a96586c520e1a",
+    "stage2/window_reduction.py": "ebb7900d141f7fc26c8ad79ec0c9407106db5f771ab79759bc85b296e8e03584",
+    "stage2/window_pump.py": "bb64c3fa40de3a9af5e6dba09d1b69553144c225a3659bedcfd410c886011f11",
+    "stage2/window_search.py": "9b1241cf9368454d93de0cc4c477ffd37795f1d831ee17c54e659108851aea5f",
+    "stage2/window_campaign.py": "2376e5ad778d0d05f731ef62447b460a516b13ec8882d0666adc2b90de004406",
+    "stage2/spec.py": "e69e81cb227d7b3f42448f7889ba5aa17a063e2c6b091aa32a6d9a7ccc8e5f50",
+    "stage2/bounds.py": "dafff70b906237bb5caeeb602da1207657b1582f1f36d33c7e7be1c8e6d15836",
+    "instances/stage2/metaltech_pressure.json": "018a375a9405144afe7d4403bc17fe5dc66103aa21e12cdc209da8cf4420af35",
+    "stage2/trajectory_qubo.py": "7fa1795599ad6b90af181e3ebbb38d537d4f371d0e04431e1889656d0d841d12",
+    "stage2/trajectory_experiments.py": "f69968fd30d1c19862144a7dd388b6b66d7ee7ab565e408a5e1b68af83bb3435"
+  },
+  "scope": "Exact restricted-pool QUBO; compare full-model CP reference separately. Parent construction and reference costs are classical. No final tapes, physical QPU or GPU calls."
+}
