@@ -59,11 +59,35 @@ conditioned runs must identify their own matrix and controls explicitly.
 
 ## Reproduce locally
 
+Use Python 3.11 for the SDK checks, separately from the Python 3.12+ catering
+foundation environment. The commands below use one environment consistently;
+the retained SDK checks used NumPy 2.4.6, dimod 0.12.22, VeloxQ SDK 1.0.0 and
+pytest 9.1.1. These tests use no token and submit no jobs.
+
 ```sh
-.venv/bin/python -m pytest tests/catering/test_conditioning.py tests/catering/test_veloxq_adapter.py -q
-.venv-catering/bin/python -m catering.tune_veloxq --output output/NEW-CONDITIONING
-.venv/bin/python -m catering.veloxq_pilot --output output/NEW-OFFLINE-PILOT
+python3.11 -m venv .venv-veloxq
+.venv-veloxq/bin/python -m pip install -r requirements-solver.txt pytest==9.1.1
+.venv-veloxq/bin/python -m pytest tests/catering/test_conditioning.py tests/catering/test_veloxq_adapter.py tests/catering/test_veloxq_penalty.py -q
+.venv-veloxq/bin/python -m catering.tune_veloxq --output output/NEW-CONDITIONING
+.venv-veloxq/bin/python -m catering.veloxq_pilot --output output/NEW-OFFLINE-PILOT
 ```
+
+The full release checker also requires Node.js 20+ and npm for the site build;
+the Python-only SDK tests above do not. Run that checker in the foundation
+environment using [the catering guide](../catering/README.md#verify-without-training).
+
+Historical `job_ledger.json` entries retain the submitting machine's absolute
+`output_dir` as provenance. The submission cap counts entries, without opening
+those old directories. On another machine, locate retained artifacts beneath
+the repository's `output/` tree; do not try to recreate `/home/raf`.
+
+Restoration tools have separate scopes: `restore-compressed-evidence.mjs`
+verifies/restores the indexed JSON evidence; `restore_veloxq_evidence.py` handles
+the original VeloxQ subtree and its HDF5 gzip files; `restore-large-evidence.py`
+only verifies/copies downloaded historical release assets. The latter does not
+download or extract a complete project environment. Restoring every historical
+factory archive is unnecessary for the catering release checks and substantially
+increases disk usage.
 
 The ablation predeclares three seeds per tier, original vs conditioned SA,
 four restarts, 100 sweeps, two seconds per search. All returns are retained,
@@ -85,7 +109,7 @@ by this pass.
 
 ```sh
 # Example after the 61-entry reconciliation; check current usage before submitting:
-.venv/bin/python -m catering.veloxq_pilot \
+.venv-veloxq/bin/python -m catering.veloxq_pilot \
   --output output/NEW-CONDITIONED-512 --allow-external --max-service-jobs 62
 ```
 
@@ -136,10 +160,10 @@ original total_s alone is not a successful end-to-end measurement.
 Run the second formulation explicitly:
 
 ```sh
-.venv/bin/python -m catering.veloxq_pilot \
+.venv-veloxq/bin/python -m catering.veloxq_pilot \
   --output output/NEW-NOIDLE --formulation no-idle --num-steps 20000
 # --allow-external and a suitable --max-service-jobs are still required to submit.
-.venv/bin/python -m catering.veloxq_pilot --output output/EXISTING-JOB --resume
+.venv-veloxq/bin/python -m catering.veloxq_pilot --output output/EXISTING-JOB --resume
 ```
 
 --resume downloads an existing saved job only. It submits zero additional jobs.
@@ -176,3 +200,39 @@ widths. Those budgets and hardware differ from VeloxQ. The older 30-second CP
 incumbents attain U=6/7/8. Thus feasibility is substantially improved but VeloxQ
 has not won the scheduling-quality comparison. No result is repaired or replaced
 by a classical incumbent in the raw VeloxQ record.
+
+
+## Scaling and classical context
+
+The following three jobs share cold initialization, 20,000 steps and 512
+replicas. Counts include sample multiplicity. **Non-empty** means at least one
+new batch selected; it does not imply a complete meal delivered. Empty plans are
+feasible, so validity alone is insufficient.
+
+| Source / solver bits | Valid | Non-empty | Best U | Backend s | Adapter + recovery s | SA best U | CP best U (5 s cap) |
+|---|---:|---:|---:|---:|---:|---:|---:|
+| 512 / 486 | 512/512 | 143/512 | 9 | 1.663 | 7.399 | 7 | 7 |
+| 1,024 / 998 | 512/512 | 102/512 | 11 | 5.442 | 15.813 | 8 | 8 |
+| 2,048 / 2,022 | 512/512 | 62/512 | 13 | 19.229 | 32.757 | 11 | No incumbent |
+
+Lower U is better; U counts missed priority-weighted complete meal lots, each
+of ten meals. These cases have equal priorities. The 100,000-step width-486 job
+is a separate deeper run and is excluded from this equal-step table.
+
+Backend time is the service's reported `running_time`, not an end-to-end speed
+claim. Adapter time includes the failed download attempt plus measured recovery
+where needed, excluding the unmeasured gap between attempts. SA uses the same
+no-idle matrix, three seeds and a two-second search cap per seed (four restarts,
+100 sweeps); its whole calls range from 0.871–1.377, 2.037–2.048 and 2.150–2.213 s
+at the three widths. CP uses the identical offered programs with hard constraints
+and the original objective, rather than the penalized sampling matrix. The
+retained five-second CP calls took 5.009/5.040/5.415 s including construction;
+the last returned UNKNOWN. These differ in compute, budgets and initialization
+and are context, not a controlled solver speed ranking.
+
+Sources: [service report](../output/catering-velox-conditioned-service-v1/report.json),
+[SA report](../output/catering-velox-noidle-controls-v1/report.json), and the
+[512](../output/catering-velox-scale-v3/scale-512-reference.json),
+[1,024](../output/catering-velox-scale-v3/scale-1024-reference.json) and
+[2,048](../output/catering-velox-scale-v3/scale-2048-reference.json) CP receipts.
+The earlier 30-second CP incumbents mentioned above are separate runs.

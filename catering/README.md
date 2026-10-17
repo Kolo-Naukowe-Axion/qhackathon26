@@ -56,8 +56,9 @@ python3.11 -m venv .venv-catering-methods
 
 Those unit tests perform tiny local optimizer checks. They do not rerun the
 retained campaigns. One optional Qiskit equivalence test skips in this minimal
-environment. Qiskit and VeloxQ SDK tests use the broader
-`requirements-solver.txt` environment; the live demo does not require those SDKs.
+environment. For the pinned VeloxQ SDK test environment and exact offline test
+command, see [VeloxQ reproduction](../docs/CATERING_VELOXQ_TUNING.md#reproduce-locally).
+The live demo does not require those SDKs.
 
 ## Which evidence answers which question?
 

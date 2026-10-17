@@ -176,13 +176,18 @@ Choose fresh output directories for new solver runs:
 
 ```sh
 .venv-baseline/bin/python scripts/prepare-stage1.py --output output/new-stage1
-# Export only after the bundle verifies; also refreshes guide evidence:
-.venv-baseline/bin/python -m solver.compact --phase bundle --output output/new-compact --export-final
+.venv-baseline/bin/python -m solver.compact --phase bundle --output output/new-compact
 .venv-baseline/bin/python -m solver.compact --phase screen --output output/new-compact-screen
 .venv-baseline/bin/python -m solver.compact --phase validate --output output/new-compact-validation
 .venv-baseline/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-2x2
 .venv-baseline/bin/python -m solver.verify --run output/stage1-compact-ready/quantum-3x3
 ```
+
+Normal reproduction leaves the selected root schedules unchanged. Add
+`--export-final` to the bundle command only to deliberately replace the tracked
+`schedule_2x2.json`, `schedule_3x3.json`, selection manifest and guide evidence.
+Independent runs may select different equally optimal schedules, including on
+another operating system; compare feasibility and makespan, not JSON bytes.
 
 `scripts/prepare-stage1.py` runs the solver tests, original time-indexed encoding
 audit and a compact bundle. `--time-indexed` reproduces the older 4/39-bit methods.
