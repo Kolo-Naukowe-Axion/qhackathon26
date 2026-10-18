@@ -50,7 +50,7 @@
     "live_action": "Explain the actual x3 operation timeline and same-anchor exclusivity. Play past halfway; point to product(...) and penalty=span+1 in the compiler excerpt.",
     "live_narration": "A bit selects a local batch and its schedule. Same-anchor programs share demand, so each block chooses one or idle. Conflicts forbid clashes. The code expands coverage products and sets the penalty to span plus one. This cell uses thirty-five bits.",
     "shot": "Selected side-C program, one-hot block and its actual operation timeline; then the compiler excerpt.",
-    "editor_cue": "Show prep, cooking, packing and parallel cleaning from the frozen x3 program. After 55%, replace the operation timeline with actual code in the same space; point to product(...) and span+1.",
+    "editor_cue": "Show prep, cooking, packing and parallel cleaning from the frozen x3 program. At 50% in video (75.0 s), replace the operation timeline with actual code in the same space; live switches at 55%. Point to product(...) and span+1.",
     "still_progress": 0.72
   },
   {
@@ -63,7 +63,7 @@
     "live_action": "Explain MS and waste first; after 60% the screen shows the range bound and penalty inequality. State the ground-state guarantee.",
     "live_narration": "Linear main and side coverage multiply into quadratic service and waste terms. Priority weights dominate lower costs. For hard constraints, the objective range is at most S. Set P to S plus one: every invalid state costs more than every feasible state. That proves the ground-state guarantee.",
     "shot": "Paired-coverage truth table, then the actual penalty-bound argument.",
-    "editor_cue": "At 60% switch to the proof. Define S over the full bit domain, show P=S+1 and E(invalid)≥E(feasible)+1. A heuristic need not reach a ground state; R=B here.",
+    "editor_cue": "Switch to the proof at 53% in video (102.84 s), or 60% in live. Define S over the full bit domain, show P=S+1 and E(invalid)≥E(feasible)+1. A heuristic need not reach a ground state; R=B here.",
     "still_progress": 0.8
   },
   {
@@ -110,7 +110,7 @@
     "kicker": "VQE · DIFFERENT TRAINING BUDGET",
     "duration": 20,
     "live_duration": 12,
-    "narration": "VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.",
+    "narration": "VQE uses Givens gates within blocks and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent in both held-out cases. Budgets and shots differ from QAOA. The primary setup hits ten of ten and nine of ten seeds.",
     "live_narration": "VQE concentrates about twelve percent probability on the optimum in both cases. Its budgets and shot count differ from QAOA, so we show the methods separately.",
     "live_action": "Compare per-shot probabilities; point to the different budgets and final shots.",
     "shot": "VQE/QAOA per-shot probabilities with unequal-budget note.",
@@ -119,15 +119,15 @@
   },
   {
     "id": "velox",
-    "title": "VeloxQ: representation and a hybrid step",
-    "kicker": "SAME KITCHEN MODEL · LARGER QUBOS",
+    "title": "VeloxQ inside the replanning loop",
+    "kicker": "SAME KITCHEN · CHECKED IMPROVEMENTS",
     "duration": 28,
     "live_duration": 19,
-    "narration": "VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals at equal step budgets, with more waste. We also tested a hybrid step: fix most of a classical plan and let VeloxQ change two blocks. A 162-bit subproblem improves U from eight to seven. The neighborhood was selected offline by exact enumeration; this is exploratory, and longer CP still does better.",
-    "live_action": "Show cold-start service change, then the separately labeled hybrid tuple improvement and its neighborhood-selection caveat.",
-    "live_narration": "Service rises from ten to fifty meals, with more waste. A separate 162-bit hybrid step improves a classical plan from U eight to seven. We chose that neighborhood offline using exact enumeration; longer classical runs still do better.",
-    "shot": "Cold-start representation improvement, plus a separately labeled checked 162-bit hybrid improvement of the larger full plan.",
-    "editor_cue": "Keep cold-start and hybrid evidence separate. Cold: 10→50 of 140 meals, waste30→60, equal20k steps. Hybrid: (8,3,8,8)→(7,4,9,9); offline exact enumeration selected the neighborhood, and longer CP remains better.",
+    "narration": "VeloxQ now drives the replanning loop. Start with its own full plan, free two blocks, solve the conditional QUBO, and accept only a checked improvement. Across three widths, missed meal lots fall from nine to seven, eleven to six, and thirteen to seven. These runs used seventy-one submissions. Exact neighborhood controls match or improve final quality, and longer classical runs remain better. This demonstrates integration, not a speedup.",
+    "live_action": "Follow the loop, then read the three starting and final missed-lot counts. Distinguish total adapter time from backend time; retain the exact-control and longer-CP comparison.",
+    "live_narration": "VeloxQ starts from its own plan and repeatedly changes two blocks. Missed meal lots fall from nine to seven, eleven to six, and thirteen to seven. All improvements pass the checker. Exact neighborhood controls do as well or better; longer classical runs still win.",
+    "shot": "VeloxQ-only starting plans improved through repeated two-block conditional QUBOs; three widths with classical controls and total runtime.",
+    "editor_cue": "All block pairs are swept; each subproblem is capped at 40 variables. 71 submissions include five failures. Total adapter time is 565.4 s, backend time 126.784 s; these exclude the earlier cold-start generation. One seed per width. Exact controls match or improve final tuples; CP at 240 s / four workers has lower U at every width. Do not call this a matched-budget win.",
     "still_progress": 0.45
   },
   {

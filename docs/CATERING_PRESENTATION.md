@@ -101,7 +101,7 @@ pair counts, actual solver width and exact-sector simulation. Neither size nor a
 
 - Primary emphasis is selected: QAOA fresh execution, VQE comparison and the
   VeloxQ representation study. Freeze the final release SHA after checks.
-- Freeze spoken numbers and visuals, record human voiceover, export and upload
+- Freeze spoken numbers and visuals, generate or record the narration, export and upload
   a playable video ≤5min. No new training or service jobs are needed for this.
 - Rehearse three live runs under 2:50. Check the real speaker clock, not just
   animation progress. Keep saved replay, screenshots and the MP4 as fallbacks.
@@ -142,4 +142,4 @@ The fixture and its browser tab were stopped after review.
 
 Review captures remain outside the repository. This pass changes presentation,
 controls and evidence checks; it starts no training, service or QPU jobs.
-Human rehearsal, final 1920×1080 recording and voiceover remain required.
+Live rehearsal, final 1920×1080 recording and narration remain required.

@@ -1,9 +1,16 @@
 # Video narration — 4:20
 
-Generated from [story.json](../scripts/catering-showcase/story.json). Edit that
-source, then run `npm run docs:write`. This is a human voiceover draft; the
-QAOA and VeloxQ paragraphs use integrated checked results; VQE separates
-reported campaign medians from checked exported schedules.
+[Watch the final video](https://qfactoria.com/video/) · [Local MP4](../output/submission-final/axion-kitchen.mp4)
+
+The completed narration uses Kokoro's stock `af_heart` synthetic voice;
+no voice was cloned. [Voice manifest](../output/submission-final/voice-manifest.json)
+records the engine/model attribution, pronunciation adjustments and chapter timing.
+English selectable subtitles are included in the MP4 and available as
+[captions.srt](../output/submission-final/captions.srt).
+
+This text is generated from [story.json](../scripts/catering-showcase/story.json).
+Edit that source, then run `npm run docs:write`. QAOA and VeloxQ use integrated
+checked results; VQE separates reported campaign medians from checked exported schedules.
 
 ## 0:00–0:26 · The catering problem
 
@@ -39,11 +46,11 @@ reported campaign medians from checked exported schedules.
 
 ## 3:08–3:28 · VQE comparison
 
-> VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.
+> VQE uses Givens gates within blocks and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent in both held-out cases. Budgets and shots differ from QAOA. The primary setup hits ten of ten and nine of ten seeds.
 
-## 3:28–3:56 · VeloxQ: representation and a hybrid step
+## 3:28–3:56 · VeloxQ inside the replanning loop
 
-> VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals at equal step budgets, with more waste. We also tested a hybrid step: fix most of a classical plan and let VeloxQ change two blocks. A 162-bit subproblem improves U from eight to seven. The neighborhood was selected offline by exact enumeration; this is exploratory, and longer CP still does better.
+> VeloxQ now drives the replanning loop. Start with its own full plan, free two blocks, solve the conditional QUBO, and accept only a checked improvement. Across three widths, missed meal lots fall from nine to seven, eleven to six, and thirteen to seven. These runs used seventy-one submissions. Exact neighborhood controls match or improve final quality, and longer classical runs remain better. This demonstrates integration, not a speedup.
 
 ## 3:56–4:08 · What makes the choices difficult?
 
@@ -53,12 +60,14 @@ reported campaign medians from checked exported schedules.
 
 > Our log records three decisions: correct repair cleaning, optimize complete-meal service, and prove idle elimination. The checked cell serves twenty meals without waste. Benchmarks and code are linked.
 
-## Recording notes
+## Editing notes
 
-617 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
-The earlier local MP4 is silent and has obsolete result screens. Record the
-current route and narration for this result set.
+607 source words; the fastest chapter is 150 words/minute.
+Narration is generated sentence by sentence and aligned to the chapter route.
+The voice manifest records actual pronunciation text and time stretch. Preserve
+pauses for the model, source code and real launch; do not claim a result absent
+from the receipt. The final video uses edited actual UI captures, not an unedited
+continuous recording.
 
-Record one paragraph at a time in a quiet room. Align and retime the visuals,
-add final subtitles, and check the export end to end. Keep the submitted video
-below five minutes. The screen recording and live slot are separate deliverables.
+The separate live presentation uses [its shorter script](CATERING_LIVE.md).
+Organizer submission is not implied by this completed local video.

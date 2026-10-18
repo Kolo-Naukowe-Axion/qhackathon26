@@ -294,8 +294,8 @@ of `aa658aad`. The check made no service call.
 
 To use the model as a decision tool, we changed one resource at a time in the
 12-customer S3 lunch and reran the raw-input CP reference (240 s, two seeds,
-identical results). Repairing C2 or adding a third cooker only removes one
-discarded portion (U stays 5); a second prep station or a cook-only worker
+identical results). The best found repaired-C2 and third-cooker plans remove one
+discarded component lot (ten portions; U stays 5); a second prep station or a cook-only worker
 changes nothing; one flexible worker for prepare, cook and pack cuts missed
 lots 5→3, i.e. 20 more meals. A second packing line is outside the core
 profile and is reported as unsupported. We deliberately did not retrain QAOA
@@ -309,8 +309,9 @@ included the investment study.
 A follow-up split the flexible worker into single and paired skills (same CP
 budget, two seeds, identical results). Every hire that can prepare or pack
 reaches U=3; only the cook-only hire stays at 5. The recommendation is
-therefore the cheapest one: a packing (or prep) helper, which also doubles the
-program register instead of multiplying it by 8.3.
+therefore a sufficient single-task option: a packing (or prep) helper, which
+also doubles the program register instead of multiplying it by 8.3. No wages
+were supplied, and these finite-budget runs do not certify an economic optimum.
 
 We also made the Stage 1 comparable number explicit: 30 variables, the
 domain-wall time-indexed QUBO for B, whose energies match the direct conflict
@@ -323,3 +324,35 @@ The release check passed all 13 stages on a fresh clone of `f4bda4c9`
 (worker-skill split and comparable number); the
 [review receipt](output/catering-submission-review-v1/verification.json) now
 records that commit.
+
+
+## 18 October — final narrated demonstration package
+
+Pulled main through `b38d82f4` before preparing the final presentation. The
+4:20 route now incorporates the 30-variable baseline comparison, actual
+VeloxQ-LNS loop and finite-budget investment what-if. No frozen problem input
+or method campaign was changed.
+
+The local package at `output/submission-final/axion-kitchen.mp4` contains edited
+captures of the real UI, stock Kokoro `af_heart` synthetic narration, English
+subtitles and chapter markers. No person's voice was cloned. Service animation
+was captured at five frames per second; static math/result frames are held for
+reading. These editorial timings are not solver-runtime measurements.
+
+The browser launch captured at **2026-10-18T10:18:04Z** used the saved QAOA
+angles and 4,096 fresh samples. Its independently checked best sample serves
+20 meals with zero waste; 2,173/4,096 shots are valid. The video distinguishes
+that actual launch/receipt from retained schedule replays. No new training,
+VeloxQ submission or physical-QPU job was started for the media package.
+
+The final local release check passed all 13 stages after the presentation
+edits, including three fixed-angle sample executions, the baseline checks,
+mathematics audit and retained method checks. The receipt is
+`/tmp/axion-final-release-narrated/release.json`; it records tracked edits and
+source hashes, rather than claiming those edits were already committed. The
+MP4 probes as 260 seconds at 1920×1080 with audio and subtitles; all package
+manifest hashes match. Automated narration checks cover timing, clipping and
+key numbers. Human listening approval, public video access, final source
+publication, live rehearsal and organizer submission remain separate steps.
+
+**18 October, final video publication — Iwo S / integration.** Published the 4:20 narrated video and English captions at https://qfactoria.com/video/. Public browser playback loaded 1080p media, advanced normally and showed no error. Production deployment `dpl_HzatvmLYt4Ped9RZ3WRahESaGjbP`; exact media/source hashes are retained in `presentation/video/provenance.json`. The source repository remains private pending the authorized release step; no organizer submission receipt is claimed.

@@ -1,6 +1,6 @@
 # Submission preparation — catering active, factory package archived below
 
-**Active direction, 17 October:** use the
+**Active direction, 18 October:** use the
 [Axion Kitchen presentation/demo plan](CATERING_PRESENTATION.md) and
 [current catering design](../PROJECT_DESIGN.md). The timed script, live
 launch preparation, video storyboard, evidence map and VeloxQ improvement gates
@@ -32,8 +32,8 @@ The frozen presentation emphasis is **QAOA plus VeloxQ**, with VQE comparison
 and classical references:
 
 - QAOA supplies the currently checked quantum method and sampled schedules.
-- VeloxQ solves larger instances of the same versioned meal model and supplies
-  the integrated backend/scaling study for its prize criteria.
+- VeloxQ solves sub-QUBOs inside the larger model's checked neighborhood loop
+  and supplies the integrated backend/scaling study for its prize criteria.
 - Raw CP, same-domain CP, exact small audits and SA establish feasibility,
   quality and representation loss. These remain supporting evidence.
 - VQE is now integrated: five retained exports pass independent evaluation,
@@ -47,8 +47,9 @@ in the repository and comparison table. The official rubric has no separate
 points for algorithm count, largest qubit count or physical hardware use.
 Neither method names nor adding VQE automatically increases creativity credit.
 
-**Current verification, 17 October:** main now includes the audited 400-run QAOA
-campaign, the VeloxQ representation study, and all five checked VQE exports.
+**Current verification, 18 October:** main includes the audited 400-run QAOA
+campaign, the VeloxQ representation and neighborhood-loop studies, and all five
+checked VQE exports.
 The benchmark browser links 229 retained source hashes. The [final review receipt](../output/catering-submission-review-v1/verification.json)
 records 13 passing release stages on a fresh clone of `f4bda4c9` (18 October, after the VeloxQ-LNS loop, investment what-if and Stage 1 comparable number). The last visibility check recorded GitHub private,
 default branch main; recheck signed-out access only at the authorized release.
@@ -67,7 +68,7 @@ the categories; the jury determines the points.
 | Creativity and complexity beyond baseline | 5 | Joint batch yields/sharing and paired-course service/waste terms without product-register qubits; constrained scheduling and compulsory recovery clean; measured loss from restricted portfolios. | Show why this changes the mathematics and decisions beyond a domain reskin. Do not claim unimplemented ingredients, power or money. No extra feature backlog needed for this argument. |
 | Development log | 3 | Dated decisions and actual failures/corrections in DEVELOPMENT_LOG.md: repair clean, pairing formulation, encoding scope, precision, method trials. | The curated dated log links pivotal decisions and the full working archive. Its closing presentation frame summarizes three actual corrections. Verify the spoken summary at rehearsal. Do not rewrite failed experiments as successes. |
 | Project design | 3 | PROJECT_DESIGN.md active catering section, linked complete formulation, data model, assumptions and solver contract. | The active design covers units, feasibility, objective weights, proofs and known limits; §5.1 derives variable counts by feature. Confirm the team can explain those choices. |
-| Demo video | 3 | At most five minutes: actual program launch/result, core-code/model explanation, method and development-log summary. CATERING_PRESENTATION.md links the current executable 4:20 storyboard. | Technical fresh-sampling checks pass; human rehearsal and final recording remain pending. Record the current route, add human voiceover, upload and verify the playable URL. A static replay alone does not demonstrate a fresh solver launch. |
+| Demo video | 3 | At most five minutes: actual program launch/result, core-code/model explanation, method and development-log summary. CATERING_PRESENTATION.md links the current executable 4:20 storyboard. | Technical fresh-sampling checks pass; final narrated export and playback remain pending. Record the current route, add narration, upload and verify the playable URL. A static replay alone does not demonstrate a fresh solver launch. |
 | Live presentation and Q&A | 3 | Three-minute story using the game UI, a short launch, readable objective/results and rehearsed answers. | Rehearse three times under 2:50. One speaker and operator, local fallback ready, all team members able to explain the central math. |
 | Consistency of log/code/presentation | 3 | Versioned source/bundle hashes, common checker, explicit method labels and same metric definitions throughout. | Freeze one release commit and result set. Check every spoken number, screenshot, table and schedule against it. Separate fresh execution from saved samples and manual interventions. |
 
@@ -81,8 +82,8 @@ The official VeloxQ criteria do not list numerical weights. Cover all of them:
 
 | Criterion | Existing contribution | Work that raises the case |
 |---|---|---|
-| Elegant, correct integration | Shared model/decoder, exact integer packets, sign/offset checks, no silent repair, raw receipts. | Keep the backend boundary small and reproducible; explain one concrete precision/encoding decision. |
-| Quality of obtained solutions | The no-idle formulation returns 512/512 feasible samples at actual solver widths 486/998/2022. At 512 source bits and 20,000 steps the controlled change improves validity 17→512/512. | Valid objective quality still trails retained CP/SA. Explain the measured representation improvement; further service experiments need a separate capped budget. |
+| Elegant, correct integration | Shared model/decoder, exact integer packets, sign/offset checks, no silent repair, raw receipts and a VeloxQ-driven neighborhood loop accepting only checked improvements. | Keep the backend boundary small and reproducible; explain one concrete precision/encoding decision. |
+| Quality of obtained solutions | The no-idle formulation returns 512/512 feasible samples at actual solver widths 486/998/2022. The loop reaches U=6/7 at 998/2022 bits, versus U=7/8 for retained 30-second CP. | These budgets differ. Longer CP is better, and an exact-pair control reaches the same U as the loop. Separate cold feasibility, loop quality and runtime; no further service work is required for the current submission. |
 | Scaling with size/complexity | Nested larger portfolios of the same 12-customer input, measured bits/couplers/density. | Compare quality and feasibility along with loader/upload/queue/backend/total times. Escalate only when the smaller-tier result is useful. Large matrices alone are weak evidence. |
 | Experimental insight | Proven penalty conditioning and redundant-idle elimination retain feasible optima while greatly improving service feasibility. Cold controls and failed attempts remain in the ledger. | Present the controlled comparison and its limits; feasibility improvement is distinct from best schedule quality. |
 | Clarity and reproducibility | Frozen inputs, hashes, method result schema, ledger, offline packet checks and retained evaluations. | One documented restore/run/check path and a compact result table linked to raw artifacts. |
@@ -103,7 +104,7 @@ measurement. See the owner's report for approved versus still-proposed work.
 | README with run instructions and AI-use description | Both sections exist, including current catering and service disclosure. | Keep disclosure aligned with final delivered methods; verify commands from a clean environment. |
 | Dated Development Log | Exists. | Final entry records chosen methods, measured outcomes, decisions and verification. |
 | Project Design | Exists with active catering entry and linked math. | Finish coherent current design and cross-check it against selected implementation. |
-| Demo video URL, at most 5 min | Current 4:20 storyboard/script and verified v5 stills exist. The silent v2 rough cut is obsolete; final recording/audio are pending. | Record the current route, add human voiceover, upload and play through as a viewer. Include real launch/result, model/method walkthrough and log summary. |
+| Demo video URL, at most 5 min | Current 4:20 storyboard/script exists. The silent v2 rough cut is obsolete; final narrated export is being prepared. | Record the current route, add narration, upload and play through as a viewer. Include real launch/result, model/method walkthrough and log summary. |
 | Live presentation, at most 3 min plus about 2 min Q&A | 2:45 executable live route with chapter holds, audience view, operator cues, fresh sample and Q&A cheats prepared. | Rehearse actual launch and screen-share layout, prepare fallback, attend assigned slot. |
 | Organizer submission | No receipt recorded here. | Submit through the supplied form and retain acknowledgment, commit, video URL and team details. |
 
@@ -145,8 +146,9 @@ The package emphasis is fixed:
   4096 fresh samples at sampling seed17102026.
 - Method evidence: frozen QAOA400-run campaign, primary coupled-L2/CVaR0.1
   VQE E5 comparison and five checked exports; no equal-work winner claim.
-- VeloxQ: equal20k-step source512 representation comparison plus the three
-  actual solver widths. Keep changed matrix identities visible.
+- VeloxQ: the equal20k-step source512 representation comparison, three actual
+  solver widths, and checked neighborhood-loop outcomes. Keep changed matrix
+  identities and unequal end-to-end budgets visible.
 - Stage1: selected checked4h/8h JSONs. Design, log and MIT source accompany them.
 
 Prepare these final form fields from the actual release; pending means pending:
@@ -159,11 +161,13 @@ Prepare these final form fields from the actual release; pending means pending:
 | Demo | https://qfactoria.com/catering/ |
 | Benchmarks | https://qfactoria.com/catering/benchmarks/ |
 | Source commit | Final checked release SHA; record it after the remaining edits are committed |
-| Video URL | Pending current recording, human voiceover, upload and playback check |
+| Video URL | Pending final narrated export, upload and viewer playback check |
 | Team/contact declarations | Confirm actual organizer fields and team-provided details |
 | Submission receipt | Pending; retain acknowledgment and exact submitted links |
 
 See the [recording sheet](CATERING_RECORDING.md) and [Q&A/rehearsal sheet](CATERING_QA.md).
+The [final handoff](CATERING_FINAL_HANDOFF.md) lists the exact package links,
+prepared form description and remaining external steps.
 No public visibility change, upload or form submission is performed by this prep.
 
 Rules authority: local `Quantum_Hackathon_2026_ERP_Challenge.pdf`, §§6–12 and 15.

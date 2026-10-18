@@ -1,6 +1,6 @@
 # Axion Kitchen
 
-**[Open the live demo ↗](https://qfactoria.com/)** · [Benchmarks](https://qfactoria.com/catering/benchmarks/) · [VeloxQ results](https://qfactoria.com/catering/benchmarks/#veloxq)
+**[Watch the 4:20 project video ↗](https://qfactoria.com/video/)** · **[Open the live demo ↗](https://qfactoria.com/)** · [Benchmarks](https://qfactoria.com/catering/benchmarks/) · [VeloxQ results](https://qfactoria.com/catering/benchmarks/#veloxq)
 
 Catering production scheduling with **QAOA, VQE and VeloxQ**, built for the
 QPoland Quantum Hackathon 2026. Choose shared batches, cookers, workers and
@@ -26,8 +26,9 @@ Main and side coverage interact quadratically, without extra product qubits.
   than 30-second CP (longer CP is still better). [Inspect the VeloxQ study](docs/CATERING_VELOXQ_TUNING.md).
 - **Validation:** independent physical checks, exact small references and CP/SA
   controls. The complete cell serves 20 meals with zero waste; controls also match it.
-- **Decision support:** a what-if on the 12-customer lunch shows a third cooker
-  serves no extra meals, while one helper who takes over prep or packing serves 20 more.
+- **Decision support:** in the best found 12-customer plans, a third cooker adds no
+  served meals, while a prep or packing helper adds 20. These are finite-budget
+  classical results, not certified economic optima.
   [Investment study](docs/CATERING_INVESTMENT.md).
 
 The animated dynamic-portfolio pilot and the fixed-pool campaign are labeled
@@ -63,6 +64,8 @@ Source is [MIT-licensed](LICENSE); assets and fonts retain their accompanying
 notices. OpenAI Codex and Anthropic Claude assisted with formulation, code,
 experiments, tests, UI and documentation. Team members set the project direction
 and solver assignments and handle the final presentation and submission.
+The video narration uses a stock Kokoro synthetic voice; no team member’s
+voice was cloned. The narration, captions and source hashes are retained.
 AI-assisted working notes remain in `docs/internal/` and `docs/archive/`; the
 links above identify the active project documents. Measured results and
 limitations are recorded in the development log and retained evidence.

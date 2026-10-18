@@ -29,19 +29,23 @@ same tuples. No run proved optimality, so these are best found plans, not
 certified optima. The core profile requires exactly one packing line, so that
 option is reported as unsupported rather than approximated.
 
-**Decision.** More equipment does not serve more meals here: a third cooker or
-a repaired C2 only removes one discarded portion. The bottleneck is people:
-W1 both prepares and packs. Any extra worker who takes over either of W1's
-tasks serves two more lots, i.e. 20 more meals per lunch service; a worker who
-can only cook does not help. The cheapest sufficient hire is a single-task
-helper for packing (or prep): the same U=3 as a fully flexible worker. It pays
-off when 20 meals' margin exceeds the cost of one extra shift; we do not
-invent prices.
+**Decision supported by these runs.** The best found third-cooker and repaired-C2
+plans serve the same number of meals as the current-kitchen plan, while wasting
+one fewer component lot (ten portions). W1 both prepares and packs; adding a
+worker qualified for either task produces plans serving two more lots, or 20
+more meals per lunch service. A cook-only worker gives no observed service gain.
+A single-task packing or prep helper attains the same U=3 as the fully flexible
+worker in these runs. This identifies a sufficient skill set, not the cheapest
+hire: wages were not supplied. The observed 20-meal gain breaks even when its
+contribution margin covers the extra shift cost. Because no run proved
+optimality, the experiment does not certify that additional equipment can never
+help or that 20 meals is the maximum possible gain.
 
 **Price of realism.** The same decision shows the qubit cost of flexibility:
 the flexible worker multiplies the complete program register by 8.3 (18,182 to
 150,080), a single-task helper by 2.0 (36,364), while a cooker adds 9,236
-programs. The cheapest answer for the kitchen is also the cheapest model. The quantum methods therefore
+programs. A single-task helper requires a smaller program register than a fully
+flexible worker. The quantum methods therefore
 work on cut portfolios of this register (31–35 qubits for QAOA/VQE, 486–2,022
 bits for VeloxQ), and these what-if answers come from the classical reference.
 

@@ -93,7 +93,7 @@ def verify(output, full_qaoa=False):
         checks=results,sampling_repetitions=samples,
         sampling_note='Three repeat executions of the same frozen angles and sampling seed, not independent training or human rehearsals.',
         source_files={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},
-        pending=['Three human timed rehearsals','Final video recording, human voiceover and upload',
+        pending=['Timed live rehearsal','Final narrated video export, playback check and upload',
                  'Final authorized public-source access check','Team/form details and submission acknowledgment'],
         training_campaigns=0,video_recordings=0,physical_qpu_calls=0,veloxq_calls=0)
     (output/'release.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')

@@ -21,6 +21,7 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [CATERING_LIVE.md](CATERING_LIVE.md) | Live speaker and operator cues |
 | [CATERING_QA.md](CATERING_QA.md) | Quick answers and technical follow-ups |
 | [STAGE2_SUBMISSION.md](STAGE2_SUBMISSION.md) | Official criteria, deliverables and final checks |
+| [CATERING_FINAL_HANDOFF.md](CATERING_FINAL_HANDOFF.md) | Final package links, exact form values and remaining external steps |
 | [DEVELOPMENT_LOG.md](../DEVELOPMENT_LOG.md) | Dated decisions, experiments and corrections |
 
 The implemented profile is `paired-course-contiguous.v3`.

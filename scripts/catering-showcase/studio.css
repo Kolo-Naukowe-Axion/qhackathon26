@@ -278,3 +278,21 @@
 .scene-velox .hybrid-note .eyebrow { font-size: 13px !important; margin-bottom: 12px !important; }
 .scene-velox .hybrid-note span.hybrid-tuple { font: 700 26px/1.4 var(--mono); color: #426c4c; margin-top: 12px; }
 .scene-velox .hybrid-note > span:last-child { font-size: 17px; line-height: 1.5; }
+
+/* Conditional replanning has the same fixed result surface as QAOA and VQE. */
+.scene-velox .lns-explanation h2 { font-size: 54px; margin: 20px 0 22px; }
+.lns-loop { padding: 0; margin: 0 0 24px; list-style: none; counter-reset: lns; }
+.lns-loop li { display: flex; align-items: center; gap: 14px; margin: 16px 0; font-size: 24px; color: #dfebc3; }
+.lns-loop li::before { counter-increment: lns; content: counter(lns); display: grid; place-items: center; width: 32px; height: 32px; background: #527347; color: #f5e2b8; font: 18px var(--mono); }
+.scene-velox .lns-explanation > p:not(.eyebrow) { font-size: 21px; line-height: 1.5; }
+.scene-velox .lns-table { margin: 26px 0 22px; }
+.scene-velox .lns-table th { font-size: 12px; line-height: 1.5; padding-inline: 9px; }
+.scene-velox .lns-table td { font-size: 25px; padding: 22px 9px; }
+.scene-velox .lns-table td:nth-child(2) { color: #426c4c; font-weight: 700; }
+.scene-velox .lns-table td:last-child { font-weight: 400; }
+.lns-budget { padding-bottom: 21px; border-bottom: 1px solid #b99d6c; }
+.lns-budget strong { display: block; color: #426c4c; font: 700 23px/1.4 var(--mono); }
+.lns-budget span { display: block; margin-top: 11px; color: #78613b; font-size: 17px; line-height: 1.5; }
+.scene-velox .lns-budget + .restriction-note { margin-top: 20px; padding-top: 0; border-top: 0; }
+.scene-velox .lns-budget + .restriction-note strong { font-size: 22px; }
+.scene-velox .lns-budget + .restriction-note span { font-size: 17px; line-height: 1.5; }

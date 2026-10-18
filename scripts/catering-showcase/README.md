@@ -1,110 +1,82 @@
-# Local recording and live-presentation studio
+# Recording and live-presentation studio
 
-This studio is outside `presentation/`, so the static deployment does not
-publish its draft screens or speaker materials. The actual kitchen iframe
-uses the existing checked viewer. No shared model or frozen input is modified.
+[Watch the final video](https://qfactoria.com/video/) · [Live script](../../docs/CATERING_LIVE.md) · [Narration](../../docs/CATERING_VOICEOVER.md)
 
-Start from the repository root:
+The final local export is [axion-kitchen.mp4](../../output/submission-final/axion-kitchen.mp4):
+**4:20, 1920×1080**, H.264/AAC, with English selectable subtitles and twelve chapters.
+It edits actual UI captures and includes a real local QAOA launch and checked
+receipt. Narration uses Kokoro's stock `af_heart` synthetic voice, without cloning.
+The [export manifest](../../output/submission-final/manifest.json) records source
+and media hashes. See the [recording notes](../../docs/CATERING_RECORDING.md) for
+capture provenance and replacement-export instructions. These artifacts do not
+assert organizer submission.
+
+## Start the studio
+
+From the repository root, after installing the documented catering environment:
 
 ```sh
 .venv-catering/bin/python scripts/serve-catering-showcase.py --port 4193
 ```
 
-Open `http://127.0.0.1:4193/` for the video cut, or
-`http://127.0.0.1:4193/?mode=live` for the shorter manual presentation.
-The video route is 260 seconds (4:20); the live route is 165 seconds (2:45).
+- [Video route](http://127.0.0.1:4193/): 260 seconds (4:20).
+- [Live route](http://127.0.0.1:4193/?mode=live): 165 seconds (2:45), holding at each chapter.
+- [Full-resolution capture](http://127.0.0.1:4193/?export=1): a fixed 1920×1080 stage, with controls below the picture. Crop those controls from exports; this mode intentionally need not fit a smaller viewport.
+
 Before presenting, run `.venv-catering/bin/python scripts/check-catering-demo.py`.
-It checks dependencies, frozen hashes and evidence without starting a sampler.
+It checks dependencies, frozen hashes and displayed evidence without sampling.
+The studio stays outside the deployed static viewer; the final watch page is
+published separately. Its kitchen iframe uses the checked viewer and does not
+modify shared models or frozen inputs.
 
-Arrows change chapters. Space plays/pauses. In live mode each chapter holds at
-its end. Space replays a held chapter; Right Arrow advances. A completed video
-can be restarted with Replay cut. P toggles audience view, hiding all operator
-controls and notes. F toggles full screen; if the browser rejects it, the button offers audience
-view instead. R starts/resets the actual rehearsal
-clock. That clock continues while chapter animation is paused; it marks 2:45
-as wrap-up and 3:00 as over time.
-Speaker notes stay outside the recorded stage. Use a dedicated shared window.
-Replay provenance appears in the stage footer, outside the embedded kitchen;
-the code and fresh-run chapters show their own scope labels instead. The
-objective slide defines coverage, priority and lot units before the equations.
-The encoding view shows actual x3 operation intervals before the source-code
-reveal; both the intervals and excerpt are checked against retained sources.
+## Controls
 
-## What the live button actually does
+Arrows change chapters. Space plays or pauses; in live mode it replays a held
+chapter, and Right Arrow advances. Replay cut restarts a completed video.
+P hides or restores operator controls and notes. F toggles full screen; if the
+browser rejects it, audience view remains available. R resets the rehearsal
+clock, which continues during animation holds and marks 2:45 as wrap-up and
+3:00 as overtime. Share the audience window, keeping speaker notes outside it.
 
-It runs `scripts/catering_live.py`: loads the frozen complete-cell bundle,
-checks manifest hashes, loads the trained p3/seed2026 parameters from the selected cell/budget256 run, evolves
-the exact one-hot sector, draws 4096 fresh local samples with a declared fixed
-seed, then independently decodes and checks every raw return.
+## The local launch
 
-There is no training, model regeneration, paid service, remote GPU or physical
-QPU call. A new execution with the same seed is reproducible, not an independent
-training trial. Retained UI replay and fresh sample receipts keep separate labels.
-The server binds 127.0.0.1 only; its fixed local sampler endpoint checks Origin.
+The button runs `scripts/catering_live.py`. It verifies the frozen complete-cell
+bundle and trained depth-three parameters, evolves the exact 1,045-state
+one-hot sector, draws 4,096 samples with a declared fixed seed, and independently
+checks the decoded outcomes. It performs no training, paid-service, remote-GPU
+or physical-QPU call. Repeating that fixed seed is reproducible execution, not
+an independent training trial. Fresh receipts and retained replay keep separate
+labels; editorial video holds do not measure runtime.
 
-Terminal fallback, using a fresh output directory each time:
+The captured launch at 2026-10-18 10:18:04 UTC returned 20 complete meals, zero
+waste and 2,173 valid shots. A later launch must be described using its own receipt.
+The server binds only to 127.0.0.1, and the sampler endpoint checks Origin.
+
+Terminal fallback, using a fresh output directory:
 
 ```sh
 .venv-catering/bin/python scripts/catering_live.py --output output/NEW-LIVE-RUN
 ```
 
-If fresh launch fails, use the retained complete-cell kitchen viewer
-(`/catering/?case=CELL`), disclose the fallback
-and continue. Do not represent replay as completed fresh execution.
+If execution fails, disclose the failure and use the separately labeled
+[retained complete-cell replay](http://127.0.0.1:4192/catering/?case=CELL).
 
-## Recording and human voiceover
+## Source and reproduction
 
-`story.json` is the single source for video and live narration, actions and
-durations, shot framing and edit cues. `npm run docs:write` regenerates the speaker
-scripts and [recording sheet](../../docs/CATERING_RECORDING.md);
-`npm run docs:check` prevents drift. Live mode shows `live_narration`.
-`playback.js` handles continuous video timing and live chapter holds.
-`evidence.json` is a small read-only export of the retained audited results,
-including source hashes and an actual compiler excerpt. It includes the 400-run QAOA campaign, reported held-out VQE aggregates and
-checked exported plans, plus the proven no-idle VeloxQ representation study.
-The linked `/catering/benchmarks/` page exposes runs, budgets and source hashes.
+`story.json` controls narration, chapter durations, speaker cues and edit cues.
+`npm run docs:write` regenerates the three speaker/recording documents;
+`npm run docs:check` catches drift. `playback.js` implements route timing and
+live holds. `evidence.json` retains source hashes, the actual compiler excerpt,
+QAOA results, reported VQE aggregates and checked plans, and VeloxQ's representation
+and replanning-loop studies. [Benchmarks](https://qfactoria.com/catering/benchmarks/)
+expose run budgets and source identities.
 
-For capture, install Playwright once with
-`npm install --no-save --package-lock=false playwright@1.62.1` and
-`npx playwright install chromium`. Then prepare stills without a video or
-sampler execution:
+The final edited video was assembled from browser captures. The optional
+`scripts/capture-catering-showcase.mjs` helper is an alternative: `--dry-run`
+captures stills with no sampling or video; `--record` produces a silent continuous
+route and two frozen-angle local samples. It requires Chromium, Playwright and
+ffmpeg, and was not used for the final edited video. Preserve raw receipts and
+hashes with any replacement export.
 
-```sh
-node scripts/capture-catering-showcase.mjs --dry-run \
-  --output output/playwright/catering-showcase-final/dry-run
-```
-
-No flags also defaults to this stills-only dry run. `--sample` explicitly adds
-one frozen-angle local sample to the stills. `--dry-run` refuses either
-`--sample` or `--record`; its receipt must report zero sampling and video.
-
-Later, record the actual local studio with the capture script:
-
-```sh
-node scripts/capture-catering-showcase.mjs \
-  --output output/playwright/catering-showcase-final/recording --record
-```
-
-Chromium and ffmpeg are required. Capture makes preview stills, then opens a
-separate context for a continuous studio recording. It performs one local
-sample during still QA and one during the recorded execution chapter. The
-result is a silent MP4 with source hashes and preserved raw samples.
-
-The current still-only verification is under
-`output/playwright/catering-showcase-v5/`. The earlier silent v2 cut predates
-the current problem, method and scaling chapters. Record the current route
-before final editing; the old cut is not a recording of the current script.
-
-The visual playback compresses schedule time and edits between explanatory
-screens; it is not a 260-second unedited view of factory time. The sampler action
-inside it is real. No synthetic narration or music is added. Record the final
-human voiceover after results and wording are frozen, then align and retime the
-clips. Keep the final submitted video below five minutes.
-
-Large video/capture outputs remain local under the existing ignored
-`output/playwright/` directory. Source and speaker materials can be synced to
-the private repository. Uploading/submitting a final video is a later step.
-
-See [presentation plan](../../docs/CATERING_PRESENTATION.md),
-[live operator sheet](../../docs/CATERING_LIVE.md) and
-[Q&A cheats](../../docs/CATERING_QA.md).
+See the [presentation plan](../../docs/CATERING_PRESENTATION.md),
+[recording notes](../../docs/CATERING_RECORDING.md) and [Q&A sheet](../../docs/CATERING_QA.md).

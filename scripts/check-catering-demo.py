@@ -71,6 +71,11 @@ def preflight():
               and shown['start']==hybrid_check['incumbent_metrics']
               and shown['best']==hybrid_check['best']['metrics']
               and hybrid_check['best']['valid'] and shown['valid_shots']==hybrid_check['valid_shots'])
+        lns=json.loads((ROOT/evidence['source_files']['velox_lns_loop']['path']).read_text())
+        shown_lns=evidence['velox']['lns_loop']
+        check('Displayed VeloxQ replanning loop',all(shown_lns[k]==lns[k] for k in shown_lns)
+              and sum(r['service_jobs'] for r in lns['rows'])==lns['ledger_after']-lns['ledger_before']==71
+              and all(r['final']['U']<r['start']['U'] for r in lns['rows']))
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')
@@ -86,7 +91,7 @@ def preflight():
         check('Required file: '+name,(ROOT/name).is_file())
     return dict(ready_for_rehearsal=all(c['passed'] for c in checks),
                 checks=checks,training_runs=0,sampling_runs=0,service_calls=0,
-                pending=['Human voiceover and rehearsal','Video upload and submission'])
+                pending=['Narrated video and live rehearsal','Video upload and submission'])
 
 if __name__=='__main__':
     parser=argparse.ArgumentParser(description=__doc__)

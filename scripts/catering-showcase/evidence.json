@@ -1,5 +1,5 @@
 {
-  "status": "Checked QAOA campaign and VeloxQ representation study; voiceover pending",
+  "status": "Checked QAOA/VQE results and VeloxQ replanning loop; synthetic narration in preparation",
   "cell": {
     "exact_raw_encoded_agreement": true,
     "limitations": [
@@ -493,10 +493,14 @@
     "velox_hybrid_check": {
       "path": "output/catering-velox-warmstart-v1/lns-2048-step1/evaluation.json",
       "sha256": "bcf521befc7691f0463c6df175bcf42f6a075543011cda76d2808a2d41ab7871"
+    },
+    "velox_lns_loop": {
+      "path": "output/catering-velox-lns-loop-v1/report.json",
+      "sha256": "dee9909e56bbeef541768ae6db84af4a3989c55c54bc0faa5f72ab52c83d070b"
     }
   },
   "velox": {
-    "state": "Checked exploratory representation study",
+    "state": "Checked exploratory representation and replanning-loop studies",
     "steps": 20000,
     "shots": 512,
     "rows": [
@@ -589,6 +593,205 @@
       "valid_shots": 512,
       "backend_running_s": 1.999,
       "total_s": 9.357931188991643
+    },
+    "lns_loop": {
+      "ledger_before": 66,
+      "ledger_after": 137,
+      "settings": {
+        "acceptance": "sequential; exact full energy must fall and the shared decoder must pass",
+        "batch_max": 4000,
+        "cap": 40,
+        "num_rep": 512,
+        "num_steps": "2,000 for the first 2,022 run; 20,000 otherwise",
+        "pairing": "all 325 block pairs per sweep",
+        "pause_s": "10 between submissions in later 998/486 runs",
+        "repair": false
+      },
+      "limitations": [
+        "Single seed per width; no repeated runs",
+        "The exact-enumeration control reaches the same final quality, so VeloxQ is not needed for these 40-variable subproblems",
+        "Longer CP (240 s, 4 workers) remains better at every width",
+        "Failed submissions are counted in the ledger; their pairs kept the current plan",
+        "At 486 the loop did not beat 30-second CP"
+      ],
+      "rows": [
+        {
+          "adapter_wall_s": 45.9,
+          "backend_running_s": 11.453,
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 5,
+            "W": 3
+          },
+          "cp_30s": {
+            "B": 10,
+            "R": 10,
+            "U": 6,
+            "W": 1
+          },
+          "exact_control": {
+            "final": {
+              "B": 11,
+              "R": 11,
+              "U": 7,
+              "W": 6
+            },
+            "run": "exact-control-512",
+            "sweeps": 2
+          },
+          "exact_subproblem_hits": 569,
+          "failed_submissions": 1,
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 6
+          },
+          "runs": [
+            "veloxq-start-512"
+          ],
+          "service_jobs": 6,
+          "solver_width": 486,
+          "start": {
+            "B": 9,
+            "R": 9,
+            "U": 9,
+            "W": 6
+          },
+          "subproblems_answered": 571,
+          "sweeps": 2,
+          "trajectory_U": [
+            9,
+            7,
+            7
+          ]
+        },
+        {
+          "adapter_wall_s": 324.8,
+          "backend_running_s": 78.54,
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 5,
+            "W": 1
+          },
+          "cp_30s": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 2
+          },
+          "exact_control": {
+            "final": {
+              "B": 10,
+              "R": 10,
+              "U": 6,
+              "W": 1
+            },
+            "run": "exact-control-1024",
+            "sweeps": 5
+          },
+          "exact_subproblem_hits": 2410,
+          "failed_submissions": 3,
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 6,
+            "W": 1
+          },
+          "runs": [
+            "veloxq-start-1024",
+            "veloxq-start-1024-cont",
+            "veloxq-start-1024-cont2",
+            "veloxq-start-1024-cont3",
+            "veloxq-start-1024-cont4"
+          ],
+          "service_jobs": 40,
+          "solver_width": 998,
+          "start": {
+            "B": 10,
+            "R": 10,
+            "U": 11,
+            "W": 6
+          },
+          "subproblems_answered": 2600,
+          "sweeps": 11,
+          "trajectory_U": [
+            11,
+            10,
+            10,
+            9,
+            9,
+            9,
+            8,
+            8,
+            8,
+            7,
+            6,
+            6
+          ]
+        },
+        {
+          "adapter_wall_s": 194.7,
+          "backend_running_s": 36.791,
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 6,
+            "W": 1
+          },
+          "cp_30s": {
+            "B": 8,
+            "R": 8,
+            "U": 8,
+            "W": 3
+          },
+          "exact_control": {
+            "final": {
+              "B": 10,
+              "R": 10,
+              "U": 7,
+              "W": 2
+            },
+            "run": "exact-control-2048",
+            "sweeps": 3
+          },
+          "exact_subproblem_hits": 1525,
+          "failed_submissions": 1,
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 3
+          },
+          "runs": [
+            "veloxq-start-2048",
+            "veloxq-start-2048-steps20k",
+            "veloxq-start-2048-steps20k-cont"
+          ],
+          "service_jobs": 25,
+          "solver_width": 2022,
+          "start": {
+            "B": 2,
+            "R": 2,
+            "U": 13,
+            "W": 3
+          },
+          "subproblems_answered": 1950,
+          "sweeps": 7,
+          "trajectory_U": [
+            13,
+            10,
+            10,
+            8,
+            7,
+            7,
+            7,
+            7
+          ]
+        }
+      ]
     }
   },
   "stage1": {
