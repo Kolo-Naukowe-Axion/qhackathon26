@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="390" viewBox="0 0 1400 390" role="img" aria-labelledby="title desc">
+<title id="title">From kitchen orders to a checked production schedule</title>
+<desc id="desc">Orders and resource rules generate locally legal batch instructions. One bit selects an instruction. Costs and conflicts form a QUBO, solved by QAOA, VQE or VeloxQ. Selected instructions are decoded and independently checked. Small quantum portfolios can exclude useful choices; classical references measure that gap.</desc>
+<rect width="1400" height="390" fill="#172d25"/>
+<g font-family="monospace" fill="#bdd49a"><text x="36" y="43" font-size="17" letter-spacing="2">HOW THE OPTIMIZATION WORKS</text></g>
+<g fill="#f5e2b8" stroke="#b29463" stroke-width="2">
+<rect x="36" y="80" width="238" height="184"/><rect x="308" y="80" width="238" height="184"/><rect x="580" y="80" width="238" height="184"/><rect x="852" y="80" width="238" height="184"/><rect x="1124" y="80" width="240" height="184"/>
+</g>
+<g font-family="sans-serif" fill="#453722">
+<g font-size="26" font-weight="bold"><text x="57" y="122">Orders + rules</text><text x="329" y="122">Batch catalogue</text><text x="601" y="122">QUBO</text><text x="873" y="122">Solver</text><text x="1145" y="122">Checked plan</text></g>
+<g font-size="20"><text x="57" y="163">Meals, departures</text><text x="57" y="195">Recipes, resources</text><text x="57" y="227">Freshness, outages</text>
+<text x="329" y="163">Enumerate legal</text><text x="329" y="195">individual batches</text><text x="329" y="227">One checkbox each</text>
+<text x="601" y="163">Meal + waste costs</text><text x="601" y="195">Exclusivity + clashes</text><text x="601" y="227">Linear + pair terms</text>
+<text x="873" y="163">QAOA / VQE</text><text x="873" y="195">or VeloxQ</text><text x="873" y="227">Select batch bits</text>
+<text x="1145" y="163">Look up instructions</text><text x="1145" y="195">Rebuild the schedule</text><text x="1145" y="227">Check feasibility/cost</text></g>
+</g>
+<g fill="#bdd49a"><path d="M280 163h14v-8l11 17-11 17v-8h-14z"/><path d="M552 163h14v-8l11 17-11 17v-8h-14z"/><path d="M824 163h14v-8l11 17-11 17v-8h-14z"/><path d="M1096 163h14v-8l11 17-11 17v-8h-14z"/></g>
+<g font-family="sans-serif" font-size="21" fill="#d6dfc8"><text x="36" y="311">We enumerate individual batch instructions; the solver chooses a compatible collection.</text><text x="36" y="349" fill="#a9bb96">Quantum runs use restricted catalogues. Exact and CP-SAT references separate representation loss from search loss.</text></g>
+</svg>

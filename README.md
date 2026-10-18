@@ -1,5 +1,9 @@
 # Axion Kitchen
 
+**QPoland Quantum Hackathon 2026 — main prize winner · joint first place, VeloxQ award.**
+
+[Hackathon snapshot & original video](https://github.com/Kolo-Naukowe-Axion/qhackathon26/releases/tag/hackathon-2026-submission)
+
 **[Watch the project video ↗](https://youtu.be/aGu9Mu2BaGg)** · **[Open the live demo ↗](https://qfactoria.com/)** · [Benchmarks](https://qfactoria.com/catering/benchmarks/) · [VeloxQ results](https://qfactoria.com/catering/benchmarks/#veloxq)
 
 Catering production scheduling with **QAOA, VQE and VeloxQ**, built for the
@@ -7,7 +11,7 @@ QPoland Quantum Hackathon 2026. Choose shared batches, cookers, workers and
 phase times under deadlines, freshness limits, outages and mandatory cleaning.
 It extends manufacturing scheduling with shared batches and paired order fulfillment.
 
-[![Axion Kitchen: the larger outage-and-urgent-order scenario, with its batch schedule and meal orders](docs/assets/axion-kitchen.jpg)](https://qfactoria.com/)
+[![Axion Kitchen — QPoland 2026 main prize winner](presentation/assets/branding/axion-kitchen-winner.jpg)](https://youtu.be/aGu9Mu2BaGg)
 
 *The demo opens with 8 orders and 80 requested meals. It replays independently
 checked schedules; fresh quantum sampling is available in the local studio.*
@@ -15,8 +19,11 @@ checked schedules; fresh quantum sampling is available in the local studio.*
 ## The optimization
 
 One bit selects a scheduled batch program. The QUBO chooses compatible batches,
-prioritizing **missed complete meals → discarded food → batches → plan changes**.
+prioritizing **missed complete meals → discarded food → new batches**.
+The recorded plan-change term equals the batch count in these fixtures.
 Main and side coverage interact quadratically, without extra product qubits.
+
+![Orders to batch catalogue to QUBO to solver to independently checked schedule](presentation/assets/branding/optimization-pipeline.svg)
 
 - **QAOA & VQE:** 31–35 data-qubit portfolios, simulated in their one-hot sectors.
   The QAOA campaign retains 400 runs with controls. Latest VQE uses CVaR→Gibbs

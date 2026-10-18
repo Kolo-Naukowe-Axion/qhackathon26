@@ -373,3 +373,12 @@ The extended cut is published at https://qfactoria.com/video/ (deployment `dpl_A
 - **18 Oct, 14:19 CEST — Iwo S / integration, AI-assisted:** Final editorial pass across all 14 chapters removed repeated footers, source hashes and redundant captions. Re-recorded the real local sampling launch and exported the cleaned 4:52 cut in 4K and 1080p with male stock synthetic narration. Math rendering and definitions were reviewed; 154 site tests and full video/audio decode passed. No new training, VeloxQ or QPU job was started. YouTube upload and organizer submission still require team review.
 
 - **18 Oct, 14:41 CEST — Iwo W / VQE; Iwo S / integration, AI-assisted:** Integrated the CVaR→Gibbs E6 study from `vqe-cvar-gibbs` (72806420). Replayed all five saved parameter sets and checked every exported sample without training; S2/S3 median offered-optimum probability is 99.54%/99.55%, with 10 seeds each. Promoted E6 as the adapter default, retained E5 controls, and updated the video, math sheet, live script and benchmark tables. The improvement is an exact-gradient result; the staged gain did not survive shot-noise emulation. All 155 site tests, the Gibbs gradient check, 13 release stages and full video/audio decode passed. No new training or remote solver jobs.
+
+### 19 October 2026 — post-hackathon publication
+
+The team confirmed the main prize and joint first place in the VeloxQ award.
+Added the awards to the public project pages and README, a kitchen thumbnail,
+and a diagram explaining candidate generation, QUBO selection and independent
+checking. Prepared a tagged pre-deadline snapshot with the original video and
+subtitles; [release notes](docs/HACKATHON_RELEASE.md) distinguish it from later
+presentation edits. Solver evidence and submitted video remain unchanged.
