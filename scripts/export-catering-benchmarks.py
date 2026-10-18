@@ -73,6 +73,13 @@ def export():
                     ev=json.loads(ep.read_text());valid=[v for v in ev.get('results',[]) if v.get('valid')]
                     row['valid']=sum(v.get('count',1) for v in valid)
                     row['best']=min((v['check']['metrics'] for v in valid),key=lambda m:tuple(m[k] for k in ['U','W','B','R']),default=None)
+                # Hybrid study rows are checked on the full source plan one directory up.
+                hybrid=directory.parent/'evaluation.json'
+                if 'catering-velox-warmstart-v1/' in suffix and hybrid.exists():
+                    sources[str(hybrid.relative_to(ROOT))]=public_source(str(hybrid.relative_to(ROOT)))
+                    ev=json.loads(hybrid.read_text());lns='lns-' in directory.parent.name
+                    row.update(valid=ev['valid_shots'],best=(ev.get('best') or {}).get('metrics') if lns else ev.get('best_metrics'),
+                        representation='hybrid-lns-subqubo.v1' if lns else 'hybrid-warm-start.v1')
                 sources[str(path.relative_to(ROOT))]=public_source(str(path.relative_to(ROOT)))
         service.append(row)
     vqe=dict(verification=load('output/catering-methods/vqe/integration-v2/verification.json'),grids={})
