@@ -87,13 +87,29 @@ def verify(output, full_qaoa=False):
             dependencies[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             dependencies[name] = None
-    ready = len(results)==len(stages) and all(r['passed'] for r in results) and same_sample
+    video = None
+    provenance = ROOT/'presentation/video/provenance.json'
+    if provenance.exists():
+        media = json.loads(provenance.read_text())
+        movie = ROOT/'presentation/video/axion-kitchen.mp4'
+        video = dict(integrity_verified=movie.is_file() and
+            hashlib.sha256(movie.read_bytes()).hexdigest()==media['media']['axion-kitchen.mp4']['sha256'] and
+            all(hashlib.sha256((ROOT/p).read_bytes()).hexdigest()==h for p,h in media['source_sha256'].items()),
+            seconds=media['duration_seconds'],public_url='https://qfactoria.com/video/',
+            access_note='This offline command verifies the reviewed artifact and sources; it does not contact the public host.')
+        paths += ['presentation/video/provenance.json','presentation/video/axion-kitchen.mp4',
+                  'presentation/video/captions.srt','presentation/video/captions.vtt']
+    ready = (len(results)==len(stages) and all(r['passed'] for r in results) and same_sample
+             and (video is None or video['integrity_verified']))
     receipt = dict(schema='catering-release-check.v1',technical_ready=ready,submission_ready=False,
         source_commit=commit,tracked_changes=tracked_changes,python=platform.python_version(),dependencies=dependencies,
         checks=results,sampling_repetitions=samples,
         sampling_note='Three repeat executions of the same frozen angles and sampling seed, not independent training or human rehearsals.',
         source_files={p:hashlib.sha256((ROOT/p).read_bytes()).hexdigest() for p in paths},
-        pending=['Timed live rehearsal','Final narrated video export, playback check and upload',
+        video=video,
+        pending=['Timed live rehearsal',
+                 'Recheck public video access at submission time' if video and video['integrity_verified']
+                 else 'Final narrated video export, playback check and upload',
                  'Final authorized public-source access check','Team/form details and submission acknowledgment'],
         training_campaigns=0,video_recordings=0,physical_qpu_calls=0,veloxq_calls=0)
     (output/'release.json').write_text(json.dumps(receipt,indent=2,sort_keys=True)+'\n')

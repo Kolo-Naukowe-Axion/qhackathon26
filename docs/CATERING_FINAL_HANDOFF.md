@@ -48,7 +48,9 @@ upload the obsolete silent rough cut from `output/playwright/`.
   and [Q&A sheet](CATERING_QA.md). The video must show the actual local launch and
   returned receipt; the kitchen replay is labeled separately.
 
-The [committed technical receipt](../output/catering-submission-review-v1/verification.json)
+The [final media and release receipt](assets/catering-final-check.json) records
+13 passing checks on `48b5670e`, plus the final video hash and public playback check.
+The earlier [committed technical receipt](../output/catering-submission-review-v1/verification.json)
 identifies its tested source commit. A later rerun is not proof that an earlier
 receipt covered later edits. Recheck the final release with:
 
