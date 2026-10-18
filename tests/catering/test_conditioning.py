@@ -8,6 +8,7 @@ from catering.conditioning import condition_bundle, polynomial, rescore_result
 from catering.domain import digest
 from catering.contracts import load_bundle, method_result
 from catering.qubo import energy, objective_energy
+from catering.decode import decode
 
 
 def toy(seed):
@@ -136,3 +137,22 @@ def test_noidle_bijection_and_strict_descent(seed):
     assert mapped['samples'][0]['bits'][:4]==[1,1,1,1]
     assert len(mapped['samples'][0]['bits'])==6
     assert not feasible(src,mapped['samples'][0]['bits'])
+
+
+def test_incumbent_start_is_checked_and_maps_back_exactly(tmp_path):
+    from pathlib import Path
+    from catering.conditioning import eliminate_idle, lift_bits
+    from catering.veloxq_pilot import incumbent_start
+    source_path = Path('output/catering-velox-scale-v3/scale-512-qubo.json')
+    if not source_path.exists():
+        pytest.skip('restore compressed scale evidence first')
+    source = load_bundle(source_path)
+    variant = eliminate_idle(source)
+    reference = Path('output/catering-classical-scale-v3/scale-512-reference.json')
+    initial, info = incumbent_start(source, variant, reference)
+    assert len(initial) == len(variant['linear']) and info['metrics']['U'] == 6
+    assert decode(source, lift_bits(source, variant, initial))['valid']
+    other = tmp_path/'other.json'
+    other.write_text(reference.read_text().replace(source['bundle_sha256'], '0'*64))
+    with pytest.raises(ValueError, match='different bundle'):
+        incumbent_start(source, variant, other)
