@@ -446,8 +446,10 @@ class Spec:
     init: str = "w"              # w (W-state marginals + noise) | random (uniform angles)
     maxiter: int = 2000
     stop_maxprob: float = 0.995  # sector engine: stop once one plan holds this probability
-    loss: str = "mean"           # mean | cvar  (cvar: exact distribution, sector engine only)
+    loss: str = "mean"           # mean | cvar | gibbs | cvar_gibbs  (non-mean: exact distribution, sector engine)
     alpha: float = 0.1
+    eta: float = 100.0           # Gibbs inverse temperature, energies in units of w_U (gibbs, cvar_gibbs)
+    stage1_budget: int = 150     # cvar_gibbs: loss evaluations of the CVaR stage before switching to Gibbs
     optimizer: str = "lbfgs"     # lbfgs | adam | nft | spsa | cobyla
     budget: int = 0              # max loss evaluations (0 = optimizer default)
     train_shots: int = 0         # 0 = exact expectations; >0 = shot estimates (spsa/cobyla/nft)
@@ -466,7 +468,8 @@ class Spec:
 
     def tag(self):
         t = self.name() + f"|{self.optimizer}|{self.loss}"
-        t += f"{self.alpha}" if self.loss == "cvar" else ""
+        t += f"{self.alpha}" if self.loss in ("cvar", "cvar_gibbs") else ""
+        t += f"-eta{self.eta:g}" if self.loss in ("gibbs", "cvar_gibbs") else ""
         t += f"|shots{self.train_shots}" if self.train_shots else "|exact"
         t += f"|init-{self.init}{self.init_noise if self.init == 'w' else ''}"
         return t
@@ -508,11 +511,45 @@ def cvar_loss(energies, alpha):
     return loss
 
 
+def gibbs_loss(energies, eta):
+    """Gibbs objective -log sum_x p(x) exp(-eta E(x)) (Li et al., PRR 2, 023074, 2020) and dloss/dp.
+
+    Computed as eta*m - log sum_x p(x) exp(-eta (E(x) - m)) with m = min E for numerical
+    stability only. The shift adds a constant to the value: gradients and L-BFGS steps are
+    unchanged, but scipy's relative ftol stopping test sees the offset and can stop earlier.
+    """
+    if not eta > 0:
+        raise ValueError("Gibbs eta must be positive")
+    energies = np.asarray(energies, dtype=float)
+    m = float(energies.min())
+    w = np.exp(-eta * (energies - m))
+
+    def loss(p):
+        Z = max(float(p @ w), 1e-300)
+        return eta * m - math.log(Z), -w / Z
+    return loss
+
+
+def make_loss(spec, energies, stage=None):
+    """Exact probability loss for the sector engine; None means the plain mean energy."""
+    kind = spec.loss if stage is None else stage
+    if kind == "cvar":
+        return cvar_loss(energies, spec.alpha)
+    if kind == "gibbs":
+        return gibbs_loss(energies, spec.eta)
+    return None
+
+
 def validate_spec(spec, shots):
     if spec.ansatz not in {"product", "block_hea", "sector"}:
         raise ValueError("Unknown ansatz")
-    if spec.loss not in {"mean", "cvar"}:
+    if spec.loss not in {"mean", "cvar", "gibbs", "cvar_gibbs"}:
         raise ValueError("Unknown loss")
+    if spec.loss in {"gibbs", "cvar_gibbs"} and (spec.ansatz != "sector" or spec.train_shots
+                                                  or spec.optimizer not in {"lbfgs", "adam"}):
+        raise ValueError("Gibbs losses use the exact sector distribution with an adjoint optimizer")
+    if spec.loss == "cvar_gibbs" and spec.stage1_budget < 1:
+        raise ValueError("cvar_gibbs needs a positive CVaR stage budget")
     if not 0 < spec.alpha <= 1:
         raise ValueError("CVaR alpha must be in (0, 1]")
     if shots <= 0 or spec.train_shots < 0 or spec.budget < 0 or spec.layers < 0:
@@ -550,7 +587,9 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
     if spec.loss == "cvar" and not spec.train_shots:
         if not isinstance(ans, SectorAnsatz):
             raise ValueError("exact CVaR needs the full distribution: sector engine only")
-    loss_fn = cvar_loss(ans.E, spec.alpha) if (spec.loss == "cvar" and not spec.train_shots) else None
+    staged = spec.loss == "cvar_gibbs"
+    loss_fn = (None if spec.train_shots or spec.loss == "mean"
+               else make_loss(spec, ans.E, "cvar" if staged else None))
 
     def fg(w):                                   # exact loss + adjoint gradient
         calls["n"] += 1; calls["grad"] += 1
@@ -592,15 +631,24 @@ def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
     budget = spec.budget or 4000
     converged = False
     if spec.optimizer == "lbfgs":
+        first = min(spec.stage1_budget, budget) if staged else budget
         res = minimize(fg, w0, jac=True, method="L-BFGS-B", callback=cb,
-                       options=dict(maxiter=spec.maxiter, maxfun=budget, ftol=1e-11, gtol=1e-7))
+                       options=dict(maxiter=spec.maxiter, maxfun=first, ftol=1e-11, gtol=1e-7))
         x, message, nit = res.x, str(res.message), int(res.nit)
         converged = bool(res.success)
+        if staged and calls["n"] < budget and getattr(ans, "last_maxprob", 0.0) <= spec.stop_maxprob:
+            loss_fn = make_loss(spec, ans.E, "gibbs")        # stage 2: concentrate the found optimum
+            res = minimize(fg, x, jac=True, method="L-BFGS-B", callback=cb,
+                           options=dict(maxiter=spec.maxiter, maxfun=budget - calls["n"], ftol=1e-11, gtol=1e-7))
+            x, message, nit = res.x, "stage2: " + str(res.message), nit + int(res.nit)
+            converged = bool(res.success)
     elif spec.optimizer == "adam":
         x, m1, m2 = w0.copy(), np.zeros_like(w0), np.zeros_like(w0)
         b1, b2, eps = 0.9, 0.999, 1e-8
         message = "budget"
         for it in range(1, budget + 1):
+            if staged and it == spec.stage1_budget + 1:
+                loss_fn = make_loss(spec, ans.E, "gibbs")
             _, g = fg(x)
             m1 = b1 * m1 + (1 - b1) * g; m2 = b2 * m2 + (1 - b2) * g * g
             x = x - spec.lr * (m1 / (1 - b1 ** it)) / (np.sqrt(m2 / (1 - b2 ** it)) + eps)
@@ -756,3 +804,7 @@ def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
 
 RECOMMENDED = dict(ansatz="sector", pairs="coupled", cross="cgiv", inblock="giv", layers=2,
                    loss="cvar", alpha=0.1, optimizer="lbfgs", init="w", init_noise=0.2, seed=0)
+
+# CVaR finds the optimum, then the Gibbs loss concentrates it (P(optimum) ~0.995 instead of ~0.12-0.18).
+# Evidence: output/catering-methods/vqe/E6-concentration (dev cell/S0/S1, predeclared held-out S2/S3).
+RECOMMENDED_CONCENTRATED = dict(RECOMMENDED, loss="cvar_gibbs", eta=100.0, stage1_budget=150, budget=300)

@@ -1,0 +1,142 @@
+{
+ "written_before_running": "2026-10-18T01:11:39",
+ "held_out_cases": {
+  "S2": "output/catering-foundation-v3/S2/quantum-qubo.json",
+  "S3": "output/catering-foundation-v3/S3/quantum-qubo.json"
+ },
+ "selection_evidence": "lab grids A-E on cell/S0/S1 only (seeds 0-9); S2/S3 not run in this session before this file. (S2/S3 were used once before, in E5, for the CVaR baseline and its controls.)",
+ "primary": {
+  "name": "H* cvar0.1 -> gibbs100, coupled cgiv L2, W start 0.2, L-BFGS-B adjoint",
+  "cfg": {
+   "layers": 2,
+   "pairs": "coupled",
+   "init_noise": 0.2,
+   "stages": [
+    {
+     "loss": "cvar",
+     "alpha": 0.1,
+     "maxfun": 150
+    },
+    {
+     "loss": "gibbs",
+     "eta": 100,
+     "maxfun": 150
+    }
+   ]
+  }
+ },
+ "controls": [
+  {
+   "name": "baseline: current RECOMMENDED cvar0.1 L2",
+   "cfg": {
+    "layers": 2,
+    "pairs": "coupled",
+    "init_noise": 0.2,
+    "stages": [
+     {
+      "loss": "cvar",
+      "alpha": 0.1,
+      "maxfun": 300
+     }
+    ]
+   }
+  },
+  {
+   "name": "literature 1: ascending CVaR 0.1->0.3->mean L2 (Kolotouros & Wallden 2022)",
+   "cfg": {
+    "layers": 2,
+    "pairs": "coupled",
+    "init_noise": 0.2,
+    "stages": [
+     {
+      "loss": "cvar",
+      "alpha": 0.1,
+      "maxfun": 100
+     },
+     {
+      "loss": "cvar",
+      "alpha": 0.3,
+      "maxfun": 100
+     },
+     {
+      "loss": "mean",
+      "maxfun": 100
+     }
+    ]
+   }
+  },
+  {
+   "name": "literature 2: Gibbs eta=30 L2 (Li et al. 2020)",
+   "cfg": {
+    "layers": 2,
+    "pairs": "coupled",
+    "init_noise": 0.2,
+    "stages": [
+     {
+      "loss": "gibbs",
+      "eta": 30,
+      "maxfun": 300
+     }
+    ]
+   }
+  },
+  {
+   "name": "literature 3: filtering VQE exp(-30 e) L2 (Amaro et al. 2022)",
+   "cfg": {
+    "layers": 2,
+    "pairs": "coupled",
+    "init_noise": 0.2,
+    "stages": [
+     {
+      "loss": "fvqe",
+      "tau": 30,
+      "maxfun": 300
+     }
+    ]
+   }
+  },
+  {
+   "name": "cheaper: cvar0.1 -> gibbs100, coupled L1",
+   "cfg": {
+    "layers": 1,
+    "pairs": "coupled",
+    "init_noise": 0.2,
+    "stages": [
+     {
+      "loss": "cvar",
+      "alpha": 0.1,
+      "maxfun": 150
+     },
+     {
+      "loss": "gibbs",
+      "eta": 100,
+      "maxfun": 150
+     }
+    ]
+   }
+  }
+ ],
+ "seeds": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7,
+  8,
+  9
+ ],
+ "final_samples": 1024,
+ "primary_metric": "seeds (of 10) whose most likely plan is the optimum with probability > 0.5 (mode_is_opt)",
+ "secondary": [
+  "seeds whose 1024 final samples contain the optimum (E5 primary metric)",
+  "exact P(optimum)",
+  "exact P(valid)",
+  "loss evaluations",
+  "CNOT estimate"
+ ],
+ "prediction": "primary reaches >= 9/10 on both S2 and S3 with median P(optimum) >= 0.99; baseline reaches 0/10 on the primary metric (median P(opt) ~0.12) but ~10/10 on samples-contain-optimum",
+ "stop_rule": "stop once one plan holds probability > 0.995; budgets as in cfg (maxfun per stage)"
+}
