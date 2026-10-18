@@ -2,11 +2,11 @@
 
 [Watch the final video](https://qfactoria.com/video/) · [Live script](../../docs/CATERING_LIVE.md) · [Narration](../../docs/CATERING_VOICEOVER.md)
 
-The final local export is [axion-kitchen.mp4](../../output/submission-4k/axion-kitchen.mp4):
-**4:20, 3840×2160**, H.264/AAC, with English selectable subtitles and twelve chapters.
+The final local export is [axion-kitchen.mp4](../../output/submission-4k-v2/axion-kitchen.mp4):
+**4:48, 3840×2160**, H.264/AAC, with English selectable subtitles and thirteen chapters.
 It edits actual UI captures and includes a real local QAOA launch and checked
 receipt. Narration uses Kokoro's stock `af_heart` synthetic voice, without cloning.
-The [export manifest](../../output/submission-4k/manifest.json) records source
+The [export manifest](../../output/submission-4k-v2/manifest.json) records source
 and media hashes. See the [recording notes](../../docs/CATERING_RECORDING.md) for
 capture provenance and replacement-export instructions. These artifacts do not
 assert organizer submission.
@@ -19,7 +19,7 @@ From the repository root, after installing the documented catering environment:
 .venv-catering/bin/python scripts/serve-catering-showcase.py --port 4193
 ```
 
-- [Video route](http://127.0.0.1:4193/): 260 seconds (4:20).
+- [Video route](http://127.0.0.1:4193/): 288 seconds (4:48).
 - [Live route](http://127.0.0.1:4193/?mode=live): 165 seconds (2:45), holding at each chapter.
 - [Full-resolution capture](http://127.0.0.1:4193/?export=2): a fixed 3840×2160 stage, with controls below the picture. Crop those controls from exports; this mode intentionally need not fit a smaller viewport.
 
@@ -48,7 +48,7 @@ or physical-QPU call. Repeating that fixed seed is reproducible execution, not
 an independent training trial. Fresh receipts and retained replay keep separate
 labels; editorial video holds do not measure runtime.
 
-The captured launch at 2026-10-18 10:38:11 UTC returned 20 complete meals, zero
+The captured launch at 2026-10-18 11:01:48 UTC returned 20 complete meals, zero
 waste and 2,173 valid shots. A later launch must be described using its own receipt.
 The server binds only to 127.0.0.1, and the sampler endpoint checks Origin.
 

@@ -1,6 +1,35 @@
 {
-  "tested_commit": "48b5670e",
-  "scope": "Thirteen original narrated-release checks on 48b5670e. The later 4K capture was separately checked with the site build, presentation preflight, complete AV decode and public browser playback; the problem and solver evidence were unchanged.",
+  "scope": "13 final release stages on the current worktree; the base commit and tested file fingerprints distinguish this from a clean-clone receipt. Publication-only documentation follows the checks.",
+  "tested_base_commit": "2fe432022410b949203b1354f4dac3a04a8ccece",
+  "tracked_changes": true,
+  "tested_source_sha256": {
+    "DEVELOPMENT_LOG.md": "ed206e02784343be959fa2686720275369f7123d1ff8649c7a910eead51e8a2b",
+    "LICENSE": "228963719bd2a2baea4422b1e5107ab7662751aa12d28e7bb9609258357f41c3",
+    "PROJECT_DESIGN.md": "8fc4993c8e10b8863abd79deaf05328d59c118e29897c3fd732c0c2e226b660c",
+    "README.md": "393dcff6c842d69d1f2e6b93bafb5e4822bd09605628da40b22023334a5cf8b6",
+    "docs/CATERING_LIVE.md": "8592fd3be22f8a631cdbd4fa8a38f9de748fb88fcba67450c6dab76680548646",
+    "docs/CATERING_PRESENTATION.md": "b18670e463b14f27d04357b98fb44e140e35fa62d0fe93f24d703231976239a3",
+    "docs/CATERING_QA.md": "5027c6c5c22abc42aa95a0b7440ccf2eef8e07a944a682d6cd1124a65e3b2393",
+    "docs/CATERING_RECORDING.md": "24cd0849f6313c98b24b00830cf33404ff7992667f8ac02f606b37852d00ccfa",
+    "docs/CATERING_VOICEOVER.md": "735c5c1890e66cccd83de49967655e2a82cc3de8d1690b4b97c22bb2a736a840",
+    "docs/STAGE2_SUBMISSION.md": "a31a65468efbc48e198ef1cc328657d639c4c764e188889bd4bf3e2063987ea1",
+    "output/catering-methods/qaoa/plan-v1.json": "851369d7bf2262a174ae2891025b615fe0d102b06afe90f2e8f7ecc41837fddf",
+    "output/catering-realism-cost-v1/report.json": "2f6bfbb7b811eacd12d0d959f41bb5dc1f5978237d7eedff058b53903b0d016a",
+    "presentation/catering/benchmarks/data.json": "35215dfde15863e82965d4acd2f8d4aabb8f0f6fe50818c46e3728a3b8109e1e",
+    "presentation/video/axion-kitchen.mp4": "5e83ac66f0e2cffc360a10f5a443c6c7ddf269d347aade42b003495cc4d2d2ca",
+    "presentation/video/captions.srt": "5c142e8a15e8e83803600b97e2cbe13775699f3682e32fa5c9a705675b6490b1",
+    "presentation/video/captions.vtt": "4a9299a22e44f2a104d06dbe222778171b95329b9d2dbba31b659556a29af462",
+    "presentation/video/provenance.json": "2dffc0ed7ccb3a3965a584aeabf92f1d25c3c8721d1a91342c166aca4d6443e2",
+    "schedule_2x2.json": "f7b8c396b62107d9a3aa0810ddaf9c80e9bc1edd9e1e328fc7b29396e770644f",
+    "schedule_3x3.json": "df58c3cd9f5b291778afc9282ea0d8601fef28b778a4ec90280a8658255120a4",
+    "scripts/catering-showcase/evidence.json": "e4aa35d1b63be44212ae56fe91436acd49c5f92bc1f610c6338743564563cbdc",
+    "scripts/catering-showcase/live-parameters.json": "04415726016cda2f434a3ce96ac288ec8150d47a84c91b1f6abb424e0660aad3",
+    "scripts/catering-showcase/story.json": "758dbcc6b6ee1857551fe50931f9d76e374649c96e4bee6637139368c3be3837",
+    "scripts/check-catering-release.py": "410bf464871cafaa2cf1bd8d8581b0539344cd614a3336670dddcb5be8d0d64c",
+    "scripts/check-stage1.py": "5a5d482ccb561e26f197fc099b837408a63e7ed48d9f5acfcb3a18b97007dbd8",
+    "scripts/report-catering-realism.py": "3bce5c411e9b4bbefcec7a311f172caa19cf8631f5c9aa3f6737fb2e7aada9f4",
+    "tests/test_submission_checks.py": "de1db172dc04ed97b4391a3a14c8f90bfe207b63e9000797560becd9f75cece5"
+  },
   "checks": [
     {
       "name": "site",
@@ -57,31 +86,27 @@
   ],
   "video": {
     "path": "presentation/video/axion-kitchen.mp4",
-    "sha256": "537d82828af438eca1c492dca0109f27e0b7f0f4fb22e0ee18f0deb005991c82",
-    "seconds": 260,
+    "sha256": "5e83ac66f0e2cffc360a10f5a443c6c7ddf269d347aade42b003495cc4d2d2ca",
+    "seconds": 288,
     "resolution": [
       3840,
       2160
     ],
-    "audio": "AAC, English stock synthetic narration",
-    "captions": "English embedded track and sidecar SRT/WebVTT",
-    "decode_check": "ffmpeg -xerror completed successfully",
-    "public_playback": "3840x2160, duration260s, readyState4, no media error; playback advanced in public browser.",
-    "capture": "Actual browser UI recaptured at 2x CSS pixel density; not a 1080p video upscale.",
-    "build_check": "154 site tests and presentation preflight passed after 4K export",
-    "fallback": "presentation/video/axion-kitchen-1080p.mp4"
+    "chapters": 13,
+    "audio": "Stock Kokoro af_heart synthetic English narration, no cloning",
+    "captions": "English embedded track, SRT and WebVTT",
+    "capacity_study_seconds": [
+      248,
+      276
+    ],
+    "decode_check": "Complete ffmpeg -xerror video/audio decode passed",
+    "public_playback": "Browser loaded duration288,3840x2160,readyState4, no media error; playback advanced."
   },
   "public_video": "https://qfactoria.com/video/",
-  "deployment_id": "dpl_AWrwDeTh5Y16K1cPHkzud5zXsULG",
-  "repository_visibility": "PRIVATE at final check; authorized public release still required",
-  "organizer_submission": "No form or acknowledgment supplied; no submission performed",
+  "deployment_id": "dpl_Arx1EkZkA7gJKpae7r2Za7aHrHKL",
+  "repository_visibility": "No visibility change performed; final public-source release remains a separate step.",
+  "organizer_submission": "No organizer submission performed.",
   "new_training": 0,
   "new_veloxq_submissions": 0,
-  "new_qpu_jobs": 0,
-  "additional_4k_checks": [
-    "154 site tests and docs/syntax build passed",
-    "Presentation preflight passed",
-    "Complete ffmpeg AV decode passed",
-    "Public browser loaded actual3840x2160 video without error"
-  ]
+  "new_qpu_jobs": 0
 }

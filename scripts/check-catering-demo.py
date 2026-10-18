@@ -76,6 +76,11 @@ def preflight():
         check('Displayed VeloxQ replanning loop',all(shown_lns[k]==lns[k] for k in shown_lns)
               and sum(r['service_jobs'] for r in lns['rows'])==lns['ledger_after']-lns['ledger_before']==71
               and all(r['final']['U']<r['start']['U'] for r in lns['rows']))
+        investment=json.loads((ROOT/evidence['source_files']['investment']['path']).read_text())
+        row_ids=['baseline','third-cooker','worker-prepare','worker-pack']
+        expected=[dict(id=r['id'],label=r['label'],served_meals=len(r['served_meals'])*investment['case']['lot_size'],discarded_portions=r['tuple'][1]*investment['case']['lot_size'],U=r['tuple'][0]) for r in investment['variants'] if r['id'] in row_ids]
+        check('Displayed investment comparison',evidence['investment']['rows']==expected and evidence['investment']['method']==investment['method'] and not investment['method']['optimality_proved'])
+        check('Investment original result hashes',all(hashlib.sha256((ROOT/r['path']).read_bytes()).hexdigest()==r['sha256'] for r in investment['source_files']))
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')

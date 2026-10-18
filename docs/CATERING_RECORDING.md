@@ -1,10 +1,10 @@
-# Final video and recording notes — 4:20
+# Final video and recording notes — 4:48
 
 [Watch the final video](https://qfactoria.com/video/) · [Narration](CATERING_VOICEOVER.md) · [Live route](CATERING_LIVE.md)
 
-The completed local export is [axion-kitchen.mp4](../output/submission-4k/axion-kitchen.mp4):
-3840×2160, 4:20, H.264 video with AAC narration, English selectable subtitles
-and twelve chapter markers. [manifest.json](../output/submission-4k/manifest.json)
+The completed local export is [axion-kitchen.mp4](../output/submission-4k-v2/axion-kitchen.mp4):
+3840×2160, 4:48, H.264 video with AAC narration, English selectable subtitles
+and 13 chapter markers. [manifest.json](../output/submission-4k-v2/manifest.json)
 records media hashes, source hashes and the export checks. Publication and organizer
 submission are separate states; this document does not assert submission.
 
@@ -15,14 +15,14 @@ captured at five frames per second and encoded into a 30-fps output; model,
 code and result frames are held for reading. It is not a continuous screen recording.
 The QAOA chapter includes a real button launch, its RUNNING state and its CHECKED
 receipt: 20 complete meals, zero waste and 2,173 valid shots from 4,096 samples
-at 2026-10-18 10:38:11 UTC. Editorial holds do not measure process runtime.
+at 2026-10-18 11:01:48 UTC. Editorial holds do not measure process runtime.
 The retained kitchen replay has a separate label. This capture made no training
 runs, VeloxQ submissions or physical-QPU jobs.
 
 Narration uses Kokoro's stock `af_heart` synthetic voice, with no voice cloning.
-[voice-manifest.json](../output/submission-4k/voice-manifest.json) records
+[voice-manifest.json](../output/submission-4k-v2/voice-manifest.json) records
 model/engine attribution, pronunciation text and chapter alignment;
-[captions.srt](../output/submission-4k/captions.srt) retains the subtitles.
+[captions.srt](../output/submission-4k-v2/captions.srt) retains the subtitles.
 
 ## Picture and edit plan
 
@@ -41,7 +41,8 @@ Generated from [story.json](../scripts/catering-showcase/story.json).
 | 3:08–3:28 | VQE/QAOA per-shot probabilities with unequal-budget note. | Show reported medians and final shot counts. No matched-budget ranking or hardware-speed claim. |
 | 3:28–3:56 | VeloxQ-only starting plans improved through repeated two-block conditional QUBOs; three widths with classical controls and total runtime. | All block pairs are swept; each subproblem is capped at 40 variables. 71 submissions include five failures. Total adapter time is 565.4 s, backend time 126.784 s; these exclude the earlier cold-start generation. One seed per width. Exact controls match or improve final tuples; CP at 240 s / four workers has lower U at every width. Do not call this a matched-budget win. |
 | 3:56–4:08 | Source QUBO widths and pair counts beside the joint-choice explanation. | The table reports source matrices, not circuit qubits or the full generated domain. 636,882 pairs is measured; no hardness or speedup conclusion follows. |
-| 4:08–4:20 | Finished retained plan: 20 meals/0 waste beside three concrete development-log decisions. | Keep correction of repair cleaning, paired-service objective and idle-elimination proof visible; these summarize the development log. Final source links stay below. |
+| 4:08–4:36 | Observed worker sharing and resource-by-resource capacity comparison in the larger S3 kitchen. | Same full physical model, classical CP reference only: 240 seconds, two solver workers, seeds2026/2027, no proof of optimality. Current and third-cooker plans serve90/140 meals; prep-only or pack-only helper plans serve110/140. Third cooker also cuts discarded portions10→0. No wage or investment-price data supplied. |
+| 4:36–4:48 | Finished retained plan: 20 meals/0 waste beside three concrete development-log decisions. | Keep correction of repair cleaning, paired-service objective and idle-elimination proof visible; these summarize the development log. Final source links stay below. |
 
 ## Optional replacement capture
 

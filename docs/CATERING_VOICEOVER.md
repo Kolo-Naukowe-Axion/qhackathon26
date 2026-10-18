@@ -1,12 +1,12 @@
-# Video narration — 4:20
+# Video narration — 4:48
 
-[Watch the final video](https://qfactoria.com/video/) · [Local MP4](../output/submission-4k/axion-kitchen.mp4)
+[Watch the final video](https://qfactoria.com/video/) · [Local MP4](../output/submission-4k-v2/axion-kitchen.mp4)
 
 The completed narration uses Kokoro's stock `af_heart` synthetic voice;
-no voice was cloned. [Voice manifest](../output/submission-4k/voice-manifest.json)
+no voice was cloned. [Voice manifest](../output/submission-4k-v2/voice-manifest.json)
 records the engine/model attribution, pronunciation adjustments and chapter timing.
 English selectable subtitles are included in the MP4 and available as
-[captions.srt](../output/submission-4k/captions.srt).
+[captions.srt](../output/submission-4k-v2/captions.srt).
 
 This text is generated from [story.json](../scripts/catering-showcase/story.json).
 Edit that source, then run `npm run docs:write`. QAOA and VeloxQ use integrated
@@ -56,13 +56,17 @@ checked results; VQE separates reported campaign medians from checked exported s
 
 > The cell is deliberately small. Larger inputs generate eighteen thousand batch programs. Equipment, workers and paired demand couple their choices. We measure restriction loss and search quality separately.
 
-## 4:08–4:20 · Checked results and benchmarks
+## 4:08–4:36 · Capacity: equipment or staff
+
+> What should the kitchen buy? In the larger case, a third cooker leaves best-found service at ninety meals. A prep or packing helper raises it to one hundred ten: the existing worker handles both jobs. We changed one resource at a time, using equal classical budgets and two seeds. These are checked plans, not certified optima. Prices are still needed for an investment decision.
+
+## 4:36–4:48 · Checked results and benchmarks
 
 > Our log records three decisions: correct repair cleaning, optimize complete-meal service, and prove idle elimination. The checked cell serves twenty meals without waste. Benchmarks and code are linked.
 
 ## Editing notes
 
-607 source words; the fastest chapter is 150 words/minute.
+671 source words; the fastest chapter is 150 words/minute.
 Narration is generated sentence by sentence and aligned to the chapter route.
 The voice manifest records actual pronunciation text and time stretch. Preserve
 pauses for the model, source code and real launch; do not claim a result absent

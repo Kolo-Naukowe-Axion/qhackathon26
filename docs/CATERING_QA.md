@@ -418,3 +418,7 @@ hand over with: “Our method owner can give the implementation detail.”
 
 Evidence: [project design](../PROJECT_DESIGN.md),
 [quality audit](CATERING_QUALITY.md), [VeloxQ report](catering-methods/VELOXQ.md).
+
+### Did a quantum solver find the 90-to-110-meal staffing result?
+
+No. Those are the raw-input classical reference’s best found plans under equal budgets: 240 seconds, two solver workers, two seeds, independently checked. They are not certified optima. The study changes one resource of the same physical kitchen at a time; it demonstrates decision support, while the QAOA, VQE and VeloxQ measurements remain separate. A third cooker reduces waste in these runs but does not improve served meals. Prices are still needed before recommending an investment.

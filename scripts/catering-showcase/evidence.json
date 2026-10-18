@@ -497,6 +497,10 @@
     "velox_lns_loop": {
       "path": "output/catering-velox-lns-loop-v1/report.json",
       "sha256": "dee9909e56bbeef541768ae6db84af4a3989c55c54bc0faa5f72ab52c83d070b"
+    },
+    "investment": {
+      "path": "presentation/catering/investment/data.json",
+      "sha256": "e199fb15ca5122436a635c7a8e2cce069862c7f517742255ff6cdf0f37568937"
     }
   },
   "velox": {
@@ -1071,5 +1075,59 @@
         }
       ]
     }
+  },
+  "investment": {
+    "method": {
+      "solver": "Raw-input CP reference (native slots, not the QUBO), same physical checker as all methods",
+      "seconds": 240,
+      "cp_workers": 2,
+      "seeds": [
+        2026,
+        2027
+      ],
+      "optimality_proved": false,
+      "quantum_training": 0,
+      "veloxq_calls": 0,
+      "physical_qpu_calls": 0,
+      "tuple_order": "(U,W,B,R): missed complete meal lots, discarded component lots, new batches, plan changes; lower is better, compared left to right",
+      "reproduce": ".venv/bin/python -m catering.investment --output NEW_DIR --seconds 240 --workers 2 --seed 2026"
+    },
+    "total_meals": 140,
+    "w1": {
+      "pack": 190,
+      "prepare": 110,
+      "total": 300
+    },
+    "available_minutes": 320,
+    "rows": [
+      {
+        "id": "baseline",
+        "label": "Current kitchen",
+        "served_meals": 90,
+        "discarded_portions": 10,
+        "U": 5
+      },
+      {
+        "id": "third-cooker",
+        "label": "Third cooker C3",
+        "served_meals": 90,
+        "discarded_portions": 0,
+        "U": 5
+      },
+      {
+        "id": "worker-prepare",
+        "label": "Extra worker: prepare only",
+        "served_meals": 110,
+        "discarded_portions": 10,
+        "U": 3
+      },
+      {
+        "id": "worker-pack",
+        "label": "Extra worker: pack only",
+        "served_meals": 110,
+        "discarded_portions": 10,
+        "U": 3
+      }
+    ]
   }
 }
