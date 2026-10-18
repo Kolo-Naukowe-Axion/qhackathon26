@@ -321,8 +321,12 @@ different state space with classical tabulation, so it is not the comparable
 number.
 
 The release check passed all 13 stages on a fresh clone of `f4bda4c9`
-(worker-skill split and comparable number); the
-[review receipt](output/catering-submission-review-v1/verification.json) now
+(worker-skill split and comparable number).
+
+The video and live scripts now present the VeloxQ-driven loop instead of the
+single oracle-chosen step, and the close adds the packing-helper result, at
+unchanged durations. The release check passed all 13 stages on a fresh clone
+of `09452502`; the [review receipt](output/catering-submission-review-v1/verification.json)
 records that commit.
 
 

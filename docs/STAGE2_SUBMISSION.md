@@ -51,7 +51,7 @@ Neither method names nor adding VQE automatically increases creativity credit.
 campaign, the VeloxQ representation and neighborhood-loop studies, and all five
 checked VQE exports.
 The benchmark browser links 229 retained source hashes. The [final review receipt](../output/catering-submission-review-v1/verification.json)
-records 13 passing release stages on a fresh clone of `f4bda4c9` (18 October, after the VeloxQ-LNS loop, investment what-if and Stage 1 comparable number). The last visibility check recorded GitHub private,
+records 13 passing release stages on a fresh clone of `09452502` (18 October, after the VeloxQ-LNS loop, investment what-if, Stage 1 comparable number and script update). The last visibility check recorded GitHub private,
 default branch main; recheck signed-out access only at the authorized release.
 Both root baseline JSONs and MIT LICENSE exist. No visibility change or service
 call is authorized or performed by this checklist.
