@@ -37,7 +37,9 @@ order. Do not add disjoint duplicate kitchens to inflate a variable count.
 
 ## What was actually run
 
-Only local generation, checking and CP-SAT references. **Zero VeloxQ or IBM calls.**
+Input preparation only: local generation, checking and CP-SAT references, with no
+VeloxQ or IBM call at this stage. Later service jobs (61 ledger attempts) are
+reported from Phase C onward and in the follow-up conditioning experiment.
 Five-second, one-worker reference budgets were declared before the run:
 
 | Width | Offered-domain CP status | Checked (U,W,B,R) |

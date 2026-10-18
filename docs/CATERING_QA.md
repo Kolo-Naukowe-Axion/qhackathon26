@@ -23,7 +23,7 @@ current evidence, not the result of experiments still running elsewhere.
 | Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
 | Did QAOA outperform the controls? | The trained setup increases median per-shot optimum probability about 11x/22x over random-angle search on S2/S3 at 256 evaluations. Both are restricted portfolios; this is no classical or hardware advantage. |
 | Why 35 qubits on a laptop? | The complete cell stays in a 1045-state one-hot sector. Larger frozen portfolios reach 279936 states; the dynamic replay uses its own pool. No dense 35-qubit statevector is used. |
-| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits gives 512/512 valid at all three tested scales. CP and SA still find better plans. |
+| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits makes every returned sample valid at all three tested scales, but most are empty plans: only 143/102/62 of 512 select any batch. CP and SA still find better plans. |
 
 ## Three questions to defend precisely
 
@@ -342,8 +342,10 @@ quantum-method execution paths on the same type of QUBO.”
 
 “We remove redundant idle choices and prove the feasible schedules and optimum
 are preserved. At equal 20,000-step budgets on the 512-bit source, valid returns
-rise from 17/512 to 512/512. The new representation also returns 512/512 valid
-at actual widths 998 and 2022. CP and same-formulation SA still find better plans.”
+rise from 17/512 to 512/512, but in that form the empty plan is always valid:
+only 143/102/62 of 512 samples select any batch at actual widths 486/998/2022,
+and the best plans still miss 9/11/13 of 14 meal lots. CP and same-formulation
+SA still find better plans.”
 
 These are exploratory single-job measurements. They demonstrate a checked
 representation improvement, not held-out superiority or a runtime advantage.

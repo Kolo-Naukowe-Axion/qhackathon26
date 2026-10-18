@@ -111,7 +111,8 @@ sampling matrices; it does not change anyone's existing frozen quantum input.
 
 At equal 20,000 steps and 512 replicas on the 512-source-bit tier, the new
 representation improves valid returns 17→512/512 and best delivered service
-10→50 of 140 meals. Waste rises 30→60 component portions; the declared policy
+10→50 of 140 meals. Most valid returns are empty plans: only 143/512 select any
+batch (102/512 and 62/512 at the larger widths). Waste rises 30→60 component portions; the declared policy
 prioritizes complete service. Raw handovers were independently rechecked.
 These are exploratory single-job comparisons, and CP/SA still find better plans.
 

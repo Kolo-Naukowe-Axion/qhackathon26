@@ -3,8 +3,8 @@
 Owner: QAOA track. Code: `catering/methods/qaoa.py`, tests: `tests/catering/test_qaoa.py`,
 branch `iwosmu/catering-qaoa`. Simulator only: no IBM or VeloxQ call is made.
 
-This document explains the idea and the code. Results are added only after the
-agreed protocol (section 7) has run; nothing here is a performance claim yet.
+This document explains the idea and the code. Results of the agreed protocol
+(section 7) are in sections 10–11.
 
 ## 1. The problem in one paragraph
 

@@ -10,6 +10,7 @@ test('production starts with catering while preserving the original viewer',()=>
  assert.match(legacy,/<base href="\/"\s*\/>/);
  assert.match(legacy,/id="factory-scene"/);
  assert.match(legacy,/src="\.\/app.js"/);
+ assert.doesNotMatch(legacy,/href="\/stage2\/"/);
 });
 test('kitchen links back to Stage 1 without publishing private speaker materials',()=>{
  const html=read('presentation/catering/index.html');
