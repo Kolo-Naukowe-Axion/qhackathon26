@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {advancePlayback,rehearsalStatus,playbackStartTime} from '../scripts/catering-showcase/playback.js';
+import {advancePlayback,rehearsalStatus,playbackStartTime,handlesPresentationKey} from '../scripts/catering-showcase/playback.js';
 
 const chapters = [{start:0,end:8},{start:8,end:30},{start:30,end:42}];
 test('live playback holds the current chapter before advancing', () => {
@@ -133,4 +133,20 @@ test('play restarts completed cuts and held live chapters instead of immediately
  assert.equal(playbackStartTime({time:42,chapters,mode:'live'}),30);
  assert.equal(playbackStartTime({time:29,chapters,mode:'live'}),29);
  assert.equal(playbackStartTime({time:29.999,chapters,mode:'video'}),29.999);
+});
+
+
+test('presentation shortcuts survive focused chapter buttons and timeline controls',()=>{
+ const control={insideControls:true,inMainDocument:true};
+ assert.equal(handlesPresentationKey({...control,code:'Space',tagName:'BUTTON',onButton:true}),true);
+ assert.equal(handlesPresentationKey({...control,code:'Space',tagName:'INPUT',inputType:'range'}),true);
+ assert.equal(handlesPresentationKey({...control,code:'KeyP',tagName:'INPUT',inputType:'range'}),true);
+ assert.equal(handlesPresentationKey({...control,code:'ArrowRight',tagName:'INPUT',inputType:'range'}),false);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'BUTTON',onButton:true,audience:true}),true);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'BUTTON',onButton:true}),false);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'INPUT',inputType:'text'}),false);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'SELECT'}),false);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'DIV',editable:true}),false);
+ assert.equal(handlesPresentationKey({code:'Space',tagName:'A'}),true);
+ assert.equal(handlesPresentationKey({code:'Space',composing:true}),false);
 });

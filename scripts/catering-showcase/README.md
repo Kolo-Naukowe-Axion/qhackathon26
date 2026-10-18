@@ -33,7 +33,9 @@ modify shared models or frozen inputs.
 
 Arrows change chapters. Space plays or pauses; in live mode it replays a held
 chapter, and Right Arrow advances. Replay cut restarts a completed video.
-P hides or restores operator controls and notes. F toggles full screen; if the
+Space also works after clicking a chapter button or the timeline. Enter activates
+a focused control; arrow keys still adjust a focused timeline. P hides or restores
+operator controls and notes, and moves keyboard focus back to the slide. F toggles full screen; if the
 browser rejects it, audience view remains available. R resets the rehearsal
 clock, which continues during animation holds and marks 2:45 as wrap-up and
 3:00 as overtime. Share the audience window, keeping speaker notes outside it.

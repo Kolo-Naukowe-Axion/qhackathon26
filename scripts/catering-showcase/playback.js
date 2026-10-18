@@ -28,3 +28,17 @@ export function playbackStartTime({time,chapters,mode}) {
   if(mode==='live'&&current.end-time<=0.01)return current.start;
   return time;
 }
+
+// Keep playback keys available after using presenter controls, while leaving
+// text entry, selects and visible action buttons to their native keyboard UI.
+export function handlesPresentationKey({code,tagName='',inputType='',editable=false,
+  insideControls=false,inMainDocument=true,onButton=false,audience=false,composing=false}) {
+  if(composing||!['Space','ArrowRight','ArrowLeft','KeyF','KeyP','KeyR'].includes(code))return false;
+  if(editable)return false;
+  if(tagName==='INPUT'&&inputType==='range'&&insideControls){
+    return audience||!['ArrowRight','ArrowLeft'].includes(code);
+  }
+  if(['INPUT','SELECT','TEXTAREA'].includes(tagName))return false;
+  if(code==='Space'&&inMainDocument&&onButton&&!insideControls&&!audience)return false;
+  return true;
+}

@@ -1,5 +1,5 @@
 import equations from '/assets/math/equations.js';
-import {advancePlayback,rehearsalStatus,playbackStartTime} from './playback.js';
+import {advancePlayback,rehearsalStatus,playbackStartTime,handlesPresentationKey} from './playback.js';
 const $=s=>document.querySelector(s),query=new URLSearchParams(location.search);
 const [story,evidence]=await Promise.all(['story.json','evidence.json'].map(name=>fetch('/studio/'+name).then(r=>r.json())));
 let mode=query.get('mode')==='live'?'live':'video',chapters=[],total=0,time=0,playing=false,last=0,currentId='',ready=false,kitchenKey='',lastRun=null,running=false;
@@ -128,7 +128,27 @@ document.addEventListener('fullscreenchange',()=>{
  $('#fullscreen').title='';$('#fullscreen').onclick=toggleFullscreen;fit();
 });window.addEventListener('resize',fit);function startRehearsal(){rehearsalStarted=performance.now();$('#rehearse').textContent='Reset timer · R';fit();}
 function updateRehearsal(now){if(rehearsalStarted===null)return;const status=rehearsalStatus((now-rehearsalStarted)/1000);const label=$('#talk-time');const levelChanged=label.dataset.level!==status.level;label.textContent=`Talk ${status.label}${status.level==='wrap'?' · wrap up':status.level==='over'?' · over 3:00':''}`;label.dataset.level=status.level;if(levelChanged)fit();}
-function toggleAudience(){document.body.classList.toggle('clean');fit();}function handleKey(e){if(e.code==='Space'&&e.target.ownerDocument===document&&e.target.closest('button,a'))return;if(['INPUT','SELECT','TEXTAREA'].includes(e.target.tagName))return;if(!['Space','ArrowRight','ArrowLeft','KeyF','KeyP','KeyR'].includes(e.code))return;e.preventDefault();e.stopImmediatePropagation();if(e.code==='Space')togglePlayback();if(e.key==='ArrowRight')next(1);if(e.key==='ArrowLeft')next(-1);if(e.code==='KeyF')toggleFullscreen();if(e.code==='KeyP')toggleAudience();if(e.code==='KeyR')startRehearsal();}document.addEventListener('keydown',handleKey);
+function toggleAudience(){
+ const audience=document.body.classList.toggle('clean');
+ if(audience){const stage=$('#stage');stage.tabIndex=-1;stage.focus({preventScroll:true});}
+ fit();
+}
+function handleKey(e){
+ const target=e.target;
+ if(!handlesPresentationKey({code:e.code,tagName:target.tagName,inputType:target.type,
+  editable:target.isContentEditable,insideControls:Boolean(target.closest('#controls')),
+  inMainDocument:target.ownerDocument===document,onButton:Boolean(target.closest('button')),
+  audience:document.body.classList.contains('clean'),composing:e.isComposing}))return;
+ e.preventDefault();e.stopImmediatePropagation();
+ if(e.repeat)return;
+ if(e.code==='Space')togglePlayback();
+ if(e.code==='ArrowRight')next(1);
+ if(e.code==='ArrowLeft')next(-1);
+ if(e.code==='KeyF')toggleFullscreen();
+ if(e.code==='KeyP')toggleAudience();
+ if(e.code==='KeyR')startRehearsal();
+}
+document.addEventListener('keydown',handleKey);
 document.body.classList.toggle('clean',query.has('clean'));setMode(mode);fit();document.fonts.ready.then(fit);
 await new Promise(resolve=>{const check=()=>{try{if(frame.contentDocument?.querySelector('#scenario')?.disabled===false){resolve();return;}}catch{}setTimeout(check,60);};check();});ready=true;frame.contentDocument.addEventListener('keydown',handleKey,true);kitchenKey='';currentId='';setTime(Number(query.get('t')||0));
 window.axionStudio={ready:true,setTime,setMode,play:()=>{if(!playing)togglePlayback();},pause:()=>setPaused(true),launch,get state(){return{mode,time,total,chapter:currentId,playing,running,lastRun,rehearsal_seconds:rehearsalStarted===null?null:(performance.now()-rehearsalStarted)/1000};}};
