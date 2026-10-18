@@ -37,5 +37,6 @@ if(typeof document!=='undefined'){
   $('#vqe-plans').innerHTML=data.vqe.verification.checked_results.map(r=>`<tr><td>${r.case}</td><td>${r.valid_shots}/${r.shots}</td><td class="number">${formatTuple(r.best)}</td><td>${r.work.objective_evaluations}</td><td>${r.work.hardware_equivalent_circuits.toLocaleString()}</td></tr>`).join('');
   $('#source-list').innerHTML=data.source_files.map(s=>`<li>${escape(s.path)}<code>${escape(s.sha256)}</code></li>`).join('');
   renderQ();renderRuns();renderV();$('#load-status').textContent=`Loaded ${data.qaoa_runs.length} QAOA runs, ${data.veloxq.length} service attempts and ${data.source_files.length} source identities. No optimizer runs on this page.`;
+  requestAnimationFrame(()=>{if(location.hash)document.getElementById(location.hash.slice(1))?.scrollIntoView({behavior:'instant',block:'start'});});
  }catch(error){$('#load-status').textContent=`Unable to load results: ${error.message}. Reload to retry.`;}
 }

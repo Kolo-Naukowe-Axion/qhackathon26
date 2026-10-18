@@ -6,8 +6,7 @@ extension, with QAOA, VQE, VeloxQ and checked classical references.
 ## Submission status
 
 **Prepared, not submitted.** The user requires confirmation before the form is
-sent. The final video is intended for YouTube; the website will embed it after
-the upload is ready. The current MP4 watch page is a review/fallback link.
+sent. The final video is on [YouTube](https://youtu.be/aGu9Mu2BaGg); the website embeds it and retains MP4 downloads as fallbacks.
 
 ## Links and pending fields
 
@@ -21,7 +20,7 @@ the upload is ready. The current MP4 watch page is a review/fallback link.
 | Formal problem and mathematics | [CATERING_PROBLEM.md](CATERING_PROBLEM.md) · [Project Design](../PROJECT_DESIGN.md) |
 | Development record | [DEVELOPMENT_LOG.md](../DEVELOPMENT_LOG.md) |
 | Official form | https://forms.gle/t5YxsRpvUiG1rbdz7 — read only; nothing entered or submitted |
-| Final video URL | **Pending YouTube upload and team review** |
+| Final video URL | https://youtu.be/aGu9Mu2BaGg — correct title and 4:52 duration checked |
 | Review / fallback video | https://qfactoria.com/video/ — hosted MP4, not the final YouTube URL |
 | Form-entry draft | [CATERING_SUBMISSION_DRAFT.md](CATERING_SUBMISSION_DRAFT.md) |
 | Submitted commit | Record the final checked `git rev-parse HEAD` after the remaining video/documentation edits |
@@ -77,10 +76,9 @@ and one fixed sampling seed; it starts no training, VeloxQ job or QPU job.
 
 ## Final external steps
 
-1. **Video:** review the current 4:52, 4K cut, then upload the approved cut to
-   YouTube. Confirm signed-out playback, English captions and the five-minute
-   limit. Add the actual YouTube URL to the README, organizer draft and website
-   embed. Keep the hosted MP4 as a fallback. No YouTube upload is claimed here.
+1. **Video:** uploaded at https://youtu.be/aGu9Mu2BaGg. Correct title and 4:52
+   duration checked in the browser; anonymous oEmbed access succeeds. The README
+   links directly to it, and the watch page embeds it with MP4 download fallbacks.
 2. **Public source:** the repository is public. Anonymous reads of the README,
    MIT license, development log, project design and both baseline JSONs succeeded
    on 18 October. Recheck the final pushed commit before submitting.
@@ -123,16 +121,15 @@ at **18:00 UTC+2**. Authority: [challenge PDF](../Quantum_Hackathon_2026_ERP_Cha
 
 ## Video publication handoff
 
-The [watch page](https://qfactoria.com/video/) currently serves the hosted MP4
-review/fallback. The current local cut is 4:52, in
-[4K](https://qfactoria.com/video/axion-kitchen.mp4) and
-[1080p](https://qfactoria.com/video/axion-kitchen-1080p.mp4), with 14 chapters and
-stock male Kokoro `am_fenrir` narration. These links are not evidence that the
-latest export has been deployed or checked publicly. Record the final verified
-deployment in [the release receipt](assets/catering-final-check.json), rather
-than copying an older deployment ID. The [provenance file](../presentation/video/provenance.json)
-records the packaged media and source hashes.
+Final YouTube video: https://youtu.be/aGu9Mu2BaGg. The correct project title and
+4:52 duration were observed in the browser; anonymous oEmbed access succeeded.
+The README links to it and [the watch page](https://qfactoria.com/video/) embeds it.
 
-**YouTube upload, URL, website embed and final public-playback verification are
-pending.** The 2:45 live route remains a separate deliverable. Publication and
-organizer submission are separate actions.
+The checked [4K MP4](https://qfactoria.com/video/axion-kitchen.mp4),
+[1080p fallback](https://qfactoria.com/video/axion-kitchen-1080p.mp4) and
+[English SRT](https://qfactoria.com/video/captions.srt) remain available.
+The [provenance file](../presentation/video/provenance.json) records media and
+capture-source hashes. The 2:45 live route remains a separate deliverable.
+
+Organizer submission is the user's final action; no acknowledgment has been
+received or claimed here.

@@ -22,7 +22,7 @@ that responses close **18 October 2026 at 15:00 UTC+2**.
 | Team member 4 (first and last name + Discord ID) | **Pending confirmed full name and Discord ID** | Optional field; include actual participating member |
 | Team member 5 (first and last name + Discord ID) | Leave blank unless there is a fifth participating member | Optional |
 | GitHub repository with project code and required materials | https://github.com/Kolo-Naukowe-Axion/qhackathon26 | Public; anonymous required-file reads verified on 18 October |
-| Direct link to the video recording | **Pending final YouTube URL** | Do not substitute the hosted MP4 review link without team approval |
+| Direct link to the video recording | https://youtu.be/aGu9Mu2BaGg | Correct title and 4:52 duration checked; anonymous oEmbed access succeeds |
 | Do you compete for the VeloxQ award? | **Yes** | Matches the team's stated intention; review before submission |
 
 The form has no project-description field. If another organizer surface asks
@@ -54,7 +54,7 @@ review/fallback, not a completed YouTube upload.
 
 Before requesting the user's final confirmation, record:
 
-- Approved YouTube URL and signed-out playback check.
+- YouTube URL: https://youtu.be/aGu9Mu2BaGg; correct title and 4:52 duration observed, anonymous oEmbed available.
 - Final source commit: **pending**, record `git rev-parse HEAD` after all changes.
 - Public repository check against that commit.
 - Final release-check receipt and media/source hashes.
