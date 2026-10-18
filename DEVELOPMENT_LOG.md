@@ -145,7 +145,7 @@ the cooks, placed their working positions closer to the benches and attached
 the chopping tool to the moving hand instead of animating it independently on
 the worktop. Replay time still drives movement; physical schedules are unchanged.
 
-The final clean export of `3653fd7d` passed all 13 release stages: 152 site
+The clean export of `3653fd7d` passed all 13 release stages: 152 site
 tests, 43 core checks, three adversarial baseline checks, the full 400-run QAOA
 archive audit, VQE/VeloxQ checks and three fixed-angle local launches. Each
 launch returned 20 meals and zero waste. The [final review receipt](output/catering-submission-review-v1/verification.json)
@@ -241,3 +241,11 @@ plan is rechecked. At width 2,022 one step improved missed meal lots 8→7; the
 next step stayed at 7 even with 100,000 steps, while exact enumeration shows 6
 is reachable. Longer CP (240 s) still reaches 5–6. Details and limits:
 [VeloxQ study](docs/CATERING_VELOXQ_TUNING.md#hybrid-follow-up-18-october-veloxq-on-a-classical-plan).
+
+The release check was repeated on a fresh clone of `44bd2706`, which includes
+the hybrid study, stale-claim corrections and benchmark update: all 13 stages
+pass (154 site tests, 43 core checks, three adversarial baseline checks, the
+400-run QAOA archive audit, VQE/VeloxQ checks and three fixed-angle launches
+returning 20 meals and zero waste). The
+[review receipt](output/catering-submission-review-v1/verification.json) now
+records that commit; the check made no service call.
