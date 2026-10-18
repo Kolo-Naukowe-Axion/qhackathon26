@@ -20,6 +20,24 @@ cross-block physical conflicts are still only penalised, so valid-sample rates a
 The state lives only on the one-hot sector (1,045 to 279,936 amplitudes), which is exact
 for these gates (`test_sector_engine_equals_dense_qubit_circuit`).
 
+## Update E6 (18 Oct 2026): concentrate the optimum with a CVaR -> Gibbs loss
+
+Evidence and full report: `output/catering-methods/vqe/E6-concentration/README.md`
+(lab harness `scripts/vqe_lab/`, predeclaration `heldout_predeclaration.json`).
+New option `RECOMMENDED_CONCENTRATED` (`loss="cvar_gibbs"`): the same circuit, CVaR 0.1 for up to
+150 loss evaluations, then the Gibbs loss -log sum p(x) exp(-100 E(x)/w_U) for the rest of a
+300-evaluation budget. The existing `RECOMMENDED` is unchanged.
+
+| Runs where the optimum is the most likely plan (P > 0.5) | dev (cell, S0, S1) | held-out (S2, S3) | median P(optimum) |
+|---|---|---|---|
+| `RECOMMENDED` (CVaR 0.1) | 0/30 | 0/20 | 0.12-0.18 |
+| `RECOMMENDED_CONCENTRATED` (CVaR 0.1 -> Gibbs 100) | 30/30 | 20/20 | 0.995 |
+
+Contract results (seed 0): the top sample is the optimum in all five cases (1,017-1,020 of 1,024),
+and valid-sample rates rise from 0.31-0.60 to 0.993-0.998. Limits: exact-simulation evidence only.
+With emulated 1,024-shot parameter-shift gradients, the CVaR stage under Adam loses the optimum
+(S0 2/5). Plain Gibbs eta=30 then does best (S0 8/10), at roughly 9e8 shots per run.
+
 ## Held-out confirmation (predeclared in `E5-predeclaration.json` before running S2/S3)
 
 Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:

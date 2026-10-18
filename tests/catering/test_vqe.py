@@ -158,6 +158,37 @@ class VQETest(unittest.TestCase):
                 fd = (ans.value_grad(w+h*direction,loss)[0]-ans.value_grad(w-h*direction,loss)[0])/(2*h)
                 self.assertAlmostEqual(fd,float(grad@direction),places=6)
 
+    def test_gibbs_loss_value_shift_and_adjoint(self):
+        E = np.array([0., 1., 3.])
+        p = np.array([.2, .5, .3])
+        value, grad = V.gibbs_loss(E + 5., 2.)(p)
+        self.assertAlmostEqual(value, -math.log(p @ np.exp(-2. * (E + 5.))))
+        np.testing.assert_allclose(grad, -np.exp(-2. * E) / (p @ np.exp(-2. * E)))  # shift-invariant
+        prob = V.Problem(toy_bundle(9))
+        rng = np.random.default_rng(5)
+        ans = V.build(prob, V.Spec('sector', layers=2, pairs='all'), rng)
+        w = ans.w0 + .3 * rng.standard_normal(ans.n_params)
+        direction = rng.standard_normal(ans.n_params)
+        for eta in (.1, 3., 30.):
+            loss = V.gibbs_loss(ans.E, eta)
+            _, g = ans.value_grad(w, loss)
+            h = 1e-6
+            fd = (ans.value_grad(w + h * direction, loss)[0] - ans.value_grad(w - h * direction, loss)[0]) / (2 * h)
+            self.assertAlmostEqual(fd, float(g @ direction), places=5)
+
+    def test_cvar_then_gibbs_concentrates_the_cell_optimum(self):
+        prob = V.Problem(load_bundle(CELL))
+        spec = V.Spec(**{k: v for k, v in V.RECOMMENDED_CONCENTRATED.items() if k != 'seed'})
+        r = V.run(prob, spec, seed=0, shots=256)
+        self.assertGreater(r['p_opt'], .99)          # CVaR alone stops near 0.1-0.2 on this cell
+        self.assertTrue(r['shot_hit_opt'])
+        self.assertLessEqual(r['nfev'], spec.budget)
+        self.assertTrue(r['stop'].startswith('stage2') or r['p_opt'] > spec.stop_maxprob)
+        with self.assertRaises(ValueError):
+            V.validate_spec(V.Spec('product', loss='gibbs'), 16)
+        with self.assertRaises(ValueError):
+            V.validate_spec(V.Spec('sector', loss='cvar_gibbs', optimizer='spsa', train_shots=64), 16)
+
     def test_saved_parameters_replay_without_training(self):
         from dataclasses import asdict
         from unittest.mock import patch
