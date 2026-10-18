@@ -26,9 +26,9 @@ Suggested description:
 > Independent schedule checks and classical references expose both search and
 > representation losses.
 
-The local final media package is at `output/submission-final/`:
+The local final media package is at `output/submission-4k/`:
 `axion-kitchen.mp4`, `voiceover.wav`, `captions.srt`, `voice-manifest.json` and
-`manifest.json`. The MP4 is **4:20, 1920×1080**, with H.264 video, AAC narration,
+`manifest.json`. The MP4 is **4:20, 3840×2160**, with H.264 video, AAC narration,
 English subtitles and chapter markers. Probe checks and manifest hashes match
 the exported media and studio sources. Narration uses the stock Kokoro
 `af_heart` synthetic voice, with no voice cloning; timing, clipping, caption
@@ -49,7 +49,8 @@ upload the obsolete silent rough cut from `output/playwright/`.
   returned receipt; the kitchen replay is labeled separately.
 
 The [final media and release receipt](assets/catering-final-check.json) records
-13 passing checks on `48b5670e`, plus the final video hash and public playback check.
+13 passing checks on `48b5670e`, plus the later 4K build/preflight, final video hash,
+complete AV decode and public playback checks.
 The earlier [committed technical receipt](../output/catering-submission-review-v1/verification.json)
 identifies its tested source commit. A later rerun is not proof that an earlier
 receipt covered later edits. Recheck the final release with:
@@ -67,7 +68,7 @@ and one fixed sampling seed; it starts no training, VeloxQ job or QPU job.
 ## Final external steps
 
 1. **Video:** the final cut is published at https://qfactoria.com/video/ and linked
-   from the README. Public browser playback was checked: 260 seconds, 1080p,
+   from the README. Public browser playback was checked: 260 seconds, 4K,
    time advancing and no error. Paste this URL into the organizer form. The
    package discloses its stock synthetic narration.
 2. **Public source:** at the team's authorized release step, make the repository
@@ -108,4 +109,6 @@ at **18:00 UTC+2**. Authority: [challenge PDF](../Quantum_Hackathon_2026_ERP_Cha
 
 ## Published video
 
-The [watch page](https://qfactoria.com/video/) includes the [MP4 download](https://qfactoria.com/video/axion-kitchen.mp4) and English captions. Public browser playback was checked on 18 October: 260 seconds, 1920×1080, readyState 4, time advancing, no media error. The final MP4 is also retained in `presentation/video/`; [provenance](../presentation/video/provenance.json) records source and media hashes. Production deployment: `dpl_HzatvmLYt4Ped9RZ3WRahESaGjbP`. This publication is not organizer submission.
+The [watch page](https://qfactoria.com/video/) includes the [MP4 download](https://qfactoria.com/video/axion-kitchen.mp4) and English captions. Public browser playback was checked on 18 October: 260 seconds, 3840×2160, readyState 4, time advancing, no media error. The final MP4 is also retained in `presentation/video/`; [provenance](../presentation/video/provenance.json) records source and media hashes. Production deployment: `dpl_AWrwDeTh5Y16K1cPHkzud5zXsULG`. This publication is not organizer submission.
+
+The current primary export is 4K. The earlier 1080p video remains a [fallback download](https://qfactoria.com/video/axion-kitchen-1080p.mp4), with its original provenance preserved separately. The narration and captions are unchanged.

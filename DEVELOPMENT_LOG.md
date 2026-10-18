@@ -361,3 +361,5 @@ key numbers. Human listening approval, public video access, final source
 publication, live rehearsal and organizer submission remain separate steps.
 
 **18 October, final video publication — Iwo S / integration.** Published the 4:20 narrated video and English captions at https://qfactoria.com/video/. Public browser playback loaded 1080p media, advanced normally and showed no error. Production deployment `dpl_HzatvmLYt4Ped9RZ3WRahESaGjbP`; exact media/source hashes are retained in `presentation/video/provenance.json`. The source repository remains private pending the authorized release step; no organizer submission receipt is claimed.
+
+**18 October — 4K presentation export.** At the owner’s request, rendered and captured the existing HTML/CSS presentation at 2× density and exported 3840×2160 H.264/AAC, retaining the 4:20 narration, captions and chapter timings. This is a new 4K UI capture, not a 1080p video upscale. A new fixed-angle local launch again returned 20 meals, zero waste and 2173/4096 valid samples; no training, VeloxQ submission or QPU job. The original 1080p MP4 remains available as a fallback.

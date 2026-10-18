@@ -7,7 +7,7 @@ holds do not pause the jury's clock.
 
 ## Setup and controls
 
-[Final narrated video](https://qfactoria.com/video/) · [Local MP4](../output/submission-final/axion-kitchen.mp4). The video is a fallback and a separate deliverable.
+[Final narrated video](https://qfactoria.com/video/) · [Local MP4](../output/submission-4k/axion-kitchen.mp4). The video is a fallback and a separate deliverable.
 
 Run `.venv-catering/bin/python scripts/serve-catering-showcase.py --port 4193`.
 Open [the live studio](http://127.0.0.1:4193/?mode=live). Use one speaker and

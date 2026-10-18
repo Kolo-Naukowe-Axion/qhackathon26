@@ -1,6 +1,6 @@
 # Axion Kitchen
 
-**[Watch the 4:20 project video ↗](https://qfactoria.com/video/)** · **[Open the live demo ↗](https://qfactoria.com/)** · [Benchmarks](https://qfactoria.com/catering/benchmarks/) · [VeloxQ results](https://qfactoria.com/catering/benchmarks/#veloxq)
+**[Watch the 4K project video ↗](https://qfactoria.com/video/)** · **[Open the live demo ↗](https://qfactoria.com/)** · [Benchmarks](https://qfactoria.com/catering/benchmarks/) · [VeloxQ results](https://qfactoria.com/catering/benchmarks/#veloxq)
 
 Catering production scheduling with **QAOA, VQE and VeloxQ**, built for the
 QPoland Quantum Hackathon 2026. Choose shared batches, cookers, workers and

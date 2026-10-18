@@ -20,7 +20,10 @@ def sha(path):
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--directory', type=Path, default=ROOT/'output/submission-final')
+    parser.add_argument('--resolution', choices=['1080','2160'], default='1080')
     args = parser.parse_args()
+    height = int(args.resolution)
+    width = height*16//9
     folder = args.directory.resolve()
     story = json.loads((ROOT/'scripts/catering-showcase/story.json').read_text())
     voice = json.loads((folder/'voice-manifest.json').read_text())
@@ -67,7 +70,7 @@ def main():
                '-i',str(folder/'voiceover.wav'),'-i',str(folder/'captions.srt'),
                '-i',str(folder/'chapters.ffmeta'),'-map','0:v:0','-map','1:a:0','-map','2:s:0',
                '-map_metadata','3','-map_chapters','3',
-               '-vf','crop=1920:1080:0:0,fps=30,format=yuv420p',
+               '-vf',f'crop={width}:{height}:0:0,fps=30,format=yuv420p',
                '-af','loudnorm=I=-16:TP=-1.5:LRA=11',
                '-c:v','libx264','-preset','medium','-crf','18','-threads','4',
                '-c:a','aac','-b:a','192k','-ar','48000','-c:s','mov_text',
@@ -77,14 +80,14 @@ def main():
     probe = json.loads(subprocess.check_output(['ffprobe','-v','error','-show_format',
                                               '-show_streams','-show_chapters','-of','json',str(destination)]))
     video = next(s for s in probe['streams'] if s['codec_type']=='video')
-    assert (video['width'],video['height']) == (1920,1080)
+    assert (video['width'],video['height']) == (width,height)
     assert abs(float(probe['format']['duration'])-total)<.1
     assert any(s['codec_type']=='audio' for s in probe['streams'])
     assert any(s['codec_type']=='subtitle' for s in probe['streams'])
     assert len(probe['chapters']) == len(story)
     sources = ['scripts/catering-showcase/'+name for name in
                ['index.html','studio.js','studio.css','story.json','evidence.json','live-parameters.json','playback.js']]
-    manifest = {'status':'local_export_verified','duration_seconds':total,'resolution':[1920,1080],
+    manifest = {'status':'local_export_verified','duration_seconds':total,'resolution':[width,height],
                 'narration':'Kokoro stock af_heart synthetic voice; no voice cloning',
                 'picture':'Edited real UI captures. Animated service captured at 5 fps; output 30 fps. Static model and result frames held for reading.',
                 'launch':'Real browser button launch, RUNNING state and checked receipt captured; editorial holds do not measure runtime.',

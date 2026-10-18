@@ -1,12 +1,12 @@
 # Video narration — 4:20
 
-[Watch the final video](https://qfactoria.com/video/) · [Local MP4](../output/submission-final/axion-kitchen.mp4)
+[Watch the final video](https://qfactoria.com/video/) · [Local MP4](../output/submission-4k/axion-kitchen.mp4)
 
 The completed narration uses Kokoro's stock `af_heart` synthetic voice;
-no voice was cloned. [Voice manifest](../output/submission-final/voice-manifest.json)
+no voice was cloned. [Voice manifest](../output/submission-4k/voice-manifest.json)
 records the engine/model attribution, pronunciation adjustments and chapter timing.
 English selectable subtitles are included in the MP4 and available as
-[captions.srt](../output/submission-final/captions.srt).
+[captions.srt](../output/submission-4k/captions.srt).
 
 This text is generated from [story.json](../scripts/catering-showcase/story.json).
 Edit that source, then run `npm run docs:write`. QAOA and VeloxQ use integrated

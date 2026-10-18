@@ -2,9 +2,9 @@
 
 [Watch the final video](https://qfactoria.com/video/) · [Narration](CATERING_VOICEOVER.md) · [Live route](CATERING_LIVE.md)
 
-The completed local export is [axion-kitchen.mp4](../output/submission-final/axion-kitchen.mp4):
-1920×1080, 4:20, H.264 video with AAC narration, English selectable subtitles
-and twelve chapter markers. [manifest.json](../output/submission-final/manifest.json)
+The completed local export is [axion-kitchen.mp4](../output/submission-4k/axion-kitchen.mp4):
+3840×2160, 4:20, H.264 video with AAC narration, English selectable subtitles
+and twelve chapter markers. [manifest.json](../output/submission-4k/manifest.json)
 records media hashes, source hashes and the export checks. Publication and organizer
 submission are separate states; this document does not assert submission.
 
@@ -15,14 +15,14 @@ captured at five frames per second and encoded into a 30-fps output; model,
 code and result frames are held for reading. It is not a continuous screen recording.
 The QAOA chapter includes a real button launch, its RUNNING state and its CHECKED
 receipt: 20 complete meals, zero waste and 2,173 valid shots from 4,096 samples
-at 2026-10-18 10:18:04 UTC. Editorial holds do not measure process runtime.
+at 2026-10-18 10:38:11 UTC. Editorial holds do not measure process runtime.
 The retained kitchen replay has a separate label. This capture made no training
 runs, VeloxQ submissions or physical-QPU jobs.
 
 Narration uses Kokoro's stock `af_heart` synthetic voice, with no voice cloning.
-[voice-manifest.json](../output/submission-final/voice-manifest.json) records
+[voice-manifest.json](../output/submission-4k/voice-manifest.json) records
 model/engine attribution, pronunciation text and chapter alignment;
-[captions.srt](../output/submission-final/captions.srt) retains the subtitles.
+[captions.srt](../output/submission-4k/captions.srt) retains the subtitles.
 
 ## Picture and edit plan
 
@@ -47,7 +47,7 @@ Generated from [story.json](../scripts/catering-showcase/story.json).
 
 Start the [local studio](../scripts/catering-showcase/README.md) and run
 `.venv-catering/bin/python scripts/check-catering-demo.py` before capturing.
-Use `http://127.0.0.1:4193/?export=1` for the fixed 1920×1080 stage; operator
+Use `http://127.0.0.1:4193/?export=2` for the fixed 3840×2160 stage; operator
 controls sit below it and must stay outside the final crop. Retain source hashes
 and actual launch receipts with any replacement export.
 

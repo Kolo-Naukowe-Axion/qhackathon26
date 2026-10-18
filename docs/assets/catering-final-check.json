@@ -1,6 +1,6 @@
 {
   "tested_commit": "48b5670e",
-  "scope": "Final merged source, baseline outputs, studio and fixed-angle local sampling. Documentation-only final log/publication receipt changes follow this checked commit.",
+  "scope": "Thirteen original narrated-release checks on 48b5670e. The later 4K capture was separately checked with the site build, presentation preflight, complete AV decode and public browser playback; the problem and solver evidence were unchanged.",
   "checks": [
     {
       "name": "site",
@@ -57,22 +57,31 @@
   ],
   "video": {
     "path": "presentation/video/axion-kitchen.mp4",
-    "sha256": "137f3a9063c2902a35db7a83682652116ede8004ab512e5b30a2e42297c67e43",
+    "sha256": "537d82828af438eca1c492dca0109f27e0b7f0f4fb22e0ee18f0deb005991c82",
     "seconds": 260,
     "resolution": [
-      1920,
-      1080
+      3840,
+      2160
     ],
     "audio": "AAC, English stock synthetic narration",
     "captions": "English embedded track and sidecar SRT/WebVTT",
     "decode_check": "ffmpeg -xerror completed successfully",
-    "public_playback": "Time advanced, readyState4, no video error, 260-second duration"
+    "public_playback": "3840x2160, duration260s, readyState4, no media error; playback advanced in public browser.",
+    "capture": "Actual browser UI recaptured at 2x CSS pixel density; not a 1080p video upscale.",
+    "build_check": "154 site tests and presentation preflight passed after 4K export",
+    "fallback": "presentation/video/axion-kitchen-1080p.mp4"
   },
   "public_video": "https://qfactoria.com/video/",
-  "deployment_id": "dpl_HzatvmLYt4Ped9RZ3WRahESaGjbP",
+  "deployment_id": "dpl_AWrwDeTh5Y16K1cPHkzud5zXsULG",
   "repository_visibility": "PRIVATE at final check; authorized public release still required",
   "organizer_submission": "No form or acknowledgment supplied; no submission performed",
   "new_training": 0,
   "new_veloxq_submissions": 0,
-  "new_qpu_jobs": 0
+  "new_qpu_jobs": 0,
+  "additional_4k_checks": [
+    "154 site tests and docs/syntax build passed",
+    "Presentation preflight passed",
+    "Complete ffmpeg AV decode passed",
+    "Public browser loaded actual3840x2160 video without error"
+  ]
 }
