@@ -1,9 +1,10 @@
 # Stage 2 research implementation
 
-**Archived factory extension.** The submitted Stage 2 is the catering project in
-[`catering/`](../catering/) ([project design](../PROJECT_DESIGN.md)). This directory
-and the results below describe the earlier factory fallback. They are not
-catering results.
+**Direction update:** catering is the active direction to try. Its
+[foundation/method work allocation](../docs/internal/CATERING_METHOD_WORKSPLIT.md) and
+[solver contract](../docs/CATERING_SOLVER_CONTRACT.md) are written; the catering
+foundation is not yet implemented. This directory and the results below describe
+the verified factory fallback. They are not catering results.
 
 **Current technical status — 17 October 2026:** all 14 agreed non-VeloxQ core
 requirements passed. Start with [current status](../docs/archive/manufacturing/STAGE2_STATUS.md),
