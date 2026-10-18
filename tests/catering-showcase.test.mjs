@@ -1,3 +1,4 @@
+import {notesForSlide,noteSlidesForChapter} from '../scripts/catering-showcase/speaker-notes.js';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {advancePlayback,rehearsalStatus,playbackStartTime,handlesPresentationKey} from '../scripts/catering-showcase/playback.js';
@@ -149,4 +150,22 @@ test('presentation shortcuts survive focused chapter buttons and timeline contro
  assert.equal(handlesPresentationKey({code:'Space',tagName:'DIV',editable:true}),false);
  assert.equal(handlesPresentationKey({code:'Space',tagName:'A'}),true);
  assert.equal(handlesPresentationKey({code:'Space',composing:true}),false);
+});
+
+
+test('speaker notes belong to visible slide views rather than a whole timed chapter',()=>{
+ const chapter={id:'hook',title:'Problem',live_narration:'Entire chapter narration'};
+ const baseline=notesForSlide(chapter,'baseline');
+ assert.equal(baseline.label,'Stage 1 · factory baselines');
+ assert.match(baseline.speech,/four and eight hours/);
+ assert.doesNotMatch(baseline.speech,/freshness|calendar/);
+ assert.notEqual(notesForSlide(chapter,'opening').speech,baseline.speech);
+ assert.match(notesForSlide(chapter,'problem').speech,/freshness/);
+ const loss={id:'loss'};
+ assert.match(notesForSlide(loss,'proof').speech,/ground-state guarantee/);
+ assert.doesNotMatch(notesForSlide(loss,'main').speech,/ground-state guarantee/);
+ assert.deepEqual(noteSlidesForChapter(chapter).map(n=>n.view),['opening','baseline','problem']);
+ const simple={id:'vqe',title:'VQE',live_narration:'Current Gibbs result',narration:'Video narration'};
+ assert.equal(notesForSlide(simple).speech,'Current Gibbs result');
+ assert.equal(notesForSlide(simple,'main','video').speech,'Video narration');
 });

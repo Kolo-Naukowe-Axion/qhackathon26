@@ -31,6 +31,10 @@ modify shared models or frozen inputs.
 
 ## Controls
 
+Speaker notes follow the visible slide, including separate notes for the opening,
+Stage 1, problem, compiler and penalty-proof views. The same view keeps the same
+notes as playback continues. [Read by slide](../../docs/CATERING_SLIDE_NOTES.md).
+
 Arrows change chapters. Space plays or pauses; in live mode it replays a held
 chapter, and Right Arrow advances. Replay cut restarts a completed video.
 Space also works after clicking a chapter button or the timeline. Enter activates

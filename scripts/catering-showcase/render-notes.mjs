@@ -1,3 +1,4 @@
+import {noteSlidesForChapter} from './speaker-notes.js';
 // Generate speaker and recording sheets from one chapter source; --check detects drift.
 import {readFile,writeFile} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
@@ -14,7 +15,9 @@ cursor=0;
 const rows=live.map(c=>{const start=cursor;cursor+=c.live_duration;return `| ${stamp(start)}–${stamp(cursor)} | ${c.live_action} | ${c.live_narration} |`;}).join('\n');
 cursor=0;
 const shotRows=story.map(c=>{const start=cursor;cursor+=c.duration;return `| ${stamp(start)}–${stamp(cursor)} | ${c.shot} | ${c.editor_cue} |`;}).join('\n');
+const slideNotes=live.flatMap(chapter=>noteSlidesForChapter(chapter,'live')).map(note=>`## ${note.label}\n\n> ${note.speech}\n`).join('\n');
 const files={
+ 'CATERING_SLIDE_NOTES.md':`# Live speaker notes — by visible slide\n\nThese notes match the current visual slide, including the separate opening, Stage 1, code and proof views. They do not change on a clock within the same view. Keep this file on a phone or second device when sharing the demo; P hides the studio notes as well as its controls. Use the rehearsal timer to stay under three minutes.\n\n${slideNotes}\n`,
  'CATERING_RECORDING.md':`# Final video and recording notes — ${stamp(videoSeconds)}
 
 [Watch the final video](https://qfactoria.com/video/) · [Narration](CATERING_VOICEOVER.md) · [Live route](CATERING_LIVE.md)

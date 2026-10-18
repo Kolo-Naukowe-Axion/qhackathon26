@@ -17,7 +17,7 @@ try{playwright=require('playwright');}catch(error){if(!process.env.AXION_NODE_MO
 await mkdir(output,{recursive:true});
 const studioRoot=resolve(dirname(fileURLToPath(import.meta.url)),'catering-showcase');
 const sourceHashes={};
-for(const name of ['index.html','studio.js','playback.js','studio.css','story.json','evidence.json','live-parameters.json','capture-plan.mjs']){
+for(const name of ['index.html','studio.js','playback.js','speaker-notes.js','studio.css','story.json','evidence.json','live-parameters.json','capture-plan.mjs']){
  sourceHashes[name]=createHash('sha256').update(await readFile(resolve(studioRoot,name))).digest('hex');
 }
 const browser=await playwright.chromium.launch({headless:true});

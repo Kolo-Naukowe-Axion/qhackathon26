@@ -1,9 +1,15 @@
+import {notesForSlide} from './speaker-notes.js';
 import equations from '/assets/math/equations.js';
 import {advancePlayback,rehearsalStatus,playbackStartTime,handlesPresentationKey} from './playback.js';
 const $=s=>document.querySelector(s),query=new URLSearchParams(location.search);
 const [story,evidence]=await Promise.all(['story.json','evidence.json'].map(name=>fetch('/studio/'+name).then(r=>r.json())));
 let mode=query.get('mode')==='live'?'live':'video',chapters=[],total=0,time=0,playing=false,last=0,currentId='',ready=false,kitchenKey='',lastRun=null,running=false;
-let rehearsalStarted=null;
+let rehearsalStarted=null,notesKey='';
+function renderSpeakerNotes(chapter,view){
+ const key=`${mode}/${chapter.id}/${view}`;if(key===notesKey)return;notesKey=key;
+ const note=notesForSlide(chapter,view,mode);
+ $('#notes-slide-title').textContent=note.label;$('#narration').textContent=note.speech;
+}
 const frame=$('#kitchen'),format=s=>`${Math.floor(s/60)}:${String(Math.floor(s%60)).padStart(2,'0')}`;
 const tuple=m=>['U','W','B','R'].map(k=>m[k]).join(', ');
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -89,7 +95,7 @@ function renderRun(){
  }
 }
 async function launch(){if(running)return;running=true;renderRun();try{const response=await fetch('/api/sample',{method:'POST'});lastRun=await response.json();}catch(error){lastRun={status:'failed',error:error.message};}finally{running=false;renderRun();}}
-function enter(c){currentId=c.id;$('#stage').className=`stage scene-${c.id}`;$('#title').textContent=c.title;$('#kicker').textContent=c.kicker;$('#visual').innerHTML=sceneContent(c);document.querySelector('#code-excerpt')?.remove();if(c.id==='encoding'){const panel=document.createElement('section');panel.id='code-excerpt';panel.className='code-excerpt paper';panel.innerHTML='<p class="eyebrow">catering/meal_blocks.py</p><pre>'+evidence.code_excerpt.split('\n').map(line=>/^123\s|^126\s|^127\s/.test(line)?'<mark>'+escape(line)+'</mark>':escape(line)).join('\n')+'</pre>';$('#stage').append(panel);}$('#narration').textContent=mode==='live'?c.live_narration:c.narration;$('#result-cue').hidden=mode!=='live'||!c.live_result_cue;$('#result-cue').textContent=c.live_result_cue||'';$('#chapter-count').textContent=`${String(chapters.indexOf(c)+1).padStart(2,'0')} / ${chapters.length}`;$('#evidence-label').textContent=({hamiltonian:'Same cost · exact Ising mapping · two variational ansätze',loss:'Paired meal objective',encoding:'Complete cell · 32 programs + 3 idle bits',run:'Fresh local simulation · saved angles',velox:'VeloxQ · repeated conditional QUBOs · checked full plans',results:'QAOA · frozen configuration · angles trained per case',vqe:'VQE · reported medians · unequal training budgets',scaling:'Same model · different offered domains',investment:'Classical capacity study · finite-budget checked plans',recovery:'S3 · classical raw reference',counter:'Checked manual change · no optimization'})[c.id]||'Retained QAOA replay';
+function enter(c){currentId=c.id;$('#stage').className=`stage scene-${c.id}`;$('#title').textContent=c.title;$('#kicker').textContent=c.kicker;$('#visual').innerHTML=sceneContent(c);document.querySelector('#code-excerpt')?.remove();if(c.id==='encoding'){const panel=document.createElement('section');panel.id='code-excerpt';panel.className='code-excerpt paper';panel.innerHTML='<p class="eyebrow">catering/meal_blocks.py</p><pre>'+evidence.code_excerpt.split('\n').map(line=>/^123\s|^126\s|^127\s/.test(line)?'<mark>'+escape(line)+'</mark>':escape(line)).join('\n')+'</pre>';$('#stage').append(panel);}$('#result-cue').hidden=mode!=='live'||!c.live_result_cue;$('#result-cue').textContent=c.live_result_cue||'';$('#chapter-count').textContent=`${String(chapters.indexOf(c)+1).padStart(2,'0')} / ${chapters.length}`;$('#evidence-label').textContent=({hamiltonian:'Same cost · exact Ising mapping · two variational ansätze',loss:'Paired meal objective',encoding:'Complete cell · 32 programs + 3 idle bits',run:'Fresh local simulation · saved angles',velox:'VeloxQ · repeated conditional QUBOs · checked full plans',results:'QAOA · frozen configuration · angles trained per case',vqe:'VQE · reported medians · unequal training budgets',scaling:'Same model · different offered domains',investment:'Classical capacity study · finite-budget checked plans',recovery:'S3 · classical raw reference',counter:'Checked manual change · no optimization'})[c.id]||'Retained QAOA replay';
  const show=['hook','service','counter','recovery','close'].includes(c.id);$('#kitchen-frame').hidden=!show;$('#replay-label').hidden=!show;$('#evidence-label').hidden=show;
  if(show){useKitchen(c.id==='recovery'?'S3':'CELL',c.id==='recovery'?'raw':'qaoa',c.id==='counter');$('#replay-label').textContent=c.id==='counter'?'Manual change · saved plan':c.id==='recovery'?'Classical recovery reference':'Saved QAOA plan';}
  if(c.id==='run'){useKitchen('CELL','qaoa',false);seekKitchen(100);renderRun();if(query.get('autolaunch')==='1'&&!lastRun&&!running)launch();}
@@ -107,6 +113,12 @@ function setTime(value){time=Math.max(0,Math.min(total,value));const c=chapterAt
   $('#evidence-label').textContent='Stage 1 · selected simulator schedules · independent classical reference';
  }
  if(ready){if(c.id==='service'){seekKitchen(Math.min(100,20+p*115));$('#served-counter').textContent=frame.contentDocument.querySelector('#meal-count').textContent.split('/')[0].trim();}else if(c.id==='counter')seekKitchen(100);else if(c.id==='recovery')seekKitchen(55+p*32);else if(c.id==='hook'&&!opening)seekKitchen(45);else if(c.id==='close')seekKitchen(100);}
+ let noteView='main';
+ if(c.id==='hook')noteView=opening?'opening':baseline?'baseline':'problem';
+ if(c.id==='encoding'&&p>=(mode==='video'?.5:.55))noteView='code';
+ if(c.id==='loss'&&p>=(mode==='video'?.53:.6))noteView='proof';
+ if(c.id==='hamiltonian'&&p>=.5)noteView='structure';
+ renderSpeakerNotes(c,noteView);
  if(c.id==='hamiltonian'){$('#hamiltonian-map').hidden=p>=.5;$('#structure-math').hidden=p<.5;}if(c.id==='loss'){const proofAt=mode==='video'?.53:.6;$('#loss-model').hidden=p>=proofAt;$('#math-proof').hidden=p<proofAt;}if(c.id==='encoding'){const codeAt=mode==='video'?.5:.55;const code=$('#code-excerpt');if(code)code.hidden=p<codeAt;$('#program-timeline').hidden=p>=codeAt;}$('#progress-fill').style.width=`${time/total*100}%`;$('#scrub').value=time;$('#elapsed').textContent=`${format(time)} / ${format(total)}`;if(!playing)$('#play').textContent=playButtonLabel();
 }
 function next(delta){const at=chapters.indexOf(chapterAt(time));setTime(chapters[Math.max(0,Math.min(chapters.length-1,at+delta))].start);setPaused(true);}
