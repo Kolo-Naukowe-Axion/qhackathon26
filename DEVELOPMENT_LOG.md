@@ -287,8 +287,7 @@ added a pause between submissions. Ledger 66→137.
 [Study](docs/CATERING_VELOXQ_TUNING.md#veloxq-lns-loop-18-october-a-veloxq-driven-pipeline).
 
 After the loop, the release check passed all 13 stages again on a fresh clone
-of `aa658aad`; the [review receipt](output/catering-submission-review-v1/verification.json)
-now records that commit. The check made no service call.
+of `aa658aad`. The check made no service call.
 
 
 ## 18 October — Investment what-if
@@ -303,3 +302,8 @@ profile and is reported as unsupported. We deliberately did not retrain QAOA
 or VQE for these variants: the flexible worker grows the program register
 8.3× (18,182→150,080), so the answer comes from the classical reference.
 [Study](docs/CATERING_INVESTMENT.md).
+
+The release check passed all 13 stages on a fresh clone of `726f8061`, which
+includes the investment study; the
+[review receipt](output/catering-submission-review-v1/verification.json) now
+records that commit.
