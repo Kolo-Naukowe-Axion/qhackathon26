@@ -1,0 +1,90 @@
+{
+  "budget": {
+    "allow_external_execution": true,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 97,
+    "num_rep": 512,
+    "num_steps": 20000,
+    "wall_time_limit_s": 120
+  },
+  "bundle": {
+    "bundle_sha256": "f8df35f71ac8513240697def80ce42f877c14c39363795ed594912d47c2412eb",
+    "qubo_sha256": "bf853dfaeafb16c76802725bc9339764664908f9e10b39cacdb79d4878ad14be",
+    "variable_order_sha256": "20f730d72b44268d9a0a23b4b1f463fecf944a04027f62134e050f2883005332"
+  },
+  "bundle_sha256": "f8df35f71ac8513240697def80ce42f877c14c39363795ed594912d47c2412eb",
+  "case_id": null,
+  "configuration": {
+    "backend_id": "a87c8e0c-c883-4d6a-8495-6cd55e95ed96",
+    "backend_name": "VeloxQH100_1",
+    "initial_bits_sha256": null,
+    "initial_literal_energy": null,
+    "initializer": "none (cold start)",
+    "initializer_service_acceptance": "not applicable",
+    "packet_coefficient_dtype": "int32",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 20000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "solver_id": "3bce1dfa-e7af-4040-a283-67cff253cf94",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": {
+    "error_type": "ConnectError",
+    "job_id": null
+  },
+  "method_id": "veloxq",
+  "method_version": "0.3.0",
+  "physical_qpu_calls": 0,
+  "raw_artifacts": {
+    "ising_input": {
+      "path": "output/catering-velox-lns-loop-v1/veloxq-start-1024/sweep-02/job-01/ising-input.h5",
+      "sha256": "59681b589276d3d8c4d00a2069a2714e386899ad56c557c48505d8474496a4fc"
+    }
+  },
+  "reference": null,
+  "representation": {
+    "couplers": 46694,
+    "float32_inexact_spin_coefficients": 3703,
+    "float64_exact": true,
+    "n": 3992,
+    "qubo_max_abs": 20086897,
+    "qubo_min_nonzero_abs": 757,
+    "spin_coefficients": 50686,
+    "spin_dynamic_range": 7052.07385361552,
+    "spin_l1": 1322352878240,
+    "spin_max_abs_including_offset": 353967801298
+  },
+  "representation_id": null,
+  "samples": [],
+  "schema_version": "catering-method-result.v1",
+  "status": "failed",
+  "timings": {
+    "build_s": 0.025497058013570495,
+    "serialize_s": 0.04347865900490433,
+    "total_s": 0.9580074959958438
+  },
+  "veloxq_calls": 0,
+  "work": {
+    "service_jobs_submitted": 0
+  }
+}

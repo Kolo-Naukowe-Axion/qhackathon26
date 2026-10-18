@@ -1,5 +1,6 @@
 """Read retained results into a compact public comparison page. No solver calls."""
 import json
+import gzip
 import hashlib
 import csv
 import io
@@ -61,8 +62,9 @@ def export():
             suffix='output/'+entry['output_dir'].split('/output/',1)[-1] if '/output/' in entry['output_dir'] else entry['output_dir']
             directory=ROOT/suffix
             path=directory/'result.json'
+            if not path.exists() and (directory/'result.json.gz').exists():path=directory/'result.json.gz'
             if path.exists():
-                r=json.loads(path.read_text());conf=r.get('configuration',{});params=conf.get('parameters',{})
+                r=json.loads(gzip.decompress(path.read_bytes()) if path.suffix=='.gz' else path.read_text());conf=r.get('configuration',{});params=conf.get('parameters',{})
                 row.update(status=r.get('status','unknown'),variables=r.get('representation',{}).get('n'),
                     shots=sum(s.get('count',1) for s in r.get('samples',[])),steps=params.get('num_steps'),reps=params.get('num_rep'),
                     backend_s=r.get('backend_statistics',{}).get('running_time'),wall_s=None if r.get('recovery') else r.get('timings',{}).get('total_s'),download_recovered=bool(r.get('recovery')),
@@ -80,6 +82,9 @@ def export():
                     ev=json.loads(hybrid.read_text());lns='lns-' in directory.parent.name
                     row.update(valid=ev['valid_shots'],best=(ev.get('best') or {}).get('metrics') if lns else ev.get('best_metrics'),
                         representation='hybrid-lns-subqubo.v1' if lns else 'hybrid-warm-start.v1')
+                if 'catering-velox-lns-loop-v1/' in suffix:
+                    # One loop job answers many independent pair sub-QUBOs; quality is per sweep in the loop report.
+                    row.update(representation='hybrid-lns-loop.v1',valid=None,best=None,run=directory.parent.parent.name)
                 sources[str(path.relative_to(ROOT))]=public_source(str(path.relative_to(ROOT)))
         service.append(row)
     vqe=dict(verification=load('output/catering-methods/vqe/integration-v2/verification.json'),grids={})

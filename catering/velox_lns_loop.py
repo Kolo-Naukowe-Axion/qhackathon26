@@ -14,6 +14,7 @@ import argparse
 import itertools
 import json
 import random
+import time
 from pathlib import Path
 
 from .build_meal_release import save
@@ -89,7 +90,7 @@ def ledger_count():
     return len(json.loads(Path(DEFAULT_LEDGER).read_text())['jobs'])
 
 
-def sweep(source, variant, adj, x, rng, cap, solver, output, budget, pairing='random', batch_max=2000):
+def sweep(source, variant, adj, x, rng, cap, solver, output, budget, pairing='random', batch_max=2000, pause=0):
     blocks = [g['program_indices'] for g in source['onehot_groups']]
     if pairing == 'all':
         pairs = [list(p) for p in itertools.combinations(range(len(blocks)), 2)]
@@ -124,18 +125,24 @@ def sweep(source, variant, adj, x, rng, cap, solver, output, budget, pairing='ra
             batch, offsets = combine([subs[k] for k in chunk])
             out = output/f'job-{n:02d}'
             save(output/f'job-{n:02d}-qubo.json', batch)
+            if n and pause:
+                time.sleep(pause)  # spacing between submissions, not a retry
             job_budget = dict(budget, max_service_jobs=min(budget['max_service_jobs'], ledger_count()+1))
             result = solve_qubo(batch, job_budget, dict(num_rep=budget['num_rep'], num_steps=budget['num_steps']), out)
             services.append(dict(status=result['status'], failure=result.get('failure'), job_id=result['raw_artifacts'].get('job_id'),
                                  backend_running_s=(result.get('backend_statistics') or {}).get('running_time'),
                                  total_s=result['timings'].get('total_s'), variables=len(batch['linear']), pairs=len(chunk)))
             if result['status'] != 'completed':
-                return x, proposals, services, []
+                break  # pairs of this and later jobs keep the current plan
             for sample in result['samples']:
                 for k, off in zip(chunk, offsets):
                     y = sample['bits'][off:off+len(subs[k]['linear'])]
                     if best[k] is None or sub_energy(subs[k], y) < sub_energy(subs[k], best[k]):
                         best[k] = y
+    for k, s in enumerate(subs):
+        if best[k] is None:
+            best[k] = keep[k]
+            proposals[k]['no_service_result'] = True
     for prop, s, y in zip(proposals, subs, best):
         prop['found'] = sub_energy(s, y)
         prop['hit_exact'] = prop['found'] == prop['exact']
@@ -168,6 +175,7 @@ def main():
     p.add_argument('--cap', type=int, default=60, help='Maximum freed variables per block pair')
     p.add_argument('--seed', type=int, default=2026)
     p.add_argument('--pairing', choices=['random', 'all'], default='random')
+    p.add_argument('--pause', type=float, default=0, help='Seconds between service submissions')
     p.add_argument('--batch-max', type=int, default=2000, help='Maximum variables in one service job')
     p.add_argument('--max-sweeps', type=int, default=12)
     p.add_argument('--patience', type=int, default=2)
@@ -188,7 +196,7 @@ def main():
     plan = dict(kind='VeloxQ-LNS loop' if a.solver == 'veloxq' else 'Exact-enumeration LNS control',
                 source_bundle=str(a.bundle), source_bundle_sha256=source['bundle_sha256'],
                 sampling_bundle_sha256=variant['bundle_sha256'], incumbent=incumbent, solver=a.solver, cap=a.cap,
-                seed=a.seed, pairing=a.pairing, batch_max=a.batch_max, max_sweeps=a.max_sweeps, patience=a.patience, num_rep=a.num_rep, num_steps=a.num_steps,
+                seed=a.seed, pause_s=a.pause, pairing=a.pairing, batch_max=a.batch_max, max_sweeps=a.max_sweeps, patience=a.patience, num_rep=a.num_rep, num_steps=a.num_steps,
                 max_service_jobs_total=a.max_service_jobs, allow_external=a.allow_external,
                 acceptance='sequential, exact full energy must fall, shared decoder must pass', repair=False)
     save(a.output/'experiment-plan.json', plan)
@@ -203,7 +211,7 @@ def main():
         out = a.output/f'sweep-{k:02d}'
         out.mkdir()
         x, proposals, services, accepted = sweep(source, variant, adj, x, rng, a.cap, a.solver, out, budget,
-                                                 a.pairing, a.batch_max)
+                                                 a.pairing, a.batch_max, a.pause)
         row = dict(sweep=k, metrics=metrics(source, variant, x), energy=energy(variant, x), accepted=accepted,
                    services=services, subproblems=len(proposals),
                    exact_hits=sum(p.get('hit_exact', False) for p in proposals),
@@ -212,8 +220,6 @@ def main():
         history.append(row)
         print(json.dumps({k2: row[k2] for k2 in ('sweep', 'metrics', 'exact_hits', 'improvable', 'subproblems')}
                          | dict(accepted=len(accepted), jobs=len(services))), flush=True)
-        if any(sv['status'] != 'completed' for sv in services):
-            break
         quiet = 0 if accepted else quiet+1
         if quiet >= a.patience:
             break

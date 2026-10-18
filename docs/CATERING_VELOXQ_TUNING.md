@@ -276,3 +276,41 @@ widths ([controls](../output/catering-velox-warmstart-v1/controls/)). The
 insight is where VeloxQ fits: as a solver for a small, exactly checkable
 sub-QUBO inside a classical loop it can improve a plan; as a polisher of a
 whole plan it currently cannot. [Study report](../output/catering-velox-warmstart-v1/report.json).
+
+
+## VeloxQ-LNS loop (18 October): a VeloxQ-driven pipeline
+
+Question: with VeloxQ doing the search, how far can a plan get from VeloxQ's
+own (mostly empty) samples, without any CP start? `catering.velox_lns_loop`
+runs sweeps over **all 325 pairs** of one-hot blocks. Each pair gets a
+sub-QUBO of at most 40 bits: the current program plus the best switches by
+exact single-block energy change, everything else fixed. The independent pair
+sub-QUBOs are packed into service jobs of up to 4,000 bits (about 105 pairs per
+job), so one job proposes moves for many pairs. Proposals are accepted one at a
+time only if the exact energy of the whole plan falls, and every accepted plan
+passes the shared decoder. No repair. The same loop with exact enumeration of
+each pair is the free control.
+
+| Solver bits | Start: VeloxQ alone (U) | **VeloxQ-LNS final** (U,W,B,R) | Sweeps / jobs | Backend s | Exact-pair control | CP 30 s | CP 240 s, 4 workers |
+|---:|---:|---|---:|---:|---|---|---|
+| 486 | 9 | **(7,6,11,11)** | 2 / 6 | 11.5 | (7,6,11,11) | (6,1,10,10) | (5,3,11,11) |
+| 998 | 11 | **(6,1,11,11)** | 11 / 40 | 78.5 | (6,1,10,10) | (7,2,11,11) | (5,1,11,11) |
+| 2,022 | 13 | **(7,3,11,11)** | 7 / 25 | 36.8 | (7,2,10,10) | (8,3,8,8) | (6,1,11,11) |
+
+U (missed meal lots of 14) per sweep: 998: 11→10→10→9→9→9→8→8→8→7→6→6;
+2,022: 13→10→10→8→7→7→7→7. Both end where no pair move improves the plan.
+At 998 and 2,022 the VeloxQ-driven plan serves one more meal lot than the
+30-second CP plan. VeloxQ returned the exact pair optimum in 4,504 of 5,121
+answered subproblems; the misses concentrate on pairs where an improvement
+exists. The first 2,022 run used 2,000 steps (0.25 s backend per 4,000-bit
+job) and stalled at U=10 with 8 improvable pairs missed; 20,000 steps
+(about 2.5 s per job) resumed progress.
+
+Limits, stated plainly: one seed per width; the exact-pair control reaches the
+same U, so for 40-bit pair problems VeloxQ is a working engine, not a necessary
+one; CP with 240 s and four workers is still better at every width; at 486 the
+loop does not beat 30-second CP. Five of the 71 submissions failed with a
+connection error (ledger 66→137 of an authorized 150); their pairs kept the
+current plan and later runs continued from the saved plan, adding a 10 s pause
+between submissions. Large raw files are gzipped in place.
+[Loop report](../output/catering-velox-lns-loop-v1/report.json).

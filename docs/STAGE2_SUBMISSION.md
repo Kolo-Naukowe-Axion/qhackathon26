@@ -49,7 +49,7 @@ Neither method names nor adding VQE automatically increases creativity credit.
 
 **Current verification, 17 October:** main now includes the audited 400-run QAOA
 campaign, the VeloxQ representation study, and all five checked VQE exports.
-The benchmark browser links 158 retained source hashes. The [final review receipt](../output/catering-submission-review-v1/verification.json)
+The benchmark browser links 229 retained source hashes. The [final review receipt](../output/catering-submission-review-v1/verification.json)
 records 13 passing release stages on a fresh clone of `44bd2706` (18 October, after the hybrid VeloxQ study). The last visibility check recorded GitHub private,
 default branch main; recheck signed-out access only at the authorized release.
 Both root baseline JSONs and MIT LICENSE exist. No visibility change or service

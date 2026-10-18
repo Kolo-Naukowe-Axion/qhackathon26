@@ -36,8 +36,8 @@ test('benchmark filters keep evaluation budgets and method scopes explicit',()=>
  assert.ok(rows.every(r=>r.case==='S2'&&(r.budget===256||r.budget===0)));
  assert.equal(rows.find(r=>r.config==='frozen').success_rate,1);
  assert.equal(bench.qaoa_runs.length,400);
- assert.equal(bench.veloxq.length,66);
- assert.equal(serviceRows(bench,'hybrid','completed').length,5);
+ assert.equal(bench.veloxq.length,137);
+ assert.equal(serviceRows(bench,'hybrid','completed').length,71);
  const scaled=serviceRows(bench,'noidle','completed');
  assert.equal(scaled.length,4);
  assert.ok(scaled.every(r=>r.valid===512&&r.shots===512));

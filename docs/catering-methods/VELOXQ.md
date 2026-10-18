@@ -38,7 +38,7 @@ order. Do not add disjoint duplicate kitchens to inflate a variable count.
 ## What was actually run
 
 Input preparation only: local generation, checking and CP-SAT references, with no
-VeloxQ or IBM call at this stage. Later service jobs (66 ledger attempts) are
+VeloxQ or IBM call at this stage. Later service jobs (137 ledger attempts) are
 reported from Phase C onward and in the follow-up conditioning experiment.
 Five-second, one-worker reference budgets were declared before the run:
 

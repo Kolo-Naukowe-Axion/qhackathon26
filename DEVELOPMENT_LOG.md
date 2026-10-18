@@ -271,3 +271,17 @@ semantics, lexicographic loss, anchor encoding, penalty proofs, no-idle equivale
 Ising conversion, hybrid restriction and experiment domains. It is linked from
 the README, documentation index and design. It changes no shared problem input,
 solver formulation or frozen method campaign.
+
+
+## 18 October — VeloxQ-driven LNS loop
+
+With the VeloxQ owner raising the cap to 150, we turned the single LNS step
+into a loop. Random block pairing was rejected after the free exact control
+showed it misses the few pairs that matter; sweeping all 325 pairs with 40-bit
+pair sub-QUBOs reached U=7/6/7 from VeloxQ's own U=9/11/13 plans. VeloxQ then
+ran the same loop: 2,000 steps stalled at 2,022 bits, 20,000 steps converged.
+Final U=7/6/7 at 486/998/2,022 bits, one meal lot better than 30-second CP at
+998 and 2,022, equal to the exact control, still behind 240-second CP. Five of
+71 submissions failed on connection errors; we kept their pairs unchanged and
+added a pause between submissions. Ledger 66→137.
+[Study](docs/CATERING_VELOXQ_TUNING.md#veloxq-lns-loop-18-october-a-veloxq-driven-pipeline).

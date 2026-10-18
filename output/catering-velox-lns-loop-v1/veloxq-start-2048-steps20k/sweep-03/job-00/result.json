@@ -1,0 +1,126 @@
+{
+  "backend_statistics": {
+    "backend_cost_scale": 1.0,
+    "backend_usage_scale": 1.0,
+    "cost_solver_time": 0.0,
+    "pending_time": 0.766826,
+    "quota_solver_time": 2.411,
+    "running_time": 2.411,
+    "solver_cost": 0.55,
+    "solver_usage_scale": 1.0,
+    "total_cost": 0.0,
+    "total_quota_usage": 2411,
+    "usage_time": 4.055161
+  },
+  "backend_timeline": [
+    {
+      "name": "created",
+      "value": "2026-10-18T08:14:37.193218Z"
+    },
+    {
+      "name": "pending",
+      "value": 0.766826
+    },
+    {
+      "name": "running",
+      "value": 2.411
+    },
+    {
+      "name": "completed",
+      "value": "2026-10-18T08:14:41.248379Z"
+    }
+  ],
+  "budget": {
+    "allow_external_execution": true,
+    "enforced": {
+      "max_service_jobs": "local ledger job_ledger.json",
+      "repeats": "one job per call",
+      "shots": "num_rep is a backend setting",
+      "wall_time_limit_s": "local polling bound only"
+    },
+    "max_service_jobs": 83,
+    "num_rep": 512,
+    "num_steps": 20000,
+    "wall_time_limit_s": 120
+  },
+  "bundle": {
+    "bundle_sha256": "bc8d7c60a675ae1aa0f1744190bbf03c8c2289e3b1f25f189de6210ec0955465",
+    "qubo_sha256": "2447feb4752ddc88e43895dc3d3a71c4af533b2a98767971772fcaaae654e48a",
+    "variable_order_sha256": "47b9ae3e733de7f592f333aff8cacf067ef26fe52d02077e7f8690a8d2b22a09"
+  },
+  "bundle_sha256": "bc8d7c60a675ae1aa0f1744190bbf03c8c2289e3b1f25f189de6210ec0955465",
+  "case_id": null,
+  "configuration": {
+    "backend_id": "a87c8e0c-c883-4d6a-8495-6cd55e95ed96",
+    "backend_name": "VeloxQH100_1",
+    "initial_bits_sha256": null,
+    "initial_literal_energy": null,
+    "initializer": "none (cold start)",
+    "initializer_service_acceptance": "not applicable",
+    "packet_coefficient_dtype": "int32",
+    "parameters": {
+      "num_rep": 512,
+      "num_steps": 20000
+    },
+    "repair": "disabled",
+    "retries": "disabled",
+    "seed_support": "not exposed by veloxq-sdk 1.0.0; not controlled",
+    "solver": "VeloxQSolver",
+    "solver_id": "3bce1dfa-e7af-4040-a283-67cff253cf94",
+    "spin_convention": "s=2x-1",
+    "spin_scale": 4
+  },
+  "environment": {
+    "dimod": "0.12.22",
+    "h5py": "3.16.0",
+    "numpy": "2.4.6",
+    "platform": "Linux-6.19.10-300.fc44.x86_64-x86_64-with-glibc2.43",
+    "python": "3.11.16",
+    "veloxq-sdk": "1.0.0"
+  },
+  "execution_kind": "veloxq_service",
+  "failure": {
+    "error_type": "ConnectError",
+    "job_id": "70175d7b-fae4-4595-b427-92a0455b3f3b"
+  },
+  "method_id": "veloxq",
+  "method_version": "0.3.0",
+  "physical_qpu_calls": 0,
+  "raw_artifacts": {
+    "file_id": "0b2db117-02a2-4071-844b-51175ff224cc",
+    "ising_input": {
+      "path": "output/catering-velox-lns-loop-v1/veloxq-start-2048-steps20k/sweep-03/job-00/ising-input.h5",
+      "sha256": "6fdf8f74b1df020561e216e3a5b2b336e586821db7289c72b043da8613774f94"
+    },
+    "job_id": "70175d7b-fae4-4595-b427-92a0455b3f3b"
+  },
+  "reference": null,
+  "representation": {
+    "couplers": 44706,
+    "float32_inexact_spin_coefficients": 3897,
+    "float64_exact": true,
+    "n": 4000,
+    "qubo_max_abs": 47969690,
+    "qubo_min_nonzero_abs": 757,
+    "spin_coefficients": 48706,
+    "spin_dynamic_range": 12642.038139329807,
+    "spin_l1": 2420769595492,
+    "spin_max_abs_including_offset": 679968400757
+  },
+  "representation_id": null,
+  "samples": [],
+  "schema_version": "catering-method-result.v1",
+  "status": "failed",
+  "timings": {
+    "backend_wait_s": 4.781602798000677,
+    "build_s": 0.02612803300144151,
+    "serialize_s": 0.048670873991795816,
+    "submit_s": 0.23622765399341006,
+    "total_s": 6.720558303000871,
+    "upload_s": 1.3331318069976987
+  },
+  "veloxq_calls": 1,
+  "work": {
+    "service_jobs_submitted": 1
+  }
+}
