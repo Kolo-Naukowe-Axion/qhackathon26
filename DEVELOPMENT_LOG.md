@@ -117,7 +117,7 @@ prioritizes complete service. Raw handovers were independently rechecked.
 These are exploratory single-job comparisons, and CP/SA still find better plans.
 
 Actual solver widths are 486/998/2022 after idle elimination. The complete ledger
-retains 61 attempts, including failed downloads and recovered jobs. We report
+retained 61 attempts at that point, including failed downloads and recovered jobs. We report
 backend and whole-call time separately. [Study and proof](docs/CATERING_VELOXQ_TUNING.md).
 
 ## 17 October — prepare the demonstration and submission checks

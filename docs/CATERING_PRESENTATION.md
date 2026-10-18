@@ -73,7 +73,7 @@ R=B in the current fixtures. Do not claim monetary optimization or unsupported c
 ## Benchmark browser and scale
 
 Open `/catering/benchmarks/` from the kitchen or studio. It includes all 400
-QAOA runs, all 61 service attempts, VQE experiment rows and five checked VQE
+QAOA runs, all 66 service attempts, VQE experiment rows and five checked VQE
 exports. Filters expose cases, budgets, failed attempts and source hashes. The
 page downloads retained data only; no optimizer or service call runs there.
 Regenerate with `.venv-catering/bin/python scripts/export-catering-benchmarks.py`.

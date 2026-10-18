@@ -59,7 +59,7 @@ def preflight():
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')
-        check('Benchmark coverage',len(benchmarks['qaoa_runs'])==400 and len(benchmarks['veloxq'])==61 and len(benchmarks['vqe']['verification']['checked_results'])==5)
+        check('Benchmark coverage',len(benchmarks['qaoa_runs'])==400 and len(benchmarks['veloxq'])==66 and len(benchmarks['vqe']['verification']['checked_results'])==5)
         story=json.loads((ROOT/'scripts/catering-showcase/story.json').read_text())
         check('Video fits five minutes',sum(c['duration'] for c in story)<=300)
         check('Live route leaves speaking margin',sum(c['live_duration'] for c in story)<=165)

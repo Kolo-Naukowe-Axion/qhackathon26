@@ -219,7 +219,8 @@ Sources: `output/catering-velox-conditioned-service-v1/report.json`, the
 conditioning ablation and scope are in [the tuning report](CATERING_VELOXQ_TUNING.md).
 The combined ledger records 61 attempts, including 54 prior-owner attempts and
 seven follow-ups; download recovery added no solver submissions. This audit
-performs no further service work.
+performs no further service work. Five later hybrid jobs (ledger 66) are in the
+[tuning report](CATERING_VELOXQ_TUNING.md#hybrid-follow-up-18-october-veloxq-on-a-classical-plan).
 
 ## What correctness verification covers
 

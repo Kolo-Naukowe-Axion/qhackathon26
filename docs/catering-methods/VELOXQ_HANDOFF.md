@@ -9,8 +9,9 @@ and what is still open.
 
 The adapter (`catering/methods/veloxq.py` 0.3.0) works end to end against the
 service with exact integer packets and recoverable storage downloads. The combined
-`output/catering-methods/veloxq/job_ledger.json` records **61 attempts**: 54 from
-historical phases C–H and seven representation follow-ups. Returns are independently
+`output/catering-methods/veloxq/job_ledger.json` records **66 attempts**: 54 from
+historical phases C–H, seven representation follow-ups and five hybrid jobs on
+18 October ([hybrid study](../CATERING_VELOXQ_TUNING.md#hybrid-follow-up-18-october-veloxq-on-a-classical-plan)). Returns are independently
 checked without removing selected programs or repairing physical conflicts.
 
 **Current result:** VeloxQ reaches the offered-pool optimum on the shared
