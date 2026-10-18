@@ -31,7 +31,7 @@ Main and side coverage interact quadratically, without extra product qubits.
 - **Decision support:** in the best found 12-customer plans, a third cooker adds no
   served meals, while a prep or packing helper adds 20. These are finite-budget
   classical results, not certified economic optima.
-  [Investment study](docs/CATERING_INVESTMENT.md).
+  [Compare resource changes on the site](https://qfactoria.com/catering/benchmarks/#capacity) · [Study](docs/CATERING_INVESTMENT.md).
 
 The animated dynamic-portfolio pilot and the fixed-pool campaign are labeled
 separately. Budgets and limitations are in the [quality report](docs/CATERING_QUALITY.md);
