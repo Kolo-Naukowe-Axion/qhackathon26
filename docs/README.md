@@ -7,6 +7,7 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 
 | Document | Purpose |
 |---|---|
+| [CATERING_PROBLEM.md](CATERING_PROBLEM.md) | Self-contained formal problem statement, objective, QUBO and method scopes |
 | [PROJECT_DESIGN.md](../PROJECT_DESIGN.md) | Implemented problem, encoding, objective and proofs |
 | [CATERING_QUALITY.md](CATERING_QUALITY.md) | Exact references, sampled quality and limitations |
 | [catering/README.md](../catering/README.md) | Installation, reproduction and frozen inputs |

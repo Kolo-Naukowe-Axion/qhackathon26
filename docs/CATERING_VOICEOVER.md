@@ -7,7 +7,7 @@ reported campaign medians from checked exported schedules.
 
 ## 0:00–0:26 · The catering problem
 
-> Axion Kitchen: quantum optimization for catering production. This is batch-production scheduling: cookers are machines, cleaning is setup work, and departures are due dates. We choose quantities, shared allocations, resources and phase times under freshness limits, qualified workers and calendars. Urgent orders and outages trigger replanning while started work stays fixed. Complete meals come first, then waste, batches and changes.
+> Axion Kitchen: quantum optimization for catering production. We completed the factory baselines in four and eight hours, both checked optimal. Our extension chooses shared batch yields, allocations, equipment, qualified workers and phase times. Cookers are machines, cleaning is setup, and departures are due dates. Freshness, calendars, outages and committed work constrain replanning. Complete meals come first, then waste, batches and changes.
 
 ## 0:26–0:50 · Two orders sharing a side batch
 
@@ -41,9 +41,9 @@ reported campaign medians from checked exported schedules.
 
 > VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.
 
-## 3:28–3:56 · VeloxQ: remove idle bits
+## 3:28–3:56 · VeloxQ: representation and a hybrid step
 
-> VeloxQ searches larger QUBOs of the same production model. Removing redundant idle bits preserves feasible schedules and their objective. At equal twenty-thousand-step budgets, the best checked plan serves fifty meals instead of ten, out of one hundred forty. Waste rises from thirty to sixty portions: complete service has priority. Valid returns rise from seventeen to all five hundred twelve. This is one exploratory job per representation; classical controls still find better plans.
+> VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals at equal step budgets, with more waste. We also tested a hybrid step: fix most of a classical plan and let VeloxQ change two blocks. A 162-bit subproblem improves U from eight to seven. The neighborhood was selected offline by exact enumeration; this is exploratory, and longer CP still does better.
 
 ## 3:56–4:08 · What makes the choices difficult?
 

@@ -5,13 +5,14 @@
     "kicker": "THE CATERING PROBLEM",
     "duration": 26,
     "live_duration": 20,
-    "narration": "Axion Kitchen: quantum optimization for catering production. This is batch-production scheduling: cookers are machines, cleaning is setup work, and departures are due dates. We choose quantities, shared allocations, resources and phase times under freshness limits, qualified workers and calendars. Urgent orders and outages trigger replanning while started work stays fixed. Complete meals come first, then waste, batches and changes.",
-    "live_action": "Start R. Hold the opening for four seconds, then map machines, setups and due dates to the kitchen before naming the extension.",
-    "live_narration": "Axion Kitchen: quantum optimization for catering production. Cookers are machines, cleaning is setup work, and departures are due dates. We choose shared batches, qualified workers and phase times under freshness and calendar constraints. Urgent orders and outages trigger replanning. We prioritize complete meals, waste, batches and changes.",
-    "shot": "Four-second title, then production-scheduling inputs and factory-to-kitchen mapping.",
-    "editor_cue": "Opening is 0:00–0:04. Reveal the manufacturing mapping and constraints at 0:04. Shared batches and paired fulfillment are the extension.",
+    "narration": "Axion Kitchen: quantum optimization for catering production. We completed the factory baselines in four and eight hours, both checked optimal. Our extension chooses shared batch yields, allocations, equipment, qualified workers and phase times. Cookers are machines, cleaning is setup, and departures are due dates. Freshness, calendars, outages and committed work constrain replanning. Complete meals come first, then waste, batches and changes.",
+    "live_action": "Start R. Play the four-second opening, show both Stage 1 schedules for five seconds, then explain the factory-to-kitchen mapping.",
+    "live_narration": "Axion Kitchen. Factory baselines: four and eight hours, both checked optimal. Our extension chooses shared batches, workers and phase times under freshness, calendar and outage constraints. Cookers are machines, cleaning is setup, and departures are due dates. Complete meals come first, then waste, batches and changes.",
+    "shot": "Four-second title, five-second Stage 1 schedule frame, then production-scheduling inputs and factory-to-kitchen mapping.",
+    "editor_cue": "Opening 0:00–0:04; actual Stage 1 A/B Gantts 0:04–0:09; extension inputs and mapping from 0:09. Selected compact baselines use classically tabulated permutation costs.",
     "still_progress": 0.45,
-    "opening_duration": 4
+    "opening_duration": 4,
+    "baseline_duration": 5
   },
   {
     "id": "service",
@@ -118,15 +119,15 @@
   },
   {
     "id": "velox",
-    "title": "VeloxQ: remove idle bits",
-    "kicker": "SAME FEASIBLE PLANS · SAME OBJECTIVE",
+    "title": "VeloxQ: representation and a hybrid step",
+    "kicker": "SAME KITCHEN MODEL · LARGER QUBOS",
     "duration": 28,
     "live_duration": 19,
-    "narration": "VeloxQ searches larger QUBOs of the same production model. Removing redundant idle bits preserves feasible schedules and their objective. At equal twenty-thousand-step budgets, the best checked plan serves fifty meals instead of ten, out of one hundred forty. Waste rises from thirty to sixty portions: complete service has priority. Valid returns rise from seventeen to all five hundred twelve. This is one exploratory job per representation; classical controls still find better plans.",
-    "live_action": "Show the equal-budget 17 → 512 comparison and all three actual widths.",
-    "live_narration": "For VeloxQ, proved idle elimination improves the best plan from ten to fifty meals served at the same step budget. Waste increases; our objective prioritizes service. Valid returns rise from seventeen to five hundred twelve. Classical controls still find better plans.",
-    "shot": "Idle elimination: best plan serves 10→50 of 140 meals; validity 17→512/512 at equal steps.",
-    "editor_cue": "Keep 20,000 steps and single-job scope visible. Waste rises 30→60 portions because service has priority. Same source programs/objective, different sampling matrices; CP/SA still better.",
+    "narration": "VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals at equal step budgets, with more waste. We also tested a hybrid step: fix most of a classical plan and let VeloxQ change two blocks. A 162-bit subproblem improves U from eight to seven. The neighborhood was selected offline by exact enumeration; this is exploratory, and longer CP still does better.",
+    "live_action": "Show cold-start service change, then the separately labeled hybrid tuple improvement and its neighborhood-selection caveat.",
+    "live_narration": "Service rises from ten to fifty meals, with more waste. A separate 162-bit hybrid step improves a classical plan from U eight to seven. We chose that neighborhood offline using exact enumeration; longer classical runs still do better.",
+    "shot": "Cold-start representation improvement, plus a separately labeled checked 162-bit hybrid improvement of the larger full plan.",
+    "editor_cue": "Keep cold-start and hybrid evidence separate. Cold: 10→50 of 140 meals, waste30→60, equal20k steps. Hybrid: (8,3,8,8)→(7,4,9,9); offline exact enumeration selected the neighborhood, and longer CP remains better.",
     "still_progress": 0.45
   },
   {

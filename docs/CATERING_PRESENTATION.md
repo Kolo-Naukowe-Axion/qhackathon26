@@ -17,6 +17,11 @@ Edit that source and run `npm run docs:write`; `npm run docs:check` catches drif
 The studio uses the short `live_narration` in live mode, not the video paragraph.
 Earlier competing timings and scripts are [archived](archive/2026-10-17/CATERING_PRESENTATION_PREVIOUS.md).
 
+The opening chapter now includes the actual Stage 1 A/B schedules from 0:04
+to 0:09 in both routes. Their makespans (4 h / 8 h) are independently checked
+against the official instances and exact reference; the compact-QAOA classical
+cost-tabulation scope remains visible. Timed routes remain 4:20 / 2:45.
+
 ## What the jury should understand
 
 1. **Problem first:** orders, recipes/yields, calendars, qualified workers and
@@ -69,6 +74,13 @@ computational scope without presenting size as measured hardness.
 [Quality audit](CATERING_QUALITY.md) contains the full comparisons. Compare
 energies only on identical bundles; use checked tuples across scalarizations.
 R=B in the current fixtures. Do not claim monetary optimization or unsupported capacities.
+
+The VeloxQ frame additionally labels the pulled hybrid follow-up separately:
+a 162-bit exact sub-QUBO improves a classical incumbent from (8,3,8,8) to
+(7,4,9,9). Offline exact enumeration selected the neighborhood; the returned
+plan does not attain its exact sub-optimum, and longer CP still does better.
+See the [formal problem explanation](CATERING_PROBLEM.md) for the sub-QUBO
+identity and the full-versus-restricted domain distinction.
 
 ## Benchmark browser and scale
 

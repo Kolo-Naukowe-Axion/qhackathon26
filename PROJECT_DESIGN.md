@@ -3,6 +3,8 @@
 Active implementation: `paired-course-contiguous.v3`, encoding
 `paired-course-anchor-onehot.v1`. Updated 17 October 2026. Synthetic inputs.
 This document specifies the implemented problem and its correctness argument.
+A [self-contained mathematical walkthrough](docs/CATERING_PROBLEM.md) explains
+the final model and the later hybrid VeloxQ neighborhood study.
 The [ambitious specification](docs/archive/planning/CATERING_AMBITIOUS_SPEC.md) is a separate
 backlog. Historical factory design is folded at the end.
 

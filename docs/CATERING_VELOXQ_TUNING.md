@@ -266,7 +266,7 @@ enumeration of none-or-one program per freed block certifies the sub-optimum.
 
 Step 1 serves one more meal lot than the CP plan it started from; the full
 2,048-source plan is independently valid. It is not the exact sub-optimum
-(one more discarded portion). Step 2 needs a coordinated three-bit change, as
+(one more discarded component lot, or ten portions). Step 2 needs a coordinated three-bit change, as
 step 1 did, but VeloxQ returns the unchanged plan even with five times more
 steps. Both moves have no improving single flip.
 

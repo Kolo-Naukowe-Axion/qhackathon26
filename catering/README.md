@@ -6,6 +6,7 @@ an order's departure to count as a complete meal. Freshness, cleaning, committed
 work and resource calendars constrain the plan.
 
 The implemented profile is `paired-course-contiguous.v3`. Start with
+[the formal problem statement](../docs/CATERING_PROBLEM.md),
 [the design and proofs](../PROJECT_DESIGN.md), [measured quality](../docs/CATERING_QUALITY.md)
 and [the presentation plan](../docs/CATERING_PRESENTATION.md).
 

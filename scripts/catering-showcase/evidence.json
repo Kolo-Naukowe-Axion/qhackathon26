@@ -477,6 +477,22 @@
     "scale_domain": {
       "path": "output/catering-velox-scale-v3/report.json",
       "sha256": "ddeaeed26e7a6c8f76af4a6402d08a2c25cd881929f6cef8371fd7e9bb31a2ac"
+    },
+    "stage1_A": {
+      "path": "schedule_2x2.json",
+      "sha256": "f7b8c396b62107d9a3aa0810ddaf9c80e9bc1edd9e1e328fc7b29396e770644f"
+    },
+    "stage1_B": {
+      "path": "schedule_3x3.json",
+      "sha256": "df58c3cd9f5b291778afc9282ea0d8601fef28b778a4ec90280a8658255120a4"
+    },
+    "velox_hybrid": {
+      "path": "output/catering-velox-warmstart-v1/report.json",
+      "sha256": "d9dc0ed5ee11f706110fe103573ae3ae71469e3d8f324e98ad8efba2353a63e5"
+    },
+    "velox_hybrid_check": {
+      "path": "output/catering-velox-warmstart-v1/lns-2048-step1/evaluation.json",
+      "sha256": "bcf521befc7691f0463c6df175bcf42f6a075543011cda76d2808a2d41ab7871"
     }
   },
   "velox": {
@@ -544,11 +560,130 @@
         "U": 9,
         "W": 6
       }
+    },
+    "hybrid": {
+      "variables": 162,
+      "freed_blocks": [
+        15,
+        16
+      ],
+      "start": {
+        "B": 8,
+        "R": 8,
+        "U": 8,
+        "W": 3
+      },
+      "best": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "exact_sub_optimum": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 3
+      },
+      "best_shots": 25,
+      "valid_shots": 512,
+      "backend_running_s": 1.999,
+      "total_s": 9.357931188991643
     }
   },
   "stage1": {
-    "A": 4,
-    "B": 8
+    "A": {
+      "instance": "instance_2x2",
+      "method": "QAOA p=1, x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+      "makespan": 4,
+      "schedule": [
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 0,
+          "end": 1
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 1,
+          "end": 3
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 3,
+          "end": 4
+        }
+      ]
+    },
+    "B": {
+      "instance": "instance_3x3",
+      "method": "QAOA p=2, local-x mixer, pairwise-order QUBO (Qiskit Aer statevector simulator)",
+      "makespan": 8,
+      "schedule": [
+        {
+          "job": "Z3",
+          "machine": "T",
+          "start": 0,
+          "end": 2
+        },
+        {
+          "job": "Z3",
+          "machine": "F",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z3",
+          "machine": "S",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "T",
+          "start": 2,
+          "end": 4
+        },
+        {
+          "job": "Z1",
+          "machine": "F",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z1",
+          "machine": "S",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "T",
+          "start": 4,
+          "end": 5
+        },
+        {
+          "job": "Z2",
+          "machine": "F",
+          "start": 5,
+          "end": 7
+        },
+        {
+          "job": "Z2",
+          "machine": "S",
+          "start": 7,
+          "end": 8
+        }
+      ]
+    }
   },
   "code_excerpt": "119      for meal in meals:\n120          a,b=meal[\"main\"],meal[\"side\"]\n121          constant+=weights[\"W\"]*(fixed_coverage[a]+fixed_coverage[b])\n122          for i in cover[a]+cover[b]:linear[i]+=weights[\"W\"]\n123          product(a,b,-weights[\"U\"]*meal[\"priority\"]-2*weights[\"W\"])\n124      objective_pairs={key:value for key,value in pairs.items() if value}\n125      objective_linear=linear.copy();objective_constant=constant\n126      span=sum(abs(c) for c in linear)+sum(abs(c) for c in objective_pairs.values())\n127      penalty=span+1\n128      membership={i:j for j,g in enumerate(groups) for i in g[\"program_indices\"]}",
   "code_source_sha256": "c9f652395dfe2ec672ab9733825cff12aa3fae96fb0827b7b5526d0293750d25",

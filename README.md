@@ -46,6 +46,7 @@ verification command, see [Run & reproduce](catering/README.md).
 
 | Start here | What it contains |
 |---|---|
+| [Formal problem statement](docs/CATERING_PROBLEM.md) | Inputs, constraints, objective, QUBO and equivalent formulations |
 | [Project design](PROJECT_DESIGN.md) | Problem, QUBO derivation, proofs and variable costs |
 | [Stage 1: run & verify](docs/STAGE1_COMPACT.md) · [A](schedule_2x2.json) · [B](schedule_3x3.json) | Required baseline schedules: **4 h / 8 h** |
 | [Development log](DEVELOPMENT_LOG.md) | Decisions, experiments and corrections |

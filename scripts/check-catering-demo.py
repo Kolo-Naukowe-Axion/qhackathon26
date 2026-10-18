@@ -3,9 +3,11 @@ import argparse
 import hashlib
 import importlib.util
 import json
+import sys
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
+sys.path.insert(0,str(ROOT))
 
 def preflight():
     checks=[]
@@ -28,6 +30,11 @@ def preflight():
         for name,item in evidence['source_files'].items():
             digest=hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()
             check('Displayed evidence: '+name,digest==item['sha256'],item['path'])
+        from solver.stage1 import validate,exact_reference
+        for label,plan in evidence['stage1'].items():
+            original=json.loads((ROOT/evidence['source_files']['stage1_'+label]['path']).read_text())
+            instance=json.loads((ROOT/'instances'/f"{plan['instance']}.json").read_text())
+            check('Displayed Stage 1 '+label,plan==original and not validate(instance,plan['schedule'],plan['makespan']) and exact_reference(instance)['makespan']==plan['makespan'])
         compiler=(ROOT/'catering/meal_blocks.py').read_text().splitlines()
         excerpt='\n'.join(f'{i+1:3}  {compiler[i]}' for i in range(118,128))
         check('Displayed compiler excerpt',evidence['code_excerpt']==excerpt)
@@ -56,6 +63,14 @@ def preflight():
         check('Displayed penalty proof constants',argument['objective_span']==span and argument['penalty']==int(bundle['penalty'])==span+1)
         expected_rows=[dict(source_bits=r['size']['binary_variables'],program_bits=r['size']['option_bits'],qubo_pairs=r['size']['couplers']) for r in scale['rows']]
         check('Displayed scale-domain counts',argument['full_local_program_count']==scale['full_local_program_count'] and argument['scale_rows']==expected_rows)
+        hybrid=json.loads((ROOT/evidence['source_files']['velox_hybrid']['path']).read_text())
+        hybrid_check=json.loads((ROOT/evidence['source_files']['velox_hybrid_check']['path']).read_text())
+        hybrid_row=next(r for r in hybrid['rows'] if r['name']=='lns-2048-step1')
+        shown=evidence['velox']['hybrid']
+        check('Displayed hybrid VeloxQ step',all(shown[k]==hybrid_row[k] for k in shown)
+              and shown['start']==hybrid_check['incumbent_metrics']
+              and shown['best']==hybrid_check['best']['metrics']
+              and hybrid_check['best']['valid'] and shown['valid_shots']==hybrid_check['valid_shots'])
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')

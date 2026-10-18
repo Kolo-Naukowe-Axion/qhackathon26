@@ -249,3 +249,25 @@ pass (154 site tests, 43 core checks, three adversarial baseline checks, the
 returning 20 meals and zero waste). The
 [review receipt](output/catering-submission-review-v1/verification.json) now
 records that commit; the check made no service call.
+
+
+## 18 October — remote hybrid review, Stage 1 frame and formal explanation
+
+Pulled main through c1787393 and reviewed the new five-job VeloxQ hybrid study.
+Fresh offline decoding of each reported best source-plan witness agrees with
+its recorded metrics; 51 conditioning/LNS tests pass. No service call or training
+was started for this review. Corrected one documentation unit: the step-1 gap
+to its exact neighborhood optimum is one component lot, or ten portions.
+
+Both presentation routes now show the actual Stage 1 A/B Gantts from 0:04 to
+0:09, between the title and extension problem frame. The preflight validates
+the displayed schedules against official instances and an exact classical
+reference. The compact-order classical tabulation scope remains explicit.
+The VeloxQ frame also shows the separately labeled 162-bit hybrid improvement,
+including the offline neighborhood-selection caveat. Routes remain 4:20/2:45.
+
+Added docs/CATERING_PROBLEM.md as a self-contained explanation of final physical
+semantics, lexicographic loss, anchor encoding, penalty proofs, no-idle equivalence,
+Ising conversion, hybrid restriction and experiment domains. It is linked from
+the README, documentation index and design. It changes no shared problem input,
+solver formulation or frozen method campaign.
