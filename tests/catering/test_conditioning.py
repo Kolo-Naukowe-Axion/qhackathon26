@@ -156,3 +156,17 @@ def test_incumbent_start_is_checked_and_maps_back_exactly(tmp_path):
     other.write_text(reference.read_text().replace(source['bundle_sha256'], '0'*64))
     with pytest.raises(ValueError, match='different bundle'):
         incumbent_start(source, variant, other)
+
+
+@pytest.mark.parametrize('seed', range(3))
+def test_lns_subqubo_energy_equals_full_energy(seed):
+    from catering.conditioning import eliminate_idle
+    from catering.velox_lns import subproblem, sub_energy, merge
+    b = toy(seed)
+    variant = eliminate_idle(b)
+    rng = random.Random(seed)
+    fixed = [rng.randint(0, 1) for _ in variant['linear']]
+    free = rng.sample(range(len(fixed)), 2)
+    sub = subproblem(variant, fixed, free)
+    for y in itertools.product((0, 1), repeat=len(free)):
+        assert sub_energy(sub, list(y)) == energy(variant, merge(fixed, sub, list(y)))
