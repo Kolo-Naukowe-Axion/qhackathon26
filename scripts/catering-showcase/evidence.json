@@ -493,6 +493,10 @@
     "velox_hybrid_check": {
       "path": "output/catering-velox-warmstart-v1/lns-2048-step1/evaluation.json",
       "sha256": "bcf521befc7691f0463c6df175bcf42f6a075543011cda76d2808a2d41ab7871"
+    },
+    "velox_loop": {
+      "path": "output/catering-velox-lns-loop-v1/report.json",
+      "sha256": "dee9909e56bbeef541768ae6db84af4a3989c55c54bc0faa5f72ab52c83d070b"
     }
   },
   "velox": {
@@ -589,6 +593,114 @@
       "valid_shots": 512,
       "backend_running_s": 1.999,
       "total_s": 9.357931188991643
+    },
+    "loop": {
+      "rows": [
+        {
+          "solver_width": 486,
+          "start": {
+            "B": 9,
+            "R": 9,
+            "U": 9,
+            "W": 6
+          },
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 6
+          },
+          "service_jobs": 6,
+          "exact_control": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 6
+          },
+          "cp_30s": {
+            "B": 10,
+            "R": 10,
+            "U": 6,
+            "W": 1
+          },
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 5,
+            "W": 3
+          }
+        },
+        {
+          "solver_width": 998,
+          "start": {
+            "B": 10,
+            "R": 10,
+            "U": 11,
+            "W": 6
+          },
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 6,
+            "W": 1
+          },
+          "service_jobs": 40,
+          "exact_control": {
+            "B": 10,
+            "R": 10,
+            "U": 6,
+            "W": 1
+          },
+          "cp_30s": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 2
+          },
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 5,
+            "W": 1
+          }
+        },
+        {
+          "solver_width": 2022,
+          "start": {
+            "B": 2,
+            "R": 2,
+            "U": 13,
+            "W": 3
+          },
+          "final": {
+            "B": 11,
+            "R": 11,
+            "U": 7,
+            "W": 3
+          },
+          "service_jobs": 25,
+          "exact_control": {
+            "B": 10,
+            "R": 10,
+            "U": 7,
+            "W": 2
+          },
+          "cp_30s": {
+            "B": 8,
+            "R": 8,
+            "U": 8,
+            "W": 3
+          },
+          "cp_240s_4_workers": {
+            "B": 11,
+            "R": 11,
+            "U": 6,
+            "W": 1
+          }
+        }
+      ],
+      "cap": 40,
+      "pairs_per_sweep": 325
     }
   },
   "stage1": {

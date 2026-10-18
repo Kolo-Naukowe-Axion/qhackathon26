@@ -71,6 +71,10 @@ def preflight():
               and shown['start']==hybrid_check['incumbent_metrics']
               and shown['best']==hybrid_check['best']['metrics']
               and hybrid_check['best']['valid'] and shown['valid_shots']==hybrid_check['valid_shots'])
+        loop=json.loads((ROOT/evidence['source_files']['velox_loop']['path']).read_text())
+        check('Displayed VeloxQ loop',[dict(solver_width=r['solver_width'],start=r['start'],final=r['final'],service_jobs=r['service_jobs'],
+              exact_control=r['exact_control']['final'],cp_30s=r['cp_30s'],cp_240s_4_workers=r['cp_240s_4_workers']) for r in loop['rows']]
+              ==evidence['velox']['loop']['rows'])
         benchmarks=json.loads((ROOT/'presentation/catering/benchmarks/data.json').read_text())
         stale=[item['path'] for item in benchmarks['source_files'] if hashlib.sha256((ROOT/item['path']).read_bytes()).hexdigest()!=item['sha256']]
         check('Benchmark source hashes',not stale,', '.join(stale) if stale else str(len(benchmarks['source_files']))+' retained sources')

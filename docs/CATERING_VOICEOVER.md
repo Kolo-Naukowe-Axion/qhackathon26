@@ -41,9 +41,9 @@ reported campaign medians from checked exported schedules.
 
 > VQE uses one-hot Givens gates and controlled rotations between coupled blocks. With exact CVaR and adjoint gradients, median optimum probability is about twelve percent on both held-out cases. That exceeds our QAOA probability, but parameter counts, training budgets and final shots differ. The primary VQE setup hits ten of ten and nine of ten seeds.
 
-## 3:28–3:56 · VeloxQ: representation and a hybrid step
+## 3:28–3:56 · VeloxQ: representation and a VeloxQ-driven loop
 
-> VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals at equal step budgets, with more waste. We also tested a hybrid step: fix most of a classical plan and let VeloxQ change two blocks. A 162-bit subproblem improves U from eight to seven. The neighborhood was selected offline by exact enumeration; this is exploratory, and longer CP still does better.
+> VeloxQ uses the same larger kitchen model. Proved idle elimination raises best cold-start service from ten to fifty meals. Alone, VeloxQ still returns mostly empty plans. So we made it the engine of a checked neighbourhood loop: forty-bit block-pair subproblems, every move rechecked. From its own plans it reaches six and seven missed lots at 998 and 2,022 bits, one lot better than thirty-second CP. Exact enumeration matches it; longer CP still wins.
 
 ## 3:56–4:08 · What makes the choices difficult?
 
@@ -51,11 +51,11 @@ reported campaign medians from checked exported schedules.
 
 ## 4:08–4:20 · Checked results and benchmarks
 
-> Our log records three decisions: correct repair cleaning, optimize complete-meal service, and prove idle elimination. The checked cell serves twenty meals without waste. Benchmarks and code are linked.
+> Our log records three decisions: correct repair cleaning, complete-meal service, proved idle elimination. A what-if adds one more: a packing helper serves twenty more meals; a third cooker, none. Code linked.
 
 ## Recording notes
 
-617 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
+623 spoken words; the fastest chapter is 165 words/minute. Leave pauses for the code, equation and actual launch.
 The earlier local MP4 is silent and has obsolete result screens. Record the
 current route and narration for this result set.
 
