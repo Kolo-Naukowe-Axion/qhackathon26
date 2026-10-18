@@ -10,6 +10,7 @@ The active Stage 2 entry is **Axion Kitchen**. Start with the root
 | [CATERING_PROBLEM.md](CATERING_PROBLEM.md) | Self-contained formal problem statement, objective, QUBO and method scopes |
 | [PROJECT_DESIGN.md](../PROJECT_DESIGN.md) | Implemented problem, encoding, objective and proofs |
 | [CATERING_QUALITY.md](CATERING_QUALITY.md) | Exact references, sampled quality and limitations |
+| [CATERING_INVESTMENT.md](CATERING_INVESTMENT.md) | What-if: which resource serves more meals (classical CP) |
 | [catering/README.md](../catering/README.md) | Installation, reproduction and frozen inputs |
 | [CATERING_SOLVER_CONTRACT.md](CATERING_SOLVER_CONTRACT.md) | Shared input/output conventions |
 | [catering-methods/](catering-methods) | Classical, QAOA, VQE and VeloxQ implementation details |

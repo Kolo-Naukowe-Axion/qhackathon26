@@ -26,6 +26,9 @@ Main and side coverage interact quadratically, without extra product qubits.
   than 30-second CP (longer CP is still better). [Inspect the VeloxQ study](docs/CATERING_VELOXQ_TUNING.md).
 - **Validation:** independent physical checks, exact small references and CP/SA
   controls. The complete cell serves 20 meals with zero waste; controls also match it.
+- **Decision support:** a what-if on the 12-customer lunch shows a third cooker
+  serves no extra meals, while one flexible worker serves 20 more.
+  [Investment study](docs/CATERING_INVESTMENT.md).
 
 The animated dynamic-portfolio pilot and the fixed-pool campaign are labeled
 separately. Budgets and limitations are in the [quality report](docs/CATERING_QUALITY.md);

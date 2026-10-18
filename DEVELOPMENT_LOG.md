@@ -289,3 +289,17 @@ added a pause between submissions. Ledger 66→137.
 After the loop, the release check passed all 13 stages again on a fresh clone
 of `aa658aad`; the [review receipt](output/catering-submission-review-v1/verification.json)
 now records that commit. The check made no service call.
+
+
+## 18 October — Investment what-if
+
+To use the model as a decision tool, we changed one resource at a time in the
+12-customer S3 lunch and reran the raw-input CP reference (240 s, two seeds,
+identical results). Repairing C2 or adding a third cooker only removes one
+discarded portion (U stays 5); a second prep station or a cook-only worker
+changes nothing; one flexible worker for prepare, cook and pack cuts missed
+lots 5→3, i.e. 20 more meals. A second packing line is outside the core
+profile and is reported as unsupported. We deliberately did not retrain QAOA
+or VQE for these variants: the flexible worker grows the program register
+8.3× (18,182→150,080), so the answer comes from the classical reference.
+[Study](docs/CATERING_INVESTMENT.md).

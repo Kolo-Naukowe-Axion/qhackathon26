@@ -1,0 +1,121 @@
+{
+  "note": "U = missed complete meal lots (10 meals each); lower is better. FEASIBLE means the time limit ended before optimality was proven.",
+  "rows": [
+    {
+      "bound": 88156.0,
+      "description": "Current kitchen: C2 outage plus urgent order (S3)",
+      "enumerate_s": 6.9,
+      "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+      "metrics": {
+        "B": 10,
+        "R": 10,
+        "U": 5,
+        "W": 1
+      },
+      "objective": "220594",
+      "programs": 18182,
+      "scenario": "S3",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "baseline"
+    },
+    {
+      "bound": 392.0,
+      "description": "C2 repaired, no outage (S1)",
+      "enumerate_s": 4.98,
+      "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+      "metrics": {
+        "B": 10,
+        "R": 10,
+        "U": 5,
+        "W": 0
+      },
+      "objective": "219810",
+      "programs": 18416,
+      "scenario": "S1",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "repair-c2"
+    },
+    {
+      "bound": 392.0,
+      "description": "Add cooker C3",
+      "enumerate_s": 5.62,
+      "instance_sha256": "8468b32f15488fd577dd4c8dc206c7fd549e4caaaab3ff79d1556d03b4528a5e",
+      "metrics": {
+        "B": 10,
+        "R": 10,
+        "U": 5,
+        "W": 0
+      },
+      "objective": "219810",
+      "programs": 27418,
+      "scenario": "S3",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "third-cooker"
+    },
+    {
+      "bound": 88156.0,
+      "description": "Add prep station P2",
+      "enumerate_s": 15.76,
+      "instance_sha256": "bce0926a8bce24755a6c2e118de5828f89dc4d7567a791d7372897b9518527d8",
+      "metrics": {
+        "B": 10,
+        "R": 10,
+        "U": 5,
+        "W": 1
+      },
+      "objective": "220594",
+      "programs": 36364,
+      "scenario": "S3",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "second-prep"
+    },
+    {
+      "description": "Add packing station K2",
+      "metrics": null,
+      "reason": "This core profile requires exactly one packing line",
+      "scenario": "S3",
+      "status": "unsupported by profile",
+      "variant": "second-pack"
+    },
+    {
+      "bound": 88156.0,
+      "description": "Hire worker W4 who can cook",
+      "enumerate_s": 11.67,
+      "instance_sha256": "743b1d326e0309a9291ddc179a7ab4215e53c501c15ff438b46edab2c7a5f01a",
+      "metrics": {
+        "B": 10,
+        "R": 10,
+        "U": 5,
+        "W": 1
+      },
+      "objective": "220594",
+      "programs": 36364,
+      "scenario": "S3",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "second-cook-worker"
+    },
+    {
+      "bound": 88156.0,
+      "description": "Hire worker W4 for prepare, cook and pack",
+      "enumerate_s": 70.9,
+      "instance_sha256": "85c14ccfe6b584ccc352ca8e157152b25274c4f644a5d36abea7eae8735aab3d",
+      "metrics": {
+        "B": 12,
+        "R": 12,
+        "U": 3,
+        "W": 1
+      },
+      "objective": "132844",
+      "programs": 150080,
+      "scenario": "S3",
+      "status": "FEASIBLE",
+      "valid": true,
+      "variant": "flexible-worker"
+    }
+  ]
+}
