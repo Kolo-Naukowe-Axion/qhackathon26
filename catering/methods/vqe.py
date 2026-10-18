@@ -27,7 +27,6 @@ from dataclasses import dataclass, field, asdict
 from pathlib import Path
 
 import numpy as np
-from scipy.optimize import minimize
 
 # Capture at import, so edits on disk during optimization cannot relabel a run.
 SOURCE_SHA256 = hashlib.sha256(Path(__file__).read_bytes()).hexdigest()
@@ -574,6 +573,7 @@ def replay_parameters(bundle, spec, seed, parameters):
 
 
 def run(prob: Problem, spec: Spec, seed: int, shots: int = 1024):
+    from scipy.optimize import minimize
     validate_spec(spec, shots)
     rng = np.random.default_rng(seed)
     t0 = time.perf_counter()
@@ -747,14 +747,14 @@ def solve_qubo(bundle, budget=None, method_config=None, output_dir=None):
     budget: dict with optional 'shots' (final samples, default 1024) and
     'max_objective_evaluations' (overrides Spec.budget).
     output_dir: fresh directory for result.json and its external hash manifest.
-    Missing method_config selects RECOMMENDED; supplied configurations are explicit.
+    Missing method_config selects RECOMMENDED_CONCENTRATED (E6); supplied configurations are explicit.
     """
     import platform
     from collections import Counter
     from pathlib import Path
     from catering.contracts import method_result, save_json
     budget = dict(budget or {})
-    cfg = dict(RECOMMENDED if method_config is None else method_config)
+    cfg = dict(RECOMMENDED_CONCENTRATED if method_config is None else method_config)
     seed = int(cfg.pop("seed", 0))
     if budget.get("max_objective_evaluations"):
         cfg["budget"] = int(budget["max_objective_evaluations"])

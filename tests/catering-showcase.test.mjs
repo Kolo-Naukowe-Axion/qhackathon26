@@ -66,6 +66,19 @@ test('quantum comparison separates held-out medians and unequal final shots',()=
 
 
 import {captureOptions,chapterShots} from '../scripts/catering-showcase/capture-plan.mjs';
+test('E6 follow-up preserves E5 and labels exact-simulator concentration evidence',()=>{
+ assert.ok(bench.vqe.primary_heldout.every(r=>r.probability>0.12&&r.probability<0.13));
+ const e6=bench.vqe.followup;
+ assert.equal(e6.budget_cap,300);assert.equal(e6.previously_examined_cases,true);
+ assert.equal(e6.verification.all_hashes_match,true);assert.ok(e6.verification.checked_files>20);
+ assert.deepEqual(e6.rows.map(r=>[r.case,r.seeds,r.mode_hits,r.hits,r.shots]),
+  [['S2',10,10,10,[1024]],['S3',10,10,10,[1024]]]);
+ assert.ok(Math.abs(e6.rows[0].probability-0.995396)<0.000001);
+ assert.ok(Math.abs(e6.rows[1].probability-0.9955196)<0.000001);
+ assert.deepEqual(e6.rows.map(r=>r.median_evaluations),[44.5,39.5]);
+ assert.ok(bench.source_files.some(r=>r.path.endsWith('E6-concentration/heldout_predeclaration.json')));
+ assert.ok(bench.source_files.some(r=>r.path.endsWith('E6-concentration/manifest.json')));
+});
 test('capture defaults to no video and no sampler; explicit dry run cannot execute either',()=>{
  assert.deepEqual(captureOptions([]),{record:false,sample:false,dryRun:true});
  assert.deepEqual(captureOptions(['--dry-run']),{record:false,sample:false,dryRun:true});

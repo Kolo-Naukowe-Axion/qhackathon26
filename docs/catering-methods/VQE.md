@@ -5,18 +5,18 @@ runner `scripts/run-catering-vqe.py`, evidence `output/catering-methods/vqe/`.
 Execution kind: `quantum_simulation`, exact ideal expectations, local CPU only.
 No IBM, VeloxQ, network service or credit was used.
 
-## Recommended configuration
+## Latest exact-simulation configuration (E6)
 
 | Choice | Selected | Why (evidence below) |
 |---|---|---|
 | Entanglement | one-hot-preserving Givens chains inside every anchor block + **controlled Givens on block pairs that share a QUBO coupling**, L = 2 | beats block-only, random pairs and all pairs under CVaR |
 | Gates | real two-choice Givens rotations, controlled Givens across blocks | XY / extra Z phases did not improve these experiments; ZZ phases were slower |
-| Loss | **exact CVaR, alpha = 0.1** (alpha = 0.05 equally good) | mean energy is trapped on 4 of 5 cases |
-| Optimiser | L-BFGS-B with adjoint gradients | 9-77 evaluations; gradient-free shot methods weaker |
+| Loss | **exact CVaR α=0.1, then Gibbs η=100** | first locate good states, then concentrate probability; E5 CVaR remains the baseline |
+| Optimiser | L-BFGS-B with adjoint gradients | 300-evaluation cap; exported seed-0 runs use 22–96 evaluations |
 | Start | equal mix of every block's choices (W state), 0.2 rad noise | random angles fail on the cell (2/10) |
 
 Every sample of a one-hot-preserving ansatz satisfies the one-hot constraint by construction;
-cross-block physical conflicts are still only penalised, so valid-sample rates are 31-60 %.
+cross-block physical conflicts are still penalised. E6 exported valid-sample rates are 99.3–99.8%; the E5 CVaR baseline had 31–60%.
 The state lives only on the one-hot sector (1,045 to 279,936 amplitudes), which is exact
 for these gates (`test_sector_engine_equals_dense_qubit_circuit`).
 
@@ -28,7 +28,7 @@ New option `RECOMMENDED_CONCENTRATED` (`loss="cvar_gibbs"`): the same circuit, C
 150 loss evaluations, then the Gibbs loss -log sum p(x) exp(-100 E(x)/w_U) for the rest of a
 300-evaluation budget. The existing `RECOMMENDED` is unchanged.
 
-| Runs where the optimum is the most likely plan (P > 0.5) | dev (cell, S0, S1) | held-out (S2, S3) | median P(optimum) |
+| Runs where the optimum is the most likely plan (P > 0.5) | dev (cell, S0, S1) | confirmation (S2, S3) | median P(optimum) |
 |---|---|---|---|
 | `RECOMMENDED` (CVaR 0.1) | 0/30 | 0/20 | 0.12-0.18 |
 | `RECOMMENDED_CONCENTRATED` (CVaR 0.1 -> Gibbs 100) | 30/30 | 20/20 | 0.995 |
@@ -38,7 +38,33 @@ and valid-sample rates rise from 0.31-0.60 to 0.993-0.998. Limits: exact-simulat
 With emulated 1,024-shot parameter-shift gradients, the CVaR stage under Adam loses the optimum
 (S0 2/5). Plain Gibbs eta=30 then does best (S0 8/10), at roughly 9e8 shots per run.
 
-## Held-out confirmation (predeclared in `E5-predeclaration.json` before running S2/S3)
+### Independent E6 integration verification
+
+[Verification receipt](../../output/catering-methods/vqe/E6-integration/verification.json)
+checks every archived manifest hash and all five input identities against main.
+All five exported seed-0 parameter vectors reproduce their recorded optimum and
+physical-validity probabilities within 1e-10; every retained sample passes literal
+energy checking and is decoded independently. No training or new sampling is needed:
+
+```sh
+python scripts/verify-vqe-concentration.py --output /tmp/NEW-VQE-E6-VERIFICATION.json
+```
+
+| Case | E6 median P(offered-pool optimum) | E5-style CVaR median in the same E6 grid | E6 sampled optimum hits | Median E6 / baseline evaluations |
+|---|---:|---:|---:|---:|
+| S2 | 99.5396% | 12.3713% | 10/10 | 44.5 / 26 |
+| S3 | 99.5520% | 12.7899% | 10/10 | 39.5 / 18 |
+
+These ten-seed aggregates are recomputed from the archived CSV; only the five
+exported seed-0 state vectors are independently replayed. S2/S3 were already used
+in E5. E6 declares selection on cell/S0/S1 before its S2/S3 confirmation, but these
+are not wholly unseen cases or an externally timestamped preregistration.
+Training stops when any plan exceeds probability 0.995; the observed ~99.5% is
+partly set by that threshold. Other concentrating losses also solve these two
+confirmation cases. The comparison does not establish a matched-budget QAOA win,
+hardware readiness, or a full-kitchen optimum.
+
+## Historical E5 held-out confirmation (predeclared before its S2/S3 evaluation)
 
 Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:
 
@@ -50,11 +76,12 @@ Seeds (of 10) whose 1,024 final samples contain the valid sector optimum:
 | block-only, CVaR 0.1 | 9/10 | 6/10 |
 | coupled pairs, L=2, mean energy | 0/10 | 0/10 |
 
-## Contract results (primary configuration, seed 0, `method-results/`)
+## Historical E5 contract results (CVaR baseline, seed 0)
 
-The current five-case release uses `<case>/result.json`, `evaluation.json` and
+The retained E5 five-case release uses `<case>/result.json`, `evaluation.json` and
 `artifacts.json`. `solve_qubo(load_bundle(path), {"shots": 1024}, None, fresh_dir)`
-selects the recommended configuration and writes a new result directory.
+still selects the CVaR baseline and writes a new result directory. Pass
+`RECOMMENDED_CONCENTRATED` explicitly for E6; the adapter now selects this configuration when `method_config` is omitted. The old `RECOMMENDED` constant remains available for baseline reproduction.
 
 | Case | Qubits | Valid-sample rate | Best valid (U,W,B,R) | Sector reference | Evaluations | Legacy 2P+1 estimate* |
 |---|---:|---:|---|---|---:|---:|
@@ -93,8 +120,7 @@ used exact simulator adjoints. Gate routing and hardware shot costs are unmeasur
 
 * Exact ideal expectations. CVaR here is computed from the exact distribution; with shots
   (SPSA/COBYLA, 1,024 shots) results are weaker. The old circuit estimates are only legacy heuristics.
-* "Hit" means the optimum appears among 1,024 samples drawn from the final exact state; CVaR deliberately
-  leaves ~40-70 % of the mass on invalid or worse states.
+* In historical E5, "hit" means the optimum appears among 1,024 final samples. E6 additionally reports the dominant-plan metric and exact optimum probability; these metrics are not interchangeable.
 * Seeds are algorithmic repeats on paired cases sharing one prefix, not independent instances.
 * No noise model, routing or hardware run; controlled Givens is a 3-qubit gate (Toffoli-class cost).
 
@@ -131,7 +157,7 @@ bundle SHA256 before replay. Random block-pair selection is reproduced by seed.
 The adapter now preserves the optimizer's convergence flag instead of marking
 every run converged, rejects shot-trained adjoint configurations that previously
 silently used an exact loss, and refuses unsupported sector/CVaR three-point NFT.
-The primary coupled L2 exact CVaR/L-BFGS configuration and frozen QUBO do not change.
+Those safeguards preserve the retained E5 configuration and frozen QUBO. E6 changes only the training loss/schedule, with a separately archived experiment.
 
 E1/E2 provenance also remains qualified: their source hashes were taken when
 the campaign finished, rather than at each worker launch. The teammate's review
@@ -152,5 +178,5 @@ It follows by matching the sine/cosine coefficients at frequencies 1/2 and 1.
 CVaR with alpha=0.1 can stop improving once 10% of probability is on optimal
 states: the lower-tail loss has reached its minimum. Therefore the ~12% held-out
 optimal probability is consistent with its loss; it is not a claim of a
-deterministic optimum. Changing alpha or optimizing mean energy afterward would
-be a new experiment requiring a new selection/evaluation record.
+deterministic optimum. E6 provides that separate follow-up record: it switches to a Gibbs concentration
+loss after CVaR and archives the resulting vectors and samples.

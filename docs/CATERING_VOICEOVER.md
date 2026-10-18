@@ -48,9 +48,9 @@ checked results; VQE separates reported campaign medians from checked exported s
 
 > Does training help? We chose the settings on the small cell and S0/S1, then tested S2/S3. Training finds the best available plan in all ten seeds. Random-angle search also hits ten on S2. At two hundred fifty-six evaluations, training gives roughly eleven and twenty-two times the optimum probability per shot. We optimize the angles separately for each instance. And these limited program sets miss better full-grid plans.
 
-## 3:18–3:38 · VQE comparison
+## 3:18–3:38 · VQE: concentrate the solution
 
-> VQE uses Givens and controlled Givens rotations. Its median probability of the offered-pool optimum is about twelve percent in each disruption case. Using CVaR and adjoint gradients, it samples that optimum in ten seeds out of ten, and nine out of ten. Its budgets and shots differ from QAOA.
+> VQE now switches from CVaR to Gibbs loss. Median offered-optimum probability rises from twelve percent to ninety-nine point five percent in both disruption cases, across ten seeds each. This uses exact gradients. The staged improvement did not carry over to shot-noise emulation.
 
 ## 3:38–4:06 · VeloxQ inside the replanning loop
 
@@ -70,7 +70,7 @@ checked results; VQE separates reported campaign medians from checked exported s
 
 ## Editing notes
 
-736 source words; the fastest chapter is 170 words/minute.
+729 source words; the fastest chapter is 170 words/minute.
 Narration is generated sentence by sentence and aligned to the chapter route.
 The voice manifest records actual pronunciation text and time stretch. Preserve
 pauses for the model, source code and real launch; do not claim a result absent

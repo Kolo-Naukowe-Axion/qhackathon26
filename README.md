@@ -19,7 +19,9 @@ prioritizing **missed complete meals → discarded food → batches → plan cha
 Main and side coverage interact quadratically, without extra product qubits.
 
 - **QAOA & VQE:** 31–35 data-qubit portfolios, simulated in their one-hot sectors.
-  The QAOA campaign retains 400 runs with controls.
+  The QAOA campaign retains 400 runs with controls. Latest VQE uses CVaR→Gibbs
+  concentration, reaching **99.54% / 99.55%** median offered-optimum probability
+  on S2/S3 in exact-gradient simulation. [VQE study](output/catering-methods/vqe/E6-concentration/README.md).
 - **VeloxQ:** larger QUBOs of the same model, at 486, 998 and 2,022 solver bits
   after idle elimination. Driving a checked large-neighbourhood loop, VeloxQ took its
   own plans from 11/13 to 6/7 missed meal lots at 998/2,022 bits, one lot better

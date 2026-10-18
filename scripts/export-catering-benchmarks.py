@@ -108,6 +108,34 @@ def export():
             median_evaluations=statistics.median(int(r['nfev']) for r in rows),
             median_shift_equivalents=statistics.median(int(r['hw_circuits_equiv']) for r in rows),
             parameters=sorted(set(int(r['n_params']) for r in rows)),shots=sorted(set(int(r['shots']) for r in rows))))
+    # E6 is a separately predeclared follow-up, not a replacement for the E5 baseline.
+    e6='output/catering-methods/vqe/E6-concentration/'
+    declaration=load(e6+'heldout_predeclaration.json')
+    manifest=load(e6+'manifest.json')
+    for relative,expected in manifest['sha256'].items():
+        path=e6+relative
+        sources[path]=public_source(path)
+        if sources[path]['sha256']!=expected:
+            raise ValueError('E6 source manifest mismatch: '+path)
+    e6_rows=list(csv.DictReader(io.StringIO((ROOT/(e6+'runs/heldout_runs.csv')).read_text())))
+    vqe['grids']['E6']=[dict(r,tag=r['method'],loss='CVaR → Gibbs' if r['method']==declaration['primary']['name'] else 'control',
+        status='completed' if not r.get('error') else 'failed') for r in e6_rows]
+    followup=dict(label='E6 follow-up · CVaR → Gibbs',primary_name=declaration['primary']['name'],
+        configuration=declaration['primary']['cfg'],budget_cap=sum(s['maxfun'] for s in declaration['primary']['cfg']['stages']),
+        final_shots=declaration['final_samples'],previously_examined_cases=True,
+        scope='Predeclared follow-up on S2/S3 already examined in E5; exact adjoint simulation, not unseen-case or hardware evidence. Staged improvement did not carry over to the shot-noise emulation.',
+        verification=dict(kind='offline source-manifest integrity',manifest=e6+'manifest.json',checked_files=len(manifest['sha256']),all_hashes_match=True),rows=[])
+    for case in ['S2','S3']:
+        rows=[r for r in e6_rows if r['case']==case and r['method']==declaration['primary']['name']]
+        if len(rows)!=10 or sorted(int(r['seed']) for r in rows)!=declaration['seeds']:
+            raise ValueError('Expected all ten predeclared E6 primary seeds for '+case)
+        followup['rows'].append(dict(case=case,seeds=len(rows),hits=sum(r['shot_hit_opt']=='True' for r in rows),
+            mode_hits=sum(r['mode_is_opt']=='True' for r in rows),
+            probability=statistics.median(float(r['p_opt']) for r in rows),
+            valid_probability=statistics.median(float(r['p_valid']) for r in rows),
+            median_evaluations=statistics.median(int(r['nfev']) for r in rows),
+            parameters=sorted(set(int(r['n_params']) for r in rows)),shots=[declaration['final_samples']]))
+    vqe['followup']=followup
     data=dict(schema='catering-benchmarks.v1',qaoa=qaoa,qaoa_runs=runs,classical=classical,veloxq=service,
         source_files=list(sources.values()),scale=load('output/catering-velox-scale-v3/report.json'),
         controls=load('output/catering-velox-noidle-controls-v1/report.json'),vqe=vqe,

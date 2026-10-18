@@ -353,9 +353,10 @@ opposite spin convention $s_i=2\xi_i-1$ separately.
 QAOA initializes one excitation in each block. Its blockwise XY mixing
 preserves that excitation count, while objective/conflict phases couple the
 choices. VQE uses a different one-hot-preserving Givens ansatz with controlled
-couplings. Both optimize an exact simulated low-energy CVaR objective; at
-$\alpha=0.1$, CVaR averages the lowest-energy ten percent of the distribution,
-including a fractional boundary probability when necessary. Final samples are
+couplings. QAOA and the historical VQE E5 baseline optimize exact simulated
+CVaR; at $\alpha=0.1$, it averages the lowest-energy ten percent of the
+distribution, including fractional boundary mass. Latest VQE E6 first uses
+CVaR, then a Gibbs concentration loss on the same circuit. Final samples are
 decoded and checked independently.
 
 The technical presentation uses the same operators. With $C$ the unpenalized
@@ -381,10 +382,24 @@ CG=\Pi_{\mathrm{control}}\otimes G+(I-\Pi_{\mathrm{control}})\otimes I.
 $$
 
 Both preserve one excitation per block, so the block-choice penalty vanishes
-on their invariant sector; cross-block conflicts remain. Their optimization
-target is $\min_\theta\operatorname{CVaR}_\alpha[E(X_\theta)]$, where
-$\Pr(X_\theta=x)=|\langle x|\psi(\theta)\rangle|^2$. This states the target,
-not a guarantee that optimization reaches its global minimum.
+on their invariant sector; cross-block conflicts remain. QAOA and VQE E5 target
+$\min_\theta\operatorname{CVaR}_\alpha[E(X_\theta)]$, where
+$\Pr(X_\theta=x)=|\langle x|\psi(\theta)\rangle|^2$.
+VQE E6 then switches from CVaR to
+
+$$
+L_\eta(\theta)=-\log\sum_x\Pr(X_\theta=x)
+                    e^{-\eta E(x)/w_U},\qquad\eta=100.
+$$
+
+The implementation uses shifted energies for numerical stability; an additive
+constant does not change this loss's optimizer. E6 allows up to 150 CVaR loss
+evaluations, then Gibbs within a total 300-evaluation cap, using exact simulator
+adjoints. These targets do not guarantee global convergence. Training stops
+when one basis plan exceeds probability 0.995. The recorded E6 states reproduce
+from saved vectors without optimization: see the
+[integration receipt](../output/catering-methods/vqe/E6-integration/verification.json).
+S2/S3 confirmation uses previously examined E5 cases, not wholly unseen inputs.
 The [technical slide](assets/quantum-formulation.jpg) summarizes these equations.
 
 The complete cell's block sizes are $5,11,19$, so the invariant sector contains

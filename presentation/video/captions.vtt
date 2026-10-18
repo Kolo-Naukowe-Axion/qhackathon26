@@ -166,19 +166,19 @@ We optimize the angles separately for each instance.
 03:14.099 --> 03:17.405
 And these limited program sets miss better full-grid plans.
 
-03:18.220 --> 03:21.684
-VQE uses Givens and controlled Givens rotations.
+03:18.220 --> 03:21.207
+VQE now switches from CVaR to Gibbs loss.
 
-03:21.832 --> 03:27.776
-Its median probability of the offered-pool optimum is about twelve
-percent in each disruption case.
+03:21.357 --> 03:31.042
+Median offered-optimum probability rises from twelve percent to
+ninety-nine point five percent in both disruption cases, across ten
+seeds each.
 
-03:27.923 --> 03:34.905
-Using CVaR and adjoint gradients, it samples that optimum in ten seeds
-out of ten, and nine out of ten.
+03:31.192 --> 03:32.813
+This uses exact gradients.
 
-03:35.053 --> 03:37.767
-Its budgets and shots differ from QAOA.
+03:32.963 --> 03:36.953
+The staged improvement did not carry over to shot-noise emulation.
 
 03:38.220 --> 03:41.889
 For larger plans, VeloxQ sits inside a replanning loop.

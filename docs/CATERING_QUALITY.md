@@ -1,6 +1,6 @@
 # Catering: correctness and solution-quality audit
 
-17 October 2026. This audit uses frozen V3 evidence and fresh local verification.
+18 October 2026. This audit uses frozen V3 evidence and fresh local verification.
 No quantum training, paid backend job or hardware call accompanies it.
 
 The implemented QUBO has a correctness argument in
@@ -19,8 +19,8 @@ VeloxQ exports are certified full-kitchen quantum optima.
 
 ## Primary emphasis and comparison boundaries
 
-Present **trained QAOA plus the same-model VeloxQ representation study**, with
-VQE as a second implemented ansatz and classical methods as references. QAOA
+Present **trained QAOA, the latest staged-loss VQE, and the same-model VeloxQ study**,
+with classical methods as references. QAOA
 has the strongest retained repeated-run evidence chain: frozen configuration,
 per-run parameters/samples, independent energy and physical checks, and held-out
 configuration evaluation. The original six-trial cell and eight-run changing
@@ -29,16 +29,24 @@ portfolio pilot below remain development evidence, not the latest campaign.
 - QAOA and VQE use the identical five frozen cell/S0–S3 bundles. Both attain
   their offered-pool optimum in the five selected exported schedules. Only the
   cell offers its complete declared grid; S0–S3 retain representation loss.
-- QAOA's held-out S2/S3 selected setup hits the optimum in 10/10 seeds at both
-  256 and 2,048 loss evaluations, with 4,096 final shots. VQE's primary E5 CSV
-  reports 10/10 and 9/10 at 1,024 shots, with higher median per-shot optimum
-  probabilities. Optimizers, parameters, training work and shots differ: this
-  establishes no matched-budget method winner. The split holds out configuration
-  selection; each case still optimizes its own angles.
-- The five VQE exports have independent raw checks, including the cell. The
-  historical E5 per-seed angles and samples are not archived; those CSV aggregate
-  counts have a narrower verification scope than the QAOA campaign. Simulator
-  adjoint evaluations and legacy hardware-circuit heuristics are different units.
+- QAOA's S2/S3 selected setup hits the optimum in 10/10 seeds at both
+  256 and 2,048 loss evaluations, with 4,096 final shots. Latest VQE E6 first
+  optimizes CVaR α=0.1, then Gibbs η=100 on the same circuit. Its archived CSV
+  reports 10/10 sampled optimum hits in each case at 1,024 shots, and median
+  optimum probabilities 99.5396% / 99.5520%, versus 12.3713% / 12.7899% for its
+  CVaR baseline. E6 median evaluations are 44.5 / 39.5 versus 26 / 18 for that
+  baseline. Optimizers, parameters, work and shots differ from QAOA: no
+  matched-budget method winner follows.
+- E6 selection is declared on cell/S0/S1, then confirmed on S2/S3; S2/S3 had
+  already appeared in E5 and must not be called wholly unseen cases. Each case
+  optimizes its own angles. The 0.995 maximum-state stopping rule partly sets
+  the observed concentration near 99.5%; other concentrating losses also succeed.
+- The [E6 integration receipt](../output/catering-methods/vqe/E6-integration/verification.json)
+  verifies every archive hash, all five input identities, all exported samples,
+  and all five saved seed-0 state vectors without training or new sampling.
+  Ten-seed medians are recomputed from CSV; those twenty vectors are not archived
+  in this export. E5 remains a historical baseline with its narrower per-seed
+  verification scope. Simulator adjoint evaluations are not hardware circuits.
 - The larger VeloxQ no-idle inputs preserve each source pool's feasible schedules
   and objective, but change invalid-state energies and matrix width. They are
   equivalent optimization formulations, not identical-matrix timing comparisons

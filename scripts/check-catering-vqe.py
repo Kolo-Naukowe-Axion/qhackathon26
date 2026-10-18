@@ -4,6 +4,7 @@ import hashlib
 import json
 from pathlib import Path
 import sys
+import subprocess
 import tempfile
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -65,4 +66,5 @@ if __name__ == '__main__':
     parser.add_argument('--output', type=Path, required=True)
     args = parser.parse_args()
     r = audit(args.output)
+    subprocess.run([sys.executable, str(ROOT / "scripts/verify-vqe-concentration.py"), "--output", str(args.output.parent / "vqe-concentration-verification.json")], check=True)
     print(f"Checked {len(r['checked_results'])} exports, {sum(x['shots'] for x in r['checked_results'])} shots; no training/services.")

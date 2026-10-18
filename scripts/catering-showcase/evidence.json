@@ -501,6 +501,22 @@
     "investment": {
       "path": "presentation/catering/investment/data.json",
       "sha256": "e199fb15ca5122436a635c7a8e2cce069862c7f517742255ff6cdf0f37568937"
+    },
+    "vqe_concentrated_runs": {
+      "path": "output/catering-methods/vqe/E6-concentration/runs/heldout_runs.csv",
+      "sha256": "572840fc30793b63edd64d266e5019118bd45825ad17529c0ad552a819484e63"
+    },
+    "vqe_concentrated_manifest": {
+      "path": "output/catering-methods/vqe/E6-concentration/manifest.json",
+      "sha256": "27fa8ebbf0f32feee6824c028cac47799cd4c5704fbfb392c368785f8b8530ad"
+    },
+    "vqe_concentrated_predeclaration": {
+      "path": "output/catering-methods/vqe/E6-concentration/heldout_predeclaration.json",
+      "sha256": "d502f147eef2691b37e64d9e6143a63f03f0d2de3229a80b5edebb828adcb64a"
+    },
+    "vqe_concentrated_verification": {
+      "path": "output/catering-methods/vqe/E6-integration/verification.json",
+      "sha256": "1ec21007c27749d4d6caebd120ca52f906b07c3b443e8664b393c014881c2049"
     }
   },
   "velox": {
@@ -952,6 +968,28 @@
     "cases": [
       {
         "case": "S2",
+        "probability": 0.995395992112231,
+        "baseline_probability": 0.12371282640608924,
+        "hits": 10,
+        "mode_hits": 10,
+        "seeds": 10,
+        "median_evaluations": 44.5
+      },
+      {
+        "case": "S3",
+        "probability": 0.9955196385919771,
+        "baseline_probability": 0.12789945740082115,
+        "hits": 10,
+        "mode_hits": 10,
+        "seeds": 10,
+        "median_evaluations": 39.5
+      }
+    ],
+    "final_shots": 1024,
+    "primary": "E6 coupled Givens L2 \u00b7 CVaR0.1\u2192Gibbs100 \u00b7 exact adjoint L-BFGS-B",
+    "baseline_cases": [
+      {
+        "case": "S2",
         "probability": 0.12371282640608924,
         "hits": 10,
         "seeds": 10,
@@ -965,8 +1003,8 @@
         "median_evaluations": 18.0
       }
     ],
-    "final_shots": 1024,
-    "primary": "coupled Givens · L2 · exact CVaR0.1 · adjoint L-BFGS-B"
+    "budget_cap": 300,
+    "stop_maxprob": 0.995
   },
   "explanation": {
     "conflict": {

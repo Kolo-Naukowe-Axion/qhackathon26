@@ -117,15 +117,15 @@
   },
   {
     "id": "vqe",
-    "title": "VQE comparison",
-    "kicker": "VQE · DIFFERENT TRAINING BUDGET",
+    "title": "VQE: concentrate the solution",
+    "kicker": "LATEST VQE · CVaR → GIBBS",
     "duration": 20,
     "live_duration": 12,
-    "narration": "VQE uses Givens and controlled Givens rotations. Its median probability of the offered-pool optimum is about twelve percent in each disruption case. Using CVaR and adjoint gradients, it samples that optimum in ten seeds out of ten, and nine out of ten. Its budgets and shots differ from QAOA.",
-    "live_narration": "VQE concentrates about twelve percent probability on the optimum in both cases. Its budgets and shot count differ from QAOA, so we show the methods separately.",
-    "live_action": "Compare per-shot probabilities; point to the different budgets and final shots.",
-    "shot": "VQE/QAOA per-shot probabilities with unequal-budget note.",
-    "editor_cue": "Show reported medians and final shot counts. No matched-budget ranking or hardware-speed claim.",
+    "narration": "VQE now switches from CVaR to Gibbs loss. Median offered-optimum probability rises from twelve percent to ninety-nine point five percent in both disruption cases, across ten seeds each. This uses exact gradients. The staged improvement did not carry over to shot-noise emulation.",
+    "live_narration": "Our latest VQE uses CVaR then Gibbs loss: ninety-nine point five percent offered-optimum probability in both disruption cases. Exact gradients; this staged gain did not survive shot-noise emulation.",
+    "live_action": "Show the same-circuit CVaR baseline and latest Gibbs concentration result. State exact-gradient scope.",
+    "shot": "Latest E6 staged VQE versus its CVaR baseline, per-shot probabilities and ten-seed results.",
+    "editor_cue": "Latest same-model VQE; exact simulator gradients; 300-evaluation cap. Prior S2/S3 exposure is documented; no matched QAOA budget ranking.",
     "still_progress": 0.45
   },
   {

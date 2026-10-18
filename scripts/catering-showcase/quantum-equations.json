@@ -9,7 +9,7 @@
   "vqe": "|\\psi_V(\\theta)\\rangle=U_\\theta^{\\mathrm{Givens+controlled\\ Givens}}|\\psi_{0,V}\\rangle",
   "givens": "\\textstyle G_{uv}(t)=\\exp\\!\\left[\\frac t2\\left(|v\\rangle\\langle u|-|u\\rangle\\langle v|\\right)\\right]",
   "controlled": "\\textstyle CG=\\Pi_{\\mathrm{ctrl}}\\otimes G+(I-\\Pi_{\\mathrm{ctrl}})\\otimes I",
-  "training": "\\theta^*\\in\\underset{\\theta}{\\arg\\min}\\;\\operatorname{CVaR}_{\\alpha}\\!\\left[E(X_\\theta)\\right],\\qquad \\Pr(X_\\theta=x)=\\left|\\langle x|\\psi(\\theta)\\rangle\\right|^2",
+  "training": "\\begin{aligned}\\mathcal L_Q(\\theta)&=\\operatorname{CVaR}_{\\alpha}[E(X_\\theta)],\\qquad p_\\theta(x)=|\\langle x|\\psi(\\theta)\\rangle|^2\\\\\\mathcal L_{V,2}(\\theta)&=-\\log\\sum_xp_\\theta(x)e^{-\\eta E(x)/w_U},\\qquad\\eta=100\\end{aligned}",
   "sector": "\\textstyle \\forall b:\\;\\sum_{i\\in b}x_i=1\\quad\\Longrightarrow\\quad H_{\\mathrm{block}}(x)=0",
   "meal_missed": "U=\\sum_d p_d\\!\\left(1-M_dS_d\\right)",
   "meal_waste": "W=\\mathrm{surplus}+\\sum_d\\!\\left(M_d+S_d-2M_dS_d\\right)",

@@ -69,7 +69,7 @@ for the three-minute slot; this sheet is for questions afterward.
 |---|---|
 | What does one bit mean? | One local batch program; the solver combines programs, rather than selecting a pre-solved whole schedule. |
 | Why does a lone main count as waste? | Service requires both components by departure; production equals served components plus discarded components. |
-| Which solver won? | VQE has higher reported per-shot optimum probability; budgets differ. QAOA has the complete archived/live evidence chain. |
+| Which solver won? | Latest VQE concentration reaches about 99.5% median offered-pool optimum probability; budgets differ from QAOA. Five saved VQE states replay exactly, and the live launch remains QAOA. |
 | What did VeloxQ actually improve? | Same source, equal step budget, proven equivalent representation; both feasibility and best delivered service improve. |
 | Is this really 35 qubits? | Complete cell: 35 data qubits and 1,045 sector states. Larger frozen portfolios reach 279,936 states; dynamic replay pools differ. No generic dense 35-qubit simulation or hardware claim. |
 | Does stability help these results? | R=B here. The general stability expression is tested, but these fixtures do not isolate its benefit. |
@@ -309,18 +309,29 @@ and synthetic-routing checks, but no catering IBM hardware outcome to report.”
 
 **Which quantum method performs better?**
 
-“VQE's primary held-out median optimum probability is about 12.4%/12.8% on
-S2/S3; QAOA's is about 0.87%/1.01% at 256 evaluations. Both use the same offered
-portfolios, but their optimizers, parameter counts, training work and final
-shots differ. This is higher observed probability, not a matched-budget win.”
+“Latest VQE first trains with CVaR, then switches to a Gibbs concentration
+loss. On the same offered S2/S3 portfolios, its median optimum probabilities
+are about 99.54% and 99.55%, versus about 12.37% and 12.79% for its CVaR baseline.
+QAOA is about 0.87% and 1.01% at 256 evaluations. Training budgets, parameters
+and final shots differ, so this is not a fair overall solver ranking.”
 
-QAOA has 10/10 sampled optimum hits on both cases at both budgets. The primary
-VQE report has 10/10 and 9/10 at 1024 shots. The five exported VQE cell/S0–S3 plans
-were independently checked; the per-seed aggregates remain reported CSV results.
-Both are showcased with those evidence boundaries.
-Archived VQE circuit counts are a two-shifts-per-parameter heuristic, not a
-validated hardware cost for the controlled gates/CVaR objective. E2 three-point
-NFT is a limited experimental control; the primary E5 optimizer is L-BFGS-B.
+E6's CSV reports sampled optimum hits in 10/10 seeds on each case at 1,024
+shots. Five exported seed-0 vectors and all their samples were independently
+replayed and checked; ten-seed aggregates are recomputed from the archived CSV.
+The 99.5% concentration reflects a stopping threshold, not a method limit.
+E5 remains the CVaR baseline. E6's S2/S3 cases had been examined in E5; say
+“declared-settings confirmation,” not “completely unseen kitchens.”
+
+**Why change the VQE loss?**
+
+“CVaR at α=0.1 can be minimized once ten percent of the probability is on the
+optimum. The Gibbs stage continues rewarding concentration on lower-energy
+states. It improves sampling probability in our ideal simulation; finite-shot
+training is much harder, and this does not establish hardware advantage.”
+
+Archived VQE circuit counts are two-shifts-per-parameter heuristics, not
+validated hardware costs for controlled Givens or nonlinear losses. E2 NFT
+is an exploratory control; latest E6 uses exact adjoint gradients and L-BFGS-B.
 
 **Where is the train/test split?**
 

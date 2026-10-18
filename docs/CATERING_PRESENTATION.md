@@ -68,7 +68,7 @@ computational scope without presenting size as measured hardness.
 | 20 meals / zero discarded portions | `output/catering-complete-cell-demo-v3.json`; actual handover and disposal ledger |
 | 6/8 final larger plans optimal within final offered pool | `output/catering-math-audit-v1/mathematics.json`; all trail raw-grid CP and final-step controls tie |
 | QAOA held-out S2/S3: 10/10 optimum hits at both budgets | 400-run campaign, `output/catering-methods/qaoa/test-v1/summary.json`; at 256 evaluations, median per-shot optimum probability is about 11x/22x random-angle search |
-| VQE primary held-out: 10/10 and 9/10 optimum hits | E5 CSV reports; five exported cell/S0–S3 schedules independently checked. Different optimizer/budget and 1024 final shots prohibit a matched-budget winner claim |
+| Latest VQE: 99.54% / 99.55% median offered-optimum probability, 10/10 seeds each | E6 CVaR→Gibbs; five saved parameter vectors replayed and all exports checked. Exact gradients, 300-evaluation cap, 1024 final shots. E5 remains the baseline; no matched-budget QAOA ranking |
 | VeloxQ: 486 / 998 / 2022 solver bits | [Representation study](CATERING_VELOXQ_TUNING.md); 512/512 valid at each width. At 512 source bits and equal 20,000-step budgets, best service rises 10→50 of 140 meals, waste 30→60 portions, validity 17→512/512. Raw handovers independently rechecked; service has priority and CP/SA still find better schedules |
 
 [Quality audit](CATERING_QUALITY.md) contains the full comparisons. Compare
@@ -85,7 +85,7 @@ identity and the full-versus-restricted domain distinction.
 ## Benchmark browser and scale
 
 Open `/catering/benchmarks/` from the kitchen or studio. It includes all 400
-QAOA runs, all 137 service attempts, VQE experiment rows and five checked VQE
+QAOA runs, all 137 service attempts, VQE experiment rows and ten checked VQE
 exports. Filters expose cases, budgets, failed attempts and source hashes. The
 page downloads retained data only; no optimizer or service call runs there.
 Regenerate with `.venv-catering/bin/python scripts/export-catering-benchmarks.py`.
@@ -148,4 +148,4 @@ Live rehearsal, final 1920×1080 recording and narration remain required.
 
 The final video compares current kitchen, third cooker, prep helper and packing helper on the same larger S3 physical model. Best found plans serve 90, 90, 110 and 110 meals; discarded portions are 10, 0, 10 and 10. Each raw-input CP run has 240 seconds, two solver workers and seeds 2026/2027; both seeds agree on tuples, none proved optimality. W1 shares preparation and packing. This is classical decision support, with wages and capital prices still absent; do not call it a quantum-found investment optimum. The new chapter is video-only; the live route remains 2:45.
 
-The video includes a technical equation sheet at **1:54–2:06**: exact QUBO/Ising coefficients, XY-QAOA, controlled Givens VQE and CVaR. It switches at 2:00 to conserved occupation, idle elimination and the exact conditional QUBO. Both sheets use local TeX typesetting and are excluded from the timed live route. For technical Q&A, open the studio video route at `?t=120` and pause there. [Operator sheet](assets/quantum-formulation.jpg) · [Structural reductions](assets/quantum-structure.jpg) · [derivation](CATERING_PROBLEM.md#9-ising-and-quantum-optimization).
+The video includes a technical equation sheet at **1:54–2:06**: exact QUBO/Ising coefficients, XY-QAOA, controlled Givens VQE, QAOA CVaR and the latest VQE Gibbs concentration loss. It switches at 2:00 to conserved occupation, idle elimination and the exact conditional QUBO. Both sheets use local TeX typesetting and are excluded from the timed live route. For technical Q&A, open the studio video route at `?t=120` and pause there. [Operator sheet](assets/quantum-formulation.jpg) · [Structural reductions](assets/quantum-structure.jpg) · [derivation](CATERING_PROBLEM.md#9-ising-and-quantum-optimization).

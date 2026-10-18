@@ -52,7 +52,7 @@ upload the obsolete silent rough cut from `output/playwright/`.
 - Both required baseline JSONs, with independent feasibility and optimum checks.
 - Implemented Stage 2 compiler, physical checker, priority/penalty proofs and
   reproducible retained results. The current benchmark data contains 400 QAOA
-  runs, five checked VQE exports and 137 recorded VeloxQ submission attempts.
+  runs, ten checked VQE exports (E5 plus latest E6 CVaR→Gibbs) and 137 recorded VeloxQ submission attempts.
 - A [4:52 narration script](CATERING_VOICEOVER.md), [2:45 live runbook](CATERING_LIVE.md)
   and [Q&A sheet](CATERING_QA.md). The video must show the actual local launch and
   returned receipt; the kitchen replay is labeled separately.
@@ -108,6 +108,9 @@ at **18:00 UTC+2**. Authority: [challenge PDF](../Quantum_Hackathon_2026_ERP_Cha
 - The 35-data-qubit cell is simulated in a 1,045-state one-hot sector. Larger
   31–35-qubit quantum portfolios restrict the offered choices; their optimum
   can differ from the full physical-domain reference.
+- Latest VQE uses E6 CVaR→Gibbs concentration, with 99.54% / 99.55% median
+  offered-optimum probability on S2/S3 (10 seeds each). Its five saved states
+  reproduce without training. The staged gain did not survive shot-noise emulation.
 - QAOA and VQE use unequal training budgets. Show their measurements without
   declaring a matched-budget winner.
 - VeloxQ-LNS reaches U=6/7 at 998/2,022 solver bits, versus U=7/8 for the retained
