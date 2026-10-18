@@ -1,6 +1,6 @@
 const labels={frozen:'Trained multi-angle XY',random_angles:'Random-angle search',xy_layerwise:'Plain XY · layerwise',start_only:'Initializer only',uniform_sector:'Uniform one-hot sampling'};
 export function comparisonRows(data,caseId,budget){const split=['S2','S3'].includes(caseId)?'test':'train';return data.qaoa[split].table.filter(r=>r.case===caseId&&(r.budget===Number(budget)||r.budget===0));}
-export function serviceRows(data,study,status){return data.veloxq.filter(r=>(study==='all'||(study==='noidle'?r.representation==='no-idle-deletion.v1':!r.representation?.includes('deletion')))&&(status==='all'||(status==='completed'?r.status==='completed':r.status!=='completed')));}
+export function serviceRows(data,study,status){return data.veloxq.filter(r=>(study==='all'||(study==='noidle'?r.representation==='no-idle-deletion.v1':study==='hybrid'?r.representation?.startsWith('hybrid-'):!r.representation?.includes('deletion')&&!r.representation?.startsWith('hybrid-')))&&(status==='all'||(status==='completed'?r.status==='completed':r.status!=='completed')));}
 export function formatTuple(value){return value?`(${Array.isArray(value)?value:['U','W','B','R'].map(k=>value[k])})`:'—';}
 const escape=value=>String(value??'—').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function identityDetails(row){
