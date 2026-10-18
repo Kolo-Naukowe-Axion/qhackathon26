@@ -3,7 +3,7 @@ const views = {
  hook: [
   {view:'opening',label:'Opening · Axion Kitchen',speech:'Axion Kitchen. Quantum optimization for catering production.'},
   {view:'baseline',label:'Stage 1 · factory baselines',speech:'Factory baselines: four and eight hours, both checked optimal.'},
-  {view:'problem',label:'The catering production problem',speech:'Cookers are machines, cleaning is setup, and departures are due dates. We choose shared batches, workers and phase times under freshness, calendar and outage constraints. Complete meals come first, then waste, batches and changes.'},
+  {view:'problem',label:'The catering production problem',speech:'Same formulation across five cases: a complete small cell, then normal service, urgent order, outage, and both. Cookers are machines, cleaning is setup, and departures are due dates. We enforce freshness and resource constraints throughout. Complete meals come first, then waste, batches and changes.'},
  ],
  encoding: [
   {view:'main',label:'Encoding · one bit selects a batch program',speech:'A bit selects one batch and its schedule. Each anchor block chooses one program or idle. Conflicts forbid clashes. This cell uses thirty-five bits.'},

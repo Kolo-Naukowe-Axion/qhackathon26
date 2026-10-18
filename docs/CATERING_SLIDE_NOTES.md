@@ -12,7 +12,7 @@ These notes match the current visual slide, including the separate opening, Stag
 
 ## The catering production problem
 
-> Cookers are machines, cleaning is setup, and departures are due dates. We choose shared batches, workers and phase times under freshness, calendar and outage constraints. Complete meals come first, then waste, batches and changes.
+> Same formulation across five cases: a complete small cell, then normal service, urgent order, outage, and both. Cookers are machines, cleaning is setup, and departures are due dates. We enforce freshness and resource constraints throughout. Complete meals come first, then waste, batches and changes.
 
 ## Two orders sharing a side batch
 
