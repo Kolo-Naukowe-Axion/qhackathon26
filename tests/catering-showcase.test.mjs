@@ -48,7 +48,7 @@ test('presentation routes fit the slots and include full problem and scaling',as
  const story=JSON.parse(await readFile(new URL('../scripts/catering-showcase/story.json',import.meta.url)));
  assert.equal(story[0].id,'hook');
  assert.match(story[0].narration,/qualified workers/);
- assert.equal(story.reduce((a,c)=>a+c.duration,0),288);
+ assert.equal(story.reduce((a,c)=>a+c.duration,0),292);
  assert.equal(story.reduce((a,c)=>a+c.live_duration,0),165);
  for(const id of ['results','vqe','velox','scaling'])assert.ok(story.find(c=>c.id===id));
  assert.equal(bench.vqe.verification.checked_results.length,5);
@@ -77,7 +77,7 @@ test('capture defaults to no video and no sampler; explicit dry run cannot execu
 test('recording shots derive durations and include operational outcomes and real code',async()=>{
  const story=JSON.parse(await readFile(new URL('../scripts/catering-showcase/story.json',import.meta.url)));
  const shots=chapterShots(story);
- assert.equal(shots.length,13);assert.equal(shots.at(-1).end,288);
+ assert.equal(shots.length,14);assert.equal(shots.at(-1).end,292);
  assert.ok(shots.every(c=>c.shot&&c.editor_cue&&c.time>c.start&&c.time<c.end));
  assert.ok(shots.find(c=>c.id==='service').still_progress>.8);
  assert.ok(shots.find(c=>c.id==='encoding').still_progress>.55);
@@ -109,7 +109,8 @@ test('speaker scripts fit each chapter and separate result cues from spoken text
  assert.match(run.live_action,/Only after completion/);
  const close=story.find(c=>c.id==='close');
  assert.equal(close.log_summary.length,3);assert.match(close.narration,/Our log records/);
- assert.match(story.find(c=>c.id==='encoding').narration,/product expands.*coefficient span plus one/is);
+ assert.match(story.find(c=>c.id==='encoding').narration,/code builds.*pair terms/is);
+ assert.match(story.find(c=>c.id==='loss').narration,/all bitstrings.*penalty one higher/is);
 });
 
 

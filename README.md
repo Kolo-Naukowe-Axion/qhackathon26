@@ -45,7 +45,40 @@ PORT=4192 npm run dev
 
 Open [localhost:4192](http://127.0.0.1:4192/). `npm run build` runs the site checks
 and creates the static deployment. For Python setup, fresh sampling and the full
-verification command, see [Run & reproduce](catering/README.md).
+verification details, see [Run & reproduce](catering/README.md).
+
+<details>
+<summary>Python setup, fresh sampling and baseline reproduction</summary>
+
+Python 3.12+ (verified with 3.14.6), plus Node.js 20+ for the release checks:
+
+```sh
+python3 -m venv .venv-catering
+.venv-catering/bin/python -m pip install -r catering/requirements.txt
+.venv-catering/bin/python scripts/serve-catering-showcase.py --port 4193
+```
+
+Open [the studio](http://127.0.0.1:4193/?mode=live) to sample the frozen QAOA
+circuit locally. To run all release checks, use a fresh output directory:
+
+```sh
+.venv-catering/bin/python scripts/check-catering-release.py --output /tmp/NEW-AXION-RELEASE
+```
+
+Reproduce the required Stage 1 baselines in a separate pinned environment:
+
+```sh
+python3.11 -m venv .venv-baseline
+.venv-baseline/bin/python -m pip install -r requirements-solver.lock.txt
+.venv-baseline/bin/python -m solver.compact --phase bundle --output output/NEW-STAGE1
+```
+
+The final command writes new results without overwriting the submitted
+[schedule_2x2.json](schedule_2x2.json) and [schedule_3x3.json](schedule_3x3.json).
+Full method environments and retained campaign reproduction are documented in
+[Run & reproduce](catering/README.md) and [Stage 1](docs/STAGE1_COMPACT.md).
+
+</details>
 
 ## Evidence and documentation
 

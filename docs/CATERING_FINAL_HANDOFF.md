@@ -3,7 +3,13 @@
 One submission: the required factory baselines and a catering batch-production
 extension, with QAOA, VQE, VeloxQ and checked classical references.
 
-## Links to submit
+## Submission status
+
+**Prepared, not submitted.** The user requires confirmation before the form is
+sent. The final video is intended for YouTube; the website will embed it after
+the upload is ready. The current MP4 watch page is a review/fallback link.
+
+## Links and pending fields
 
 | Field | Value |
 |---|---|
@@ -14,7 +20,10 @@ extension, with QAOA, VQE, VeloxQ and checked classical references.
 | Baseline outputs | [A: 4 h](../schedule_2x2.json) · [B: 8 h](../schedule_3x3.json) |
 | Formal problem and mathematics | [CATERING_PROBLEM.md](CATERING_PROBLEM.md) · [Project Design](../PROJECT_DESIGN.md) |
 | Development record | [DEVELOPMENT_LOG.md](../DEVELOPMENT_LOG.md) |
-| Video URL | [Final 4:48 video — public playback checked](https://qfactoria.com/video/) |
+| Official form | https://forms.gle/t5YxsRpvUiG1rbdz7 — read only; nothing entered or submitted |
+| Final video URL | **Pending YouTube upload and team review** |
+| Review / fallback video | https://qfactoria.com/video/ — hosted MP4, not the final YouTube URL |
+| Form-entry draft | [CATERING_SUBMISSION_DRAFT.md](CATERING_SUBMISSION_DRAFT.md) |
 | Submitted commit | Record the final checked `git rev-parse HEAD` after the remaining video/documentation edits |
 
 Suggested description:
@@ -26,12 +35,12 @@ Suggested description:
 > Independent schedule checks and classical references expose both search and
 > representation losses.
 
-The local final media package is at `output/submission-4k-v2/`:
+The current local media package is at `output/submission-male-v3/`:
 `axion-kitchen.mp4`, `voiceover.wav`, `captions.srt`, `voice-manifest.json` and
-`manifest.json`. The MP4 is **4:48, 3840×2160**, with H.264 video, AAC narration,
-English subtitles and chapter markers. Probe checks and manifest hashes match
-the exported media and studio sources. Narration uses the stock Kokoro
-`af_heart` synthetic voice, with no voice cloning; timing, clipping, caption
+`manifest.json`. The MP4 is **4:52, 3840×2160**, with H.264 video, AAC narration,
+English subtitles and chapter markers. Check the refreshed manifests and release receipt against the
+final export before uploading; presentation edits can invalidate older hashes. Narration uses the stock Kokoro
+`am_fenrir` synthetic voice, with no voice cloning; timing, clipping, caption
 overlap and key spoken numbers have automated checks. These checks do not
 constitute subjective human listening approval. This local path is **not a
 submission URL**. Do not
@@ -44,13 +53,14 @@ upload the obsolete silent rough cut from `output/playwright/`.
 - Implemented Stage 2 compiler, physical checker, priority/penalty proofs and
   reproducible retained results. The current benchmark data contains 400 QAOA
   runs, five checked VQE exports and 137 recorded VeloxQ submission attempts.
-- A [4:48 narration script](CATERING_VOICEOVER.md), [2:45 live runbook](CATERING_LIVE.md)
+- A [4:52 narration script](CATERING_VOICEOVER.md), [2:45 live runbook](CATERING_LIVE.md)
   and [Q&A sheet](CATERING_QA.md). The video must show the actual local launch and
   returned receipt; the kitchen replay is labeled separately.
 
-The [final media and release receipt](assets/catering-final-check.json) records
-13 passing release stages and tested file fingerprints for the extended cut,
-plus complete AV decode, local speech checks and public playback verification.
+The [media and release receipt](assets/catering-final-check.json) records
+checks for a particular export. Compare its duration, hashes and deployment
+with the final 4:52 cut before treating it as current verification. Previous
+public-playback checks do not verify a later render or a YouTube upload.
 The earlier [committed technical receipt](../output/catering-submission-review-v1/verification.json)
 identifies its tested source commit. A later rerun is not proof that an earlier
 receipt covered later edits. Recheck the final release with:
@@ -67,18 +77,19 @@ and one fixed sampling seed; it starts no training, VeloxQ job or QPU job.
 
 ## Final external steps
 
-1. **Video:** the final cut is published at https://qfactoria.com/video/ and linked
-   from the README. Public browser playback was checked: 288 seconds, 4K,
-   time advancing and no error. Paste this URL into the organizer form. The
-   package discloses its stock synthetic narration.
-2. **Public source:** at the team's authorized release step, make the repository
-   public and verify signed-out access to the README, license and baseline JSONs.
-   A public demo website alone does not satisfy the public-repository requirement.
-3. **Organizer form:** obtain the actual Google Form from the organizer channel.
-   The supplied PDF says its link will be provided separately; no form URL or
-   completed submission receipt was found in this repository. Use team-confirmed
-   names/contact details and the final checked source commit. Do not infer those
-   declarations from commit authors or service credentials.
+1. **Video:** review the current 4:52, 4K cut, then upload the approved cut to
+   YouTube. Confirm signed-out playback, English captions and the five-minute
+   limit. Add the actual YouTube URL to the README, organizer draft and website
+   embed. Keep the hosted MP4 as a fallback. No YouTube upload is claimed here.
+2. **Public source:** the repository is public. Anonymous reads of the README,
+   MIT license, development log, project design and both baseline JSONs succeeded
+   on 18 October. Recheck the final pushed commit before submitting.
+3. **Organizer form:** the user supplied
+   https://forms.gle/t5YxsRpvUiG1rbdz7. Its fields were inspected without entering
+   responses. Complete the [local draft](CATERING_SUBMISSION_DRAFT.md) with
+   team-confirmed full names and Discord IDs, the final YouTube URL and checked
+   source commit. **Show the completed entry to the user and obtain confirmation
+   before submitting.** Do not infer identities from commit authors or accounts.
 4. **Receipt:** retain the organizer acknowledgment, exact submitted repository
    and video links, source commit and submission time.
 5. **Live:** attend the assigned slot with the local studio running. The limit is
@@ -107,8 +118,18 @@ at **18:00 UTC+2**. Authority: [challenge PDF](../Quantum_Hackathon_2026_ERP_Cha
   economic optima. One waste lot is **ten portions**, and no wages or equipment
   prices were supplied.
 
-## Published video
+## Video publication handoff
 
-The [watch page](https://qfactoria.com/video/) includes the [MP4 download](https://qfactoria.com/video/axion-kitchen.mp4) and English captions. Public browser playback was checked on 18 October: 288 seconds, 3840×2160, readyState 4, time advancing, no media error. The final MP4 is also retained in `presentation/video/`; [provenance](../presentation/video/provenance.json) records source and media hashes. Production deployment: `dpl_Arx1EkZkA7gJKpae7r2Za7aHrHKL`. This publication is not organizer submission.
+The [watch page](https://qfactoria.com/video/) currently serves the hosted MP4
+review/fallback. The current local cut is 4:52, in
+[4K](https://qfactoria.com/video/axion-kitchen.mp4) and
+[1080p](https://qfactoria.com/video/axion-kitchen-1080p.mp4), with 14 chapters and
+stock male Kokoro `am_fenrir` narration. These links are not evidence that the
+latest export has been deployed or checked publicly. Record the final verified
+deployment in [the release receipt](assets/catering-final-check.json), rather
+than copying an older deployment ID. The [provenance file](../presentation/video/provenance.json)
+records the packaged media and source hashes.
 
-Both [4K](https://qfactoria.com/video/axion-kitchen.mp4) and [1080p](https://qfactoria.com/video/axion-kitchen-1080p.mp4) now contain the same 4:48 cut, including the capacity comparison at 4:08–4:36. The 2:45 live route remains separate.
+**YouTube upload, URL, website embed and final public-playback verification are
+pending.** The 2:45 live route remains a separate deliverable. Publication and
+organizer submission are separate actions.

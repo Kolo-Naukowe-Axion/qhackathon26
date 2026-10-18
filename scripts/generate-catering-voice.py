@@ -2,7 +2,7 @@
 """Render the checked presentation script with a local, stock synthetic voice.
 
 Requires kokoro-onnx==0.6.1, onnxruntime, numpy, soundfile and ffmpeg.
-Model: Kokoro-82M v1.0 ONNX; stock voice af_heart (no voice cloning).
+Model: Kokoro-82M v1.0 ONNX; stock voice am_fenrir (no voice cloning).
 Model files are supplied explicitly, never downloaded by this script.
 """
 
@@ -39,9 +39,9 @@ def digest(path: Path) -> str:
 def spoken_text(text: str) -> str:
     """Pronunciation only: the source narration remains the caption text."""
     replacements = {
-        "Axion": "Ack see on", "QAOA": "Q, A, O, A,", "Main A": "Main A,",
-        "VQE": "V Q E", "QUBO": "cue bow",
-        "VeloxQ": "Velox Q", "CVaR": "C var", "XY": "X Y",
+        "Axion": "Ack see on", "QAOA": "Q, A, O, A", "Main A": "Main A,",
+        "VQE": "vee cue ee", "QUBO": "cue bow",
+        "VeloxQ": "Velox Q", "CVaR": "C var", "XY": "ex why",
         "S0/S1": "S zero and S one", "S2/S3": "S two and S three",
         "S0": "S zero", "S1": "S one", "S2": "S two", "S3": "S three",
         "C1": "C one", "C2": "C two", "CP": "C P",
@@ -83,7 +83,7 @@ def main() -> None:
     parser.add_argument("--story", type=Path, default=ROOT / "scripts/catering-showcase/story.json")
     parser.add_argument("--model", type=Path, required=True)
     parser.add_argument("--voices", type=Path, required=True)
-    parser.add_argument("--voice", default="af_heart")
+    parser.add_argument("--voice", default="am_fenrir")
     parser.add_argument("--speed", type=float, default=1.03)
     parser.add_argument("--max-stretch", type=float, default=1.12)
     parser.add_argument("--output", type=Path, default=ROOT / "output/submission-final")
@@ -190,7 +190,9 @@ def main() -> None:
     gain = 0.88 / peak if peak else 1.0
     track *= gain
     final = args.output / "voiceover.wav"
-    sf.write(final, track, RATE, subtype="PCM_16")
+    temporary_audio = final.with_name("voiceover.pending.wav")
+    sf.write(temporary_audio, track, RATE, subtype="PCM_16")
+    temporary_audio.replace(final)
     subtitle_lines = []
     for index, (start, end, sentence) in enumerate(captions, 1):
         subtitle_lines.extend([str(index), f"{stamp(start)} --> {stamp(end)}", "\n".join(textwrap.wrap(sentence, width=70)), ""])

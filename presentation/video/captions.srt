@@ -1,286 +1,320 @@
 1
-00:00:00,220 --> 00:00:04,011
-Axion Kitchen: quantum optimization for catering production.
+00:00:00,220 --> 00:00:01,649
+This is Axion Kitchen.
 
 2
-00:00:04,152 --> 00:00:08,374
-We completed the factory baselines in four and eight hours, both
-checked optimal.
+00:00:01,799 --> 00:00:06,898
+We first solved the factory baselines: optimal schedules of four and
+eight hours.
 
 3
-00:00:08,515 --> 00:00:14,445
-Our extension chooses shared batch yields, allocations, equipment,
-qualified workers and phase times.
+00:00:07,048 --> 00:00:09,480
+Our extension schedules catering production.
 
 4
-00:00:14,586 --> 00:00:18,229
-Cookers are machines, cleaning is setup, and departures are due dates.
+00:00:09,630 --> 00:00:13,491
+Cookers are machines, cleaning is setup, and departures are deadlines.
 
 5
-00:00:18,370 --> 00:00:22,303
-Freshness, calendars, outages and committed work constrain replanning.
+00:00:13,641 --> 00:00:19,956
+We choose shared batches, qualified workers and timings, while
+respecting freshness, calendars and outages.
 
 6
-00:00:22,444 --> 00:00:25,802
-Complete meals come first, then waste, batches and changes.
+00:00:20,106 --> 00:00:21,514
+First, serve complete meals.
 
 7
-00:00:26,220 --> 00:00:28,311
-Two customers each need ten meals.
+00:00:21,664 --> 00:00:25,141
+Then reduce waste, extra batches and changes to the plan.
 
 8
-00:00:28,461 --> 00:00:30,103
-Main A is already cooking.
+00:00:26,220 --> 00:00:28,140
+Two customers need ten meals each.
 
 9
-00:00:30,253 --> 00:00:32,941
-A shared twenty-portion side batch can serve both.
+00:00:28,290 --> 00:00:33,794
+Main A is already cooking, and one batch of twenty side portions can
+serve both orders.
 
 10
-00:00:33,091 --> 00:00:37,315
-But the side and one Main B option want cooker C2 at the same time.
+00:00:33,944 --> 00:00:39,832
+Here's the conflict: that side batch and one Main B option need cooker
+C2 at the same time.
 
 11
-00:00:37,465 --> 00:00:43,140
-The checked QAOA plan pairs that side with a different Main B program
-on C1.
+00:00:39,982 --> 00:00:43,545
+QAOA selects a different Main B schedule on C1.
 
 12
-00:00:43,290 --> 00:00:45,039
-Both orders depart complete.
+00:00:43,695 --> 00:00:47,151
+Both orders get a main and a side, packed before departure.
 
 13
-00:00:50,220 --> 00:00:51,820
-Remove only the side batch.
+00:00:47,301 --> 00:00:49,583
+Sharing the side batch saves making it twice.
 
 14
-00:00:51,970 --> 00:00:56,130
-Neither order receives a complete meal; twenty main portions are
-wasted.
+00:00:50,220 --> 00:00:51,585
+Remove just the side batch.
 
 15
-00:00:56,280 --> 00:01:00,781
-This checked manual intervention shows why the objective couples main
-and side.
+00:00:51,735 --> 00:00:53,527
+Neither order gets a complete meal.
 
 16
-00:01:02,220 --> 00:01:07,733
-A bit selects a locally valid batch: its quantity, allocations,
-resources and times.
+00:00:53,677 --> 00:00:55,469
+Twenty main portions go to waste.
 
 17
-00:01:07,882 --> 00:01:12,788
-Programs with the same anchor share demand, so a block chooses one
-program or idle.
+00:00:55,619 --> 00:00:58,265
+That's why we optimize meals, rather than dishes.
 
 18
-00:01:12,937 --> 00:01:15,074
-Cross-block penalties exclude clashes.
+00:01:00,220 --> 00:01:05,959
+Each bit selects a batch program: how much to make, which orders it
+serves, who does the work, and when.
 
 19
-00:01:15,223 --> 00:01:20,878
-In the code, product expands coverage products; coefficient span plus
-one sets the penalty.
+00:01:06,109 --> 00:01:11,549
+Programs competing for the same demand sit in one block; we choose
+one, or leave it idle.
 
 20
-00:01:21,027 --> 00:01:24,450
-This cell uses thirty-two programs and three idle bits.
+00:01:11,699 --> 00:01:13,960
+Penalties rule out clashes between blocks.
 
 21
-00:01:24,599 --> 00:01:27,734
-Restricted portfolios can exclude better schedules.
+00:01:14,110 --> 00:01:16,286
+The code builds those pair terms directly.
 
 22
-00:01:28,220 --> 00:01:34,919
-Main coverage times side coverage gives complete service; their sum
-minus twice the product counts unpaired food.
+00:01:16,436 --> 00:01:19,956
+This small case has thirty-two programs and three idle bits.
 
 23
-00:01:35,069 --> 00:01:39,399
-Both coverages are linear in batch bits, so the objective stays
-quadratic.
+00:01:20,106 --> 00:01:23,135
+A restricted set of programs can miss better schedules.
 
 24
-00:01:39,549 --> 00:01:42,856
-Each priority weight dominates all lower costs combined.
+00:01:26,220 --> 00:01:30,359
+Multiply main coverage by side coverage to count complete meals.
 
 25
-00:01:43,006 --> 00:01:47,806
-For hard constraints, P equals the full objective coefficient span
-plus one.
+00:01:30,509 --> 00:01:33,559
+Their sum minus twice that product counts unpaired food.
 
 26
-00:01:47,956 --> 00:01:51,391
-A violation therefore cannot beat any feasible schedule.
+00:01:33,709 --> 00:01:37,635
+Coverage is linear in our bits, so both expressions stay quadratic.
 
 27
-00:01:51,541 --> 00:01:55,466
-This guarantees feasible ground states, not heuristic convergence.
+00:01:37,785 --> 00:01:41,689
+Our weights make each priority outweigh all lower costs combined.
 
 28
-00:01:56,220 --> 00:01:58,130
-A repaired cooker still needs cleaning.
+00:01:41,839 --> 00:01:48,751
+For constraints, we bound how much the objective can vary across all
+bitstrings, then set the penalty one higher.
 
 29
-00:01:58,277 --> 00:02:05,298
-Here the qualified worker first finishes committed work, then cleans
-the repaired cooker from eleven forty to eleven fifty.
+00:01:48,901 --> 00:01:50,714
+That proves feasible ground states.
 
 30
-00:02:05,445 --> 00:02:07,476
-Both worker and cooker are reserved.
+00:01:50,864 --> 00:01:52,933
+It doesn't guarantee a solver finds them.
 
 31
-00:02:07,623 --> 00:02:13,761
-The independent checker reconstructs these intervals, freshness and
-meal handovers from raw schedule records.
+00:01:54,220 --> 00:01:56,780
+We map the QUBO to an Ising Hamiltonian.
 
 32
-00:02:14,220 --> 00:02:20,151
-Return to the original batch choices and run the trained depth-three
-QAOA circuit locally.
+00:01:56,930 --> 00:01:58,999
+The mixer preserves block occupation.
 
 33
-00:02:20,301 --> 00:02:24,354
-Cost and conflict phases alternate with blockwise XY mixing.
+00:01:59,149 --> 00:02:04,675
+Fixing the rest of the schedule turns global interactions into local
+fields for VeloxQ.
 
 34
-00:02:24,504 --> 00:02:29,709
-The mixer preserves one choice per block; the independent checker
-rejects physical clashes.
+00:02:06,220 --> 00:02:09,178
+An outage also changes what happens after repair.
 
 35
-00:02:29,859 --> 00:02:33,614
-We draw four thousand ninety-six fresh samples with saved angles.
+00:02:09,326 --> 00:02:10,713
+The cooker still needs cleaning.
 
 36
-00:02:33,764 --> 00:02:38,436
-The receipt reports the best checked outcome, separately from the
-retained kitchen replay.
+00:02:10,861 --> 00:02:16,488
+Here, the worker must finish committed work first, then clean from
+eleven forty to eleven fifty.
 
 37
-00:02:39,220 --> 00:02:44,196
-We selected the QAOA configuration on the cell and S0/S1.
+00:02:16,636 --> 00:02:18,269
+Both resources stay reserved.
 
 38
-00:02:44,340 --> 00:02:50,322
-On held-out S2/S3, it finds the offered-pool optimum in all ten seeds
-at both budgets.
+00:02:18,417 --> 00:02:23,724
+Our checker rebuilds those intervals from the schedule, along with
+freshness and delivery checks.
 
 39
-00:02:50,465 --> 00:02:53,390
-Random-angle search also hits all ten on S2.
+00:02:24,220 --> 00:02:27,804
+Let's run the saved depth-three QAOA circuit locally.
 
 40
-00:02:53,534 --> 00:03:01,767
-At two hundred fifty-six evaluations, median optimum probability per
-shot is about eleven and twenty-two times random-angle search.
+00:02:27,954 --> 00:02:31,346
+Cost and conflict phases alternate with an XY mixer.
 
 41
-00:03:01,911 --> 00:03:03,776
-Angles are optimized per instance.
+00:02:31,496 --> 00:02:36,189
+The mixer keeps one choice per block, but clashes between blocks still
+need checking.
 
 42
-00:03:03,919 --> 00:03:07,801
-These restricted portfolios still exclude better full-grid schedules.
+00:02:36,339 --> 00:02:40,606
+We draw four thousand ninety-six fresh samples, using the saved
+angles.
 
 43
-00:03:08,220 --> 00:03:13,871
-VQE uses Givens gates within blocks and controlled rotations between
-coupled blocks.
+00:02:40,756 --> 00:02:42,825
+The result on the right comes from this run.
 
 44
-00:03:14,019 --> 00:03:21,537
-With exact CVaR and adjoint gradients, median optimum probability is
-about twelve percent in both held-out cases.
+00:02:42,975 --> 00:02:46,623
+The kitchen animation is a separate replay of a saved result.
 
 45
-00:03:21,685 --> 00:03:24,401
-Budgets and shots differ from QAOA.
+00:02:49,220 --> 00:02:50,287
+Does training help?
 
 46
-00:03:24,549 --> 00:03:27,748
-The primary setup hits ten of ten and nine of ten seeds.
+00:02:50,437 --> 00:02:56,751
+We chose the settings on the small cell and S0/S1, then tested S2/S3.
 
 47
-00:03:28,220 --> 00:03:30,780
-VeloxQ now drives the replanning loop.
+00:02:56,901 --> 00:03:00,208
+Training finds the best available plan in all ten seeds.
 
 48
-00:03:30,930 --> 00:03:37,735
-Start with its own full plan, free two blocks, solve the conditional
-QUBO, and accept only a checked improvement.
+00:03:00,358 --> 00:03:02,961
+Random-angle search also hits ten on S2.
 
 49
-00:03:37,885 --> 00:03:43,837
-Across three widths, missed meal lots fall from nine to seven, eleven
-to six, and thirteen to seven.
+00:03:03,111 --> 00:03:10,919
+At two hundred fifty-six evaluations, training gives roughly eleven
+and twenty-two times the optimum probability per shot.
 
 50
-00:03:43,987 --> 00:03:46,334
-These runs used seventy-one submissions.
+00:03:11,069 --> 00:03:13,949
+We optimize the angles separately for each instance.
 
 51
-00:03:46,484 --> 00:03:52,436
-Exact neighborhood controls match or improve final quality, and longer
-classical runs remain better.
+00:03:14,099 --> 00:03:17,405
+And these limited program sets miss better full-grid plans.
 
 52
-00:03:52,586 --> 00:03:55,210
-This demonstrates integration, not a speedup.
+00:03:18,220 --> 00:03:21,684
+VQE uses Givens and controlled Givens rotations.
 
 53
-00:03:56,220 --> 00:03:57,858
-The cell is deliberately small.
+00:03:21,832 --> 00:03:27,776
+Its median probability of the offered-pool optimum is about twelve
+percent in each disruption case.
 
 54
-00:03:58,001 --> 00:04:01,362
-Larger inputs generate eighteen thousand batch programs.
+00:03:27,923 --> 00:03:34,905
+Using CVaR and adjoint gradients, it samples that optimum in ten seeds
+out of ten, and nine out of ten.
 
 55
-00:04:01,505 --> 00:04:04,743
-Equipment, workers and paired demand couple their choices.
+00:03:35,053 --> 00:03:37,767
+Its budgets and shots differ from QAOA.
 
 56
-00:04:04,886 --> 00:04:07,789
-We measure restriction loss and search quality separately.
+00:03:38,220 --> 00:03:41,889
+For larger plans, VeloxQ sits inside a replanning loop.
 
 57
-00:04:08,220 --> 00:04:09,543
-What should the kitchen buy?
+00:03:42,039 --> 00:03:43,469
+It starts from its own plan.
 
 58
-00:04:09,693 --> 00:04:14,023
-In the larger case, a third cooker leaves best-found service at ninety
-meals.
+00:03:43,619 --> 00:03:51,256
+We free two blocks, solve their conditional QUBO, and keep a change
+only if it passes the checker and improves the objective.
 
 59
-00:04:14,173 --> 00:04:19,997
-A prep or packing helper raises it to one hundred ten: the existing
-worker handles both jobs.
+00:03:51,406 --> 00:03:57,443
+Across three sizes, missed meal lots drop from nine to seven, eleven
+to six, and thirteen to seven.
 
 60
-00:04:20,147 --> 00:04:25,054
-We changed one resource at a time, using equal classical budgets and
-two seeds.
+00:03:57,593 --> 00:03:59,364
+That took seventy-one submissions.
 
 61
-00:04:25,204 --> 00:04:27,892
-These are checked plans, not certified optima.
+00:03:59,514 --> 00:04:04,805
+Exact neighborhood controls do as well or better, and longer classical
+runs still win.
 
 62
-00:04:28,042 --> 00:04:30,837
-Prices are still needed for an investment decision.
+00:04:06,220 --> 00:04:07,872
+The small cell tests correctness.
 
 63
-00:04:36,220 --> 00:04:43,433
-Our log records three decisions: correct repair cleaning, optimize
-complete-meal service, and prove idle elimination.
+00:04:08,018 --> 00:04:13,578
+Larger inputs generate eighteen thousand batch programs with shared
+resources and demand.
 
 64
-00:04:43,583 --> 00:04:45,998
-The checked cell serves twenty meals without waste.
+00:04:13,724 --> 00:04:17,766
+We measure the cost of restricting choices separately from solver
+quality.
 
 65
-00:04:46,147 --> 00:04:47,729
-Benchmarks and code are linked.
+00:04:18,220 --> 00:04:19,543
+What capacity should we add?
+
+66
+00:04:19,693 --> 00:04:22,594
+Our best current-capacity plan serves ninety meals.
+
+67
+00:04:22,744 --> 00:04:26,008
+A third cooker still serves ninety, but removes the waste.
+
+68
+00:04:26,158 --> 00:04:28,782
+A prep or packing helper reaches one hundred ten.
+
+69
+00:04:28,932 --> 00:04:31,279
+The same worker currently does both jobs.
+
+70
+00:04:31,429 --> 00:04:34,863
+Each variant gets the same classical budget and two seeds.
+
+71
+00:04:35,013 --> 00:04:37,509
+These are feasible plans, not proven optima.
+
+72
+00:04:37,659 --> 00:04:40,305
+We'd need prices before recommending a purchase.
+
+73
+00:04:42,220 --> 00:04:46,803
+Our log records why we changed cleaning, meal coverage and idle
+encoding.
+
+74
+00:04:46,952 --> 00:04:49,113
+Twenty meals, no waste in the small case.
+
+75
+00:04:49,262 --> 00:04:51,732
+The demo links to code, proofs and benchmarks.

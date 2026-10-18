@@ -1,3 +1,4 @@
+import equations from '/assets/math/equations.js';
 import {CASES,PHASES,RESOURCES,clock,activeOperations,allOperations,workerOperation,offline,deliveredMeals,packedMeals,requestedMeals,mealOrders,selectedPrograms,bitDescription,activateRun,discardedComponents} from './model.js';
 import {kitchenSVG,prepareScene,renderWorker,renderKitchen} from './scene.js';
 import {buildWorkerTrack,workerPoseAt} from './worker-motion.js';
@@ -263,3 +264,5 @@ async function loadReplay(){
 }
 $('#retry-load').onclick=loadReplay;
 await loadReplay();
+
+for(const element of document.querySelectorAll('[data-tex]'))element.innerHTML=equations[element.dataset.tex];

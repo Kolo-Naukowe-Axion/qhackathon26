@@ -422,3 +422,15 @@ Evidence: [project design](../PROJECT_DESIGN.md),
 ### Did a quantum solver find the 90-to-110-meal staffing result?
 
 No. Those are the raw-input classical reference’s best found plans under equal budgets: 240 seconds, two solver workers, two seeds, independently checked. They are not certified optima. The study changes one resource of the same physical kitchen at a time; it demonstrates decision support, while the QAOA, VQE and VeloxQ measurements remain separate. A third cooker reduces waste in these runs but does not improve served meals. Prices are still needed before recommending an investment.
+
+## Reading the technical equation sheets
+
+- **QUBO → Ising:** replacing each bit by `(I−Z)/2` preserves every basis-state energy. The field and coupling coefficients follow by expansion; the constant offset is retained.
+- **Why the commutator matters:** the XY mixer commutes with each block's occupation count. Starting with one excitation keeps exactly one selected choice per block. It does not prevent conflicts between blocks; only 59 of the cell's 1,045 sector states are physically feasible.
+- **VQE gate convention:** the displayed Givens parameter uses a half-angle, matching the implementation's `cos(t/2)` and `sin(t/2)`. Controlled Givens rotations couple blocks without changing their occupation counts.
+- **Idle elimination:** no selected program represents an idle block implicitly. Feasible schedules and their objective values are preserved; invalid-state energies and penalties can change.
+- **Conditional QUBO:** fixing outside variables turns boundary pair terms into linear coefficients for the free variables. The displayed identity refers to the no-idle sampling matrix. VeloxQ's candidate is accepted only after the full plan passes the checker and strictly improves the objective.
+
+The video shows the operator/circuit sheet at 1:54–2:00 and the structural
+reductions at 2:00–2:06. Pause either sheet during technical questions; these
+frames are excluded from the timed live route.

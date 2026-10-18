@@ -6,7 +6,7 @@ sentence that does not help explain a decision or substantiate a result.
 
 ## Scripts and runnable demo
 
-- [Video narration](CATERING_VOICEOVER.md): timed 4:48 route.
+- [Video narration](CATERING_VOICEOVER.md): timed 4:52 route.
 - [Live speaker/operator script](CATERING_LIVE.md): 2:45 route within a 3-minute slot.
 - [Q&A sheet](CATERING_QA.md): eight likely questions first, technical detail below.
 - [Recording sheet](CATERING_RECORDING.md): shot list, edit cues and stills-only dry run.
@@ -20,7 +20,7 @@ Earlier competing timings and scripts are [archived](archive/2026-10-17/CATERING
 The opening chapter now includes the actual Stage 1 A/B schedules from 0:04
 to 0:09 in both routes. Their makespans (4 h / 8 h) are independently checked
 against the official instances and exact reference; the compact-QAOA classical
-cost-tabulation scope remains visible. Timed routes remain 4:48 / 2:45.
+cost-tabulation scope remains visible. Timed routes remain 4:52 / 2:45.
 
 ## What the jury should understand
 
@@ -113,7 +113,7 @@ blocks sampling. Earlier v3 browser checks: ignored
 `output/playwright/catering-showcase-v3/`. The silent v2 recording in
 `output/playwright/catering-showcase-v2/recording/` predates the new results,
 problem overview and scaling chapters; it is a rough-cut fallback, not the
-current submission video. Current routes remain 4:48 video and 2:45 live.
+current submission video. Current routes remain 4:52 video and 2:45 live.
 
 ## 18 October screen and interaction review
 
@@ -147,3 +147,5 @@ Live rehearsal, final 1920×1080 recording and narration remain required.
 ## Added capacity decision — video 4:08–4:36
 
 The final video compares current kitchen, third cooker, prep helper and packing helper on the same larger S3 physical model. Best found plans serve 90, 90, 110 and 110 meals; discarded portions are 10, 0, 10 and 10. Each raw-input CP run has 240 seconds, two solver workers and seeds 2026/2027; both seeds agree on tuples, none proved optimality. W1 shares preparation and packing. This is classical decision support, with wages and capital prices still absent; do not call it a quantum-found investment optimum. The new chapter is video-only; the live route remains 2:45.
+
+The video includes a technical equation sheet at **1:54–2:06**: exact QUBO/Ising coefficients, XY-QAOA, controlled Givens VQE and CVaR. It switches at 2:00 to conserved occupation, idle elimination and the exact conditional QUBO. Both sheets use local TeX typesetting and are excluded from the timed live route. For technical Q&A, open the studio video route at `?t=120` and pause there. [Operator sheet](assets/quantum-formulation.jpg) · [Structural reductions](assets/quantum-structure.jpg) · [derivation](CATERING_PROBLEM.md#9-ising-and-quantum-optimization).

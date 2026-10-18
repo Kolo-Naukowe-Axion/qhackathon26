@@ -358,6 +358,35 @@ $\alpha=0.1$, CVaR averages the lowest-energy ten percent of the distribution,
 including a fractional boundary probability when necessary. Final samples are
 decoded and checked independently.
 
+The technical presentation uses the same operators. With $C$ the unpenalized
+objective and $K$ the cross-block conflict count, its multi-angle QAOA layer is
+
+$$
+|\psi_Q(\theta)\rangle=
+\prod_{\ell=1}^{p}U_{XY}(\beta_\ell)
+ e^{-i\gamma_\ell\widehat C/\lambda_U}
+ e^{-i\eta_\ell\widehat K}|\psi_{0,Q}\rangle.
+$$
+
+The implementation applies ordered XY gates around each block's ring, using
+one shared mixer angle per layer; it does not exponentiate the whole ring sum
+as a single gate. Objective and conflict phases have independent angles.
+
+VQE instead composes in-block Givens rotations and controlled Givens rotations
+between coupled blocks. For two choices $u,v$ within one block,
+
+$$
+G_{uv}(t)=\exp[\tfrac t2(|v\rangle\langle u|-|u\rangle\langle v|)],\qquad
+CG=\Pi_{\mathrm{control}}\otimes G+(I-\Pi_{\mathrm{control}})\otimes I.
+$$
+
+Both preserve one excitation per block, so the block-choice penalty vanishes
+on their invariant sector; cross-block conflicts remain. Their optimization
+target is $\min_\theta\operatorname{CVaR}_\alpha[E(X_\theta)]$, where
+$\Pr(X_\theta=x)=|\langle x|\psi(\theta)\rangle|^2$. This states the target,
+not a guarantee that optimization reaches its global minimum.
+The [technical slide](assets/quantum-formulation.jpg) summarizes these equations.
+
 The complete cell's block sizes are $5,11,19$, so the invariant sector contains
 $5\cdot11\cdot19=1{,}045$ states, of which 59 are physically feasible. We simulate
 this sector, not all $2^{35}$ basis states. It is a classically easy correctness
