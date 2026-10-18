@@ -307,3 +307,16 @@ The release check passed all 13 stages on a fresh clone of `726f8061`, which
 includes the investment study; the
 [review receipt](output/catering-submission-review-v1/verification.json) now
 records that commit.
+
+A follow-up split the flexible worker into single and paired skills (same CP
+budget, two seeds, identical results). Every hire that can prepare or pack
+reaches U=3; only the cook-only hire stays at 5. The recommendation is
+therefore the cheapest one: a packing (or prep) helper, which also doubles the
+program register instead of multiplying it by 8.3.
+
+We also made the Stage 1 comparable number explicit: 30 variables, the
+domain-wall time-indexed QUBO for B, whose energies match the direct conflict
+count on all 512,000 start assignments at H=8 (versus 72 plain and 39 pruned).
+The three-bit order encoding stays our selected run but is a smaller,
+different state space with classical tabulation, so it is not the comparable
+number.

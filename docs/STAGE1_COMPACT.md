@@ -25,6 +25,8 @@ simulator QAOA for both, meeting §4.1 and the preferred method category in §4.
 It minimizes makespan directly, without supplying H=4 or H=8 to the formulation.
 
 B uses three logical bits instead of 72 naive, 39 pruned or 30 domain-wall bits.
+The comparable number we report for B is **30** (domain-wall, time-indexed,
+energy-audited at H=8); the three order bits are a smaller, different state space.
 This is a 92.3% reduction relative to the 39-bit model, **with a different state
 space**: all common job orders, rather than every allowed timed schedule.
 The earlier code, runs and formulation audit remain available as comparisons.

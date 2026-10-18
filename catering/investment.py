@@ -43,6 +43,12 @@ VARIANTS = [
     ('second-pack', 'Add packing station K2', add_resource('pack', 'K2'), 'S3'),
     ('second-cook-worker', 'Hire worker W4 who can cook', add_worker('W4', ['cook']), 'S3'),
     ('flexible-worker', 'Hire worker W4 for prepare, cook and pack', add_worker('W4', ['prepare', 'cook', 'pack']), 'S3'),
+    # Which skill of the flexible worker matters?
+    ('worker-prepare', 'Hire worker W4 who can only prepare', add_worker('W4', ['prepare']), 'S3'),
+    ('worker-pack', 'Hire worker W4 who can only pack', add_worker('W4', ['pack']), 'S3'),
+    ('worker-prepare-pack', 'Hire worker W4 for prepare and pack', add_worker('W4', ['prepare', 'pack']), 'S3'),
+    ('worker-prepare-cook', 'Hire worker W4 for prepare and cook', add_worker('W4', ['prepare', 'cook']), 'S3'),
+    ('worker-cook-pack', 'Hire worker W4 for cook and pack', add_worker('W4', ['cook', 'pack']), 'S3'),
 ]
 
 
@@ -78,14 +84,19 @@ def main():
     p.add_argument('--workers', type=int, default=4)
     p.add_argument('--seed', type=int, default=2026)
     p.add_argument('--parallel', type=int, default=3)
+    p.add_argument('--only', help='Comma-separated variant names to run (default: all)')
     a = p.parse_args()
     if a.output.exists():
         p.error('Fresh output directory required')
     a.output.mkdir(parents=True)
     save(a.output/'experiment-plan.json', dict(kind=__doc__.splitlines()[0], customers=a.customers, seconds=a.seconds,
-         workers=a.workers, seed=a.seed, variants=[dict(name=v[0], description=v[1], scenario=v[3]) for v in VARIANTS],
+         workers=a.workers, seed=a.seed, variants=[dict(name=v[0], description=v[1], scenario=v[3]) for v in VARIANTS if not a.only or v[0] in a.only.split(',')],
          quantum_training=0, veloxq_calls=0, physical_qpu_calls=0))
-    jobs = [(v[0], a.customers, a.seconds, a.workers, a.seed) for v in VARIANTS]
+    names = a.only.split(',') if a.only else [v[0] for v in VARIANTS]
+    unknown = set(names)-{v[0] for v in VARIANTS}
+    if unknown:
+        p.error(f'Unknown variants: {sorted(unknown)}')
+    jobs = [(n, a.customers, a.seconds, a.workers, a.seed) for n in names]
     rows = []
     with ProcessPoolExecutor(a.parallel) as pool:
         for row, result in pool.map(run_variant, jobs):

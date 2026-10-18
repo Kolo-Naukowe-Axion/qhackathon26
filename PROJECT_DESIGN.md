@@ -271,11 +271,23 @@ validated bound and bundle identity. For the cell, P=11141287.
 
 ## 5.1. The price of realism
 
-The smallest submitted baseline-B formulation uses **3 binary order variables**.
-The official comparison is **72** time-indexed variables at H=8; chain-window
-pruning gives **39**. Our three bits represent the six common job permutations,
-with an earliest-start decoder and factorial classical cost tabulation. They do
-not preserve every timed schedule. The optimum on official B is still 8h.
+**Comparable number for baseline B: 30 variables.** The official comparison is
+**72** time-indexed variables at H=8; chain-window pruning gives **39**; a
+domain-wall encoding of the same pruned windows gives **30** (d−1 monotone bits
+per operation, with a wall penalty above the largest incident conflict weight,
+so a broken wall cannot reach zero energy). The
+[formulation audit](output/stage1/formulation-audit.json) checks all 512,000
+one-start-per-operation assignments at H=8: both the 39- and 30-variable energies
+equal the direct interval-conflict count, and 13 assignments are feasible. A
+[local SA benchmark](output/stage1/local-benchmark-corrected-domain-wall.json)
+returns makespan 8 in 10/10 seeds on the 30-variable model and no feasible state
+at H=7. This is our smallest correct time-indexed QUBO for B.
+
+The selected Stage 1 run uses **3 binary order variables** instead: they encode
+the six common job permutations with an earliest-start decoder and a classically
+tabulated makespan per order. That is a different, smaller state space (not
+every timed schedule) with factorial classical preprocessing, so we do not use
+3 as the comparable number. The optimum on official B is 8h in every model.
 See [the baseline derivation](docs/STAGE1_COMPACT.md).
 
 For the extension, distinguish a new decision from a new restriction on existing

@@ -23,7 +23,7 @@ current evidence, not the result of experiments still running elsewhere.
 | Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
 | Did QAOA outperform the controls? | The trained setup increases median per-shot optimum probability about 11x/22x over random-angle search on S2/S3 at 256 evaluations. Both are restricted portfolios; this is no classical or hardware advantage. |
 | Why 35 qubits on a laptop? | The complete cell stays in a 1045-state one-hot sector. Larger frozen portfolios reach 279936 states; the dynamic replay uses its own pool. No dense 35-qubit statevector is used. |
-| Should the kitchen buy another cooker? | No: in the 12-customer what-if a third cooker serves no extra meals; one flexible worker (prepare, cook, pack) serves 20 more. Classical CP, best found plans, two seeds agree. |
+| Should the kitchen buy another cooker? | No: in the 12-customer what-if a third cooker serves no extra meals; any extra worker who takes over prep or packing from W1 serves 20 more (a cook-only worker does not). Classical CP, best found plans, two seeds agree. |
 | Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits makes every returned sample valid at all three tested scales, but most are empty plans: only 143/102/62 of 512 select any batch. CP and SA still find better plans. As the engine of a checked large-neighbourhood loop over 40-bit pair sub-QUBOs, VeloxQ took its own plans to 6/7 missed meal lots at 998/2,022 bits, one lot better than 30-second CP; exact enumeration of the same pairs reaches the same U and 240-second CP is better. |
 
 ## Three questions to defend precisely
@@ -211,7 +211,9 @@ couplers. See the [count derivation](../PROJECT_DESIGN.md#51-the-price-of-realis
 “They encode the six common job permutations, with earliest-start decoding.
 We tabulate their costs classically. That preserves B's eight-hour optimum,
 but it does not encode every feasible timed schedule or avoid factorial
-preprocessing. The official time-indexed comparison is 72 bits, or 39 pruned.”
+preprocessing. Our comparable number is 30: a domain-wall time-indexed QUBO,
+energy-checked on all 512,000 start assignments at H=8, versus 72 plain or
+39 pruned.”
 
 **Does anchor grouping discard feasible plans?**
 

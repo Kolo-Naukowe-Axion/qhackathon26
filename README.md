@@ -27,7 +27,7 @@ Main and side coverage interact quadratically, without extra product qubits.
 - **Validation:** independent physical checks, exact small references and CP/SA
   controls. The complete cell serves 20 meals with zero waste; controls also match it.
 - **Decision support:** a what-if on the 12-customer lunch shows a third cooker
-  serves no extra meals, while one flexible worker serves 20 more.
+  serves no extra meals, while one helper who takes over prep or packing serves 20 more.
   [Investment study](docs/CATERING_INVESTMENT.md).
 
 The animated dynamic-portfolio pilot and the fixed-pool campaign are labeled
@@ -52,7 +52,7 @@ verification command, see [Run & reproduce](catering/README.md).
 |---|---|
 | [Formal problem statement](docs/CATERING_PROBLEM.md) | Inputs, constraints, objective, QUBO and equivalent formulations |
 | [Project design](PROJECT_DESIGN.md) | Problem, QUBO derivation, proofs and variable costs |
-| [Stage 1: run & verify](docs/STAGE1_COMPACT.md) · [A](schedule_2x2.json) · [B](schedule_3x3.json) | Required baseline schedules: **4 h / 8 h** |
+| [Stage 1: run & verify](docs/STAGE1_COMPACT.md) · [A](schedule_2x2.json) · [B](schedule_3x3.json) | Required baseline schedules: **4 h / 8 h**; smallest correct time-indexed QUBO for B: **30** variables (72 plain, 39 pruned) |
 | [Development log](DEVELOPMENT_LOG.md) | Decisions, experiments and corrections |
 | [Verification receipt](output/catering-submission-review-v1/verification.json) | Checked source commit, technical checks and remaining submission steps |
 | [Documentation index](docs/README.md) | Method reports, presentation scripts and live-demo runbook |
