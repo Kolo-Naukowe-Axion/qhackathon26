@@ -1,0 +1,1774 @@
+{
+ "schema": "catering-investment.v1",
+ "question": "What single change to the kitchen serves the most complete meals?",
+ "case": {
+  "scenario": "S3",
+  "summary": "12-customer lunch; cooker C2 is out from 20 to 60 minutes and an urgent order arrives.",
+  "customers": 12,
+  "meals": 14,
+  "meal_ids": [
+   "committed",
+   "customer-0",
+   "customer-1",
+   "customer-2",
+   "customer-3",
+   "customer-4",
+   "customer-5",
+   "customer-6",
+   "customer-7",
+   "customer-8",
+   "customer-9",
+   "customer-10",
+   "customer-11",
+   "urgent"
+  ],
+  "lot_size": 10,
+  "total_meals": 140,
+  "horizon_minutes": 320,
+  "time_origin": "10:30",
+  "grid_minutes": 10,
+  "workers": {
+   "W1": [
+    "prepare",
+    "pack"
+   ],
+   "W2": [
+    "clean"
+   ],
+   "W3": [
+    "cook"
+   ]
+  },
+  "equipment": {
+   "prepare": [
+    "P1"
+   ],
+   "cook": [
+    "C1",
+    "C2"
+   ],
+   "pack": [
+    "K1"
+   ]
+  },
+  "available_minutes": {
+   "P1": 320,
+   "C1": 320,
+   "C2": 320,
+   "K1": 320,
+   "W1": 320,
+   "W2": 320,
+   "W3": 320
+  },
+  "outages": [
+   {
+    "resource": "C2",
+    "start": 20,
+    "end": 60
+   }
+  ],
+  "urgent": [
+   {
+    "id": "urgent/main",
+    "menu": "B",
+    "lots": 1,
+    "departure": 320,
+    "revealed": 20,
+    "priority": 1
+   },
+   {
+    "id": "urgent/side",
+    "menu": "C",
+    "lots": 1,
+    "departure": 320,
+    "revealed": 20,
+    "priority": 1
+   }
+  ]
+ },
+ "method": {
+  "solver": "Raw-input CP reference (native slots, not the QUBO), same physical checker as all methods",
+  "seconds": 240,
+  "cp_workers": 2,
+  "seeds": [
+   2026,
+   2027
+  ],
+  "optimality_proved": false,
+  "quantum_training": 0,
+  "veloxq_calls": 0,
+  "physical_qpu_calls": 0,
+  "tuple_order": "(U,W,B,R): missed complete meal lots, discarded component lots, new batches, plan changes; lower is better, compared left to right",
+  "reproduce": ".venv/bin/python -m catering.investment --output NEW_DIR --seconds 240 --workers 2 --seed 2026"
+ },
+ "variants": [
+  {
+   "id": "baseline",
+   "description": "Current kitchen: C2 outage plus urgent order (S3)",
+   "scenario": "S3",
+   "kind": "none",
+   "label": "Current kitchen",
+   "short": "Today",
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    5,
+    1,
+    10,
+    10
+   ],
+   "seeds_agree": true,
+   "programs": 18182,
+   "objective": 220594,
+   "bound": 88156.0,
+   "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-1",
+    "customer-9",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 190,
+     "prepare": 110,
+     "total": 300
+    },
+    "W2": {
+     "clean": 110,
+     "recovery_clean": 10,
+     "total": 120
+    },
+    "W3": {
+     "cook": 110,
+     "total": 110
+    }
+   },
+   "resource_minutes": {
+    "C1": 200,
+    "C2": 160,
+    "K1": 190,
+    "P1": 110
+   },
+   "batches": 11,
+   "discarded_lots": 1,
+   "meals_served": 90,
+   "extra_meals_vs_today": 0,
+   "waste_portions": 10,
+   "register_multiplier": 1.0
+  },
+  {
+   "id": "repair-c2",
+   "description": "C2 repaired, no outage (S1)",
+   "scenario": "S1",
+   "kind": "equipment",
+   "label": "Repair cooker C2 (no outage)",
+   "short": "Repair C2",
+   "resource": "C2",
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    5,
+    0,
+    10,
+    10
+   ],
+   "seeds_agree": true,
+   "programs": 18416,
+   "objective": 219810,
+   "bound": 392.0,
+   "instance_sha256": "ce71b266577a016780f6b7a12c60a7a806acac030f4f00cfdbf4b4672a21c035",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      5,
+      0,
+      10,
+      10
+     ],
+     "objective": 219810,
+     "bound": 392.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      5,
+      0,
+      10,
+      10
+     ],
+     "objective": 219810,
+     "bound": 392.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "committed",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "customer-0",
+    "customer-1",
+    "customer-2",
+    "customer-9",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "committed",
+     "time": 80
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 180,
+     "prepare": 110,
+     "total": 290
+    },
+    "W2": {
+     "clean": 110,
+     "total": 110
+    },
+    "W3": {
+     "cook": 110,
+     "total": 110
+    }
+   },
+   "resource_minutes": {
+    "C1": 180,
+    "C2": 150,
+    "K1": 180,
+    "P1": 110
+   },
+   "batches": 11,
+   "discarded_lots": 0,
+   "meals_served": 90,
+   "extra_meals_vs_today": 0,
+   "waste_portions": 0,
+   "register_multiplier": 1.01
+  },
+  {
+   "id": "third-cooker",
+   "description": "Add cooker C3",
+   "scenario": "S3",
+   "kind": "equipment",
+   "label": "Third cooker C3",
+   "short": "+ Cooker C3",
+   "resource": "C3",
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    5,
+    0,
+    10,
+    10
+   ],
+   "seeds_agree": true,
+   "programs": 27418,
+   "objective": 219810,
+   "bound": 392.0,
+   "instance_sha256": "8468b32f15488fd577dd4c8dc206c7fd549e4caaaab3ff79d1556d03b4528a5e",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      5,
+      0,
+      10,
+      10
+     ],
+     "objective": 219810,
+     "bound": 392.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      5,
+      0,
+      10,
+      10
+     ],
+     "objective": 219810,
+     "bound": 406.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "committed",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "customer-0",
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "committed",
+     "time": 80
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 180,
+     "prepare": 110,
+     "total": 290
+    },
+    "W2": {
+     "clean": 110,
+     "recovery_clean": 10,
+     "total": 120
+    },
+    "W3": {
+     "cook": 110,
+     "total": 110
+    }
+   },
+   "resource_minutes": {
+    "C1": 180,
+    "C2": 70,
+    "C3": 110,
+    "K1": 180,
+    "P1": 110
+   },
+   "batches": 11,
+   "discarded_lots": 0,
+   "meals_served": 90,
+   "extra_meals_vs_today": 0,
+   "waste_portions": 0,
+   "register_multiplier": 1.51
+  },
+  {
+   "id": "second-prep",
+   "description": "Add prep station P2",
+   "scenario": "S3",
+   "kind": "equipment",
+   "label": "Second prep station P2",
+   "short": "+ Prep P2",
+   "resource": "P2",
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    5,
+    1,
+    10,
+    10
+   ],
+   "seeds_agree": true,
+   "programs": 36364,
+   "objective": 220594,
+   "bound": 88156.0,
+   "instance_sha256": "bce0926a8bce24755a6c2e118de5828f89dc4d7567a791d7372897b9518527d8",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-1",
+    "customer-2",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 190,
+     "prepare": 110,
+     "total": 300
+    },
+    "W2": {
+     "clean": 110,
+     "recovery_clean": 10,
+     "total": 120
+    },
+    "W3": {
+     "cook": 110,
+     "total": 110
+    }
+   },
+   "resource_minutes": {
+    "C1": 210,
+    "C2": 150,
+    "K1": 190,
+    "P1": 30,
+    "P2": 80
+   },
+   "batches": 11,
+   "discarded_lots": 1,
+   "meals_served": 90,
+   "extra_meals_vs_today": 0,
+   "waste_portions": 10,
+   "register_multiplier": 2.0
+  },
+  {
+   "id": "second-pack",
+   "description": "Add packing station K2",
+   "scenario": "S3",
+   "kind": "equipment",
+   "label": "Second packing line K2",
+   "short": "+ Packing K2",
+   "resource": "K2",
+   "status": "unsupported",
+   "reason": "This core profile requires exactly one packing line"
+  },
+  {
+   "id": "second-cook-worker",
+   "description": "Hire worker W4 who can cook",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker who can only cook",
+   "short": "+ Cook",
+   "skills": [
+    "cook"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    5,
+    1,
+    10,
+    10
+   ],
+   "seeds_agree": true,
+   "programs": 36364,
+   "objective": 220594,
+   "bound": 88156.0,
+   "instance_sha256": "743b1d326e0309a9291ddc179a7ab4215e53c501c15ff438b46edab2c7a5f01a",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      5,
+      1,
+      10,
+      10
+     ],
+     "objective": 220594,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-1",
+    "customer-2",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 190,
+     "prepare": 110,
+     "total": 300
+    },
+    "W2": {
+     "clean": 110,
+     "recovery_clean": 10,
+     "total": 120
+    },
+    "W3": {
+     "cook": 40,
+     "total": 40
+    },
+    "W4": {
+     "cook": 70,
+     "total": 70
+    }
+   },
+   "resource_minutes": {
+    "C1": 180,
+    "C2": 180,
+    "K1": 190,
+    "P1": 110
+   },
+   "batches": 11,
+   "discarded_lots": 1,
+   "meals_served": 90,
+   "extra_meals_vs_today": 0,
+   "waste_portions": 10,
+   "register_multiplier": 2.0
+  },
+  {
+   "id": "flexible-worker",
+   "description": "Hire worker W4 for prepare, cook and pack",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra flexible worker: prepare, cook, pack",
+   "short": "+ Flexible",
+   "skills": [
+    "prepare",
+    "cook",
+    "pack"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 150080,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "85c14ccfe6b584ccc352ca8e157152b25274c4f644a5d36abea7eae8735aab3d",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-10",
+    "customer-11"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "urgent"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-10",
+     "time": 300
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 140,
+     "prepare": 50,
+     "total": 190
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 100,
+     "total": 100
+    },
+    "W4": {
+     "cook": 30,
+     "pack": 90,
+     "prepare": 80,
+     "total": 200
+    }
+   },
+   "resource_minutes": {
+    "C1": 240,
+    "C2": 180,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 8.25
+  },
+  {
+   "id": "worker-prepare",
+   "description": "Hire worker W4 who can only prepare",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker: prepare only",
+   "short": "+ Prep helper",
+   "skills": [
+    "prepare"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 37520,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "b212807c4e717f3fc5f0ba88f4c6b50c0a33c7c2f41e566423f980b6b031d1e8",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 230,
+     "prepare": 10,
+     "total": 240
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 130,
+     "total": 130
+    },
+    "W4": {
+     "prepare": 120,
+     "total": 120
+    }
+   },
+   "resource_minutes": {
+    "C1": 240,
+    "C2": 180,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 2.06
+  },
+  {
+   "id": "worker-pack",
+   "description": "Hire worker W4 who can only pack",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker: pack only",
+   "short": "+ Packing helper",
+   "skills": [
+    "pack"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 36364,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "bf53d6fed6bb4550f3504cf807c912cddff24dc51c943967bdf34875eaf162c3",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 10,
+     "prepare": 130,
+     "total": 140
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 130,
+     "total": 130
+    },
+    "W4": {
+     "pack": 220,
+     "total": 220
+    }
+   },
+   "resource_minutes": {
+    "C1": 260,
+    "C2": 160,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 2.0
+  },
+  {
+   "id": "worker-prepare-pack",
+   "description": "Hire worker W4 for prepare and pack",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker: prepare and pack",
+   "short": "+ Prep/pack",
+   "skills": [
+    "prepare",
+    "pack"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 75040,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "a1f33def9a903519b1016c5600e8d8f54dfbfc149d1dd6ca8f0de750e28e5fb6",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 40,
+     "prepare": 30,
+     "total": 70
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 130,
+     "total": 130
+    },
+    "W4": {
+     "pack": 190,
+     "prepare": 100,
+     "total": 290
+    }
+   },
+   "resource_minutes": {
+    "C1": 210,
+    "C2": 210,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 4.13
+  },
+  {
+   "id": "worker-prepare-cook",
+   "description": "Hire worker W4 for prepare and cook",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker: prepare and cook",
+   "short": "+ Prep/cook",
+   "skills": [
+    "prepare",
+    "cook"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 75040,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "455085d9ebcaab5b0e59533188d3f1c33e5f73fcc8640e329c85476aa4e99fbf",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-10",
+    "customer-11"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "urgent"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-10",
+     "time": 300
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 230,
+     "prepare": 20,
+     "total": 250
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 50,
+     "total": 50
+    },
+    "W4": {
+     "cook": 80,
+     "prepare": 110,
+     "total": 190
+    }
+   },
+   "resource_minutes": {
+    "C1": 240,
+    "C2": 180,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 4.13
+  },
+  {
+   "id": "worker-cook-pack",
+   "description": "Hire worker W4 for cook and pack",
+   "scenario": "S3",
+   "kind": "worker",
+   "label": "Extra worker: cook and pack",
+   "short": "+ Cook/pack",
+   "skills": [
+    "cook",
+    "pack"
+   ],
+   "status": "checked",
+   "solver_status": "FEASIBLE",
+   "tuple": [
+    3,
+    1,
+    12,
+    12
+   ],
+   "seeds_agree": true,
+   "programs": 72728,
+   "objective": 132844,
+   "bound": 88156.0,
+   "instance_sha256": "6eb4880577a6f0426315e4414402dc7f4395f8073240447ecd24756ac01aa8d5",
+   "per_seed": [
+    {
+     "seed": 2026,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    },
+    {
+     "seed": 2027,
+     "tuple": [
+      3,
+      1,
+      12,
+      12
+     ],
+     "objective": 132844,
+     "bound": 88156.0,
+     "status": "FEASIBLE"
+    }
+   ],
+   "served_meals": [
+    "customer-1",
+    "customer-2",
+    "customer-3",
+    "customer-4",
+    "customer-5",
+    "customer-6",
+    "customer-7",
+    "customer-8",
+    "customer-9",
+    "customer-11",
+    "urgent"
+   ],
+   "missed_meals": [
+    "committed",
+    "customer-0",
+    "customer-10"
+   ],
+   "handovers": [
+    {
+     "meal": "customer-1",
+     "time": 120
+    },
+    {
+     "meal": "customer-2",
+     "time": 140
+    },
+    {
+     "meal": "customer-3",
+     "time": 160
+    },
+    {
+     "meal": "customer-4",
+     "time": 180
+    },
+    {
+     "meal": "customer-5",
+     "time": 200
+    },
+    {
+     "meal": "customer-6",
+     "time": 220
+    },
+    {
+     "meal": "customer-7",
+     "time": 240
+    },
+    {
+     "meal": "customer-8",
+     "time": 260
+    },
+    {
+     "meal": "customer-9",
+     "time": 280
+    },
+    {
+     "meal": "customer-11",
+     "time": 320
+    },
+    {
+     "meal": "urgent",
+     "time": 320
+    }
+   ],
+   "worker_minutes": {
+    "W1": {
+     "pack": 110,
+     "prepare": 130,
+     "total": 240
+    },
+    "W2": {
+     "clean": 130,
+     "recovery_clean": 10,
+     "total": 140
+    },
+    "W3": {
+     "cook": 60,
+     "total": 60
+    },
+    "W4": {
+     "cook": 70,
+     "pack": 120,
+     "total": 190
+    }
+   },
+   "resource_minutes": {
+    "C1": 240,
+    "C2": 180,
+    "K1": 230,
+    "P1": 130
+   },
+   "batches": 13,
+   "discarded_lots": 1,
+   "meals_served": 110,
+   "extra_meals_vs_today": 20,
+   "waste_portions": 10,
+   "register_multiplier": 4.0
+  }
+ ],
+ "decision": {
+  "best_missed_lots": 3,
+  "today_missed_lots": 5,
+  "extra_meals": 20,
+  "fewest_skills_sufficient": "worker-pack",
+  "equally_few_skills": [
+   "worker-prepare",
+   "worker-pack"
+  ],
+  "equipment_improved_service_in_runs": false,
+  "bottleneck": "W1 is the only worker who can prepare and the only one who can pack.",
+  "claims": [
+   "The best found third-cooker and repaired-C2 plans serve the same number of meals as today, while wasting one fewer component lot (ten portions).",
+   "Adding a worker qualified for prepare or pack produces plans serving two more lots, or 20 more meals per lunch service; a cook-only worker gives no observed service gain.",
+   "A single-task packing or prep helper attains the same U=3 as a fully flexible worker: a sufficient skill set, not the cheapest hire, because wages were not supplied.",
+   "The observed 20-meal gain breaks even when its contribution margin covers the extra shift cost.",
+   "No run proved optimality: this does not certify that equipment can never help or that 20 meals is the maximum gain."
+  ],
+  "price_of_realism": "A flexible worker multiplies the complete program register 8.3x (18,182 to 150,080); a single-task helper 2.0x (36,364)."
+ },
+ "notes": [
+  "Best plans found within 240 s, not certified optima; both seeds return the same tuples.",
+  "The core profile requires exactly one packing line, so a second line is reported as unsupported, not approximated.",
+  "This is a classical decision study on the same model; the quantum methods solve cut portfolios of this register."
+ ],
+ "doc": "docs/CATERING_INVESTMENT.md",
+ "code": "catering/investment.py",
+ "source_files": [
+  {
+   "path": "output/catering-investment-v1/seed-2026/experiment-plan.json",
+   "sha256": "5f03054c5e132bbac4e196775d26a0049774a82c44735fb0f895cb5bfba33ea5"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/report.json",
+   "sha256": "6ddf9cdb4255db0d16e8d381ffd4016c5045b304593df6c33513f2937d3b2af7"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/experiment-plan.json",
+   "sha256": "e22ac2afc24eec3e409695d0e9ad843b8e6edc329523d1e59867a4e62c1176ee"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/report.json",
+   "sha256": "cecbf02add3080b0e0f84d1b0dcc982aa05b457d0adfc8b9bbefccfa6cd6588c"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2027/experiment-plan.json",
+   "sha256": "0b1c4982dd97651152a62b933b734f2e644f4296cb240c599e91b0548a890b6c"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2027/report.json",
+   "sha256": "9d59089c3a6246c6c5a4a00ecc4e46a8b6dd034aee5bee32206aa398c77d15b8"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2027/experiment-plan.json",
+   "sha256": "dcafef3d7cc85951060ab0222d13282156e630754a5340fabff46a08b37def97"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2027/report.json",
+   "sha256": "fbfdd5168c5d41c77570aac02f672009ad377fa8fd5172d8304de0d977bf1e92"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/baseline-result.json",
+   "sha256": "13b7eae1d4dcc51e96ed21013fc205f51bf1e5d599c3ca8b1b841dcba4005045"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/repair-c2-result.json",
+   "sha256": "05d4167c657588708ee9a9f823fb5600adae645ba1a4ab487bbc49ceafca5367"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/third-cooker-result.json",
+   "sha256": "e3ddbd1385e35b8388539e9ae56ee761adc14fff4a24de348b313f13e7e202b0"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/second-prep-result.json",
+   "sha256": "77280e588d3ebea8c7ce45424855d754aac6e37bedd6cc227a1e253c57f4a659"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/second-cook-worker-result.json",
+   "sha256": "00758a860266e301bdc10ee4ed684a83199f8b18f8bf536a24d200ea8b3fbe53"
+  },
+  {
+   "path": "output/catering-investment-v1/seed-2026/flexible-worker-result.json",
+   "sha256": "9ddf997ac20106db1cd3ebb294e0a1864fded8d574f38eb3dc314df634e42954"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/worker-prepare-result.json",
+   "sha256": "7a339ada94376bcdf87bc90e5d6b77c183c275f557086ae29f6cdd7877ca9860"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/worker-pack-result.json",
+   "sha256": "97c74458e755d3df364319324a622ca65f8e58966735f26d81224b9e0f6bc68b"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/worker-prepare-pack-result.json",
+   "sha256": "e531bc0409bd179939357d709340880290fff53328956de86d5d470b314456e7"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/worker-prepare-cook-result.json",
+   "sha256": "4f6789749ea46ab9fd8ee29aaa38c740e52d560022d2dce39a23a7bf88fc975a"
+  },
+  {
+   "path": "output/catering-investment-v1/skills-seed-2026/worker-cook-pack-result.json",
+   "sha256": "7844a1b14cfba6c7456aca55862b3cfa357c9ef44c616bdcea2e5ac3746269df"
+  }
+ ]
+}

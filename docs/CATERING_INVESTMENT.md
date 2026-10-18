@@ -52,3 +52,7 @@ bits for VeloxQ), and these what-if answers come from the classical reference.
 Worker-skill variants are in `skills-seed-*`; the first seven rows in `seed-*`.
 Reproduce: `.venv/bin/python -m catering.investment --output NEW_DIR --seconds 240 --workers 2 --seed 2026`
 (add `--only NAME,...` to run selected variants).
+
+Page handoff (data export, schema, suggested report): [INVESTMENT_PAGE_HANDOFF.md](catering-methods/INVESTMENT_PAGE_HANDOFF.md).
+Page data: `.venv/bin/python scripts/export-catering-investment.py` writes
+`presentation/catering/investment/data.json` from the retained results.
