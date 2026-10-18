@@ -32,7 +32,7 @@ These notes match the current visual slide, including the separate opening, Stag
 
 ## Objective · complete meals and waste
 
-> Main and side coverage multiply into quadratic service and waste terms. Priority weights put missed meals first, then waste, batches and changes.
+> Main and side coverage multiply into quadratic service and waste terms. Priority weights put missed meals first, then waste and new batches.
 
 ## Correctness · the penalty guarantee
 

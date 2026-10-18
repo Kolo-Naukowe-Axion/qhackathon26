@@ -10,7 +10,7 @@ const views = {
   {view:'code',label:'Encoding · compiler excerpt',speech:'The compiler expands coverage products into pair terms and sets the hard penalty above the full objective range.'},
  ],
  loss: [
-  {view:'main',label:'Objective · complete meals and waste',speech:'Main and side coverage multiply into quadratic service and waste terms. Priority weights put missed meals first, then waste, batches and changes.'},
+  {view:'main',label:'Objective · complete meals and waste',speech:'Main and side coverage multiply into quadratic service and waste terms. Priority weights put missed meals first, then waste and new batches.'},
   {view:'proof',label:'Correctness · the penalty guarantee',speech:'The objective varies by at most S over all bitstrings. Set P to S plus one: every invalid state costs more than every feasible state. This ground-state guarantee does not guarantee solver convergence.'},
  ],
  hamiltonian: [

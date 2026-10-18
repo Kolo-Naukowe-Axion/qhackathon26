@@ -55,7 +55,7 @@ ROI calculation. Prices were not supplied.
 |---|---|
 | What does one bit represent? | One locally legal batch program: quantity, allocation, equipment, worker choices and timings. The solver must combine programs into a compatible full plan. |
 | Why is this manufacturing? | Cookers are machines, cleaning is setup work and departures are due dates. Shared batch yields and paired main/side fulfillment add decisions and couplings beyond makespan. |
-| What is the loss? | First weighted missed complete meals, then discarded food, new batches and plan changes. Higher-priority weights dominate every possible lower-priority contribution. |
+| What is the loss? | First weighted missed complete meals, then discarded food and new batches. Higher-priority weights dominate every possible lower-priority contribution. The recorded R term equals B in these cases; it is not an independent stability result. |
 | Why quadratic? | Main and side coverage are linear in program bits. Their product MS counts complete service; M+S−2MS counts unpaired components on feasible plans. No product ancillas are needed for two courses. |
 | How do you guarantee feasibility? | With S the sum of absolute nonconstant objective coefficients, objective variation is at most S. P=S+1 makes any hard violation worse than every feasible state. This guarantees feasible ground states, not that a heuristic reaches one. |
 | Why can a laptop simulate 35 qubits? | The circuit preserves a one-hot sector: the complete cell has 5×11×19=1,045 states, rather than a dense 2^35 statevector. Only 59 of those sector states are physically feasible. |
