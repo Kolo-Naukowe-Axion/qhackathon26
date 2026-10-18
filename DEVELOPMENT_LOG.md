@@ -242,7 +242,7 @@ next step stayed at 7 even with 100,000 steps, while exact enumeration shows 6
 is reachable. Longer CP (240 s) still reaches 5–6. Details and limits:
 [VeloxQ study](docs/CATERING_VELOXQ_TUNING.md#hybrid-follow-up-18-october-veloxq-on-a-classical-plan).
 
-The release check was repeated on a fresh clone of `44bd2706`, which includes
+The release check was repeated on a fresh clone of `44bd2706`, which included
 the hybrid study, stale-claim corrections and benchmark update: all 13 stages
 pass (154 site tests, 43 core checks, three adversarial baseline checks, the
 400-run QAOA archive audit, VQE/VeloxQ checks and three fixed-angle launches
@@ -285,3 +285,7 @@ Final U=7/6/7 at 486/998/2,022 bits, one meal lot better than 30-second CP at
 71 submissions failed on connection errors; we kept their pairs unchanged and
 added a pause between submissions. Ledger 66→137.
 [Study](docs/CATERING_VELOXQ_TUNING.md#veloxq-lns-loop-18-october-a-veloxq-driven-pipeline).
+
+After the loop, the release check passed all 13 stages again on a fresh clone
+of `aa658aad`; the [review receipt](output/catering-submission-review-v1/verification.json)
+now records that commit. The check made no service call.
