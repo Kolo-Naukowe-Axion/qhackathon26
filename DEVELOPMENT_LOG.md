@@ -304,9 +304,7 @@ or VQE for these variants: the flexible worker grows the program register
 [Study](docs/CATERING_INVESTMENT.md).
 
 The release check passed all 13 stages on a fresh clone of `726f8061`, which
-includes the investment study; the
-[review receipt](output/catering-submission-review-v1/verification.json) now
-records that commit.
+included the investment study.
 
 A follow-up split the flexible worker into single and paired skills (same CP
 budget, two seeds, identical results). Every hire that can prepare or pack
@@ -320,3 +318,8 @@ count on all 512,000 start assignments at H=8 (versus 72 plain and 39 pruned).
 The three-bit order encoding stays our selected run but is a smaller,
 different state space with classical tabulation, so it is not the comparable
 number.
+
+The release check passed all 13 stages on a fresh clone of `f4bda4c9`
+(worker-skill split and comparable number); the
+[review receipt](output/catering-submission-review-v1/verification.json) now
+records that commit.
