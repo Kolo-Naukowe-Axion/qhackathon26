@@ -23,7 +23,7 @@ current evidence, not the result of experiments still running elsewhere.
 | Why quantum on an easy example? | The complete cell checks the formulation and circuit. Larger cases measure restriction and search losses separately. |
 | Did QAOA outperform the controls? | The trained setup increases median per-shot optimum probability about 11x/22x over random-angle search on S2/S3 at 256 evaluations. Both are restricted portfolios; this is no classical or hardware advantage. |
 | Why 35 qubits on a laptop? | The complete cell stays in a 1045-state one-hot sector. Larger frozen portfolios reach 279936 states; the dynamic replay uses its own pool. No dense 35-qubit statevector is used. |
-| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits makes every returned sample valid at all three tested scales, but most are empty plans: only 143/102/62 of 512 select any batch. CP and SA still find better plans. |
+| Where does VeloxQ fit? | It solves larger QUBOs of the same meal model, with the same physical checker. Removing idle bits makes every returned sample valid at all three tested scales, but most are empty plans: only 143/102/62 of 512 select any batch. CP and SA still find better plans. As a sub-QUBO solver inside a classical loop, VeloxQ improved a CP plan by one meal lot at width 2,022 (one of two steps). |
 
 ## Three questions to defend precisely
 

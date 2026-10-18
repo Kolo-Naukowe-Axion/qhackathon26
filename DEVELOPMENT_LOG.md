@@ -224,3 +224,20 @@ was stopped afterward. Two ordinary frozen-angle local launches each returned
 20 meals, zero waste and 2,173/4,096 valid shots. No training, backend allowance,
 QPU use, frozen model or retained solver campaign changed. The timed routes
 remain 4:20 and 2:45; final human rehearsal and recording remain open.
+
+
+## 18 October — VeloxQ as part of a classical workflow
+
+Review found the 512/512-valid headline mostly counted empty plans, so we asked
+whether VeloxQ can improve a classical plan instead. Five capped service jobs
+(ledger 61→66; cap 70 authorized by the VeloxQ owner) tested two ideas.
+
+Rejected: warm-starting the whole matrix from the CP plan. The start is
+accepted, but VeloxQ leaves it within 10 steps and returns mostly empty plans.
+
+Kept: a large-neighbourhood step. The CP plan stays fixed except two freed
+blocks; VeloxQ solves only that exact sub-QUBO (162–207 bits) and the merged
+plan is rechecked. At width 2,022 one step improved missed meal lots 8→7; the
+next step stayed at 7 even with 100,000 steps, while exact enumeration shows 6
+is reachable. Longer CP (240 s) still reaches 5–6. Details and limits:
+[VeloxQ study](docs/CATERING_VELOXQ_TUNING.md#hybrid-follow-up-18-october-veloxq-on-a-classical-plan).

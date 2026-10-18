@@ -21,7 +21,8 @@ Main and side coverage interact quadratically, without extra product qubits.
 - **QAOA & VQE:** 31–35 data-qubit portfolios, simulated in their one-hot sectors.
   The QAOA campaign retains 400 runs with controls.
 - **VeloxQ:** larger QUBOs of the same model, at 486, 998 and 2,022 solver bits
-  after idle elimination. [Inspect the measured representation study](docs/CATERING_VELOXQ_TUNING.md).
+  after idle elimination. In a checked hybrid step it improved a 30-second CP plan
+  by one served meal lot at the largest width. [Inspect the VeloxQ study](docs/CATERING_VELOXQ_TUNING.md).
 - **Validation:** independent physical checks, exact small references and CP/SA
   controls. The complete cell serves 20 meals with zero waste; controls also match it.
 

@@ -1,0 +1,163 @@
+{
+  "authorized_ledger_cap": 70,
+  "kind": "Post-hoc VeloxQ hybrid study on 18 October: warm start and checked LNS steps",
+  "ledger_total": 66,
+  "limitations": [
+    "Exploratory single jobs, not held-out performance evidence",
+    "Neighbourhoods were chosen offline by exact enumeration, which already knew an improvement existed",
+    "Exact enumeration and longer CP (240 s, 4 workers: U=6 at 2048) remain stronger than this VeloxQ workflow",
+    "Warm-start backend semantics are not documented; effect inferred from returned samples only"
+  ],
+  "new_service_jobs": 5,
+  "rows": [
+    {
+      "backend_running_s": 1.674,
+      "best": {
+        "B": 10,
+        "R": 10,
+        "U": 9,
+        "W": 6
+      },
+      "job_id": "0d10499f-02d0-49c7-8c4d-cb412b498e1f",
+      "kind": "whole-matrix warm start",
+      "name": "cp-start-512",
+      "num_steps": 20000,
+      "start": {
+        "B": 10,
+        "R": 10,
+        "U": 6,
+        "W": 1
+      },
+      "total_s": 8.664903771990794,
+      "valid_shots": 512,
+      "variables": 486
+    },
+    {
+      "backend_running_s": 0.003,
+      "best": {
+        "B": 5,
+        "R": 5,
+        "U": 11,
+        "W": 4
+      },
+      "job_id": "1f1dc24b-18d8-4ac1-968e-c0584fdb745f",
+      "kind": "whole-matrix warm start",
+      "name": "cp-start-512-steps10",
+      "num_steps": 10,
+      "start": {
+        "B": 10,
+        "R": 10,
+        "U": 6,
+        "W": 1
+      },
+      "total_s": 4.620451946990215,
+      "valid_shots": 478,
+      "variables": 486
+    },
+    {
+      "backend_running_s": 1.999,
+      "best": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "best_shots": 25,
+      "couplers": 11249,
+      "exact_hits": 0,
+      "exact_sub_optimum": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 3
+      },
+      "freed_blocks": [
+        15,
+        16
+      ],
+      "job_id": "4be6a35e-367b-4075-98e2-7aecb49579de",
+      "kind": "LNS sub-QUBO",
+      "name": "lns-2048-step1",
+      "num_steps": 20000,
+      "start": {
+        "B": 8,
+        "R": 8,
+        "U": 8,
+        "W": 3
+      },
+      "total_s": 9.357931188991643,
+      "valid_shots": 512,
+      "variables": 162
+    },
+    {
+      "backend_running_s": 1.357,
+      "best": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "best_shots": 239,
+      "couplers": 18598,
+      "exact_hits": 0,
+      "exact_sub_optimum": {
+        "B": 10,
+        "R": 10,
+        "U": 6,
+        "W": 5
+      },
+      "freed_blocks": [
+        4,
+        25
+      ],
+      "job_id": "c87ac9c1-2511-4f33-9ef8-b7e23d9e53c0",
+      "kind": "LNS sub-QUBO",
+      "name": "lns-2048-step2",
+      "num_steps": 20000,
+      "start": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "total_s": 7.727942747005727,
+      "valid_shots": 512,
+      "variables": 207
+    },
+    {
+      "backend_running_s": 4.75,
+      "best": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "best_shots": 289,
+      "couplers": 18598,
+      "exact_hits": 0,
+      "exact_sub_optimum": {
+        "B": 10,
+        "R": 10,
+        "U": 6,
+        "W": 5
+      },
+      "freed_blocks": [
+        4,
+        25
+      ],
+      "job_id": "d83c9569-b09a-4a23-87b6-4623516bb581",
+      "kind": "LNS sub-QUBO",
+      "name": "lns-2048-step2-long",
+      "num_steps": 100000,
+      "start": {
+        "B": 9,
+        "R": 9,
+        "U": 7,
+        "W": 4
+      },
+      "total_s": 8.962387084000511,
+      "valid_shots": 512,
+      "variables": 207
+    }
+  ]
+}

@@ -236,3 +236,43 @@ Sources: [service report](../output/catering-velox-conditioned-service-v1/report
 [1,024](../output/catering-velox-scale-v3/scale-1024-reference.json) and
 [2,048](../output/catering-velox-scale-v3/scale-2048-reference.json) CP receipts.
 The earlier 30-second CP incumbents mentioned above are separate runs.
+
+
+## Hybrid follow-up (18 October): VeloxQ on a classical plan
+
+Question: can VeloxQ improve a classical plan instead of searching from
+scratch? Five capped jobs (ledger 61→66 of an authorized 70) test two
+workflows on the 30-second CP plans. All returned rows are checked by the same
+decoder; no repair. Neighbourhoods were chosen offline by exact enumeration,
+which already knew an improvement existed, so this measures whether VeloxQ
+finds it, not neighbourhood selection.
+
+**Whole-matrix warm start (width 486).** `--initializer incumbent` repeats the
+checked CP plan (U=6) in all 512 starting rows. VeloxQ does not keep or polish
+it: at 20,000 steps the best return is U=9 and 376/512 rows are empty plans,
+as without a start. After only 10 steps no row equals the start and 413/512 are
+already empty. The start is serialized and accepted, but the dynamics leave it.
+
+**Large-neighbourhood step (width 2,022).** `catering.velox_lns` keeps the plan
+outside two freed one-hot blocks and sends only the exact sub-QUBO (its energy
+equals the full sampling energy for every freed assignment, tested). Exact
+enumeration of none-or-one program per freed block certifies the sub-optimum.
+
+| Step | Sub-QUBO bits / couplers | Steps | Start (U,W,B,R) | Exact sub-optimum | VeloxQ best (shots) | Backend s |
+|---|---:|---:|---|---|---|---:|
+| 1, blocks 15+16 | 162 / 11,249 | 20,000 | (8,3,8,8) | (7,3,9,9) | **(7,4,9,9)** (25/512) | 2.0 |
+| 2, blocks 4+25 | 207 | 20,000 | (7,4,9,9) | (6,5,10,10) | (7,4,9,9) (239/512) | 1.4 |
+| 2, blocks 4+25 | 207 | 100,000 | (7,4,9,9) | (6,5,10,10) | (7,4,9,9) (289/512) | 4.8 |
+
+Step 1 serves one more meal lot than the CP plan it started from; the full
+2,048-source plan is independently valid. It is not the exact sub-optimum
+(one more discarded portion). Step 2 needs a coordinated three-bit change, as
+step 1 did, but VeloxQ returns the unchanged plan even with five times more
+steps. Both moves have no improving single flip.
+
+Context, not a race: exact enumeration of these neighbourhoods takes seconds
+on a laptop, and CP with 240 s and four workers reaches U=5/5/6 at the three
+widths ([controls](../output/catering-velox-warmstart-v1/controls/)). The
+insight is where VeloxQ fits: as a solver for a small, exactly checkable
+sub-QUBO inside a classical loop it can improve a plan; as a polisher of a
+whole plan it currently cannot. [Study report](../output/catering-velox-warmstart-v1/report.json).
