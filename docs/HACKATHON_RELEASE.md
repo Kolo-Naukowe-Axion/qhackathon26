@@ -37,3 +37,13 @@ R equals B in the current fixtures.
   local batch enumeration → QUBO → alternative solver paths → independent checks.
 - [Website video page](https://qfactoria.com/video/): the new poster frames the
   unchanged original recording. The original poster and manifests remain in place.
+
+## Publication verification — 19 October 2026
+
+- Release assets are uploaded; GitHub reports the original MP4 SHA-256 above.
+- YouTube Studio saved the new thumbnail and cleaned awards description on the
+  existing video URL, preserving chapter timestamps and simulation disclosure.
+- The winner update is deployed to `qfactoria.com`; the video page and kitchen
+  header were inspected in a browser. Site and README link the frozen release.
+- `npm run build` passes. Original video and both baseline schedule files match
+  the pre-deadline source snapshot byte for byte.
