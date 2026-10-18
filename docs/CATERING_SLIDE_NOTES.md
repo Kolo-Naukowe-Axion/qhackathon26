@@ -12,7 +12,7 @@ These notes match the current visual slide, including the separate opening, Stag
 
 ## The catering production problem
 
-> Same formulation across five cases: a complete small cell, then normal service, urgent order, outage, and both. Cookers are machines, cleaning is setup, and departures are due dates. We enforce freshness and resource constraints throughout. Complete meals come first, then waste, batches and changes.
+> Cookers are machines; cleaning is setup. Each order needs ten mains and ten sides. Waiting is allowed before cooking and packing; cooker cleaning is immediate. The freshness cutoff runs from cooking finish to departure: thirty minutes for A, forty for B and C.
 
 ## Two orders sharing a side batch
 

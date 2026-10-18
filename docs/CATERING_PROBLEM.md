@@ -32,6 +32,21 @@ one main-component lot and one side-component lot. Consequently, serving one
 more meal lot takes priority over any possible improvement in waste, batch count
 or changes. These are not prices or monetary costs.
 
+The current fixtures use the following dishes. Each order specifies its main; the optimizer does not choose the customer's menu.
+
+| Dish | Role | Batch portions | Maximum age at departure |
+|---|---|---|---|
+| A | Main | 10 | 30 minutes |
+| B | Main | 10 or 20 | 40 minutes |
+| C | Side | 10 or 20 | 40 minutes |
+
+Each current order requests ten complete meals: ten main portions and ten side
+portions. Freshness is a hard eligibility cutoff for each component allocation,
+measured from that batch's cooking completion to the receiving order's departure.
+It is not a gradual quality score. A shared batch must meet the cutoff separately
+for every order it supplies. Waiting is allowed before cooking and packing;
+cooker cleaning starts immediately after cooking and can overlap packing.
+
 The problem belongs to the manufacturing scheduling family: cookers are machines,
 recipes are operation chains, cleaning is setup-like work, and departures are due
 dates. Shared batch yields and the requirement to complete two component streams
